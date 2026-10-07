@@ -1265,7 +1265,10 @@ function say(z,txt,kind){zname(z);S.bubbles=S.bubbles.filter(b=>b.z!==z);if(S.bu
   S.bubbles.push({z,txt,t:0,life:Math.min(5,Math.max(2.4,1.2+txt.length*.06)),kind:kind||'say'});if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
 function taunt(z){const r=R();if(r<.3)say(z,pick(THINK),'think');else if(r<.45&&S.prob)say(z,`¿${S.prob.str.replace(' = ?','').slice(0,20)}? ¡TIC TAC!`);else say(z,pick([...TAUNTS,...(TAUNT_TOPIC[S.topic.id]||[])]))}
 function blood(sx,sy,n,spd=1){for(let i=0;i<n;i++){const ang=-Math.PI*R()*1.1+.05,s=(30+R()*110)*spd;S.parts.push({x:sx,y:sy,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.6+R()*.8,c:pick([P.r2,P.r2,P.r,'#e8735f']),blood:true})}}
-function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);z.dead=true;z.deadT=0;z.gore=gore;z.grab=false;S.run.kills++;if(gore){blood(scx(z.x),GY-14,40);SFX.gore();for(let i=0;i<9;i++)S.stains.push({x:z.x+(R()-.5)*16/S.u,w:1+ri(0,3),t:0,up:R()<.4})}S.bubbles=S.bubbles.filter(b=>b.z!==z)}
+function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);
+  // si muere el zombi que te tiene agarrada, el agarre termina (antes quedaba un agarre fantasma)
+  if(S.grab&&S.grab.z===z){S.grab=null;$('#alert').classList.remove('on');MUS.tension=0;if(S.a.st==='grab'){S.a.st='rest';S.a.y=0}}
+  z.dead=true;z.deadT=0;z.gore=gore;z.grab=false;S.run.kills++;if(gore){blood(scx(z.x),GY-14,40);SFX.gore();for(let i=0;i<9;i++)S.stains.push({x:z.x+(R()-.5)*16/S.u,w:1+ri(0,3),t:0,up:R()<.4})}S.bubbles=S.bubbles.filter(b=>b.z!==z)}
 
 /* ============ Salto, meteorito y agarre ============ */
 function commit(dest,ok,quiet){
@@ -1298,7 +1301,7 @@ function shardHit(sh){
     S.texts.push({x:z.x,y:GY-60,txt:z.hp>0?`−1 · QUEDAN ${z.hp}`:'¡JEFE VENCIDO!',c:P.o,t:0,life:1.4,world:true});
     z.x+=(Math.sign(z.x-S.a.x)||1)*70/S.u;
     if(z.hp<=0){killZ(z,true);blood(scx(z.x),GY-26,80,1.4);checkClear()}
-  }else killZ(z,true);
+  }else{const was=z.grab;killZ(z,true);if(was)S.texts.push({x:S.a.x,y:GY-50,txt:'¡TE SALVÓ EL METEORITO!',c:P.r2,t:0,life:1.4,world:true})}
 }
 function land(){
   const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';
