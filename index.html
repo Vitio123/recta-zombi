@@ -162,6 +162,16 @@ body{font-weight:400;-webkit-font-smoothing:none;font-smooth:never}
 #expr>span,#pre>span{display:inline-block}
 #lawt.tip{top:auto;bottom:calc(var(--sb) + 150px);left:var(--sl);right:auto;transform:none;max-width:min(320px,70vw);font-size:12px;padding:5px 10px;text-align:left;opacity:.0}#lawt.tip.on{opacity:.85}
 #lawt pre{font-family:var(--f-ui);font-size:15px;margin:6px 0 0;white-space:pre-wrap;border-left:3px solid var(--red);padding-left:10px}
+/* móvil: consejos y leyes de Newton como subtítulo compacto abajo, sin tapar el escenario */
+@media (max-width:759px){
+#newt,#lawt,#lawt.tip{top:auto;left:var(--sl);right:var(--sr);transform:none;width:auto;max-width:none;bottom:calc(var(--sb) + 78px);padding:4px 8px 3px;font-size:11px;line-height:1.3;text-align:center;pointer-events:none;box-shadow:none!important;background:rgba(0,0,0,.55);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+#lawt b,#lawt.tip b{display:inline;font-size:10px;letter-spacing:.12em;margin:0 6px 0 0}
+#lawt pre{display:none}
+#newt.on,#lawt.on{opacity:.85}#lawt.tip.on{opacity:.75}
+#newt:has(~#lawt.on){opacity:0}
+#drawhint:has(~#newt.on),#drawhint:has(~#lawt.on){opacity:0}
+body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + 270px)}
+}
 #exAnim{width:100%;height:110px;image-rendering:pixelated;display:block;margin-top:8px;border:2px solid var(--line)}
 #oFailB li{opacity:0;transition:opacity .4s}#oFailB li.on{opacity:1}
 #exAgain{margin:8px 0}
