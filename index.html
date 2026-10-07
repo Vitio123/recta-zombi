@@ -240,7 +240,7 @@ html,body,.screen,.card{overflow:hidden!important}
     <div id="oLawN"></div>
     <div class="heat" id="oHeat"></div>
     <details id="oFail"><summary>¿CÓMO SE RESOLVÍA?</summary><div id="oFailB"></div></details>
-    <div class="btns"><button class="btn red" id="bCont">REINTENTAR</button><button class="btn alt" id="bPract">PRACTICAR</button><button class="btn alt" id="bMenu">MENÚ</button></div>
+    <div class="btns"><button class="btn red" id="bCont">VOLVER AL NIVEL 1</button><button class="btn alt" id="bShare">COMPARTIR</button><button class="btn alt" id="bPract">PRACTICAR</button><button class="btn alt" id="bMenu">MENÚ</button></div>
   </div></div>
 </div>
 <canvas id="pc"></canvas>
@@ -511,6 +511,8 @@ function bass(t,midi,dur,v,d){const f=440*Math.pow(2,(midi-69)/12),o=AC.createOs
   o.type='sawtooth';o.frequency.value=f;lp.type='lowpass';lp.Q.value=4;lp.frequency.setValueAtTime(f*9,t);lp.frequency.exponentialRampToValueAtTime(f*1.6,t+Math.min(dur,.25));
   g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.13*v,t+.006);g.gain.setTargetAtTime(.0001,t+dur*.7,dur*.15);
   o.connect(lp).connect(g).connect(d||out());o.start(t);o.stop(t+dur+.2);osc(t,f,null,dur,'sine',.32*v,d)}
+// marimba: fundamental + parcial 4× que se apaga rápido (percusión y salsa)
+function marimba(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out();osc(t,f,null,Math.min(.9,dur*1.6),'sine',vol*2.2,p);osc(t,f*4,null,.07,'sine',vol*.8,p);osc(t,f*10,null,.02,'sine',vol*.3,p)}
 // melodía pluck: dos sierras desafinadas con filtro que se cierra, paneada
 function pluck(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),lp=AC.createBiquadFilter(),g=AC.createGain(),p=MUS.melPan||out();
   lp.type='lowpass';lp.Q.value=6;lp.frequency.setValueAtTime(f*8,t);lp.frequency.exponentialRampToValueAtTime(f*1.2,t+dur*.8);
@@ -520,6 +522,7 @@ function pluck(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),lp=AC.createBiquad
 function newMotif(){const a=Array(16).fill(-1);let deg=ri(0,3);for(let i=0;i<16;i++){if(R()<(i%4===0?.6:i%2===0?.4:.22)){deg=clamp(deg+ri(-2,2),0,5);a[i]=deg}}if(a[0]<0)a[0]=0;return a}
 const PAN={hat:.35,ohat:.35,bongoHi:-.4,bongoLo:-.3,bongoSlap:-.35,claves:.5,cencerro:.25,congas:-.2,maracas:.55,cabasa:.45,guiro:-.45,castanuelas:.4,pandereta:.3,triangulo:-.5,cajaChina:.45,tomHi:.3,tomMid:0,tomLo:-.3,timbal:.3,cascara:.4};
 function keys(t,midis,dur,v,d){for(const m of midis){const f=440*Math.pow(2,(m-69)/12);osc(t,f,null,dur,'triangle',.05*v,d);osc(t,f*2,null,dur*.5,'sine',.025*v,d)}}
+const DRUMS=new Set(['kick','snare','clap','hat','ohat','sub']);
 const GENRES=['percusion','hiphop','regueton','salsa'];
 const GNAME={percusion:'PERCUSIÓN',hiphop:'HIP HOP',regueton:'REGUETÓN',salsa:'SALSA'};
 let GENRE_PREF='random';
@@ -527,7 +530,7 @@ try{GENRE_PREF=localStorage.getItem('rzGenre')||'random'}catch(e){}
 const row=(len,on)=>{const a=Array(len).fill(0);for(const i of on)a[i]=1;return a};
 function newGroove(boss){
   const g0=GENRE_PREF==='random'?pick(GENRES):GENRE_PREF,g={genre:g0,parts:[],swing:0,len:16,div:4,keysPat:null};
-  const add=(name,pat,vel)=>g.parts.push({name,pat,vel});
+  const add=(name,pat,vel)=>g.parts.push({name,pat,vel,lay:g.parts.length>=3?1:0}); // las 3 primeras = base
   if(g0==='percusion'){ // batería completa + bongós, congas, timbales, cencerro, güiro, pandereta, maracas
     g.bpm=ri(100,112);g.swing=.08;
     add('kick',row(16,R()<.5?[0,6,8,11]:[0,3,8,10]),1);
@@ -619,16 +622,23 @@ function musicPump(){
   while(MUS.nextT<AC.currentTime+.12){
     const s=MUS.step%g.len,t=MUS.nextT+(g.swing&&s%2?sd*g.swing:0);
     const brk=MUS.bar%16===15&&s<g.len/2; // medio compás de corte cada 16 compases
-    for(const p of g.parts)if(p.pat[s]&&!(brk&&(p.name==='kick'||p.name==='sub'))){INST[p.name](t,p.vel*(.85+R()*.3),MUS.pans[p.name]||d);
+    // secciones de 4 compases: intro solo base, 4 = quiebre sin batería, 6-7 = coro con melodía completa
+    const sec=Math.floor(MUS.bar/4)%8,intro=MUS.bar<4,bd=sec===4,coro=sec>=6;
+    for(const p of g.parts)if(p.pat[s]&&!(brk&&(p.name==='kick'||p.name==='sub'))&&!(intro&&p.lay)&&!(bd&&DRUMS.has(p.name))){INST[p.name](t,p.vel*(.85+R()*.3),MUS.pans[p.name]||d);
       if(p.name==='kick'&&MUS.padBus){const pg=MUS.padBus.gain;pg.setValueAtTime(.35,t);pg.setTargetAtTime(.9,t+.02,.09)}} // sidechain al pad
     // redoble al final de cada 4 compases
-    if(MUS.bar%4===3&&s>=12){const v=.35+(s-12)*.15;if(g.genre==='salsa')INST[s%2?'congas':'bongoSlap'](t,v,MUS.pans.congas||d);else if(g.genre==='percusion'){const k=s<13?'tomHi':s<15?'tomMid':'tomLo';INST[k](t,v+.2,MUS.pans[k]||d);INST[k](t+sd/2,v+.1,MUS.pans[k]||d)}else{INST.snare(t,v,d);if(s===15)INST.snare(t+sd/2,v,d)}}
+    const big=MUS.bar%8===7;
+    if(big&&s>=8&&g.genre!=='salsa'&&!bd){const k=s<11?'tomHi':s<14?'tomMid':'tomLo',v=.4+(s-8)*.07;INST[k](t,v,MUS.pans[k]||d);if(s%2)INST[k](t+sd/2,v*.8,MUS.pans[k]||d);if(s===15)INST.platos(t+sd,.5,d)}
+    else if(big&&s>=8&&g.genre==='salsa'){INST.timbal(t,.5+(s-8)*.06,MUS.pans.timbal||d);if(s%2)INST.timbal(t+sd/2,.45,MUS.pans.timbal||d)}
+    else if(MUS.bar%4===3&&s>=12&&!bd){const v=.35+(s-12)*.15;if(g.genre==='salsa')INST[s%2?'congas':'bongoSlap'](t,v,MUS.pans.congas||d);else if(g.genre==='percusion'){const k=s<13?'tomHi':s<15?'tomMid':'tomLo';INST[k](t,v+.2,MUS.pans[k]||d);INST[k](t+sd/2,v+.1,MUS.pans[k]||d)}else{INST.snare(t,v,d);if(s===15)INST.snare(t+sd/2,v,d)}}
     const chordBar=g.div===2?Math.floor(MUS.step/8)%4:MUS.bar%4,root=g.prog[chordBar],sIn=g.div===2?s%8:s;
     // melodía: llamada (compases 4-7 de cada 8) y respuesta variada; motivo nuevo cada 16 compases
     if(s===0&&MUS.bar%16===0&&MUS.bar>0)g.motif=newMotif();
-    {const mb=MUS.bar%8,mi=g.motif[(s+(mb>=6?4:0))%16];if(mb>=4&&mi>=0&&!brk){const mn=g.genre!=='salsa',ct=[0,mn?3:4,7,12,mn?15:16,19];pluck(t,root+36+ct[mi],sd*(g.genre==='salsa'?1.6:2.2),.045)}}
-    for(const[st,len]of g.bassPat)if(st===sIn)bass(t,root,sd*len*.9,1,d);
-    if(s===0&&MUS.bar%8===0)INST[g.accent](t,.6,d);
+    {const mb=MUS.bar%8,mi=g.motif[(s+(mb>=6?4:0))%16];if((mb>=4||coro)&&!intro&&mi>=0&&!brk){const mn=g.genre!=='salsa',ct=[0,mn?3:4,7,12,mn?15:16,19],nt=root+36+ct[mi];if(g.genre==='percusion'||g.genre==='salsa'||bd)marimba(t,nt+(bd?12:0),sd*1.6,.04);else pluck(t,nt,sd*2.2,.045)}}
+    if(!intro)for(const[st,len]of g.bassPat)if(st===sIn)bass(t,root,sd*len*.9,1,d);
+    // bajo que camina: nota de paso medio tono antes del siguiente acorde
+    if(!intro&&g.div===4&&s===15&&!brk){const nr=g.prog[(chordBar+1)%4];if(nr!==root)bass(t,nr+(nr>root?-1:1),sd*.9,.75,d)}
+    if(s===0&&MUS.bar%4===0&&(sec===1||sec===5||sec===6))INST[g.accent](t,.65,d);
     if(g.subBass&&s%8===0&&!brk)INST.sub(t,.8,d,g.prog[chordBar]-12);
     if(g.keysPat&&g.keysPat.includes(sIn)){const r_=g.prog[chordBar]+12;keys(t,[r_,r_+4,r_+7],sd*.9,1,d)}
     const dz=MUS.danger||0;MUS.lp.frequency.setTargetAtTime(900+dz*7000+ten*4000,AC.currentTime,.4);
@@ -896,6 +906,9 @@ let SAVE={best:1,sk:{},seen:{},hist:{}};
 try{const j=JSON.parse(localStorage.getItem(SAVEK)||'null');if(j&&typeof j==='object')SAVE=Object.assign(SAVE,j)}catch(e){}
 function persist(){try{localStorage.setItem(SAVEK,JSON.stringify(SAVE))}catch(e){}}
 const skill=id=>SAVE.sk[id]==null?.15:SAVE.sk[id];
+// presión: sube con cada muerte y con el tiempo jugado (0 → 1)
+const hard=()=>clamp((SAVE.deaths||0)*.04+(SAVE.playT||0)/60*.01,0,1);
+const dOf=id=>Math.min(1,(S.stage>16?Math.max(.7,skill(id)):skill(id))+.35*hard());
 const S={mode:'title',stage:1,topic:TOPICS[0],d:.15,ok:0,quota:5,boss:null,
   a:{x:0,y:0,vy:0,st:'rest',from:0,to:0,t:0,T:1,peak:0,v0:0,sg:1,ok:true,f:0},
   cam:0,u:21,uT:21,uPrev:21,zombies:[],spawnT:4,prob:null,lay:null,input:'',thinkT:0,
@@ -905,10 +918,10 @@ function newRun(start){return{start,correct:0,wrong:0,esc:0,kills:0,streak:0,max
 S.run=newRun(1);
 const scx=x=>X0+(x-S.cam)*S.u;
 const fitU=d=>clamp(W*.36/Math.max(d,4),.08,40);
-const grabTime=()=>Math.max(2.8,6.4-S.stage*.18-S.d*.8)*(S.grab&&S.grab.need>1?1.35:1);
-const maxLive=()=>Math.min(6,1+Math.ceil(S.stage/2.5))+(S.stage>16?1:0);
-const spawnInt=()=>Math.max(1.8,5.6-S.stage*.2-S.d);
-const zSpd=()=>8+Math.min(16,S.stage*1.1)+S.d*5;
+const grabTime=()=>Math.max(2.4,(6.4-S.stage*.18-S.d*.8)*(1-.25*hard()))*(S.grab&&S.grab.need>1?1.35:1);
+const maxLive=()=>Math.min(6,1+Math.ceil(S.stage/2.5))+(S.stage>16?1:0)+Math.round(2*hard());
+const spawnInt=()=>Math.max(1.4,(5.6-S.stage*.2-S.d)*(1-.35*hard()));
+const zSpd=()=>(8+Math.min(16,S.stage*1.1)+S.d*5)*(1+.45*hard());
 const alive=z=>!z.dead;
 const ER=46;
 const topicFor=n=>n<=TOPICS.length?TOPICS[n-1]:pick(TOPICS);
@@ -923,7 +936,7 @@ function newGame(n){
   startStage();
 }
 function startStage(){
-  const T=topicFor(S.stage);S.topic=T;S.d=S.stage>16?Math.max(.7,skill(T.id)):skill(T.id);
+  const T=topicFor(S.stage);S.topic=T;S.d=dOf(T.id);
   S.ok=0;S.quota=T.boss?0:clamp(Math.round(6-3*S.d),3,6);
   SAVE.best=Math.max(SAVE.best,Math.min(S.stage,16));persist();
   S.zombies=[];S.stains=[];S.boss=null;S.trail=[];S.grab=null;S.bubbles=[];S.prob=null;S.lay=null;S.input='';S.rings=[];S.shards=[];renderInput();padClear();
@@ -947,7 +960,7 @@ function beginStage(){
   a.st='fall';a.y=(GY-TOPPAD+30)/YPX;a.vy=0;
   S.spawnT=S.stage<=2?6:3.5;S.tauntT=6;
   if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z)}
-  banner(boss?(T.final?'JEFE FINAL':'JEFE'):S.stage>16?'MODO ∞':'NIVEL '+S.stage,T.name,(boss?`${T.boss} ACIERTOS PARA VENCERLO`:`${S.quota} ACIERTOS PARA PASAR`)+' · ♪ '+GNAME[MUS.groove.genre],boss);
+  banner(boss?(T.final?'JEFE FINAL':'JEFE'):S.stage>16?'MODO ∞':'NIVEL '+S.stage,T.name,(boss?`${T.boss} ACIERTOS PARA VENCERLO`:`${S.quota} ACIERTOS PARA PASAR`)+' · ♪ '+GNAME[MUS.groove.genre]+(hard()>.01?` · PRESIÓN ${Math.round(hard()*100)}%`:''),boss);
   updHUD();
 }
 function banner(k,big,sub,boss){$('#bnK').textContent=k;$('#bnBig').textContent=big;$('#bnSub').textContent=sub;const b=$('#banner');b.classList.toggle('boss',!!boss);b.classList.remove('go');void b.offsetWidth;b.classList.add('go')}
@@ -964,7 +977,7 @@ function setMode(m){
   $('#top').classList.toggle('hidden',!(play||pz));
   ['#inbox','#drawhint','#exprw'].forEach(s=>$(s).classList.toggle('hidden',!play));
   if(!play){$('#alert').classList.remove('on');$('#newt').classList.remove('on');$('#lawt').classList.remove('on');padClear()}else if(S.grab)$('#alert').classList.add('on');
-  if(m==='title'){heatmap($('#tHeat'));const b=SAVE.best;$('#bStart').textContent=b>1?`CONTINUAR · NIVEL ${b}`:'JUGAR';$('#bFresh').hidden=b<=1}
+  if(m==='title'){heatmap($('#tHeat'));$('#bStart').textContent='JUGAR';$('#bFresh').hidden=true}
   syncChips();
 }
 const SUBST=new Set(['suma','resta','mult','div','ent','frac','raiz']);
@@ -1036,7 +1049,7 @@ function record(ok,val){
   else{Rn.wrong++;Rn.streakBefore=Rn.streak;Rn.streak=0;Rn.errT[id]=(Rn.errT[id]||0)+1;h.bad++;SAVE.sk[id]=clamp(skill(id)-.12,0,1);if(t<2)Rn.fastWrong++;
     if(val!=null&&S.prob){Rn.lastWrong={val,ans:S.prob.ans,topic:id};wrongFeedback(val,S.prob.ans,t)}}
   Rn.thinkSum+=t;Rn.thinkN++;
-  S.d=S.stage>16?Math.max(.7,skill(id)):skill(id);persist();
+  S.d=dOf(id);persist();
 }
 const dayKey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function heatmap(el){
@@ -1082,7 +1095,7 @@ document.addEventListener('keydown',e=>{
   if(k){e.preventDefault();typeKey(k)}
 });
 $('#kp').addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(!b)return;e.preventDefault();typeKey(b.dataset.k)});
-$('#bStart').onclick=()=>newGame(SAVE.best);
+$('#bStart').onclick=()=>newGame(1);
 $('#bFresh').onclick=()=>newGame(1);
 $('#bGo').onclick=()=>{if(S.mode==='lesson')beginStage()};
 $('#bResume').onclick=()=>setMode('play');
@@ -1312,6 +1325,7 @@ function pickLaw(){
   return{L:LAWS[k],txt:LAWS[k].f(D)};
 }
 function gameOver(){
+  SAVE.deaths=(SAVE.deaths||0)+1;persist();
   setMode('over');
   $('#oTtl').textContent=pick(['TE COMIERON','¡ÑAM!','CRUNCH','SE ACABÓ','FIN']);
   const law=pickLaw();$('#oQuote').textContent=law.txt;$('#oLawN').textContent='— '+law.L.n;
@@ -1321,7 +1335,7 @@ function gameOver(){
   const fill=$('#trFill'),ap=$('#trApple');fill.style.transition='none';ap.style.transition='none';fill.style.width='0';ap.style.left='4%';void fill.offsetWidth;fill.style.transition='';ap.style.transition='';
   requestAnimationFrame(()=>requestAnimationFrame(()=>{fill.style.width=(pos*100).toFixed(1)+'%';ap.style.left=L(pos)}));
   ap.style.background=APC[APPLEC].r;
-  $('#mapLbl').textContent=`NIVEL ${S.stage>16?'∞':S.stage} · ${S.topic.name} · ${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS`;
+  $('#mapLbl').textContent=`NIVEL ${S.stage>16?'∞':S.stage} · ${S.topic.name} · ${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS · RÉCORD ${SAVE.best} · PRESIÓN ${Math.round(hard()*100)}%`;S.overPos=pos;
   const p=S.run.lastProb;
   $('#oFailB').innerHTML=p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">↻ VER DE NUEVO</button><div class="q">${esc(p.str.replace(' = ?',''))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:'Te atraparon antes del primer problema.';
   $('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};heatmap($('#oHeat'));
@@ -1329,11 +1343,41 @@ function gameOver(){
   for(const id of ids){const t=TOPICS.find(q=>q.id===id);const h=SAVE.hist[id]||{ok:0,bad:0},n=h.ok+h.bad,acc=n?h.ok/n:0;rows.push({t,acc,n})}
   rows.sort((a,b)=>a.acc-b.acc);
   const weak=rows.find(r=>r.n>=2&&r.acc<.75)||rows[0];
-  const cont=Math.min(S.stage,17);$('#bCont').onclick=()=>newGame(cont);
+  $('#bCont').onclick=()=>newGame(1);
   const wi=TOPICS.indexOf(weak.t)+1;$('#bPract').hidden=wi===S.stage;$('#bPract').textContent=`PRACTICAR ${weak.t.name}`;$('#bPract').onclick=()=>newGame(wi);
   $('#sOver .card').scrollTop=0;
 }
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+// tarjeta 1080×1350 con la escena final y el resultado; se comparte con el menú del sistema o se descarga
+async function shareResult(){
+  const btn=$('#bShare'),W1=1080,H1=1350,c=document.createElement('canvas');c.width=W1;c.height=H1;const x=c.getContext('2d');
+  const F=(px,w)=>`${w||400} ${px}px "Pixelify Sans", monospace`,lvl=S.stage>16?'∞':S.stage;
+  x.fillStyle=P.k;x.fillRect(0,0,W1,H1);x.imageSmoothingEnabled=false;
+  const ih=Math.round(W1*cv.height/cv.width);x.drawImage(cv,0,130,W1,ih);
+  x.textAlign='center';x.textBaseline='top';
+  x.fillStyle=P.w;x.font=F(68,600);x.fillText('RECTA ZOMBI',W1/2,34);
+  let y=130+ih+44;
+  x.fillStyle=P.red;x.font=F(104,600);x.fillText(`NIVEL ${lvl}`,W1/2,y);y+=124;
+  x.fillStyle=P.w;x.font=F(50);x.fillText(S.topic.name,W1/2,y);y+=78;
+  x.fillText(`${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS`,W1/2,y);y+=72;
+  if(S.run.maxStreak>1){x.fillText(`MEJOR RACHA: ${S.run.maxStreak}`,W1/2,y);y+=72}
+  y+=24;const bx=140,bw=W1-280,pos=S.overPos||0;
+  x.fillStyle=P.m1;x.fillRect(bx,y,bw,14);x.fillStyle=P.red;x.fillRect(bx,y,bw*pos,14);
+  x.fillStyle=APC[APPLEC].r;x.beginPath();x.arc(bx+bw*pos,y+7,22,0,7);x.fill();
+  y+=80;x.fillStyle=P.l2;x.font=F(46);x.fillText('¿ME SUPERAS?',W1/2,y);y+=62;
+  if(/^https?:$/.test(location.protocol))x.fillText(location.host,W1/2,y);
+  const blob=await new Promise(r=>c.toBlob(r,'image/png'));if(!blob)return;
+  const url=/^https?:$/.test(location.protocol)?location.origin+location.pathname+'?ref=compartir':'',
+    text=`Llegué al nivel ${lvl} (${S.topic.name}) en Recta Zombi con ${S.run.correct} aciertos. ¿Me superas?${url?' '+url:''}`;
+  const f=new File([blob],'recta-zombi.png',{type:'image/png'});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Recta Zombi',text});return}}
+  catch(e){if(e&&e.name==='AbortError')return}
+  // respaldo (PC): descarga la imagen y copia el texto con el link
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='recta-zombi.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  let ok=false;try{await navigator.clipboard.writeText(text);ok=true}catch(e){}
+  btn.textContent=ok?'IMAGEN GUARDADA · TEXTO COPIADO':'IMAGEN GUARDADA';setTimeout(()=>btn.textContent='COMPARTIR',2800);
+}
+$('#bShare').onclick=shareResult;
 function updHUD(){
   const T=S.topic,n=$('#hN');n.textContent=S.stage>16?'∞':String(S.stage);n.classList.toggle('boss',!!T.boss);$('#pips').classList.toggle('boss',!!T.boss);
   $('#hTopic').textContent=T.name;
@@ -1341,11 +1385,165 @@ function updHUD(){
   $('#pips').innerHTML=Array.from({length:tot},(_,i)=>`<i class="${i<on?'on':''}"></i>`).join('');
 }
 
+/* ============ Escenas de explicación: objetos que se juntan, columnas con llevadas, grupos y torta ============ */
+const SPR={
+  vaca:{n:'VACAS',m:['...........b.','..........wbw','wbbwwwwbwwwww','wbbwwwwbbwwpp','wwwwbbwwwwwpp','wwwwbbwwww...','.w.w....w.w..','.b.b....b.b..']},
+  pollito:{n:'POLLITOS',m:['..yyy..','.yybyo.','.yyyyoo','yyyyyy.','yyyyyy.','.yyyy..','..o.o..']},
+  manzana:{n:'MANZANAS',m:['...n...','..ng...','.rrrrr.','rrrrrrr','rrrwrrr','rrrrrrr','.rr.rr.']},
+};
+const SPC={w:'#f4f1e8',b:'#1b1a17',p:'#f2a0a8',y:'#f5d23a',o:'#e8862a',r:'#d42a2a',g:'#4f8a2a',n:'#5a3a22'},SPRC={};
+function sprImg(k){if(SPRC[k])return SPRC[k];const m=SPR[k].m,c=document.createElement('canvas');c.width=m[0].length+2;c.height=m.length+2;const x=c.getContext('2d');
+  const on=(i,j)=>j>=0&&j<m.length&&i>=0&&i<m[j].length&&m[j][i]!=='.';
+  x.fillStyle='#1b1a17';for(let j=-1;j<=m.length;j++)for(let i=-1;i<=m[0].length;i++)if(!on(i,j)&&(on(i+1,j)||on(i-1,j)||on(i,j+1)||on(i,j-1)))x.fillRect(i+1,j+1,1,1);
+  for(let j=0;j<m.length;j++)for(let i=0;i<m[j].length;i++)if(on(i,j)){x.fillStyle=SPC[m[j][i]];x.fillRect(i+1,j+1,1,1)}
+  return SPRC[k]=c}
+const ez=u=>u<=0?0:u>=1?1:u*u*(3-2*u),tw=(t,t0,d)=>ez((t-t0)/d);
+const TX=(c,str,cx,y,s,col)=>{if(s>1&&pw(str,s)>c.canvas.width-6)s=1;const x=Math.round(cx-pw(str,s)/2);ptext(str,x+s,Math.round(y)+s,s,P.k,c);ptext(str,x,y,s,col,c)};
+const fitKind=(perRow,Wc)=>{const ks=Object.keys(SPR).filter(k=>perRow*(sprImg(k).width+2)<=Wc-8);return ks.length?pick(ks):null};
+function slots(n,cols,cx,y0,sw,sh){const o=[],rows=Math.ceil(n/cols);for(let i=0;i<n;i++){const r=Math.floor(i/cols),inRow=r<rows-1?cols:n-cols*(rows-1);o.push([cx-inRow*sw/2+(i-r*cols)*sw,y0+r*sh])}return o}
+function xMark(c,x,y,w,h){c.fillStyle=P.red;const L=Math.max(w,h);for(let q=0;q<=L;q++){const u=q/L;c.fillRect(Math.round(x+u*w),Math.round(y+u*h),1,1);c.fillRect(Math.round(x+u*w),Math.round(y+h-u*h),1,1)}}
+// a + b: dos grupos que se juntan y se cuentan
+function scAddObj(a,b,Wc){
+  const n=a+b,k=fitKind(Math.ceil(Math.max(a,b)/2),Wc/2);if(!k)return null;
+  const img=sprImg(k),sw=img.width+2,sh=img.height+10,nm=SPR[k].n,cH=Math.max(1,Math.floor((Wc/2-6)/sw)),cA=Math.max(1,Math.floor((Wc-8)/sw));
+  const A=slots(a,cH,Wc*.25,24,sw,sh),B=slots(b,cH,Wc*.75,24,sw,sh),Fs=slots(n,cA,Wc/2,24,sw,sh),rows=Math.max(Math.ceil(a/cH),Math.ceil(b/cH));
+  const tB=.4+a*.15,tM=tB+.5+b*.15+.6,tC=tM+.9,dur=tC+n*.22+1.4,h=Math.max(100,24+Math.max(rows,Math.ceil(n/cA))*sh+40);let said=0;
+  return{h,dur,draw(c,t){
+    TX(c,`${a} + ${b}`,Wc/2,3,1,P.w);
+    const mg=tw(t,tM,.7);
+    for(let i=0;i<n;i++){
+      const isA=i<a,ap=isA?.4+i*.15:tB+(i-a)*.15;if(t<ap)continue;
+      const[x0,y0]=isA?A[i]:B[i-a],[x1,y1]=Fs[i];let x=x0,y=y0;
+      if(isA)y=y0-(1-tw(t,ap,.2))*6;else x=Wc+4+(x0-Wc-4)*tw(t,ap,.5);
+      x+=(x1-x)*mg;y+=(y1-y)*mg;c.drawImage(img,Math.round(x),Math.round(y));
+      if(t>=tC+i*.22)TX(c,String(i+1),x+img.width/2,y-8,1,P.w);
+    }
+    if(mg<1){c.globalAlpha=1-mg;TX(c,'+',Wc/2,24+sh*rows/2-9,2,P.red);if(t>=.4)TX(c,`${a} ${nm}`,Wc*.25,h-30,1,P.l2);if(t>=tB)TX(c,`${b} ${nm}`,Wc*.75,h-30,1,P.l2);c.globalAlpha=1}
+    const cnt=t<tC?0:Math.min(n,Math.floor((t-tC)/.22)+1);if(cnt>said){said=cnt;SFX.digit(Math.min(cnt-1,9))}
+    if(cnt>=n)TX(c,`= ${n} ${nm}`,Wc/2,h-18,2,P.red);
+  }};
+}
+// a − b: se tachan b objetos, se van, y se cuentan los que quedan
+function scSubObj(a,b,Wc){
+  const r=a-b,k=fitKind(Math.min(a,10),Wc);if(!k)return null;
+  const img=sprImg(k),sw=img.width+2,sh=img.height+10,nm=SPR[k].n,cA=Math.max(1,Math.min(10,Math.floor((Wc-8)/sw))),G=slots(a,cA,Wc/2,24,sw,sh),rows=Math.ceil(a/cA);
+  const tX=.4+a*.12+.3,tF=tX+b*.25+.2,tC=tF+.9,dur=tC+r*.22+1.4,h=Math.max(100,24+rows*sh+40);let said=0;
+  return{h,dur,draw(c,t){
+    TX(c,`${a} − ${b}`,Wc/2,3,1,P.w);
+    for(let i=0;i<a;i++){
+      const ap=.4+i*.12;if(t<ap)continue;let[x,y]=G[i];y-=(1-tw(t,ap,.2))*6;
+      if(i>=r){const u=tw(t,tF+(i-r)*.06,.6);if(u>=1)continue;c.globalAlpha=1-u;y-=u*24;c.drawImage(img,x,Math.round(y));if(t>=tX+(i-r)*.25)xMark(c,x,Math.round(y),img.width-1,img.height-1);c.globalAlpha=1}
+      else{c.drawImage(img,x,Math.round(y));if(t>=tC+i*.22)TX(c,String(i+1),x+img.width/2,y-8,1,P.w)}
+    }
+    if(t>=tX&&t<tC+.4)TX(c,`SE VAN ${b} ${nm}`,Wc/2,h-30,1,P.red);
+    const cnt=t<tC?0:Math.min(r,Math.floor((t-tC)/.22)+1);if(cnt>said){said=cnt;SFX.digit(Math.min(cnt-1,9))}
+    if(cnt>=r)TX(c,`QUEDAN ${r} ${nm}`,Wc/2,h-18,2,P.red);
+  }};
+}
+// a × b: b grupos (filas) de a objetos con la cuenta acumulada
+function scMulObj(a,b,Wc){
+  const k=fitKind(a,Wc-34);if(!k)return null;
+  const img=sprImg(k),sw=img.width+2,sh=img.height+3,nm=SPR[k].n,x0=Math.round((Wc-34-a*sw)/2)+4,rT=.45+a*.07,h=16+b*sh+34,dur=.3+b*rT+1.6;let said=0;
+  return{h,dur,draw(c,t){
+    TX(c,`${b} GRUPOS DE ${a} ${nm}`,Wc/2,3,1,P.w);
+    for(let r=0;r<b;r++){const t0=.3+r*rT,y=16+r*sh;
+      for(let i=0;i<a;i++){const ap=t0+i*.07;if(t<ap)continue;c.drawImage(img,x0+i*sw,Math.round(y-(1-tw(t,ap,.15))*5))}
+      if(t>=t0+a*.07){TX(c,String((r+1)*a),Wc-16,y+img.height/2-3,1,r===b-1?P.red:P.l2);if(said<r+1){said=r+1;SFX.digit(Math.min(r,9))}}
+    }
+    if(t>=.3+b*rT)TX(c,`${a} × ${b} = ${a*b}`,Wc/2,h-17,2,P.red);
+  }};
+}
+// a × b grande: rejilla separada en decenas y unidades
+function scMulGrid(a,b,Wc){
+  if(a>40||b>12)return null;const cl=Math.max(2,Math.min(6,Math.floor((Wc-24)/(a+1)))),T=a>=10?Math.floor(a/10)*10:a,U=a-T,gw=a*cl+(U?cl:0),x0=Math.round((Wc-gw)/2),y0=16,h=y0+b*cl+40,tR=Math.min(.25,2.4/b),dur=.3+b*tR+3.2;
+  return{h,dur,draw(c,t){
+    TX(c,U?`${a} × ${b} = ${T} × ${b} + ${U} × ${b}`:`${b} FILAS DE ${a}`,Wc/2,3,1,P.w);
+    for(let r=0;r<b;r++){if(t<.3+r*tR)continue;for(let i=0;i<a;i++){c.fillStyle=i<T?P.l3:P.red;c.fillRect(x0+i*cl+(i>=T?cl:0),y0+r*cl,cl-1,cl-1)}}
+    const tL=.3+b*tR+.3,yl=y0+b*cl+4;
+    if(t>=tL){TX(c,String(T*b),x0+T*cl/2,yl,1,P.l3);if(U)TX(c,String(U*b),x0+T*cl+cl+U*cl/2,yl,1,P.red)}
+    if(t>=tL+1.2)TX(c,U?`${T*b} + ${U*b} = ${a*b}`:`= ${a*b}`,Wc/2,h-17,2,P.red);
+  }};
+}
+// suma y resta en columnas: llevadas ("llevo 1") y préstamos ("pido 1 decena")
+function scColumns(a,b,op,Wc){
+  const add=op==='+',res=add?a+b:a-b,n=Math.max(String(a).length,String(b).length,String(res).length);if(n>5||res<0)return null;
+  const dg=(v,j)=>Math.floor(v/Math.pow(10,j))%10,la=String(a).length,lb=String(b).length,lr=String(res).length;
+  const T=[];for(let j=0;j<n;j++)T.push(dg(a,j));
+  const steps=[];let carry=0;
+  for(let j=0;j<lr;j++){
+    const st={j,marks:[],r:dg(res,j)},tb=j<lb?dg(b,j):0;
+    if(add){const s_=T[j]+tb+carry;st.m1=`${T[j]} + ${tb}${carry?' + 1':''} = ${s_}`;st.m2=s_>=10?`ESCRIBO ${s_%10} Y LLEVO 1`:`ESCRIBO ${s_}`;if(s_>=10)st.carry=j+1;carry=s_>=10?1:0}
+    else{
+      if(T[j]<tb){let k=j+1;while(T[k]===0)k++;const was=T[j];for(let m=k;m>j;m--){T[m]=m===k?T[m]-1:9;st.marks.push([m,T[m]])}T[j]+=10;st.marks.push([j,T[j]]);
+        st.m1=`${was} NO ALCANZA PARA ${tb}`;st.m2=`PIDO 1 → ${T[j]} − ${tb} = ${T[j]-tb}`}
+      else{st.m1=`${T[j]} − ${tb} = ${T[j]-tb}`;st.m2=''}
+    }
+    steps.push(st);
+  }
+  const cw=14,xr=Math.round(Wc/2+n*cw/2-cw),X=j=>xr-j*cw+5,yT=26,yB=44,yL=60,yR=64,SD=2.4,t0=.6,dur=t0+steps.length*SD+1.4,h=104;let said=0;
+  return{h,dur,draw(c,t){
+    TX(c,add?'SUMA EN COLUMNAS':'RESTA EN COLUMNAS',Wc/2,3,1,P.l2);
+    const cur=Math.floor((t-t0)/SD),fin=cur>=steps.length;
+    if(t>=t0&&!fin){c.fillStyle=P.d3;c.fillRect(X(steps[cur].j)-7,yT-3,14,yR+18-yT)}
+    const marks={},carries={};
+    steps.forEach((st,i)=>{const ts=t0+i*SD;if(t>=ts+.5){for(const[m,v]of st.marks)marks[m]=v;if(st.carry!=null)carries[st.carry]=1}});
+    for(let j=0;j<la;j++){TX(c,String(dg(a,j)),X(j),yT,2,P.w);if(marks[j]!=null){c.fillStyle=P.red;for(let q=0;q<14;q++)c.fillRect(X(j)-6+q,yT+13-q,1,1);TX(c,String(marks[j]),X(j),yT-11,1,P.red)}}
+    for(const j in carries)TX(c,'1',X(+j),yT-11,1,P.red);
+    for(let j=0;j<lb;j++)TX(c,String(dg(b,j)),X(j),yB,2,P.w);
+    TX(c,add?'+':'-',X(n)-2,yB,2,P.w);c.fillStyle=P.w;c.fillRect(X(n)-8,yL,(n+1)*cw+2,1);
+    steps.forEach((st,i)=>{if(t>=t0+i*SD+1.3){TX(c,String(st.r),X(st.j),yR,2,P.red);if(said<i+1){said=i+1;SFX.digit(Math.min(i,9))}}});
+    if(t>=t0&&!fin){const st=steps[cur];TX(c,st.m1,Wc/2,yR+18,1,P.w);if(st.m2&&t>=t0+cur*SD+.5)TX(c,st.m2,Wc/2,yR+27,1,P.red)}
+    if(fin)TX(c,`${a} ${add?'+':'−'} ${b} = ${res}`,Wc/2,yR+20,1,P.red);
+  }};
+}
+// n ÷ b: la torta se corta en b pedazos y se reparten n fresas
+function scCake(n,b,Wc){
+  const q=n/b,R0=Math.max(18,Math.min(30,Math.floor(Wc/2-28))),cx=Math.round(Wc/2),cy=16+R0+6,h=cy+R0+30,tS=.6+b*.2+.2,tD=tS+.7,show=n<=72,dt=Math.min(.22,5/n),tE=tD+(show?n*dt:0)+.4,dur=tE+1.8,TAU=Math.PI*2,sl=TAU/b;let said=0;
+  const off=i=>{const m=(i+.5)*sl;return[Math.cos(m),Math.sin(m)]};
+  return{h,dur,draw(c,t){
+    TX(c,show?`${n} FRESAS EN ${b} PEDAZOS`:`${n} ÷ ${b}`,Wc/2,3,1,P.w);
+    const sep=tw(t,tS,.5)*4,gr=tw(t,0,.4);
+    for(let py=-R0;py<=R0;py++)for(let px=-R0;px<=R0;px++){const d2=px*px+py*py;if(d2>R0*R0*gr*gr)continue;
+      let an=Math.atan2(py,px);if(an<0)an+=TAU;const si=Math.min(b-1,Math.floor(an/sl)),[ox,oy]=off(si);
+      let col=d2>(R0-3)*(R0-3)?'#e86a8a':'#f6e3c4';
+      if(sep<.5)for(let i=0;i<b;i++){const th=i*sl,pr=tw(t,.6+i*.2,.2)*R0;if(pr>0&&Math.abs(px*Math.sin(th)-py*Math.cos(th))<.7&&px*Math.cos(th)+py*Math.sin(th)>=0&&Math.sqrt(d2)<=pr){col='#1b1a17';break}}
+      c.fillStyle=col;c.fillRect(cx+px+Math.round(ox*sep),cy+py+Math.round(oy*sep),1,1)}
+    if(show)for(let k=0;k<n;k++){const ap=tD+k*dt;if(t<ap)continue;const si=k%b,l=Math.floor(k/b),m=(si+.5)*sl+((Math.floor(l/3)%3)-1)*sl*.28,rr=R0*(.32+.5*((l%3)+.5)/3),[ox,oy]=off(si);
+      const tx=cx+Math.cos(m)*rr+ox*sep,ty=cy+Math.sin(m)*rr+oy*sep,u=tw(t,ap,.3),x=cx+(tx-cx)*u,y=8+(ty-8)*u;
+      c.fillStyle='#d42a2a';c.fillRect(Math.round(x)-1,Math.round(y)-1,3,3);c.fillStyle='#4f8a2a';c.fillRect(Math.round(x),Math.round(y)-2,1,1);
+      if(u>=1&&said<=k){said=k+1;tone(900+si*60,.03,'square',.015)}}
+    if(t>=tE)for(let i=0;i<b;i++){const[ox,oy]=off(i);TX(c,String(q),cx+ox*(R0+10),cy+oy*(R0+10)-3,1,P.red)}
+    if(t>=tE+.6)TX(c,`${n} ÷ ${b} = ${q} EN CADA PEDAZO`,Wc/2,h-12,1,P.red);
+  }};
+}
+function exScene(p,Wc){
+  const m=p.str.match(/^(−?[\d.]+) ([+−×÷]) \(?(−?[\d.]+)\)?/);if(!m)return null;
+  const num=v=>Number(String(v).replace('−','-')),a=num(m[1]),op=m[2],b=num(m[3]);
+  if(!isInt(a)||!isInt(b)||a<0||b<0||p.ans<0)return null;
+  if(op==='+')return(a+b<=20&&a>0&&b>0&&scAddObj(a,b,Wc))||scColumns(a,b,'+',Wc);
+  if(op==='−')return b>=a?null:(a<=20&&b>0&&scSubObj(a,b,Wc))||scColumns(a,b,'−',Wc);
+  if(op==='×')return(a*b<=48&&a>0&&b>0&&b<=6&&a<=12&&scMulObj(a,b,Wc))||scMulGrid(a,b,Wc);
+  if(op==='÷')return b>=2&&b<=12&&a%b===0&&a>0?scCake(a,b,Wc):null;
+  return null;
+}
+function playScene(p,cvx,lis){
+  if(!['suma','resta','mult','div'].includes(p.topic))return false;
+  const Wc=Math.round((cvx.clientWidth||300)/2),sc=exScene(p,Wc);if(!sc)return false;
+  cvx.style.height=sc.h*2+'px';cvx.width=Wc;cvx.height=sc.h;
+  const c=cvx.getContext('2d');c.imageSmoothingEnabled=false;const t0=performance.now();
+  const step=now=>{const t=Math.min(sc.dur,(now-t0)/1000);c.globalAlpha=1;c.fillStyle=P.k;c.fillRect(0,0,Wc,sc.h);
+    try{sc.draw(c,t)}finally{c.globalAlpha=1}
+    lis.forEach((l,i)=>{if(t>=sc.dur*.8*i/Math.max(1,lis.length))l.classList.add('on')});
+    if(t<sc.dur)exRAF=requestAnimationFrame(step)};
+  exRAF=requestAnimationFrame(step);return true;
+}
+
 /* ============ Animación de cómo se resuelve ============ */
 let exRAF=0;
 function playExplain(){
   const p=S.exP,cvx=$('#exAnim');if(!p||!cvx)return;cancelAnimationFrame(exRAF);
   const lis=[...$('#oFailB').querySelectorAll('li')];lis.forEach(l=>l.classList.remove('on'));
+  if(playScene(p,cvx,lis))return;cvx.style.height='';
   const m=p.str.match(/^(−?[\d.]+) ([+−]) \(?(−?[\d.]+)\)?/),num=s=>Number(String(s).replace('−','-'));
   let a=p.x0,b=p.ans,hops=1;
   if(m&&['suma','resta','ent'].includes(p.topic)){a=num(m[1]);const d=Math.abs(b-a);if(isInt(d)&&d<=12)hops=d}
@@ -1424,7 +1622,7 @@ function crackScreen(lx,ly){
 
 /* ============ Bucle ============ */
 function update(dt){
-  S.time+=dt;
+  S.time+=dt;if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
   for(const c of CLOUDS){c.x+=c.v*dt;if(c.x>W+10)c.x=-c.c.width}
   S.shake=Math.max(0,S.shake-dt*18);S.flash=Math.max(0,S.flash-dt*1.4);S.fade=Math.max(0,S.fade-dt*.8);
   for(const q of S.parts){q.t+=dt;q.vy+=240*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;if(q.y>GY){q.y=GY;q.vy*=-.2;q.vx*=.5}}
