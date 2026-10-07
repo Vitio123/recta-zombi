@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recta Zombi · Visitas</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4efe4;--fg:#1b1a17;--mut:#6b665c;--line:#d8d0bf;--acc:#c4161c;--bar:#1b1a17}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--fg:#ece6d8;--mut:#9a9385;--line:#2c2a26;--acc:#e0262b;--bar:#ece6d8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 'Pixelify Sans',ui-monospace,monospace}
+main{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+h1{margin:0 0 4px;font-size:28px}h1 b{color:var(--acc)}
+h2{font-size:18px;margin:32px 0 8px}
+.mut{color:var(--mut);font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:20px}
+.kpi{border:2px solid var(--line);padding:12px}.kpi div{font-size:32px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:right}
+.bar{height:10px;background:var(--bar);min-width:2px}
+code{background:var(--line);padding:1px 5px}
+.err{color:var(--acc);border:2px solid var(--acc);padding:12px;margin-top:20px}
+</style></head><body><main>
+<h1>Recta <b>Zombi</b> · visitas</h1>
+<p class="mut">Una visita = alguien abrió el juego (una vez por sesión). Partida = empezó a jugar.
+Para saber qué video te trae gente, comparte el link con <code>?ref=</code>, por ejemplo <code>?ref=tiktok1</code>.</p>
+<div id="app"><p class="mut">Cargando…</p></div>
+</main>
+<script>
+const $=s=>document.querySelector(s),sum=o=>Object.values(o).reduce((a,b)=>a+b,0),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('/api/stats').then(r=>r.json()).then(d=>{
+  if(d.error)throw new Error(d.error);
+  const V=d.visits,Pl=d.plays,tv=sum(V.src),tp=sum(Pl.src);
+  const srcs=[...new Set([...Object.keys(V.src),...Object.keys(Pl.src)])].sort((a,b)=>(V.src[b]||0)-(V.src[a]||0));
+  const days=[];for(let i=0;i<14;i++)days.push(new Date(Date.now()-i*864e5).toISOString().slice(0,10));
+  const mx=Math.max(1,...days.map(k=>V.day[k]||0));
+  $('#app').innerHTML=`
+  <div class="kpis">
+    <div class="kpi"><span class="mut">Visitas</span><div>${tv}</div></div>
+    <div class="kpi"><span class="mut">Partidas</span><div>${tp}</div></div>
+    <div class="kpi"><span class="mut">Juegan / visitan</span><div>${tv?Math.round(tp/tv*100):0}%</div></div>
+  </div>
+  <h2>Por fuente</h2>
+  <table><tr><th>Fuente</th><th class="n">Visitas</th><th class="n">Partidas</th><th class="n">%</th></tr>
+  ${srcs.map(s=>{const v=V.src[s]||0,p=Pl.src[s]||0;return`<tr><td>${esc(s)}</td><td class="n">${v}</td><td class="n">${p}</td><td class="n">${v?Math.round(p/v*100):0}%</td></tr>`}).join('')||'<tr><td colspan="4" class="mut">Sin datos todavía</td></tr>'}
+  </table>
+  <h2>Últimos 14 días</h2>
+  <table><tr><th>Día</th><th class="n">Visitas</th><th class="n">Partidas</th><th style="width:40%"></th></tr>
+  ${days.map(k=>`<tr><td>${k.slice(5)}</td><td class="n">${V.day[k]||0}</td><td class="n">${Pl.day[k]||0}</td><td><div class="bar" style="width:${(V.day[k]||0)/mx*100}%"></div></td></tr>`).join('')}
+  </table>`;
+}).catch(e=>{$('#app').innerHTML=`<p class="err">No se pudieron leer los contadores: ${esc(e.message)}</p>`});
+</script>
+</body></html>

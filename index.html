@@ -918,7 +918,7 @@ function nodesStr(ns){return(ns||[]).map(n=>typeof n==='string'?n:n.t==='s'?n.v:
 
 /* ============ Flujo ============ */
 function newGame(n){
-  ac();crackHide();S.stains=[];S.stage=n;S.run=newRun(n);
+  if(window.rzTrack)rzTrack('play');ac();crackHide();S.stains=[];S.stage=n;S.run=newRun(n);
   Object.assign(S,{parts:[],texts:[],fx:[],shake:0,flash:0,fade:1,input:'',eatT:0,lastChomp:0});
   startStage();
 }
@@ -1618,6 +1618,21 @@ function loop(t){
 window.__G={S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
 const fontsReady=Promise.race([Promise.all([document.fonts.load('16px "Pixelify Sans"'),document.fonts.load('8px Silkscreen')]).catch(()=>{}),new Promise(r=>setTimeout(r,2000))]);
 fontsReady.then(()=>{relayout();titleScene();setMode('title');requestAnimationFrame(loop)});
+})();
+</script>
+<script>
+// contador de visitas y partidas (api/hit.js); fuente = ?ref= / utm_source / sitio de origen
+(()=>{
+  const ss=k=>{try{return sessionStorage.getItem(k)}catch(e){return null}},set=(k,v)=>{try{sessionStorage.setItem(k,v)}catch(e){}};
+  let src=ss('rzSrc');
+  if(!src){const q=new URLSearchParams(location.search);src=q.get('ref')||q.get('utm_source');
+    if(!src&&document.referrer){try{const h=new URL(document.referrer).hostname.replace(/^www\./,'');if(h!==location.hostname)src=h}catch(e){}}
+    src=src||'directo';set('rzSrc',src)}
+  const send=ev=>{if(!/^https?:$/.test(location.protocol)||/^(localhost|127\.)/.test(location.hostname))return;
+    const b=JSON.stringify({ev,src});try{if(navigator.sendBeacon&&navigator.sendBeacon('/api/hit',new Blob([b],{type:'application/json'})))return}catch(e){}
+    fetch('/api/hit',{method:'POST',headers:{'Content-Type':'application/json'},body:b,keepalive:true}).catch(()=>{})};
+  window.rzTrack=send;
+  if(!ss('rzVisit')){set('rzVisit','1');send('visit')}
 })();
 </script>
 
