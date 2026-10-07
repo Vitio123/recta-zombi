@@ -1124,7 +1124,10 @@ $('#bQuit').onclick=()=>toTitle();
 $('#bMenu').onclick=()=>toTitle();
 $('#bPause').onclick=()=>{if(S.mode==='play')setMode('pause');else if(S.mode==='pause')setMode('play')};
 $('#bMute').onclick=()=>{muted=!muted;$('#bMute').textContent=muted?'SIN SONIDO':'SONIDO'};
-function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){}buildBG();S.lay=null;padDirty=true;syncChips()}
+function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){}buildBG();S.lay=null;padDirty=true;syncChips();
+  // la pregunta está dibujada en un lienzo aparte con los colores del tema anterior: se vuelve a dibujar
+  if(S.prob&&!exprT)renderExprCanvas(S.prob);else if(S.prob){clearTimeout(exprT);exprT=0;renderExprCanvas(S.prob);$('#exprw').classList.remove('out')}
+  if(S.mode==='over'&&S.exP&&$('#oFail').open)playExplain()}
 const APPLES=['roja','verde','amarilla'];
 function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+APPLEC.toUpperCase();b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ NOCHE':'☀ DÍA',gl='♪ '+(GENRE_PREF==='random'?'ALEATORIA':GNAME[GENRE_PREF]);for(const i of[1,2]){$('#bTheme'+i).textContent=tl;$('#bGenre'+i).textContent=gl}$('#bKb').textContent=document.body.classList.contains('kb')?'DIBUJAR':'TECLADO'}
 const cycleGenre=()=>{const L=['random',...GENRES];GENRE_PREF=L[(L.indexOf(GENRE_PREF)+1)%L.length];try{localStorage.setItem('rzGenre',GENRE_PREF)}catch(e){}MUS.groove=newGroove(!!S.topic.boss);if(MUS.on){musicStop()}syncChips()};
