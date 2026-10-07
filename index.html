@@ -118,7 +118,8 @@ body.kb #pc{display:none}
 #lBody p b{font-weight:600}
 #lBody pre{margin:4px 0 0;font-family:var(--f-ui);font-size:19px;line-height:1.5;border-left:2px solid var(--red);padding:2px 0 2px 14px;white-space:pre-wrap}
 /* muerte estilo Cuphead: sello grande + barra de progreso + frase */
-.dead{font-size:clamp(46px,13vw,96px);font-weight:600;letter-spacing:.06em;line-height:.95;margin:0;color:var(--red);transform:rotate(-4deg);text-shadow:0 0 30px var(--bg)}
+.dead{font-size:clamp(40px,12vw,84px);font-weight:600;letter-spacing:.04em;line-height:.95;margin:4px 0 2px;color:var(--red);transform:rotate(-4deg);text-shadow:3px 3px 0 var(--bg),-3px -3px 0 var(--bg),3px -3px 0 var(--bg),-3px 3px 0 var(--bg),0 0 26px var(--red);text-align:center;overflow-wrap:normal;word-break:keep-all}
+#sOver.exp #oQuote,#sOver.exp #oLawN,#sOver.exp #oHeat,#sOver.exp #mapLbl{display:none}
 #sOver.show .dead{animation:stamp .5s cubic-bezier(.2,1.6,.4,1) both}
 @keyframes stamp{0%{transform:rotate(-14deg) scale(2.4);opacity:0}100%{transform:rotate(-4deg) scale(1);opacity:1}}
 .track{position:relative;width:100%;height:46px;margin-top:6px}
@@ -1132,7 +1133,7 @@ for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='play')setMode('pause')});
 document.addEventListener('contextmenu',e=>{if(S.mode==='play')e.preventDefault()});
-function toTitle(){S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
+function toTitle(){crackHide();S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
 
 /* ============ Dibujo libre: toda la pantalla es la pizarra ============ */
 const pc=$('#pc'),pctx=pc.getContext('2d');
@@ -1394,6 +1395,13 @@ function pickLaw(){
   else if(think>8)k='hofstadter';
   return{L:LAWS[k],txt:LAWS[k].f(D)};
 }
+function fitDead(){
+  const t=$('#oTtl'),c=t.parentElement;if(!t||!c)return;t.style.fontSize='';
+  const cs=getComputedStyle(c),avail=c.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-8,fs=parseFloat(getComputedStyle(t).fontSize);
+  const m=document.createElement('span');m.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;font:inherit;letter-spacing:inherit';t.appendChild(m);
+  let wmax=0;for(const w of t.textContent.split(' ')){m.textContent=w;wmax=Math.max(wmax,m.offsetWidth)}m.remove();
+  if(wmax>avail*.94)t.style.fontSize=Math.max(22,Math.floor(fs*avail*.94/wmax))+'px';
+}
 function gameOver(){
   SAVE.deaths=(SAVE.deaths||0)+1;persist();
   setMode('over');
@@ -1408,14 +1416,14 @@ function gameOver(){
   $('#mapLbl').textContent=`NIVEL ${S.stage>16?'∞':S.stage} · ${S.topic.name} · ${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS · RÉCORD ${SAVE.best} · PRESIÓN ${Math.round(hard()*100)}%`;S.overPos=pos;
   const p=S.run.lastProb;
   $('#oFailB').innerHTML=p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">↻ VER DE NUEVO</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:'Te atraparon antes del primer problema.';
-  $('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};heatmap($('#oHeat'));
+  $('#sOver').classList.remove('exp');$('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};heatmap($('#oHeat'));
   const rows=[];const ids=new Set([...Object.keys(S.run.okT),...Object.keys(S.run.errT),S.topic.id]);
   for(const id of ids){const t=TOPICS.find(q=>q.id===id);const h=SAVE.hist[id]||{ok:0,bad:0},n=h.ok+h.bad,acc=n?h.ok/n:0;rows.push({t,acc,n})}
   rows.sort((a,b)=>a.acc-b.acc);
   const weak=rows.find(r=>r.n>=2&&r.acc<.75)||rows[0];
   $('#bCont').onclick=()=>newGame(1);
   const wi=TOPICS.indexOf(weak.t)+1;$('#bPract').hidden=wi===S.stage;$('#bPract').textContent=`PRACTICAR ${weak.t.name}`;$('#bPract').onclick=()=>newGame(wi);
-  $('#sOver .card').scrollTop=0;
+  $('#sOver .card').scrollTop=0;requestAnimationFrame(()=>{fitDead();fitCards()});
 }
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 // tarjeta 1080×1350 con la escena final y el resultado; se comparte con el menú del sistema o se descarga
@@ -1993,11 +2001,11 @@ function playExplain(p=S.exP,cvx=$('#exAnim'),root=$('#oFailB')){
   };
   exRAF=requestAnimationFrame(step);
 }
-$('#oFail').addEventListener('toggle',()=>{if($('#oFail').open)playExplain()});
+$('#oFail').addEventListener('toggle',()=>{const o=$('#oFail').open;$('#sOver').classList.toggle('exp',o);if(o)playExplain();requestAnimationFrame(()=>requestAnimationFrame(fitCards))});
 
 function fitCards(){for(const c of document.querySelectorAll('.screen.show .card')){c.style.transform='none';const avail=c.parentElement.clientHeight-8,h=c.scrollHeight;const k=Math.min(1,avail/h);c.style.transform=k<1?`scale(${k.toFixed(3)})`:'none';c.style.maxHeight='none'}}
 new MutationObserver(()=>requestAnimationFrame(fitCards)).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class','open']});
-window.addEventListener('resize',fitCards);document.addEventListener('toggle',fitCards,true);
+window.addEventListener('resize',()=>{fitCards();if(S.mode==='over')fitDead()});document.addEventListener('toggle',fitCards,true);
 
 /* ============ Pantalla rota: vidrio con grietas radiales, anillos y fragmentos desplazados ============ */
 const ck=$('#crack'),cc=ck.getContext('2d');
