@@ -1793,7 +1793,27 @@ function drawLogo(t){
 
 /* ============ Audio: efectos + percusión aleatoria con los instrumentos de la lámina ============ */
 let AC=null,muted=false,NB=null;
-function ac(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();if(!NB){NB=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}}catch(e){}return AC}
+function ac(){try{if(AC&&AC.state==='closed'){AC=null;NB=null}AC=AC||new(window.AudioContext||window.webkitAudioContext)();acHook();if(AC.state!=='running'){const p=AC.resume();if(p&&p.catch)p.catch(()=>{})}if(!NB){NB=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}}catch(e){}return AC}
+// el navegador suspende o cierra el audio (cambio de pestaña, bloqueo de pantalla, llamada…): se reanuda solo, sin recargar
+let acWas='';
+function acWake(){
+  try{
+    if(!AC)return;
+    if(AC.state==='closed'){AC=null;NB=null;if(MUS.on){MUS.on=false;MUS.bus=null;MUS.id++}return}
+    if(AC.state!=='running'){const p=AC.resume();if(p&&p.catch)p.catch(()=>{})}
+  }catch(e){}
+}
+function acHook(){
+  if(!AC||AC._hk)return;AC._hk=1;
+  AC.addEventListener('statechange',()=>{
+    if(AC.state!=='running'){acWake();return}
+    // volvió a sonar: la música reprograma desde cero para no intentar "recuperar" el tiempo perdido
+    if(acWas!=='running'&&MUS.on){try{musicStop()}catch(e){}}
+  });
+}
+for(const ev of['pointerdown','touchend','keydown','click'])window.addEventListener(ev,acWake,true);
+for(const ev of['visibilitychange','focus','pageshow'])window.addEventListener(ev,()=>{if(!document.hidden)acWake()});
+setInterval(()=>{if(AC&&!document.hidden&&AC.state!=='running')acWake()},1500);
 function tone(f,d,type='square',vol=.05,slide=0,delay=0){if(muted||!ac())return;const t=AC.currentTime+delay,o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(30,f+slide),t+d);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d+.02)}
 function bell(f,vol=.07,delay=0){if(muted||!ac())return;const t=AC.currentTime+delay;[[1,1,1.4],[2.76,.45,.7],[5.4,.22,.35],[.5,.25,1.6]].forEach(([m,v,d])=>{const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f*m;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol*v,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d+.05)})}
 const MUS={on:false,bus:null,id:0,nextT:0,step:0,bar:0,groove:null,tension:0};
@@ -3978,12 +3998,12 @@ function bhWarp(){
   wkc.clearRect(0,0,cw,ch);wkc.drawImage(cv,0,0);
   ctx0.save();ctx0.setTransform(1,0,0,1,0,0);ctx0.imageSmoothingEnabled=false;ctx0.fillStyle=P.k;ctx0.fillRect(0,0,cw,ch);
   const sg=cw*.3;
-  for(let x=0;x<cw;x+=2){const dx=x-hx,f=Math.exp(-(dx*dx)/(2*sg*sg)),s=1+k*7*f,dy=hy*(1-s)+Math.sin(x*.05+S.time*7)*k*f*7;
-    ctx0.drawImage(WK,x,0,2,ch,hx+dx*(1-.72*k*f),dy,Math.max(1,2*(1-.72*k*f)+.6),ch*s)}
+  for(let x=0;x<cw;x+=2){const dx=x-hx,f=Math.exp(-(dx*dx)/(2*sg*sg)),pull=k*(.4+.58*f),s=(1+k*7*f)*(1-.6*k*(1-f)),dy=hy*(1-s)+Math.sin(x*.05+S.time*7)*k*f*7;
+    ctx0.drawImage(WK,x,0,2,ch,hx+dx*(1-pull),dy,Math.max(1,2*(1-pull)+.6),ch*s)}
   ctx0.restore();
 }
 let last=0;
-function syncMusic(){const want=S.mode==='play'&&!muted&&S.a.st!=='eaten';if(want&&!MUS.on)musicStart(!!S.topic.boss);else if(!want&&MUS.on)musicStop()}
+function syncMusic(){if(AC)acWas=AC.state;const want=S.mode==='play'&&!muted&&S.a.st!=='eaten'&&(!AC||AC.state==='running');if(want&&!MUS.on)musicStart(!!S.topic.boss);else if(!want&&MUS.on)musicStop()}
 function loop(t){
   const dt=Math.min(.05,(t-last)/1000||0);last=t;
   relayout();
