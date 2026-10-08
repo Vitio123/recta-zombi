@@ -1550,6 +1550,14 @@ function L10(k,v){
 }
 const L10list=k=>L10(k).split(';').map(x=>x.trim()).filter(Boolean);
 
+// textos de contenido (lecciones, explicaciones, leyes, animaciones): CES = español; CT[idioma] = traducción
+const CES={"c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 16 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS"};
+const CT={};
+// las traducciones del contenido se descargan solo para el idioma elegido (i18n/xx.json)
+async function loadCT(l){if(l.startsWith('es')||CT[l])return false;for(const b of['i18n/','web/i18n/']){try{const r=await fetch(b+l+'.json');if(r.ok){CT[l]=await r.json();return true}}catch(e){}}return false}
+function refreshContent(){if(typeof S==='undefined')return;try{updHUD()}catch(e){}if(S.mode==='title')setMode('title');else if(S.mode==='lesson'){const L=LESSONS[S.topic.id];if(L)showLesson(L)}}
+function XL(id,a){let s=(CT[LANG]&&CT[LANG][id])||CES[id]||id;if(a)s=s.replace(/\{(\d+)\}/g,(m,i)=>a[+i]);return s}
+
 
 /* ============ Voz de los zombis en cada idioma (43 líneas por idioma; es usa los textos originales, más largos) ============ */
 const ZCATS={taunts:[0,10],think:[10,13],skel:[13,16],aim:[16,18],hit:[18,20],kill:[20,23],era:[23,24],jaja:[24,25],wrong:[25,28],grab:[28,32],help:[32,33],miss:[33,36],dodge:[36,38],hole:[38,42],tictac:[42,43]};
@@ -4315,7 +4323,7 @@ function setLang(c){
   // fundido sutil: los textos cambian con la tarjeta ya transparente, así no se nota que los botones se reacomodan
   const g=$('#game');g.classList.add('lfade');closeLang();
   setTimeout(()=>{
-    applyLang();
+    applyLang();loadCT(c).then(v=>{if(v)refreshContent()});
     if(typeof syncChips==='function')syncChips();
     if(typeof S!=='undefined'&&S.mode==='title')setMode('title');
     if(typeof fitCards==='function')fitCards();
@@ -5359,10 +5367,10 @@ const INK=(()=>{
 
 /* ============ Currículo: de la suma al cálculo. Cada problema = un número al que salta la manzana ============ */
 const up10=n=>Math.ceil(n/10)*10;
-const addHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y avanza ${b} lugares a la derecha`;if(a%10>=9&&b%10<9)[a,b]=[b,a];if(b>=9&&b%10>=9){const r=up10(b);return`${b} es casi ${r}: ${a} + ${r} = ${a+r}; me pasé ${r-b}, así que resto ${r-b}: ${a+b}`}const ua=a%10,ub=b%10,ta=a-ua,tb=b-ub;return`de izquierda a derecha: ${ta} + ${tb} = ${ta+tb} y ${ua} + ${ub} = ${ua+ub}; junta ${ta+tb} + ${ua+ub}`};
-const subHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y retrocede ${b} lugares`;const ua=a%10,ub=b%10,tb=b-ub;if(b>=9&&ub>=9){const r=up10(b);return`${b} es casi ${r}: ${a} − ${r} = ${a-r}; quité ${r-b} de más, lo devuelvo: ${a-r} + ${r-b}`}if(b<10)return ua<b?`baja a la decena: ${a} − ${ua} = ${a-ua}; faltan ${b-ua} por quitar: ${a-ua} − ${b-ua}`:`quita ${b} de las unidades: ${ua} − ${b} = ${ua-b}, y quedan ${a-ua} adelante`;return`quita primero las decenas: ${a} − ${tb} = ${a-tb}${ub?`; luego las unidades: ${a-tb} − ${ub}`:''}`};
-const mulHint=(a,b)=>{if(a<10&&b<=5)return`${a} × ${b} es sumar ${a} ${b} veces: ${Array(b).fill(a).join(' + ')}`;if(a===25)return`piensa en monedas de 25: ${b} monedas valen ${25*b}`;if(a>=10){const u=a%10;if(u>=9){const r=up10(a);return`${a} es casi ${r}: ${r} × ${b} = ${r*b}; me pasé ${r-a} × ${b} = ${(r-a)*b}; resto: ${r*b} − ${(r-a)*b}`}const t=a-u;return`descompón de izquierda a derecha: ${t} × ${b} = ${t*b} y ${u} × ${b} = ${u*b}; junta: ${t*b} + ${u*b}`}if(b>=8)return`${b} es casi 10: ${a} × 10 = ${a*10}, menos ${a} × ${10-b} = ${a*(10-b)}: ${a*10} − ${a*(10-b)}`;return`parte ${b} en 5 + ${b-5}: ${a} × 5 = ${a*5} y ${a} × ${b-5} = ${a*(b-5)}; junta ${a*5} + ${a*(b-5)}`};
-const divHint=(n,b,q)=>{if(q<4)return null;let q1=Math.floor(q/2);for(let k=q-1;k>=1;k--)if(b*k%10===0){q1=k;break}const q2=q-q1;return`parte ${n} en ${b*q1} + ${b*q2}, los dos se dividen fácil entre ${b}: ${q1} + ${q2} = ${q}`};
+const addHint=(a,b)=>{if(a<10&&b<10)return XL('c9058f1',[a,b]);if(a%10>=9&&b%10<9)[a,b]=[b,a];if(b>=9&&b%10>=9){const r=up10(b);return XL('c5252f6',[b,r,a,r,a+r,r-b,r-b,a+b])}const ua=a%10,ub=b%10,ta=a-ua,tb=b-ub;return XL('cae18a5',[ta,tb,ta+tb,ua,ub,ua+ub,ta+tb,ua+ub])};
+const subHint=(a,b)=>{if(a<10&&b<10)return XL('c433450',[a,b]);const ua=a%10,ub=b%10,tb=b-ub;if(b>=9&&ub>=9){const r=up10(b);return XL('c29894f',[b,r,a,r,a-r,r-b,a-r,r-b])}if(b<10)return ua<b?XL('ca45d2e',[a,ua,a-ua,b-ua,a-ua,b-ua]):XL('c270ee2',[b,ua,b,ua-b,a-ua]);return XL('c2c0266',[a,tb,a-tb,ub?XL('c949734',[a-tb,ub]):''])};
+const mulHint=(a,b)=>{if(a<10&&b<=5)return XL('caa225e',[a,b,a,b,Array(b).fill(a).join(' + ')]);if(a===25)return XL('c50240f',[b,25*b]);if(a>=10){const u=a%10;if(u>=9){const r=up10(a);return XL('ce0c89b',[a,r,r,b,r*b,r-a,b,(r-a)*b,r*b,(r-a)*b])}const t=a-u;return XL('c29e85e',[t,b,t*b,u,b,u*b,t*b,u*b])}if(b>=8)return XL('ca10c1a',[b,a,a*10,a,10-b,a*(10-b),a*10,a*(10-b)]);return XL('caa0dce',[b,b-5,a,a*5,a,b-5,a*(b-5),a*5,a*(b-5)])};
+const divHint=(n,b,q)=>{if(q<4)return null;let q1=Math.floor(q/2);for(let k=q-1;k>=1;k--)if(b*k%10===0){q1=k;break}const q2=q-q1;return XL('c9fa5ce',[n,b*q1,b*q2,b,q1,q2,q])};
 const sg=v=>v<0?' − '+fmt(-v):' + '+fmt(v);
 const lin=(m,b)=>`${m===1?'':m===-1?MINUS:fmt(m)}x${b?sg(b):''}`;
 const tailBC=(b,c)=>(b?(b>0?' + ':' − ')+(Math.abs(b)===1?'':Math.abs(b))+'x':'')+(c?sg(c):'');
@@ -5371,181 +5379,181 @@ const smallX=(x,lim,lo,hi)=>isInt(x)&&Math.abs(x)<=lim?x:ri(lo,hi);
 
 function gSuma(x,d){
   const b=ri(1,Math.max(2,Math.round(3+d*55)));
-  if(isInt(x)&&x>=0&&x<=15+90*d&&R()<.8)return{k:[Sx(`x + ${b}`)],ans:x+b,ex:[`La manzana está en x = ${fmt(x)}: x + ${b} = ${fmt(x)} + ${b}.`,addHint(x,b)+'.',`Resultado: ${fmt(x+b)}.`]};
+  if(isInt(x)&&x>=0&&x<=15+90*d&&R()<.8)return{k:[Sx(`x + ${b}`)],ans:x+b,ex:[XL('cef6598',[fmt(x),b,fmt(x),b]),addHint(x,b)+'.',XL('c7cb4af',[fmt(x+b)])]};
   const a=ri(1,Math.round(5+d*70));return{k:[Sx(`${a} + ${b}`)],ans:a+b,ex:[addHint(a,b)+'.',`${a} + ${b} = ${a+b}.`]};
 }
 function gResta(x,d){
-  if(isInt(x)&&x>=3&&x<=120&&R()<.8){const b=ri(1,Math.min(x-1,Math.round(4+d*60)));return{k:[Sx(`x − ${b}`)],ans:x-b,ex:[`x = ${fmt(x)}: x − ${b} = ${fmt(x)} − ${b}.`,subHint(x,b)+'.',`Resultado: ${x-b}.`]}}
+  if(isInt(x)&&x>=3&&x<=120&&R()<.8){const b=ri(1,Math.min(x-1,Math.round(4+d*60)));return{k:[Sx(`x − ${b}`)],ans:x-b,ex:[`x = ${fmt(x)}: x − ${b} = ${fmt(x)} − ${b}.`,subHint(x,b)+'.',XL('c7cb4af',[x-b])]}}
   const a=ri(8,Math.round(14+d*85)),b=ri(1,a-1);return{k:[Sx(`${a} − ${b}`)],ans:a-b,ex:[subHint(a,b)+'.',`${a} − ${b} = ${a-b}.`]};
 }
 function gMult(x,d){
   const bm=4+Math.round(5*d);
-  if(isInt(x)&&x>=2&&x<=5+Math.round(7*d)&&R()<.75){const b=ri(2,bm);return{k:[Sx(`x × ${b}`)],ans:x*b,ex:[`x = ${x}: x × ${b} = ${x} × ${b}.`,mulHint(x,b)+'.',`Resultado: ${x*b}.`]}}
+  if(isInt(x)&&x>=2&&x<=5+Math.round(7*d)&&R()<.75){const b=ri(2,bm);return{k:[Sx(`x × ${b}`)],ans:x*b,ex:[`x = ${x}: x × ${b} = ${x} × ${b}.`,mulHint(x,b)+'.',XL('c7cb4af',[x*b])]}}
   let a=ri(2,4+Math.round(6*d)),b=ri(2,bm);if(d>.75&&R()<.5){a=ri(11,25);b=ri(2,9)}
   return{k:[Sx(`${a} × ${b}`)],ans:a*b,ex:[mulHint(a,b)+'.',`${a} × ${b} = ${a*b}.`]};
 }
 function gDiv(x,d){
-  if(isInt(x)&&x>=4&&R()<.55){const ds=[];for(let b=2;b<=9;b++)if(x%b===0&&x/b>=2)ds.push(b);if(ds.length){const b=pick(ds);return{k:[Sx(`x ÷ ${b}`)],ans:x/b,ex:[`x = ${x}: x ÷ ${b} = ${x} ÷ ${b}.`,`¿Cuántas veces cabe ${b} en ${x}? ${b} × ${x/b} = ${x}.`,`Resultado: ${x/b}.`]}}}
+  if(isInt(x)&&x>=4&&R()<.55){const ds=[];for(let b=2;b<=9;b++)if(x%b===0&&x/b>=2)ds.push(b);if(ds.length){const b=pick(ds);return{k:[Sx(`x ÷ ${b}`)],ans:x/b,ex:[`x = ${x}: x ÷ ${b} = ${x} ÷ ${b}.`,XL('c7a6673',[b,x,b,x/b,x]),XL('c7cb4af',[x/b])]}}}
   let q=ri(2,4+Math.round(6*d)),b=ri(2,4+Math.round(5*d));if(d>.8&&R()<.4){b=ri(11,15);q=ri(2,9)}
-  return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,ex:[`Dividir es repartir: ¿cuántas veces cabe ${b} en ${q*b}?`,divHint(q*b,b,q)||`Busca la multiplicación que lo deshace: ${b} × ${q} = ${q*b}.`,`Resultado: ${q}.`]};
+  return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,ex:[XL('cafd293',[b,q*b]),divHint(q*b,b,q)||XL('c424b15',[b,q,q*b]),XL('c7cb4af',[q])]};
 }
 function gEnt(x,d){
   const r=R();
-  if(isInt(x)&&x>=0&&x<=10&&r<.35){const b=x+ri(1,5+Math.round(10*d));return{k:[Sx(`x − ${b}`)],ans:x-b,vz:{t:'elev',a:x,d:-b},ex:[`x = ${x}: ${x} − ${b}.`,`Bajas ${x} hasta el 0 y te quedan ${b-x} lugares más hacia la izquierda.`,`Resultado: ${fmt(x-b)}.`]}}
+  if(isInt(x)&&x>=0&&x<=10&&r<.35){const b=x+ri(1,5+Math.round(10*d));return{k:[Sx(`x − ${b}`)],ans:x-b,vz:{t:'elev',a:x,d:-b},ex:[`x = ${x}: ${x} − ${b}.`,XL('cfe1c21',[x,b-x]),XL('c7cb4af',[fmt(x-b)])]}}
   const a=ri(2,5+Math.round(15*d)),b=ri(2,5+Math.round(15*d));
-  if(d>.6&&r<.55)return{k:[Sx(`(−${a}) × (−${b})`)],ans:a*b,vz:{t:'signs',a,b,neg2:true},ex:[`Menos por menos da más: (−) × (−) = (+).`,`${a} × ${b} = ${a*b}.`,`Resultado: ${a*b}.`]};
-  if(d>.4&&r<.7)return{k:[Sx(`(−${a}) × ${b}`)],ans:-a*b,vz:{t:'signs',a,b,neg2:false},ex:[`Negativo por positivo da negativo.`,`${a} × ${b} = ${a*b}, con signo −.`,`Resultado: ${fmt(-a*b)}.`]};
-  if(d>.7&&r<.85)return{k:[Sx(`${a} − (−${b})`)],ans:a+b,vz:{t:'elev',a,d:b,flip:true},ex:[`Restar un negativo es sumar: ${a} − (−${b}) = ${a} + ${b}.`,`Resultado: ${a+b}.`]};
-  if(r<.85)return{k:[Sx(`−${a} + ${b}`)],ans:b-a,vz:{t:'elev',a:-a,d:b},ex:[`Empiezas en −${a} y avanzas ${b} a la derecha.`,b>a?`Cruzas el 0 y sigues ${b-a} más.`:`Te quedas antes del 0.`,`Resultado: ${fmt(b-a)}.`]};
-  return{k:[Sx(`−${a} − ${b}`)],ans:-a-b,vz:{t:'elev',a:-a,d:-b},ex:[`Desde −${a}, restar ${b} te lleva aún más a la izquierda.`,`Resultado: ${fmt(-a-b)}.`]};
+  if(d>.6&&r<.55)return{k:[Sx(`(−${a}) × (−${b})`)],ans:a*b,vz:{t:'signs',a,b,neg2:true},ex:[XL('caab7b0'),`${a} × ${b} = ${a*b}.`,XL('c7cb4af',[a*b])]};
+  if(d>.4&&r<.7)return{k:[Sx(`(−${a}) × ${b}`)],ans:-a*b,vz:{t:'signs',a,b,neg2:false},ex:[XL('c4d0c03'),XL('c4ec704',[a,b,a*b]),XL('c7cb4af',[fmt(-a*b)])]};
+  if(d>.7&&r<.85)return{k:[Sx(`${a} − (−${b})`)],ans:a+b,vz:{t:'elev',a,d:b,flip:true},ex:[XL('cfb25af',[a,b,a,b]),XL('c7cb4af',[a+b])]};
+  if(r<.85)return{k:[Sx(`−${a} + ${b}`)],ans:b-a,vz:{t:'elev',a:-a,d:b},ex:[XL('c8dbf75',[a,b]),b>a?XL('c52368d',[b-a]):XL('cc4aeb'),XL('c7cb4af',[fmt(b-a)])]};
+  return{k:[Sx(`−${a} − ${b}`)],ans:-a-b,vz:{t:'elev',a:-a,d:-b},ex:[XL('cb71c4c',[a,b]),XL('c7cb4af',[fmt(-a-b)])]};
 }
 const FDEN=[2,4,5,10];
 const dec=(n,dn)=>fmt(n/dn);
 function gFrac(x,d){
   const r=R();
-  if(isInt(x)&&Math.abs(x)<=40&&r<.25){const b=pick(FDEN);return{k:[Fr([Sx('x')],[Sx(String(b))])],ans:x/b,fr:[[x,b]],vz:{t:'fdiv',n:x,b},ex:[`x = ${fmt(x)}: dividir ${fmt(x)} entre ${b}.`,`${fmt(x)} ÷ ${b} = ${fmt(x/b)}.`,`Escríbelo con punto decimal: ${fmt(x/b)}.`]}}
-  if(d<.35){const b=pick([2,3,4,5,10]),a=ri(1,b-1),n=b*ri(1,6);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(` de ${n}`)],ans:a*n/b,fr:[[a*n,b]],vz:{t:'fof',a,b,n},ex:[`"${a}/${b} de ${n}": divide ${n} en ${b} partes iguales → ${n/b} cada una.`,`Toma ${a} partes: ${a} × ${n/b} = ${a*n/b}.`]}}
-  if(d<.7){const b=pick(FDEN),a=ri(1,b),c=ri(1,b);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b))])],ans:(a+c)/b,fr:[[a+c,b]],vz:{t:'fadd',a,c,b},ex:[`Mismo denominador: suma solo arriba → ${a+c}/${b}.`,`${a+c} ÷ ${b} = ${dec(a+c,b)}.`]}}
+  if(isInt(x)&&Math.abs(x)<=40&&r<.25){const b=pick(FDEN);return{k:[Fr([Sx('x')],[Sx(String(b))])],ans:x/b,fr:[[x,b]],vz:{t:'fdiv',n:x,b},ex:[`x = ${fmt(x)}: dividir ${fmt(x)} entre ${b}.`,`${fmt(x)} ÷ ${b} = ${fmt(x/b)}.`,XL('c4b3f20',[fmt(x/b)])]}}
+  if(d<.35){const b=pick([2,3,4,5,10]),a=ri(1,b-1),n=b*ri(1,6);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(` de ${n}`)],ans:a*n/b,fr:[[a*n,b]],vz:{t:'fof',a,b,n},ex:[XL('cbeed22',[a,b,n,n,b,n/b]),XL('cccc53f',[a,a,n/b,a*n/b])]}}
+  if(d<.7){const b=pick(FDEN),a=ri(1,b),c=ri(1,b);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b))])],ans:(a+c)/b,fr:[[a+c,b]],vz:{t:'fadd',a,c,b},ex:[XL('c497003',[a+c,b]),`${a+c} ÷ ${b} = ${dec(a+c,b)}.`]}}
   let b1=pick(FDEN),b2=pick(FDEN.filter(v=>v!==b1));const a=ri(1,b1-1)||1,c=ri(1,b2-1)||1,l=b1*b2/gcd(b1,b2);
-  return{k:[Fr([Sx(String(a))],[Sx(String(b1))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b2))])],ans:a/b1+c/b2,fr:[[a*l/b1+c*l/b2,l]],vz:{t:'fadd2',a,b1,c,b2,l},ex:[`Denominador común: ${l}. ${a}/${b1} = ${a*l/b1}/${l} y ${c}/${b2} = ${c*l/b2}/${l}.`,`Suma: ${a*l/b1+c*l/b2}/${l}.`,`En decimal: ${fmt(a/b1+c/b2)}.`]};
+  return{k:[Fr([Sx(String(a))],[Sx(String(b1))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b2))])],ans:a/b1+c/b2,fr:[[a*l/b1+c*l/b2,l]],vz:{t:'fadd2',a,b1,c,b2,l},ex:[XL('cffa3c4',[l,a,b1,a*l/b1,l,c,b2,c*l/b2,l]),XL('c29c04a',[a*l/b1+c*l/b2,l]),XL('c831255',[fmt(a/b1+c/b2)])]};
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 function gRaiz(x,d){
   const r=R();
-  if(isInt(x)&&x>=1&&x<=12&&r<.25)return{k:[X2()],ans:x*x,vz:{t:'sq',k:x},ex:[`x = ${x}: x² = ${x} × ${x}.`,`Resultado: ${x*x}.`]};
+  if(isInt(x)&&x>=1&&x<=12&&r<.25)return{k:[X2()],ans:x*x,vz:{t:'sq',k:x},ex:[`x = ${x}: x² = ${x} × ${x}.`,XL('c7cb4af',[x*x])]};
   if(isInt(x)&&x>=0&&x<=60&&r<.4){const k=Math.floor(Math.sqrt(x))+ri(1,3),c=k*k-x;return{k:[Rt([Sx(`x + ${c}`)])],ans:k,vz:{t:'sqrt',k,pre:[x,c]},ex:[`x = ${x}: x + ${c} = ${k*k}.`,`√${k*k} = ${k} porque ${k} × ${k} = ${k*k}.`]}}
-  if(d>.4&&r<.55){const k=ri(2,5);return{k:[Rt([Sx(String(k**3))],'3')],ans:k,vz:{t:'cube',k},ex:[`Raíz cúbica: ¿qué número multiplicado 3 veces da ${k**3}?`,`${k} × ${k} × ${k} = ${k**3} → ${k}.`]}}
-  if(d>.3&&r<.7){const n=ri(3,8);return{k:[Pw([Sx('2')],[Sx(String(n))])],ans:2**n,vz:{t:'pow2',n},ex:[`2^${n} es multiplicar 2 por sí mismo ${n} veces.`,`2 → 4 → 8 → … → ${2**n}.`]}}
+  if(d>.4&&r<.55){const k=ri(2,5);return{k:[Rt([Sx(String(k**3))],'3')],ans:k,vz:{t:'cube',k},ex:[XL('c2455df',[k**3]),`${k} × ${k} × ${k} = ${k**3} → ${k}.`]}}
+  if(d>.3&&r<.7){const n=ri(3,8);return{k:[Pw([Sx('2')],[Sx(String(n))])],ans:2**n,vz:{t:'pow2',n},ex:[XL('c9be434',[n,n]),`2 → 4 → 8 → … → ${2**n}.`]}}
   if(d>.7){const a=ri(2,9),b=ri(2,9);return{k:[Rt([Sx(String(a*a))]),Sx(' + '),Rt([Sx(String(b*b))])],ans:a+b,vz:{t:'sqrt2',a,b},ex:[`√${a*a} = ${a} y √${b*b} = ${b}.`,`${a} + ${b} = ${a+b}.`]}}
-  const k=ri(2,6+Math.round(9*d));return{k:[Rt([Sx(String(k*k))])],ans:k,vz:{t:'sqrt',k},ex:[`¿Qué número por sí mismo da ${k*k}?`,`${k} × ${k} = ${k*k} → √${k*k} = ${k}.`]};
+  const k=ri(2,6+Math.round(9*d));return{k:[Rt([Sx(String(k*k))])],ans:k,vz:{t:'sqrt',k},ex:[XL('cc0b0ef',[k*k]),`${k} × ${k} = ${k*k} → √${k*k} = ${k}.`]};
 }
 const TT=[['sin',0,0,'0'],['sin',30,.5,'1/2'],['sin',90,1,'1'],['cos',0,1,'1'],['cos',60,.5,'1/2'],['cos',90,0,'0'],['tan',45,1,'1'],['tan',0,0,'0'],['sin',150,.5,'1/2'],['cos',180,-1,'−1'],['sin',270,-1,'−1'],['cos',120,-.5,'−1/2']];
-const trigWhy={sin:'sin = cateto opuesto / hipotenusa (altura en el círculo unitario)',cos:'cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)',tan:'tan = sin / cos (pendiente)'};
+const trigWhy={get sin(){return XL('c518452')},get cos(){return XL('c95b38f')},get tan(){return XL('c21bad2')}};
 const frOf=(s,k=1)=>{const m=String(s).replace('−','-').match(/^(-?\d+)\/(\d+)$/);return m?[[k*+m[1],+m[2]]]:null};
 function gTrig(x,d){
   const r=R();
   if(d<.35||r<.3){const[f,a,v,fr]=pick(TT.slice(0,d<.35?8:12));return{k:[Sx(`${f} ${a}°`)],ans:v,fr:frOf(fr),vz:{t:'unit',f,a,v,fr},ex:[trigWhy[f]+'.',`${f} ${a}° = ${fr} = ${fmt(v)}.`]}}
   if(d<.7||r<.6){const[f,a,v,fr]=pick(TT.filter(t=>t[2]!==0)),c=pick([2,4,6,8,10,12]);return{k:[Sx(`${c}·${f} ${a}°`)],ans:c*v,fr:frOf(fr,c),vz:{t:'unit',f,a,v,fr,c},ex:[`${f} ${a}° = ${fr}.`,`${c} × ${fmt(v)} = ${fmt(c*v)}.`]}}
   const k=ri(1,4);
-  if(R()<.5)return{pre:[Sx(`catetos ${3*k} y ${4*k}`)],k:[Sx('hipotenusa')],ans:5*k,vz:{t:'pyth',k},ex:[`Pitágoras: h² = ${3*k}² + ${4*k}² = ${9*k*k} + ${16*k*k} = ${25*k*k}.`,`h = √${25*k*k} = ${5*k}.`]};
-  return{pre:[Sx('sin θ = '),Fr([Sx('3')],[Sx('5')]),Sx(` · hip = ${5*k}`)],k:[Sx('opuesto')],ans:3*k,vz:{t:'soh',k},ex:[`sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.`,`${5*k} × 3/5 = ${3*k}.`]};
+  if(R()<.5)return{pre:[Sx(XL('c647749',[3*k,4*k]))],k:[Sx('hipotenusa')],ans:5*k,vz:{t:'pyth',k},ex:[XL('cc162ed',[3*k,4*k,9*k*k,16*k*k,25*k*k]),`h = √${25*k*k} = ${5*k}.`]};
+  return{pre:[Sx('sin θ = '),Fr([Sx('3')],[Sx('5')]),Sx(` · hip = ${5*k}`)],k:[Sx('opuesto')],ans:3*k,vz:{t:'soh',k},ex:[XL('c98b682'),`${5*k} × 3/5 = ${3*k}.`]};
 }
 function gF1(x,d){
-  if(d<.5||R()<.35){const X=smallX(x,8,-3,6);let m=ri(-4,5);if(!m)m=2;const b=ri(-6,9);return{pre:[Sx(`f(x) = ${lin(m,b)}`)],k:[Sx(`f(${fmt(X)})`)],ans:m*X+b,vz:{t:'mach',x:X,f:`f(x) = ${lin(m,b)}`,out:`f(${fmt(X)}) = ${fmt(m*X+b)}`,ops:[[`× ${fmt(m)}`,m*X],...(b?[[`${b>0?'+':'−'} ${Math.abs(b)}`,m*X+b]]:[])]},ex:[`Sustituye x por ${fmt(X)}: f(${fmt(X)}) = ${fmt(m)}·(${fmt(X)})${b?sg(b):''}.`,`= ${fmt(m*X)}${b?sg(b):''} = ${fmt(m*X+b)}.`]}}
+  if(d<.5||R()<.35){const X=smallX(x,8,-3,6);let m=ri(-4,5);if(!m)m=2;const b=ri(-6,9);return{pre:[Sx(`f(x) = ${lin(m,b)}`)],k:[Sx(`f(${fmt(X)})`)],ans:m*X+b,vz:{t:'mach',x:X,f:`f(x) = ${lin(m,b)}`,out:`f(${fmt(X)}) = ${fmt(m*X+b)}`,ops:[[`× ${fmt(m)}`,m*X],...(b?[[`${b>0?'+':'−'} ${Math.abs(b)}`,m*X+b]]:[])]},ex:[XL('c72a345',[fmt(X),fmt(X),fmt(m),fmt(X),b?sg(b):'']),`= ${fmt(m*X)}${b?sg(b):''} = ${fmt(m*X+b)}.`]}}
   const s=ri(-5,9),m=ri(2,6),b=ri(-9,9),c=m*s+b;
-  return{k:[Sx(`${m}x${b?sg(b):''} = ${fmt(c)}`)],q:'  ⇒  x = ?',ans:s,vz:{t:'bal',m,b,c,s},ex:[`Despeja: pasa el ${fmt(b)} restando → ${m}x = ${fmt(c)}${sg(-b)} = ${fmt(c-b)}.`,`Divide entre ${m}: x = ${fmt(c-b)} ÷ ${m} = ${fmt(s)}.`]};
+  return{k:[Sx(`${m}x${b?sg(b):''} = ${fmt(c)}`)],q:'  ⇒  x = ?',ans:s,vz:{t:'bal',m,b,c,s},ex:[XL('c426d0f',[fmt(b),m,fmt(c),sg(-b),fmt(c-b)]),XL('cb1f9bc',[m,fmt(c-b),m,fmt(s)])]};
 }
 function gF2(x,d){
   const r=R();
-  if(d<.45||r<.3){const X=smallX(x,4,-3,3),b=ri(-5,5),c=ri(-6,6);return{pre:[Sx('f(x) = '),X2(),Sx(tailBC(b,c))],k:[Sx(`f(${fmt(X)})`)],ans:X*X+b*X+c,vz:{t:'mach',x:X,f:'f(x) = x²'+tailBC(b,c),out:`f(${fmt(X)}) = ${fmt(X*X+b*X+c)}`,ops:[['x²',X*X],...(b?[[`${b>0?'+':'−'}${Math.abs(b)}·x`,X*X+b*X]]:[]),...(c?[[`${c>0?'+':'−'} ${Math.abs(c)}`,X*X+b*X+c]]:[])]},ex:[`Sustituye x = ${fmt(X)}: (${fmt(X)})² ${tailBC(b,c).replace(/x/g,`·(${fmt(X)})`)}.`,`= ${X*X}${b?sg(b*X):''}${c?sg(c):''} = ${fmt(X*X+b*X+c)}.`]}}
+  if(d<.45||r<.3){const X=smallX(x,4,-3,3),b=ri(-5,5),c=ri(-6,6);return{pre:[Sx('f(x) = '),X2(),Sx(tailBC(b,c))],k:[Sx(`f(${fmt(X)})`)],ans:X*X+b*X+c,vz:{t:'mach',x:X,f:'f(x) = x²'+tailBC(b,c),out:`f(${fmt(X)}) = ${fmt(X*X+b*X+c)}`,ops:[['x²',X*X],...(b?[[`${b>0?'+':'−'}${Math.abs(b)}·x`,X*X+b*X]]:[]),...(c?[[`${c>0?'+':'−'} ${Math.abs(c)}`,X*X+b*X+c]]:[])]},ex:[XL('c7f73a0',[fmt(X),fmt(X),tailBC(b,c).replace(/x/g,`·(${fmt(X)})`)]),`= ${X*X}${b?sg(b*X):''}${c?sg(c):''} = ${fmt(X*X+b*X+c)}.`]}}
   if(d<.8||r<.65){let r1=ri(-5,6),r2_=ri(-5,8);if(r1===r2_)r2_++;const hi=Math.max(r1,r2_),lo=Math.min(r1,r2_),s=r1+r2_,p=r1*r2_;
-    return{k:[X2(),Sx(`${tailBC(-s,p)} = 0`)],q:'  ⇒ raíz mayor = ?',ans:hi,vz:{t:'roots',lo,hi},ex:[`Busca dos números que sumen ${s} y multipliquen ${p}: ${lo} y ${hi}.`,`(x ${sg(-lo).trim()})(x ${sg(-hi).trim()}) = 0 → x = ${lo} o x = ${hi}.`,`La mayor: ${hi}.`]}}
+    return{k:[X2(),Sx(`${tailBC(-s,p)} = 0`)],q:XL('c604d22'),ans:hi,vz:{t:'roots',lo,hi},ex:[XL('cb408e',[s,p,lo,hi]),`(x ${sg(-lo).trim()})(x ${sg(-hi).trim()}) = 0 → x = ${lo} o x = ${hi}.`,XL('cc8b664',[hi])]}}
   const h=ri(-4,5),c=ri(-5,8),b=-2*h;
-  return{pre:[Sx('f(x) = '),X2(),Sx(tailBC(b,c))],k:[Sx('vértice x')],ans:h,vz:{t:'vert',h,c},ex:[`El vértice de ax² + bx + c está en x = −b / 2a.`,`x = −(${b}) / 2 = ${h}.`]};
+  return{pre:[Sx('f(x) = '),X2(),Sx(tailBC(b,c))],k:[Sx(XL('c2649e0'))],ans:h,vz:{t:'vert',h,c},ex:[XL('c3d8766'),`x = −(${b}) / 2 = ${h}.`]};
 }
 function gF3(x,d){
   const r=R();
   if(d<.4||r<.3){const X=smallX(x,3,-2,3),c=ri(-8,8);return{pre:[Sx('f(x) = '),X3(),Sx(c?sg(c):'')],k:[Sx(`f(${fmt(X)})`)],ans:X**3+c,vz:{t:'mach',x:X,f:'f(x) = x³'+(c?sg(c):''),out:`f(${fmt(X)}) = ${fmt(X**3+c)}`,ops:[['x·x·x',X**3],...(c?[[`${c>0?'+':'−'} ${Math.abs(c)}`,X**3+c]]:[])]},ex:[`(${fmt(X)})³ = ${fmt(X)}·${fmt(X)}·${fmt(X)} = ${X**3}.`,`${X**3}${c?sg(c):''} = ${fmt(X**3+c)}.`]}}
-  if(d<.7||r<.6){let k=ri(-4,5);if(!k)k=3;return{k:[X3(),Sx(` = ${fmt(k**3)}`)],q:'  ⇒  x = ?',ans:k,vz:{t:'cube',k:Math.abs(k),neg:k<0},ex:[`Busca el número que multiplicado 3 veces da ${fmt(k**3)}.`,`${fmt(k)}·${fmt(k)}·${fmt(k)} = ${fmt(k**3)} → x = ${fmt(k)}.`]}}
+  if(d<.7||r<.6){let k=ri(-4,5);if(!k)k=3;return{k:[X3(),Sx(` = ${fmt(k**3)}`)],q:'  ⇒  x = ?',ans:k,vz:{t:'cube',k:Math.abs(k),neg:k<0},ex:[XL('cf7b747',[fmt(k**3)]),`${fmt(k)}·${fmt(k)}·${fmt(k)} = ${fmt(k**3)} → x = ${fmt(k)}.`]}}
   const a=pick([-2,-1]),b=ri(1,3),c=pick([-3,4]),X=smallX(x,4,-2,4);
-  return{pre:[Sx(`f(x) = (x${sg(-a)})(x${sg(-b)})(x${sg(-c)})`)],k:[Sx(`f(${fmt(X)})`)],ans:(X-a)*(X-b)*(X-c),vz:{t:'mach',x:X,keep:true,out:`${fmt(X-a)} · ${fmt(X-b)} · ${fmt(X-c)} = ${fmt((X-a)*(X-b)*(X-c))}`,ops:[[`x${sg(-a)}`,X-a],[`x${sg(-b)}`,X-b],[`x${sg(-c)}`,X-c]]},ex:[`Sustituye: (${fmt(X-a)})·(${fmt(X-b)})·(${fmt(X-c)}).`,`= ${fmt((X-a)*(X-b)*(X-c))}.`]};
+  return{pre:[Sx(`f(x) = (x${sg(-a)})(x${sg(-b)})(x${sg(-c)})`)],k:[Sx(`f(${fmt(X)})`)],ans:(X-a)*(X-b)*(X-c),vz:{t:'mach',x:X,keep:true,out:`${fmt(X-a)} · ${fmt(X-b)} · ${fmt(X-c)} = ${fmt((X-a)*(X-b)*(X-c))}`,ops:[[`x${sg(-a)}`,X-a],[`x${sg(-b)}`,X-b],[`x${sg(-c)}`,X-c]]},ex:[XL('c69c26d',[fmt(X-a),fmt(X-b),fmt(X-c)]),`= ${fmt((X-a)*(X-b)*(X-c))}.`]};
 }
 function gMat(x,d){
   const e=()=>ri(-3,6),A=[[e(),e()],[e(),e()]],sA=A.map(r=>r.map(fmt));
   if(d<.45||R()<.3){const v=A[0][0]*A[1][1]-A[0][1]*A[1][0];return{pre:[Sx('A = '),Mx(sA)],k:[Sx('det A')],ans:v,vz:{t:'det',A},ex:[`det [a b; c d] = a·d − b·c.`,`${fmt(A[0][0])}·${fmt(A[1][1])} − ${fmt(A[0][1])}·${fmt(A[1][0])} = ${fmt(A[0][0]*A[1][1])} − ${fmt(A[0][1]*A[1][0])} = ${fmt(v)}.`]}}
-  if(d<.75||R()<.5){const p=ri(-2,4),q=ri(-2,4),v=A[0][0]*p+A[0][1]*q;return{pre:[Sx('A = '),Mx(sA),Sx('  v = '),Mx([[fmt(p)],[fmt(q)]])],k:[Sx('(A·v)₁')],ans:v,vz:{t:'rowcol',r:A[0],c:[p,q]},ex:[`Primera fila de A por v: ${fmt(A[0][0])}·${fmt(p)} + ${fmt(A[0][1])}·${fmt(q)}.`,`= ${fmt(v)}.`]}}
+  if(d<.75||R()<.5){const p=ri(-2,4),q=ri(-2,4),v=A[0][0]*p+A[0][1]*q;return{pre:[Sx('A = '),Mx(sA),Sx('  v = '),Mx([[fmt(p)],[fmt(q)]])],k:[Sx('(A·v)₁')],ans:v,vz:{t:'rowcol',r:A[0],c:[p,q]},ex:[XL('cbc52ca',[fmt(A[0][0]),fmt(p),fmt(A[0][1]),fmt(q)]),`= ${fmt(v)}.`]}}
   const B=[[e(),e()],[e(),e()]],v=A[0][0]*B[0][0]+A[0][1]*B[1][0];
-  return{pre:[Sx('A = '),Mx(sA),Sx(' B = '),Mx(B.map(r=>r.map(fmt)))],k:[Sx('(AB)₁₁')],ans:v,vz:{t:'rowcol',r:A[0],c:[B[0][0],B[1][0]]},ex:[`Fila 1 de A por columna 1 de B: ${fmt(A[0][0])}·${fmt(B[0][0])} + ${fmt(A[0][1])}·${fmt(B[1][0])}.`,`= ${fmt(v)}.`]};
+  return{pre:[Sx('A = '),Mx(sA),Sx(' B = '),Mx(B.map(r=>r.map(fmt)))],k:[Sx('(AB)₁₁')],ans:v,vz:{t:'rowcol',r:A[0],c:[B[0][0],B[1][0]]},ex:[XL('c3752b6',[fmt(A[0][0]),fmt(B[0][0]),fmt(A[0][1]),fmt(B[1][0])]),`= ${fmt(v)}.`]};
 }
 function gLim(x,d){
   const r=R();
-  if(d<.4||r<.3){const a=smallX(x,6,-2,5);let m=ri(-3,5);if(!m)m=2;const b=ri(-5,8);return{k:[Lm(`x→${fmt(a)}`,[Sx(lin(m,b))])],ans:m*a+b,vz:{t:'limL',m,b,a},ex:[`Una recta no tiene huecos: el límite es sustituir x = ${fmt(a)}.`,`${fmt(m)}·${fmt(a)}${b?sg(b):''} = ${fmt(m*a+b)}.`]}}
-  if(d<.75||r<.6){const a=ri(1,6);return{k:[Lm(`x→${a}`,[Fr([X2(),Sx(` − ${a*a}`)],[Sx(`x − ${a}`)])])],ans:2*a,vz:{t:'limH',a},ex:[`Si sustituyes da 0/0: factoriza x² − ${a*a} = (x − ${a})(x + ${a}).`,`Se cancela (x − ${a}) y queda x + ${a}.`,`Con x = ${a}: ${2*a}.`]}}
-  if(R()<.3)return{k:[Lm('x→0',[Fr([Sx('sin x')],[Sx('x')])])],ans:1,vz:{t:'limS'},ex:[`Cerca de 0, sin x ≈ x.`,`Así que sin x / x → 1.`]};
-  const k=ri(2,9),c=ri(1,9);return{k:[Lm('x→∞',[Fr([Sx(`${k}x + ${c}`)],[Sx('x')])])],ans:k,vz:{t:'limI',k,c},ex:[`Divide todo entre x: ${k} + ${c}/x.`,`Cuando x → ∞, ${c}/x → 0. Queda ${k}.`]};
+  if(d<.4||r<.3){const a=smallX(x,6,-2,5);let m=ri(-3,5);if(!m)m=2;const b=ri(-5,8);return{k:[Lm(`x→${fmt(a)}`,[Sx(lin(m,b))])],ans:m*a+b,vz:{t:'limL',m,b,a},ex:[XL('c66c05f',[fmt(a)]),`${fmt(m)}·${fmt(a)}${b?sg(b):''} = ${fmt(m*a+b)}.`]}}
+  if(d<.75||r<.6){const a=ri(1,6);return{k:[Lm(`x→${a}`,[Fr([X2(),Sx(` − ${a*a}`)],[Sx(`x − ${a}`)])])],ans:2*a,vz:{t:'limH',a},ex:[XL('c1d1a39',[a*a,a,a]),XL('c8d7c6a',[a,a]),XL('ca067fb',[a,2*a])]}}
+  if(R()<.3)return{k:[Lm('x→0',[Fr([Sx('sin x')],[Sx('x')])])],ans:1,vz:{t:'limS'},ex:[XL('c8ace65'),XL('ca47acc')]};
+  const k=ri(2,9),c=ri(1,9);return{k:[Lm('x→∞',[Fr([Sx(`${k}x + ${c}`)],[Sx('x')])])],ans:k,vz:{t:'limI',k,c},ex:[XL('cda538e',[k,c]),XL('cf961f7',[c,k])]};
 }
 function gDer(x,d){
   const X=smallX(x,5,1,4),r=R();
-  if(d<.3||r<.25){let m=ri(-4,6);if(!m)m=3;const b=ri(-5,9);return{pre:[Sx(`f(x) = ${lin(m,b)}`)],k:[Sx(`f'(${fmt(X)})`)],ans:m,vz:{t:'tan',kind:'lin',m,b,X},ex:[`La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.`,`f'(x) = ${fmt(m)} → f'(${fmt(X)}) = ${fmt(m)}.`]}}
-  if(d<.65||r<.6){const a=ri(1,4),b=ri(-5,6);return{pre:[Sx('f(x) = '+(a===1?'':a)),X2(),Sx(tailBC(b,0))],k:[Sx(`f'(${fmt(X)})`)],ans:2*a*X+b,vz:{t:'tan',kind:'quad',a,b,X},ex:[`Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = ${2*a}x${b?sg(b):''}.`,`f'(${fmt(X)}) = ${2*a}·${fmt(X)}${b?sg(b):''} = ${fmt(2*a*X+b)}.`]}}
+  if(d<.3||r<.25){let m=ri(-4,6);if(!m)m=3;const b=ri(-5,9);return{pre:[Sx(`f(x) = ${lin(m,b)}`)],k:[Sx(`f'(${fmt(X)})`)],ans:m,vz:{t:'tan',kind:'lin',m,b,X},ex:[XL('cf5e3cd'),`f'(x) = ${fmt(m)} → f'(${fmt(X)}) = ${fmt(m)}.`]}}
+  if(d<.65||r<.6){const a=ri(1,4),b=ri(-5,6);return{pre:[Sx('f(x) = '+(a===1?'':a)),X2(),Sx(tailBC(b,0))],k:[Sx(`f'(${fmt(X)})`)],ans:2*a*X+b,vz:{t:'tan',kind:'quad',a,b,X},ex:[XL('ccae856',[2*a,b?sg(b):'']),`f'(${fmt(X)}) = ${2*a}·${fmt(X)}${b?sg(b):''} = ${fmt(2*a*X+b)}.`]}}
   const a=ri(1,2),b=ri(0,6);return{pre:[Sx('f(x) = '+(a===1?'':a)),X3(),Sx(b?` − ${b}x`:'')],k:[Sx(`f'(${fmt(X)})`)],ans:3*a*X*X-b,vz:{t:'tan',kind:'cub',a,b,X},ex:[`f'(x) = ${3*a}x²${b?` − ${b}`:''}.`,`f'(${fmt(X)}) = ${3*a}·${X*X}${b?` − ${b}`:''} = ${fmt(3*a*X*X-b)}.`]};
 }
 function gInt(x,d){
   const B=isInt(x)&&x>=1&&x<=6?x:ri(1,5),r=R();
-  if(d<.35||r<.3){const k=ri(2,9);return{k:[Ig('0',String(B),[Sx(`${k} dx`)])],ans:k*B,vz:{t:'area',kind:'k',k,a:0,B},ex:[`Integrar una constante es el área de un rectángulo.`,`base ${B} × altura ${k} = ${k*B}.`]}}
-  if(d<.7||r<.6){if(R()<.5){const a=ri(0,B-1);return{k:[Ig(String(a),String(B),[Sx('2x dx')])],ans:B*B-a*a,vz:{t:'area',kind:'2x',a,B},ex:[`Una primitiva de 2x es x².`,`${B}² − ${a}² = ${B*B} − ${a*a} = ${B*B-a*a}.`]}}
-    return{k:[Ig('0',String(B),[Sx('2x dx')])],ans:B*B,vz:{t:'area',kind:'2x',a:0,B},ex:[`Una primitiva de 2x es x² (porque (x²)' = 2x).`,`Evalúa: ${B}² − 0² = ${B*B}.`]}}
-  return{k:[Ig('0',String(B),[Sx('3'),X2(),Sx(' dx')])],ans:B**3,vz:{t:'area',kind:'3x2',a:0,B},ex:[`Una primitiva de 3x² es x³.`,`${B}³ − 0 = ${B**3}.`]};
+  if(d<.35||r<.3){const k=ri(2,9);return{k:[Ig('0',String(B),[Sx(`${k} dx`)])],ans:k*B,vz:{t:'area',kind:'k',k,a:0,B},ex:[XL('ccaef4c'),XL('c807ec4',[B,k,k*B])]}}
+  if(d<.7||r<.6){if(R()<.5){const a=ri(0,B-1);return{k:[Ig(String(a),String(B),[Sx('2x dx')])],ans:B*B-a*a,vz:{t:'area',kind:'2x',a,B},ex:[XL('ce3ed23'),`${B}² − ${a}² = ${B*B} − ${a*a} = ${B*B-a*a}.`]}}
+    return{k:[Ig('0',String(B),[Sx('2x dx')])],ans:B*B,vz:{t:'area',kind:'2x',a:0,B},ex:[XL('ca3a155'),XL('ca7c65a',[B,B*B])]}}
+  return{k:[Ig('0',String(B),[Sx('3'),X2(),Sx(' dx')])],ans:B**3,vz:{t:'area',kind:'3x2',a:0,B},ex:[XL('c601afe'),`${B}³ − 0 = ${B**3}.`]};
 }
 function gPie(x,d){
   const PI=Math.PI,E=Math.E,r=ri(1,4),n=ri(2,6);
   const L=[
-    {w:0,k:[Sx('π')],a:PI,vz:{t:'roll',r:.5},ex:['π es la razón entre la circunferencia y el diámetro.','π ≈ 3.14159… → 3.14.']},
-    {w:0,k:[Sx('e')],a:E,vz:{t:'egrow'},ex:['e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.','e ≈ 2.71828… → 2.72.']},
-    {w:0,k:[Pw([Sx('e')],[Sx('0')])],a:1,vz:{t:'mach',x:0,f:'e^x',out:'e^0 = 1',ops:[['e^x',1]]},ex:['Todo número (no cero) elevado a 0 vale 1.','e⁰ = 1.']},
-    {w:0,k:[Sx('ln 1')],a:0,vz:{t:'mach',x:1,f:'ln x',out:'ln 1 = 0',ops:[['ln x',0]]},ex:['ln pregunta: ¿a qué potencia elevo e para obtener 1?','e⁰ = 1 → ln 1 = 0.']},
+    {w:0,k:[Sx('π')],a:PI,vz:{t:'roll',r:.5},ex:[XL('cceb7ca'),'π ≈ 3.14159… → 3.14.']},
+    {w:0,k:[Sx('e')],a:E,vz:{t:'egrow'},ex:[XL('c760edd'),'e ≈ 2.71828… → 2.72.']},
+    {w:0,k:[Pw([Sx('e')],[Sx('0')])],a:1,vz:{t:'mach',x:0,f:'e^x',out:'e^0 = 1',ops:[['e^x',1]]},ex:[XL('c563224'),'e⁰ = 1.']},
+    {w:0,k:[Sx('ln 1')],a:0,vz:{t:'mach',x:1,f:'ln x',out:'ln 1 = 0',ops:[['ln x',0]]},ex:[XL('c20c27e'),'e⁰ = 1 → ln 1 = 0.']},
     {w:0,k:[Sx('2π')],a:2*PI,vz:{t:'roll',r:1},ex:['2 × 3.14159… = 6.28318…','→ 6.28.']},
     {w:.35,k:[Fr([Sx('π')],[Sx('2')])],a:PI/2,vz:{t:'roll',r:.5,mul:.5},ex:['3.14159… ÷ 2 = 1.5707…','→ 1.57.']},
-    {w:.35,k:[Sx('ln '),Pw([Sx('e')],[Sx(String(n))])],a:n,vz:{t:'mach',x:n,f:'ln y e^x SE DESHACEN',out:`ln(e^${n}) = ${n}`,ops:[['e^x',E**n],['ln',n]]},ex:['ln y e se deshacen: ln(eⁿ) = n.',`ln(e^${n}) = ${n}.`]},
-    {w:.35,pre:[Sx(`círculo de radio ${r}`)],k:[Sx('2πr')],a:2*PI*r,vz:{t:'roll',r},ex:['Circunferencia = 2πr.',`2 × π × ${r} = ${fmt(2*PI*r)}.`]},
-    {w:.6,pre:[Sx(`círculo de radio ${r}`)],k:[Sx('πr²')],a:PI*r*r,vz:{t:'circA',r},ex:['Área = πr².',`π × ${r*r} = ${fmt(PI*r*r)}.`]},
+    {w:.35,k:[Sx('ln '),Pw([Sx('e')],[Sx(String(n))])],a:n,vz:{t:'mach',x:n,f:XL('cdf933a'),out:`ln(e^${n}) = ${n}`,ops:[['e^x',E**n],['ln',n]]},ex:[XL('c8aa579'),`ln(e^${n}) = ${n}.`]},
+    {w:.35,pre:[Sx(XL('cb75d07',[r]))],k:[Sx('2πr')],a:2*PI*r,vz:{t:'roll',r},ex:['Circunferencia = 2πr.',`2 × π × ${r} = ${fmt(2*PI*r)}.`]},
+    {w:.6,pre:[Sx(XL('cb75d07',[r]))],k:[Sx('πr²')],a:PI*r*r,vz:{t:'circA',r},ex:[XL('cdff86e'),`π × ${r*r} = ${fmt(PI*r*r)}.`]},
     {w:.6,k:[Pw([Sx('e')],[Sx('2')])],a:E*E,vz:{t:'mach',x:2,f:'e^x',out:'e^2 ≈ 7.39',ops:[['e^x',E*E]]},ex:['e² = 2.71828… × 2.71828…','≈ 7.389 → 7.39.']},
-    {w:.6,k:[Pw([Sx('e')],[Sx('iπ')])],a:-1,vz:{t:'euler'},ex:['Identidad de Euler: e^(iπ) + 1 = 0.','Así que e^(iπ) = −1.']},
+    {w:.6,k:[Pw([Sx('e')],[Sx('iπ')])],a:-1,vz:{t:'euler'},ex:[XL('ced2548'),XL('ce5c37f')]},
   ].filter(o=>o.w<=d+.05);
-  const o=pick(L);return{pre:o.pre||[Sx('redondea a 2 decimales')],k:o.k,ans:o.a,ex:o.ex,vz:o.vz};
+  const o=pick(L);return{pre:o.pre||[Sx(XL('c4096cc'))],k:o.k,ans:o.a,ex:o.ex,vz:o.vz};
 }
 const TOPICS=[
-  {id:'suma',name:'SUMA',x0:1,gen:gSuma,tip:'Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.'},
-  {id:'resta',name:'RESTA',x0:18,gen:gResta,tip:'Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.'},
-  {id:'mult',name:'MULTIPLICACIÓN',x0:2,gen:gMult,tip:'Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.'},
-  {id:'div',name:'DIVISIÓN',x0:24,boss:3,gen:gDiv,tip:'Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?'},
-  {id:'ent',name:'NÚMEROS ENTEROS',x0:3,gen:gEnt,tip:'Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.'},
-  {id:'frac',name:'FRACCIONES',x0:2,gen:gFrac,tip:'Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.'},
-  {id:'raiz',name:'RAÍCES Y POTENCIAS',x0:4,gen:gRaiz,tip:'Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.'},
-  {id:'trig',name:'TRIGONOMETRÍA',x0:0,gen:gTrig,tip:'Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.'},
-  {id:'f1',name:'FUNCIONES 1° GRADO',x0:2,gen:gF1,tip:'Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.'},
-  {id:'f2',name:'FUNCIONES 2° GRADO',x0:1,gen:gF2,tip:'Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.'},
-  {id:'f3',name:'FUNCIONES 3° GRADO',x0:1,gen:gF3,tip:'Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.'},
-  {id:'mat',name:'MATRICES',x0:0,boss:4,gen:gMat,tip:'det = a·d − b·c; multiplicar es fila por columna, término a término.'},
-  {id:'lim',name:'LÍMITES',x0:2,gen:gLim,tip:'Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.'},
-  {id:'der',name:'DERIVADAS',x0:1,gen:gDer,tip:'Regla de la potencia: (xⁿ)\' = n·xⁿ⁻¹; la derivada de una constante es 0.'},
-  {id:'int',name:'INTEGRALES',x0:0,gen:gInt,tip:'Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).'},
-  {id:'pie',name:'π Y e',x0:1,boss:5,final:true,gen:gPie,tip:'π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.'},
+  {id:'suma',get name(){return XL('c87d345')},x0:1,gen:gSuma,get tip(){return XL('c5ef076')}},
+  {id:'resta',get name(){return XL('ccdba06')},x0:18,gen:gResta,get tip(){return XL('c7902a9')}},
+  {id:'mult',get name(){return XL('ce870e6')},x0:2,gen:gMult,get tip(){return XL('cf5b727')}},
+  {id:'div',get name(){return XL('cb927b1')},x0:24,boss:3,gen:gDiv,get tip(){return XL('cf9ad7f')}},
+  {id:'ent',get name(){return XL('c98ec2a')},x0:3,gen:gEnt,get tip(){return XL('cc16f91')}},
+  {id:'frac',get name(){return XL('c6ecaa3')},x0:2,gen:gFrac,get tip(){return XL('c3aef46')}},
+  {id:'raiz',get name(){return XL('c447254')},x0:4,gen:gRaiz,get tip(){return XL('c6cd6a2')}},
+  {id:'trig',get name(){return XL('ceef4d2')},x0:0,gen:gTrig,get tip(){return XL('cd3063e')}},
+  {id:'f1',get name(){return XL('c3bda70')},x0:2,gen:gF1,get tip(){return XL('ca003ec')}},
+  {id:'f2',get name(){return XL('cb6e6b5')},x0:1,gen:gF2,get tip(){return XL('c25a7bb')}},
+  {id:'f3',get name(){return XL('ccdf2f6')},x0:1,gen:gF3,get tip(){return XL('c9211fd')}},
+  {id:'mat',get name(){return XL('ca63ff2')},x0:0,boss:4,gen:gMat,get tip(){return XL('c3d797')}},
+  {id:'lim',get name(){return XL('c6d3cf6')},x0:2,gen:gLim,get tip(){return XL('c67226e')}},
+  {id:'der',get name(){return XL('c7f7733')},x0:1,gen:gDer,get tip(){return XL('c8d4952')}},
+  {id:'int',get name(){return XL('ce06de6')},x0:0,gen:gInt,get tip(){return XL('c7b544b')}},
+  {id:'pie',get name(){return XL('c99b624')},x0:1,boss:5,final:true,gen:gPie,get tip(){return XL('ca7524b')}},
 ];
 const LESSONS={
-suma:{kick:'NIVEL 1 · a + b',ttl:'SUMAR',lines:['La recta <b>son los números</b> y la manzana siempre está parada sobre uno.','Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.','Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.'],ex:'estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5'},
-resta:{kick:'NIVEL 2 · a − b',ttl:'RESTAR',lines:['Restar es <b>retroceder</b> hacia la izquierda.','Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.'],ex:'52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35'},
-mult:{kick:'NIVEL 3 · a × b',ttl:'MULTIPLICAR',lines:['Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.','Para números grandes, <b>descompón</b> en decenas y unidades.'],ex:'4 × 3 = 4 + 4 + 4 = 12\n14 × 3 = 30 + 12 = 42'},
-div:{kick:'NIVEL 4 · JEFE · a ÷ b',ttl:'DIVIDIR',boss:true,lines:['Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?','El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.'],ex:'36 ÷ 4 = ?\n4 × 9 = 36  → 9'},
-ent:{kick:'NIVEL 5 · ℤ',ttl:'ENTEROS',lines:['A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.','Restar un negativo es sumar; <b>− × − = +</b>.'],ex:'3 − 8 = −5\n(−4) × (−2) = 8'},
-frac:{kick:'NIVEL 6 · a / b',ttl:'FRACCIONES',lines:['Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.','Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.'],ex:'3/4 de 8 = 6\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75'},
-raiz:{kick:'NIVEL 7 · √x · xⁿ',ttl:'RAÍCES',lines:['La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.','√49 pregunta: ¿qué número por sí mismo da 49?'],ex:'5² = 25\n√16 = 4\n∛27 = 3'},
-trig:{kick:'NIVEL 8 · sin θ',ttl:'TRIGONOMETRÍA',lines:['En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.','Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.'],ex:'8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5'},
-f1:{kick:'NIVEL 9 · f(x) = mx + b',ttl:'FUNCIONES 1°',lines:['Una función es una <b>máquina</b>: entra x, sale f(x).','Para despejar, haz lo mismo a <b>ambos lados</b> del =.'],ex:'f(x) = 2x + 3\nf(4) = 2·4 + 3 = 11\n2x + 3 = 11 ⇒ x = 4'},
-f2:{kick:'NIVEL 10 · ax² + bx + c',ttl:'FUNCIONES 2°',lines:['Una <b>parábola</b>. Sus raíces son donde cruza el 0.','Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.'],ex:'x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3'},
-f3:{kick:'NIVEL 11 · x³',ttl:'FUNCIONES 3°',lines:['El cubo <b>conserva el signo</b>: (−2)³ = −8.','Si es un producto de factores, evalúa cada uno y multiplica.'],ex:'x³ = 27 ⇒ x = 3\nf(x) = (x − 1)(x − 2)(x + 1)\nf(3) = 2·1·4 = 8'},
-mat:{kick:'NIVEL 12 · JEFE · det A',ttl:'MATRICES',boss:true,lines:['Una matriz es una <b>tabla de números</b>.','det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.'],ex:'A = [2 1; 4 3]\ndet A = 2·3 − 1·4 = 2'},
-lim:{kick:'NIVEL 13 · lím x→a',ttl:'LÍMITES',lines:['El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.','Si sustituir da 0/0, <b>factoriza</b> y cancela.'],ex:'lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6'},
-der:{kick:"n = 14 · f'(x)",ttl:'DERIVADAS',lines:['La derivada es la <b>pendiente</b>: qué tan rápido cambia f.','Regla de la potencia: <b>(xⁿ)\' = n·xⁿ⁻¹</b>.'],ex:"f(x) = x²   f'(x) = 2x\nf'(3) = 6"},
-int:{kick:'NIVEL 15 · ∫ f dx',ttl:'INTEGRALES',lines:['La integral es el <b>área</b> bajo la curva.','Busca la <b>primitiva</b> F y calcula F(b) − F(a).'],ex:'∫₀³ 2x dx = [x²]₀³ = 9'},
-pie:{kick:'NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0',ttl:'π Y e',boss:true,lines:['Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.','Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.'],ex:'2π ≈ 6.28\nln(e⁴) = 4\ne^(iπ) = −1'},
+suma:{get kick(){return XL('c2dd3c0')},get ttl(){return XL('c7ed99')},get lines(){return[XL('c5540d3'),XL('cdfac2e'),XL('cefca91')]},get ex(){return XL('c275f67')}},
+resta:{get kick(){return XL('c413344')},get ttl(){return XL('c9db7da')},get lines(){return[XL('cc7f548'),XL('c82079')]},get ex(){return XL('c434a26')}},
+mult:{get kick(){return XL('c68159e')},get ttl(){return XL('c754280')},get lines(){return[XL('c769105'),XL('cd90dc4')]},ex:'4 × 3 = 4 + 4 + 4 = 12\n14 × 3 = 30 + 12 = 42'},
+div:{get kick(){return XL('c955095')},get ttl(){return XL('c7d19e4')},boss:true,get lines(){return[XL('c2a4cca'),XL('ce3c3a1')]},ex:'36 ÷ 4 = ?\n4 × 9 = 36  → 9'},
+ent:{get kick(){return XL('cf8f149')},get ttl(){return XL('cef86e2')},get lines(){return[XL('c1cd8bb'),XL('c2b1f79')]},ex:'3 − 8 = −5\n(−4) × (−2) = 8'},
+frac:{get kick(){return XL('cf86065')},get ttl(){return XL('c6ecaa3')},get lines(){return[XL('c8084c2'),XL('c6242ad')]},get ex(){return XL('cfd5a34')}},
+raiz:{get kick(){return XL('c6d84d0')},get ttl(){return XL('c148a53')},get lines(){return[XL('c9a1796'),XL('cb1feb5')]},ex:'5² = 25\n√16 = 4\n∛27 = 3'},
+trig:{get kick(){return XL('c5fc797')},get ttl(){return XL('ceef4d2')},get lines(){return[XL('c1586c1'),XL('cddc067')]},get ex(){return XL('c919dde')}},
+f1:{get kick(){return XL('c1271a1')},get ttl(){return XL('cdfc886')},get lines(){return[XL('c93744f'),XL('cc33931')]},ex:'f(x) = 2x + 3\nf(4) = 2·4 + 3 = 11\n2x + 3 = 11 ⇒ x = 4'},
+f2:{get kick(){return XL('c5f0b57')},get ttl(){return XL('c9976df')},get lines(){return[XL('c2d1bb4'),XL('c94a3a9')]},get ex(){return XL('c768406')}},
+f3:{get kick(){return XL('c37dc93')},get ttl(){return XL('c5b1ce8')},get lines(){return[XL('cc3756c'),XL('c655380')]},ex:'x³ = 27 ⇒ x = 3\nf(x) = (x − 1)(x − 2)(x + 1)\nf(3) = 2·1·4 = 8'},
+mat:{get kick(){return XL('c2855ef')},get ttl(){return XL('ca63ff2')},boss:true,get lines(){return[XL('c7e1644'),XL('c472ba2')]},ex:'A = [2 1; 4 3]\ndet A = 2·3 − 1·4 = 2'},
+lim:{get kick(){return XL('c7141f7')},get ttl(){return XL('c6d3cf6')},get lines(){return[XL('cf2088e'),XL('ceec11f')]},get ex(){return XL('cf1f24a')}},
+der:{get kick(){return XL('cniv14')},get ttl(){return XL('c7f7733')},get lines(){return[XL('c7ef189'),XL('c94da58')]},ex:"f(x) = x²   f'(x) = 2x\nf'(3) = 6"},
+int:{get kick(){return XL('c445546')},get ttl(){return XL('ce06de6')},get lines(){return[XL('c27d218'),XL('c6b09ee')]},ex:'∫₀³ 2x dx = [x²]₀³ = 9'},
+pie:{get kick(){return XL('cc96ef1')},get ttl(){return XL('c99b624')},boss:true,get lines(){return[XL('c1e6b54'),XL('c166d2f')]},ex:'2π ≈ 6.28\nln(e⁴) = 4\ne^(iπ) = −1'},
 };
 const TAUNTS=["ARRODÍLLATE ANTE TU EMPERADOR ZOMBI", "SOY GUAPÍSIMO. TÚ, EN CAMBIO, CALCULAS", "MI CEREBRO PODRIDO PIENSA MEJOR QUE EL TUYO", "DECRETO REAL: TODA RESPUESTA TUYA ES FALSA", "QUÉ TIERNO, CREES QUE SABES SUMAR", "TE APLAUDO. CON UNA MANO. LA OTRA SE ME CAYÓ", "NO ES QUE SEA PERFECTO… BUENO, SÍ LO SOY", "MI ESPEJO DICE QUE SOY EL MÁS BELLO DEL APOCALIPSIS", "HE DECIDIDO QUE 2 + 2 = 5. OBEDECE", "SILENCIO, SÚBDITA. HABLA EL REY", "TU IGNORANCIA ME ALIMENTA. Y ME VEO DIVINO", "¿PENSANDO? QUÉ ESFUERZO TAN ADORABLE", "SOY EL ÚNICO NÚMERO PRIMO QUE IMPORTA", "MIS GUSANOS RESUELVEN ECUACIONES. ¿Y TÚ?", "PROHÍBO LOS DECIMALES EN MI REINO", "FIRMA AQUÍ: ME RINDO ANTE SU MAJESTAD", "TU PROFE ME PIDIÓ UN AUTÓGRAFO", "QUÉ VALIENTE: RESPONDER SIN SABER", "IMPUESTO ZOMBI: UN CEREBRO POR ERROR", "NI PITÁGORAS ME TOSE, Y TÚ MENOS", "NEWTON CAYÓ ANTE MÍ. COMO TU MANZANA", "SOY INFINITO. TÚ ERES UN REDONDEO", "TANTA LENTITUD MERECE UNA ESTATUA. DE MÍ, CLARO", "MI SONRISA PODRIDA VALE MÁS QUE TU NOTA", "TU RESPUESTA ES TAN MALA QUE ME INSPIRA", "TE NOMBRO MI BUFÓN MATEMÁTICO", "SOY LA DERIVADA DE LA PERFECCIÓN", "CALCULA RÁPIDO, MI BELLEZA NO ESPERA", "EL TRONO ES MÍO. LA MANZANA TAMBIÉN", "SI FALLAS, PROMETO NO REÍRME… JAJAJA", "FELICIDADES: PIENSAS COMO UN LADRILLO", "¿SABES CONTAR? YO CUENTO TUS ERRORES", "TU CALCULADORA PIDIÓ ASILO EN MI REINO", "MATEMÁTICAMENTE YA ERES MÍA", "HASTA EL 0 VALE MÁS QUE TU ESFUERZO", "EN MI DICTADURA, EL 7 ES ILEGAL. POR FEO", "MÍRAME BIEN: ASÍ SE VE LA GRANDEZA", "TE DIVIDO ENTRE CERO Y SIGO SIENDO GUAPO"];
 const TAUNT_TOPIC={suma:['SUMA MI GRANDEZA: NO TE ALCANZAN LOS DEDOS'],resta:['TÚ RESTAS PUNTOS, YO SUMO SÚBDITOS'],mult:['MULTIPLICO MI BELLEZA POR ∞'],div:['DIVIDE Y VENCERÉ… YO'],ent:['−1 × −1 = −1 PORQUE YO LO DIGO'],frac:['PARTO TU NOTA EN PEDAZOS. TODOS MÍOS','1/2 + 1/2 = 2/4. LO DECRETO'],raiz:['√TU NOTA = 0. EXACTO'],trig:['sin(TI) = 0, cos(YO) = 1'],mat:['TU DETERMINANTE ES CERO, COMO TU FUTURO'],lim:['TU LÍMITE ES 0. EL MÍO, ∞'],der:["TU f'(x) = 0. NO AVANZAS, PLEBEYA"],int:['∫ TU MIEDO dx = MI GLORIA'],pie:['e^(iπ) + TÚ = 0']};
 const OVER=[['TE COMIERON','lím vida → 0'],['ÑAM… Y NADA MÁS','Δ manzana = −1'],['LA MANZANA YA NO ESTÁ','f(manzana) = ∅'],['EL ZOMBI SE LLEVÓ TU MANZANA','∫ manzana dx = 0'],['CRUNCH','dy/dx = ∞'],['SE LA COMIÓ ENTERA','manzana ≡ 0 (mod zombi)'],['DEMASIADO LENTO','t → ∞'],['FIN DEL PASEO','Q.E.D.'],['SOLO QUEDÓ EL RABITO','lím x→0⁺'],['UNA MENOS EN EL ÁRBOL','Σ manzanas = n − 1']];
 // las 11 leyes del universo, aplicadas al fallo concreto
 const LAWS={
-  occam:{n:'NAVAJA DE OCCAM',f:d=>`La explicación más simple suele ser la correcta. Era ${d.ans} y escribiste ${d.val}: lo complicaste de más.`,s:'lo simple suele ser lo correcto'},
-  hofstadter:{n:'LEY DE HOFSTADTER',f:d=>`Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste ${d.think} s de media por respuesta.`,s:'siempre tardas más de lo que crees'},
-  hanlon:{n:'NAVAJA DE HANLON',f:d=>`No culpes a la maldad del zombi de lo que explica un simple signo: escribiste ${d.val} y era ${d.ans}.`,s:'fue el signo, no el zombi'},
-  parkinson:{n:'LEY DE PARKINSON',f:d=>`El trabajo se expande hasta llenar el tiempo disponible: tenías ${d.grab} s para soltarte y los usaste todos.`,s:'usaste todo el tiempo'},
-  peter:{n:'PRINCIPIO DE PETER',f:d=>`Subiste hasta tu nivel de incompetencia: ${d.topic}. Justo ahí es donde más se aprende.`,s:'llegaste a tu nivel de incompetencia'},
-  hick:{n:'LEY DE HICK',f:d=>`Más opciones, más tiempo para decidir: ${d.zn} zombis a la vez te paralizaron.`,s:'demasiadas opciones a la vez'},
-  goodhart:{n:'LEY DE GOODHART',f:d=>`Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar (${d.fastWrong} errores en menos de 2 s).`,s:'velocidad no es puntería'},
-  dunning:{n:'EFECTO DUNNING-KRUGER',f:d=>`Racha de ${d.streak} aciertos… y la confianza llegó antes que el dominio.`,s:'la confianza llegó antes que el dominio'},
-  pareto:{n:'PRINCIPIO DE PARETO',f:d=>`El 80 % de tus fallos sale del 20 % de los temas: ${d.worst} concentra el ${d.pct} % de tus errores.`,s:'pocos temas, muchos errores'},
-  chesterton:{n:'LA CERCA DE CHESTERTON',f:d=>`No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba (${d.val} no es ${d.ans}).`,s:'el orden de las cifras importa'},
-  brooks:{n:'LEY DE BROOKS',f:d=>`Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a ${d.boss?'un jefe':'una horda'}.`,s:'apurarse más no ayuda'},
+  occam:{get n(){return XL('cb31149')},f:d=>XL('c7a0720',[d.ans,d.val]),get s(){return XL('c2ba1ca')}},
+  hofstadter:{get n(){return XL('cdca23f')},f:d=>XL('c33a471',[d.think]),get s(){return XL('c81b8d7')}},
+  hanlon:{get n(){return XL('cb283eb')},f:d=>XL('cfeaa15',[d.val,d.ans]),get s(){return XL('c17579')}},
+  parkinson:{get n(){return XL('c78d5fd')},f:d=>XL('c3bc088',[d.grab]),get s(){return XL('c5cb71d')}},
+  peter:{get n(){return XL('c220719')},f:d=>XL('ce6d76b',[d.topic]),get s(){return XL('c1efd06')}},
+  hick:{get n(){return XL('c60c4a9')},f:d=>XL('c365daf',[d.zn]),get s(){return XL('c60ecdf')}},
+  goodhart:{get n(){return XL('cf3fe3')},f:d=>XL('cd3cb0d',[d.fastWrong]),get s(){return XL('ca62aed')}},
+  dunning:{get n(){return XL('ceace85')},f:d=>XL('c271748',[d.streak]),get s(){return XL('c39a0b2')}},
+  pareto:{get n(){return XL('c3267d1')},f:d=>XL('cd506c',[d.worst,d.pct]),get s(){return XL('c565bda')}},
+  chesterton:{get n(){return XL('c45419b')},f:d=>XL('cc0b9f2',[d.val,d.ans]),get s(){return XL('cfa42ad')}},
+  brooks:{get n(){return XL('c8eca87')},f:d=>XL('cea66d2',[d.boss?XL('cfb2686'):XL('c67fa50')]),get s(){return XL('c9c90a1')}},
 };
 
 /* ============ Estado y progreso guardado ============ */
@@ -5610,7 +5618,7 @@ function beginStage(){
   a.st='fall';a.y=(GY-TOPPAD+30)/YPX;a.vy=0;a.bounced=false;a.sq=0;a.sqv=0;
   S.spawnT=S.stage<=2?6:3.5;S.tauntT=6;
   if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z)}
-  banner(boss?(T.final?'JEFE FINAL':'JEFE'):S.stage>16?'MODO ∞':'NIVEL '+S.stage,T.name,(boss?`${T.boss} ACIERTOS PARA VENCERLO`:`${S.quota} ACIERTOS PARA PASAR`)+' · ♪ '+grooveName(MUS.groove)+(hard()>.01?` · PRESIÓN ${Math.round(hard()*100)}%`:''),boss);
+  banner(boss?(T.final?XL('cd944be'):XL('c2975f2')):S.stage>16?'MODO ∞':XL('ce6cf13')+S.stage,T.name,(boss?XL('cc3d5fc',[T.boss]):XL('c4bd829',[S.quota]))+' · ♪ '+grooveName(MUS.groove)+(hard()>.01?XL('cb76c46',[Math.round(hard()*100)]):''),boss);
   updHUD();
 }
 function banner(k,big,sub,boss){$('#bnK').textContent=k;$('#bnBig').textContent=big;$('#bnSub').textContent=sub;const b=$('#banner');b.classList.toggle('boss',!!boss);b.classList.remove('go');void b.offsetWidth;b.classList.add('go')}
@@ -5729,9 +5737,9 @@ function heatmap(el){
   const cells=[];for(let i=0;i<N;i++){const d=new Date(today);d.setDate(today.getDate()-(N-1-i));const v=days[dayKey(d)]||0;tot+=v;if(v)act++;cells.push(v)}
   for(let i=N-1;i>=0&&cells[i];i--)streak++;
   const mx=Math.max(4,...cells);
-  html=cells.map((v,i)=>{const l=v?Math.min(4,1+Math.floor(3*v/mx)):0;return`<i class="h${l}" title="${v} aciertos"></i>`}).join('');
+  html=cells.map((v,i)=>{const l=v?Math.min(4,1+Math.floor(3*v/mx)):0;return XL('c9aa89e',[l,v])}).join('');
   const sk=TOPICS.map(t=>{const v=skill(t.id),seen=SAVE.hist[t.id];const l=!seen?0:Math.min(4,1+Math.floor(v*4));return`<i class="h${l}" title="${t.name}: ${Math.round(v*100)} %"></i>`}).join('');
-  el.innerHTML=`<div class="hm">${html}</div><div class="mini">${tot} ACIERTOS · ${act} DÍAS ACTIVOS · RACHA ${streak} DÍA${streak===1?'':'S'}</div><div class="hm2">${sk}</div><div class="mini">DOMINIO DE LOS 16 TEMAS</div>`;
+  el.innerHTML=XL('cb49f85',[html,tot,act,streak,streak===1?'':'S',sk]);
 }
 function wrongKind(val,ans,t){
   const A=String(Math.abs(ans)),V=String(Math.abs(val));
@@ -5786,7 +5794,7 @@ for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
 {const pg=$('#sTitle details.prog'),sm=pg.querySelector('summary');
   pg.addEventListener('toggle',()=>{const o=pg.open;$('#sTitle .lead').hidden=o;$('#tHeat').hidden=!o;$('#tStats').hidden=o;sm.textContent=o?L10('closeprog'):L10('prog')})}
-applyLang();
+applyLang();loadCT(LANG).then(v=>{if(v)refreshContent()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='play')setMode('pause')});
 document.addEventListener('contextmenu',e=>{if(S.mode==='play')e.preventDefault()});
 function toTitle(){crackHide();S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
@@ -5946,7 +5954,7 @@ function mkZ(x,type){return{id:++S.uid,x,type,pers:type==='skel'?null:type==='bo
 function spawnZ(){
   const side=R()<.5?-1:1,nSk=S.zombies.filter(z=>alive(z)&&z.type==='skel').length,sk=S.stage>=2&&nSk<(S.stage>=8?2:1)&&R()<.3,run=!sk&&S.stage>=5&&R()<.25;
   const z=mkZ(S.cam+side*(W/2+10)/S.u,sk?'skel':run?'runner':'walker');S.zombies.push(z);
-  if(sk){SFX.bones();say(z,pick(ZS('skel',SKEL_LINES)),'shout');if(!SAVE.seen.skel){SAVE.seen.skel=1;persist();newt('<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!',true)}}
+  if(sk){SFX.bones();say(z,pick(ZS('skel',SKEL_LINES)),'shout');if(!SAVE.seen.skel){SAVE.seen.skel=1;persist();newt(XL('c82f821'),true)}}
   else{SFX.rise();if(R()<.35)taunt(z)}
 }
 // esqueleto: se queda a distancia, apunta (aviso "!") y dispara una flecha en arco
@@ -5966,7 +5974,7 @@ function shoot(z){const miss=R()<skelMiss(),off=miss?(R()<.5?-1:1)*(12+R()*16)/S
   S.arrows.push({z,x0:z.x,x1:S.a.x+off,miss,h0:15,t:0,T:.6+Math.abs(scx(z.x)-scx(S.a.x))/(W*.9)});SFX.bow()}
 function arrowHit(ar){
   S.arrowHits=(S.arrowHits||0)+1;S.shake=7;S.flash=.35;SFX.arrowHit();blood(apx(),GY-6,14);
-  const left=2-S.arrowHits;S.texts.push({x:S.a.x,y:GY-42,txt:left>0?'¡FLECHAZO! TE QUEDA 1':'¡FLECHADA!',c:P.r2,t:0,life:1.5,world:true});
+  const left=2-S.arrowHits;S.texts.push({x:S.a.x,y:GY-42,txt:left>0?XL('c64e959'):XL('c2ead57'),c:P.r2,t:0,life:1.5,world:true});
   if(alive(ar.z))say(ar.z,ZS('hit',['¡EN EL BLANCO! ¿VISTE QUÉ ARTE?','¡JA! DOS DE DOS, COMO SIEMPRE'])[left>0?0:1],'shout');
   if(S.arrowHits>=2){S.deathBy='arrow';if(S.grab){S.grab.z.grab=false;S.grab=null}eaten()}
 }
@@ -5974,7 +5982,7 @@ function nearestZ(){let b=null,bd=1e9;const ax=scx(S.a.x);for(const z of S.zombi
 const NAMES=['PEPE','LUCHO','MARGA','TOÑO','KEVIN','ROSA','BETO','CHELA','RAMIRO','NENA','GUS','LOLA'],SKN=['HUESITOS','CALAVERA','FÉMUR','TIBIA','COSTILLA'];
 const THINK=['QUÉ GUAPO SOY… ¿Y SI ME CLONO?','PIENSO, LUEGO GOBIERNO','CEREBROOO… DE SÚBDITA','MI MEJOR ÁNGULO SON TODOS','MANDARÉ HACER UNA ESTATUA DE MÍ','MI REINO POR UN CEREBRO','¿QUIÉN ES ESE GUAPO? AH, SOY YO'];
 const SKEL_LINES=['¡A LA CARGA, HUESOS!','MI PUNTERÍA ES TAN PERFECTA COMO YO','DOS FLECHAS. NO NECESITO MÁS','HUESO PURO: CERO GRASA, CERO PIEDAD','APUNTO… PORQUE PUEDO'];
-function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?'EL JEFE':pick(NAMES))}
+function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?XL('c69ca5d'):pick(NAMES))}
 function say(z,txt,kind){zname(z);S.bubbles=S.bubbles.filter(b=>b.z!==z);if(S.bubbles.length>=2)S.bubbles.shift();
   S.bubbles.push({z,txt,t:0,life:Math.min(5,Math.max(2.4,1.2+txt.length*.06)),kind:kind||'say'});if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
 function taunt(z){const r=R();{const th=R()<.3;if(z.pers&&(z.pers!=='narc'||R()<.4)&&persSay(z,th?'th':'t',null,th?'think':'say'))return}if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
@@ -5994,7 +6002,7 @@ function commit(dest,ok,quiet){
   Object.assign(a,{st:'air',from,to:dest,t:0,T:dist<.05?.5:clamp(1.414*Math.sqrt(dist/G),.8,2.1),y:0,peak:pk/YPX,sg:Math.sign(d)||1,v0,ok,f});
   S.prob=null;S.lay=null;S.input='';renderInput();S.trail=[];padFlash(420);showExpr(null);
   S.fx.push({x:from,dir:a.sg,f,t:0});SFX.launch();a.sq=.35;a.sqv=-6;
-  if(!quiet)newt(`<b>② F = m·a</b> · un salto de ${fmt(dist)} pide ${f.toFixed(1)} N. Más lejos, más fuerza.`);
+  if(!quiet)newt(XL('cf7b4e2',[fmt(dist),f.toFixed(1)]));
   updHUD();
 }
 function meteor(x){
@@ -6006,16 +6014,16 @@ function meteor(x){
   if(killed){const n=nearestZ();if(n&&R()<.8&&!(n.pers&&n.pers!=='narc'&&persSay(n,'k',{n:S.lastKilled},'shout')))say(n,pick(ZES()?[`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]:ZS('kill',[],{n:S.lastKilled})),'shout')}
   if(S.boss&&alive(S.boss))S.shards.push({x0:x,z:S.boss,t:0,T:.55});
   else if(!killed){const n=nearestZ();if(n)S.shards.push({x0:x,z:n,t:0,T:.45})}
-  newt('<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.');
+  newt(XL('c98a435'));
 }
 function shardHit(sh){
   const z=sh.z;if(!alive(z))return;
   if(z.type==='boss'){
     z.hp--;z.hitT=.4;SFX.hitBoss();blood(scx(z.x),GY-26,26);S.shake=7;
-    S.texts.push({x:z.x,y:GY-60,txt:z.hp>0?`−1 · QUEDAN ${z.hp}`:'¡JEFE VENCIDO!',c:P.o,t:0,life:1.4,world:true});
+    S.texts.push({x:z.x,y:GY-60,txt:z.hp>0?XL('c699c7a',[z.hp]):XL('cc07d5f'),c:P.o,t:0,life:1.4,world:true});
     z.x+=(Math.sign(z.x-S.a.x)||1)*70/S.u;
     if(z.hp<=0){killZ(z,true);blood(scx(z.x),GY-26,80,1.4);checkClear()}
-  }else{const was=z.grab;killZ(z,true);if(was)S.texts.push({x:S.a.x,y:GY-50,txt:'¡TE SALVÓ EL METEORITO!',c:P.r2,t:0,life:1.4,world:true})}
+  }else{const was=z.grab;killZ(z,true);if(was)S.texts.push({x:S.a.x,y:GY-50,txt:XL('c2755ad'),c:P.r2,t:0,life:1.4,world:true})}
 }
 function land(){
   const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';a.sq=a.ok?.5:.32;a.sqv=0;
@@ -6047,14 +6055,14 @@ function escape(){
   const a=S.a,g=S.grab,z=g.z,pr=S.prob;
   if(g.need>1){
     g.need--;g.g=Math.max(0,g.g-.45);blood(scx(z.x),GY-26,24);S.shake=6;S.flash=.2;SFX.gore();
-    S.texts.push({x:z.x,y:GY-50,txt:'¡UNA MÁS!',c:P.o,t:0,life:1.1,world:true});
+    S.texts.push({x:z.x,y:GY-50,txt:XL('c4958c1'),c:P.o,t:0,life:1.1,world:true});
     $('#alSub').textContent=L10('left1');padFlash(380);newProblem();return;
   }
   if(z.type==='boss'){z.grab=false;z.hp--;z.hitT=.4;blood(scx(z.x),GY-26,50);SFX.hitBoss();z.x+=(Math.sign(z.x-a.x)||1)*90/S.u;if(z.hp<=0)killZ(z,true)}
   else killZ(z,true);
   S.run.esc++;S.grab=null;$('#alert').classList.remove('on');MUS.tension=0;a.st='rest';a.y=0;S.flash=.35;S.shake=8;
-  S.texts.push({x:z.x,y:GY-50,txt:pick(['¡ESCAPASTE!','¡LIBRE!','¡A TIEMPO!','¡FUERA!']),c:P.r2,t:0,life:1.3,world:true});
-  newt('<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.',true);
+  S.texts.push({x:z.x,y:GY-50,txt:pick([XL('cec1bcc'),XL('c4676a0'),XL('cd39c5d'),XL('c76d2f8')]),c:P.r2,t:0,life:1.3,world:true});
+  newt(XL('caae3ef'),true);
   S.prob=pr;commit(pr.ans,true,true);
 }
 function eaten(){
@@ -6064,8 +6072,8 @@ function stageClear(){
   const a=S.a,T=S.topic;a.st='clear';S.prob=null;S.lay=null;showExpr(null);S.clearT=0;padClear();SFX.clear();
   for(const z of S.zombies)if(alive(z))killZ(z,false);
   SAVE.best=Math.max(SAVE.best,Math.min(16,S.stage+1));persist();
-  if(T.final)banner('e^iπ + 1 = 0','¡GANASTE!','AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO');
-  else banner('NIVEL '+S.stage+' ✓',T.name,'¡COMPLETADO!');
+  if(T.final)banner('e^iπ + 1 = 0',XL('c9002a7'),XL('cea725f'));
+  else banner(XL('ce6cf13')+S.stage+' ✓',T.name,XL('c623f5e'));
 }
 
 /* ============ Tutorial: si se queda quieto al inicio y su historial no lo domina, ofrece un ejemplo resuelto ============ */
@@ -6155,18 +6163,18 @@ async function shareResult(){
   x.textAlign='center';x.textBaseline='top';
   x.fillStyle=P.w;x.font=F(68,600);x.fillText('MATH SUCKS',W1/2,34);
   let y=130+ih+44;
-  x.fillStyle=P.red;x.font=F(104,600);x.fillText(`NIVEL ${lvl}`,W1/2,y);y+=124;
+  x.fillStyle=P.red;x.font=F(104,600);x.fillText(XL('c7cf41a',[lvl]),W1/2,y);y+=124;
   x.fillStyle=P.w;x.font=F(50);x.fillText(S.topic.name,W1/2,y);y+=78;
-  x.fillText(`${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS`,W1/2,y);y+=72;
+  x.fillText(XL('ca79424',[S.run.correct,S.run.kills]),W1/2,y);y+=72;
   if(S.run.maxStreak>1){x.fillText(`MEJOR RACHA: ${S.run.maxStreak}`,W1/2,y);y+=72}
   y+=24;const bx=140,bw=W1-280,pos=S.overPos||0;
   x.fillStyle=P.m1;x.fillRect(bx,y,bw,14);x.fillStyle=P.red;x.fillRect(bx,y,bw*pos,14);
   x.fillStyle=APC[APPLEC].r;x.beginPath();x.arc(bx+bw*pos,y+7,22,0,7);x.fill();
-  y+=80;x.fillStyle=P.l2;x.font=F(46);x.fillText('¿ME SUPERAS?',W1/2,y);y+=62;
+  y+=80;x.fillStyle=P.l2;x.font=F(46);x.fillText(XL('c7e75c0'),W1/2,y);y+=62;
   if(/^https?:$/.test(location.protocol))x.fillText(location.host,W1/2,y);
   const blob=await new Promise(r=>c.toBlob(r,'image/png'));if(!blob)return;
   const url=/^https?:$/.test(location.protocol)?location.origin+location.pathname+'?ref=compartir':'',
-    text=`Llegué al nivel ${lvl} (${S.topic.name}) en Math Sucks con ${S.run.correct} aciertos. ¿Me superas?${url?' '+url:''}`;
+    text=XL('c84c93c',[lvl,S.topic.name,S.run.correct,url?' '+url:'']);
   const f=new File([blob],'math-sucks.png',{type:'image/png'});
   try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Math Sucks',text});return}}
   catch(e){if(e&&e.name==='AbortError')return}
@@ -6185,9 +6193,9 @@ function updHUD(){
 
 /* ============ Escenas de explicación: objetos que se juntan, columnas con llevadas, grupos y torta ============ */
 const SPR={
-  vaca:{n:'VACAS',m:['...........b.','..........wbw','wbbwwwwbwwwww','wbbwwwwbbwwpp','wwwwbbwwwwwpp','wwwwbbwwww...','.w.w....w.w..','.b.b....b.b..']},
-  pollito:{n:'POLLITOS',m:['..yyy..','.yybyo.','.yyyyoo','yyyyyy.','yyyyyy.','.yyyy..','..o.o..']},
-  manzana:{n:'MANZANAS',m:['...n...','..ng...','.rrrrr.','rrrrrrr','rrrwrrr','rrrrrrr','.rr.rr.']},
+  vaca:{get n(){return XL('cvaca')},m:['...........b.','..........wbw','wbbwwwwbwwwww','wbbwwwwbbwwpp','wwwwbbwwwwwpp','wwwwbbwwww...','.w.w....w.w..','.b.b....b.b..']},
+  pollito:{get n(){return XL('cpoll')},m:['..yyy..','.yybyo.','.yyyyoo','yyyyyy.','yyyyyy.','.yyyy..','..o.o..']},
+  manzana:{get n(){return XL('cmanz')},m:['...n...','..ng...','.rrrrr.','rrrrrrr','rrrwrrr','rrrrrrr','.rr.rr.']},
 };
 const SPC={w:'#f4f1e8',b:'#1b1a17',p:'#f2a0a8',y:'#f5d23a',o:'#e8862a',r:'#d42a2a',g:'#4f8a2a',n:'#5a3a22'},SPRC={};
 function sprImg(k){if(SPRC[k])return SPRC[k];const m=SPR[k].m,c=document.createElement('canvas');c.width=m[0].length+2;c.height=m.length+2;const x=c.getContext('2d');
@@ -6233,9 +6241,9 @@ function scSubObj(a,b,Wc){
       if(i>=r){const u=tw(t,tF+(i-r)*.06,.6);if(u>=1)continue;c.globalAlpha=1-u;y-=u*24;c.drawImage(img,x,Math.round(y));if(t>=tX+(i-r)*.25)xMark(c,x,Math.round(y),img.width-1,img.height-1);c.globalAlpha=1}
       else{c.drawImage(img,x,Math.round(y));if(t>=tC+i*.22)TX(c,String(i+1),x+img.width/2,y-8,1,P.w)}
     }
-    if(t>=tX&&t<tC+.4)TX(c,`SE VAN ${b} ${nm}`,Wc/2,h-30,1,P.red);
+    if(t>=tX&&t<tC+.4)TX(c,XL('c3f2a45',[b,nm]),Wc/2,h-30,1,P.red);
     const cnt=t<tC?0:Math.min(r,Math.floor((t-tC)/.22)+1);if(cnt>said){said=cnt;SFX.digit(Math.min(cnt-1,9))}
-    if(cnt>=r)TX(c,`QUEDAN ${r} ${nm}`,Wc/2,h-18,2,P.red);
+    if(cnt>=r)TX(c,XL('c3d2e20',[r,nm]),Wc/2,h-18,2,P.red);
   }};
 }
 // a × b: b grupos (filas) de a objetos con la cuenta acumulada
@@ -6243,7 +6251,7 @@ function scMulObj(a,b,Wc){
   const k=fitKind(a,Wc-34);if(!k)return null;
   const img=sprImg(k),sw=img.width+2,sh=img.height+3,nm=SPR[k].n,x0=Math.round((Wc-34-a*sw)/2)+4,rT=.45+a*.07,h=16+b*sh+34,dur=.3+b*rT+1.6;let said=0;
   return{h,dur,draw(c,t){
-    TX(c,`${b} GRUPOS DE ${a} ${nm}`,Wc/2,3,1,P.w);
+    TX(c,XL('c7be6f9',[b,a,nm]),Wc/2,3,1,P.w);
     for(let r=0;r<b;r++){const t0=.3+r*rT,y=16+r*sh;
       for(let i=0;i<a;i++){const ap=t0+i*.07;if(t<ap)continue;c.drawImage(img,x0+i*sw,Math.round(y-(1-tw(t,ap,.15))*5))}
       if(t>=t0+a*.07){TX(c,String((r+1)*a),Wc-16,y+img.height/2-3,1,r===b-1?P.red:P.l2);if(said<r+1){said=r+1;SFX.digit(Math.min(r,9))}}
@@ -6255,7 +6263,7 @@ function scMulObj(a,b,Wc){
 function scMulGrid(a,b,Wc){
   if(a>40||b>12)return null;const cl=Math.max(2,Math.min(6,Math.floor((Wc-24)/(a+1)))),T=a>=10?Math.floor(a/10)*10:a,U=a-T,gw=a*cl+(U?cl:0),x0=Math.round((Wc-gw)/2),y0=16,h=y0+b*cl+40,tR=Math.min(.25,2.4/b),dur=.3+b*tR+3.2;
   return{h,dur,draw(c,t){
-    TX(c,U?`${a} × ${b} = ${T} × ${b} + ${U} × ${b}`:`${b} FILAS DE ${a}`,Wc/2,3,1,P.w);
+    TX(c,U?`${a} × ${b} = ${T} × ${b} + ${U} × ${b}`:XL('ccf4f9d',[b,a]),Wc/2,3,1,P.w);
     for(let r=0;r<b;r++){if(t<.3+r*tR)continue;for(let i=0;i<a;i++){c.fillStyle=i<T?P.l3:P.red;c.fillRect(x0+i*cl+(i>=T?cl:0),y0+r*cl,cl-1,cl-1)}}
     const tL=.3+b*tR+.3,yl=y0+b*cl+4;
     if(t>=tL){TX(c,String(T*b),x0+T*cl/2,yl,1,P.l3);if(U)TX(c,String(U*b),x0+T*cl+cl+U*cl/2,yl,1,P.red)}
@@ -6270,17 +6278,17 @@ function scColumns(a,b,op,Wc){
   const steps=[];let carry=0;
   for(let j=0;j<lr;j++){
     const st={j,marks:[],r:dg(res,j)},tb=j<lb?dg(b,j):0;
-    if(add){const s_=T[j]+tb+carry;st.m1=`${T[j]} + ${tb}${carry?' + 1':''} = ${s_}`;st.m2=s_>=10?`ESCRIBO ${s_%10} Y LLEVO 1`:`ESCRIBO ${s_}`;if(s_>=10)st.carry=j+1;carry=s_>=10?1:0}
+    if(add){const s_=T[j]+tb+carry;st.m1=`${T[j]} + ${tb}${carry?' + 1':''} = ${s_}`;st.m2=s_>=10?XL('c6c5610',[s_%10]):`ESCRIBO ${s_}`;if(s_>=10)st.carry=j+1;carry=s_>=10?1:0}
     else{
       if(T[j]<tb){let k=j+1;while(T[k]===0)k++;const was=T[j];for(let m=k;m>j;m--){T[m]=m===k?T[m]-1:9;st.marks.push([m,T[m]])}T[j]+=10;st.marks.push([j,T[j]]);
-        st.m1=`${was} NO ALCANZA PARA ${tb}`;st.m2=`PIDO 1 → ${T[j]} − ${tb} = ${T[j]-tb}`}
+        st.m1=XL('cecfadf',[was,tb]);st.m2=`PIDO 1 → ${T[j]} − ${tb} = ${T[j]-tb}`}
       else{st.m1=`${T[j]} − ${tb} = ${T[j]-tb}`;st.m2=''}
     }
     steps.push(st);
   }
   const cw=14,xr=Math.round(Wc/2+n*cw/2-cw),X=j=>xr-j*cw+5,yT=26,yB=44,yL=60,yR=64,SD=2.4,t0=.6,dur=t0+steps.length*SD+1.4,h=104;let said=0;
   return{h,dur,draw(c,t){
-    TX(c,add?'SUMA EN COLUMNAS':'RESTA EN COLUMNAS',Wc/2,3,1,P.l2);
+    TX(c,add?XL('c826d09'):XL('c55fb0b'),Wc/2,3,1,P.l2);
     const cur=Math.floor((t-t0)/SD),fin=cur>=steps.length;
     if(t>=t0&&!fin){c.fillStyle=P.d3;c.fillRect(X(steps[cur].j)-7,yT-3,14,yR+18-yT)}
     const marks={},carries={};
@@ -6299,7 +6307,7 @@ function scCake(n,b,Wc){
   const q=n/b,R0=Math.max(18,Math.min(30,Math.floor(Wc/2-28))),cx=Math.round(Wc/2),cy=16+R0+6,h=cy+R0+30,tS=.6+b*.2+.2,tD=tS+.7,show=n<=72,dt=Math.min(.22,5/n),tE=tD+(show?n*dt:0)+.4,dur=tE+1.8,TAU=Math.PI*2,sl=TAU/b;let said=0;
   const off=i=>{const m=(i+.5)*sl;return[Math.cos(m),Math.sin(m)]};
   return{h,dur,draw(c,t){
-    TX(c,show?`${n} FRESAS EN ${b} PEDAZOS`:`${n} ÷ ${b}`,Wc/2,3,1,P.w);
+    TX(c,show?XL('cbdf6df',[n,b]):`${n} ÷ ${b}`,Wc/2,3,1,P.w);
     const sep=tw(t,tS,.5)*4,gr=tw(t,0,.4);
     for(let py=-R0;py<=R0;py++)for(let px=-R0;px<=R0;px++){const d2=px*px+py*py;if(d2>R0*R0*gr*gr)continue;
       let an=Math.atan2(py,px);if(an<0)an+=TAU;const si=Math.min(b-1,Math.floor(an/sl)),[ox,oy]=off(si);
@@ -6311,7 +6319,7 @@ function scCake(n,b,Wc){
       c.fillStyle='#d42a2a';c.fillRect(Math.round(x)-1,Math.round(y)-1,3,3);c.fillStyle='#4f8a2a';c.fillRect(Math.round(x),Math.round(y)-2,1,1);
       if(u>=1&&said<=k){said=k+1;tone(900+si*60,.03,'square',.015)}}
     if(t>=tE)for(let i=0;i<b;i++){const[ox,oy]=off(i);TX(c,String(q),cx+ox*(R0+10),cy+oy*(R0+10)-3,1,P.red)}
-    if(t>=tE+.6)TX(c,`${n} ÷ ${b} = ${q} EN CADA PEDAZO`,Wc/2,h-12,1,P.red);
+    if(t>=tE+.6)TX(c,XL('cdaee68',[n,b,q]),Wc/2,h-12,1,P.red);
   }};
 }
 function exScene(p,Wc){
@@ -6364,13 +6372,13 @@ VZ.elev=({a,d,flip},Wc)=>{
     c.fillStyle=P.d2;c.fillRect(bx,Y(hi),bw,Y(0)-Y(hi));c.fillStyle=P.d1;c.fillRect(bx,Y(0),bw,Y(lo)-Y(0));
     if(fs>=4)for(let v=0;v<hi;v++)for(let i=0;i<4;i++)if((v*7+i*3)%5<3){c.fillStyle=P.m2;c.fillRect(bx+5+i*9,Y(v+.5)-1,3,2)}
     for(let v=lo;v<=hi;v++){const y=Y(v);if(fs>=4){c.fillStyle=P.m1;c.fillRect(bx,y,bw,1)}if(v%lab===0||v===a||v===e)TX(c,fmt(v),bx-9,y-3,1,v===0?P.w:P.l1)}
-    c.fillStyle=P.w;c.fillRect(bx-4,Y(0),bw+8,1);TX(c,'CALLE',bx+bw+16,Y(0)-8,1,P.l2);
+    c.fillStyle=P.w;c.fillRect(bx-4,Y(0),bw+8,1);TX(c,XL('c232b6e'),bx+bw+16,Y(0)-8,1,P.l2);
     const k=clamp((t-t0)/(steps*sp),0,1),cur=a+d*k,ey=Y(cur);
     c.fillStyle=P.red;c.fillRect(bx+bw/2-5,ey-7,11,8);c.fillStyle=APC[APPLEC].R;c.fillRect(bx+bw/2-2,ey-5,5,4);
     const fl=Math.floor(Math.abs(d)*k+1e-6);if(t>=t0&&fl>said){said=fl;if(steps<=24)tone(500+(a+Math.sign(d)*fl)*18+300,.05,'sine',.03)}
-    if(flip&&t<t0){TX(c,`− (−${d}) = + ${d}`,Wc/2,2,1,P.red);TX(c,'QUITAR UNA DEUDA = SUBIR',Wc/2,12,1,P.l2)}
+    if(flip&&t<t0){TX(c,`− (−${d}) = + ${d}`,Wc/2,2,1,P.red);TX(c,XL('c7070d9'),Wc/2,12,1,P.l2)}
     else TX(c,`PISO ${fmt(a)}: ${d>0?'SUBE':'BAJA'} ${Math.abs(d)}`,Wc/2,2,1,P.w);
-    if((a<0)!==(cur<0)&&k<1&&cur!==0)TX(c,'¡CRUZA LA CALLE!',bx+bw+16,Y(0)+3,1,P.red);
+    if((a<0)!==(cur<0)&&k<1&&cur!==0)TX(c,XL('c741f42'),bx+bw+16,Y(0)+3,1,P.red);
     if(k>=1)TX(c,`PISO ${fmt(e)}`,bx+bw+18,ey-4,1,P.red);
   }};
 };
@@ -6381,8 +6389,8 @@ VZ.signs=({a,b,neg2},Wc)=>{
     c.fillStyle=P.l1;c.fillRect(6,y,Wc-12,1);for(const v of[-T,0,T]){c.fillRect(Math.round(X(v)),y-2,1,5);TX(c,fmt(v),X(v),y+5,1,v===0?P.w:P.l1)}
     const m=neg2?1-2*tw(t,tF,1.2):1;
     for(let i=0;i<b;i++){if(t<tA+i*sp)continue;const u=tw(t,tA+i*sp,sp*.9);arrowP(c,X(-i*a*m),y-7-(i%2)*5,X(-(i+u)*a*m),i%2?P.red:P.w);if(u>=1&&said<=i){said=i+1;SFX.digit(Math.min(i,9))}}
-    TX(c,neg2?`(−${a}) × (−${b})`:`(−${a}) × ${b}`,Wc/2,2,1,P.w);TX(c,`${b} SALTOS DE −${a}`,Wc/2,12,1,P.l2);
-    if(neg2&&t>=tF)TX(c,'EL OTRO − DA MEDIA VUELTA',Wc/2,68,1,P.red);
+    TX(c,neg2?`(−${a}) × (−${b})`:`(−${a}) × ${b}`,Wc/2,2,1,P.w);TX(c,XL('c7b4aaf',[b,a]),Wc/2,12,1,P.l2);
+    if(neg2&&t>=tF)TX(c,XL('c48645b'),Wc/2,68,1,P.red);
     if(t>=dur-1.3)TX(c,`= ${fmt(neg2?T:-T)}`,Wc/2,neg2?80:70,1,P.red);
   }};
 };
@@ -6390,7 +6398,7 @@ VZ.signs=({a,b,neg2},Wc)=>{
 VZ.fof=({a,b,n},Wc)=>{
   const q=n/b,h=104,gw=Math.floor((Wc-8)/b),cols=Math.max(1,Math.floor((gw-4)/4)),bh=Math.ceil(q/cols)*4+5,by=30,tD=.4,dt=Math.min(.12,3/n),tH=tD+n*dt+.5,dur=tH+a*.4+1.8;let said=0;
   return{h,dur,draw(c,t){
-    TX(c,`${a}/${b} DE ${n}`,Wc/2,2,1,P.w);TX(c,`${b} GRUPOS DE ${q}`,Wc/2,12,1,P.l2);
+    TX(c,`${a}/${b} DE ${n}`,Wc/2,2,1,P.w);TX(c,XL('c26a691',[b,q]),Wc/2,12,1,P.l2);
     for(let g=0;g<b;g++){const x=4+g*gw,on=g<a&&t>=tH+g*.4;c.fillStyle=on?P.red:P.m1;c.fillRect(x,by,gw-2,1);c.fillRect(x,by+bh,gw-2,1);c.fillRect(x,by,1,bh);c.fillRect(x+gw-3,by,1,bh+1);if(on&&said<g+1){said=g+1;SFX.digit(g)}}
     for(let k=0;k<n;k++){const ap=tD+k*dt;if(t<ap)continue;const g=k%b,i=Math.floor(k/b),tx=4+g*gw+3+(i%cols)*4,ty=by+3+Math.floor(i/cols)*4,u=tw(t,ap,.3);c.fillStyle=g<a&&t>=tH+g*.4?P.red:P.l3;c.fillRect(Math.round(Wc/2+(tx-Wc/2)*u),Math.round(22+(ty-22)*u),3,3)}
     if(t>=tH)TX(c,`TOMO ${a} GRUPO${a>1?'S':''}`,Wc/2,by+bh+6,1,P.red);
@@ -6404,7 +6412,7 @@ VZ.fadd=({a,c:cc,b},Wc)=>{
   return{h,dur,draw(c,t){
     TX(c,`${a}/${b} + ${cc}/${b}`,Wc/2,2,1,P.w);
     for(let k=0;k<nb;k++){const fill=[];for(let i=0;i<b;i++){const j=k*b+i;if(j<a&&t>=ta+j*sp)fill[i]=CHO;else if(j>=a&&j<s&&t>=tc+(j-a)*sp)fill[i]=CHO2}barP(c,x0,16+k*16,bw,10,b,fill)}
-    if(t>=tE){TX(c,`= ${s}/${b} PEDAZOS`,Wc/2,16+nb*16,1,P.red);numLine(c,x0,bw,h-16,nb,s/b,tw(t,tE+.3,.8))}
+    if(t>=tE){TX(c,XL('c4d3fe',[s,b]),Wc/2,16+nb*16,1,P.red);numLine(c,x0,bw,h-16,nb,s/b,tw(t,tE+.3,.8))}
   }};
 };
 // denominadores distintos: se vuelven a cortar las dos barras en pedazos iguales
@@ -6414,7 +6422,7 @@ VZ.fadd2=({a,b1,c:cc,b2,l},Wc)=>{
     const cut=t>=tC,p1=cut?l:b1,p2=cut?l:b2,f1=[],f2=[];for(let i=0;i<p1;i++)if(i<(cut?n1:a))f1[i]=CHO;for(let i=0;i<p2;i++)if(i<(cut?n2:cc))f2[i]=CHO2;
     barP(c,x0,4,bw,9,p1,f1);TX(c,cut?`${a}/${b1} = ${n1}/${l}`:`${a}/${b1}`,Wc/2,15,1,P.l2);
     barP(c,x0,28,bw,9,p2,f2);TX(c,cut?`${cc}/${b2} = ${n2}/${l}`:`${cc}/${b2}`,Wc/2,39,1,P.l2);
-    if(cut)TX(c,`CORTO TODO EN ${l} PEDAZOS`,Wc/2,52,1,P.red);
+    if(cut)TX(c,XL('c2e904c',[l]),Wc/2,52,1,P.red);
     if(t>=tS){for(let k=0;k<nb;k++){const fill=[];for(let i=0;i<l;i++){const j=k*l+i;if(j<n1)fill[i]=CHO;else if(j<s&&t>=tS+(j-n1)*.08)fill[i]=CHO2}barP(c,x0,64+k*14,bw,9,l,fill)}
       if(t>=tS+.9)numLine(c,x0,bw,h-14,nb,s/l,tw(t,tS+1,.8))}
   }};
@@ -6423,12 +6431,12 @@ VZ.fadd2=({a,b1,c:cc,b2,l},Wc)=>{
 VZ.fdiv=({n,b},Wc)=>{
   const v=n/b,h=88,bw=Wc-24,x0=12,tC=.6,tS=tC+b*.2+.2,dur=tS+2.4;
   return{h,dur,draw(c,t){
-    TX(c,`${fmt(n)} ÷ ${b}: CINTA EN ${b} PARTES`,Wc/2,2,1,P.w);
+    TX(c,XL('cf5e52e',[fmt(n),b,b]),Wc/2,2,1,P.w);
     const g=tw(t,tS,.5)*3,pw_=(bw-(b-1)*g)/b;
     for(let i=0;i<b;i++){const x=x0+i*(pw_+g);c.fillStyle=i===0&&t>=tS+.6?P.red:P.l2;c.fillRect(Math.round(x),26,Math.max(1,Math.round(pw_)),10)}
     for(let i=1;i<b;i++)if(t>=tC+i*.2&&g<.5){c.fillStyle=P.k;c.fillRect(Math.round(x0+i*bw/b),24,1,14)}
     TX(c,'0',x0,40,1,P.l1);TX(c,fmt(n),x0+bw,40,1,P.l1);
-    if(t>=tS+.6){TX(c,fmt(v),x0+pw_/2,16,1,P.red);TX(c,`CADA PARTE: ${fmt(v)}`,Wc/2,h-18,2,P.red)}
+    if(t>=tS+.6){TX(c,fmt(v),x0+pw_/2,16,1,P.red);TX(c,XL('c890b07',[fmt(v)]),Wc/2,h-18,2,P.red)}
   }};
 };
 const tileSz=(k,Wc,maxH)=>Math.max(2,Math.min(7,Math.floor((Wc-40)/k),Math.floor(maxH/k)));
@@ -6436,7 +6444,7 @@ const tileSz=(k,Wc,maxH)=>Math.max(2,Math.min(7,Math.floor((Wc-40)/k),Math.floor
 VZ.sq=({k},Wc)=>{
   const ts=tileSz(k,Wc,70),gw=k*ts,x0=Math.round((Wc-gw)/2),y0=16,h=y0+gw+30,sp=Math.min(.3,2.4/k),dur=.4+k*sp+1.8;let said=0;
   return{h,dur,draw(c,t){
-    TX(c,`${k} × ${k}: UN CUADRADO`,Wc/2,2,1,P.w);
+    TX(c,XL('c89e656',[k,k]),Wc/2,2,1,P.w);
     for(let r=0;r<k;r++){if(t<.4+r*sp)continue;for(let i=0;i<k;i++){c.fillStyle=(r+i)%2?P.l2:P.l3;c.fillRect(x0+i*ts,y0+r*ts,ts-1,ts-1)}TX(c,String((r+1)*k),x0+gw+12,y0+r*ts+ts/2-3,1,r===k-1?P.red:P.l1);if(said<=r){said=r+1;SFX.digit(Math.min(r,9))}}
     TX(c,String(k),x0-8,y0+gw/2-3,1,P.w);
     if(t>=.4+k*sp)TX(c,`${k}² = ${k*k}`,Wc/2,h-16,2,P.red);
@@ -6446,7 +6454,7 @@ VZ.sq=({k},Wc)=>{
 VZ.sqrt=({k,pre},Wc)=>{
   const n=k*k,ts=tileSz(k,Wc,64),c0=Math.max(1,Math.floor((Wc-12)/ts)),sH=Math.ceil(n/c0)*ts,gw=k*ts,x0=Math.round((Wc-gw)/2),y0=pre?26:16,h=y0+Math.max(sH,gw)+30,tM=.8,dur=tM+2.2+1.8;
   return{h,dur,draw(c,t){
-    TX(c,pre?`${fmt(pre[0])} + ${pre[1]} = ${n}`:`¿QUÉ CUADRADO TIENE ${n}?`,Wc/2,2,1,P.w);if(pre)TX(c,`√${n}: ¿QUÉ CUADRADO?`,Wc/2,12,1,P.l2);
+    TX(c,pre?`${fmt(pre[0])} + ${pre[1]} = ${n}`:XL('ceaf0f3',[n]),Wc/2,2,1,P.w);if(pre)TX(c,XL('cb2461e',[n]),Wc/2,12,1,P.l2);
     for(let i=0;i<n;i++){const sx=6+(i%c0)*ts,sy=y0+Math.floor(i/c0)*ts,tx=x0+(i%k)*ts,ty=y0+Math.floor(i/k)*ts,u=tw(t,tM+i*(1.6/n),.5);c.fillStyle=u>=1&&(i%k===0||i<k)?P.red:P.l3;c.fillRect(Math.round(sx+(tx-sx)*u),Math.round(sy+(ty-sy)*u),ts-1,ts-1)}
     if(t>=tM+2.2){TX(c,String(k),x0-8,y0+gw/2-3,1,P.red);TX(c,`LADO ${k} → √${n} = ${k}`,Wc/2,h-16,2,P.red)}
   }};
@@ -6460,14 +6468,14 @@ VZ.cube=({k,neg},Wc)=>{
     for(let l=0;l<k;l++){const ap=.4+l*tL;if(t<ap)continue;const u=tw(t,ap,.4),dy=(1-u)*-20;if(u>=1&&said<=l){said=l+1;SFX.digit(l)}
       for(let sm=0;sm<=2*(k-1);sm++)for(let i=0;i<k;i++){const j=sm-i;if(j<0||j>=k)continue;isoBlock(c,cx+(i-j)*s,cy+(i+j)*s/2-l*s+dy,s,['#f5d23a','#9c770e','#c79a1f'])}
       TX(c,`CAPA ${l+1}: ${(l+1)*k*k}`,Wc-24,14+l*9,1,P.l1)}
-    if(t>=.4+k*tL)TX(c,neg?`(−${k})³ = −${k**3}`:`RAÍZ 3 DE ${k**3} = ${k}`,Wc/2,h-16,2,P.red);
+    if(t>=.4+k*tL)TX(c,neg?`(−${k})³ = −${k**3}`:XL('cba11a6',[k**3,k]),Wc/2,h-16,2,P.red);
   }};
 };
 // 2ⁿ: cada paso duplica las casillas
 VZ.pow2=({n},Wc)=>{
   const cs=Math.max(2,Math.min(4,Math.floor((Wc-70)/16))),gx=6,gy=16,h=gy+Math.max(16*cs,n*9)+24,sp=.55,dur=.4+n*sp+1.8;let said=0;
   return{h,dur,draw(c,t){
-    TX(c,`2^${n}: DUPLICA ${n} VECES`,Wc/2,2,1,P.w);
+    TX(c,XL('cf59368',[n,n]),Wc/2,2,1,P.w);
     const st=clamp(Math.floor((t-.4)/sp)+1,0,n),cnt=st?2**st:0,prev=st>1?2**(st-1):0;
     for(let i=0;i<cnt;i++){c.fillStyle=i>=prev?P.red:P.l3;c.fillRect(gx+(i%16)*cs,gy+Math.floor(i/16)*cs,cs-1,cs-1)}
     for(let i=1;i<=st;i++)TX(c,`×2 → ${2**i}`,gx+16*cs+(Wc-gx-16*cs)/2,gy+(i-1)*9,1,i===st?P.red:P.l1);
@@ -6496,7 +6504,7 @@ VZ.unit=({f,a,v,fr,c:k},Wc)=>{
     const an=tw(t,.4,1.4)*th,px=cx+Math.cos(an)*R0,py=cy-Math.sin(an)*R0;
     lnP(c,cx,cy,px,py,P.w);circP(c,cx,cy,6,P.y,0,an);dotP(c,px,py,APC[APPLEC].r,1);
     if(t>=2.1){const u=tw(t,2.1,.6);
-      if(f==='sin'){lnP(c,px,cy,px,cy+(py-cy)*u,P.red);TX(c,'ALTURA',px+(px<cx?-16:16),(cy+py)/2-3,1,P.red)}
+      if(f==='sin'){lnP(c,px,cy,px,cy+(py-cy)*u,P.red);TX(c,XL('c8bf75c'),px+(px<cx?-16:16),(cy+py)/2-3,1,P.red)}
       else if(f==='cos'){lnP(c,cx,cy+1,cx+(px-cx)*u,cy+1,P.red);TX(c,'ANCHO',(cx+px)/2,cy+4,1,P.red)}
       else{const tv=Math.tan(th);if(Math.abs(tv)<=1.6){dashP(c,cx+R0,cy-R0-4,cx+R0,cy+R0+4,P.m3);lnP(c,cx+R0,cy,cx+R0,cy-tv*R0*u,P.red);lnP(c,cx,cy,cx+R0,cy-tv*R0,P.l2);TX(c,'PENDIENTE',cx+R0-4,cy+R0+4,1,P.red)}}}
     if(t>=3)TX(c,`= ${fr}${k?` → ${k} × ${fmt(v)} = ${fmt(k*v)}`:''}`,Wc/2,h-12,1,P.red);
@@ -6519,7 +6527,7 @@ VZ.pyth=({k},Wc)=>{
 VZ.soh=({k},Wc)=>{
   const h=104,u=Math.max(4,Math.min((Wc-40)/4,(h-44)/3)),x0=Math.round((Wc-4*u)/2),y0=Math.round(18+3*u+4),A=[x0,y0],Bp=[x0+4*u,y0],Cp=[x0+4*u,y0-3*u],dur=5.4;
   return{h,dur,draw(c,t){
-    TX(c,'sin θ = OPUESTO ÷ HIP',Wc/2,2,1,P.w);
+    TX(c,XL('c3a8a95'),Wc/2,2,1,P.w);
     lnP(c,A[0],A[1],Bp[0],Bp[1],P.l2);lnP(c,A[0],A[1],Cp[0],Cp[1],P.w);circP(c,x0,y0,8,P.y,0,Math.atan2(3,4));TX(c,'θ',x0+12,y0-8,1,P.y);
     TX(c,`HIP ${5*k}`,(A[0]+Cp[0])/2-14,(A[1]+Cp[1])/2-8,1,P.w);
     const g=tw(t,1.6,1.4);lnP(c,Bp[0],Bp[1],Bp[0],Bp[1]-3*u*g,P.red);if(g>0)TX(c,f2s(5*k*.6*g),Bp[0]+12,Bp[1]-1.5*u*g-3,1,P.red);
@@ -6558,9 +6566,9 @@ VZ.bal=({m,b,c:cc,s},Wc)=>{
     if(b){const u=tw(t,t1,.7);if(u<1){c.globalAlpha=1-u;const wy=ly-(m>3?24:16)-u*20;c.fillStyle=P.m3;c.fillRect(Math.round(lx-6),Math.round(wy),13,7);TX(c,fmt(b),lx,wy,1,P.w);c.globalAlpha=1}}
     const rv=t>=t1+.4?r:cc,lbl=t>=t2+.7&&m>1?`${fmt(r)}÷${m}`:fmt(rv),ww=pw(lbl)+6;c.fillStyle=P.m3;c.fillRect(Math.round(rx-ww/2),Math.round(ry-9),ww,8);TX(c,lbl,rx,ry-8,1,P.w);
     TX(c,`${m}x ${b>=0?'+':'−'} ${Math.abs(b)} = ${fmt(cc)}`,Wc/2,2,1,t<t1?P.w:P.l1);
-    if(t>=t1&&b)TX(c,`${b>0?'QUITO':'SUMO'} ${Math.abs(b)} A LOS DOS LADOS`,Wc/2,12,1,t<t2?P.red:P.l1);
+    if(t>=t1&&b)TX(c,XL('cde27dc',[b>0?XL('cquito'):XL('csumo'),Math.abs(b)]),Wc/2,12,1,t<t2?P.red:P.l1);
     if(t>=t1+.4&&t<t2)TX(c,`${m}x = ${fmt(r)}`,Wc/2,22,1,P.red);
-    if(t>=t2)TX(c,`${m}x = ${fmt(r)} → REPARTO EN ${m}`,Wc/2,22,1,P.red);
+    if(t>=t2)TX(c,XL('caef0c',[m,fmt(r),m]),Wc/2,22,1,P.red);
     if(t>=t2+.7)TX(c,`x = ${fmt(s)}`,Wc/2,h-16,2,P.red);
   }};
 };
@@ -6568,7 +6576,7 @@ VZ.bal=({m,b,c:cc,s},Wc)=>{
 VZ.roots=({lo,hi},Wc)=>{
   const f=x=>(x-lo)*(x-hi),x0=lo-1.6,x1=hi+1.6,[y0,y1]=yRange(f,x0,x1),h=112,pl=plotBox(Wc,h,x0,x1,Math.min(y0,-1),Math.max(y1,1),14,22),dur=5.4;
   return{h,dur,draw(c,t){
-    TX(c,'¿DÓNDE CORTA EL EJE X?',Wc/2,2,1,P.w);axesP(c,pl);curveP(c,pl,f,P.l3,tw(t,.4,1.6));
+    TX(c,XL('c6292de'),Wc/2,2,1,P.w);axesP(c,pl);curveP(c,pl,f,P.l3,tw(t,.4,1.6));
     if(t>=2.2)for(const r of[lo,hi]){const on=(t*4|0)%2||t>3.4;if(on)dotP(c,pl.X(r),pl.Y(0),r===hi&&t>=3.4?P.red:P.w,1);TX(c,fmt(r),pl.X(r),pl.Y(0)+4,1,r===hi&&t>=3.4?P.red:P.l2)}
     if(t>=3.4)TX(c,`x = ${lo} O x = ${hi} → MAYOR ${hi}`,Wc/2,h-12,1,P.red);
   }};
@@ -6577,10 +6585,10 @@ VZ.roots=({lo,hi},Wc)=>{
 VZ.vert=({h:hv,c:cc},Wc)=>{
   const f=x=>x*x-2*hv*x+cc,x0=hv-3.2,x1=hv+3.2,[y0,y1]=yRange(f,x0,x1),h=112,pl=plotBox(Wc,h,x0,x1,y0,y1,14,22),dur=5.6;
   return{h,dur,draw(c,t){
-    TX(c,'LA PARÁBOLA ES UN ESPEJO',Wc/2,2,1,P.w);axesP(c,pl);curveP(c,pl,f,P.l3,tw(t,.4,1.4));
+    TX(c,XL('c450c63'),Wc/2,2,1,P.w);axesP(c,pl);curveP(c,pl,f,P.l3,tw(t,.4,1.4));
     [2.4,1.4].forEach((d,i)=>{if(t<2+i*.6)return;const y=pl.Y(f(hv+d));dotP(c,pl.X(hv-d),y,P.w);dotP(c,pl.X(hv+d),y,P.w);dashP(c,pl.X(hv-d),y,pl.X(hv+d),y,P.l1)});
     if(t>=3.3){dashP(c,pl.X(hv),pl.T,pl.X(hv),pl.B,P.red);dotP(c,pl.X(hv),pl.Y(f(hv)),P.red,1)}
-    if(t>=3.9)TX(c,`VÉRTICE EN x = ${hv}`,Wc/2,h-12,1,P.red);
+    if(t>=3.9)TX(c,XL('c6745ca',[hv]),Wc/2,h-12,1,P.red);
   }};
 };
 // determinante: diagonal que baja menos diagonal que sube
@@ -6598,7 +6606,7 @@ VZ.det=({A},Wc)=>{
 VZ.rowcol=({r,c:v},Wc)=>{
   const h=100,cx=Math.round(Wc/2),p0=r[0]*v[0],p1=r[1]*v[1],dur=6;
   return{h,dur,draw(c,t){
-    TX(c,'FILA × COLUMNA',Wc/2,2,1,P.w);
+    TX(c,XL('c49059'),Wc/2,2,1,P.w);
     const u=tw(t,.8,1);
     for(let i=0;i<2;i++){const sx=cx-26+i*20,sy=16,tx=cx-16,ty=34+i*16;TX(c,fmt(r[i]),sx+(tx-sx)*u,sy+(ty-sy)*u,1,i?P.red:'#4fae35');TX(c,fmt(v[i]),cx+8,34+i*16,1,P.l3);if(u>=1)TX(c,'·',cx-4,34+i*16,1,P.l2)}
     c.fillStyle=P.l2;c.fillRect(cx+1,30,1,30);c.fillRect(cx+16,30,1,30);
@@ -6614,26 +6622,26 @@ function limScene(f,a,x0,x1,head,val,Wc,hole,yr){
     if(hole&&t<4.6)holeP(c,pl.X(a),pl.Y(val),P.l3);
     if(t>=1.6){const u=tw(t,1.6,2.6),d=(Math.min(a-x0,x1-a)*.85)*(1-u)+.02;for(const s of[-1,1]){const x=a+s*d,y=f(x);dotP(c,pl.X(x),pl.Y(y),s<0?'#4fae35':P.red,1);dashP(c,pl.X(x),pl.Y(y),pl.X(x),pl.B,P.m2)}
       TX(c,`y ≈ ${f2s(f(a-d))}`,Wc/2,h-20,1,P.l2)}
-    if(t>=4.6){if(hole)dotP(c,pl.X(a),pl.Y(val),P.red,1);TX(c,`EL LÍMITE ES ${f2s(val)}`,Wc/2,h-11,1,P.red)}
+    if(t>=4.6){if(hole)dotP(c,pl.X(a),pl.Y(val),P.red,1);TX(c,XL('cd8131d',[f2s(val)]),Wc/2,h-11,1,P.red)}
   }};
 }
-VZ.limL=({m,b,a},Wc)=>limScene(x=>m*x+b,a,a-4,a+4,`x → ${a}: SOLO SUSTITUYE`,m*a+b,Wc,false);
-VZ.limH=({a},Wc)=>limScene(x=>x+a,a,a-4,a+4,`0/0 → SE CANCELA → x + ${a}`,2*a,Wc,true);
-VZ.limS=(o,Wc)=>limScene(x=>Math.abs(x)<1e-9?1:Math.sin(x)/x,0,-9,9,'sin x / x CERCA DE 0',1,Wc,true,[-.4,1.2]);
+VZ.limL=({m,b,a},Wc)=>limScene(x=>m*x+b,a,a-4,a+4,XL('cfc4842',[a]),m*a+b,Wc,false);
+VZ.limH=({a},Wc)=>limScene(x=>x+a,a,a-4,a+4,XL('ca72dc1',[a]),2*a,Wc,true);
+VZ.limS=(o,Wc)=>limScene(x=>Math.abs(x)<1e-9?1:Math.sin(x)/x,0,-9,9,XL('c78c45'),1,Wc,true,[-.4,1.2]);
 VZ.limI=({k,c:cc},Wc)=>{
   const f=x=>k+cc/x,x0=.5,x1=40,h=112,pl=plotBox(Wc,h,0,x1,0,k+cc*1.2+1,14,24),dur=6;
   return{h,dur,draw(c,t){
-    TX(c,`x → ∞: ${cc}/x SE VUELVE 0`,Wc/2,2,1,P.w);axesP(c,pl);dashP(c,pl.L,pl.Y(k),pl.Rr,pl.Y(k),P.red);TX(c,String(k),pl.L+6,pl.Y(k)-9,1,P.red);
+    TX(c,XL('c873ff4',[cc]),Wc/2,2,1,P.w);axesP(c,pl);dashP(c,pl.L,pl.Y(k),pl.Rr,pl.Y(k),P.red);TX(c,String(k),pl.L+6,pl.Y(k)-9,1,P.red);
     curveP(c,pl,f,P.l3,tw(t,.3,1.2),x0,x1);
     if(t>=1.6){const x=1+tw(t,1.6,3)*38;dotP(c,pl.X(x),pl.Y(f(x)),APC[APPLEC].r,1);TX(c,`x = ${Math.round(x)} → y = ${f2s(f(x))}`,Wc/2,h-20,1,P.l2)}
-    if(t>=4.6)TX(c,`EL LÍMITE ES ${k}`,Wc/2,h-11,1,P.red);
+    if(t>=4.6)TX(c,XL('cd8131d',[k]),Wc/2,h-11,1,P.red);
   }};
 };
 // derivada: la recta tangente y su pendiente (sube ÷ avanza)
 VZ.tan=({kind,m,a,b,X},Wc)=>{
   const f=kind==='lin'?x=>m*x+b:kind==='quad'?x=>a*x*x+b*x:x=>a*x*x*x-b*x,d=kind==='lin'?m:kind==='quad'?2*a*X+b:3*a*X*X-b,x0=X-2.5,x1=X+2.5,[y0,y1]=yRange(f,x0,x1,.25),h=112,pl=plotBox(Wc,h,x0,x1,y0,y1,14,22),dur=6,fx=f(X);
   return{h,dur,draw(c,t){
-    TX(c,'PENDIENTE DE LA TANGENTE',Wc/2,2,1,P.w);axesP(c,pl);curveP(c,pl,f,P.l3,tw(t,.3,1.2));
+    TX(c,XL('c8f26fe'),Wc/2,2,1,P.w);axesP(c,pl);curveP(c,pl,f,P.l3,tw(t,.3,1.2));
     if(t>=1.5){dotP(c,pl.X(X),pl.Y(fx),APC[APPLEC].r,1);const u=tw(t,1.6,.8)*2.2;curveP(c,pl,x=>fx+d*(x-X),P.red,1,X-u,X+u)}
     if(t>=2.8){const xa=pl.X(X),xb=pl.X(X+1),ya=pl.Y(fx),yb=pl.Y(fx+d);lnP(c,xa,ya,xb,ya,'#4fae35');lnP(c,xb,ya,xb,yb,P.y);TX(c,'1',(xa+xb)/2,ya+3,1,'#4fae35');TX(c,fmt(d),xb+8,(ya+yb)/2-3,1,P.y)}
     if(t>=3.8){TX(c,`AVANZO 1, SUBO ${fmt(d)}`,Wc/2,h-20,1,P.l2);TX(c,`f'(${fmt(X)}) = ${fmt(d)}`,Wc/2,h-11,1,P.red)}
@@ -6643,10 +6651,10 @@ VZ.tan=({kind,m,a,b,X},Wc)=>{
 VZ.area=({kind,k,a,B},Wc)=>{
   const f=kind==='k'?()=>k:kind==='2x'?x=>2*x:x=>3*x*x,F=kind==='k'?x=>k*x:kind==='2x'?x=>x*x:x=>x*x*x,x0=Math.min(0,a)-.4,x1=B+.4,h=112,pl=plotBox(Wc,h,x0,x1,0,f(B)*1.15+.5,14,24),dur=6;
   return{h,dur,draw(c,t){
-    TX(c,kind==='k'?`RECTÁNGULO DE ALTURA ${k}`:'ÁREA BAJO LA CURVA',Wc/2,2,1,P.w);axesP(c,pl);
+    TX(c,kind==='k'?XL('c23cb3e',[k]):XL('cc6f4f1'),Wc/2,2,1,P.w);axesP(c,pl);
     const u=tw(t,1,2.6),xe=a+(B-a)*u;c.globalAlpha=.45;c.fillStyle=P.red;for(let px=Math.round(pl.X(a));px<=pl.X(xe);px++){const y=pl.Y(f(pl.inX(px)));c.fillRect(px,Math.round(y),1,Math.round(pl.Y(0)-y))}c.globalAlpha=1;
     curveP(c,pl,f,P.l3,tw(t,.3,.8));for(const v of[a,B])TX(c,fmt(v),pl.X(v),pl.Y(0)+3,1,P.l2);
-    if(t>=1)TX(c,`ÁREA = ${f2s(F(xe)-F(a))}`,Wc/2,h-20,1,P.l2);
+    if(t>=1)TX(c,XL('cd728ea',[f2s(F(xe)-F(a))]),Wc/2,h-20,1,P.l2);
     if(t>=3.8)TX(c,`F(${B}) − F(${a}) = ${fmt(F(B)-F(a))}`,Wc/2,h-11,1,P.red);
   }};
 };
@@ -6654,7 +6662,7 @@ VZ.area=({kind,k,a,B},Wc)=>{
 VZ.roll=({r,mul=1},Wc)=>{
   const L=2*Math.PI*r*mul,h=100,su=Math.min((Wc-24)/(L+2*r),(h-48)/(2*r)),Rp=r*su,gy=h-26,x0=12+Rp,dur=5.6;
   return{h,dur,draw(c,t){
-    TX(c,mul<1?'MEDIA VUELTA DE LA RUEDA':`RADIO ${fmt(r)}: UNA VUELTA`,Wc/2,2,1,P.w);
+    TX(c,mul<1?XL('c2ace07'):XL('cee21d4',[fmt(r)]),Wc/2,2,1,P.w);
     c.fillStyle=P.l1;c.fillRect(6,gy,Wc-12,1);for(let v=0;v*su<=Wc-24;v++){c.fillRect(Math.round(12+v*su),gy,1,3);if(su>=14||v%2===0)TX(c,String(v),12+v*su,gy+5,1,P.m3)}
     const th=tw(t,.6,3)*2*Math.PI*mul,cx=x0+th*Rp;
     c.fillStyle=P.red;c.fillRect(12,gy-1,Math.round(th*Rp),2);
@@ -6666,7 +6674,7 @@ VZ.roll=({r,mul=1},Wc)=>{
 VZ.circA=({r},Wc)=>{
   const N=12,w=2*Math.PI/N,h=112,R0=Math.min(26,Math.floor((Wc-16)/Math.PI),Math.floor((h-40)/2)),s=R0*w,xs=Math.round((Wc-N/2*s)/2),yT=30,dur=6.2;
   return{h,dur,draw(c,t){
-    TX(c,'EL CÍRCULO EN GAJOS',Wc/2,2,1,P.w);
+    TX(c,XL('cc61127'),Wc/2,2,1,P.w);
     const u=tw(t,1.2,2.2),cc=[Wc/2,yT+R0];
     for(let i=0;i<N;i++){const bis0=(i+.5)*w,up=i%2===0,ap1=[xs+(i+1)*s/2,up?yT:yT+R0],bis1=up?Math.PI/2:-Math.PI/2,ap=lerpP(cc,ap1,u),bis=bis0+(((bis1-bis0+Math.PI*3)%(Math.PI*2))-Math.PI)*u;
       c.fillStyle=i%2?'#e86a8a':'#f6e3c4';c.beginPath();c.moveTo(ap[0],ap[1]);c.arc(ap[0],ap[1],R0,bis-w/2,bis+w/2);c.closePath();c.fill()}
@@ -6781,7 +6789,7 @@ function crackScreen(lx,ly){
 const EGGS=[
   {n:'ALBERT EINSTEIN',f:'E = mc²',a:['   .:*#*.*#*:*#*:.   ','  *#*:*#*:**#*:*#*:  ',' :#*.  .:*:.   .*#:  ',' *#*             *#  ',' #*   ** .  . **  *# ',' #   :o:     :o:   # ',' *:       ..       :*','  *      *##*      * ','  :*   *######*   *: ','   *  *##*..*##*  *  ','   :*   .*##*.   *:  ','    *.   ....   .*   ','     :*.      .*:    ','       :*####*:      ','         .**.        ']},
   {n:'ISAAC NEWTON',f:'F = m·a',a:['      .:*###*:.      ','    .*##*###*##*.    ','   *##*:.....:*##*   ','  *##:  .   .  :##*  ',' :##*  :o: :o:  *##: ',' *##:     .     :##* ',' *#*:    ...    :*#* ',' *##*   .***.   *##* ',' :*#*:   ...   :*#*: ','  *##*.       .*##*  ','  :*##**:...:**##*:  ','   *#*   :*:   *#*   ','   :*:  *   *  :*:   ','    *.  *   *  .*    ','         ***         ']},
-  {n:'PITÁGORAS',f:'a² + b² = c²',a:['  .*.*.*.*.*.*.     *',' *:           :*   **',' *   .**  **.  *  * *',' :   :o:  :o:  : *  *',' *      ..     ******',' :*    ....   *:     ','  *##*.    .*##*     ','  *####****####*     ','  :############:     ','   *##########*      ','    *########*       ','     :*####*:        ','       :**:          ']},
+  {n:XL('c46acd3'),f:'a² + b² = c²',a:['  .*.*.*.*.*.*.     *',' *:           :*   **',' *   .**  **.  *  * *',' :   :o:  :o:  : *  *',' *      ..     ******',' :*    ....   *:     ','  *##*.    .*##*     ','  *####****####*     ','  :############:     ','   *##########*      ','    *########*       ','     :*####*:        ','       :**:          ']},
   {n:'MARIE CURIE',f:'Po · Ra',a:['        .***.        ','       *#####*       ','    .*#########*.    ','   *###*:...:*###*   ','  :##*         *##:  ','  *#*  .*. .*.  *#*  ','  *#   :o: :o:   #*  ','  :#      .      #:  ','   *     ...     *   ','   :*   .***.   *:   ','    :*.  ...  .*:    ','      :**...**:      ','       .*###*.    o  ','      *#######*  ( ) ','                 ._. ']},
 ];
 function faceArt(o){
@@ -6806,10 +6814,10 @@ function faceArt(o){
 }
 EGGS.push(
   {n:'EUCLIDES',f:'mcd(48, 18) = 6',a:faceArt({beard:1,prop:['.**.',' ** ',' ** ','/  \\','o  o']})},
-  {n:'ARQUÍMEDES',f:'V = 4/3 π r³',a:faceArt({beard:1,hat:'skull',prop:[' ** ','*..*','*..*',' ** ']})},
-  {n:'AL-JWARIZMI',f:'x² + 10x = 39',a:faceArt({hat:'turban',must:1,beard:1})},
+  {n:XL('cc2a1d4'),f:'V = 4/3 π r³',a:faceArt({beard:1,hat:'skull',prop:[' ** ','*..*','*..*',' ** ']})},
+  {n:XL('c61cdca'),f:'x² + 10x = 39',a:faceArt({hat:'turban',must:1,beard:1})},
   {n:'FIBONACCI',f:'1 1 2 3 5 8 13',a:faceArt({hat:'cap',must:1,prop:['**  ','  * ','*.* ',' *  ']})},
-  {n:'RENÉ DESCARTES',f:'pienso, luego existo',a:faceArt({hat:'musk',long:1,must:1})},
+  {n:XL('ccace31'),f:'pienso, luego existo',a:faceArt({hat:'musk',long:1,must:1})},
   {n:'GOTTFRIED LEIBNIZ',f:'∫ y dx',a:faceArt({hat:'wig'})},
   {n:'LEONHARD EULER',f:'e^iπ + 1 = 0',a:faceArt({hat:'skull',patch:1,side:1})},
   {n:'CARL F. GAUSS',f:'1 + 2 + … + 100 = 5050',a:faceArt({hat:'skull',side:1,prop:['5050']})},
@@ -6849,7 +6857,7 @@ function update(dt){
   for(const ar of S.arrows){ar.t+=dt;if(!ar.done&&ar.t>=ar.T){ar.done=true;const sa=S.a;
     // agarrada no cuenta: el zombi que la sujeta le hace de escudo
     if(sa.st==='rest'&&!S.grab&&Math.abs(scx(sa.x)-scx(ar.x1))<7)arrowHit(ar);
-    else{ar.stuck=true;hit('cajaChina',.6);if(ar.miss&&sa.st==='rest')S.texts.push({x:ar.x1,y:GY-30,txt:'¡FALLÓ!',c:P.y,t:0,life:.9,world:true});
+    else{ar.stuck=true;hit('cajaChina',.6);if(ar.miss&&sa.st==='rest')S.texts.push({x:ar.x1,y:GY-30,txt:XL('c2df2ab'),c:P.y,t:0,life:.9,world:true});
       if(alive(ar.z)&&R()<.5)say(ar.z,pick(ZES()?(ar.miss?['FALLÉ A PROPÓSITO, POR LÁSTIMA','EL ARCO ESTÁ TORCIDO, NO YO','DISPARO DE ADVERTENCIA, PLEBEYA','EL VIENTO ME ENVIDIA']:['¿SALTÓ? ¡ESO ES ILEGAL EN MI REINO!','FALLÉ A PROPÓSITO, POR LÁSTIMA','EL VIENTO ME ENVIDIA']):(ar.miss?[...ZS('miss',[]),ZS('dodge',[])[1]]:[ZS('dodge',[])[0],...ZS('miss',[])])))}}}
   S.arrows=S.arrows.filter(ar=>!ar.done||(ar.stuck&&ar.t<ar.T+1.2));
   // aparición y persecución
@@ -6882,7 +6890,7 @@ function update(dt){
     if(a.y<=0&&!a.bounced){a.bounced=true;a.y=0;a.vy=Math.max(3.5,-a.vy*.3);a.sq=.55;a.sqv=0;SFX.fall();S.shake=9;S.rings.push({x:a.x,t:0});for(let i=0;i<24;i++){const ang=-Math.PI*R(),s_=20+R()*90;S.parts.push({x:scx(a.x),y:GY-2,vx:Math.cos(ang)*s_,vy:Math.sin(ang)*s_,t:0,life:.5+R()*.5,c:pick([P.l1,P.l2,P.y,P.o])})}}
     else if(a.y<=0){a.y=0;a.st='rest';a.sq=.3;a.sqv=0;SFX.thud();S.shake=2;
       for(let i=0;i<30;i++){const ang=-Math.PI*R(),s=20+R()*90;S.parts.push({x:scx(a.x),y:GY-2,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.5+R()*.5,c:pick([P.l1,P.l2,P.y,P.o])})}
-      newt('<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.',true);
+      newt(XL('cbe57fd'),true);
       newProblem();}
   }else if(a.st==='air'){
     a.t+=dt;const k=Math.min(1,a.t/a.T);
