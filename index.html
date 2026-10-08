@@ -845,9 +845,11 @@ const OCR=(()=>{
 })();
 
 /* ============ Currículo: de la suma al cálculo. Cada problema = un número al que salta la manzana ============ */
-const addHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y avanza ${b} lugares a la derecha`;const ua=a%10,ub=b%10,us=ua+ub,c=us>=10?1:0,ta=Math.floor(a/10),tb=Math.floor(b/10);return`unidades: ${ua} + ${ub} = ${us}${c?` (escribo ${us%10} y llevo 1)`:''}; decenas: ${ta} + ${tb}${c?' + 1':''} = ${ta+tb+c}`};
-const subHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y retrocede ${b} lugares`;const ua=a%10,ub=b%10,ta=Math.floor(a/10),tb=Math.floor(b/10);return ua<ub?`${ua} no alcanza para quitar ${ub}: pido 1 decena → ${ua+10} − ${ub} = ${ua+10-ub}; decenas: ${ta-1} − ${tb} = ${ta-1-tb}`:`unidades: ${ua} − ${ub} = ${ua-ub}; decenas: ${ta} − ${tb} = ${ta-tb}`};
-const mulHint=(a,b)=>{if(a<10&&b<=5)return`${a} × ${b} es sumar ${a} ${b} veces: ${Array(b).fill(a).join(' + ')}`;if(a>=10){const t=Math.floor(a/10)*10;return`descompón: ${t} × ${b} = ${t*b} y ${a%10} × ${b} = ${(a%10)*b}; junta: ${t*b} + ${(a%10)*b}`}return`${b} grupos de ${a}`};
+const up10=n=>Math.ceil(n/10)*10;
+const addHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y avanza ${b} lugares a la derecha`;if(a%10>=9&&b%10<9)[a,b]=[b,a];if(b>=9&&b%10>=9){const r=up10(b);return`${b} es casi ${r}: ${a} + ${r} = ${a+r}; me pasé ${r-b}, así que resto ${r-b}: ${a+b}`}const ua=a%10,ub=b%10,ta=a-ua,tb=b-ub;return`de izquierda a derecha: ${ta} + ${tb} = ${ta+tb} y ${ua} + ${ub} = ${ua+ub}; junta ${ta+tb} + ${ua+ub}`};
+const subHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y retrocede ${b} lugares`;const ua=a%10,ub=b%10,tb=b-ub;if(b>=9&&ub>=9){const r=up10(b);return`${b} es casi ${r}: ${a} − ${r} = ${a-r}; quité ${r-b} de más, lo devuelvo: ${a-r} + ${r-b}`}if(b<10)return ua<b?`baja a la decena: ${a} − ${ua} = ${a-ua}; faltan ${b-ua} por quitar: ${a-ua} − ${b-ua}`:`quita ${b} de las unidades: ${ua} − ${b} = ${ua-b}, y quedan ${a-ua} adelante`;return`quita primero las decenas: ${a} − ${tb} = ${a-tb}${ub?`; luego las unidades: ${a-tb} − ${ub}`:''}`};
+const mulHint=(a,b)=>{if(a<10&&b<=5)return`${a} × ${b} es sumar ${a} ${b} veces: ${Array(b).fill(a).join(' + ')}`;if(a===25)return`piensa en monedas de 25: ${b} monedas valen ${25*b}`;if(a>=10){const u=a%10;if(u>=9){const r=up10(a);return`${a} es casi ${r}: ${r} × ${b} = ${r*b}; me pasé ${r-a} × ${b} = ${(r-a)*b}; resto: ${r*b} − ${(r-a)*b}`}const t=a-u;return`descompón de izquierda a derecha: ${t} × ${b} = ${t*b} y ${u} × ${b} = ${u*b}; junta: ${t*b} + ${u*b}`}if(b>=8)return`${b} es casi 10: ${a} × 10 = ${a*10}, menos ${a} × ${10-b} = ${a*(10-b)}: ${a*10} − ${a*(10-b)}`;return`parte ${b} en 5 + ${b-5}: ${a} × 5 = ${a*5} y ${a} × ${b-5} = ${a*(b-5)}; junta ${a*5} + ${a*(b-5)}`};
+const divHint=(n,b,q)=>{if(q<4)return null;let q1=Math.floor(q/2);for(let k=q-1;k>=1;k--)if(b*k%10===0){q1=k;break}const q2=q-q1;return`parte ${n} en ${b*q1} + ${b*q2}, los dos se dividen fácil entre ${b}: ${q1} + ${q2} = ${q}`};
 const sg=v=>v<0?' − '+fmt(-v):' + '+fmt(v);
 const lin=(m,b)=>`${m===1?'':m===-1?MINUS:fmt(m)}x${b?sg(b):''}`;
 const tailBC=(b,c)=>(b?(b>0?' + ':' − ')+(Math.abs(b)===1?'':Math.abs(b))+'x':'')+(c?sg(c):'');
@@ -872,7 +874,7 @@ function gMult(x,d){
 function gDiv(x,d){
   if(isInt(x)&&x>=4&&R()<.55){const ds=[];for(let b=2;b<=9;b++)if(x%b===0&&x/b>=2)ds.push(b);if(ds.length){const b=pick(ds);return{k:[Sx(`x ÷ ${b}`)],ans:x/b,ex:[`x = ${x}: x ÷ ${b} = ${x} ÷ ${b}.`,`¿Cuántas veces cabe ${b} en ${x}? ${b} × ${x/b} = ${x}.`,`Resultado: ${x/b}.`]}}}
   let q=ri(2,4+Math.round(6*d)),b=ri(2,4+Math.round(5*d));if(d>.8&&R()<.4){b=ri(11,15);q=ri(2,9)}
-  return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,ex:[`Dividir es repartir: ¿cuántas veces cabe ${b} en ${q*b}?`,`Busca la multiplicación que lo deshace: ${b} × ${q} = ${q*b}.`,`Resultado: ${q}.`]};
+  return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,ex:[`Dividir es repartir: ¿cuántas veces cabe ${b} en ${q*b}?`,divHint(q*b,b,q)||`Busca la multiplicación que lo deshace: ${b} × ${q} = ${q*b}.`,`Resultado: ${q}.`]};
 }
 function gEnt(x,d){
   const r=R();
