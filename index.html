@@ -150,6 +150,11 @@ body.kb #kp{display:grid}
 #pick button{font-size:28px;font-weight:300;min-width:56px;height:56px;border-radius:14px;background:transparent;color:var(--fg);border:2px solid var(--line);cursor:pointer}
 #pick button:active{background:var(--fg);color:var(--bg)}
 #pick button.no{font-size:20px;color:var(--mut)}
+#pick .pq{flex-basis:100%;display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:2px}
+#pick .pq canvas{width:48px;height:48px;border:2px solid var(--fg);background:var(--bg);image-rendering:auto;flex:none}
+#pick .pqt{display:flex;flex-direction:column;gap:4px;text-align:left}
+#pick .pqt b{font-size:13px;letter-spacing:.12em;color:var(--fg);font-weight:600}
+#pick .pqt em{font-style:normal;font-size:12px;letter-spacing:.14em;color:var(--bg);background:var(--fg);padding:3px 6px 2px;align-self:flex-start}
 #kp .frk{display:none;grid-column:span 4;height:42px;font-size:18px;letter-spacing:.2em}body.frac #kp .frk{display:block}body.kb.frac #inbox{bottom:calc(var(--sb) + 254px)}body.kb.frac #bHelp{bottom:calc(var(--sb) + 312px)}
 body.kb #inbox{bottom:calc(var(--sb) + 204px)}
 body.kb #drawhint{display:none}
@@ -228,45 +233,45 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 #newt,#lawt{transition:opacity .6s ease,filter .6s ease}#newt:not(.on),#lawt:not(.on){filter:blur(3px)}
 #pips i{transition:background .5s ease}
 
-/* ===== derrota: tarjeta de papel viejo estilo Cuphead, hecha de píxeles ===== */
-#game:has(#sOver.show) #c{filter:sepia(.75) saturate(.7) contrast(1.15) brightness(.7);transition:filter 1.2s}
-#sOver.show{background:radial-gradient(ellipse at center,transparent 35%,rgba(20,10,4,.75) 100%)}
-#sOver::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,240,200,.05) 0 2px,transparent 2px 7px);mix-blend-mode:multiply}
+/* ===== derrota: tarjeta estilo Cuphead hecha de píxeles, en blanco y negro como el resto de la UI ===== */
+#game:has(#sOver.show) #c{filter:grayscale(1) contrast(1.2) brightness(.55);transition:filter 1.2s}
+#sOver.show{background:radial-gradient(ellipse at center,transparent 35%,color-mix(in srgb,var(--bg) 85%,transparent) 100%)}
+#sOver::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,color-mix(in srgb,var(--fg) 7%,transparent) 0 1px,transparent 1px 3px)}
 #sOver.show::after{opacity:1;animation:film .24s steps(2) infinite}
 @keyframes film{0%{transform:translate(0,0)}50%{transform:translate(-2px,1px)}100%{transform:translate(1px,-1px)}}
-#sOver .card{--fg:#2b1a10;--bg:#efe2c4;--card:#efe2c4;--mut:#6e5640;--line:rgba(43,26,16,.38);--red:#b5161c;color-scheme:light;
-  position:relative;color:var(--fg);border:4px solid var(--fg)!important;outline:2px solid var(--fg);outline-offset:-12px;padding:30px 26px;
-  background:radial-gradient(circle at 30% 20%,rgba(255,250,235,.55),transparent 60%),repeating-conic-gradient(rgba(90,60,30,.05) 0 25%,transparent 0 50%) 0 0/4px 4px,#efe2c4;
-  box-shadow:8px 8px 0 rgba(0,0,0,.55),inset 0 0 0 8px #e6d5b0,inset 0 0 60px rgba(120,80,30,.35)!important;-webkit-backdrop-filter:none;backdrop-filter:none;rotate:-1.2deg}
+#sOver .card{--red:var(--fg);position:relative;color:var(--fg);border:4px solid var(--fg)!important;outline:2px solid var(--fg);outline-offset:-12px;padding:30px 26px;
+  background:repeating-conic-gradient(color-mix(in srgb,var(--fg) 6%,transparent) 0 25%,transparent 0 50%) 0 0/4px 4px,var(--bg);
+  box-shadow:8px 8px 0 color-mix(in srgb,var(--fg) 40%,transparent)!important;-webkit-backdrop-filter:none;backdrop-filter:none;rotate:-1.2deg}
 #sOver.show .card{animation:cardDrop .55s cubic-bezier(.2,1.4,.4,1) both}
 @keyframes cardDrop{0%{translate:0 -120vh;rotate:7deg}100%{translate:0 0;rotate:-1.2deg}}
 #sOver .orn{position:absolute;inset:0;pointer-events:none;animation:none!important;
   background:linear-gradient(var(--fg),var(--fg)) 4px 4px/8px 8px no-repeat,linear-gradient(var(--fg),var(--fg)) calc(100% - 4px) 4px/8px 8px no-repeat,linear-gradient(var(--fg),var(--fg)) 4px calc(100% - 4px)/8px 8px no-repeat,linear-gradient(var(--fg),var(--fg)) calc(100% - 4px) calc(100% - 4px)/8px 8px no-repeat,
-  linear-gradient(var(--red),var(--red)) 18px 18px/4px 4px no-repeat,linear-gradient(var(--red),var(--red)) calc(100% - 18px) 18px/4px 4px no-repeat,linear-gradient(var(--red),var(--red)) 18px calc(100% - 18px)/4px 4px no-repeat,linear-gradient(var(--red),var(--red)) calc(100% - 18px) calc(100% - 18px)/4px 4px no-repeat}
-#sOver .dead{color:var(--red);letter-spacing:.05em;
-  text-shadow:3px 0 0 var(--fg),-3px 0 0 var(--fg),0 3px 0 var(--fg),0 -3px 0 var(--fg),3px 3px 0 var(--fg),-3px -3px 0 var(--fg),3px -3px 0 var(--fg),-3px 3px 0 var(--fg),7px 7px 0 rgba(43,26,16,.45)}
+  linear-gradient(var(--fg),var(--fg)) 18px 18px/4px 4px no-repeat,linear-gradient(var(--fg),var(--fg)) calc(100% - 18px) 18px/4px 4px no-repeat,linear-gradient(var(--fg),var(--fg)) 18px calc(100% - 18px)/4px 4px no-repeat,linear-gradient(var(--fg),var(--fg)) calc(100% - 18px) calc(100% - 18px)/4px 4px no-repeat}
+#sOver .dead{color:var(--fg);letter-spacing:.05em;
+  text-shadow:3px 0 0 var(--bg),-3px 0 0 var(--bg),0 3px 0 var(--bg),0 -3px 0 var(--bg),3px 3px 0 var(--bg),-3px -3px 0 var(--bg),3px -3px 0 var(--bg),-3px 3px 0 var(--bg),6px 6px 0 var(--fg),8px 8px 0 var(--fg)}
 #sOver.show .dead{animation:stamp .5s cubic-bezier(.2,1.6,.4,1) .35s both,wob 1.1s steps(2) .9s infinite}
 @keyframes wob{0%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(-3deg) scale(1.03,.97)}}
 #sOver .track{height:52px;margin-top:2px}
 #sOver .track .line{top:26px;height:4px;background:repeating-linear-gradient(90deg,var(--fg) 0 6px,transparent 6px 10px)}
-#sOver .track .line i{background:var(--red);box-shadow:0 2px 0 var(--fg)}
+#sOver .track .line i{background:var(--fg);height:4px}
 #sOver #trDots span{top:22px;width:10px;height:10px;margin-left:-5px;border:2px solid var(--fg);background:var(--bg)}
 #sOver #trDots span.done{background:var(--fg)}
-#sOver #trDots span.boss{top:15px;width:18px;height:18px;margin-left:-9px;border:0;background:var(--fg);-webkit-mask:var(--skull) center/100% 100% no-repeat;mask:var(--skull) center/100% 100% no-repeat}
-#sOver #trDots span.boss.done{background:var(--red)}
-#sOver #trFlag{position:absolute;left:96%;top:2px;width:20px;height:24px;margin-left:-2px;image-rendering:pixelated;background:var(--flag) 0 0/100% 100% no-repeat}
+#sOver #trDots span.boss{top:15px;width:18px;height:18px;margin-left:-9px;border:0;background:color-mix(in srgb,var(--fg) 45%,transparent);-webkit-mask:var(--skull) center/100% 100% no-repeat;mask:var(--skull) center/100% 100% no-repeat}
+#sOver #trDots span.boss.done{background:var(--fg)}
+#sOver #trFlag{position:absolute;left:96%;top:2px;width:20px;height:24px;margin-left:-2px;background:var(--fg);-webkit-mask:var(--flag) 0 0/100% 100% no-repeat;mask:var(--flag) 0 0/100% 100% no-repeat}
 #sOver #trApple{width:28px;height:28px;margin-left:-14px;top:0;box-shadow:none;image-rendering:pixelated;image-rendering:crisp-edges;background-color:transparent!important;animation:apHop .36s steps(2) infinite}
 @keyframes apHop{50%{transform:translateY(-5px)}}
 #sOver #mapLbl{color:var(--mut);font-size:12px}
-#sOver #oQuote{margin:0;font-size:15px;line-height:1.5;padding:10px 12px;border:2px dashed var(--line);background:rgba(255,250,235,.4)}
-#sOver #oQuote::before{content:'“';color:var(--red);font-size:22px;margin-right:4px}#sOver #oQuote::after{content:'”';color:var(--red);font-size:22px;margin-left:4px}
+#sOver #oQuote{margin:0;font-size:15px;line-height:1.5;padding:10px 12px;border:2px dashed var(--line);background:color-mix(in srgb,var(--fg) 4%,transparent)}
+#sOver #oQuote::before{content:'“';font-size:22px;margin-right:4px}#sOver #oQuote::after{content:'”';font-size:22px;margin-left:4px}
+#sOver #oLawN{color:var(--fg)}
 #sOver details{border-top:2px dashed var(--line);border-bottom:2px dashed var(--line)}
-#sOver .btns{gap:4px;max-width:320px}
-#sOver .btn,#sOver .btn.alt,#sOver .btn.red{position:relative;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--fg);opacity:.62;font-size:17px;font-weight:600;letter-spacing:.14em;padding:9px 30px 7px;transition:opacity .12s,transform .12s,color .12s}
-#sOver .btn.red{color:var(--red);opacity:1;font-size:21px}
-#sOver .btn::before{content:'';position:absolute;left:4px;top:50%;width:12px;height:12px;margin-top:-7px;background:var(--fg);opacity:0;clip-path:polygon(0 0,0 100%,100% 50%)}
+#sOver .btns{gap:6px;max-width:320px}
+#sOver .btn,#sOver .btn.alt,#sOver .btn.red{position:relative;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--fg);opacity:.6;font-size:17px;font-weight:600;letter-spacing:.14em;padding:9px 30px 7px;transition:opacity .12s,transform .12s}
+#sOver .btn.red{background:var(--fg)!important;color:var(--bg);opacity:1;font-size:20px;box-shadow:4px 4px 0 color-mix(in srgb,var(--fg) 35%,transparent)!important}
+#sOver .btn::before{content:'';position:absolute;left:8px;top:50%;width:12px;height:12px;margin-top:-7px;background:var(--fg);opacity:0;clip-path:polygon(0 0,0 100%,100% 50%)}
+#sOver .btn.red::before{background:var(--bg)}
 #sOver .btn.red::before,#sOver .btn:hover::before,#sOver .btn:focus-visible::before{opacity:1;animation:poke .5s steps(2) infinite}
-#sOver .btn.red::before{background:var(--red)}
 #sOver .btn:hover,#sOver .btn:focus-visible{opacity:1;transform:scale(1.06);outline:none}
 #sOver .btn:active{transform:scale(.96)}
 @keyframes poke{50%{transform:translateX(4px)}}
@@ -899,15 +904,33 @@ const OCR=(()=>{
     if(m>1e-3){ox+=(13.5-cx/m)*SS;oy+=(13.5-cy/m)*SS;draw();g=read()}
     return g;
   }
-  function predict(x){
+  // ajuste personal de la última capa (dW, db): la red aprende la letra de ESTE jugador con cada número que confirma
+  const DK='rzOcrD1',dW=new Float32Array(1280),db=new Float32Array(10);
+  try{const j=JSON.parse(localStorage.getItem(DK)||'null');
+    if(j&&Array.isArray(j.w)&&j.w.length===1280&&Array.isArray(j.b)&&j.b.length===10&&j.w.every(Number.isFinite)&&j.b.every(Number.isFinite)){dW.set(j.w);db.set(j.b)}}catch(e){}
+  let svT=null;const saveD=()=>{clearTimeout(svT);svT=setTimeout(()=>{try{localStorage.setItem(DK,JSON.stringify({w:Array.from(dW,v=>+v.toFixed(4)),b:Array.from(db,v=>+v.toFixed(4))}))}catch(e){}},500)};
+  function hidden(x){
     const h=new Float32Array(128);h.set(b1);
     for(let i=0;i<784;i++){const v=x[i];if(v>0.004){const r=i*128;for(let j=0;j<128;j++)h[j]+=v*W1[r+j]}}
+    for(let j=0;j<128;j++)if(h[j]<0)h[j]=0;
+    return h;
+  }
+  function out(h){
     const o=new Float32Array(10);let mx=-1e9;
-    for(let k=0;k<10;k++){let s=b2[k];for(let j=0;j<128;j++){const hj=h[j];if(hj>0)s+=hj*W2[j*10+k]}o[k]=s;if(s>mx)mx=s}
+    for(let k=0;k<10;k++){let s=b2[k]+db[k];for(let j=0;j<128;j++){const hj=h[j];if(hj>0)s+=hj*(W2[j*10+k]+dW[j*10+k])}o[k]=s;if(s>mx)mx=s}
     let z=0;for(let k=0;k<10;k++){o[k]=Math.exp(o[k]-mx);z+=o[k]}for(let k=0;k<10;k++)o[k]/=z;
     return o;
   }
-  return{rasterize,predict};
+  const predict=x=>out(hidden(x));
+  // unos pasos de descenso de gradiente (entropía cruzada) hacia el dígito d; tope por peso para no deformar la red base
+  function tune(x,d,steps=5){
+    const h=hidden(x);let hh=1;for(let j=0;j<128;j++)hh+=h[j]*h[j];const lr=.8/hh;
+    for(let s=0;s<steps;s++){const o=out(h);if(o[d]>.95)break;
+      for(let k=0;k<10;k++){const g=o[k]-(k===d?1:0);db[k]=Math.max(-2,Math.min(2,db[k]-lr*g));
+        for(let j=0;j<128;j++)if(h[j]>0){const i=j*10+k;dW[i]=Math.max(-1.5,Math.min(1.5,dW[i]-lr*g*h[j]))}}}
+    saveD();
+  }
+  return{rasterize,predict,tune};
 })();
 
 /* ============ Memoria de trazo: guarda cómo escribe el jugador cada número y corrige al OCR con eso ============ */
@@ -953,6 +976,9 @@ const INK=(()=>{
     if(path&&path.length===1+2*N){let near=9;for(const w of PS[d])near=Math.min(near,pdist(path,w));
       if(!(near<.02&&PS[d].length>=4)){PS[d].push(path);if(PS[d].length>CAP)PS[d].shift();saveP()}}
     if(!x)return;
+    OCR.tune(x,d);
+    const others=[];for(let e=0;e<10;e++)if(e!==d&&raw[e].length)others.push(e);
+    if(others.length){const e=others[Math.floor(Math.random()*others.length)],a=raw[e];try{OCR.tune(dec(a[Math.floor(Math.random()*a.length)]),e,2)}catch(err){}}
     const v=blur(x);let best=0;for(const w of V[d])best=Math.max(best,sim(v,w));
     if(best>.97&&V[d].length>=4)return;
     raw[d].push(enc(x));V[d].push(v);
@@ -960,8 +986,8 @@ const INK=(()=>{
     save();
   }
   // ¿la memoria del jugador reconoce este recorrido como d sin dudas? (muy cerca de d y lejos de cualquier otro dígito aprendido)
-  function sure(path,d){const t=pathScores(path);if(t[d]<0||t[d]>.1)return false;
-    for(let e=0;e<10;e++)if(e!==d&&t[e]>=0&&t[e]<t[d]+.07)return false;
+  function sure(path,d){const t=pathScores(path);if(t[d]<0||t[d]>.11)return false;
+    for(let e=0;e<10;e++)if(e!==d&&t[e]>=0&&t[e]<t[d]+.06)return false;
     let n=0;for(const v of t)if(v>=0)n++;return n>=2}
   // mezcla probabilidades con un parecido (s, mayor = mejor) a las muestras propias
   function blend(p,s,w,k){
@@ -984,7 +1010,7 @@ const INK=(()=>{
     if(use>=2&&mx>=.8)p=blend(p,s,Math.min(1,(mx-.8)/.15)*.75,20);
     const t=pathScores(path),sp=new Float32Array(10).fill(-1e9);let mn=9,use2=0;
     for(let d=0;d<10;d++)if(t[d]>=0){sp[d]=-t[d];if(t[d]<mn)mn=t[d];use2++}
-    if(use2>=2&&mn<.16)p=blend(p,sp,Math.min(1,(.16-mn)/.08)*.8,40);
+    if(use2>=2&&mn<.2)p=blend(p,sp,Math.min(1,(.2-mn)/.1)*.85,40);
     return p;
   }
   return{learn,adjust,sig,sure,count:()=>raw.map(a=>a.length),countP:()=>PS.map(a=>a.length)};
@@ -1429,10 +1455,20 @@ let PDW=innerWidth,PH=innerHeight,DPR=1,padDirty=true,padLock=false,padTimer=nul
 const syms=[];
 // OCR dudoso: en vez de adivinar, se muestran las teclas candidatas para que elijas el número que escribiste
 let chPick=null,pickQ=[];const pickEl=$('#pick');
-function hidePick(){chPick=null;pickQ=[];pickEl.classList.remove('on')}
+function hidePick(){if(chPick)padDirty=true;chPick=null;pickQ=[];pickEl.classList.remove('on')}
+// miniatura de la cifra preguntada, para que se vea cuál de las que escribiste es
+function pickThumb(sy){
+  const c=document.createElement('canvas'),Z=96;c.width=c.height=Z;const x=c.getContext('2d'),fg=getComputedStyle(document.documentElement).getPropertyValue('--fg').trim()||'#fff';
+  const w=sy.x1-sy.x0,h=sy.y1-sy.y0,k=(Z-24)/Math.max(w,h,1),ox=(Z-w*k)/2-sy.x0*k,oy=(Z-h*k)/2-sy.y0*k;
+  x.lineCap='round';x.lineJoin='round';x.lineWidth=7;x.strokeStyle=fg;
+  for(const st of sy.st){x.beginPath();st.forEach((p,i)=>i?x.lineTo(p[0]*k+ox,p[1]*k+oy):x.moveTo(p[0]*k+ox,p[1]*k+oy));if(st.length===1)x.lineTo(st[0][0]*k+ox+.1,st[0][1]*k+oy);x.stroke()}
+  return c;
+}
 function showPick(sy,cand){
-  chPick={sy,cand};
-  pickEl.innerHTML='<span>¿CUÁL ES?</span>'+cand.map(d=>`<button data-k="${d}">${d}</button>`).join('')+'<button data-k="x" class="no" aria-label="Borrar">✕</button>';
+  chPick={sy,cand};padDirty=true;
+  const vis=syms.filter(q=>q.st.length),n=vis.indexOf(sy)+1,tot=vis.length;
+  pickEl.innerHTML=`<div class="pq"><div class="pqt"><b>¿QUÉ NÚMERO ES ESTE?</b>${tot>1?`<em>CIFRA ${n} DE ${tot}</em>`:''}</div></div>`+cand.map(d=>`<button data-k="${d}">${d}</button>`).join('')+'<button data-k="x" class="no" aria-label="Borrar">✕</button>';
+  pickEl.querySelector('.pq').prepend(pickThumb(sy));
   pickEl.classList.add('on');
   const r=pickEl.getBoundingClientRect();let top=sy.y1+16;if(top+r.height>PH-6)top=sy.y0-16-r.height;
   pickEl.style.left=clamp((sy.x0+sy.x1)/2-r.width/2,6,Math.max(6,PDW-r.width-6))+'px';pickEl.style.top=Math.max(6,top)+'px';
@@ -1535,7 +1571,7 @@ function finalize(sy){
     if(!c.sure&&!(exps.includes(String(top))?p1>=.8:p1>=.97)){showPick(sy,ord.filter((d,i)=>i<2||c.p[d]>=.04).slice(0,4));return}
   }
   const got=exps.find(e=>c.kind==='digit'&&c.best===+e)||exps.find(e=>e!=='/'&&matches(c,e));
-  if(got){sy.ok=true;sy.ch=got;if(c.kind==='digit'&&/^\d$/.test(got)&&c.p[+got]>=.8)INK.learn(c.x,got,c.path);acceptChar(got)}
+  if(got){sy.ok=true;sy.ch=got;if(c.kind==='digit'&&/^\d$/.test(got)&&(c.best===+got||c.p[+got]>=.3))INK.learn(c.x,got,c.path);acceptChar(got)}
   else{sy.ok=false;padFlash(S.a.st==='rest'?900:560);failChar(c.ch)}
 }
 function padDraw(){
@@ -1544,7 +1580,15 @@ function padDraw(){
   const lw=clamp(Math.min(PDW,PH)*.011,4,9);
   for(const sy of syms)for(const st of sy.st){
     c.beginPath();st.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));if(st.length===1)c.lineTo(st[0][0]+.1,st[0][1]);
-    c.shadowColor=P.k;c.shadowBlur=4;c.strokeStyle=sy.ok===false?P.red:P.w;c.globalAlpha=sy.done?.55:.95;c.lineWidth=lw;c.stroke();c.shadowBlur=0;c.globalAlpha=1;
+    c.shadowColor=P.k;c.shadowBlur=4;c.strokeStyle=sy.ok===false?P.red:P.w;c.globalAlpha=chPick?(chPick.sy===sy?1:.22):sy.done?.55:.95;c.lineWidth=lw;c.stroke();c.shadowBlur=0;c.globalAlpha=1;
+  }
+  if(chPick&&syms.includes(chPick.sy)){
+    const sy=chPick.sy,m=12,x0=Math.round(sy.x0-m),y0=Math.round(sy.y0-m),x1=Math.round(sy.x1+m),y1=Math.round(sy.y1+m),L=Math.max(10,Math.min(22,(x1-x0)/3)),t=4;
+    c.fillStyle=P.w;c.shadowColor=P.k;c.shadowBlur=3;
+    for(const[cx,cy,sx,sy2]of[[x0,y0,1,1],[x1,y0,-1,1],[x0,y1,1,-1],[x1,y1,-1,-1]]){c.fillRect(sx>0?cx:cx-L,sy2>0?cy:cy-t,L,t);c.fillRect(sx>0?cx:cx-t,sy2>0?cy:cy-L,t,L)}
+    const vis=syms.filter(q=>q.st.length),n=vis.indexOf(sy)+1;
+    if(vis.length>1){const bx=x0,by=y0-30;c.fillRect(bx,by,26,24);c.fillStyle=P.k;c.shadowBlur=0;c.font='20px "Pixelify Sans", monospace';c.textAlign='center';c.textBaseline='middle';c.fillText(String(n),bx+13,by+13)}
+    c.shadowBlur=0;
   }
   c.font='20px "Pixelify Sans", monospace';c.textBaseline='bottom';c.textAlign='left';
   for(const sy of syms){
@@ -1735,7 +1779,7 @@ const pixURL=(rows,col)=>{const c=document.createElement('canvas');c.width=rows[
   rows.forEach((r,j)=>[...r].forEach((ch,i)=>{if(col[ch]){x.fillStyle=col[ch];x.fillRect(i,j,1,1)}}));return c.toDataURL()};
 function overSprites(){const k=$('#sOver .card');if(k.dataset.spr)return;k.dataset.spr=1;
   k.style.setProperty('--skull',`url(${pixURL(['.#####.','#######','#..#..#','#..#..#','###.###','.#####.','.#.#.#.'],{'#':'#000'})})`);
-  k.style.setProperty('--flag',`url(${pixURL(['kwrwrw','krwrwr','kwrwrw','krwrwr','k.....','k.....','k.....','k.....'],{k:'#2b1a10',w:'#efe2c4',r:'#b5161c'})})`)}
+  k.style.setProperty('--flag',`url(${pixURL(['k#.#.#','k.#.#.','k#.#.#','k.#.#.','k.....','k.....','k.....','k.....'],{k:'#000','#':'#000'})})`)}
 function gameOver(){
   SAVE.deaths=(SAVE.deaths||0)+1;persist();
   setMode('over');
@@ -2507,7 +2551,7 @@ function update(dt){
   }else if(a.st==='rest'){
     if(S.prob)S.thinkT+=dt;helpCheck();
   }else if(a.st==='grab'){
-    const g=S.grab;g.g+=dt/grabTime()*(chPick?.4:1);a.y=Math.min(1,g.g)*.95; // si el juego te está preguntando qué escribiste, el reloj casi se detieneMUS.tension=clamp(g.g,.05,1);
+    const g=S.grab;g.g+=dt/grabTime()*(chPick?.4:1);a.y=Math.min(1,g.g)*.95;MUS.tension=clamp(g.g,.05,1); // si el juego te está preguntando qué escribiste, el reloj casi se detiene
     $('#grabBar').style.width=Math.min(100,g.g*100)+'%';
     if(g.g>=1)eaten();
   }else if(a.st==='eaten'){
