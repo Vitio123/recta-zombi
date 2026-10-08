@@ -282,6 +282,21 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 #sOver .heat{border:2px solid var(--fg);padding:8px;box-sizing:border-box}
 #sOver .heat .mini{color:var(--fg);opacity:.9}
 
+
+/* selector de idioma */
+.fl{width:26px;height:18px;object-fit:cover;image-rendering:pixelated;border:2px solid var(--fg);box-sizing:content-box;vertical-align:middle;margin:0 8px 2px 0;flex:none;background:var(--card)}
+[dir=rtl] .fl{margin:0 0 2px 8px}
+#bLang1,#bLang2{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+#sLang{z-index:45}
+#sLang .card{width:min(520px,100%)}
+#langTtl{font-size:clamp(22px,6vw,34px)}
+#langGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;max-height:min(62vh,520px);overflow-y:auto!important;touch-action:pan-y;padding:2px 4px 6px 2px;box-sizing:border-box;-webkit-overflow-scrolling:touch}
+@media (min-width:560px){#langGrid{grid-template-columns:repeat(3,1fr)}}
+#langGrid .lg{display:flex;align-items:center;justify-content:flex-start;text-align:left;font-size:13px;letter-spacing:.04em;padding:8px 8px 6px;min-width:0;overflow:hidden}
+#langGrid .lg span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#langGrid .lg.cur{background:var(--red);border-color:var(--red);color:#fff;box-shadow:3px 3px 0 var(--fg)}
+#langGrid .lg:hover,#langGrid .lg:focus-visible{background:var(--fg);color:var(--bg);outline:none}
+:root{--f-ui:'Silkscreen','Pixelify Sans','Noto Sans','Segoe UI','Microsoft YaHei','Malgun Gothic','Yu Gothic','Nirmala UI','Leelawadee UI',system-ui,sans-serif}
 </style>
 
 <div id="game">
@@ -309,7 +324,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
     <div class="mini" id="tStats"></div>
     <details class="prog"><summary>TU PROGRESO</summary></details>
-    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button></div>
+    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bLang1"></button></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
     <div id="lKick"></div>
@@ -327,9 +342,10 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
   <div class="screen" id="sPause"><div class="card">
     <h2 class="ttl">PAUSA</h2>
     <div class="btns"><button class="btn" id="bResume">CONTINUAR</button></div>
-    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button></div>
+    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button><button class="chip" id="bLang2"></button></div>
     <button class="btn alt" id="bQuit">SALIR AL MENÚ</button>
   </div></div>
+  <div class="screen" id="sLang"><div class="card"><h2 class="ttl" id="langTtl">🌐</h2><div id="langGrid"></div><button class="btn alt" id="bLangBack">← OK</button></div></div>
   <div class="screen" id="sOver"><div class="card">
     <h2 class="dead" id="oTtl">TE COMIERON</h2>
     <div class="track"><div class="line"><i id="trFill"></i></div><div id="trDots"></div><i id="trFlag"></i><div id="trApple"></div></div>
@@ -356,6 +372,1197 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 (()=>{
 'use strict';
 const $=s=>document.querySelector(s);
+/* ============ Idiomas: 27, con bandera. Se puede cambiar en cualquier momento (inicio o pausa) ============ */
+const LANGS=[
+{c:'en',cc:'us',n:'English'},{c:'pt',cc:'br',n:'Português'},{c:'es-419',cc:'mx',n:'Español (Latinoamérica)'},{c:'es-ES',cc:'es',n:'Español (España)'},
+{c:'fr',cc:'fr',n:'Français'},{c:'de',cc:'de',n:'Deutsch'},{c:'ja',cc:'jp',n:'日本語'},{c:'zh',cc:'cn',n:'中文'},{c:'ko',cc:'kr',n:'한국어'},
+{c:'it',cc:'it',n:'Italiano'},{c:'ru',cc:'ru',n:'Русский'},{c:'ar',cc:'sa',n:'العربية',rtl:1},{c:'hi',cc:'in',n:'हिन्दी'},{c:'tr',cc:'tr',n:'Türkçe'},
+{c:'nl',cc:'nl',n:'Nederlands'},{c:'pl',cc:'pl',n:'Polski'},{c:'id',cc:'id',n:'Bahasa Indonesia'},{c:'vi',cc:'vn',n:'Tiếng Việt'},{c:'th',cc:'th',n:'ไทย'},
+{c:'sv',cc:'se',n:'Svenska'},{c:'uk',cc:'ua',n:'Українська'},{c:'cs',cc:'cz',n:'Čeština'},{c:'el',cc:'gr',n:'Ελληνικά'},{c:'he',cc:'il',n:'עברית',rtl:1},
+{c:'ro',cc:'ro',n:'Română'},{c:'hu',cc:'hu',n:'Magyar'},{c:'da',cc:'dk',n:'Dansk'}];
+// orden de las líneas de cada idioma
+const LK=['play','fresh','prog','closeprog','roja','verde','amarilla','night','day','sound','nosound','kb','draw','pause','resume','quit','tag','lead','rec','hint1','hint2','caught','caughtSub','boss','again1','share','practice','menu','how','which','digitN','help','frac','example','gotit','replay','lang','eaten','arrow','map','grab2','left1'];
+const LRAW={
+'es-419':`JUGAR
+EMPEZAR DE CERO
+TU PROGRESO
+CERRAR PROGRESO
+ROJA
+VERDE
+AMARILLA
+NOCHE
+DÍA
+SONIDO
+SIN SONIDO
+TECLADO
+DIBUJAR
+PAUSA
+CONTINUAR
+SALIR AL MENÚ
+DE 1 + 1 AL CÁLCULO
+Dibuja el resultado donde quieras. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… los zombis se burlan. Y mucho.
+RÉCORD NIVEL {b} · {n} ACIERTOS · PRESIÓN {p}%
+dibuja el número en cualquier parte
+dibuja el número o la fracción (ej. 3/4)
+TE ATRAPÓ
+RESUELVE ANTES DE QUE SE LA COMA
+¡EL JEFE TE TIENE!
+VOLVER AL NIVEL 1
+COMPARTIR
+PRACTICAR {t}
+MENÚ
+¿CÓMO SE RESOLVÍA?
+¿QUÉ NÚMERO ES ESTE?
+CIFRA {n} DE {m}
+¿NO SABES? VER UN EJEMPLO
+/ FRACCIÓN
+EJEMPLO PARECIDO, RESUELTO
+¡ENTENDIDO!
+↻ VER DE NUEVO
+IDIOMA
+TE COMIERON;¡ÑAM!;CRUNCH;SE ACABÓ;FIN
+¡FLECHADA!;DOS FLECHAS;EN EL BLANCO
+NIVEL {l} · {t} · {c} ACIERTOS · {k} ZOMBIS · RÉCORD {r} · PRESIÓN {p}%
+2 RESPUESTAS SEGUIDAS PARA SOLTARTE
+QUEDA 1 RESPUESTA`,
+'es-ES':`JUGAR
+EMPEZAR DE CERO
+TU PROGRESO
+CERRAR PROGRESO
+ROJA
+VERDE
+AMARILLA
+NOCHE
+DÍA
+SONIDO
+SIN SONIDO
+TECLADO
+DIBUJAR
+PAUSA
+CONTINUAR
+SALIR AL MENÚ
+DE 1 + 1 AL CÁLCULO
+Dibuja el resultado donde quieras. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… los zombis se ríen de ti. Y mucho.
+RÉCORD NIVEL {b} · {n} ACIERTOS · PRESIÓN {p}%
+dibuja el número donde quieras
+dibuja el número o la fracción (p. ej. 3/4)
+TE HA PILLADO
+RESUELVE ANTES DE QUE SE LA COMA
+¡EL JEFE TE TIENE!
+VOLVER AL NIVEL 1
+COMPARTIR
+PRACTICAR {t}
+MENÚ
+¿CÓMO SE RESOLVÍA?
+¿QUÉ NÚMERO ES ESTE?
+DÍGITO {n} DE {m}
+¿NO SABES? MIRA UN EJEMPLO
+/ FRACCIÓN
+EJEMPLO PARECIDO, RESUELTO
+¡VALE, ENTENDIDO!
+↻ VER OTRA VEZ
+IDIOMA
+TE HAN COMIDO;¡ÑAM!;CRUNCH;SE ACABÓ;FIN
+¡FLECHADA!;DOS FLECHAS;EN EL BLANCO
+NIVEL {l} · {t} · {c} ACIERTOS · {k} ZOMBIS · RÉCORD {r} · PRESIÓN {p}%
+2 RESPUESTAS SEGUIDAS PARA SOLTARTE
+QUEDA 1 RESPUESTA`,
+en:`PLAY
+START OVER
+YOUR PROGRESS
+CLOSE PROGRESS
+RED
+GREEN
+YELLOW
+NIGHT
+DAY
+SOUND
+MUTED
+KEYBOARD
+DRAW
+PAUSE
+RESUME
+QUIT TO MENU
+FROM 1 + 1 TO CALCULUS
+Draw the answer anywhere. The apple jumps to that number: if you're right, it falls like a <em>meteorite</em>. If you're wrong… the zombies mock you. A lot.
+RECORD LEVEL {b} · {n} CORRECT · PRESSURE {p}%
+draw the number anywhere
+draw the number or fraction (e.g. 3/4)
+THEY GOT YOU
+SOLVE IT BEFORE THEY EAT IT
+THE BOSS HAS YOU!
+BACK TO LEVEL 1
+SHARE
+PRACTICE {t}
+MENU
+HOW WAS IT SOLVED?
+WHICH NUMBER IS THIS?
+DIGIT {n} OF {m}
+STUCK? SEE AN EXAMPLE
+/ FRACTION
+SIMILAR EXAMPLE, SOLVED
+GOT IT!
+↻ WATCH AGAIN
+LANGUAGE
+YOU WERE EATEN;NOM!;CRUNCH;THE END;GAME OVER
+SHOT!;TWO ARROWS;BULLSEYE
+LEVEL {l} · {t} · {c} CORRECT · {k} ZOMBIES · RECORD {r} · PRESSURE {p}%
+2 ANSWERS IN A ROW TO BREAK FREE
+1 ANSWER LEFT`,
+pt:`JOGAR
+RECOMEÇAR DO ZERO
+SEU PROGRESSO
+FECHAR PROGRESSO
+VERMELHA
+VERDE
+AMARELA
+NOITE
+DIA
+SOM
+SEM SOM
+TECLADO
+DESENHAR
+PAUSA
+CONTINUAR
+SAIR PARA O MENU
+DE 1 + 1 AO CÁLCULO
+Desenhe o resultado em qualquer lugar. A maçã pula para esse número: se acertar, cai como um <em>meteorito</em>. Se errar… os zumbis zombam. E muito.
+RECORDE NÍVEL {b} · {n} ACERTOS · PRESSÃO {p}%
+desenhe o número em qualquer lugar
+desenhe o número ou a fração (ex. 3/4)
+TE PEGARAM
+RESOLVA ANTES QUE COMAM A MAÇÃ
+O CHEFE TE PEGOU!
+VOLTAR AO NÍVEL 1
+COMPARTILHAR
+PRATICAR {t}
+MENU
+COMO SE RESOLVIA?
+QUAL NÚMERO É ESTE?
+DÍGITO {n} DE {m}
+NÃO SABE? VEJA UM EXEMPLO
+/ FRAÇÃO
+EXEMPLO PARECIDO, RESOLVIDO
+ENTENDI!
+↻ VER DE NOVO
+IDIOMA
+TE COMERAM;NHAC!;CRUNCH;ACABOU;FIM
+FLECHADA!;DUAS FLECHAS;NO ALVO
+NÍVEL {l} · {t} · {c} ACERTOS · {k} ZUMBIS · RECORDE {r} · PRESSÃO {p}%
+2 RESPOSTAS SEGUIDAS PARA SE SOLTAR
+FALTA 1 RESPOSTA`,
+fr:`JOUER
+RECOMMENCER À ZÉRO
+TA PROGRESSION
+FERMER LA PROGRESSION
+ROUGE
+VERTE
+JAUNE
+NUIT
+JOUR
+SON
+SANS SON
+CLAVIER
+DESSINER
+PAUSE
+REPRENDRE
+QUITTER VERS LE MENU
+DE 1 + 1 AU CALCUL
+Dessine le résultat n'importe où. La pomme saute sur ce nombre : si tu as juste, elle tombe comme une <em>météorite</em>. Si tu te trompes… les zombies se moquent. Beaucoup.
+RECORD NIVEAU {b} · {n} BONNES RÉPONSES · PRESSION {p}%
+dessine le nombre n'importe où
+dessine le nombre ou la fraction (ex. 3/4)
+ILS T'ONT ATTRAPÉ
+RÉSOUS AVANT QU'ILS LA MANGENT
+LE BOSS T'A ATTRAPÉ !
+RETOUR AU NIVEAU 1
+PARTAGER
+S'ENTRAÎNER : {t}
+MENU
+COMMENT LE RÉSOUDRE ?
+QUEL NOMBRE EST-CE ?
+CHIFFRE {n} SUR {m}
+BLOQUÉ ? VOIR UN EXEMPLE
+/ FRACTION
+EXEMPLE SIMILAIRE, RÉSOLU
+COMPRIS !
+↻ REVOIR
+LANGUE
+TU AS ÉTÉ MANGÉ;MIAM !;CRUNCH;C'EST FINI;FIN
+FLÈCHE !;DEUX FLÈCHES;EN PLEIN DANS LE MILLE
+NIVEAU {l} · {t} · {c} BONNES RÉPONSES · {k} ZOMBIES · RECORD {r} · PRESSION {p}%
+2 RÉPONSES D'AFFILÉE POUR TE LIBÉRER
+IL RESTE 1 RÉPONSE`,
+de:`SPIELEN
+NEU BEGINNEN
+DEIN FORTSCHRITT
+FORTSCHRITT SCHLIESSEN
+ROT
+GRÜN
+GELB
+NACHT
+TAG
+TON
+TON AUS
+TASTATUR
+ZEICHNEN
+PAUSE
+WEITER
+ZURÜCK ZUM MENÜ
+VON 1 + 1 BIS ZUR ANALYSIS
+Zeichne das Ergebnis irgendwo hin. Der Apfel springt zu dieser Zahl: Stimmt sie, fällt er wie ein <em>Meteorit</em>. Stimmt sie nicht… verspotten dich die Zombies. Und zwar kräftig.
+REKORD LEVEL {b} · {n} RICHTIG · DRUCK {p}%
+zeichne die Zahl irgendwo hin
+zeichne die Zahl oder den Bruch (z. B. 3/4)
+SIE HABEN DICH
+LÖSE ES, BEVOR SIE IHN FRESSEN
+DER BOSS HAT DICH!
+ZURÜCK ZU LEVEL 1
+TEILEN
+ÜBEN: {t}
+MENÜ
+WIE WAR DIE LÖSUNG?
+WELCHE ZAHL IST DAS?
+ZIFFER {n} VON {m}
+NICHT WEITER? BEISPIEL ANSEHEN
+/ BRUCH
+ÄHNLICHES BEISPIEL, GELÖST
+VERSTANDEN!
+↻ NOCHMAL ANSEHEN
+SPRACHE
+DU WURDEST GEFRESSEN;MAMPF!;KNACK;VORBEI;ENDE
+GETROFFEN!;ZWEI PFEILE;INS SCHWARZE
+LEVEL {l} · {t} · {c} RICHTIG · {k} ZOMBIES · REKORD {r} · DRUCK {p}%
+2 ANTWORTEN IN FOLGE ZUM BEFREIEN
+NOCH 1 ANTWORT`,
+ja:`プレイ
+最初から
+きみの記録
+記録をとじる
+赤
+緑
+黄
+夜
+昼
+サウンド
+ミュート
+キーボード
+手書き
+ポーズ
+つづける
+メニューへ
+1 + 1 から微積分まで
+答えをどこにでも書こう。りんごがその数字へジャンプ:正解なら<em>隕石</em>のように落ちる。まちがえたら…ゾンビがバカにする。めちゃくちゃに。
+ハイスコア レベル{b} · 正解{n} · プレッシャー {p}%
+数字をどこにでも書いてね
+数字か分数を書いてね(例 3/4)
+つかまった!
+食べられる前に解け!
+ボスにつかまった!
+レベル1にもどる
+シェア
+{t}を練習
+メニュー
+どう解くの?
+この数字は?
+{m}けた中{n}けた目
+わからない? 例を見る
+/ 分数
+似た例題(解答つき)
+わかった!
+↻ もう一度見る
+言語
+食べられた;パクッ!;ガリッ;おしまい;ゲームオーバー
+矢が命中!;矢が2本;ど真ん中
+レベル{l} · {t} · 正解{c} · ゾンビ{k} · ハイスコア{r} · プレッシャー {p}%
+連続で2問正解すると脱出
+あと1問`,
+zh:`开始游戏
+重新开始
+我的进度
+关闭进度
+红色
+绿色
+黄色
+夜晚
+白天
+声音
+静音
+键盘
+手写
+暂停
+继续
+返回菜单
+从 1 + 1 到微积分
+在任何地方写下答案。苹果会跳到那个数字:答对了,它像<em>陨石</em>一样砸下来;答错了……僵尸会嘲笑你,狠狠地。
+纪录 第{b}关 · 答对{n}题 · 压力 {p}%
+在任何位置写下数字
+写下数字或分数(如 3/4)
+你被抓住了
+在被吃掉前解出来
+头目抓住了你!
+回到第1关
+分享
+练习 {t}
+菜单
+怎么解?
+这是哪个数字?
+第 {n} 位,共 {m} 位
+不会?看个例子
+/ 分数
+类似例题(含解答)
+明白了!
+↻ 再看一次
+语言
+你被吃掉了;啊呜!;咔嚓;结束了;游戏结束
+中箭了!;两支箭;正中靶心
+第{l}关 · {t} · 答对{c} · 僵尸{k} · 纪录{r} · 压力 {p}%
+连续答对2题才能挣脱
+还差1题`,
+ko:`플레이
+처음부터
+내 진행도
+진행도 닫기
+빨강
+초록
+노랑
+밤
+낮
+소리
+음소거
+키보드
+그리기
+일시정지
+계속하기
+메뉴로 나가기
+1 + 1 부터 미적분까지
+답을 아무 곳에나 그려요. 사과가 그 숫자로 뛰어요. 맞으면 <em>운석</em>처럼 떨어지고, 틀리면… 좀비들이 놀려요. 아주 많이.
+최고 기록 레벨 {b} · 정답 {n} · 압박 {p}%
+숫자를 아무 곳에나 그리세요
+숫자나 분수를 그리세요 (예: 3/4)
+붙잡혔다!
+먹히기 전에 풀어요
+보스에게 붙잡혔다!
+레벨 1로 돌아가기
+공유
+{t} 연습
+메뉴
+어떻게 풀었을까?
+이 숫자는 무엇인가요?
+{m}자리 중 {n}번째
+모르겠어요? 예시 보기
+/ 분수
+비슷한 예제 (풀이)
+알겠어요!
+↻ 다시 보기
+언어
+먹혔다;냠!;와작;끝났다;게임 오버
+화살 명중!;화살 두 발;정중앙
+레벨 {l} · {t} · 정답 {c} · 좀비 {k} · 최고 {r} · 압박 {p}%
+연속 2문제를 맞히면 탈출
+1문제 남았어요`,
+it:`GIOCA
+RICOMINCIA DA ZERO
+I TUOI PROGRESSI
+CHIUDI PROGRESSI
+ROSSA
+VERDE
+GIALLA
+NOTTE
+GIORNO
+SUONO
+SENZA SUONO
+TASTIERA
+DISEGNA
+PAUSA
+CONTINUA
+ESCI DAL MENU
+DA 1 + 1 ALL'ANALISI
+Disegna il risultato dove vuoi. La mela salta su quel numero: se hai ragione, cade come un <em>meteorite</em>. Se sbagli… gli zombie ti prendono in giro. Tanto.
+RECORD LIVELLO {b} · {n} GIUSTE · PRESSIONE {p}%
+disegna il numero ovunque
+disegna il numero o la frazione (es. 3/4)
+TI HANNO PRESO
+RISOLVI PRIMA CHE LA MANGINO
+IL BOSS TI HA PRESO!
+TORNA AL LIVELLO 1
+CONDIVIDI
+ALLENATI: {t}
+MENU
+COME SI RISOLVEVA?
+CHE NUMERO È?
+CIFRA {n} DI {m}
+BLOCCATO? VEDI UN ESEMPIO
+/ FRAZIONE
+ESEMPIO SIMILE, RISOLTO
+CAPITO!
+↻ RIGUARDA
+LINGUA
+TI HANNO MANGIATO;GNAM!;CRUNCH;È FINITA;FINE
+FRECCIATA!;DUE FRECCE;NEL SEGNO
+LIVELLO {l} · {t} · {c} GIUSTE · {k} ZOMBIE · RECORD {r} · PRESSIONE {p}%
+2 RISPOSTE DI FILA PER LIBERARTI
+MANCA 1 RISPOSTA`,
+ru:`ИГРАТЬ
+НАЧАТЬ ЗАНОВО
+ТВОЙ ПРОГРЕСС
+СКРЫТЬ ПРОГРЕСС
+КРАСНОЕ
+ЗЕЛЁНОЕ
+ЖЁЛТОЕ
+НОЧЬ
+ДЕНЬ
+ЗВУК
+БЕЗ ЗВУКА
+КЛАВИАТУРА
+РИСОВАТЬ
+ПАУЗА
+ПРОДОЛЖИТЬ
+В МЕНЮ
+ОТ 1 + 1 ДО МАТАНАЛИЗА
+Рисуй ответ где угодно. Яблоко прыгает на это число: если верно, оно падает как <em>метеорит</em>. Если ошибся… зомби дразнятся. И очень сильно.
+РЕКОРД УРОВЕНЬ {b} · ВЕРНО {n} · ДАВЛЕНИЕ {p}%
+рисуй число где угодно
+рисуй число или дробь (напр. 3/4)
+ТЕБЯ СХВАТИЛИ
+РЕШАЙ, ПОКА НЕ СЪЕЛИ ЯБЛОКО
+БОСС СХВАТИЛ ТЕБЯ!
+ВЕРНУТЬСЯ НА УРОВЕНЬ 1
+ПОДЕЛИТЬСЯ
+ТРЕНИРОВАТЬ: {t}
+МЕНЮ
+КАК ЭТО РЕШАЛОСЬ?
+КАКОЕ ЭТО ЧИСЛО?
+ЦИФРА {n} ИЗ {m}
+НЕ ЗНАЕШЬ? ПОСМОТРИ ПРИМЕР
+/ ДРОБЬ
+ПОХОЖИЙ ПРИМЕР С РЕШЕНИЕМ
+ПОНЯТНО!
+↻ СМОТРЕТЬ СНОВА
+ЯЗЫК
+ТЕБЯ СЪЕЛИ;ЧАВК!;ХРУСЬ;КОНЕЦ;ИГРА ОКОНЧЕНА
+СТРЕЛА!;ДВЕ СТРЕЛЫ;В ЯБЛОЧКО
+УРОВЕНЬ {l} · {t} · ВЕРНО {c} · ЗОМБИ {k} · РЕКОРД {r} · ДАВЛЕНИЕ {p}%
+2 ОТВЕТА ПОДРЯД, ЧТОБЫ ВЫРВАТЬСЯ
+ОСТАЛСЯ 1 ОТВЕТ`,
+ar:`العب
+ابدأ من جديد
+تقدّمك
+إغلاق التقدّم
+حمراء
+خضراء
+صفراء
+ليل
+نهار
+الصوت
+بدون صوت
+لوحة المفاتيح
+ارسم
+إيقاف مؤقت
+متابعة
+الخروج إلى القائمة
+من 1 + 1 إلى التفاضل والتكامل
+ارسم الإجابة في أي مكان. تقفز التفاحة إلى ذلك الرقم: إن أصبت تسقط مثل <em>نيزك</em>. وإن أخطأت… يسخر منك الزومبي. كثيرًا.
+الرقم القياسي المستوى {b} · {n} صحيحة · الضغط {p}%
+ارسم الرقم في أي مكان
+ارسم الرقم أو الكسر (مثل 3/4)
+أمسكوا بك
+احلّها قبل أن يأكلوا التفاحة
+الزعيم أمسك بك!
+العودة إلى المستوى 1
+مشاركة
+تدرّب على {t}
+القائمة
+كيف كان الحل؟
+أي رقم هذا؟
+الرقم {n} من {m}
+لا تعرف؟ شاهد مثالًا
+/ كسر
+مثال مشابه محلول
+فهمت!
+↻ شاهد مرة أخرى
+اللغة
+تم أكلك;قضمة!;كرانش;انتهى;نهاية اللعبة
+سهم!;سهمان;في الهدف
+المستوى {l} · {t} · {c} صحيحة · {k} زومبي · الرقم القياسي {r} · الضغط {p}%
+إجابتان متتاليتان للتحرر
+بقيت إجابة واحدة`,
+hi:`खेलो
+नए सिरे से शुरू करो
+तुम्हारी प्रगति
+प्रगति बंद करो
+लाल
+हरा
+पीला
+रात
+दिन
+आवाज़
+आवाज़ बंद
+कीबोर्ड
+ड्रॉ करो
+रुको
+जारी रखो
+मेन्यू पर जाओ
+1 + 1 से कैलकुलस तक
+जवाब कहीं भी बनाओ। सेब उस संख्या पर कूदता है: सही हुआ तो <em>उल्कापिंड</em> की तरह गिरता है। गलत हुआ… तो ज़ॉम्बी खूब मज़ाक उड़ाते हैं।
+रिकॉर्ड स्तर {b} · {n} सही · दबाव {p}%
+संख्या कहीं भी बनाओ
+संख्या या भिन्न बनाओ (जैसे 3/4)
+उन्होंने पकड़ लिया
+सेब खाने से पहले हल करो
+बॉस ने पकड़ लिया!
+स्तर 1 पर लौटो
+शेयर करो
+{t} का अभ्यास
+मेन्यू
+इसे कैसे हल करते थे?
+यह कौन सी संख्या है?
+अंक {n} / {m}
+अटक गए? उदाहरण देखो
+/ भिन्न
+मिलता-जुलता हल किया उदाहरण
+समझ गया!
+↻ फिर से देखो
+भाषा
+तुम्हें खा लिया;गप!;कुरकुर;खत्म;गेम ओवर
+तीर लगा!;दो तीर;सटीक निशाना
+स्तर {l} · {t} · {c} सही · {k} ज़ॉम्बी · रिकॉर्ड {r} · दबाव {p}%
+छूटने के लिए लगातार 2 जवाब
+1 जवाब बाकी`,
+tr:`OYNA
+BAŞTAN BAŞLA
+İLERLEMEN
+İLERLEMEYİ KAPAT
+KIRMIZI
+YEŞİL
+SARI
+GECE
+GÜNDÜZ
+SES
+SESSİZ
+KLAVYE
+ÇİZ
+DURAKLAT
+DEVAM
+MENÜYE ÇIK
+1 + 1'DEN KALKÜLÜSE
+Sonucu istediğin yere çiz. Elma o sayıya zıplar: doğruysa <em>göktaşı</em> gibi düşer. Yanlışsa… zombiler seninle dalga geçer. Hem de çok.
+REKOR SEVİYE {b} · {n} DOĞRU · BASKI {p}%
+sayıyı istediğin yere çiz
+sayıyı veya kesri çiz (örn. 3/4)
+YAKALANDIN
+ELMAYI YEMELERİNDEN ÖNCE ÇÖZ
+PATRON SENİ YAKALADI!
+SEVİYE 1'E DÖN
+PAYLAŞ
+ÇALIŞ: {t}
+MENÜ
+NASIL ÇÖZÜLÜRDÜ?
+BU HANGİ SAYI?
+{n}. RAKAM / {m}
+TAKILDIN MI? ÖRNEĞE BAK
+/ KESİR
+BENZER ÖRNEK, ÇÖZÜMLÜ
+ANLADIM!
+↻ TEKRAR İZLE
+DİL
+SENİ YEDİLER;NAM!;GICIR;BİTTİ;OYUN BİTTİ
+OK İSABET!;İKİ OK;TAM ORTASI
+SEVİYE {l} · {t} · {c} DOĞRU · {k} ZOMBİ · REKOR {r} · BASKI {p}%
+KURTULMAK İÇİN ÜST ÜSTE 2 CEVAP
+1 CEVAP KALDI`,
+nl:`SPELEN
+OPNIEUW BEGINNEN
+JE VOORTGANG
+VOORTGANG SLUITEN
+ROOD
+GROEN
+GEEL
+NACHT
+DAG
+GELUID
+GELUID UIT
+TOETSENBORD
+TEKENEN
+PAUZE
+DOORGAAN
+NAAR HET MENU
+VAN 1 + 1 TOT ANALYSE
+Teken het antwoord waar je wilt. De appel springt naar dat getal: klopt het, dan valt hij als een <em>meteoriet</em>. Klopt het niet… dan lachen de zombies je uit. Flink.
+RECORD LEVEL {b} · {n} GOED · DRUK {p}%
+teken het getal waar je wilt
+teken het getal of de breuk (bv. 3/4)
+ZE HEBBEN JE
+LOS HET OP VOOR ZE HEM OPETEN
+DE BAAS HEEFT JE!
+TERUG NAAR LEVEL 1
+DELEN
+OEFEN: {t}
+MENU
+HOE WERD DIT OPGELOST?
+WELK GETAL IS DIT?
+CIJFER {n} VAN {m}
+VAST? BEKIJK EEN VOORBEELD
+/ BREUK
+SOORTGELIJK VOORBEELD, OPGELOST
+BEGREPEN!
+↻ OPNIEUW BEKIJKEN
+TAAL
+JE BENT OPGEGETEN;HAP!;KNAP;KLAAR;EINDE
+PIJL!;TWEE PIJLEN;RAAK
+LEVEL {l} · {t} · {c} GOED · {k} ZOMBIES · RECORD {r} · DRUK {p}%
+2 ANTWOORDEN ACHTER ELKAAR OM LOS TE KOMEN
+NOG 1 ANTWOORD`,
+pl:`GRAJ
+ZACZNIJ OD NOWA
+TWÓJ POSTĘP
+ZAMKNIJ POSTĘP
+CZERWONE
+ZIELONE
+ŻÓŁTE
+NOC
+DZIEŃ
+DŹWIĘK
+BEZ DŹWIĘKU
+KLAWIATURA
+RYSUJ
+PAUZA
+WZNÓW
+WYJDŹ DO MENU
+OD 1 + 1 DO ANALIZY
+Narysuj wynik gdziekolwiek. Jabłko skacze na tę liczbę: jeśli trafisz, spada jak <em>meteoryt</em>. Jeśli nie… zombie się z ciebie śmieją. I to mocno.
+REKORD POZIOM {b} · {n} DOBRYCH · NACISK {p}%
+narysuj liczbę gdziekolwiek
+narysuj liczbę lub ułamek (np. 3/4)
+ZŁAPALI CIĘ
+ROZWIĄŻ, ZANIM ZJEDZĄ JABŁKO
+SZEF CIĘ ZŁAPAŁ!
+WRÓĆ NA POZIOM 1
+UDOSTĘPNIJ
+ĆWICZ: {t}
+MENU
+JAK TO ROZWIĄZAĆ?
+JAKA TO LICZBA?
+CYFRA {n} Z {m}
+UTKNĄŁEŚ? ZOBACZ PRZYKŁAD
+/ UŁAMEK
+PODOBNY PRZYKŁAD, ROZWIĄZANY
+ROZUMIEM!
+↻ OBEJRZYJ PONOWNIE
+JĘZYK
+ZJEDLI CIĘ;ŁAP!;CHRUP;KONIEC;KONIEC GRY
+STRZAŁA!;DWIE STRZAŁY;W DZIESIĄTKĘ
+POZIOM {l} · {t} · {c} DOBRYCH · {k} ZOMBIE · REKORD {r} · NACISK {p}%
+2 ODPOWIEDZI Z RZĘDU, BY SIĘ WYRWAĆ
+ZOSTAŁA 1 ODPOWIEDŹ`,
+id:`MAIN
+MULAI ULANG
+KEMAJUANMU
+TUTUP KEMAJUAN
+MERAH
+HIJAU
+KUNING
+MALAM
+SIANG
+SUARA
+TANPA SUARA
+PAPAN KETIK
+GAMBAR
+JEDA
+LANJUT
+KELUAR KE MENU
+DARI 1 + 1 SAMPAI KALKULUS
+Gambar jawabannya di mana saja. Apel melompat ke angka itu: kalau benar, ia jatuh seperti <em>meteorit</em>. Kalau salah… para zombi mengejekmu. Parah banget.
+REKOR LEVEL {b} · {n} BENAR · TEKANAN {p}%
+gambar angkanya di mana saja
+gambar angka atau pecahan (mis. 3/4)
+KAMU TERTANGKAP
+SELESAIKAN SEBELUM APELNYA DIMAKAN
+BOS MENANGKAPMU!
+KEMBALI KE LEVEL 1
+BAGIKAN
+LATIHAN {t}
+MENU
+BAGAIMANA CARA MENYELESAIKANNYA?
+ANGKA APA INI?
+ANGKA {n} DARI {m}
+BINGUNG? LIHAT CONTOH
+/ PECAHAN
+CONTOH SERUPA, DENGAN JAWABAN
+MENGERTI!
+↻ LIHAT LAGI
+BAHASA
+KAMU DIMAKAN;NYAM!;KRESEK;TAMAT;GAME OVER
+PANAH!;DUA PANAH;TEPAT SASARAN
+LEVEL {l} · {t} · {c} BENAR · {k} ZOMBI · REKOR {r} · TEKANAN {p}%
+2 JAWABAN BERTURUT-TURUT UNTUK LEPAS
+SISA 1 JAWABAN`,
+vi:`CHƠI
+BẮT ĐẦU LẠI
+TIẾN TRÌNH CỦA BẠN
+ĐÓNG TIẾN TRÌNH
+ĐỎ
+XANH LÁ
+VÀNG
+ĐÊM
+NGÀY
+ÂM THANH
+TẮT TIẾNG
+BÀN PHÍM
+VẼ
+TẠM DỪNG
+TIẾP TỤC
+VỀ MENU
+TỪ 1 + 1 ĐẾN GIẢI TÍCH
+Vẽ kết quả ở bất kỳ đâu. Quả táo nhảy tới số đó: đúng thì rơi xuống như <em>thiên thạch</em>. Sai thì… lũ zombie chế giễu bạn. Rất nhiều.
+KỶ LỤC CẤP {b} · {n} ĐÚNG · ÁP LỰC {p}%
+vẽ con số ở bất kỳ đâu
+vẽ số hoặc phân số (vd. 3/4)
+BỊ BẮT RỒI
+GIẢI TRƯỚC KHI CHÚNG ĂN MẤT
+TRÙM ĐÃ BẮT BẠN!
+VỀ CẤP 1
+CHIA SẺ
+LUYỆN TẬP {t}
+MENU
+GIẢI NHƯ THẾ NÀO?
+ĐÂY LÀ SỐ GÌ?
+CHỮ SỐ {n} / {m}
+BÍ RỒI? XEM VÍ DỤ
+/ PHÂN SỐ
+VÍ DỤ TƯƠNG TỰ, CÓ LỜI GIẢI
+HIỂU RỒI!
+↻ XEM LẠI
+NGÔN NGỮ
+BẠN BỊ ĂN RỒI;NHAM!;RỤP;HẾT RỒI;KẾT THÚC
+TRÚNG TÊN!;HAI MŨI TÊN;TRÚNG ĐÍCH
+CẤP {l} · {t} · {c} ĐÚNG · {k} ZOMBIE · KỶ LỤC {r} · ÁP LỰC {p}%
+2 CÂU ĐÚNG LIÊN TIẾP ĐỂ THOÁT
+CÒN 1 CÂU`,
+th:`เล่น
+เริ่มใหม่
+ความคืบหน้าของคุณ
+ปิดความคืบหน้า
+สีแดง
+สีเขียว
+สีเหลือง
+กลางคืน
+กลางวัน
+เสียง
+ปิดเสียง
+คีย์บอร์ด
+วาด
+หยุดชั่วคราว
+เล่นต่อ
+ออกไปเมนู
+จาก 1 + 1 ถึงแคลคูลัส
+วาดคำตอบตรงไหนก็ได้ แอปเปิลจะกระโดดไปที่เลขนั้น ถ้าถูกจะตกลงมาเหมือน<em>อุกกาบาต</em> ถ้าผิด… ซอมบี้จะล้อคุณอย่างหนัก
+สถิติ ด่าน {b} · ถูก {n} · แรงกดดัน {p}%
+วาดตัวเลขตรงไหนก็ได้
+วาดตัวเลขหรือเศษส่วน (เช่น 3/4)
+ถูกจับแล้ว
+แก้ให้ได้ก่อนโดนกิน
+บอสจับคุณไว้!
+กลับไปด่าน 1
+แชร์
+ฝึก {t}
+เมนู
+แก้อย่างไร?
+เลขอะไรนี่?
+หลักที่ {n} จาก {m}
+ติดอยู่? ดูตัวอย่าง
+/ เศษส่วน
+ตัวอย่างคล้ายกัน พร้อมเฉลย
+เข้าใจแล้ว!
+↻ ดูอีกครั้ง
+ภาษา
+คุณถูกกิน;งั่ม!;กรุบ;จบแล้ว;เกมโอเวอร์
+โดนลูกธนู!;สองลูกธนู;ตรงเป้า
+ด่าน {l} · {t} · ถูก {c} · ซอมบี้ {k} · สถิติ {r} · แรงกดดัน {p}%
+ตอบถูกติดกัน 2 ข้อเพื่อหลุด
+เหลืออีก 1 ข้อ`,
+sv:`SPELA
+BÖRJA OM
+DINA FRAMSTEG
+STÄNG FRAMSTEG
+RÖD
+GRÖN
+GUL
+NATT
+DAG
+LJUD
+LJUD AV
+TANGENTBORD
+RITA
+PAUS
+FORTSÄTT
+TILL MENYN
+FRÅN 1 + 1 TILL ANALYS
+Rita svaret var du vill. Äpplet hoppar till det talet: har du rätt faller det som en <em>meteorit</em>. Har du fel… hånar zombierna dig. Rejält.
+REKORD NIVÅ {b} · {n} RÄTT · PRESS {p}%
+rita siffran var som helst
+rita siffran eller bråket (t.ex. 3/4)
+DE TOG DIG
+LÖS DET INNAN DE ÄTER ÄPPLET
+BOSSEN HAR DIG!
+TILLBAKA TILL NIVÅ 1
+DELA
+ÖVA: {t}
+MENY
+HUR LÖSTES DET?
+VILKET TAL ÄR DET?
+SIFFRA {n} AV {m}
+FASTNAT? SE ETT EXEMPEL
+/ BRÅK
+LIKNANDE EXEMPEL, LÖST
+FÖRSTOD!
+↻ SE IGEN
+SPRÅK
+DU BLEV UPPÄTEN;NAM!;KNAS;SLUT;GAME OVER
+PIL!;TVÅ PILAR;I MITTEN
+NIVÅ {l} · {t} · {c} RÄTT · {k} ZOMBIER · REKORD {r} · PRESS {p}%
+2 SVAR I RAD FÖR ATT SLITA DIG LOS
+1 SVAR KVAR`,
+uk:`ГРАТИ
+ПОЧАТИ СПОЧАТКУ
+ТВІЙ ПРОГРЕС
+СХОВАТИ ПРОГРЕС
+ЧЕРВОНЕ
+ЗЕЛЕНЕ
+ЖОВТЕ
+НІЧ
+ДЕНЬ
+ЗВУК
+БЕЗ ЗВУКУ
+КЛАВІАТУРА
+МАЛЮВАТИ
+ПАУЗА
+ПРОДОВЖИТИ
+ДО МЕНЮ
+ВІД 1 + 1 ДО МАТАНАЛІЗУ
+Малюй відповідь будь-де. Яблуко стрибає на це число: якщо правильно, воно падає як <em>метеорит</em>. Якщо ні… зомбі глузують. І дуже сильно.
+РЕКОРД РІВЕНЬ {b} · ВІРНО {n} · ТИСК {p}%
+малюй число будь-де
+малюй число або дріб (напр. 3/4)
+ТЕБЕ СХОПИЛИ
+РОЗВ'ЯЖИ, ПОКИ НЕ З'ЇЛИ ЯБЛУКО
+БОС СХОПИВ ТЕБЕ!
+НА РІВЕНЬ 1
+ПОДІЛИТИСЯ
+ТРЕНУВАТИ: {t}
+МЕНЮ
+ЯК ЦЕ РОЗВ'ЯЗУВАЛОСЯ?
+ЯКЕ ЦЕ ЧИСЛО?
+ЦИФРА {n} З {m}
+НЕ ЗНАЄШ? ПОДИВИСЬ ПРИКЛАД
+/ ДРІБ
+СХОЖИЙ ПРИКЛАД З РОЗВ'ЯЗКОМ
+ЗРОЗУМІЛО!
+↻ ДИВИТИСЬ ЗНОВУ
+МОВА
+ТЕБЕ З'ЇЛИ;ХРУМ!;ХРУСЬ;КІНЕЦЬ;ГРА ЗАКІНЧЕНА
+СТРІЛА!;ДВІ СТРІЛИ;У ЯБЛУЧКО
+РІВЕНЬ {l} · {t} · ВІРНО {c} · ЗОМБІ {k} · РЕКОРД {r} · ТИСК {p}%
+2 ВІДПОВІДІ ПОСПІЛЬ, ЩОБ ВИРВАТИСЯ
+ЗАЛИШИЛАСЬ 1 ВІДПОВІДЬ`,
+cs:`HRÁT
+ZAČÍT ZNOVU
+TVŮJ POSTUP
+ZAVŘÍT POSTUP
+ČERVENÉ
+ZELENÉ
+ŽLUTÉ
+NOC
+DEN
+ZVUK
+BEZ ZVUKU
+KLÁVESNICE
+KRESLIT
+PAUZA
+POKRAČOVAT
+DO MENU
+OD 1 + 1 PO ANALÝZU
+Nakresli výsledek kamkoli. Jablko skočí na to číslo: když máš pravdu, spadne jako <em>meteorit</em>. Když ne… zombíci se ti smějí. A pořádně.
+REKORD LEVEL {b} · {n} SPRÁVNĚ · TLAK {p}%
+nakresli číslo kamkoli
+nakresli číslo nebo zlomek (např. 3/4)
+CHYTILI TĚ
+VYŘEŠ TO, DŘÍV NEŽ JABLKO SNĚDÍ
+BOSS TĚ CHYTIL!
+ZPĚT NA LEVEL 1
+SDÍLET
+PROCVIČIT: {t}
+MENU
+JAK SE TO ŘEŠILO?
+JAKÉ JE TO ČÍSLO?
+ČÍSLICE {n} Z {m}
+NEVÍŠ? PODÍVEJ SE NA PŘÍKLAD
+/ ZLOMEK
+PODOBNÝ PŘÍKLAD S ŘEŠENÍM
+JASNÉ!
+↻ PŘEHRÁT ZNOVU
+JAZYK
+SNĚDLI TĚ;HAM!;KŘUP;KONEC;KONEC HRY
+ŠÍP!;DVA ŠÍPY;DO ČERNÉHO
+LEVEL {l} · {t} · {c} SPRÁVNĚ · {k} ZOMBÍ · REKORD {r} · TLAK {p}%
+2 ODPOVĚDI PO SOBĚ, ABYS SE UVOLNIL
+ZBÝVÁ 1 ODPOVĚĎ`,
+el:`ΠΑΙΞΕ
+ΞΕΚΙΝΑ ΞΑΝΑ
+Η ΠΡΟΟΔΟΣ ΣΟΥ
+ΚΛΕΙΣΙΜΟ ΠΡΟΟΔΟΥ
+ΚΟΚΚΙΝΟ
+ΠΡΑΣΙΝΟ
+ΚΙΤΡΙΝΟ
+ΝΥΧΤΑ
+ΜΕΡΑ
+ΗΧΟΣ
+ΧΩΡΙΣ ΗΧΟ
+ΠΛΗΚΤΡΟΛΟΓΙΟ
+ΣΧΕΔΙΑΣΕ
+ΠΑΥΣΗ
+ΣΥΝΕΧΕΙΑ
+ΕΞΟΔΟΣ ΣΤΟ ΜΕΝΟΥ
+ΑΠΟ ΤΟ 1 + 1 ΣΤΟΝ ΛΟΓΙΣΜΟ
+Σχεδίασε το αποτέλεσμα όπου θέλεις. Το μήλο πηδά σε αυτόν τον αριθμό: αν έχεις δίκιο, πέφτει σαν <em>μετεωρίτης</em>. Αν κάνεις λάθος… τα ζόμπι σε κοροϊδεύουν. Πολύ.
+ΡΕΚΟΡ ΕΠΙΠΕΔΟ {b} · {n} ΣΩΣΤΑ · ΠΙΕΣΗ {p}%
+σχεδίασε τον αριθμό οπουδήποτε
+σχεδίασε τον αριθμό ή το κλάσμα (π.χ. 3/4)
+ΣΕ ΕΠΙΑΣΑΝ
+ΛΥΣΕ ΤΟ ΠΡΙΝ ΤΟ ΦΑΝΕ
+Ο ΑΡΧΗΓΟΣ ΣΕ ΕΠΙΑΣΕ!
+ΠΙΣΩ ΣΤΟ ΕΠΙΠΕΔΟ 1
+ΚΟΙΝΟΠΟΙΗΣΗ
+ΕΞΑΣΚΗΣΗ {t}
+ΜΕΝΟΥ
+ΠΩΣ ΛΥΝΟΤΑΝ;
+ΠΟΙΟΣ ΑΡΙΘΜΟΣ ΕΙΝΑΙ ΑΥΤΟΣ;
+ΨΗΦΙΟ {n} ΑΠΟ {m}
+ΔΕΝ ΞΕΡΕΙΣ; ΔΕΣ ΕΝΑ ΠΑΡΑΔΕΙΓΜΑ
+/ ΚΛΑΣΜΑ
+ΠΑΡΟΜΟΙΟ ΛΥΜΕΝΟ ΠΑΡΑΔΕΙΓΜΑ
+ΚΑΤΑΛΑΒΑ!
+↻ ΔΕΣ ΤΟ ΞΑΝΑ
+ΓΛΩΣΣΑ
+ΣΕ ΦΑΝΕ;ΜΑΜ!;ΚΡΑΤΣ;ΤΕΛΟΣ;ΤΕΛΟΣ ΠΑΙΧΝΙΔΙΟΥ
+ΒΕΛΟΣ!;ΔΥΟ ΒΕΛΗ;ΣΤΟΧΟΣ
+ΕΠΙΠΕΔΟ {l} · {t} · {c} ΣΩΣΤΑ · {k} ΖΟΜΠΙ · ΡΕΚΟΡ {r} · ΠΙΕΣΗ {p}%
+2 ΣΥΝΕΧΟΜΕΝΕΣ ΑΠΑΝΤΗΣΕΙΣ ΓΙΑ ΝΑ ΞΕΦΥΓΕΙΣ
+ΑΠΕΜΕΙΝΕ 1 ΑΠΑΝΤΗΣΗ`,
+he:`שחק
+התחל מחדש
+ההתקדמות שלך
+סגור התקדמות
+אדום
+ירוק
+צהוב
+לילה
+יום
+צליל
+ללא צליל
+מקלדת
+צייר
+השהיה
+המשך
+יציאה לתפריט
+מ־1 + 1 ועד חשבון אינפיניטסימלי
+צייר את התשובה בכל מקום. התפוח קופץ למספר הזה: אם צדקת הוא נופל כמו <em>מטאוריט</em>. אם טעית… הזומבים לועגים לך. הרבה.
+שיא שלב {b} · {n} נכונות · לחץ {p}%
+צייר את המספר בכל מקום
+צייר מספר או שבר (למשל 3/4)
+תפסו אותך
+פתור לפני שיאכלו אותו
+הבוס תפס אותך!
+חזרה לשלב 1
+שתף
+תרגל {t}
+תפריט
+איך פותרים את זה?
+איזה מספר זה?
+ספרה {n} מתוך {m}
+תקוע? ראה דוגמה
+/ שבר
+דוגמה דומה עם פתרון
+הבנתי!
+↻ צפה שוב
+שפה
+נאכלת;נאם!;קראנץ';נגמר;סוף המשחק
+חץ!;שני חיצים;בול
+שלב {l} · {t} · {c} נכונות · {k} זומבים · שיא {r} · לחץ {p}%
+2 תשובות ברצף כדי להשתחרר
+נשארה תשובה אחת`,
+ro:`JOACĂ
+ÎNCEPE DE LA ZERO
+PROGRESUL TĂU
+ÎNCHIDE PROGRESUL
+ROȘU
+VERDE
+GALBEN
+NOAPTE
+ZI
+SUNET
+FĂRĂ SUNET
+TASTATURĂ
+DESENEAZĂ
+PAUZĂ
+CONTINUĂ
+IEȘI ÎN MENIU
+DE LA 1 + 1 LA ANALIZĂ
+Desenează rezultatul oriunde. Mărul sare la acel număr: dacă ai dreptate, cade ca un <em>meteorit</em>. Dacă greșești… zombii își bat joc de tine. Rău de tot.
+RECORD NIVEL {b} · {n} CORECTE · PRESIUNE {p}%
+desenează numărul oriunde
+desenează numărul sau fracția (ex. 3/4)
+TE-AU PRINS
+REZOLVĂ ÎNAINTE SĂ-L MÂNÂNCE
+ȘEFUL TE-A PRINS!
+ÎNAPOI LA NIVELUL 1
+DISTRIBUIE
+EXERSEAZĂ {t}
+MENIU
+CUM SE REZOLVA?
+CE NUMĂR ESTE?
+CIFRA {n} DIN {m}
+BLOCAT? VEZI UN EXEMPLU
+/ FRACȚIE
+EXEMPLU SIMILAR, REZOLVAT
+AM ÎNȚELES!
+↻ VEZI DIN NOU
+LIMBĂ
+AI FOST MÂNCAT;NAM!;CRONC;GATA;JOC TERMINAT
+SĂGEATĂ!;DOUĂ SĂGEȚI;ÎN ȚINTĂ
+NIVEL {l} · {t} · {c} CORECTE · {k} ZOMBI · RECORD {r} · PRESIUNE {p}%
+2 RĂSPUNSURI LA RÂND CA SĂ SCAPI
+A MAI RĂMAS 1 RĂSPUNS`,
+hu:`JÁTÉK
+ÚJRAKEZDÉS
+HALADÁSOD
+HALADÁS BEZÁRÁSA
+PIROS
+ZÖLD
+SÁRGA
+ÉJSZAKA
+NAPPAL
+HANG
+HANG KI
+BILLENTYŰZET
+RAJZOLÁS
+SZÜNET
+FOLYTATÁS
+KILÉPÉS A MENÜBE
+1 + 1-TŐL A KALKULUSIG
+Rajzold le az eredményt bárhová. Az alma arra a számra ugrik: ha jól tippeltél, <em>meteoritként</em> zuhan. Ha nem… a zombik kigúnyolnak. Alaposan.
+REKORD {b}. SZINT · {n} HELYES · NYOMÁS {p}%
+rajzold a számot bárhová
+rajzold a számot vagy törtet (pl. 3/4)
+ELKAPTAK
+OLDD MEG, MIELŐTT MEGESZIK
+A FŐNÖK ELKAPOTT!
+VISSZA AZ 1. SZINTRE
+MEGOSZTÁS
+GYAKORLÁS: {t}
+MENÜ
+HOGYAN LEHETETT MEGOLDANI?
+MELYIK SZÁM EZ?
+{n}. SZÁMJEGY / {m}
+ELAKADTÁL? NÉZZ EGY PÉLDÁT
+/ TÖRT
+HASONLÓ PÉLDA, MEGOLDVA
+MEGÉRTETTEM!
+↻ NÉZD MEG ÚJRA
+NYELV
+MEGETTEK;HAMM!;ROPP;VÉGE;JÁTÉK VÉGE
+NYÍL!;KÉT NYÍL;TÍZES
+{l}. SZINT · {t} · {c} HELYES · {k} ZOMBI · REKORD {r} · NYOMÁS {p}%
+2 EGYMÁS UTÁNI VÁLASZ A SZABADULÁSHOZ
+MÉG 1 VÁLASZ`,
+da:`SPIL
+START FORFRA
+DIN FREMGANG
+LUK FREMGANG
+RØD
+GRØN
+GUL
+NAT
+DAG
+LYD
+LYD FRA
+TASTATUR
+TEGN
+PAUSE
+FORTSÆT
+TIL MENUEN
+FRA 1 + 1 TIL ANALYSE
+Tegn svaret hvor du vil. Æblet hopper til det tal: har du ret, falder det som en <em>meteorit</em>. Tager du fejl… spotter zombierne dig. Slemt.
+REKORD NIVEAU {b} · {n} RIGTIGE · PRES {p}%
+tegn tallet hvor som helst
+tegn tallet eller brøken (fx 3/4)
+DE FIK DIG
+LØS DET, FØR DE SPISER DET
+BOSSEN HAR DIG!
+TILBAGE TIL NIVEAU 1
+DEL
+ØV: {t}
+MENU
+HVORDAN BLEV DET LØST?
+HVILKET TAL ER DET?
+CIFFER {n} AF {m}
+FAST? SE ET EKSEMPEL
+/ BRØK
+LIGNENDE EKSEMPEL, LØST
+FORSTÅET!
+↻ SE IGEN
+SPROG
+DU BLEV SPIST;NAM!;KNAS;SLUT;GAME OVER
+PIL!;TO PILE;PLUDSELIG MIDT I
+NIVEAU {l} · {t} · {c} RIGTIGE · {k} ZOMBIER · REKORD {r} · PRES {p}%
+2 SVAR I TRÆK FOR AT KOMME LØS
+1 SVAR TILBAGE`
+};
+const LTXT={};for(const k of Object.keys(LRAW))LTXT[k]=LRAW[k].split('\n');
+const LNOUP=new Set(['lead','hint1','hint2']);
+let LANG='es-419';
+try{const sv=localStorage.getItem('rzLang');if(sv&&LTXT[sv])LANG=sv;else{const n=(navigator.language||'es').toLowerCase();
+  LANG=n.startsWith('es')?(/^es-(es)$/.test(n)?'es-ES':'es-419'):(n.startsWith('zh')?'zh':(LTXT[n.slice(0,2)]?n.slice(0,2):'en'))}}catch(e){}
+// t('clave',{vars}) → texto en el idioma actual (cae a español latino si falta)
+function L10(k,v){
+  const i=LK.indexOf(k);let s=(LTXT[LANG]&&LTXT[LANG][i])||LTXT['es-419'][i]||k;
+  if(v)s=s.replace(/\{(\w+)\}/g,(m,n)=>v[n]!=null?v[n]:m);
+  return LNOUP.has(k)?s:s.toUpperCase();
+}
+const L10list=k=>L10(k).split(';').map(x=>x.trim()).filter(Boolean);
+
+const flagURL=cc=>`https://flagcdn.com/w40/${cc}.png`;
+const flagImg=l=>`<img class="fl" alt="" src="${flagURL(l.cc)}" onerror="this.style.visibility='hidden'">`;
+const langOf=c=>LANGS.find(l=>l.c===c)||LANGS[0];
+function applyLang(){
+  const rtl=!!langOf(LANG).rtl;document.documentElement.lang=LANG.startsWith('es')?'es':LANG;
+  document.querySelectorAll('#game .screen,#pick,#alert,#bHelp').forEach(e=>e.dir=rtl?'rtl':'ltr');
+  const set=(sel,k,v)=>{const e=$(sel);if(e)e.textContent=L10(k,v)};
+  set('#bStart','play');set('#bGo','play');set('#bFresh','fresh');set('#sPause .ttl','pause');set('#bResume','resume');set('#bQuit','quit');
+  set('#sTitle .ttl small','tag');$('#sTitle .lead').innerHTML=L10('lead');
+  set('#sTitle details.prog summary',$('#sTitle details.prog').open?'closeprog':'prog');
+  set('#bCont','again1');set('#bShare','share');set('#bMenu','menu');set('#oFail summary','how');
+  set('#sTut .mini','example');set('#bTutOk','gotit');set('#bTutAgain','replay');set('#bHelp','help');set('.frk','frac');
+  set('#alBig','caught');set('#alSub','caughtSub');$('#drawhint').textContent=L10(document.body.classList.contains('frac')?'hint2':'hint1');
+  for(const i of[1,2]){const b=$('#bLang'+i);if(b){const l=langOf(LANG);b.innerHTML=flagImg(l)+l.n}}
+  $('#langTtl').textContent='🌐 '+L10('lang');
+  const ex=$('#exAgain');if(ex)ex.textContent=L10('replay');
+  $('#pick').setAttribute('aria-label',L10('which'));
+}
+function buildLangGrid(){
+  const g=$('#langGrid');g.innerHTML=LANGS.map(l=>`<button class="chip lg${l.c===LANG?' cur':''}" data-l="${l.c}" lang="${l.c}">${flagImg(l)}<span>${l.n}</span></button>`).join('');
+}
+function openLang(){buildLangGrid();$('#sLang').classList.add('show');requestAnimationFrame(()=>{fitCards();const c=$('#langGrid .cur');if(c)c.scrollIntoView({block:'center'})})}
+function closeLang(){$('#sLang').classList.remove('show')}
+function setLang(c){
+  if(!LTXT[c])return;LANG=c;try{localStorage.setItem('rzLang',c)}catch(e){}
+  applyLang();closeLang();
+  if(typeof syncChips==='function')syncChips();
+  if(typeof S!=='undefined'&&S.mode==='title')setMode('title');
+}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#bLang1,#bLang2,#bLangBack,#langGrid .lg');if(!b)return;
+  if(b.id==='bLangBack')closeLang();else if(b.dataset.l)setLang(b.dataset.l);else openLang()});
+
 const cv=$('#c'),ctx0=cv.getContext('2d');let CTXOVR=null;
 const ctx=new Proxy({}, {get:(t,k)=>{const c=CTXOVR||ctx0,v=c[k];return typeof v==='function'?v.bind(c):v},set:(t,k,v)=>{(CTXOVR||ctx0)[k]=v;return true}});
 let W=480,H=270,GY=196,X0=240,PORT=false,TOPPAD=24;
@@ -1293,7 +2500,7 @@ function setMode(m){
   $('#top').classList.toggle('hidden',!(play||pz));
   ['#inbox','#drawhint','#exprw'].forEach(s=>$(s).classList.toggle('hidden',!play));
   if(!play){$('#alert').classList.remove('on');$('#newt').classList.remove('on');$('#lawt').classList.remove('on');padClear()}else if(S.grab)$('#alert').classList.add('on');
-  if(m==='title'){heatmap($('#tHeat'));$('#bStart').textContent='JUGAR';$('#bFresh').hidden=true;const okT=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);$('#tStats').textContent=`RÉCORD NIVEL ${SAVE.best} · ${okT} ACIERTOS · PRESIÓN ${Math.round(hard()*100)}%`}
+  if(m==='title'){heatmap($('#tHeat'));$('#bStart').textContent=L10('play');$('#bFresh').hidden=true;const okT=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);$('#tStats').textContent=L10('rec',{b:SAVE.best,n:okT,p:Math.round(hard()*100)})}
   syncChips();
 }
 const SUBST=new Set(['suma','resta','mult','div','ent','frac','raiz']);
@@ -1310,7 +2517,7 @@ function mkProb(T,x,d){
 }
 function newProblem(){
   const T=S.topic;S.prob=mkProb(T,S.a.x,S.d);hideHelp();
-  {const fr=S.prob.keys.some(k=>k.includes('/'));document.body.classList.toggle('frac',fr);$('#drawhint').textContent=fr?'dibuja el número o la fracción (ej. 3/4)':'dibuja el número en cualquier parte'}
+  {const fr=S.prob.keys.some(k=>k.includes('/'));document.body.classList.toggle('frac',fr);$('#drawhint').textContent=fr?L10('hint2'):L10('hint1')}
   S.lay=null;S.input='';S.thinkT=0;S.run.stageProbs++;renderInput();
   if(!S.grab)S.uT=fitU(Math.abs(S.prob.ans-S.a.x)*(1.2+R()*1.2));
   if(!padLock)padClear();
@@ -1446,12 +2653,13 @@ function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){
   if(S.prob&&!exprT)renderExprCanvas(S.prob);else if(S.prob){clearTimeout(exprT);exprT=0;renderExprCanvas(S.prob);$('#exprw').classList.remove('out')}
   if(S.mode==='over'&&S.exP&&$('#oFail').open)playExplain()}
 const APPLES=['roja','verde','amarilla'];
-function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+APPLEC.toUpperCase();b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ NOCHE':'☀ DÍA';for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ SIN SONIDO':'♪ SONIDO';$('#bKb').textContent=document.body.classList.contains('kb')?'DIBUJAR':'TECLADO'}
+function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}syncChips()};
 for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':'dark')}
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
 {const pg=$('#sTitle details.prog'),sm=pg.querySelector('summary');
-  pg.addEventListener('toggle',()=>{const o=pg.open;$('#sTitle .lead').hidden=o;$('#tHeat').hidden=!o;$('#tStats').hidden=o;sm.textContent=o?'CERRAR PROGRESO':'TU PROGRESO'})}
+  pg.addEventListener('toggle',()=>{const o=pg.open;$('#sTitle .lead').hidden=o;$('#tHeat').hidden=!o;$('#tStats').hidden=o;sm.textContent=o?L10('closeprog'):L10('prog')})}
+applyLang();
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='play')setMode('pause')});
 document.addEventListener('contextmenu',e=>{if(S.mode==='play')e.preventDefault()});
 function toTitle(){crackHide();S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
@@ -1474,7 +2682,7 @@ function pickThumb(sy){
 function showPick(sy,cand){
   chPick={sy,cand};padDirty=true;
   const vis=syms.filter(q=>q.st.length),n=vis.indexOf(sy)+1,tot=vis.length;
-  pickEl.innerHTML=`<div class="pq"><div class="pqt"><b>¿QUÉ NÚMERO ES ESTE?</b>${tot>1?`<em>CIFRA ${n} DE ${tot}</em>`:''}</div></div>`+cand.map(d=>`<button data-k="${d}">${d}</button>`).join('')+'<button data-k="x" class="no" aria-label="Borrar">✕</button>';
+  pickEl.innerHTML=`<div class="pq"><div class="pqt"><b>${L10('which')}</b>${tot>1?`<em>${L10('digitN',{n:n,m:tot})}</em>`:''}</div></div>`+cand.map(d=>`<button data-k="${d}">${d}</button>`).join('')+'<button data-k="x" class="no" aria-label="Borrar">✕</button>';
   pickEl.querySelector('.pq').prepend(pickThumb(sy));
   pickEl.classList.add('on');
   const r=pickEl.getBoundingClientRect();let top=sy.y1+16;if(top+r.height>PH-6)top=sy.y0-16-r.height;
@@ -1702,8 +2910,8 @@ function checkClear(){
 function startGrab(z){
   const a=S.a;a.st='grab';const side=Math.sign(z.x-a.x)||1;z.grab=true;
   S.grab={z,g:0,side,need:z.type==='boss'?2:1};S.shake=6;S.flash=.25;SFX.grab();
-  $('#alBig').textContent=z.type==='boss'?'¡EL JEFE TE TIENE!':'¡TE ATRAPÓ!';
-  $('#alSub').textContent=S.grab.need>1?'2 RESPUESTAS SEGUIDAS PARA SOLTARTE':'RESUELVE ANTES DE QUE SE LA COMA';
+  $('#alBig').textContent=z.type==='boss'?L10('boss'):L10('caught');
+  $('#alSub').textContent=S.grab.need>1?L10('grab2'):L10('caughtSub');
   $('#alert').classList.add('on');
   S.input='';renderInput();padClear();if(!S.prob)newProblem();
   say(z,pick(['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]),'shout');
@@ -1713,7 +2921,7 @@ function escape(){
   if(g.need>1){
     g.need--;g.g=Math.max(0,g.g-.45);blood(scx(z.x),GY-26,24);S.shake=6;S.flash=.2;SFX.gore();
     S.texts.push({x:z.x,y:GY-50,txt:'¡UNA MÁS!',c:P.o,t:0,life:1.1,world:true});
-    $('#alSub').textContent='QUEDA 1 RESPUESTA';padFlash(380);newProblem();return;
+    $('#alSub').textContent=L10('left1');padFlash(380);newProblem();return;
   }
   if(z.type==='boss'){z.grab=false;z.hp--;z.hitT=.4;blood(scx(z.x),GY-26,50);SFX.hitBoss();z.x+=(Math.sign(z.x-a.x)||1)*90/S.u;if(z.hp<=0)killZ(z,true)}
   else killZ(z,true);
@@ -1790,7 +2998,7 @@ function overSprites(){const k=$('#sOver .card');if(k.dataset.spr)return;k.datas
 function gameOver(){
   SAVE.deaths=(SAVE.deaths||0)+1;persist();
   setMode('over');
-  $('#oTtl').textContent=S.deathBy==='arrow'?pick(['¡FLECHADA!','DOS FLECHAS','EN EL BLANCO']):pick(['TE COMIERON','¡ÑAM!','CRUNCH','SE ACABÓ','FIN']);
+  $('#oTtl').textContent=pick(L10list(S.deathBy==='arrow'?'arrow':'eaten'));
   const law=pickLaw();$('#oQuote').textContent=law.txt;$('#oLawN').textContent='— '+law.L.n;
   const frac=S.topic.boss?(S.boss?(S.boss.max-Math.max(0,S.boss.hp))/S.boss.max:0):S.ok/Math.max(1,S.quota);
   const pos=clamp((Math.min(S.stage,16)-1+frac*.95)/15,0,1),L=v=>(4+92*v).toFixed(2)+'%';
@@ -1798,16 +3006,16 @@ function gameOver(){
   const fill=$('#trFill'),ap=$('#trApple');fill.style.transition='none';ap.style.transition='none';fill.style.width='0';ap.style.left='4%';void fill.offsetWidth;fill.style.transition='';ap.style.transition='';
   requestAnimationFrame(()=>requestAnimationFrame(()=>{fill.style.width=(pos*100).toFixed(1)+'%';ap.style.left=L(pos)}));
   ap.style.background=`url(${appleCanvas(0,1).toDataURL()}) 0 0/100% 100% no-repeat`;overSprites();
-  $('#mapLbl').textContent=`NIVEL ${S.stage>16?'∞':S.stage} · ${S.topic.name} · ${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS · RÉCORD ${SAVE.best} · PRESIÓN ${Math.round(hard()*100)}%`;S.overPos=pos;
+  $('#mapLbl').textContent=L10('map',{l:S.stage>16?'∞':S.stage,t:S.topic.name,c:S.run.correct,k:S.run.kills,r:SAVE.best,p:Math.round(hard()*100)});S.overPos=pos;
   const p=S.run.lastProb;
-  $('#oFailB').innerHTML=p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">↻ VER DE NUEVO</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:'Te atraparon antes del primer problema.';
+  $('#oFailB').innerHTML=p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">${L10('replay')}</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:'Te atraparon antes del primer problema.';
   $('#sOver').classList.remove('exp');$('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};heatmap($('#oHeat'));
   const rows=[];const ids=new Set([...Object.keys(S.run.okT),...Object.keys(S.run.errT),S.topic.id]);
   for(const id of ids){const t=TOPICS.find(q=>q.id===id);const h=SAVE.hist[id]||{ok:0,bad:0},n=h.ok+h.bad,acc=n?h.ok/n:0;rows.push({t,acc,n})}
   rows.sort((a,b)=>a.acc-b.acc);
   const weak=rows.find(r=>r.n>=2&&r.acc<.75)||rows[0];
   $('#bCont').onclick=()=>newGame(1);
-  const wi=TOPICS.indexOf(weak.t)+1;$('#bPract').hidden=wi===S.stage;$('#bPract').textContent=`PRACTICAR ${weak.t.name}`;$('#bPract').onclick=()=>newGame(wi);
+  const wi=TOPICS.indexOf(weak.t)+1;$('#bPract').hidden=wi===S.stage;$('#bPract').textContent=L10('practice',{t:weak.t.name});$('#bPract').onclick=()=>newGame(wi);
   $('#sOver .card').scrollTop=0;requestAnimationFrame(()=>{fitDead();fitCards()});
 }
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
