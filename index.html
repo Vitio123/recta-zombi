@@ -195,6 +195,28 @@ html,body,.screen,.card{overflow:hidden!important}
 .card{transform-origin:center center}
 .screen.show .card>*{animation:fadeUp .55s both}
 .screen.show .card>*:nth-child(2){animation-delay:.08s}.screen.show .card>*:nth-child(3){animation-delay:.16s}.screen.show .card>*:nth-child(4){animation-delay:.24s}.screen.show .card>*:nth-child(5){animation-delay:.32s}.screen.show .card>*:nth-child(6){animation-delay:.4s}.screen.show .card>*:nth-child(7){animation-delay:.48s}.screen.show .card>*:nth-child(8){animation-delay:.56s}.screen.show .card>*:nth-child(9){animation-delay:.64s}
+button{transition:opacity .35s ease,filter .35s ease,transform .1s}
+@keyframes btnIn{0%{opacity:0;transform:translateY(8px) scale(.94);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
+@keyframes btnOut{100%{opacity:0;transform:translateY(6px) scale(.94);filter:blur(3px)}}
+.screen.show button{animation:btnIn .45s cubic-bezier(.2,.9,.3,1.2) backwards}
+.screen.show .btns>button:nth-child(2){animation-delay:.12s}.screen.show .btns>button:nth-child(3){animation-delay:.22s}
+.screen.show .row>button:nth-child(2){animation-delay:.08s}.screen.show .row>button:nth-child(3){animation-delay:.16s}.screen.show .row>button:nth-child(4){animation-delay:.24s}.screen.show .row>button:nth-child(5){animation-delay:.32s}
+.screen:not(.show) button{opacity:0;filter:blur(2px)}
+body.kb #kp button{animation:btnIn .35s ease backwards}
+#kp button:nth-child(4n+2){animation-delay:.04s}#kp button:nth-child(4n+3){animation-delay:.08s}#kp button:nth-child(4n){animation-delay:.12s}
+.fading{animation:btnOut .26s ease forwards!important}
+#bHelp{animation:helpIn .4s ease backwards,helpPulse 1.4s ease-in-out .4s infinite!important}
+#bHelp.fading{animation:helpOut .26s ease forwards!important}
+@keyframes helpIn{0%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9)}100%{opacity:1;transform:translateX(-50%)}}
+@keyframes helpOut{100%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9)}}
+/* menú */
+.ttl .z{color:var(--red);display:inline-block;animation:zWob 3.2s ease-in-out infinite;text-shadow:3px 3px 0 color-mix(in srgb,var(--red) 30%,transparent)}
+@keyframes zWob{0%,100%{transform:none}46%{transform:none}48%{transform:translate(2px,-1px) skewX(-6deg)}50%{transform:translate(-2px,1px)}52%{transform:none}}
+#bStart{font-size:20px;padding:18px 22px 15px;animation:btnIn .45s backwards,glowR 2.2s ease-in-out .6s infinite}
+@keyframes glowR{0%,100%{box-shadow:4px 4px 0 color-mix(in srgb,var(--fg) 35%,transparent),0 0 0 0 color-mix(in srgb,var(--red) 0%,transparent)}50%{box-shadow:4px 4px 0 color-mix(in srgb,var(--fg) 35%,transparent),0 0 22px 2px color-mix(in srgb,var(--red) 55%,transparent)}}
+#tStats{letter-spacing:.14em}
+details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;letter-spacing:.24em;color:var(--mut);list-style:none;text-align:center;padding:4px 0}details.prog summary::before{content:'▸ '}details.prog[open] summary::before{content:'▾ '}
+details.prog .heat{margin-top:8px;animation:fadeUp .4s both}
 @keyframes fadeUp{0%{opacity:0;transform:translateY(10px);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
 .hud{transition:opacity .6s ease,filter .6s ease}.hud.hidden{filter:blur(4px)}
 #newt,#lawt{transition:opacity .6s ease,filter .6s ease}#newt:not(.on),#lawt:not(.on){filter:blur(3px)}
@@ -220,10 +242,11 @@ html,body,.screen,.card{overflow:hidden!important}
 
   <div class="screen show" id="sTitle"><div class="card">
     <canvas id="logo" width="64" height="64"></canvas>
-    <h1 class="ttl">RECTA ZOMBI<small>DE 1 + 1 AL CÁLCULO</small></h1>
-    <p class="lead">Resuelve y dibuja el resultado en cualquier parte. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… se rompe todo.</p>
+    <h1 class="ttl">RECTA <span class="z">ZOMBI</span><small>DE 1 + 1 AL CÁLCULO</small></h1>
+    <p class="lead">Dibuja el resultado donde quieras. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… los zombis se burlan. Y mucho.</p>
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
-    <div class="heat" id="tHeat"></div>
+    <div class="mini" id="tStats"></div>
+    <details class="prog"><summary>TU PROGRESO</summary><div class="heat" id="tHeat"></div></details>
     <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bGenre1">♪ MÚSICA</button></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
@@ -434,16 +457,27 @@ function buildBG(){
   FR_C=null;fctx=null;
 }
 /* ============ Sprites ============ */
-const APPLE=['....bl....','....bll...','..rrbrrr..','.rRrrrrrr.','rRrrrrrrrr','rRrrrrrrrr','rrrrrrrrrr','rrrrrrrrrd','.rrrrrrrd.','..rrddrr..'];
+const APPLE=['......bll...','......bllll.','..rrrrbrrr..','.rRRrrrrrrr.','rRwRrrrrrrrr','rRRrrrrrrrrd','rRrrrrrrrrrd','rrrrrrrrrrdd','rrrrrrrrrddd','.rrrrrrrrdd.','..rrrdrrdd..','...dd..dd...'];
+const APW=APPLE[0].length,APH=APPLE.length;let APCV=null;
 
 const APC={roja:{r:'#d42a2a',R:'#ff7a6b',d:'#8e1414',b:'#5a3a22',l:'#4f8a2a'},verde:{r:'#4fae35',R:'#a6ea72',d:'#2a6a1b',b:'#5a3a22',l:'#2f6f1f'},amarilla:{r:'#e5bd2f',R:'#fff19a',d:'#9c770e',b:'#5a3a22',l:'#4f8a2a'}};
 let APPLEC='roja';try{APPLEC=localStorage.getItem('rzApple')||'roja';if(!APC[APPLEC])APPLEC='roja'}catch(e){}
-function drawApple(x,y,bite=0,side=1){
-  for(let j=0;j<10;j++)for(let i=0;i<10;i++){
-    const ch=APPLE[j][i];if(ch==='.')continue;
-    if(bite>0){const col=side>0?9-i:i,dy=Math.abs(j-5.5);if(col<bite*2.2-dy*.6+(((i+j)&1)?.5:0))continue}
-    ctx.fillStyle=APC[APPLEC][ch];ctx.fillRect(x+i,y+j,1,1);
-  }
+// sprite de la manzana con contorno automático (y mordida) en un lienzo de (APW+2)×(APH+2)
+function appleCanvas(bite=0,side=1){
+  if(!APCV){APCV=document.createElement('canvas');APCV.width=APW+2;APCV.height=APH+2}
+  const c=APCV.getContext('2d');c.clearRect(0,0,APW+2,APH+2);
+  const on=(i,j)=>{if(j<0||j>=APH||i<0||i>=APW||APPLE[j][i]==='.')return false;if(bite>0){const col=side>0?APW-1-i:i,dy=Math.abs(j-APH/2);if(col<bite*2.6-dy*.6+(((i+j)&1)?.5:0))return false}return true};
+  c.fillStyle='#1a0b0b';for(let j=-1;j<=APH;j++)for(let i=-1;i<=APW;i++)if(!on(i,j)&&(on(i+1,j)||on(i-1,j)||on(i,j+1)||on(i,j-1)))c.fillRect(i+1,j+1,1,1);
+  for(let j=0;j<APH;j++)for(let i=0;i<APW;i++)if(on(i,j)){const ch=APPLE[j][i];c.fillStyle=ch==='w'?'#fff6ec':APC[APPLEC][ch];c.fillRect(i+1,j+1,1,1)}
+  return APCV;
+}
+function drawApple(x,y,bite=0,side=1){ctx.drawImage(appleCanvas(bite,side),x-1,y-1)}
+// ojos: miran al zombi más cercano, parpadean, se asustan cuando la agarran
+function appleFace(c,x,y,w,h,scared,look,blink){
+  const e=Math.max(1,Math.round(w/14)),ex=x+Math.round(w*.3),ey=y+Math.round(h*.46),gap=Math.round(w*.3);
+  for(const k of[0,1]){const px=ex+k*gap;if(blink&&!scared){c.fillStyle='#1a0b0b';c.fillRect(px,ey+e,2*e,e);continue}
+    c.fillStyle='#fff6ec';c.fillRect(px,ey,2*e,(scared?3:2)*e);c.fillStyle='#1a0b0b';c.fillRect(px+(look>0?e:0),ey+e,e,e)}
+  if(scared){c.fillStyle='#1a0b0b';c.fillRect(ex+e,ey+4*e,gap,e)}
 }
 function pline(x0,y0,x1,y1,c){x0=Math.round(x0);y0=Math.round(y0);x1=Math.round(x1);y1=Math.round(y1);ctx.fillStyle=c;let dx=Math.abs(x1-x0),sx=x0<x1?1:-1,dy=-Math.abs(y1-y0),sy=y0<y1?1:-1,e=dx+dy;for(let i=0;i<800;i++){ctx.fillRect(x0,y0,1,1);if(x0===x1&&y0===y1)break;const e2=2*e;if(e2>=dy){e+=dy;x0+=sx}if(e2<=dx){e+=dx;y0+=sy}}}
 function dline(x0,y0,x1,y1,c,gap=3){const n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0))|0;ctx.fillStyle=c;for(let i=0;i<=n;i+=gap){const t=n?i/n:0;ctx.fillRect(Math.round(x0+(x1-x0)*t),Math.round(y0+(y1-y0)*t),1,1)}}
@@ -451,25 +485,14 @@ function dline(x0,y0,x1,y1,c,gap=3){const n=Math.max(Math.abs(x1-x0),Math.abs(y1
 /* ============ Logo: agujero negro pixel con disco de acreción ============ */
 const lgc=$('#logo').getContext('2d');
 function drawLogo(t){
-  const c=lgc;c.clearRect(0,0,64,64);
-  const cx=31.5,cy=31.5,cols=[P.m2,P.m3,P.l1,P.l2,P.l3,P.w,P.w];
-  for(let y=0;y<64;y++)for(let x=0;x<64;x++){
-    const dx=x-cx,dy=y-cy,r=Math.hypot(dx,dy),u=dx,v=dy/.34,rd=Math.hypot(u,v);
-    const inDisk=rd>13&&rd<30,ang=Math.atan2(v,u);
-    const sw=.55+.45*Math.sin(ang*3-rd*.55+t*2.2);
-    let col=null;
-    const diskI=inDisk?(1-(rd-13)/17)*sw*(dx>0?1.15:.85):0;
-    if(inDisk&&dy>0)col=diskI;
-    else if(r<11)col=-1;
-    else if(r<12.6)col=.95+.05*Math.sin(t*3+ang);
-    else if(r<17&&dy<3){const k=(1-(r-12.6)/4.4)*(.55+.45*Math.sin(Math.atan2(dy,dx)*2+t*1.5))*(dy<0?1:.4);if(k>.15)col=k*.8}
-    if(col===null&&inDisk)col=diskI*.75;
-    if(col===null){if(((x*7+y*13)%97)===0&&Math.sin(t+x)>.2){c.fillStyle=P.l2;c.fillRect(x,y,1,1)}continue}
-    if(col<0){c.fillStyle='#000';c.fillRect(x,y,1,1);continue}
-    const q=clamp(col,0,1)*(cols.length-1)+bay(x,y)-.5,i=clamp(Math.round(q),0,cols.length-1);
-    if(col<.08)continue;
-    c.fillStyle=cols[i];c.fillRect(x,y,1,1);
-  }
+  const c=lgc;c.clearRect(0,0,64,64);c.imageSmoothingEnabled=false;
+  const sy=['π','∫','√','+','÷','∞'],orb=(front)=>{for(let i=0;i<6;i++){const an=t*.6+i*Math.PI/3,sn=Math.sin(an);if((sn>0)!==front||(front&&Math.abs(Math.cos(an))<.6))continue;c.globalAlpha=front?.95:.35;ptext(sy[i],Math.round(32+Math.cos(an)*27)-2,Math.round(33+sn*10)-3,1,front?P.red:P.l1,c)}c.globalAlpha=1};
+  orb(false);
+  const ph=t*2.4,bob=Math.abs(Math.sin(ph))*7,sq=Math.max(0,.18-bob*.04),w=Math.round(14*3*(1+sq)),h=Math.round(14*3*(1-sq*.8));
+  c.globalAlpha=.28;c.fillStyle='#000';const sw=Math.round(30-bob*1.6);c.fillRect(32-(sw>>1),59,sw,2);c.globalAlpha=1;
+  const x=32-(w>>1),y=Math.round(60-h-bob);c.drawImage(appleCanvas(0,1),x,y,w,h);
+  appleFace(c,x,y,w,h,false,Math.sin(t*.7)>0?1:-1,(t%3.6)<.14);
+  orb(true);
 }
 
 /* ============ Audio: efectos + percusión aleatoria con los instrumentos de la lámina ============ */
@@ -526,7 +549,7 @@ INST.bongoes=(t,v,d)=>(R()<.5?INST.bongoHi:INST.bongoLo)(t,v,d);
 function bass(t,midi,dur,v,d){const f=440*Math.pow(2,(midi-69)/12),o=AC.createOscillator(),lp=AC.createBiquadFilter(),g=AC.createGain();
   o.type='sawtooth';o.frequency.value=f;lp.type='lowpass';lp.Q.value=4;lp.frequency.setValueAtTime(f*9,t);lp.frequency.exponentialRampToValueAtTime(f*1.6,t+Math.min(dur,.25));
   g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.13*v,t+.006);g.gain.setTargetAtTime(.0001,t+dur*.7,dur*.15);
-  o.connect(lp).connect(g).connect(d||out());o.start(t);o.stop(t+dur+.2);osc(t,f,null,dur,'sine',.32*v,d)}
+  o.connect(lp).connect(g).connect(d||out());o.start(t);o.stop(t+dur+.2);osc(t,f,null,dur,'sine',.36*v,d);if(f>70)osc(t,f/2,null,dur,'sine',.24*v,d)}
 // marimba: fundamental + parcial 4× que se apaga rápido (percusión y salsa)
 // lead cuadrado con vibrato (rock y 8 bits)
 function sqLead(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out(),o=AC.createOscillator(),g=AC.createGain(),lp=AC.createBiquadFilter(),v=AC.createOscillator(),vg=AC.createGain();
@@ -548,6 +571,19 @@ function guitar(t,m,dur){if(!DCURVE){DCURVE=new Float32Array(1024);for(let i=0;i
   g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.045,t+.005);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
   ws.connect(lp).connect(g).connect(MUS.pans.guitar||out());
   for(const iv of[0,7,12]){const o=AC.createOscillator(),og=AC.createGain();o.type='sawtooth';o.frequency.value=440*Math.pow(2,(m+iv-69)/12);og.gain.value=.35;o.connect(og).connect(ws);o.start(t);o.stop(t+dur+.05)}}
+// bajo wobble (drop): tres sierras desafinadas por un filtro que abre y cierra al ritmo
+function wobble(t,m,dur,rate){const f=440*Math.pow(2,(m-69)/12),lp=AC.createBiquadFilter(),g=AC.createGain(),l=AC.createOscillator(),lg=AC.createGain();
+  lp.type='lowpass';lp.Q.value=9;lp.frequency.value=f*4;l.type='sine';l.frequency.value=rate;lg.gain.value=f*3.5;l.connect(lg).connect(lp.frequency);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.08,t+.02);g.gain.setValueAtTime(.08,t+dur*.85);g.gain.exponentialRampToValueAtTime(.0001,t+dur);lp.connect(g).connect(out());
+  for(const dt of[-14,0,14]){const o=AC.createOscillator();o.type='sawtooth';o.frequency.value=f;o.detune.value=dt;o.connect(lp);o.start(t);o.stop(t+dur+.05)}
+  l.start(t);l.stop(t+dur+.05);osc(t,f/2,null,dur,'sine',.3,out())}
+// 808 con deslizamiento de tono
+function s808(t,m0,m1,dur){const f0=440*Math.pow(2,(m0-69)/12),f1=440*Math.pow(2,(m1-69)/12),o=AC.createOscillator(),g=AC.createGain();
+  o.type='sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f1,t+.12);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.6,t+.006);g.gain.setTargetAtTime(.0001,t+dur*.6,dur*.2);
+  o.connect(g).connect(out());o.start(t);o.stop(t+dur+.4)}
+// subida de ruido antes del drop
+function riser(t,dur){const n=AC.createBufferSource();n.buffer=NB;n.loop=true;const f=AC.createBiquadFilter(),g=AC.createGain();f.type='bandpass';f.Q.value=2;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(9000,t+dur);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+dur*.98);g.gain.linearRampToValueAtTime(0,t+dur+.02);n.connect(f).connect(g).connect(out());n.start(t);n.stop(t+dur+.05)}
 function marimba(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out();osc(t,f,null,Math.min(.9,dur*1.6),'sine',vol*2.2,p);osc(t,f*4,null,.07,'sine',vol*.8,p);osc(t,f*10,null,.02,'sine',vol*.3,p)}
 // melodía pluck: dos sierras desafinadas con filtro que se cierra, paneada
 function pluck(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),lp=AC.createBiquadFilter(),g=AC.createGain(),p=MUS.melPan||out();
@@ -559,15 +595,23 @@ function newMotif(){const a=Array(16).fill(-1);let deg=ri(0,3);for(let i=0;i<16;
 const PAN={guitar:-.25,hat:.35,ohat:.35,bongoHi:-.4,bongoLo:-.3,bongoSlap:-.35,claves:.5,cencerro:.25,congas:-.2,maracas:.55,cabasa:.45,guiro:-.45,castanuelas:.4,pandereta:.3,triangulo:-.5,cajaChina:.45,tomHi:.3,tomMid:0,tomLo:-.3,timbal:.3,cascara:.4};
 function keys(t,midis,dur,v,d){for(const m of midis){const f=440*Math.pow(2,(m-69)/12);osc(t,f,null,dur,'triangle',.05*v,d);osc(t,f*2,null,dur*.5,'sine',.025*v,d)}}
 const DRUMS=new Set(['kick','snare','clap','hat','ohat','sub']);
-const GENRES=['percusion','hiphop','regueton','salsa','cumbia','rock','chip','trap'];
-const GNAME={percusion:'PERCUSIÓN',hiphop:'HIP HOP',regueton:'REGUETÓN',salsa:'SALSA',cumbia:'CUMBIA',rock:'ROCK',chip:'8 BITS',trap:'TRAP'};
+const GENRES=['percusion','hiphop','regueton','salsa','cumbia','rock','chip','trap','session'];
+const GNAME={percusion:'PERCUSIÓN',hiphop:'HIP HOP',regueton:'REGUETÓN',salsa:'SALSA',cumbia:'CUMBIA',rock:'ROCK',chip:'8 BITS',trap:'TRAP',session:'SESSION'};
 let GENRE_PREF='random';
 try{GENRE_PREF=localStorage.getItem('rzGenre')||'random'}catch(e){}
 const row=(len,on)=>{const a=Array(len).fill(0);for(const i of on)a[i]=1;return a};
 function newGroove(boss){
   const g0=GENRE_PREF==='random'?pick(GENRES):GENRE_PREF,g={genre:g0,parts:[],swing:0,len:16,div:4,keysPat:null};
   const add=(name,pat,vel)=>g.parts.push({name,pat,vel,lay:g.parts.length>=3?1:0}); // las 3 primeras = base
-  if(g0==='cumbia'){ // güiro largo-corto-corto, congas, bajo raíz-quinta y acordeón
+  if(g0==='session'){ // estilo sesiones de Bizarrap: bombo en negras, 808 que se desliza, subida y drop con bajo wobble
+    g.bpm=ri(122,128);g.session=true;g.deep=true;
+    add('kick',row(16,[0,4,8,12]),1);
+    add('clap',row(16,[4,12]),.85);
+    add('hat',row(16,[2,6,10,14]),.55);
+    add('hat',row(16,[1,3,5,7,9,11,13,15]),.22);
+    add('ohat',row(16,[14]),.35);
+    g.prog=[[45,41,43,40],[38,41,36,43],[40,36,38,35]][ri(0,2)];g.bassPat=[];
+  }else if(g0==='cumbia'){ // güiro largo-corto-corto, congas, bajo raíz-quinta y acordeón
     g.bpm=ri(92,100);g.major=true;g.lead='acc';
     add('kick',row(16,[0,8]),.75);
     add('guiro',row(16,[0,2,3,4,6,7,8,10,11,12,14,15]),.45);
@@ -590,7 +634,7 @@ function newGroove(boss){
     add('hat',row(16,[2,6,10,14]),.5);
     g.prog=[[45,41,43,40],[48,43,45,41],[38,45,43,41]][ri(0,2)];g.bassPat=[[0,2,0],[2,2,12],[4,2,0],[6,2,12],[8,2,0],[10,2,12],[12,2,0],[14,2,12]];
   }else if(g0==='trap'){ // medio tiempo: hi-hats rápidos con redobles y 808 que retumba
-    g.bpm=ri(136,148);g.lead='bell';g.trap=true;
+    g.bpm=ri(136,148);g.lead='bell';g.trap=true;g.deep=true;
     add('kick',row(16,R()<.5?[0,7,10]:[0,3,11]),1);
     add('clap',row(16,[8]),.9);
     add('snare',row(16,[8]),.5);
@@ -653,7 +697,7 @@ function newGroove(boss){
   }
   if(boss)add('gong',row(g.len,[0]),.4);
   g.accent=g0==='hiphop'||g0==='regueton'?'ohat':'platos';
-  g.lead=g.lead||(g0==='percusion'||g0==='salsa'?'marimba':'pluck');g.major=g.major||g0==='salsa';
+  g.lead=g.lead||(g0==='percusion'||g0==='salsa'?'marimba':'pluck');if(g0==='hiphop'||g0==='regueton')g.deep=true;g.major=g.major||g0==='salsa';
   g.motif=newMotif();
   return g;
 }
@@ -666,7 +710,7 @@ function musicStart(boss){
   MUS.rev=AC.createConvolver();MUS.rev.buffer=MUS.ir;MUS.wet=AC.createGain();MUS.wet.gain.value=.32;
   // master: compresor suave para pegar la mezcla y evitar picos
   MUS.comp=AC.createDynamicsCompressor();MUS.comp.threshold.value=-16;MUS.comp.knee.value=10;MUS.comp.ratio.value=3.5;MUS.comp.attack.value=.006;MUS.comp.release.value=.18;MUS.comp.connect(AC.destination);
-  MUS.bus.connect(MUS.lp);MUS.lp.connect(MUS.comp);MUS.lp.connect(MUS.rev);MUS.rev.connect(MUS.wet);MUS.wet.connect(MUS.comp);
+  MUS.shelf=AC.createBiquadFilter();MUS.shelf.type='lowshelf';MUS.shelf.frequency.value=110;MUS.shelf.gain.value=6;MUS.bus.connect(MUS.lp);MUS.lp.connect(MUS.shelf);MUS.shelf.connect(MUS.comp);MUS.lp.connect(MUS.rev);MUS.rev.connect(MUS.wet);MUS.wet.connect(MUS.comp);
   MUS.padBus=AC.createGain();MUS.padBus.gain.value=.9;MUS.padBus.connect(MUS.rev);MUS.padBus.connect(MUS.lp);
   // paneo estéreo por instrumento
   const mkPan=v=>{if(!AC.createStereoPanner)return MUS.bus;const p=AC.createStereoPanner();p.pan.value=v;p.connect(MUS.bus);return p};
@@ -712,6 +756,11 @@ function musicPump(){
     if(sIn===0){pad(t,ch,sd*(g.div===2?8:16)*.98)}
     if(g.guitar&&!intro&&!bd&&!brk&&s%2===0)guitar(t,root+12,sd*1.7);
     if(g.arp&&!intro){const ar=[0,minor?3:4,7,12];chipNote(t,root+36+ar[s%4],sd*.9,.02)}
+    if(g.session&&!intro){
+      if(sec===4){const pos=(MUS.bar%4)*16+s;if(pos%4===0||(pos>=32&&pos%2===0)||pos>=52)INST.snare(t,.15+pos/64*.7,d);if(pos===0)riser(t,sd*64)}
+      else{if(sec===5&&MUS.bar%4===0&&s===0){INST.platos(t,.9,d);INST.kick(t,1.3,d)}
+        if(s%8===0&&!brk)wobble(t,root,sd*8,[1,2,4][(MUS.bar+(s>>3))%3]/(sd*8));}}
+    if(g.deep&&!intro&&!bd&&!brk&&(coro||g.session)){if(s===0)s808(t,root-5,root-12,sd*7);else if(s===10)s808(t,root-12,root-9,sd*5)}
     if(g.trap&&!intro){if(!brk&&!bd&&g.parts[0].pat[s])INST.sub(t,.95,d,root-12);if((s===6||s===14)&&R()<.55)for(const k of[1,2])INST.hat(t+sd*k/3,.3,MUS.pans.hat||d)}
     if(g.genre==='regueton'&&s%2===0&&dz>.15){const n=ch[(s>>1)%3]+12;mlead(t,n,sd*1.6,'square',.035)}
     if(g.genre==='hiphop'){if(R()<.35)nz(t,.008,'highpass',2500,.5,.05,d);if(s===0)rhodes(t,ch,sd*12)}
@@ -956,8 +1005,8 @@ der:{kick:"n = 14 · f'(x)",ttl:'DERIVADAS',lines:['La derivada es la <b>pendien
 int:{kick:'NIVEL 15 · ∫ f dx',ttl:'INTEGRALES',lines:['La integral es el <b>área</b> bajo la curva.','Busca la <b>primitiva</b> F y calcula F(b) − F(a).'],ex:'∫₀³ 2x dx = [x²]₀³ = 9'},
 pie:{kick:'NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0',ttl:'π Y e',boss:true,lines:['Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.','Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.'],ex:'2π ≈ 6.28\nln(e⁴) = 4\ne^(iπ) = −1'},
 };
-const TAUNTS=['TU CALCULADORA PIDIÓ VACACIONES','HASTA UN ÁBACO TE GANA','¿CONTASTE CON LOS DEDOS? FALTÓ UNO','TU PROFE DE MATE LLORA','ERES EL ERROR DE REDONDEO','NI EL 0 TE QUIERE','TE DIVIDO ENTRE CERO','RESTAS COMO SUMAS: MAL','TU CEREBRO ES UN CONJUNTO VACÍO','EL 7 SE RÍE DE TI','DIBUJAS NÚMEROS COMO UN ZOMBI','MATEMÁTICAMENTE, YA ESTÁS MUERTO','TU PROMEDIO TIENDE A −∞','LA RECTA SE AVERGÜENZA DE TI','HASTA LA MANZANA DUDA DE TI','SUMA LENTO, MUERE RÁPIDO','TUS NEURONAS SON DECIMALES PERIÓDICOS','¿2 + 2? TÓMATE TU TIEMPO… NO','ERES LA x QUE NADIE DESPEJA','¿ESO ES TODO?','MI CEREBRO PODRIDO CALCULA MEJOR','VUELVE AL 1 + 1','LA x NO ES UN BESO','HASTA YO SÉ SUMAR','ÑAM, MANZANA SIN ÁLGEBRA','TU LÍMITE TIENDE A CERO','DERIVA ESTO','π = 3, ¿VERDAD?','∫ TU MIEDO dx','¿Y LA TABLA DEL 7?','EL CERO TE QUEDA GRANDE','ERES UN NÚMERO NEGATIVO','TE FALTÓ LLEVAR 1','MÁS LENTO QUE UNA DIVISIÓN LARGA'];
-const TAUNT_TOPIC={frac:['1/2 + 1/2 = 2/4, ¿NO?'],trig:['sin(TI) = 0'],mat:['TU DETERMINANTE ES CERO'],lim:['TU LÍMITE: 0'],der:["TU f'(x) = 0, NO AVANZAS"],int:['EL ÁREA DE TU CEREBRO: 0'],pie:['e^(iπ) + TÚ = 0'],ent:['−1 × −1 = −1 JAJA'],raiz:['√TU NOTA = 0']};
+const TAUNTS=["ARRODÍLLATE ANTE TU EMPERADOR ZOMBI", "SOY GUAPÍSIMO. TÚ, EN CAMBIO, CALCULAS", "MI CEREBRO PODRIDO PIENSA MEJOR QUE EL TUYO", "DECRETO REAL: TODA RESPUESTA TUYA ES FALSA", "QUÉ TIERNO, CREES QUE SABES SUMAR", "TE APLAUDO. CON UNA MANO. LA OTRA SE ME CAYÓ", "NO ES QUE SEA PERFECTO… BUENO, SÍ LO SOY", "MI ESPEJO DICE QUE SOY EL MÁS BELLO DEL APOCALIPSIS", "HE DECIDIDO QUE 2 + 2 = 5. OBEDECE", "SILENCIO, SÚBDITA. HABLA EL REY", "TU IGNORANCIA ME ALIMENTA. Y ME VEO DIVINO", "¿PENSANDO? QUÉ ESFUERZO TAN ADORABLE", "SOY EL ÚNICO NÚMERO PRIMO QUE IMPORTA", "MIS GUSANOS RESUELVEN ECUACIONES. ¿Y TÚ?", "PROHÍBO LOS DECIMALES EN MI REINO", "FIRMA AQUÍ: ME RINDO ANTE SU MAJESTAD", "TU PROFE ME PIDIÓ UN AUTÓGRAFO", "QUÉ VALIENTE: RESPONDER SIN SABER", "IMPUESTO ZOMBI: UN CEREBRO POR ERROR", "NI PITÁGORAS ME TOSE, Y TÚ MENOS", "NEWTON CAYÓ ANTE MÍ. COMO TU MANZANA", "SOY INFINITO. TÚ ERES UN REDONDEO", "TANTA LENTITUD MERECE UNA ESTATUA. DE MÍ, CLARO", "MI SONRISA PODRIDA VALE MÁS QUE TU NOTA", "TU RESPUESTA ES TAN MALA QUE ME INSPIRA", "TE NOMBRO MI BUFÓN MATEMÁTICO", "SOY LA DERIVADA DE LA PERFECCIÓN", "CALCULA RÁPIDO, MI BELLEZA NO ESPERA", "EL TRONO ES MÍO. LA MANZANA TAMBIÉN", "SI FALLAS, PROMETO NO REÍRME… JAJAJA", "FELICIDADES: PIENSAS COMO UN LADRILLO", "¿SABES CONTAR? YO CUENTO TUS ERRORES", "TU CALCULADORA PIDIÓ ASILO EN MI REINO", "MATEMÁTICAMENTE YA ERES MÍA", "HASTA EL 0 VALE MÁS QUE TU ESFUERZO", "EN MI DICTADURA, EL 7 ES ILEGAL. POR FEO", "MÍRAME BIEN: ASÍ SE VE LA GRANDEZA", "TE DIVIDO ENTRE CERO Y SIGO SIENDO GUAPO"];
+const TAUNT_TOPIC={suma:['SUMA MI GRANDEZA: NO TE ALCANZAN LOS DEDOS'],resta:['TÚ RESTAS PUNTOS, YO SUMO SÚBDITOS'],mult:['MULTIPLICO MI BELLEZA POR ∞'],div:['DIVIDE Y VENCERÉ… YO'],ent:['−1 × −1 = −1 PORQUE YO LO DIGO'],frac:['PARTO TU NOTA EN PEDAZOS. TODOS MÍOS','1/2 + 1/2 = 2/4. LO DECRETO'],raiz:['√TU NOTA = 0. EXACTO'],trig:['sin(TI) = 0, cos(YO) = 1'],mat:['TU DETERMINANTE ES CERO, COMO TU FUTURO'],lim:['TU LÍMITE ES 0. EL MÍO, ∞'],der:["TU f'(x) = 0. NO AVANZAS, PLEBEYA"],int:['∫ TU MIEDO dx = MI GLORIA'],pie:['e^(iπ) + TÚ = 0']};
 const OVER=[['TE COMIERON','lím vida → 0'],['ÑAM… Y NADA MÁS','Δ manzana = −1'],['LA MANZANA YA NO ESTÁ','f(manzana) = ∅'],['EL ZOMBI SE LLEVÓ TU MANZANA','∫ manzana dx = 0'],['CRUNCH','dy/dx = ∞'],['SE LA COMIÓ ENTERA','manzana ≡ 0 (mod zombi)'],['DEMASIADO LENTO','t → ∞'],['FIN DEL PASEO','Q.E.D.'],['SOLO QUEDÓ EL RABITO','lím x→0⁺'],['UNA MENOS EN EL ÁRBOL','Σ manzanas = n − 1']];
 // las 11 leyes del universo, aplicadas al fallo concreto
 const LAWS={
@@ -1015,7 +1064,7 @@ function startStage(){
   SAVE.best=Math.max(SAVE.best,Math.min(S.stage,16));persist();
   S.zombies=[];S.stains=[];S.boss=null;S.trail=[];S.grab=null;S.bubbles=[];S.prob=null;S.lay=null;S.input='';S.rings=[];S.shards=[];renderInput();padClear();
   Object.assign(S.a,{x:T.x0,y:0,vy:0,st:'hidden',from:T.x0,to:T.x0});S.cam=T.x0;S.u=S.uT=S.uPrev=21;
-  S.run.stageProbs=0;MUS.groove=newGroove(!!T.boss);MUS.tension=0;S.arrows=[];S.arrowHits=0;S.deathBy=null;S.helpUsed=false;hideHelp();
+  S.run.stageProbs=0;MUS.groove=newGroove(!!T.boss);MUS.tension=0;S.arrows=[];S.arrowHits=0;S.deathBy=null;S.helpUsed=false;hideHelp();if(S.stage>1&&R()<.2)setTimeout(eggStart,5000);
   updHUD();
   const L=LESSONS[T.id];
   beginStage();if(S.stage<=16&&L&&!SAVE.seen[T.id]){SAVE.seen[T.id]=1;persist();setTimeout(()=>tipToast(L),2600)}
@@ -1031,7 +1080,7 @@ function showLesson(L){
 function beginStage(){
   setMode('play');
   const T=S.topic,a=S.a,boss=!!T.boss;
-  a.st='fall';a.y=(GY-TOPPAD+30)/YPX;a.vy=0;
+  a.st='fall';a.y=(GY-TOPPAD+30)/YPX;a.vy=0;a.bounced=false;a.sq=0;a.sqv=0;
   S.spawnT=S.stage<=2?6:3.5;S.tauntT=6;
   if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z)}
   banner(boss?(T.final?'JEFE FINAL':'JEFE'):S.stage>16?'MODO ∞':'NIVEL '+S.stage,T.name,(boss?`${T.boss} ACIERTOS PARA VENCERLO`:`${S.quota} ACIERTOS PARA PASAR`)+' · ♪ '+GNAME[MUS.groove.genre]+(hard()>.01?` · PRESIÓN ${Math.round(hard()*100)}%`:''),boss);
@@ -1051,7 +1100,7 @@ function setMode(m){
   $('#top').classList.toggle('hidden',!(play||pz));
   ['#inbox','#drawhint','#exprw'].forEach(s=>$(s).classList.toggle('hidden',!play));
   if(!play){$('#alert').classList.remove('on');$('#newt').classList.remove('on');$('#lawt').classList.remove('on');padClear()}else if(S.grab)$('#alert').classList.add('on');
-  if(m==='title'){heatmap($('#tHeat'));$('#bStart').textContent='JUGAR';$('#bFresh').hidden=true}
+  if(m==='title'){heatmap($('#tHeat'));$('#bStart').textContent='JUGAR';$('#bFresh').hidden=true;const okT=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);$('#tStats').textContent=`RÉCORD NIVEL ${SAVE.best} · ${okT} ACIERTOS · PRESIÓN ${Math.round(hard()*100)}%`}
   syncChips();
 }
 const SUBST=new Set(['suma','resta','mult','div','ent','frac','raiz']);
@@ -1321,23 +1370,23 @@ function skelAI(z,dt,ax){
   const mv=zSpd()*z.spdK*dt/S.u;
   if(dist>z.range||zx<6||zx>W-6){z.x+=dir*mv;z.walk+=dt*3.4}
   else if(dist<z.range*.55){z.x-=dir*mv*.7;z.walk+=dt*3.4}
-  else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab){z.aim=1.1;z.cd=skelCD();SFX.draw();if(R()<.3)say(z,pick(['¡QUIETA AHÍ!','TE TENGO EN LA MIRA','UNO… DOS…']))}}
+  else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab){z.aim=1.1;z.cd=skelCD();SFX.draw();if(R()<.3)say(z,pick(['¡QUIETA, PLEBEYA!','POSA PARA MI FLECHA','UNO… DOS… QUÉ GUAPO SOY…']))}}
 }
 function shoot(z){S.arrows.push({z,x0:z.x,x1:S.a.x,h0:15,t:0,T:.6+Math.abs(scx(z.x)-scx(S.a.x))/(W*.9)});SFX.bow()}
 function arrowHit(ar){
   S.arrowHits=(S.arrowHits||0)+1;S.shake=7;S.flash=.35;SFX.arrowHit();blood(apx(),GY-6,14);
   const left=2-S.arrowHits;S.texts.push({x:S.a.x,y:GY-42,txt:left>0?'¡FLECHAZO! TE QUEDA 1':'¡FLECHADA!',c:P.r2,t:0,life:1.5,world:true});
-  if(alive(ar.z))say(ar.z,left>0?'¡EN EL BLANCO!':'¡JA! DOS DE DOS','shout');
+  if(alive(ar.z))say(ar.z,left>0?'¡EN EL BLANCO! ¿VISTE QUÉ ARTE?':'¡JA! DOS DE DOS, COMO SIEMPRE','shout');
   if(S.arrowHits>=2){S.deathBy='arrow';if(S.grab){S.grab.z.grab=false;S.grab=null}eaten()}
 }
 function nearestZ(){let b=null,bd=1e9;const ax=scx(S.a.x);for(const z of S.zombies){if(!alive(z))continue;const d=Math.abs(scx(z.x)-ax);if(d<bd&&d<W*.6){bd=d;b=z}}return b}
 const NAMES=['PEPE','LUCHO','MARGA','TOÑO','KEVIN','ROSA','BETO','CHELA','RAMIRO','NENA','GUS','LOLA'],SKN=['HUESITOS','CALAVERA','FÉMUR','TIBIA','COSTILLA'];
-const THINK=['CEREBROOO…','MMM… MANZANA','¿QUÉ ERA UN NÚMERO?','TENGO HAMBRE DE π','¿Y SI ESTUDIO? … NAH','1, 2, 3… ¿CEREBRO?','HUELO A FRACCIONES'];
-const SKEL_LINES=['¡A LA CARGA, HUESOS!','MIS FLECHAS NO FALLAN','¡APUNTEN… FUEGO!','DOS FLECHAS Y LISTO','PUNTERÍA DE HUESO'];
+const THINK=['QUÉ GUAPO SOY… ¿Y SI ME CLONO?','PIENSO, LUEGO GOBIERNO','CEREBROOO… DE SÚBDITA','MI MEJOR ÁNGULO SON TODOS','MANDARÉ HACER UNA ESTATUA DE MÍ','MI REINO POR UN CEREBRO','¿QUIÉN ES ESE GUAPO? AH, SOY YO'];
+const SKEL_LINES=['¡A LA CARGA, HUESOS!','MI PUNTERÍA ES TAN PERFECTA COMO YO','DOS FLECHAS. NO NECESITO MÁS','HUESO PURO: CERO GRASA, CERO PIEDAD','APUNTO… PORQUE PUEDO'];
 function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?'EL JEFE':pick(NAMES))}
 function say(z,txt,kind){zname(z);S.bubbles=S.bubbles.filter(b=>b.z!==z);if(S.bubbles.length>=2)S.bubbles.shift();
   S.bubbles.push({z,txt,t:0,life:Math.min(5,Math.max(2.4,1.2+txt.length*.06)),kind:kind||'say'});if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
-function taunt(z){const r=R();if(r<.3)say(z,pick(THINK),'think');else if(r<.45&&S.prob)say(z,`¿${S.prob.str.replace(' = ?','').slice(0,20)}? ¡TIC TAC!`);else say(z,pick([...TAUNTS,...(TAUNT_TOPIC[S.topic.id]||[])]))}
+function taunt(z){const r=R();if(r<.3)say(z,pick(THINK),'think');else if(r<.45&&S.prob)say(z,`¿${S.prob.str.replace(' = ?','').slice(0,20)}? TIC TAC, SÚBDITA`);else say(z,pick([...TAUNTS,...(TAUNT_TOPIC[S.topic.id]||[])]))}
 function blood(sx,sy,n,spd=1){for(let i=0;i<n;i++){const ang=-Math.PI*R()*1.1+.05,s=(30+R()*110)*spd;S.parts.push({x:sx,y:sy,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.6+R()*.8,c:pick([P.r2,P.r2,P.r,'#e8735f']),blood:true})}}
 function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);
   // si muere el zombi que te tiene agarrada, el agarre termina (antes quedaba un agarre fantasma)
@@ -1353,7 +1402,7 @@ function commit(dest,ok,quiet){
   const pk=clamp(.25*dist*S.uT*1.5,16,Math.max(30,GY-TOPPAD-70));
   Object.assign(a,{st:'air',from,to:dest,t:0,T:dist<.05?.5:clamp(1.414*Math.sqrt(dist/G),.8,2.1),y:0,peak:pk/YPX,sg:Math.sign(d)||1,v0,ok,f});
   S.prob=null;S.lay=null;S.input='';renderInput();S.trail=[];padFlash(420);showExpr(null);
-  S.fx.push({x:from,dir:a.sg,f,t:0});SFX.launch();
+  S.fx.push({x:from,dir:a.sg,f,t:0});SFX.launch();a.sq=.35;a.sqv=-6;
   if(!quiet)newt(`<b>② F = m·a</b> · un salto de ${fmt(dist)} pide ${f.toFixed(1)} N. Más lejos, más fuerza.`);
   updHUD();
 }
@@ -1363,7 +1412,7 @@ function meteor(x){
   for(let i=0;i<46;i++){const ang=-Math.PI*R(),s=30+R()*120;S.parts.push({x:sx,y:GY-3,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.4+R()*.6,c:pick([P.y,P.o,P.r2,P.w,P.l3])})}
   let killed=0;
   for(const z of S.zombies)if(alive(z)&&z.type!=='boss'&&!z.grab&&Math.abs(scx(z.x)-sx)<ER){killZ(z,true);killed++}
-  if(killed){const n=nearestZ();if(n&&R()<.8)say(n,pick([`¡NOOO, ${S.lastKilled}!`,'¡ESO DOLIÓ!','¡MATEMÁTICA OFENSIVA!','¡NO ES JUSTO, SABE CALCULAR!']),'shout')}
+  if(killed){const n=nearestZ();if(n&&R()<.8)say(n,pick([`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]),'shout')}
   if(S.boss&&alive(S.boss))S.shards.push({x0:x,z:S.boss,t:0,T:.55});
   else if(!killed){const n=nearestZ();if(n)S.shards.push({x0:x,z:n,t:0,T:.45})}
   newt('<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.');
@@ -1378,11 +1427,12 @@ function shardHit(sh){
   }else{const was=z.grab;killZ(z,true);if(was)S.texts.push({x:S.a.x,y:GY-50,txt:'¡TE SALVÓ EL METEORITO!',c:P.r2,t:0,life:1.4,world:true})}
 }
 function land(){
-  const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';
+  const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';a.sq=a.ok?.5:.32;a.sqv=0;
   if(a.ok)meteor(a.x);
   else{SFX.thud();for(let i=0;i<8;i++)S.parts.push({x:scx(a.x),y:GY-1,vx:(R()-.5)*60,vy:-R()*50,t:0,life:.4,c:P.l1});
-    const lp=S.run.lastProb;if(lp)S.texts.push({x:a.x,y:GY-38,txt:'✕ ERA '+fmt(lp.ans),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick([`JAJAJA, ERA ${fmt(lp.ans)}`,'¡ESE NO ERA!','¡ÑAM! SE EQUIVOCÓ','¿ESO ES TODO, GENIO?']),'shout')}}
+    const lp=S.run.lastProb;if(lp)S.texts.push({x:a.x,y:GY-38,txt:'✕ ERA '+fmt(lp.ans),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick([`JAJAJA, ERA ${fmt(lp.ans)}. QUÉ VERGÜENZA AJENA`,'¡ESE NO ERA! APÚNTALO EN TU DIARIO DE FRACASOS','MI ABUELA ZOMBI LO HACÍA MEJOR. SIN CABEZA','APLAUSOS… DE BURLA',`¿${fmt(S.a.x)}? YO HABRÍA DICHO ${fmt(lp.ans)}, PORQUE SOY GENIAL`]),'shout')}}
   if(a.ok&&!S.topic.boss)S.ok++;
+  if(a.ok&&S.run.streak>0&&S.run.streak%5===0)eggStart();
   updHUD();
   if(checkClear())return;
   newProblem();
@@ -1400,7 +1450,7 @@ function startGrab(z){
   $('#alSub').textContent=S.grab.need>1?'2 RESPUESTAS SEGUIDAS PARA SOLTARTE':'RESUELVE ANTES DE QUE SE LA COMA';
   $('#alert').classList.add('on');
   S.input='';renderInput();padClear();if(!S.prob)newProblem();
-  say(z,pick(['¡TE TENGO!','ÑAM ÑAM','¿Y AHORA, GENIO?','EL RELOJ CORRE…',...TAUNTS]),'shout');
+  say(z,pick(['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]),'shout');
 }
 function escape(){
   const a=S.a,g=S.grab,z=g.z,pr=S.prob;
@@ -1430,10 +1480,10 @@ function stageClear(){
 /* ============ Tutorial: si se queda quieto al inicio y su historial no lo domina, ofrece un ejemplo resuelto ============ */
 const prettyQ=s=>s.replace(' = ?','').replace(/\(([^()]+)\)\/\(([^()]+)\)/g,'$1/$2');
 const knows=id=>{const h=SAVE.hist[id];return!!h&&h.ok>=4&&h.ok/(h.ok+h.bad)>=.7};
-function hideHelp(){const b=$('#bHelp');if(b)b.hidden=true}
+function hideHelp(){const b=$('#bHelp');if(!b||b.hidden||b.classList.contains('fading'))return;b.classList.add('fading');setTimeout(()=>{b.hidden=true;b.classList.remove('fading')},260)}
 function helpCheck(){
   if(S.helpUsed||!S.prob||S.grab||S.stage>16||S.run.stageProbs>2||S.thinkT<6||knows(S.topic.id))return;
-  const b=$('#bHelp');if(b.hidden){b.hidden=false;const z=nearestZ();if(z)say(z,'¿PERDIDA? … HAY UN BOTÓN DE AYUDA, NO LE DIGAS A NADIE','think')}
+  const b=$('#bHelp');if(b.hidden){b.hidden=false;const z=nearestZ();if(z)say(z,'¿PERDIDA? HAY UN BOTÓN DE AYUDA. ÚSALO, TE HACE FALTA','think')}
 }
 function openTut(){
   const T=S.topic,cur=S.prob;let p=null;
@@ -2130,9 +2180,24 @@ function crackScreen(lx,ly){
   setTimeout(()=>{ck.style.transition='opacity .08s';let f=0;const fl=setInterval(()=>{ck.style.opacity=f%2?'1':'.25';if(++f>5){clearInterval(fl);ck.style.opacity='';ck.style.transition='filter .6s';ck.style.filter='brightness(.45)'}},70)},360);
 }
 
+/* ============ Easter egg: constelaciones ASCII de científicos en el cielo nocturno ============ */
+const EGGS=[
+  {n:'ALBERT EINSTEIN',f:'E = mc²',a:['   .:*#*.*#*:*#*:.   ','  *#*:*#*:**#*:*#*:  ',' :#*.  .:*:.   .*#:  ',' *#*             *#  ',' #*   ** .  . **  *# ',' #   :o:     :o:   # ',' *:       ..       :*','  *      *##*      * ','  :*   *######*   *: ','   *  *##*..*##*  *  ','   :*   .*##*.   *:  ','    *.   ....   .*   ','     :*.      .*:    ','       :*####*:      ','         .**.        ']},
+  {n:'ISAAC NEWTON',f:'F = m·a',a:['      .:*###*:.      ','    .*##*###*##*.    ','   *##*:.....:*##*   ','  *##:  .   .  :##*  ',' :##*  :o: :o:  *##: ',' *##:     .     :##* ',' *#*:    ...    :*#* ',' *##*   .***.   *##* ',' :*#*:   ...   :*#*: ','  *##*.       .*##*  ','  :*##**:...:**##*:  ','   *#*   :*:   *#*   ','   :*:  *   *  :*:   ','    *.  *   *  .*    ','         ***         ']},
+  {n:'PITÁGORAS',f:'a² + b² = c²',a:['  .*.*.*.*.*.*.     *',' *:           :*   **',' *   .**  **.  *  * *',' :   :o:  :o:  : *  *',' *      ..     ******',' :*    ....   *:     ','  *##*.    .*##*     ','  *####****####*     ','  :############:     ','   *##########*      ','    *########*       ','     :*####*:        ','       :**:          ']},
+  {n:'MARIE CURIE',f:'Po · Ra',a:['        .***.        ','       *#####*       ','    .*#########*.    ','   *###*:...:*###*   ','  :##*         *##:  ','  *#*  .*. .*.  *#*  ','  *#   :o: :o:   #*  ','  :#      .      #:  ','   *     ...     *   ','   :*   .***.   *:   ','    :*.  ...  .*:    ','      :**...**:      ','       .*###*.    o  ','      *#######*  ( ) ','                 ._. ']},
+];
+function eggStart(){if(THEME!=='dark'||S.egg)return;const e=pick(EGGS),cs=3,wd=Math.max(...e.a.map(r=>r.length))*cs;S.egg={e,t:0,cs,x:Math.round(clamp(W*(.08+R()*.5),4,W-wd-4)),y:Math.round(TOPPAD+34+R()*Math.max(4,GY*.12))}}
+function eggDraw(){
+  const g=S.egg;if(!g||THEME!=='dark')return;const k=g.t,al=k<1.6?k/1.6:k>8?Math.max(0,1-(k-8)/2):1;if(al<=0)return;
+  g.e.a.forEach((row,j)=>{for(let i=0;i<row.length;i++){const ch=row[i];if(ch===' ')continue;const b={'.':.55,':':.75,'*':.95,'#':1,'o':1}[ch]||.7,x=g.x+i*g.cs,y=g.y+j*g.cs;
+    ctx.globalAlpha=al*b*(.6+.4*Math.sin(S.time*3+i*1.7+j*2.3));ctx.fillStyle=ch==='o'?P.y:b>=.95?P.w:P.l3;ctx.fillRect(x,y,1,1);if(b>=.95){ctx.fillRect(x-1,y,1,1);ctx.fillRect(x+1,y,1,1);ctx.fillRect(x,y-1,1,1);ctx.fillRect(x,y+1,1,1)}}});
+  const cx=g.x+Math.max(...g.e.a.map(r=>r.length))*g.cs/2,yy=g.y+g.e.a.length*g.cs+5;ctx.globalAlpha=al*.85;ptextC(g.e.n,cx,yy,1,P.l2);ptextC(g.e.f,cx,yy+9,1,P.y);ctx.globalAlpha=1;
+}
+
 /* ============ Bucle ============ */
 function update(dt){
-  S.time+=dt;if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
+  S.time+=dt;if(S.egg){S.egg.t+=dt;if(S.egg.t>10)S.egg=null}if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
   for(const c of CLOUDS){c.x+=c.v*dt;if(c.x>W+10)c.x=-c.c.width}
   S.shake=Math.max(0,S.shake-dt*18);S.flash=Math.max(0,S.flash-dt*1.4);S.fade=Math.max(0,S.fade-dt*.8);
   for(const q of S.parts){q.t+=dt;q.vy+=240*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;if(q.y>GY){q.y=GY;q.vy*=-.2;q.vx*=.5}}
@@ -2155,7 +2220,7 @@ function update(dt){
   // flechas: si al caer la manzana sigue ahí, la hiere; si saltó, se clava en el suelo
   for(const ar of S.arrows){ar.t+=dt;if(!ar.done&&ar.t>=ar.T){ar.done=true;const sa=S.a;
     if(['rest','grab'].includes(sa.st)&&Math.abs(scx(sa.x)-scx(ar.x1))<7)arrowHit(ar);
-    else{ar.stuck=true;hit('cajaChina',.6);if(alive(ar.z)&&R()<.5)say(ar.z,pick(['¡FALLÉ!','¿SALTÓ? ¡TRAMPOSA!','LA PRÓXIMA NO FALLO']))}}}
+    else{ar.stuck=true;hit('cajaChina',.6);if(alive(ar.z)&&R()<.5)say(ar.z,pick(['FALLÉ A PROPÓSITO, POR LÁSTIMA','¿SALTÓ? ¡ESO ES ILEGAL EN MI REINO!','EL VIENTO ME ENVIDIA']))}}}
   S.arrows=S.arrows.filter(ar=>!ar.done||(ar.stuck&&ar.t<ar.T+1.2));
   // aparición y persecución
   const active=['rest','air','grab'].includes(a.st);
@@ -2177,10 +2242,15 @@ function update(dt){
     z.sd=(z.sd||0)+mv;if(z.sd>(z.nx||6)){z.sd=0;z.nx=4+R()*9;S.stains.push({x:z.x-dir*2/S.u,w:1+ri(0,2),t:0,up:R()<.3})}
     if(a.st==='rest'&&!S.grab&&Math.abs(scx(z.x)-ax)<(z.type==='boss'?11:7))startGrab(z);
   }
+  // aplastar y estirar: se estira al caer, se aplasta al tocar el suelo y rebota como gelatina
+  if(a.st==='fall'){a.sq=-Math.min(.32,Math.max(0,-a.vy)*.014);a.sqv=0}
+  else if(a.st==='air'){const k=a.t/a.T;a.sq+=(-.18*Math.abs(1-2*k)-(a.sq||0))*Math.min(1,dt*12);a.sqv=0}
+  else{a.sqv=(a.sqv||0)+(-140*(a.sq||0)-10*(a.sqv||0))*dt;a.sq=(a.sq||0)+a.sqv*dt}
   if(a.st==='fall'){
     a.vy-=26*dt;a.y+=a.vy*dt;
     if(R()<.8)S.parts.push({x:scx(a.x)+(R()-.5)*6,y:GY-10-a.y*YPX,vx:(R()-.5)*14,vy:-20-R()*20,t:0,life:.45,c:pick([P.y,P.o,P.r2])});
-    if(a.y<=0){a.y=0;a.st='rest';SFX.fall();S.shake=9;S.rings.push({x:a.x,t:0});
+    if(a.y<=0&&!a.bounced){a.bounced=true;a.y=0;a.vy=Math.max(3.5,-a.vy*.3);a.sq=.55;a.sqv=0;SFX.fall();S.shake=9;S.rings.push({x:a.x,t:0});for(let i=0;i<24;i++){const ang=-Math.PI*R(),s_=20+R()*90;S.parts.push({x:scx(a.x),y:GY-2,vx:Math.cos(ang)*s_,vy:Math.sin(ang)*s_,t:0,life:.5+R()*.5,c:pick([P.l1,P.l2,P.y,P.o])})}}
+    else if(a.y<=0){a.y=0;a.st='rest';a.sq=.3;a.sqv=0;SFX.thud();S.shake=2;
       for(let i=0;i<30;i++){const ang=-Math.PI*R(),s=20+R()*90;S.parts.push({x:scx(a.x),y:GY-2,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.5+R()*.5,c:pick([P.l1,P.l2,P.y,P.o])})}
       newt('<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.',true);
       newProblem();}
@@ -2269,11 +2339,13 @@ function drawArrows(){
 function drawApple2(reflect){
   const a=S.a;if(a.st==='hidden')return;
   if(a.st==='eaten'&&S.eatT>1.3)return;
-  const sx=Math.round(apx())-5,sy=Math.round(GY-10-a.y*YPX);
-  drawApple(sx,sy,a.st==='eaten'&&S.deathBy!=='arrow'?S.eatT*3:0,S.grab?S.grab.side:1);
+  const cx=Math.round(apx()),by=Math.round(GY+1-a.y*YPX),q=clamp(a.sq||0,-.4,.55),w=Math.round((APW+2)*(1+q*.9)),h=Math.max(4,Math.round((APH+2)*(1-q*.7)));
+  if(!reflect&&a.y>.02&&a.st!=='eaten'){const sw=Math.max(3,Math.round(13-Math.min(9,a.y*1.3)));ctx.globalAlpha=.32;ctx.fillStyle='#000';ctx.fillRect(cx-(sw>>1),GY-1,sw,2);ctx.globalAlpha=1}
+  const sx=cx-(w>>1),sy=by-h;ctx.imageSmoothingEnabled=false;
+  ctx.drawImage(appleCanvas(a.st==='eaten'&&S.deathBy!=='arrow'?S.eatT*3:0,S.grab?S.grab.side:1),sx,sy,w,h);
+  if(!reflect&&a.st!=='eaten'){const z=nearestZ();appleFace(ctx,sx,sy,w,h,!!S.grab,z?Math.sign(scx(z.x)-cx):0,(S.time%3.3)<.12)}
   if(!reflect&&S.mode==='play'){const hits=S.arrowHits||0;for(let i=0;i<hits;i++)pline(sx+3+i*4,sy+4,sx+7+i*4,sy-4,P.l2);
     if(hits||S.zombies.some(z=>alive(z)&&z.type==='skel'))for(let i=0;i<2;i++){const hx=sx-1+i*5,hy=sy-8;ctx.fillStyle=i<2-hits?P.red:P.m2;ctx.fillRect(hx,hy,1,1);ctx.fillRect(hx+2,hy,1,1);ctx.fillRect(hx,hy+1,3,1);ctx.fillRect(hx+1,hy+2,1,1)}}
-  if(!reflect&&a.st!=='eaten'){ctx.fillStyle=P.k;ctx.fillRect(sx+4,sy+5,2,2)}
 }
 function niceStep(u){const raw=30/u,p=Math.pow(10,Math.floor(Math.log10(raw)));for(const m of[1,2,5,10])if(p*m>=raw-1e-9)return p*m;return p*10}
 function bubble(b){
@@ -2315,7 +2387,7 @@ function draw(){
   const a=S.a;
   ctx.save();
   if(S.shake>0)ctx.translate(Math.round((R()-.5)*S.shake),Math.round((R()-.5)*S.shake));
-  ctx.drawImage(FAR,0,0);
+  ctx.drawImage(FAR,0,0);eggDraw();
   const px=S.cam*Math.min(S.u,30),o1=-((((px*.2)%W)+W)%W)|0,o2=-((((px*.45)%W)+W)%W)|0;
   ctx.drawImage(MID,o1,0);ctx.drawImage(MID,o1+W,0);ctx.drawImage(NEAR,o2,0);ctx.drawImage(NEAR,o2+W,0);
   ctx.fillStyle=P.k;ctx.fillRect(0,GY+1,W,H-GY);ctx.fillStyle=P.d2;ctx.fillRect(0,GY+1,W,1);
@@ -2354,6 +2426,7 @@ function draw(){
 }
 const rgba=(h,a)=>`rgba(${parseInt(h.slice(1,3),16)},${parseInt(h.slice(3,5),16)},${parseInt(h.slice(5,7),16)},${clamp(a,0,1)})`;
 function titleScene(){
+  S.egg=null;if(R()<.4)setTimeout(()=>{if(S.mode==='title')eggStart()},2200);
   S.a.x=0;S.a.y=0;S.a.st='rest';S.cam=0;S.u=S.uT=S.uPrev=21;S.zombies=[];
   for(let i=0;i<4;i++){const s=i%2?1:-1,z=mkZ(s*(3+i*1.6),'walker');z.walk=i;S.zombies.push(z)}
 }
