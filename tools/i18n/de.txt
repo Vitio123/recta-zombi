@@ -1,0 +1,304 @@
+c9058f1|beginne bei {0} und gehe {1} Stellen nach rechts
+c5252f6|{0} ist fast {1}: {2} + {3} = {4}; ich bin {5} drüber, also ziehe ich {6} ab: {7}
+cae18a5|von links nach rechts: {0} + {1} = {2} und {3} + {4} = {5}; zusammen {6} + {7}
+c433450|beginne bei {0} und gehe {1} Stellen zurück
+c29894f|{0} ist fast {1}: {2} − {3} = {4}; ich habe {5} zu viel abgezogen, ich gebe es zurück: {6} + {7}
+ca45d2e|geh zum Zehner runter: {0} − {1} = {2}; noch {3} abzuziehen: {4} − {5}
+c270ee2|zieh {0} von den Einern ab: {1} − {2} = {3}, und {4} bleiben vorne
+c949734|; dann die Einer: {0} − {1}
+c2c0266|zieh zuerst die Zehner ab: {0} − {1} = {2}{3}
+caa225e|{0} × {1} heißt {2} {3}-mal addieren: {4}
+c50240f|denk an 25-Cent-Münzen: {0} Münzen sind {1} wert
+ce0c89b|{0} ist fast {1}: {2} × {3} = {4}; ich bin {5} × {6} = {7} drüber; abziehen: {8} − {9}
+c29e85e|zerlege von links nach rechts: {0} × {1} = {2} und {3} × {4} = {5}; zusammen: {6} + {7}
+ca10c1a|{0} ist fast 10: {1} × 10 = {2}, minus {3} × {4} = {5}: {6} − {7}
+caa0dce|zerlege {0} in 5 + {1}: {2} × 5 = {3} und {4} × {5} = {6}; zusammen {7} + {8}
+c9fa5ce|zerlege {0} in {1} + {2}, beide lassen sich leicht durch {3} teilen: {4} + {5} = {6}
+cef6598|Der Apfel ist bei x = {0}: x + {1} = {2} + {3}.
+c7cb4af|Ergebnis: {0}.
+c7a6673|Wie oft passt {0} in {1}? {2} × {3} = {4}.
+cafd293|Teilen heißt verteilen: Wie oft passt {0} in {1}?
+c424b15|Suche die Multiplikation, die es rückgängig macht: {0} × {1} = {2}.
+cfe1c21|Du gehst {0} bis zur 0 runter und hast noch {1} Stellen nach links.
+caab7b0|Minus mal Minus ergibt Plus: (−) × (−) = (+).
+c4d0c03|Negativ mal positiv ergibt negativ.
+c4ec704|{0} × {1} = {2}, mit Vorzeichen −.
+cfb25af|Eine negative Zahl abziehen heißt addieren: {0} − (−{1}) = {2} + {3}.
+c8dbf75|Du startest bei −{0} und gehst {1} nach rechts.
+c52368d|Du überquerst die 0 und gehst {0} weiter.
+cc4aeb|Du bleibst vor der 0 stehen.
+cb71c4c|Von −{0} aus bringt dich {1} abziehen noch weiter nach links.
+c4b3f20|Schreib es mit Dezimalpunkt: {0}.
+cbeed22|„{0}/{1} von {2}“: teile {3} in {4} gleiche Teile → je {5}.
+cccc53f|Nimm {0} Teile: {1} × {2} = {3}.
+c497003|Gleicher Nenner: nur oben addieren → {0}/{1}.
+cffa3c4|Gemeinsamer Nenner: {0}. {1}/{2} = {3}/{4} und {5}/{6} = {7}/{8}.
+c29c04a|Summe: {0}/{1}.
+c831255|Als Dezimalzahl: {0}.
+c2455df|Kubikwurzel: Welche Zahl dreimal mit sich multipliziert ergibt {0}?
+c9be434|2^{0} heißt 2 {1}-mal mit sich selbst multiplizieren.
+cc0b0ef|Welche Zahl mal sich selbst ergibt {0}?
+c518452|sin = Gegenkathete / Hypotenuse (Höhe im Einheitskreis)
+c95b38f|cos = Ankathete / Hypotenuse (Breite im Einheitskreis)
+c21bad2|tan = sin / cos (Steigung)
+c647749|Katheten {0} und {1}
+cc162ed|Pythagoras: h² = {0}² + {1}² = {2} + {3} = {4}.
+c98b682|sin θ = Gegenkathete / Hypotenuse → Gegenkathete = Hyp × sin θ.
+c72a345|Setze {0} für x ein: f({1}) = {2}·({3}){4}.
+c426d0f|Umstellen: bring das {0} durch Abziehen rüber → {1}x = {2}{3} = {4}.
+cb1f9bc|Teile durch {0}: x = {1} ÷ {2} = {3}.
+c7f73a0|Setze x = {0} ein: ({1})² {2}.
+c604d22|  ⇒ größere Nullstelle = ?
+cb408e|Suche zwei Zahlen mit Summe {0} und Produkt {1}: {2} und {3}.
+cc8b664|Die größere: {0}.
+c2649e0|Scheitel x
+c3d8766|Der Scheitel von ax² + bx + c liegt bei x = −b / 2a.
+cf7b747|Suche die Zahl, die dreimal mit sich multipliziert {0} ergibt.
+c69c26d|Einsetzen: ({0})·({1})·({2}).
+cbc52ca|Erste Zeile von A mal v: {0}·{1} + {2}·{3}.
+c3752b6|Zeile 1 von A mal Spalte 1 von B: {0}·{1} + {2}·{3}.
+c66c05f|Eine Gerade hat keine Löcher: Der Grenzwert ist einfach x = {0} einsetzen.
+c1d1a39|Einsetzen ergibt 0/0: faktorisiere x² − {0} = (x − {1})(x + {2}).
+c8d7c6a|(x − {0}) kürzt sich und es bleibt x + {1}.
+ca067fb|Mit x = {0}: {1}.
+c8ace65|Nahe 0 gilt sin x ≈ x.
+ca47acc|Also sin x / x → 1.
+cda538e|Teile alles durch x: {0} + {1}/x.
+cf961f7|Für x → ∞ geht {0}/x → 0. Es bleibt {1}.
+cf5e3cd|Die Ableitung misst die Steigung. Bei einer Geraden mx + b ist die Steigung überall m.
+ccae856|Potenzregel: (xⁿ)' = n·xⁿ⁻¹. Also f'(x) = {0}x{1}.
+ccaef4c|Eine Konstante integrieren ist die Fläche eines Rechtecks.
+c807ec4|Breite {0} × Höhe {1} = {2}.
+ce3ed23|Eine Stammfunktion von 2x ist x².
+ca3a155|Eine Stammfunktion von 2x ist x² (weil (x²)' = 2x).
+ca7c65a|Auswerten: {0}² − 0² = {1}.
+c601afe|Eine Stammfunktion von 3x² ist x³.
+cceb7ca|π ist das Verhältnis von Umfang zu Durchmesser.
+c760edd|e ist die Basis des stetigen Wachstums: (1 + 1/n)ⁿ für n → ∞.
+c563224|Jede Zahl (außer 0) hoch 0 ist 1.
+c20c27e|ln fragt: Mit welcher Potenz von e erhalte ich 1?
+cdf933a|ln UND e^x HEBEN SICH AUF
+c8aa579|ln und e heben sich auf: ln(eⁿ) = n.
+cb75d07|Kreis mit Radius {0}
+cdff86e|Fläche = πr².
+ced2548|Eulersche Identität: e^(iπ) + 1 = 0.
+ce5c37f|Also e^(iπ) = −1.
+c4096cc|auf 2 Dezimalstellen runden
+c87d345|ADDITION
+c5ef076|Addiere zuerst die Einer; über 9 schreibst du die letzte Ziffer und überträgst 1 zu den Zehnern.
+ccdba06|SUBTRAKTION
+c7902a9|Ist die obere Ziffer kleiner, leih dir 1 Zehner vom Nachbarn.
+ce870e6|MULTIPLIKATION
+cf5b727|Übe das Einmaleins von 6 bis 9 und zerlege: 14 × 3 = 10×3 + 4×3.
+cb927b1|DIVISION
+cf9ad7f|Jede Division ist eine umgekehrte Multiplikation: 56 ÷ 7 → 7 × was = 56?
+c98ec2a|GANZE ZAHLEN
+cc16f91|Orientiere dich am Zahlenstrahl: Addieren geht nach rechts, Subtrahieren nach links; − × − = +.
+c447254|WURZELN UND POTENZEN
+c6cd6a2|Lerne die Quadratzahlen von 1 bis 15 und die Zweierpotenzen bis 256.
+ceef4d2|TRIGONOMETRIE
+cd3063e|Lerne die Tabelle für 0°, 30°, 45°, 60°, 90° und das 3-4-5-Dreieck.
+ca003ec|Zum Auswerten x mit Klammern einsetzen; zum Umstellen auf beiden Seiten dasselbe tun.
+c25a7bb|Faktorisiere mit zwei Zahlen, deren Summe b und Produkt c ist; der Scheitel liegt bei −b/2a.
+c9211fd|Achte auf die Vorzeichen: (−2)³ = −8. Die Kubikzahlen von 1 bis 5: 1, 8, 27, 64, 125.
+c3d797|det = a·d − b·c; multiplizieren heißt Zeile mal Spalte, Glied für Glied.
+c6d3cf6|GRENZWERTE
+c67226e|Erst einsetzen; ergibt das 0/0, faktorisieren und kürzen; bei ∞ durch die höchste Potenz teilen.
+c8d4952|Potenzregel: (xⁿ)' = n·xⁿ⁻¹; die Ableitung einer Konstanten ist 0.
+c7b544b|Suche die Stammfunktion (deren Ableitung der Integrand ist) und rechne F(b) − F(a).
+c2dd3c0|LEVEL 1 · a + b
+c5540d3|Der Strahl <b>sind die Zahlen</b>, und der Apfel steht immer auf einer davon.
+cdfac2e|Steht er auf 2 und es kommt <b>2 + 3</b>, zeichnest du <b>5</b> und der Apfel springt auf 5. Addieren heißt nach rechts gehen.
+cefca91|Zeichne das Ergebnis <b>irgendwo auf den Bildschirm</b>. Richtig: Er fällt wie ein Meteorit und zermalmt Zombies. Falsch: Er landet auf der falschen Zahl.
+c275f67|du bist bei 1⏎1 + 1 = 2   → du springst auf 2⏎2 + 3 = 5   → du springst auf 5
+c413344|LEVEL 2 · a − b
+cc7f548|Subtrahieren heißt <b>zurückgehen</b> nach links.
+c82079|Reicht die obere Ziffer nicht, <b>leih dir 1 Zehner</b>.
+c434a26|52 − 17⏎2 reicht nicht für 7 → 12 − 7 = 5⏎4 − 1 = 3   → 35
+c68159e|LEVEL 3 · a × b
+c769105|Multiplizieren heißt <b>dieselbe Zahl</b> mehrmals addieren: Die Sprünge werden riesig.
+cd90dc4|Große Zahlen <b>zerlegst</b> du in Zehner und Einer.
+c955095|LEVEL 4 · BOSS · a ÷ b
+c2a4cca|Teilen heißt <b>verteilen</b>: Wie oft passt eine Zahl in eine andere?
+ce3c3a1|Der <b>Boss</b> verliert bei jeder richtigen Antwort Leben. Packt er dich, brauchst du <b>2 Antworten</b>, um dich zu befreien.
+cf8f149|LEVEL 5 · ℤ
+c1cd8bb|Links von der 0 wohnen die <b>negativen Zahlen</b>. Zeichne das <b>−</b> zuerst, als waagrechten Strich.
+c2b1f79|Eine negative Zahl abziehen heißt addieren; <b>− × − = +</b>.
+cf86065|LEVEL 6 · a / b
+c8084c2|Ein Bruch ist eine <b>offene Division</b>: 3/4 = 3 ÷ 4 = 0.75.
+c6242ad|Antworte als Dezimalzahl: Zeichne den <b>Punkt</b> mit einem kurzen Tippen.
+c6d84d0|LEVEL 7 · √x · xⁿ
+c148a53|WURZELN
+c9a1796|Die <b>Potenz</b> wiederholt eine Multiplikation; die <b>Wurzel</b> macht sie rückgängig.
+cb1feb5|√49 fragt: Welche Zahl mal sich selbst ergibt 49?
+c5fc797|LEVEL 8 · sin θ
+c1586c1|Im rechtwinkligen Dreieck: <b>sin</b> = Gegenkathete / Hypotenuse, <b>cos</b> = Ankathete / Hypotenuse.
+cddc067|Wichtige Werte: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.
+c919dde|8 · sin 30° = 8 × 0.5 = 4⏎Katheten 3 und 4 → Hypotenuse 5
+c1271a1|LEVEL 9 · f(x) = mx + b
+c93744f|Eine Funktion ist eine <b>Maschine</b>: x rein, f(x) raus.
+cc33931|Zum Umstellen auf <b>beiden Seiten</b> des = dasselbe tun.
+c5f0b57|LEVEL 10 · ax² + bx + c
+c2d1bb4|Eine <b>Parabel</b>. Ihre Nullstellen sind dort, wo sie die 0 schneidet.
+c94a3a9|Faktorisiere: zwei Zahlen mit <b>Summe</b> b und <b>Produkt</b> c.
+c768406|x² − 5x + 6 = 0⏎(x − 2)(x − 3) = 0 → größere Nullstelle 3
+c37dc93|LEVEL 11 · x³
+cc3756c|Die dritte Potenz <b>behält das Vorzeichen</b>: (−2)³ = −8.
+c655380|Bei einem Produkt von Faktoren jeden einzeln ausrechnen und multiplizieren.
+c2855ef|LEVEL 12 · BOSS · det A
+c7e1644|Eine Matrix ist eine <b>Zahlentabelle</b>.
+c472ba2|det [a b; c d] = <b>a·d − b·c</b>. Multiplizieren heißt <b>Zeile mal Spalte</b>.
+c7141f7|LEVEL 13 · lim x→a
+cf2088e|Der Grenzwert ist, <b>wohin sich f(x) nähert</b>, wenn x sich a nähert.
+ceec11f|Ergibt Einsetzen 0/0, <b>faktorisiere</b> und kürze.
+cf1f24a|lim x→3 (x² − 9)/(x − 3)⏎= lim (x + 3) = 6
+c7ef189|Die Ableitung ist die <b>Steigung</b>: wie schnell sich f ändert.
+c94da58|Potenzregel: <b>(xⁿ)' = n·xⁿ⁻¹</b>.
+c445546|LEVEL 15 · ∫ f dx
+c27d218|Das Integral ist die <b>Fläche</b> unter der Kurve.
+c6b09ee|Suche die <b>Stammfunktion</b> F und rechne F(b) − F(a).
+cc96ef1|LEVEL 16 · ENDBOSS · e^iπ + 1 = 0
+c1e6b54|Die zwei berühmtesten Zahlen: <b>π ≈ 3.14</b> und <b>e ≈ 2.72</b>.
+c166d2f|Antworte mit <b>2 Dezimalstellen</b>. Der Endboss hält 5 Treffer aus.
+cb31149|OCKHAMS RASIERMESSER
+c7a0720|Die einfachste Erklärung ist meist die richtige. Es war {0} und du hast {1} geschrieben: zu kompliziert gedacht.
+c2ba1ca|einfach ist meist richtig
+cdca23f|HOFSTADTERS GESETZ
+c33a471|Alles dauert länger als erwartet, selbst wenn man dieses Gesetz einrechnet: Du brauchtest im Schnitt {0} s pro Antwort.
+c81b8d7|du brauchst immer länger als gedacht
+cb283eb|HANLONS RASIERMESSER
+cfeaa15|Schieb nicht auf die Bosheit des Zombies, was ein einfaches Vorzeichen erklärt: Du hast {0} geschrieben und es war {1}.
+c17579|es war das Vorzeichen, nicht der Zombie
+c78d5fd|PARKINSONSCHES GESETZ
+c3bc088|Arbeit dehnt sich aus, bis die verfügbare Zeit gefüllt ist: Du hattest {0} s zum Befreien und hast alle gebraucht.
+c5cb71d|du hast die ganze Zeit verbraucht
+c220719|PETER-PRINZIP
+ce6d76b|Du bist bis zu deiner Stufe der Unfähigkeit aufgestiegen: {0}. Genau dort lernt man am meisten.
+c1efd06|du hast deine Stufe der Unfähigkeit erreicht
+c60c4a9|HICKS GESETZ
+c365daf|Mehr Optionen, mehr Zeit zum Entscheiden: {0} Zombies auf einmal haben dich gelähmt.
+c60ecdf|zu viele Optionen auf einmal
+cf3fe3|GOODHARTS GESETZ
+cd3cb0d|Wird ein Maß zum Ziel, misst es nicht mehr: Du hast schnell geantwortet, um zu springen, nicht um richtig zu liegen ({0} Fehler in unter 2 s).
+ca62aed|Tempo ist nicht Treffsicherheit
+c271748|Eine Serie von {0} richtigen Antworten… und das Selbstvertrauen kam vor dem Können.
+c39a0b2|das Selbstvertrauen kam vor dem Können
+c3267d1|PARETO-PRINZIP
+cd506c|80 % deiner Fehler stammen aus 20 % der Themen: {0} enthält {1} % deiner Fehler.
+c45419b|CHESTERTONS ZAUN
+cc0b9f2|Entferne keinen Zaun, ohne zu wissen, warum er da steht: Die Reihenfolge der Ziffern war wichtig ({0} ist nicht {1}).
+cfa42ad|die Reihenfolge der Ziffern zählt
+c8eca87|BROOKS'SCHES GESETZ
+cfb2686|einen Boss
+c67fa50|eine Horde
+cea66d2|Mehr Leute in einem verspäteten Projekt verspäten es noch mehr: mehr hastige Versuche schlagen nicht {0}.
+c9c90a1|mehr Eile hilft nicht
+cd944be|ENDBOSS
+c2975f2|BOSS
+ce6cf13|LEVEL
+cc3d5fc|{0} RICHTIGE, UM IHN ZU BESIEGEN
+c4bd829|{0} RICHTIGE ZUM BESTEHEN
+cb76c46| · DRUCK {0}%
+c9aa89e|<i class="h{0}" title="{1} richtig"></i>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} RICHTIG · {2} AKTIVE TAGE · SERIE: {3}</div><div class="hm2">{5}</div><div class="mini">BEHERRSCHUNG DER 16 THEMEN</div>
+c82f821|<b>SKELETTBOGENSCHÜTZE</b> · schießt Pfeile: bei 2 Treffern verlierst du das Level. Antworte und der Apfel springt: So weichst du aus!
+c64e959|PFEILTREFFER! NOCH 1
+c2ead57|GETROFFEN!
+c69ca5d|DER BOSS
+cf7b4e2|<b>② F = m·a</b> · ein Sprung von {0} braucht {1} N. Weiter heißt mehr Kraft.
+c98a435|<b>③ Actio und Reactio</b> · der Apfel schlägt mit der Kraft F auf und der Boden bremst ihn mit −F.
+c699c7a|−1 · NOCH {0}
+cc07d5f|BOSS BESIEGT!
+c2755ad|DER METEORIT HAT DICH GERETTET!
+c4958c1|NOCH EINE!
+cec1bcc|ENTKOMMEN!
+c4676a0|FREI!
+cd39c5d|GERADE NOCH!
+c76d2f8|WEG DA!
+caae3ef|<b>③ Actio und Reactio</b> · du schubst den Zombie und er schubst zurück: Du fliegst davon.
+c9002a7|GEWONNEN!
+cea725f|JETZT BEGINNT DER ∞-MODUS: ALLES GEMISCHT
+c623f5e|GESCHAFFT!
+c7cf41a|LEVEL {0}
+ca79424|{0} RICHTIG · {1} ZOMBIES
+c7e75c0|SCHLÄGST DU MICH?
+c84c93c|Ich habe Level {0} ({1}) in Math Sucks mit {2} richtigen Antworten erreicht. Schlägst du mich?{3}
+c3f2a45|{0} {1} GEHEN WEG
+c3d2e20|{0} {1} BLEIBEN
+c7be6f9|{0} GRUPPEN MIT {1} {2}
+ccf4f9d|{0} REIHEN MIT {1}
+c6c5610|ICH SCHREIBE {0} UND ÜBERTRAGE 1
+cecfadf|{0} REICHT NICHT FÜR {1}
+c826d09|SCHRIFTLICHE ADDITION
+c55fb0b|SCHRIFTLICHE SUBTRAKTION
+cbdf6df|{0} ERDBEEREN AUF {1} STÜCKE
+cdaee68|{0} ÷ {1} = {2} PRO STÜCK
+c232b6e|STRASSE
+c7070d9|SCHULDEN WEGNEHMEN = HOCHGEHEN
+c741f42|ÜBER DIE STRASSE!
+c7b4aaf|{0} SPRÜNGE VON −{1}
+c48645b|DAS ANDERE − DREHT DICH UM
+c26a691|{0} GRUPPEN MIT {1}
+c4d3fe|= {0}/{1} STÜCKE
+c2e904c|ICH SCHNEIDE ALLES IN {0} STÜCKE
+cf5e52e|{0} ÷ {1}: BAND IN {2} TEILEN
+c890b07|JEDER TEIL: {0}
+c89e656|{0} × {1}: EIN QUADRAT
+ceaf0f3|WELCHES QUADRAT HAT {0}?
+cb2461e|√{0}: WELCHES QUADRAT?
+cba11a6|KUBIKWURZEL AUS {0} = {1}
+cf59368|2^{0}: {1}-MAL VERDOPPELN
+c8bf75c|HÖHE
+c3a8a95|sin θ = GEGENKATHETE ÷ HYP
+cde27dc|{0} {1} AUF BEIDEN SEITEN
+caef0c|{0}x = {1} → AUF {2} VERTEILEN
+c6292de|WO SCHNEIDET SIE DIE X-ACHSE?
+c450c63|DIE PARABEL IST EIN SPIEGEL
+c6745ca|SCHEITEL BEI x = {0}
+c49059|ZEILE × SPALTE
+cd8131d|DER GRENZWERT IST {0}
+cfc4842|x → {0}: EINFACH EINSETZEN
+ca72dc1|0/0 → KÜRZT SICH → x + {0}
+c78c45|sin x / x NAHE 0
+c873ff4|x → ∞: {0}/x WIRD 0
+c8f26fe|STEIGUNG DER TANGENTE
+c23cb3e|RECHTECK DER HÖHE {0}
+cc6f4f1|FLÄCHE UNTER DER KURVE
+cd728ea|FLÄCHE = {0}
+c2ace07|HALBE RADUMDREHUNG
+cee21d4|RADIUS {0}: EINE UMDREHUNG
+cc61127|DER KREIS IN STÜCKEN
+c46acd3|PYTHAGORAS
+cc2a1d4|ARCHIMEDES
+c61cdca|AL-CHWARIZMI
+ccace31|RENÉ DESCARTES
+c2df2ab|DANEBEN!
+cbe57fd|<b>① Trägheit</b> · er ist gefallen und bleibt jetzt liegen… bis ihn etwas anschubst.
+c6ecaa3|BRÜCHE
+c3aef46|In Dezimalzahlen umwandeln: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.
+c3bda70|LINEARE FUNKTIONEN
+cb6e6b5|QUADRATISCHE FUNKTIONEN
+ccdf2f6|KUBISCHE FUNKTIONEN
+ca63ff2|MATRIZEN
+c7f7733|ABLEITUNGEN
+ce06de6|INTEGRALE
+c99b624|π UND e
+ca7524b|π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.
+c7ed99|ADDIEREN
+c9db7da|SUBTRAHIEREN
+c754280|MULTIPLIZIEREN
+c7d19e4|DIVIDIEREN
+cef86e2|GANZE ZAHLEN
+cfd5a34|3/4 von 8 = 6⏎1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75
+cdfc886|LINEAR
+c9976df|QUADRATISCH
+c5b1ce8|KUBISCH
+ceace85|DUNNING-KRUGER-EFFEKT
+c565bda|wenige Themen, viele Fehler
+cniv14|LEVEL 14 · f'(x)
+cquito|ZIEHE AB
+csumo|ADDIERE
+cmanz|ÄPFEL
+cpoll|KÜKEN
+cvaca|KÜHE
+cnoprob|Sie haben dich vor der ersten Aufgabe erwischt.

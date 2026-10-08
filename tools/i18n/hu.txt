@@ -1,0 +1,304 @@
+c9058f1|indulj a(z) {0}-ról, és lépj {1} mezőt jobbra
+c5252f6|{0} majdnem {1}: {2} + {3} = {4}; {5}-tel túllőttem, ezért kivonok {6}-t: {7}
+cae18a5|balról jobbra: {0} + {1} = {2} és {3} + {4} = {5}; együtt {6} + {7}
+c433450|indulj a(z) {0}-ról, és lépj vissza {1} mezőt
+c29894f|{0} majdnem {1}: {2} − {3} = {4}; {5}-tel többet vontam ki, visszaadom: {6} + {7}
+ca45d2e|menj le a tízesre: {0} − {1} = {2}; még {3} van hátra: {4} − {5}
+c270ee2|vonj ki {0}-t az egyesekből: {1} − {2} = {3}, elöl marad {4}
+c949734|; aztán az egyesek: {0} − {1}
+c2c0266|először a tízeseket vond ki: {0} − {1} = {2}{3}
+caa225e|{0} × {1} azt jelenti, hogy {2}-t {3}-szor adod össze: {4}
+c50240f|gondolj 25-ös érmékre: {0} érme {1}-et ér
+ce0c89b|{0} majdnem {1}: {2} × {3} = {4}; {5} × {6} = {7}-tel túllőttem; vond ki: {8} − {9}
+c29e85e|bontsd fel balról jobbra: {0} × {1} = {2} és {3} × {4} = {5}; együtt: {6} + {7}
+ca10c1a|{0} majdnem 10: {1} × 10 = {2}, mínusz {3} × {4} = {5}: {6} − {7}
+caa0dce|bontsd {0}-t 5 + {1}-re: {2} × 5 = {3} és {4} × {5} = {6}; együtt {7} + {8}
+c9fa5ce|bontsd {0}-t {1} + {2}-re, mindkettő könnyen osztható {3}-mal: {4} + {5} = {6}
+cef6598|Az alma az x = {0} helyen áll: x + {1} = {2} + {3}.
+c7cb4af|Eredmény: {0}.
+c7a6673|Hányszor van meg a(z) {0} a(z) {1}-ben? {2} × {3} = {4}.
+cafd293|Osztani annyi, mint szétosztani: hányszor van meg a(z) {0} a(z) {1}-ben?
+c424b15|Keresd a szorzást, ami visszacsinálja: {0} × {1} = {2}.
+cfe1c21|Lemész {0}-t a 0-ig, és még {1} mező marad balra.
+caab7b0|Mínusz szor mínusz plusz: (−) × (−) = (+).
+c4d0c03|Negatív szor pozitív negatív.
+c4ec704|{0} × {1} = {2}, − előjellel.
+cfb25af|Negatív számot kivonni annyi, mint hozzáadni: {0} − (−{1}) = {2} + {3}.
+c8dbf75|A −{0}-ról indulsz, és {1}-et lépsz jobbra.
+c52368d|Átlépsz a 0-n, és még {0}-t mész.
+cc4aeb|A 0 előtt megállsz.
+cb71c4c|A −{0}-ról {1}-et kivonva még balrabb kerülsz.
+c4b3f20|Írd tizedesponttal: {0}.
+cbeed22|„{2} {0}/{1} része”: oszd {3}-t {4} egyenlő részre → mindegyik {5}.
+cccc53f|Vegyél {0} részt: {1} × {2} = {3}.
+c497003|Azonos nevező: csak a számlálókat add össze → {0}/{1}.
+cffa3c4|Közös nevező: {0}. {1}/{2} = {3}/{4} és {5}/{6} = {7}/{8}.
+c29c04a|Összeg: {0}/{1}.
+c831255|Tizedes törtként: {0}.
+c2455df|Köbgyök: melyik számot háromszor önmagával szorozva kapod meg a(z) {0}-t?
+c9be434|A 2^{0} azt jelenti, hogy a 2-t {1}-szer szorzod önmagával.
+cc0b0ef|Melyik szám önmagával szorozva {0}?
+c518452|sin = szemközti befogó / átfogó (magasság az egységkörön)
+c95b38f|cos = szomszédos befogó / átfogó (szélesség az egységkörön)
+c21bad2|tan = sin / cos (meredekség)
+c647749|befogók {0} és {1}
+cc162ed|Pitagorasz: h² = {0}² + {1}² = {2} + {3} = {4}.
+c98b682|sin θ = szemközti / átfogó → szemközti = átfogó × sin θ.
+c72a345|Írd x helyére a(z) {0}-t: f({1}) = {2}·({3}){4}.
+c426d0f|Rendezd: vidd át a(z) {0}-t kivonással → {1}x = {2}{3} = {4}.
+cb1f9bc|Oszd el {0}-val: x = {1} ÷ {2} = {3}.
+c7f73a0|Helyettesítsd x = {0}: ({1})² {2}.
+c604d22|  ⇒ nagyobb gyök = ?
+cb408e|Keress két számot, amelyek összege {0}, szorzata {1}: {2} és {3}.
+cc8b664|A nagyobb: {0}.
+c2649e0|csúcs x
+c3d8766|Az ax² + bx + c csúcsa x = −b / 2a-nál van.
+cf7b747|Keresd a számot, amelyet háromszor önmagával szorozva {0}-t kapsz.
+c69c26d|Helyettesítés: ({0})·({1})·({2}).
+cbc52ca|A első sora szor v: {0}·{1} + {2}·{3}.
+c3752b6|A 1. sora szor B 1. oszlopa: {0}·{1} + {2}·{3}.
+c66c05f|Az egyenesnek nincs lyuka: a határérték csak x = {0} behelyettesítése.
+c1d1a39|Behelyettesítve 0/0: bontsd szorzattá x² − {0} = (x − {1})(x + {2}).
+c8d7c6a|(x − {0}) kiesik, és marad x + {1}.
+ca067fb|x = {0} esetén: {1}.
+c8ace65|0 közelében sin x ≈ x.
+ca47acc|Tehát sin x / x → 1.
+cda538e|Ossz el mindent x-szel: {0} + {1}/x.
+cf961f7|Ha x → ∞, akkor {0}/x → 0. Marad {1}.
+cf5e3cd|A derivált a meredekséget méri. Az mx + b egyenesen a meredekség mindenhol m.
+ccae856|Hatványszabály: (xⁿ)' = n·xⁿ⁻¹. Tehát f'(x) = {0}x{1}.
+ccaef4c|Egy állandó integrálja egy téglalap területe.
+c807ec4|alap {0} × magasság {1} = {2}.
+ce3ed23|2x egyik primitív függvénye x².
+ca3a155|2x egyik primitív függvénye x² (mert (x²)' = 2x).
+ca7c65a|Számold ki: {0}² − 0² = {1}.
+c601afe|3x² egyik primitív függvénye x³.
+cceb7ca|A π a kerület és az átmérő aránya.
+c760edd|Az e a folytonos növekedés alapja: (1 + 1/n)ⁿ, ha n → ∞.
+c563224|Minden (nem nulla) szám nulladik hatványa 1.
+c20c27e|Az ln azt kérdezi: hányadik hatványra emeljem e-t, hogy 1 legyen?
+cdf933a|ln ÉS e^x KIOLTJÁK EGYMÁST
+c8aa579|Az ln és az e kioltják egymást: ln(eⁿ) = n.
+cb75d07|{0} sugarú kör
+cdff86e|Terület = πr².
+ced2548|Euler-azonosság: e^(iπ) + 1 = 0.
+ce5c37f|Tehát e^(iπ) = −1.
+c4096cc|kerekíts 2 tizedesre
+c87d345|ÖSSZEADÁS
+c5ef076|Először az egyeseket add össze; ha 9 fölé megy, írd le az utolsó jegyet, és vigyél át 1-et a tízesekhez.
+ccdba06|KIVONÁS
+c7902a9|Ha a felső számjegy kisebb, kérj kölcsön 1 tízest a szomszédtól.
+ce870e6|SZORZÁS
+cf5b727|Ismételd a 6-os–9-es szorzótáblát, és bonts: 14 × 3 = 10×3 + 4×3.
+cb927b1|OSZTÁS
+cf9ad7f|Minden osztás egy visszafelé szorzás: 56 ÷ 7 → 7 × mennyi = 56?
+c98ec2a|EGÉSZ SZÁMOK
+cc16f91|Keresd meg magad a számegyenesen: az összeadás jobbra, a kivonás balra visz; − × − = +.
+c447254|GYÖKÖK ÉS HATVÁNYOK
+c6cd6a2|Tanuld meg a négyzetszámokat 1-től 15-ig és a 2 hatványait 256-ig.
+ceef4d2|TRIGONOMETRIA
+cd3063e|Tanuld meg a 0°, 30°, 45°, 60°, 90° táblázatot és a 3-4-5 háromszöget.
+ca003ec|Kiszámoláshoz helyettesítsd x-et zárójellel; rendezéshez mindkét oldalon ugyanazt csináld.
+c25a7bb|Bonts szorzattá két szám keresésével, amelyek összege b, szorzata c; a csúcs −b/2a-nál van.
+c9211fd|Vigyázz az előjelekre: (−2)³ = −8. A köbszámok 1-től 5-ig: 1, 8, 27, 64, 125.
+c3d797|det = a·d − b·c; szorzáskor sor szor oszlop, tagonként.
+c6d3cf6|HATÁRÉRTÉKEK
+c67226e|Először helyettesíts; ha 0/0 jön ki, bonts szorzattá és egyszerűsíts; ∞-ben a legnagyobb hatvánnyal ossz.
+c8d4952|Hatványszabály: (xⁿ)' = n·xⁿ⁻¹; állandó deriváltja 0.
+c7b544b|Keresd meg a primitív függvényt (amelynek deriváltja a belső függvény), és számold ki F(b) − F(a)-t.
+c2dd3c0|1. SZINT · a + b
+c5540d3|Az egyenes <b>maguk a számok</b>, és az alma mindig valamelyiken áll.
+cdfac2e|Ha a 2-n áll, és jön a <b>2 + 3</b>, rajzolj <b>5</b>-öt, és az alma az 5-re ugrik. Összeadni annyi, mint jobbra menni.
+cefca91|Rajzold az eredményt <b>bárhová a képernyőn</b>. Jó: meteoritként zuhan, és szétlapítja a zombikat. Rossz: rossz számra érkezik.
+c275f67|az 1-en állsz⏎1 + 1 = 2   → a 2-re ugrasz⏎2 + 3 = 5   → az 5-re ugrasz
+c413344|2. SZINT · a − b
+cc7f548|Kivonni annyi, mint balra <b>visszalépni</b>.
+c82079|Ha a felső számjegy nem elég, <b>kérj kölcsön 1 tízest</b>.
+c434a26|52 − 17⏎a 2-ből nem jön ki a 7 → 12 − 7 = 5⏎4 − 1 = 3   → 35
+c68159e|3. SZINT · a × b
+c769105|Szorozni annyi, mint <b>ugyanazt a számot</b> többször összeadni: az ugrások óriásiak lesznek.
+cd90dc4|A nagy számokat <b>bontsd</b> tízesekre és egyesekre.
+c955095|4. SZINT · FŐNÖK · a ÷ b
+c2a4cca|Osztani annyi, mint <b>szétosztani</b>: hányszor van meg egy szám egy másikban?
+ce3c3a1|A <b>főnök</b> minden jó válasznál életet veszít. Ha elkap, <b>2 válasz</b> kell, hogy kiszabadulj.
+cf8f149|5. SZINT · ℤ
+c1cd8bb|A 0-tól balra laknak a <b>negatív számok</b>. Először a <b>−</b> jelet rajzold, vízszintes vonalként.
+c2b1f79|Negatívot kivonni annyi, mint hozzáadni; <b>− × − = +</b>.
+cf86065|6. SZINT · a / b
+c8084c2|A tört egy <b>függőben lévő osztás</b>: 3/4 = 3 ÷ 4 = 0.75.
+c6242ad|Tizedes törtben válaszolj: a <b>pontot</b> egy rövid koppintással rajzold.
+c6d84d0|7. SZINT · √x · xⁿ
+c148a53|GYÖKÖK
+c9a1796|A <b>hatvány</b> ismétli a szorzást; a <b>gyök</b> visszacsinálja.
+cb1feb5|A √49 azt kérdezi: melyik szám önmagával szorozva 49?
+c5fc797|8. SZINT · sin θ
+c1586c1|Derékszögű háromszögben: <b>sin</b> = szemközti / átfogó, <b>cos</b> = szomszédos / átfogó.
+cddc067|Fontos értékek: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.
+c919dde|8 · sin 30° = 8 × 0.5 = 4⏎befogók 3 és 4 → átfogó 5
+c1271a1|9. SZINT · f(x) = mx + b
+c93744f|A függvény egy <b>gép</b>: bemegy x, kijön f(x).
+cc33931|Rendezéskor az = <b>mindkét oldalán</b> ugyanazt csináld.
+c5f0b57|10. SZINT · ax² + bx + c
+c2d1bb4|Egy <b>parabola</b>. A gyökei ott vannak, ahol metszi a 0-t.
+c94a3a9|Bonts szorzattá: két szám, amelyek <b>összege</b> b és <b>szorzata</b> c.
+c768406|x² − 5x + 6 = 0⏎(x − 2)(x − 3) = 0 → nagyobb gyök 3
+c37dc93|11. SZINT · x³
+cc3756c|A köb <b>megtartja az előjelet</b>: (−2)³ = −8.
+c655380|Ha tényezők szorzata, számold ki mindegyiket, és szorozd össze.
+c2855ef|12. SZINT · FŐNÖK · det A
+c7e1644|A mátrix egy <b>számtáblázat</b>.
+c472ba2|det [a b; c d] = <b>a·d − b·c</b>. A szorzás <b>sor szor oszlop</b>.
+c7141f7|13. SZINT · lim x→a
+cf2088e|A határérték az, <b>ahová f(x) közelít</b>, amikor x tart a-hoz.
+ceec11f|Ha a behelyettesítés 0/0-t ad, <b>bonts szorzattá</b> és egyszerűsíts.
+cf1f24a|lim x→3 (x² − 9)/(x − 3)⏎= lim (x + 3) = 6
+c7ef189|A derivált a <b>meredekség</b>: milyen gyorsan változik f.
+c94da58|Hatványszabály: <b>(xⁿ)' = n·xⁿ⁻¹</b>.
+c445546|15. SZINT · ∫ f dx
+c27d218|Az integrál a görbe alatti <b>terület</b>.
+c6b09ee|Keresd meg a <b>primitív függvényt</b> F, és számold ki F(b) − F(a)-t.
+cc96ef1|16. SZINT · VÉGSŐ FŐNÖK · e^iπ + 1 = 0
+c1e6b54|A két leghíresebb szám: <b>π ≈ 3.14</b> és <b>e ≈ 2.72</b>.
+c166d2f|<b>2 tizedessel</b> válaszolj. A végső főnök 5 találatot bír ki.
+cb31149|OCKHAM BOROTVÁJA
+c7a0720|A legegyszerűbb magyarázat általában a helyes. {0} volt, te {1}-et írtál: túlbonyolítottad.
+c2ba1ca|az egyszerű általában helyes
+cdca23f|HOFSTADTER TÖRVÉNYE
+c33a471|Minden tovább tart, mint várod, még ha ezt a törvényt is figyelembe veszed: válaszonként átlagosan {0} mp-et vett igénybe.
+c81b8d7|mindig tovább tart, mint gondolod
+cb283eb|HANLON BOROTVÁJA
+cfeaa15|Ne a zombi gonoszságát okold azért, amit egy egyszerű előjel megmagyaráz: {0}-t írtál, és {1} volt.
+c17579|az előjel volt, nem a zombi
+c78d5fd|PARKINSON TÖRVÉNYE
+c3bc088|A munka kitölti a rendelkezésre álló időt: {0} mp-ed volt kiszabadulni, és mindet felhasználtad.
+c5cb71d|felhasználtad az összes időt
+c220719|A PETER-ELV
+ce6d76b|Feljutottál az alkalmatlanságod szintjére: {0}. Pont ott tanul az ember a legtöbbet.
+c1efd06|elérted az alkalmatlanságod szintjét
+c60c4a9|HICK TÖRVÉNYE
+c365daf|Több lehetőség, több döntési idő: egyszerre {0} zombi megbénított.
+c60ecdf|egyszerre túl sok lehetőség
+cf3fe3|GOODHART TÖRVÉNYE
+cd3cb0d|Ha egy mérőszám céllá válik, már nem mér: gyorsan válaszoltál, hogy ugorj, nem hogy eltaláld ({0} hiba 2 mp alatt).
+ca62aed|a gyorsaság nem pontosság
+c271748|{0} jó válasz sorozatban… és az önbizalom előbb jött, mint a tudás.
+c39a0b2|az önbizalom előbb jött, mint a tudás
+c3267d1|A PARETO-ELV
+cd506c|A hibáid 80 %-a a témák 20 %-ából jön: a(z) {0} a hibáid {1} %-át adja.
+c45419b|CHESTERTON KERÍTÉSE
+cc0b9f2|Ne bonts le egy kerítést, amíg nem tudod, miért áll ott: a számjegyek sorrendje számított ({0} nem {1}).
+cfa42ad|a számjegyek sorrendje számít
+c8eca87|BROOKS TÖRVÉNYE
+cfb2686|egy főnököt
+c67fa50|egy hordát
+cea66d2|Ha egy késésben lévő projekthez embereket adsz, még jobban késik: több kapkodó próbálkozás sem győz le {0}.
+c9c90a1|a sietség nem segít
+cd944be|VÉGSŐ FŐNÖK
+c2975f2|FŐNÖK
+ce6cf13|SZINT
+cc3d5fc|{0} JÓ VÁLASZ A LEGYŐZÉSÉHEZ
+c4bd829|{0} JÓ VÁLASZ A TOVÁBBJUTÁSHOZ
+cb76c46| · NYOMÁS {0}%
+c9aa89e|<i class="h{0}" title="{1} jó"></i>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} JÓ · {2} AKTÍV NAP · SOROZAT {3}</div><div class="hm2">{5}</div><div class="mini">A 16 TÉMA ELSAJÁTÍTÁSA</div>
+c82f821|<b>CSONTVÁZ ÍJÁSZ</b> · nyilakat lő: 2 találat és elveszted a szintet. Válaszolj, és az alma ugrik: így térsz ki!
+c64e959|NYÍLTALÁLAT! MÉG 1
+c2ead57|ELTALÁLTÁK!
+c69ca5d|A FŐNÖK
+cf7b4e2|<b>② F = m·a</b> · egy {0} hosszú ugráshoz {1} N kell. Messzebb, több erő.
+c98a435|<b>③ Hatás-ellenhatás</b> · az alma F erővel csapódik a földbe, a föld −F-fel fékezi.
+c699c7a|−1 · MÉG {0}
+cc07d5f|FŐNÖK LEGYŐZVE!
+c2755ad|A METEORIT MEGMENTETT!
+c4958c1|MÉG EGY!
+cec1bcc|MEGMENEKÜLTÉL!
+c4676a0|SZABAD VAGY!
+cd39c5d|AZ UTOLSÓ PILLANATBAN!
+c76d2f8|TŰNÉS!
+caae3ef|<b>③ Hatás-ellenhatás</b> · meglököd a zombit, és ő is meglök: elrepülsz.
+c9002a7|NYERTÉL!
+cea725f|MOST KEZDŐDIK A ∞ MÓD: MINDEN VEGYESEN
+c623f5e|TELJESÍTVE!
+c7cf41a|{0}. SZINT
+ca79424|{0} JÓ · {1} ZOMBI
+c7e75c0|LEGYŐZÖL?
+c84c93c|A Math Sucksban eljutottam a(z) {0}. szintig ({1}) {2} jó válasszal. Legyőzöl?{3}
+c3f2a45|{0} {1} ELMEGY
+c3d2e20|{0} {1} MARAD
+c7be6f9|{0} CSOPORT, MINDEGYIKBEN {1} {2}
+ccf4f9d|{0} SOR, MINDEGYIKBEN {1}
+c6c5610|LEÍROM A(Z) {0}-T, MARAD 1
+cecfadf|A(Z) {0} NEM ELÉG A(Z) {1}-HEZ
+c826d09|ÍRÁSBELI ÖSSZEADÁS
+c55fb0b|ÍRÁSBELI KIVONÁS
+cbdf6df|{0} EPER {1} SZELETEN
+cdaee68|{0} ÷ {1} = SZELETENKÉNT {2}
+c232b6e|UTCA
+c7070d9|ADÓSSÁG ELTÖRLÉSE = FELFELÉ MENNI
+c741f42|KELJ ÁT AZ UTCÁN!
+c7b4aaf|{0} UGRÁS −{1}-ESÉVEL
+c48645b|A MÁSIK − MEGFORDÍT
+c26a691|{0} CSOPORT, MINDEGYIKBEN {1}
+c4d3fe|= {0}/{1} DARAB
+c2e904c|MINDENT {0} DARABRA VÁGOK
+cf5e52e|{0} ÷ {1}: SZALAG {2} RÉSZBEN
+c890b07|MINDEN RÉSZ: {0}
+c89e656|{0} × {1}: EGY NÉGYZET
+ceaf0f3|MELYIK NÉGYZETBEN VAN {0}?
+cb2461e|√{0}: MELYIK NÉGYZET?
+cba11a6|{0} KÖBGYÖKE = {1}
+cf59368|2^{0}: {1}-SZER DUPLÁZD
+c8bf75c|MAGASSÁG
+c3a8a95|sin θ = SZEMKÖZTI ÷ ÁTFOGÓ
+cde27dc|{0} {1} MINDKÉT OLDALON
+caef0c|{0}x = {1} → {2} RÉSZRE OSZTOM
+c6292de|HOL METSZI AZ X TENGELYT?
+c450c63|A PARABOLA TÜKÖR
+c6745ca|CSÚCS x = {0}-NÁL
+c49059|SOR × OSZLOP
+cd8131d|A HATÁRÉRTÉK {0}
+cfc4842|x → {0}: CSAK HELYETTESÍTS
+ca72dc1|0/0 → KIESIK → x + {0}
+c78c45|sin x / x 0 KÖZELÉBEN
+c873ff4|x → ∞: {0}/x 0 LESZ
+c8f26fe|AZ ÉRINTŐ MEREDEKSÉGE
+c23cb3e|{0} MAGAS TÉGLALAP
+cc6f4f1|TERÜLET A GÖRBE ALATT
+cd728ea|TERÜLET = {0}
+c2ace07|FÉL KERÉKFORDULAT
+cee21d4|SUGÁR {0}: EGY FORDULAT
+cc61127|A KÖR CIKKEKBEN
+c46acd3|PITAGORASZ
+cc2a1d4|ARKHIMÉDÉSZ
+c61cdca|AL-HVARIZMI
+ccace31|RENÉ DESCARTES
+c2df2ab|MELLÉ!
+cbe57fd|<b>① Tehetetlenség</b> · leesett, és most mozdulatlan… amíg valami meg nem löki.
+c6ecaa3|TÖRTEK
+c3aef46|Váltsd át tizedesre: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.
+c3bda70|ELSŐFOKÚ FÜGGVÉNYEK
+cb6e6b5|MÁSODFOKÚ FÜGGVÉNYEK
+ccdf2f6|HARMADFOKÚ FÜGGVÉNYEK
+ca63ff2|MÁTRIXOK
+c7f7733|DERIVÁLTAK
+ce06de6|INTEGRÁLOK
+c99b624|π ÉS e
+ca7524b|π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.
+c7ed99|ÖSSZEADÁS
+c9db7da|KIVONÁS
+c754280|SZORZÁS
+c7d19e4|OSZTÁS
+cef86e2|EGÉSZEK
+cfd5a34|8 3/4 része = 6⏎1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75
+cdfc886|ELSŐFOKÚ
+c9976df|MÁSODFOKÚ
+c5b1ce8|HARMADFOKÚ
+ceace85|DUNNING–KRUGER-HATÁS
+c565bda|kevés téma, sok hiba
+cniv14|14. SZINT · f'(x)
+cquito|KIVONOK
+csumo|HOZZÁADOK
+cmanz|ALMA
+cpoll|CSIBE
+cvaca|TEHÉN
+cnoprob|Már az első feladat előtt elkaptak.

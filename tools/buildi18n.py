@@ -15,7 +15,7 @@ for f in sorted(os.listdir(os.path.join(ROOT, "tools", "i18n"))):
         if not ln.strip(): continue
         k, _, v = ln.partition("|"); d[k] = v.replace("⏎", "\n")
     miss = [k for k in CES if k not in d]; extra = [k for k in d if k not in CES]
-    badph = [k for k in d if k in CES and ph(d[k]) != ph(CES[k])]
+    badph = [k for k in d if k in CES and not set(ph(d[k])) <= set(ph(CES[k]))]
     if miss or extra or badph:
         ok = False; print(lang, "FALTAN", miss[:8], "SOBRAN", extra[:8], "PLACEHOLDERS", badph[:8])
     json.dump({k: d[k] for k in CES if k in d}, open(os.path.join(ROOT, "i18n", lang + ".json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))

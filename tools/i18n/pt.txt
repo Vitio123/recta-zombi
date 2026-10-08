@@ -301,3 +301,4 @@ csumo|SOMO
 cmanz|MAÇÃS
 cpoll|PINTINHOS
 cvaca|VACAS
+cnoprob|Te pegaram antes do primeiro problema.

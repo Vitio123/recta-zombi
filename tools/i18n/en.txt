@@ -301,3 +301,4 @@ csumo|ADD
 cmanz|APPLES
 cpoll|CHICKS
 cvaca|COWS
+cnoprob|They caught you before the first problem.
