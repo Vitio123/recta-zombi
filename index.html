@@ -2629,6 +2629,1652 @@ function ZS(cat,orig,v){
   return r;
 }
 const ZES=()=>LANG.startsWith('es')||!ZT[LANG];
+/* ============ Personalidades de los zombis (inspiradas en los trastornos de personalidad del DSM-5, en clave de caricatura) ============
+   narc = narcisista, psy = antisocial (psicópata), para = paranoide, hist = histriónico, toc = obsesivo-compulsivo, dep = dependiente.
+   sarc (sarcástico) es un rasgo, no un trastorno; sad (sádico) se quitó del DSM y aquí es solo el villano que disfruta verte sufrir. */
+const PERS=['narc','sarc','sad','psy','para','hist','toc','dep'];
+// español: etiqueta y frases por situación (t = burla, w = fallaste con {a}, g = te agarró, k = murió {n}, th = pensamiento)
+const PES={
+narc:{l:'NARCISISTA',t:['MI REFLEJO ME PIDIÓ UN AUTÓGRAFO','SOY TAN BELLO QUE LOS ESPEJOS SE ROMPEN DE ENVIDIA','SI LA BELLEZA FUERA UN NÚMERO, SERÍA INFINITO: YO','TU RESPUESTA NO ME IMPORTA. HABLEMOS DE MÍ','LLEVO 300 AÑOS MUERTO Y SIGO SIENDO TENDENCIA','MI PERFIL BUENO ES EL IZQUIERDO… Y EL DERECHO'],
+  w:['ERA {a}. PERO HABLEMOS DE MI CABELLO','TÚ FALLAS, YO BRILLO. EQUILIBRIO PERFECTO'],g:['QUÉ SUERTE: TE ATRAPÓ EL MÁS GUAPO','SONRÍE, SALES EN MI SELFI'],k:['¿{n} CAYÓ? NADIE LO VA A EXTRAÑAR. A MÍ SÍ'],
+  th:['¿ME QUEDARÁ BIEN LA MANZANA COMO CORONA?','HOY ESTOY MÁS GUAPO QUE AYER. Y AYER ERA PERFECTO']},
+sarc:{l:'SARCÁSTICO',t:['WOW, QUÉ RAPIDEZ. CASI ME DUERMO','TRANQUI, NO HAY PRISA. SOLO TE VAN A COMER','QUÉ ORIGINAL: OTRA VEZ PENSANDO','BRAVO. DESCUBRISTE QUE LOS NÚMEROS EXISTEN','SEGURO QUE ESTA VEZ SÍ. SEGURÍSIMO','VERTE PENSAR ES COMO VER CRECER EL PASTO'],
+  w:['ERA {a}. PERO OYE, LO TUYO TAMBIÉN ERA UN NÚMERO','CASI. SI «CASI» FUERA LA RESPUESTA'],g:['OH NO, QUÉ SORPRESA, TE ATRAPÉ','TÓMATE TU TIEMPO. YO TENGO TODA LA MUERTE'],k:['QUÉ PENA LO DE {n}. NO, EN SERIO, QUÉ PENA… NO'],
+  th:['¿Y SI ESTA VEZ PIENSA? NAH','QUÉ EMOCIÓN, OTRO PROBLEMA. YUPI']},
+sad:{l:'SÁDICO',t:['ME ENCANTA CUANDO DUDAS','CADA SEGUNDO QUE PIENSAS ME HACE MÁS FELIZ','TU SUFRIMIENTO MATEMÁTICO ES MI CANCIÓN FAVORITA','QUE SEA DIFÍCIL… POR FAVOR, QUE SEA DIFÍCIL','COLECCIONO TUS ERRORES EN UN FRASQUITO','JIJIJI… OTRA FRACCIÓN, A VER CÓMO SUFRES'],
+  w:['¡ERA {a}! ¡QUÉ DELICIA VERTE FALLAR!','ESE ERROR ME DIO ESCALOFRÍOS DE FELICIDAD'],g:['NO TE SUELTES MUY RÁPIDO, QUIERO DISFRUTARLO','TIC… TAC… ME ENCANTA ESTE SONIDO'],k:['¡{n}! BUENO, MÁS MANZANA PARA MÍ'],
+  th:['¿QUÉ PROBLEMA LE DUELE MÁS? ¿LAS DIVISIONES?','HOY QUIERO VERLA SUDAR DERIVADAS']},
+psy:{l:'PSICÓPATA',t:['NO ES PERSONAL. SOLO TENGO HAMBRE','SONRÍO PORQUE LEÍ QUE ESO TRANQUILIZA','TENGO UN PLAN PARA CADA NÚMERO QUE ESCRIBAS','ME CAES BIEN. ESO NO CAMBIA NADA','NUNCA PARPADEO. ES MÁS EFICIENTE','CALMA. EL PÁNICO RESTA PUNTOS'],
+  w:['ERA {a}. LO ANOTÉ. LO ANOTO TODO','ERROR REGISTRADO. PROCEDO CON EL MORDISCO'],g:['TRANQUILA. RESPIRA. RESUELVE. O NO','TE TENGO. NO SIENTO NADA. NI PRISA'],k:['{n} ERA UN MEDIO, NO UN FIN'],
+  th:['CALCULANDO RUTA HACIA LA MANZANA… 98 %','LA EMPATÍA ES UN NÚMERO IMAGINARIO']},
+para:{l:'PARANOIDE',t:['ESE 7 ME ESTÁ MIRANDO RARO','LA MANZANA TRABAJA PARA EL GOBIERNO, LO SÉ','¿QUIÉN TE DIJO LA RESPUESTA? ¡CONFIESA!','LOS DECIMALES SON ESPÍAS DIMINUTOS','EL CERO ES UN AGUJERO PARA ESPIARNOS','NO DIBUJES TAN CERCA, ME ESTÁS GRABANDO'],
+  w:['¿{a}? ¡ESE NÚMERO ESTABA AMAÑADO!','FALLASTE A PROPÓSITO PARA CONFUNDIRME'],g:['¡TE ATRAPÉ ANTES DE QUE TÚ ME ATRAPARAS!','¿CON QUIÉN HABLAS? ¿CON LA CALCULADORA?'],k:['A {n} LO ELIMINARON LOS NÚMEROS PARES. LO SABÍA'],
+  th:['¿Y SI LA RECTA NUMÉRICA ES UNA TRAMPA?','π NUNCA TERMINA… ¿QUÉ ESCONDE?']},
+hist:{l:'HISTRIÓNICO',t:['¡MÍRENME! ¡CAMINO DE FORMA DRAMÁTICA!','ESTE ES EL MEJOR DÍA DE MI MUERTE','¡APLAUSOS PARA MÍ, POR FAVOR!','¡AY, QUÉ NERVIOS! ¡ME DESMAYO! …NO, ERA BROMA','¿VISTE MI ENTRADA? ¡LA ENSAYÉ 200 AÑOS!','¡QUE ALGUIEN ME GRABE, ESTO ES ARTE!'],
+  w:['¡NOOO! ¡ERA {a}! ¡QUÉ TRAGEDIA TAN HERMOSA!','¡FALLASTE! ¡LLAMEN A LA PRENSA!'],g:['¡ESTE ES MI MOMENTO! ¡EL FOCO AQUÍ!','¡DRAMA! ¡SUSPENSO! ¡MORDISCO!'],k:['¡{n}! ¡NOOO! …¿ME VEO BIEN LLORANDO?'],
+  th:['¿Y SI CANTO MIENTRAS PIENSA?','NECESITO UN ESCENARIO MÁS GRANDE']},
+toc:{l:'OBSESIVO',t:['ESCRIBE EL NÚMERO DERECHO, POR FAVOR','TUS DECIMALES ESTÁN MAL ALINEADOS','CAMINO EN PASOS PARES. SIEMPRE PARES','ESA RAYITA DE LA RECTA ESTÁ TORCIDA Y ME MOLESTA','PRIMERO LOS PARÉNTESIS. LUEGO HABLAMOS','TODO EN ORDEN: 1, 2, 3, MORDISCO'],
+  w:['ERA {a}. EXACTO. NO {a} Y PICO','ESO NO ESTÁ BIEN REDONDEADO'],g:['TE SUJETO SIMÉTRICAMENTE. ES IMPORTANTE','CUENTO HASTA 10 Y TE COMO. 1, 2…'],k:['{n} SE CAYÓ EN DIAGONAL. QUÉ DESORDEN'],
+  th:['¿LA MANZANA ESTÁ BIEN CENTRADA EN EL NÚMERO?','DEBERÍA ORDENAR A LOS ZOMBIS POR ALTURA']},
+dep:{l:'DEPENDIENTE',t:['¿ME DAS PERMISO PARA PERSEGUIRTE?','¿TÚ CREES QUE LO ESTOY HACIENDO BIEN?','NO ME DEJES SOLO CON ESTOS NÚMEROS','¿ME ACOMPAÑAS? NO SÉ CRUZAR LA RECTA SOLO','DECIDE TÚ QUÉ COMO HOY','¿SOMOS AMIGOS? ¿AUNQUE TE QUIERA COMER?'],
+  w:['¿ERA {a}? ¿ESTÁS ENOJADA CONMIGO?','YO TAMBIÉN ME EQUIVOCO… ¿ME QUIERES IGUAL?'],g:['NO TE VAYAS, POR FAVOR. QUÉDATE UN RATITO','¿PUEDO ABRAZARTE? ES QUE ESTOY SOLO'],k:['¡{n} ERA MI ÚNICO AMIGO! ¿AHORA QUIÉN ME DICE QUÉ HACER?'],
+  th:['¿Y SI LE PREGUNTO AL JEFE SI PUEDO MORDER?','OJALÁ ALGUIEN ME DIGA CUÁL ES LA RESPUESTA']},
+};
+// por idioma, 8 bloques (narc sarc sad psy para hist toc dep) de 8 líneas: etiqueta, 3 burlas, fallo {a}, agarre, muerte {n}, pensamiento
+const PRAW={
+en:`NARCISSIST
+MY REFLECTION ASKED FOR MY AUTOGRAPH
+I'M SO BEAUTIFUL THAT MIRRORS CRACK WITH ENVY
+IF BEAUTY WERE A NUMBER IT'D BE INFINITE: ME
+IT WAS {a}. BUT LET'S TALK ABOUT MY HAIR
+LUCKY YOU: THE HANDSOMEST ONE CAUGHT YOU
+{n} FELL? NOBODY WILL MISS HIM. THEY'D MISS ME
+WOULD THE APPLE LOOK GOOD AS MY CROWN?
+SARCASTIC
+WOW, SO FAST. I ALMOST FELL ASLEEP
+RELAX, NO RUSH. YOU'RE ONLY GETTING EATEN
+HOW ORIGINAL: THINKING AGAIN
+IT WAS {a}. BUT HEY, YOURS WAS ALSO A NUMBER
+OH NO, WHAT A SURPRISE, I CAUGHT YOU
+SO SAD ABOUT {n}. NO, REALLY, SO SAD… NOT
+WHAT IF THIS TIME SHE THINKS? NAH
+SADISTIC
+I LOVE IT WHEN YOU HESITATE
+EVERY SECOND YOU THINK MAKES ME HAPPIER
+YOUR MATH SUFFERING IS MY FAVORITE SONG
+IT WAS {a}! WHAT A JOY TO WATCH YOU FAIL!
+DON'T BREAK FREE TOO FAST, I WANT TO ENJOY THIS
+{n}! OH WELL, MORE APPLE FOR ME
+WHICH PROBLEM HURTS HER MOST? DIVISION?
+PSYCHOPATH
+IT'S NOT PERSONAL. I'M JUST HUNGRY
+I SMILE BECAUSE I READ IT CALMS PEOPLE
+I HAVE A PLAN FOR EVERY NUMBER YOU WRITE
+IT WAS {a}. NOTED. I NOTE EVERYTHING
+EASY. BREATHE. SOLVE. OR DON'T
+{n} WAS A MEANS, NOT AN END
+EMPATHY IS AN IMAGINARY NUMBER
+PARANOID
+THAT 7 IS LOOKING AT ME FUNNY
+THE APPLE WORKS FOR THE GOVERNMENT, I KNOW IT
+WHO TOLD YOU THE ANSWER? CONFESS!
+{a}? THAT NUMBER WAS RIGGED!
+I CAUGHT YOU BEFORE YOU COULD CATCH ME!
+THE EVEN NUMBERS TOOK OUT {n}. I KNEW IT
+WHAT IF THE NUMBER LINE IS A TRAP?
+HISTRIONIC
+LOOK AT ME! I'M WALKING DRAMATICALLY!
+THIS IS THE BEST DAY OF MY DEATH
+APPLAUSE FOR ME, PLEASE!
+NOOO! IT WAS {a}! SUCH A BEAUTIFUL TRAGEDY!
+THIS IS MY MOMENT! SPOTLIGHT HERE!
+{n}! NOOO! …DO I LOOK GOOD CRYING?
+WHAT IF I SING WHILE SHE THINKS?
+OBSESSIVE
+WRITE THE NUMBER STRAIGHT, PLEASE
+YOUR DECIMALS ARE MISALIGNED
+I WALK IN EVEN STEPS. ALWAYS EVEN
+IT WAS {a}. EXACTLY. NOT {a}-ISH
+I'M HOLDING YOU SYMMETRICALLY. IT MATTERS
+{n} FELL DIAGONALLY. WHAT A MESS
+IS THE APPLE CENTERED ON THE NUMBER?
+DEPENDENT
+MAY I HAVE PERMISSION TO CHASE YOU?
+DO YOU THINK I'M DOING OKAY?
+DON'T LEAVE ME ALONE WITH THESE NUMBERS
+WAS IT {a}? ARE YOU MAD AT ME?
+PLEASE DON'T GO. STAY A LITTLE
+{n} WAS MY ONLY FRIEND! WHO TELLS ME WHAT TO DO NOW?
+WHAT IF I ASK THE BOSS IF I CAN BITE?`,
+pt:`NARCISISTA
+MEU REFLEXO ME PEDIU UM AUTÓGRAFO
+SOU TÃO LINDO QUE OS ESPELHOS RACHAM DE INVEJA
+SE A BELEZA FOSSE UM NÚMERO, SERIA INFINITO: EU
+ERA {a}. MAS VAMOS FALAR DO MEU CABELO
+QUE SORTE: TE PEGOU O MAIS BONITO
+{n} CAIU? NINGUÉM VAI SENTIR FALTA. DE MIM SIM
+A MAÇÃ FICARIA BEM COMO MINHA COROA?
+SARCÁSTICO
+UAU, QUE RAPIDEZ. QUASE DORMI
+CALMA, SEM PRESSA. VOCÊ SÓ VAI SER COMIDA
+QUE ORIGINAL: PENSANDO DE NOVO
+ERA {a}. MAS O SEU TAMBÉM ERA UM NÚMERO
+AH NÃO, QUE SURPRESA, TE PEGUEI
+QUE PENA DO {n}. NÃO, SÉRIO, QUE PENA… SÓ QUE NÃO
+E SE DESTA VEZ ELA PENSAR? NAH
+SÁDICO
+ADORO QUANDO VOCÊ HESITA
+CADA SEGUNDO QUE VOCÊ PENSA ME DEIXA MAIS FELIZ
+SEU SOFRIMENTO MATEMÁTICO É MINHA MÚSICA FAVORITA
+ERA {a}! QUE DELÍCIA VER VOCÊ ERRAR!
+NÃO SE SOLTE RÁPIDO DEMAIS, QUERO APROVEITAR
+{n}! BOM, MAIS MAÇÃ PARA MIM
+QUE PROBLEMA DÓI MAIS NELA? DIVISÃO?
+PSICOPATA
+NÃO É PESSOAL. SÓ ESTOU COM FOME
+SORRIO PORQUE LI QUE ISSO ACALMA AS PESSOAS
+TENHO UM PLANO PARA CADA NÚMERO QUE VOCÊ ESCREVER
+ERA {a}. ANOTEI. EU ANOTO TUDO
+CALMA. RESPIRE. RESOLVA. OU NÃO
+{n} ERA UM MEIO, NÃO UM FIM
+EMPATIA É UM NÚMERO IMAGINÁRIO
+PARANOICO
+ESSE 7 ESTÁ ME OLHANDO ESTRANHO
+A MAÇÃ TRABALHA PARA O GOVERNO, EU SEI
+QUEM TE CONTOU A RESPOSTA? CONFESSE!
+{a}? ESSE NÚMERO ESTAVA ARMADO!
+TE PEGUEI ANTES QUE VOCÊ ME PEGASSE!
+OS NÚMEROS PARES ELIMINARAM O {n}. EU SABIA
+E SE A RETA NUMÉRICA FOR UMA ARMADILHA?
+HISTRIÔNICO
+OLHEM PARA MIM! ESTOU ANDANDO DRAMATICAMENTE!
+ESTE É O MELHOR DIA DA MINHA MORTE
+APLAUSOS PARA MIM, POR FAVOR!
+NÃÃÃO! ERA {a}! QUE TRAGÉDIA TÃO LINDA!
+ESTE É O MEU MOMENTO! HOLOFOTE AQUI!
+{n}! NÃÃÃO! …FICO BEM CHORANDO?
+E SE EU CANTAR ENQUANTO ELA PENSA?
+OBSESSIVO
+ESCREVA O NÚMERO RETO, POR FAVOR
+SEUS DECIMAIS ESTÃO DESALINHADOS
+ANDO EM PASSOS PARES. SEMPRE PARES
+ERA {a}. EXATO. NÃO {a} E POUCO
+TE SEGURO SIMETRICAMENTE. É IMPORTANTE
+{n} CAIU NA DIAGONAL. QUE BAGUNÇA
+A MAÇÃ ESTÁ CENTRALIZADA NO NÚMERO?
+DEPENDENTE
+POSSO TER PERMISSÃO PARA TE PERSEGUIR?
+VOCÊ ACHA QUE ESTOU INDO BEM?
+NÃO ME DEIXE SOZINHO COM ESSES NÚMEROS
+ERA {a}? VOCÊ ESTÁ BRAVA COMIGO?
+NÃO VÁ, POR FAVOR. FIQUE MAIS UM POUQUINHO
+{n} ERA MEU ÚNICO AMIGO! QUEM ME DIZ O QUE FAZER AGORA?
+E SE EU PERGUNTAR AO CHEFE SE POSSO MORDER?`,
+fr:`NARCISSIQUE
+MON REFLET M'A DEMANDÉ UN AUTOGRAPHE
+JE SUIS SI BEAU QUE LES MIROIRS SE FISSURENT D'ENVIE
+SI LA BEAUTÉ ÉTAIT UN NOMBRE, CE SERAIT L'INFINI : MOI
+C'ÉTAIT {a}. MAIS PARLONS DE MES CHEVEUX
+QUELLE CHANCE : LE PLUS BEAU T'A ATTRAPÉE
+{n} EST TOMBÉ ? PERSONNE NE LE REGRETTERA. MOI, SI
+LA POMME M'IRAIT BIEN COMME COURONNE ?
+SARCASTIQUE
+WOW, QUELLE VITESSE. J'AI FAILLI M'ENDORMIR
+DU CALME, RIEN NE PRESSE. TU VAS JUSTE TE FAIRE MANGER
+QUELLE ORIGINALITÉ : ELLE RÉFLÉCHIT ENCORE
+C'ÉTAIT {a}. MAIS BON, LE TIEN AUSSI ÉTAIT UN NOMBRE
+OH NON, QUELLE SURPRISE, JE T'AI EUE
+QUEL DOMMAGE POUR {n}. NON, VRAIMENT… OU PAS
+ET SI CETTE FOIS ELLE RÉFLÉCHISSAIT ? BOF
+SADIQUE
+J'ADORE QUAND TU HÉSITES
+CHAQUE SECONDE DE RÉFLEXION ME REND PLUS HEUREUX
+TA SOUFFRANCE MATHÉMATIQUE EST MA CHANSON PRÉFÉRÉE
+C'ÉTAIT {a} ! QUEL DÉLICE DE TE VOIR RATER !
+NE TE LIBÈRE PAS TROP VITE, JE VEUX EN PROFITER
+{n} ! TANT PIS, PLUS DE POMME POUR MOI
+QUEL PROBLÈME LUI FAIT LE PLUS MAL ? LES DIVISIONS ?
+PSYCHOPATHE
+CE N'EST PAS PERSONNEL. J'AI JUSTE FAIM
+JE SOURIS PARCE QUE J'AI LU QUE ÇA RASSURE
+J'AI UN PLAN POUR CHAQUE NOMBRE QUE TU ÉCRIS
+C'ÉTAIT {a}. NOTÉ. JE NOTE TOUT
+DU CALME. RESPIRE. RÉSOUS. OU PAS
+{n} ÉTAIT UN MOYEN, PAS UNE FIN
+L'EMPATHIE EST UN NOMBRE IMAGINAIRE
+PARANOÏAQUE
+CE 7 ME REGARDE BIZARREMENT
+LA POMME TRAVAILLE POUR LE GOUVERNEMENT, JE LE SAIS
+QUI T'A SOUFFLÉ LA RÉPONSE ? AVOUE !
+{a} ? CE NOMBRE ÉTAIT TRUQUÉ !
+JE T'AI EUE AVANT QUE TU M'AIES !
+LES NOMBRES PAIRS ONT ÉLIMINÉ {n}. JE LE SAVAIS
+ET SI LA DROITE NUMÉRIQUE ÉTAIT UN PIÈGE ?
+HISTRIONIQUE
+REGARDEZ-MOI ! JE MARCHE DE FAÇON DRAMATIQUE !
+C'EST LE PLUS BEAU JOUR DE MA MORT
+APPLAUDISSEZ-MOI, S'IL VOUS PLAÎT !
+NOOON ! C'ÉTAIT {a} ! QUELLE BELLE TRAGÉDIE !
+C'EST MON MOMENT ! LE PROJECTEUR ICI !
+{n} ! NOOON ! …JE SUIS BEAU QUAND JE PLEURE ?
+ET SI JE CHANTAIS PENDANT QU'ELLE RÉFLÉCHIT ?
+OBSESSIONNEL
+ÉCRIS LE NOMBRE BIEN DROIT, S'IL TE PLAÎT
+TES DÉCIMALES SONT MAL ALIGNÉES
+JE MARCHE EN PAS PAIRS. TOUJOURS PAIRS
+C'ÉTAIT {a}. EXACTEMENT. PAS {a} ET DES POUSSIÈRES
+JE TE TIENS DE FAÇON SYMÉTRIQUE. C'EST IMPORTANT
+{n} EST TOMBÉ EN DIAGONALE. QUEL DÉSORDRE
+LA POMME EST-ELLE BIEN CENTRÉE SUR LE NOMBRE ?
+DÉPENDANT
+J'AI LA PERMISSION DE TE POURSUIVRE ?
+TU CROIS QUE JE M'EN SORS BIEN ?
+NE ME LAISSE PAS SEUL AVEC CES NOMBRES
+C'ÉTAIT {a} ? TU M'EN VEUX ?
+NE PARS PAS, S'IL TE PLAÎT. RESTE UN PEU
+{n} ÉTAIT MON SEUL AMI ! QUI ME DIT QUOI FAIRE MAINTENANT ?
+ET SI JE DEMANDAIS AU CHEF SI JE PEUX MORDRE ?`,
+de:`NARZISST
+MEIN SPIEGELBILD WOLLTE EIN AUTOGRAMM
+ICH BIN SO SCHÖN, DASS SPIEGEL VOR NEID ZERSPRINGEN
+WÄRE SCHÖNHEIT EINE ZAHL, WÄRE SIE UNENDLICH: ICH
+ES WAR {a}. ABER REDEN WIR ÜBER MEINE HAARE
+GLÜCK GEHABT: DICH HAT DER SCHÖNSTE ERWISCHT
+{n} IST GEFALLEN? NIEMAND VERMISST IHN. MICH SCHON
+STEHT MIR DER APFEL ALS KRONE?
+SARKASTISCH
+WOW, SO SCHNELL. FAST WÄRE ICH EINGESCHLAFEN
+KEINE EILE. DU WIRST JA NUR GEFRESSEN
+WIE ORIGINELL: SIE DENKT SCHON WIEDER NACH
+ES WAR {a}. ABER HEY, DEINS WAR AUCH EINE ZAHL
+OH NEIN, WAS FÜR EINE ÜBERRASCHUNG, ERWISCHT
+SO TRAURIG WEGEN {n}. NEIN, WIRKLICH… NICHT
+UND WENN SIE DIESMAL NACHDENKT? NÖ
+SADISTISCH
+ICH LIEBE ES, WENN DU ZÖGERST
+JEDE SEKUNDE, DIE DU NACHDENKST, MACHT MICH GLÜCKLICHER
+DEIN MATHE-LEIDEN IST MEIN LIEBLINGSLIED
+ES WAR {a}! HERRLICH, DICH SCHEITERN ZU SEHEN!
+BEFREI DICH NICHT ZU SCHNELL, ICH WILL ES GENIESSEN
+{n}! EGAL, MEHR APFEL FÜR MICH
+WELCHE AUFGABE TUT IHR AM MEISTEN WEH? DIVISION?
+PSYCHOPATH
+NICHTS PERSÖNLICHES. ICH HABE NUR HUNGER
+ICH LÄCHLE, WEIL ICH LAS, DASS DAS BERUHIGT
+ICH HABE EINEN PLAN FÜR JEDE ZAHL, DIE DU SCHREIBST
+ES WAR {a}. NOTIERT. ICH NOTIERE ALLES
+GANZ RUHIG. ATMEN. LÖSEN. ODER NICHT
+{n} WAR EIN MITTEL, KEIN ZWECK
+EMPATHIE IST EINE IMAGINÄRE ZAHL
+PARANOID
+DIESE 7 SCHAUT MICH KOMISCH AN
+DER APFEL ARBEITET FÜR DIE REGIERUNG, ICH WEISS ES
+WER HAT DIR DIE ANTWORT VERRATEN? GESTEH!
+{a}? DIESE ZAHL WAR MANIPULIERT!
+ICH HAB DICH, BEVOR DU MICH HAST!
+DIE GERADEN ZAHLEN HABEN {n} ERLEDIGT. ICH WUSSTE ES
+UND WENN DER ZAHLENSTRAHL EINE FALLE IST?
+HISTRIONISCH
+SEHT MICH AN! ICH GEHE DRAMATISCH!
+DAS IST DER SCHÖNSTE TAG MEINES TODES
+APPLAUS FÜR MICH, BITTE!
+NEIN! ES WAR {a}! WELCH WUNDERSCHÖNE TRAGÖDIE!
+DAS IST MEIN MOMENT! SCHEINWERFER HIERHER!
+{n}! NEIN! …SEHE ICH GUT AUS, WENN ICH WEINE?
+UND WENN ICH SINGE, WÄHREND SIE NACHDENKT?
+ZWANGHAFT
+SCHREIB DIE ZAHL BITTE GERADE
+DEINE DEZIMALSTELLEN SIND SCHIEF
+ICH GEHE IN GERADEN SCHRITTEN. IMMER GERADE
+ES WAR {a}. GENAU. NICHT UNGEFÄHR {a}
+ICH HALTE DICH SYMMETRISCH. DAS IST WICHTIG
+{n} FIEL DIAGONAL. WAS FÜR EIN DURCHEINANDER
+IST DER APFEL GENAU ÜBER DER ZAHL?
+ABHÄNGIG
+DARF ICH DICH BITTE VERFOLGEN?
+GLAUBST DU, ICH MACHE DAS GUT?
+LASS MICH NICHT ALLEIN MIT DIESEN ZAHLEN
+WAR ES {a}? BIST DU BÖSE AUF MICH?
+BITTE GEH NICHT. BLEIB NOCH EIN BISSCHEN
+{n} WAR MEIN EINZIGER FREUND! WER SAGT MIR JETZT, WAS ICH TUN SOLL?
+UND WENN ICH DEN BOSS FRAGE, OB ICH BEISSEN DARF?`,
+ja:`ナルシスト
+鏡の中の私がサインを求めてきた
+美しすぎて鏡が嫉妬で割れる
+美しさが数なら無限大、つまり私だ
+答えは{a}。それより私の髪の話をしよう
+運がいいな、一番の美形に捕まって
+{n}が倒れた? 誰も惜しまない。私なら惜しむがな
+りんごを王冠にしたら似合うかな?
+皮肉屋
+わあ、速いね。寝ちゃうところだった
+急がなくていいよ。食べられるだけだから
+独創的だね、また考えてる
+答えは{a}。まあ、君のも一応数字だったけど
+あらら、びっくり、捕まえちゃった
+{n}は残念だった。いや本当に…なんてね
+今度こそ考えるかな? ないない
+サディスト
+君が迷う瞬間が大好き
+君が考える一秒ごとに幸せになる
+君の算数の苦しみは私のお気に入りの曲
+答えは{a}! 失敗を見るのは最高!
+すぐに逃げないで、楽しみたいんだ
+{n}! まあいい、りんごが増える
+どの問題が一番効くかな? 割り算?
+サイコパス
+個人的な恨みはない。ただ腹が減っている
+笑顔は人を安心させると読んだから笑う
+君が書くすべての数字に計画がある
+答えは{a}。記録した。全部記録する
+落ち着いて。息をして。解いて。解かなくても
+{n}は手段であって目的ではない
+共感とは虚数のようなものだ
+疑い深い
+あの7が変な目で見てくる
+りんごは政府の手先だ、知ってるぞ
+誰に答えを教わった? 白状しろ!
+{a}? その数字は仕組まれていた!
+捕まえられる前に捕まえたぞ!
+{n}は偶数どもに消された。やっぱりな
+数直線そのものが罠だったら?
+演技派
+見て! ドラマチックに歩いてるの!
+死んでから最高の一日!
+私に拍手を、お願い!
+いやああ! 答えは{a}! なんて美しい悲劇!
+今が私の見せ場! スポットライトをこっちに!
+{n}! いやああ! …泣き顔もきれい?
+考えている間に歌ってもいい?
+完璧主義
+数字はまっすぐ書いてください
+小数点の位置がずれています
+歩くのは偶数歩。いつも偶数
+答えは{a}。きっちり。{a}くらい、ではない
+左右対称に捕まえている。大事なことだ
+{n}が斜めに倒れた。なんて散らかりよう
+りんごは数字の真ん中にいるか?
+依存的
+追いかけてもいいですか?
+僕、ちゃんとできてるかな?
+この数字たちと二人きりにしないで
+答えは{a}だった? 怒ってる?
+行かないで、お願い。もう少しいて
+{n}はたった一人の友だちだったのに! これから誰が指示してくれるの?
+かんでもいいか、ボスに聞いてみようかな?`,
+zh:`自恋狂
+我的倒影向我要签名
+我美得连镜子都嫉妒到裂开
+如果美貌是个数字,那就是无穷大:我
+答案是{a}。不过我们还是聊聊我的头发吧
+你真幸运:被最帅的抓住了
+{n}倒了?没人会想他。会想我
+苹果当我的王冠好看吗?
+毒舌鬼
+哇,好快啊。我差点睡着了
+别急,慢慢来。反正你只是要被吃掉
+真有创意:又在思考了
+答案是{a}。不过嘛,你写的也算个数字
+哎呀,好意外啊,抓到你了
+{n}真可惜。不,说真的,真可惜……才怪
+这次她会动脑吗?不会的
+虐待狂
+我最喜欢你犹豫的样子
+你多想一秒,我就多开心一分
+你做数学的痛苦是我最爱的歌
+答案是{a}!看你答错真是享受!
+别那么快挣脱,我想多享受一下
+{n}!算了,苹果多留给我一点
+哪道题最让她痛苦?除法吗?
+冷血狂
+不是针对你。我只是饿了
+我微笑,因为书上说这能让人安心
+你写的每个数字我都有对策
+答案是{a}。记下了。我什么都记
+冷静。呼吸。解题。或者不解
+{n}只是手段,不是目的
+同理心是个虚数
+妄想狂
+那个7看我的眼神好奇怪
+苹果在替政府做事,我知道
+谁告诉你答案的?招了吧!
+{a}?那个数字被动过手脚!
+在你抓到我之前,我先抓住你了!
+是偶数们干掉了{n}。我就知道
+万一数轴本身就是个陷阱呢?
+戏精
+看我!我走路超有戏!
+这是我死后最美好的一天
+请为我鼓掌!
+不——!答案是{a}!多么美丽的悲剧!
+这是我的高光时刻!聚光灯打过来!
+{n}!不——!……我哭起来好看吗?
+她思考的时候我来唱首歌吧?
+强迫症
+请把数字写端正
+你的小数点没对齐
+我走路只走双数步。永远双数
+答案是{a}。精确地。不是{a}左右
+我要对称地抓住你。这很重要
+{n}斜着倒下了。太乱了
+苹果在数字正中间吗?
+依赖型
+我可以追你吗?可以吗?
+你觉得我做得好吗?
+别让我一个人面对这些数字
+答案是{a}吗?你生我气了吗?
+别走,求你了。再待一会儿
+{n}是我唯一的朋友!现在谁告诉我该做什么?
+要不我问问老大能不能咬?`,
+ko:`나르시시스트
+거울 속 내가 사인을 해달래
+너무 아름다워서 거울이 질투로 깨져
+아름다움이 숫자라면 무한대, 바로 나지
+정답은 {a}. 그보다 내 머리 얘기나 하자
+운 좋네, 제일 잘생긴 좀비한테 잡혔어
+{n}이 쓰러졌다고? 아무도 안 그리워해. 나라면 몰라도
+사과를 왕관으로 쓰면 어울릴까?
+비꼬는 좀비
+와, 빠르다. 잠들 뻔했어
+천천히 해. 어차피 먹히기만 하면 되니까
+참 독창적이네, 또 생각 중이야
+정답은 {a}. 뭐, 네 것도 숫자이긴 했어
+어머나, 깜짝이야, 잡았네
+{n} 정말 안됐다. 진심으로… 아니
+이번엔 생각을 할까? 아니겠지
+가학적인 좀비
+네가 망설일 때가 제일 좋아
+네가 생각하는 매 초마다 행복해져
+네 수학 고통은 내 최애 노래야
+정답은 {a}! 틀리는 걸 보니 너무 즐거워!
+너무 빨리 풀려나지 마, 즐기고 싶어
+{n}! 뭐 어때, 사과는 내 차지
+어떤 문제가 제일 아플까? 나눗셈?
+사이코패스
+개인적인 감정은 없어. 그냥 배고플 뿐
+사람을 안심시킨다길래 웃는 거야
+네가 쓰는 모든 숫자에 계획이 있어
+정답은 {a}. 기록했어. 난 다 기록해
+진정해. 숨 쉬어. 풀어. 아니면 말고
+{n}은 수단이었지, 목적이 아니야
+공감은 허수 같은 거야
+편집증 좀비
+저 7이 날 이상하게 쳐다봐
+사과는 정부를 위해 일해, 난 알아
+누가 답을 알려줬어? 자백해!
+{a}? 그 숫자는 조작됐어!
+네가 날 잡기 전에 내가 잡았지!
+짝수들이 {n}을 없앴어. 그럴 줄 알았어
+수직선 자체가 함정이면 어쩌지?
+연극성 좀비
+날 봐! 극적으로 걷고 있어!
+죽은 뒤로 최고의 날이야
+나한테 박수 좀 쳐줘!
+안 돼! 정답은 {a}! 이 얼마나 아름다운 비극인가!
+지금이 내 순간이야! 조명 여기로!
+{n}! 안 돼! …나 울어도 예뻐?
+쟤가 생각하는 동안 노래해도 될까?
+강박적인 좀비
+숫자를 똑바로 써 주세요
+소수점 정렬이 엉망이야
+나는 짝수 걸음으로만 걸어. 항상 짝수
+정답은 {a}. 정확히. {a}쯤이 아니라
+좌우 대칭으로 잡고 있어. 중요하거든
+{n}이 대각선으로 쓰러졌어. 너무 지저분해
+사과가 숫자 한가운데에 있나?
+의존적인 좀비
+쫓아가도 될까요? 허락해 줄래?
+나 잘하고 있는 걸까?
+이 숫자들이랑 나만 두고 가지 마
+정답이 {a}였어? 나한테 화났어?
+가지 마, 제발. 조금만 더 있어 줘
+{n}은 내 유일한 친구였는데! 이제 누가 뭘 할지 알려줘?
+보스한테 물어도 되는지 물어볼까?`,
+};
+Object.assign(PRAW,{
+it:`NARCISISTA
+IL MIO RIFLESSO MI HA CHIESTO UN AUTOGRAFO
+SONO COSÌ BELLO CHE GLI SPECCHI SI CREPANO D'INVIDIA
+SE LA BELLEZZA FOSSE UN NUMERO SAREBBE INFINITO: IO
+ERA {a}. MA PARLIAMO DEI MIEI CAPELLI
+CHE FORTUNA: TI HA PRESA IL PIÙ BELLO
+{n} È CADUTO? NESSUNO LO RIMPIANGERÀ. ME SÌ
+LA MELA MI STAREBBE BENE COME CORONA?
+SARCASTICO
+WOW, CHE VELOCITÀ. MI STAVO ADDORMENTANDO
+CALMA, NESSUNA FRETTA. TI MANGIANO E BASTA
+CHE ORIGINALE: PENSA DI NUOVO
+ERA {a}. MA DAI, ANCHE IL TUO ERA UN NUMERO
+OH NO, CHE SORPRESA, TI HO PRESA
+CHE PECCATO PER {n}. DAVVERO… COME NO
+E SE STAVOLTA PENSASSE? NAH
+SADICO
+ADORO QUANDO ESITI
+OGNI SECONDO CHE PENSI MI RENDE PIÙ FELICE
+LA TUA SOFFERENZA MATEMATICA È LA MIA CANZONE PREFERITA
+ERA {a}! CHE GIOIA VEDERTI SBAGLIARE!
+NON LIBERARTI TROPPO PRESTO, VOGLIO GODERMELA
+{n}! PAZIENZA, PIÙ MELA PER ME
+QUALE PROBLEMA LE FA PIÙ MALE? LE DIVISIONI?
+PSICOPATICO
+NON È PERSONALE. HO SOLO FAME
+SORRIDO PERCHÉ HO LETTO CHE RASSICURA
+HO UN PIANO PER OGNI NUMERO CHE SCRIVI
+ERA {a}. ANNOTATO. ANNOTO TUTTO
+CALMA. RESPIRA. RISOLVI. O NO
+{n} ERA UN MEZZO, NON UN FINE
+L'EMPATIA È UN NUMERO IMMAGINARIO
+PARANOICO
+QUEL 7 MI GUARDA STRANO
+LA MELA LAVORA PER IL GOVERNO, LO SO
+CHI TI HA DETTO LA RISPOSTA? CONFESSA!
+{a}? QUEL NUMERO ERA TRUCCATO!
+TI HO PRESA PRIMA CHE TU PRENDESSI ME!
+I NUMERI PARI HANNO ELIMINATO {n}. LO SAPEVO
+E SE LA RETTA NUMERICA FOSSE UNA TRAPPOLA?
+ISTRIONICO
+GUARDATEMI! CAMMINO IN MODO DRAMMATICO!
+È IL GIORNO PIÙ BELLO DELLA MIA MORTE
+UN APPLAUSO PER ME, PER FAVORE!
+NOOO! ERA {a}! CHE TRAGEDIA MERAVIGLIOSA!
+È IL MIO MOMENTO! RIFLETTORE QUI!
+{n}! NOOO! …STO BENE QUANDO PIANGO?
+E SE CANTASSI MENTRE PENSA?
+OSSESSIVO
+SCRIVI IL NUMERO DRITTO, PER FAVORE
+I TUOI DECIMALI SONO DISALLINEATI
+CAMMINO A PASSI PARI. SEMPRE PARI
+ERA {a}. ESATTO. NON {a} E ROTTI
+TI TENGO IN MODO SIMMETRICO. È IMPORTANTE
+{n} È CADUTO IN DIAGONALE. CHE DISORDINE
+LA MELA È CENTRATA SUL NUMERO?
+DIPENDENTE
+POSSO AVERE IL PERMESSO DI INSEGUIRTI?
+SECONDO TE STO ANDANDO BENE?
+NON LASCIARMI SOLO CON QUESTI NUMERI
+ERA {a}? SEI ARRABBIATA CON ME?
+NON ANDARTENE, TI PREGO. RESTA UN PO'
+{n} ERA IL MIO UNICO AMICO! CHI MI DICE COSA FARE ORA?
+E SE CHIEDESSI AL CAPO SE POSSO MORDERE?`,
+ru:`НАРЦИСС
+МОЁ ОТРАЖЕНИЕ ПОПРОСИЛО АВТОГРАФ
+Я ТАК ПРЕКРАСЕН, ЧТО ЗЕРКАЛА ТРЕСКАЮТСЯ ОТ ЗАВИСТИ
+БУДЬ КРАСОТА ЧИСЛОМ, ОНА БЫЛА БЫ БЕСКОНЕЧНОСТЬЮ: МНОЙ
+БЫЛО {a}. НО ДАВАЙ ЛУЧШЕ О МОИХ ВОЛОСАХ
+ПОВЕЗЛО: ТЕБЯ ПОЙМАЛ САМЫЙ КРАСИВЫЙ
+{n} УПАЛ? НИКТО НЕ ЗАСКУЧАЕТ. ПО МНЕ БЫ ЗАСКУЧАЛИ
+ЯБЛОКО ПОДОЙДЁТ МНЕ КАК КОРОНА?
+САРКАСТ
+ВАУ, КАК БЫСТРО. Я ЧУТЬ НЕ УСНУЛ
+НЕ СПЕШИ. ТЕБЯ ВСЕГО ЛИШЬ СЪЕДЯТ
+КАК ОРИГИНАЛЬНО: ОПЯТЬ ДУМАЕТ
+БЫЛО {a}. НО ТВОЁ ТОЖЕ БЫЛО ЧИСЛОМ, ЧЕГО УЖ
+О НЕТ, КАКОЙ СЮРПРИЗ, ПОЙМАЛ
+КАК ЖАЛЬ {n}. НЕТ, ПРАВДА… ШУЧУ
+МОЖЕТ, НА ЭТОТ РАЗ ОНА ПОДУМАЕТ? НЕ-А
+САДИСТ
+ОБОЖАЮ, КОГДА ТЫ СОМНЕВАЕШЬСЯ
+КАЖДАЯ СЕКУНДА ТВОИХ РАЗДУМИЙ ДЕЛАЕТ МЕНЯ СЧАСТЛИВЕЕ
+ТВОИ МУКИ С МАТЕМАТИКОЙ — МОЯ ЛЮБИМАЯ ПЕСНЯ
+БЫЛО {a}! КАК ПРИЯТНО СМОТРЕТЬ, КАК ТЫ ОШИБАЕШЬСЯ!
+НЕ ВЫРЫВАЙСЯ ТАК БЫСТРО, Я ХОЧУ НАСЛАДИТЬСЯ
+{n}! НУ И ЛАДНО, БОЛЬШЕ ЯБЛОКА МНЕ
+КАКАЯ ЗАДАЧА ЕЙ БОЛЬНЕЕ ВСЕГО? ДЕЛЕНИЕ?
+ПСИХОПАТ
+НИЧЕГО ЛИЧНОГО. Я ПРОСТО ГОЛОДЕН
+УЛЫБАЮСЬ, ПОТОМУ ЧТО ПРОЧИТАЛ, ЧТО ЭТО УСПОКАИВАЕТ
+У МЕНЯ ЕСТЬ ПЛАН НА КАЖДОЕ ТВОЁ ЧИСЛО
+БЫЛО {a}. ЗАПИСАЛ. Я ЗАПИСЫВАЮ ВСЁ
+СПОКОЙНО. ДЫШИ. РЕШАЙ. ИЛИ НЕТ
+{n} БЫЛ СРЕДСТВОМ, А НЕ ЦЕЛЬЮ
+ЭМПАТИЯ — МНИМОЕ ЧИСЛО
+ПАРАНОИК
+ЭТА 7 СТРАННО НА МЕНЯ СМОТРИТ
+ЯБЛОКО РАБОТАЕТ НА ПРАВИТЕЛЬСТВО, Я ЗНАЮ
+КТО ПОДСКАЗАЛ ТЕБЕ ОТВЕТ? ПРИЗНАВАЙСЯ!
+{a}? ЭТО ЧИСЛО ПОДСТРОЕНО!
+Я ПОЙМАЛ ТЕБЯ РАНЬШЕ, ЧЕМ ТЫ МЕНЯ!
+{n} УБРАЛИ ЧЁТНЫЕ ЧИСЛА. Я ТАК И ЗНАЛ
+А ВДРУГ ЧИСЛОВАЯ ПРЯМАЯ — ЛОВУШКА?
+ИСТЕРОИД
+СМОТРИТЕ НА МЕНЯ! Я ИДУ ДРАМАТИЧНО!
+ЛУЧШИЙ ДЕНЬ МОЕЙ СМЕРТИ
+АПЛОДИСМЕНТЫ МНЕ, ПОЖАЛУЙСТА!
+НЕЕЕТ! БЫЛО {a}! КАКАЯ ПРЕКРАСНАЯ ТРАГЕДИЯ!
+ЭТО МОЙ МОМЕНТ! СВЕТ СЮДА!
+{n}! НЕЕЕТ! …Я КРАСИВ, КОГДА ПЛАЧУ?
+МОЖЕТ, СПЕТЬ, ПОКА ОНА ДУМАЕТ?
+ПЕДАНТ
+ПИШИ ЧИСЛО РОВНО, ПОЖАЛУЙСТА
+ТВОИ ДЕСЯТИЧНЫЕ ЗНАКИ НЕ ВЫРОВНЕНЫ
+Я ХОЖУ ЧЁТНЫМ ЧИСЛОМ ШАГОВ. ВСЕГДА
+БЫЛО {a}. РОВНО. НЕ «ПРИМЕРНО {a}»
+ДЕРЖУ ТЕБЯ СИММЕТРИЧНО. ЭТО ВАЖНО
+{n} УПАЛ ПО ДИАГОНАЛИ. КАКОЙ БЕСПОРЯДОК
+ЯБЛОКО РОВНО ПО ЦЕНТРУ ЧИСЛА?
+ЗАВИСИМЫЙ
+МОЖНО МНЕ ЗА ТОБОЙ ПОГОНЯТЬСЯ?
+КАК ДУМАЕШЬ, У МЕНЯ ПОЛУЧАЕТСЯ?
+НЕ ОСТАВЛЯЙ МЕНЯ ОДНОГО С ЭТИМИ ЧИСЛАМИ
+БЫЛО {a}? ТЫ НА МЕНЯ СЕРДИШЬСЯ?
+НЕ УХОДИ, ПОЖАЛУЙСТА. ПОБУДЬ ЕЩЁ
+{n} БЫЛ МОИМ ЕДИНСТВЕННЫМ ДРУГОМ! КТО ТЕПЕРЬ СКАЖЕТ, ЧТО ДЕЛАТЬ?
+МОЖЕТ, СПРОСИТЬ У БОССА, МОЖНО ЛИ КУСАТЬ?`,
+ar:`نرجسي
+انعكاسي طلب مني توقيعًا
+أنا جميل لدرجة أن المرايا تتشقق من الغيرة
+لو كان الجمال رقمًا لكان لانهائيًا: أنا
+كانت {a}. لكن لنتحدث عن شعري
+يا لحظك: أمسك بك الأوسم
+سقط {n}؟ لن يفتقده أحد. أنا سيفتقدونني
+هل تليق بي التفاحة تاجًا؟
+ساخر
+واو، يا للسرعة. كدت أنام
+على مهلك. ستُؤكلين فقط
+يا للإبداع: تفكر مرة أخرى
+كانت {a}. لكن جوابك كان رقمًا أيضًا
+يا للمفاجأة، أمسكت بك
+يا للأسف على {n}. حقًا… لا
+هل ستفكر هذه المرة؟ لا أظن
+سادي
+أحب لحظة ترددك
+كل ثانية تفكرين فيها تسعدني أكثر
+معاناتك مع الرياضيات أغنيتي المفضلة
+كانت {a}! ما أمتع رؤيتك تخطئين!
+لا تتحرري بسرعة، أريد الاستمتاع
+{n}! لا بأس، تفاح أكثر لي
+أي مسألة تؤلمها أكثر؟ القسمة؟
+سيكوباتي
+ليس أمرًا شخصيًا. أنا جائع فقط
+أبتسم لأنني قرأت أن ذلك يطمئن الناس
+لدي خطة لكل رقم تكتبينه
+كانت {a}. سجلتُ ذلك. أسجل كل شيء
+اهدئي. تنفسي. حُلّي. أو لا
+كان {n} وسيلة لا غاية
+التعاطف عدد تخيلي
+مرتاب
+ذلك الرقم 7 ينظر إليّ بغرابة
+التفاحة تعمل لصالح الحكومة، أعرف ذلك
+من أخبرك بالجواب؟ اعترفي!
+{a}؟ ذلك الرقم كان مزورًا!
+أمسكت بك قبل أن تمسكي بي!
+الأعداد الزوجية تخلصت من {n}. كنت أعرف
+ماذا لو كان خط الأعداد فخًا؟
+استعراضي
+انظروا إليّ! أمشي بطريقة درامية!
+هذا أجمل يوم في موتي
+صفقوا لي من فضلكم!
+لا! كانت {a}! يا لها من مأساة جميلة!
+هذه لحظتي! الأضواء هنا!
+{n}! لا! …هل أبدو جميلًا وأنا أبكي؟
+ماذا لو غنيت وهي تفكر؟
+وسواسي
+اكتبي الرقم مستقيمًا من فضلك
+منازلك العشرية غير مصطفة
+أمشي بخطوات زوجية. دائمًا زوجية
+كانت {a}. بالضبط. ليست {a} تقريبًا
+أمسك بك بشكل متماثل. هذا مهم
+سقط {n} بشكل مائل. يا للفوضى
+هل التفاحة في منتصف الرقم تمامًا؟
+اتكالي
+هل تسمحين لي بمطاردتك؟
+هل تظنين أنني أبلي حسنًا؟
+لا تتركيني وحدي مع هذه الأرقام
+كانت {a}؟ هل أنت غاضبة مني؟
+لا تذهبي أرجوك. ابقي قليلًا
+كان {n} صديقي الوحيد! من سيخبرني ماذا أفعل الآن؟
+ماذا لو سألت الزعيم إن كان يمكنني العض؟`,
+hi:`आत्ममुग्ध
+मेरे प्रतिबिंब ने मुझसे ऑटोग्राफ माँगा
+मैं इतना सुंदर हूँ कि आईने जलन से टूट जाते हैं
+अगर सुंदरता एक संख्या होती तो अनंत होती: मैं
+जवाब {a} था। पर चलो मेरे बालों की बात करें
+किस्मत अच्छी है: सबसे सुंदर ने पकड़ा
+{n} गिर गया? किसी को याद नहीं आएगा। मेरी आती
+क्या सेब मेरे ताज के रूप में अच्छा लगेगा?
+व्यंग्यकार
+वाह, कितनी तेज़ी। मैं तो सो ही गया था
+आराम से। तुम्हें तो बस खाया जाएगा
+कितना नया: फिर से सोच रही है
+जवाब {a} था। पर तुम्हारा भी एक संख्या ही थी
+अरे नहीं, क्या आश्चर्य, पकड़ लिया
+{n} का बड़ा दुख है। सच में… नहीं
+इस बार सोचेगी? नहीं लगता
+परपीड़क
+मुझे तुम्हारा हिचकिचाना बहुत पसंद है
+तुम्हारा हर सोचता सेकंड मुझे खुश करता है
+तुम्हारी गणित की तकलीफ़ मेरा पसंदीदा गाना है
+जवाब {a} था! तुम्हें गलत होते देखना कितना मज़ेदार!
+इतनी जल्दी मत छूटो, मुझे मज़ा लेना है
+{n}! कोई बात नहीं, मेरे लिए ज़्यादा सेब
+कौन सा सवाल उसे सबसे ज़्यादा चुभता है? भाग?
+मनोरोगी
+कुछ निजी नहीं है। बस भूख लगी है
+मुस्कुराता हूँ क्योंकि पढ़ा था कि इससे लोग शांत होते हैं
+तुम्हारी हर संख्या के लिए मेरे पास योजना है
+जवाब {a} था। नोट किया। मैं सब नोट करता हूँ
+शांत। साँस लो। हल करो। या मत करो
+{n} एक साधन था, लक्ष्य नहीं
+सहानुभूति एक काल्पनिक संख्या है
+वहमी
+वह 7 मुझे अजीब नज़र से देख रहा है
+सेब सरकार के लिए काम करता है, मुझे पता है
+तुम्हें जवाब किसने बताया? सच बताओ!
+{a}? वह संख्या धाँधली थी!
+तुम्हारे पकड़ने से पहले मैंने पकड़ लिया!
+सम संख्याओं ने {n} को हटा दिया। मुझे पता था
+अगर संख्या रेखा ही एक जाल हो तो?
+नाटकीय
+मुझे देखो! मैं नाटकीय ढंग से चल रहा हूँ!
+यह मेरी मौत का सबसे अच्छा दिन है
+मेरे लिए तालियाँ, प्लीज़!
+नहीं! जवाब {a} था! कितनी सुंदर त्रासदी!
+यह मेरा पल है! रोशनी यहाँ!
+{n}! नहीं! …क्या मैं रोते हुए अच्छा लगता हूँ?
+वह सोचे तब तक मैं गाना गाऊँ?
+सनकी
+कृपया संख्या सीधी लिखो
+तुम्हारे दशमलव बराबर नहीं हैं
+मैं सम कदमों में चलता हूँ। हमेशा सम
+जवाब {a} था। ठीक-ठीक। लगभग {a} नहीं
+मैंने तुम्हें सममित पकड़ा है। यह ज़रूरी है
+{n} तिरछा गिरा। कितनी गड़बड़
+क्या सेब संख्या के ठीक बीच में है?
+आश्रित
+क्या मैं तुम्हारा पीछा कर सकता हूँ?
+क्या मैं ठीक कर रहा हूँ?
+मुझे इन संख्याओं के साथ अकेला मत छोड़ो
+जवाब {a} था? तुम मुझसे नाराज़ हो?
+मत जाओ, प्लीज़। थोड़ी देर और रुको
+{n} मेरा इकलौता दोस्त था! अब मुझे कौन बताएगा क्या करूँ?
+बॉस से पूछूँ कि मैं काट सकता हूँ या नहीं?`,
+tr:`NARSİST
+YANSIMAM BENDEN İMZA İSTEDİ
+O KADAR GÜZELİM Kİ AYNALAR KISKANÇLIKTAN ÇATLIYOR
+GÜZELLİK BİR SAYI OLSAYDI SONSUZ OLURDU: BEN
+CEVAP {a} İDİ. AMA SAÇLARIMDAN KONUŞALIM
+ŞANSLISIN: EN YAKIŞIKLI YAKALADI
+{n} DÜŞTÜ MÜ? KİMSE ÖZLEMEZ. BENİ ÖZLERLER
+ELMA BANA TAÇ OLARAK YAKIŞIR MI?
+ALAYCI
+VAY, NE HIZ. NEREDEYSE UYUYORDUM
+ACELE YOK. SADECE YENECEKSİN
+NE KADAR ÖZGÜN: YİNE DÜŞÜNÜYOR
+CEVAP {a} İDİ. AMA SENİNKİ DE BİR SAYIYDI
+AMAN, NE SÜRPRİZ, YAKALADIM
+{n} İÇİN ÇOK ÜZGÜNÜM. CİDDEN… DEĞİL
+BU SEFER DÜŞÜNÜR MÜ? SANMAM
+SADİST
+TEREDDÜT ETMENE BAYILIYORUM
+DÜŞÜNDÜĞÜN HER SANİYE BENİ DAHA MUTLU EDİYOR
+MATEMATİK ACIN EN SEVDİĞİM ŞARKI
+CEVAP {a} İDİ! HATA YAPMANI İZLEMEK NE ZEVK!
+ÇABUK KURTULMA, TADINI ÇIKARMAK İSTİYORUM
+{n}! NEYSE, BANA DAHA ÇOK ELMA
+HANGİ SORU ONU EN ÇOK ACITIR? BÖLME Mİ?
+PSİKOPAT
+KİŞİSEL DEĞİL. SADECE AÇIM
+GÜLÜMSÜYORUM ÇÜNKÜ İNSANLARI RAHATLATTIĞINI OKUDUM
+YAZDIĞIN HER SAYI İÇİN BİR PLANIM VAR
+CEVAP {a} İDİ. NOT ALDIM. HER ŞEYİ NOT ALIRIM
+SAKİN. NEFES AL. ÇÖZ. YA DA ÇÖZME
+{n} BİR ARAÇTI, AMAÇ DEĞİL
+EMPATİ SANAL BİR SAYIDIR
+PARANOYAK
+ŞU 7 BANA TUHAF BAKIYOR
+ELMA HÜKÜMET İÇİN ÇALIŞIYOR, BİLİYORUM
+CEVABI SANA KİM SÖYLEDİ? İTİRAF ET!
+{a}? O SAYIYLA OYNANMIŞ!
+SEN BENİ YAKALAMADAN BEN SENİ YAKALADIM!
+ÇİFT SAYILAR {n}'İ HALLETTİ. BİLİYORDUM
+YA SAYI DOĞRUSU BİR TUZAKSA?
+HİSTRİYONİK
+BANA BAKIN! DRAMATİK YÜRÜYORUM!
+ÖLÜMÜMÜN EN GÜZEL GÜNÜ
+BANA ALKIŞ LÜTFEN!
+HAYIR! CEVAP {a} İDİ! NE GÜZEL BİR TRAJEDİ!
+BU BENİM ANIM! IŞIKLAR BURAYA!
+{n}! HAYIR! …AĞLARKEN GÜZEL GÖRÜNÜYOR MUYUM?
+O DÜŞÜNÜRKEN ŞARKI SÖYLESEM Mİ?
+TAKINTILI
+SAYIYI DÜZGÜN YAZ LÜTFEN
+ONDALIKLARIN HİZASI BOZUK
+ÇİFT ADIMLA YÜRÜRÜM. HEP ÇİFT
+CEVAP {a} İDİ. TAM OLARAK. {a} GİBİ DEĞİL
+SENİ SİMETRİK TUTUYORUM. BU ÖNEMLİ
+{n} ÇAPRAZ DÜŞTÜ. NE DAĞINIKLIK
+ELMA SAYININ TAM ORTASINDA MI?
+BAĞIMLI
+SENİ KOVALAMAMA İZİN VERİR MİSİN?
+SENCE İYİ GİDİYOR MUYUM?
+BENİ BU SAYILARLA YALNIZ BIRAKMA
+CEVAP {a} MIYDI? BANA KIZGIN MISIN?
+GİTME LÜTFEN. BİRAZ DAHA KAL
+{n} TEK ARKADAŞIMDI! ŞİMDİ BANA NE YAPACAĞIMI KİM SÖYLEYECEK?
+PATRONA ISIRABİLİR MİYİM DİYE SORSAM MI?`,
+nl:`NARCIST
+MIJN SPIEGELBEELD VROEG OM EEN HANDTEKENING
+IK BEN ZO MOOI DAT SPIEGELS BARSTEN VAN JALOEZIE
+ALS SCHOONHEID EEN GETAL WAS, WAS HET ONEINDIG: IK
+HET WAS {a}. MAAR LATEN WE HET OVER MIJN HAAR HEBBEN
+BOFFEN: DE MOOISTE HEEFT JE TE PAKKEN
+{n} GEVALLEN? NIEMAND MIST HEM. MIJ WEL
+STAAT DE APPEL ME ALS KROON?
+SARCASTISCH
+WOW, ZO SNEL. IK VIEL BIJNA IN SLAAP
+RUSTIG AAN. JE WORDT ALLEEN MAAR OPGEGETEN
+HOE ORIGINEEL: ZE DENKT WEER NA
+HET WAS {a}. MAAR HÉ, DE JOUWE WAS OOK EEN GETAL
+OH NEE, WAT EEN VERRASSING, BETRAPT
+ZO JAMMER VAN {n}. ECHT WAAR… NIET DUS
+GAAT ZE DEZE KEER NADENKEN? NEE HOOR
+SADISTISCH
+IK HOU ERVAN ALS JE TWIJFELT
+ELKE SECONDE DAT JE NADENKT MAAKT ME BLIJER
+JOUW REKENLEED IS MIJN LIEVELINGSLIEDJE
+HET WAS {a}! HEERLIJK OM JE TE ZIEN FALEN!
+BEVRIJD JE NIET TE SNEL, IK WIL GENIETEN
+{n}! JAMMER, MEER APPEL VOOR MIJ
+WELKE SOM DOET HAAR HET MEEST PIJN? DELEN?
+PSYCHOPAAT
+HET IS NIET PERSOONLIJK. IK HEB GEWOON HONGER
+IK GLIMLACH OMDAT IK LAS DAT DAT GERUSTSTELT
+IK HEB EEN PLAN VOOR ELK GETAL DAT JE SCHRIJFT
+HET WAS {a}. GENOTEERD. IK NOTEER ALLES
+RUSTIG. ADEM. LOS HET OP. OF NIET
+{n} WAS EEN MIDDEL, GEEN DOEL
+EMPATHIE IS EEN IMAGINAIR GETAL
+PARANOÏDE
+DIE 7 KIJKT ME RAAR AAN
+DE APPEL WERKT VOOR DE REGERING, DAT WEET IK
+WIE HEEFT JE HET ANTWOORD VERTELD? BEKEN!
+{a}? DAT GETAL WAS VERVALST!
+IK HAD JOU VOORDAT JIJ MIJ HAD!
+DE EVEN GETALLEN HEBBEN {n} UITGESCHAKELD. WIST IK HET
+EN ALS DE GETALLENLIJN EEN VAL IS?
+THEATRAAL
+KIJK NAAR ME! IK LOOP DRAMATISCH!
+DIT IS DE MOOISTE DAG VAN MIJN DOOD
+APPLAUS VOOR MIJ, ALSJEBLIEFT!
+NEEE! HET WAS {a}! WAT EEN PRACHTIGE TRAGEDIE!
+DIT IS MIJN MOMENT! SPOTLIGHT HIER!
+{n}! NEEE! …ZIE IK ER GOED UIT ALS IK HUIL?
+ZAL IK ZINGEN TERWIJL ZE NADENKT?
+DWANGMATIG
+SCHRIJF HET GETAL RECHT, ALSJEBLIEFT
+JE DECIMALEN STAAN SCHEEF
+IK LOOP IN EVEN STAPPEN. ALTIJD EVEN
+HET WAS {a}. PRECIES. NIET ONGEVEER {a}
+IK HOU JE SYMMETRISCH VAST. DAT IS BELANGRIJK
+{n} VIEL SCHUIN. WAT EEN ROMMEL
+STAAT DE APPEL PRECIES OP HET GETAL?
+AFHANKELIJK
+MAG IK JE ALSJEBLIEFT ACHTERNAZITTEN?
+DENK JE DAT IK HET GOED DOE?
+LAAT ME NIET ALLEEN MET DEZE GETALLEN
+WAS HET {a}? BEN JE BOOS OP ME?
+GA NIET WEG, ALSJEBLIEFT. BLIJF NOG EVEN
+{n} WAS MIJN ENIGE VRIEND! WIE ZEGT ME NU WAT IK MOET DOEN?
+ZAL IK DE BAAS VRAGEN OF IK MAG BIJTEN?`,
+pl:`NARCYZ
+MOJE ODBICIE POPROSIŁO O AUTOGRAF
+JESTEM TAK PIĘKNY, ŻE LUSTRA PĘKAJĄ Z ZAZDROŚCI
+GDYBY PIĘKNO BYŁO LICZBĄ, BYŁOBY NIESKOŃCZONE: JA
+BYŁO {a}. ALE POGADAJMY O MOICH WŁOSACH
+MASZ SZCZĘŚCIE: ZŁAPAŁ CIĘ NAJPRZYSTOJNIEJSZY
+{n} PADŁ? NIKT NIE BĘDZIE TĘSKNIŁ. ZA MNĄ TAK
+CZY JABŁKO PASUJE MI JAKO KORONA?
+SARKASTYCZNY
+WOW, ALE SZYBKO. PRAWIE ZASNĄŁEM
+SPOKOJNIE, BEZ POŚPIECHU. TYLKO CIĘ ZJEDZĄ
+JAKIE ORYGINALNE: ZNOWU MYŚLI
+BYŁO {a}. ALE HEJ, TWOJE TEŻ BYŁO LICZBĄ
+O NIE, CO ZA NIESPODZIANKA, MAM CIĘ
+SZKODA {n}. NAPRAWDĘ… NIE
+MOŻE TYM RAZEM POMYŚLI? NIEE
+SADYSTA
+UWIELBIAM, GDY SIĘ WAHASZ
+KAŻDA SEKUNDA TWOJEGO MYŚLENIA MNIE USZCZĘŚLIWIA
+TWOJE MATEMATYCZNE CIERPIENIE TO MOJA ULUBIONA PIOSENKA
+BYŁO {a}! CO ZA RADOŚĆ PATRZEĆ, JAK SIĘ MYLISZ!
+NIE UWALNIAJ SIĘ ZA SZYBKO, CHCĘ SIĘ NACIESZYĆ
+{n}! TRUDNO, WIĘCEJ JABŁKA DLA MNIE
+KTÓRE ZADANIE BOLI JĄ NAJBARDZIEJ? DZIELENIE?
+PSYCHOPATA
+TO NIC OSOBISTEGO. PO PROSTU JESTEM GŁODNY
+UŚMIECHAM SIĘ, BO CZYTAŁEM, ŻE TO USPOKAJA
+MAM PLAN NA KAŻDĄ LICZBĘ, KTÓRĄ NAPISZESZ
+BYŁO {a}. ZANOTOWANE. NOTUJĘ WSZYSTKO
+SPOKOJNIE. ODDYCHAJ. ROZWIĄŻ. ALBO NIE
+{n} BYŁ ŚRODKIEM, NIE CELEM
+EMPATIA TO LICZBA UROJONA
+PARANOIK
+TA SIÓDEMKA DZIWNIE NA MNIE PATRZY
+JABŁKO PRACUJE DLA RZĄDU, WIEM TO
+KTO CI PODPOWIEDZIAŁ? PRZYZNAJ SIĘ!
+{a}? TA LICZBA BYŁA USTAWIONA!
+ZŁAPAŁEM CIĘ, ZANIM TY ZŁAPAŁAŚ MNIE!
+LICZBY PARZYSTE ZAŁATWIŁY {n}. WIEDZIAŁEM
+A JEŚLI OŚ LICZBOWA TO PUŁAPKA?
+TEATRALNY
+PATRZCIE NA MNIE! IDĘ DRAMATYCZNIE!
+TO NAJPIĘKNIEJSZY DZIEŃ MOJEJ ŚMIERCI
+BRAWA DLA MNIE, PROSZĘ!
+NIEEE! BYŁO {a}! CO ZA PIĘKNA TRAGEDIA!
+TO MÓJ MOMENT! REFLEKTOR TUTAJ!
+{n}! NIEEE! …ŁADNIE WYGLĄDAM, GDY PŁACZĘ?
+A MOŻE ZAŚPIEWAM, GDY ONA MYŚLI?
+PEDANT
+NAPISZ LICZBĘ PROSTO, PROSZĘ
+TWOJE CYFRY PO PRZECINKU SĄ KRZYWO
+CHODZĘ PARZYSTĄ LICZBĄ KROKÓW. ZAWSZE
+BYŁO {a}. DOKŁADNIE. NIE OKOŁO {a}
+TRZYMAM CIĘ SYMETRYCZNIE. TO WAŻNE
+{n} UPADŁ PO PRZEKĄTNEJ. CO ZA BAŁAGAN
+CZY JABŁKO JEST NA ŚRODKU LICZBY?
+ZALEŻNY
+CZY MOGĘ CIĘ GONIĆ? MOGĘ?
+MYŚLISZ, ŻE DOBRZE MI IDZIE?
+NIE ZOSTAWIAJ MNIE SAMEGO Z TYMI LICZBAMI
+BYŁO {a}? JESTEŚ NA MNIE ZŁA?
+NIE ODCHODŹ, PROSZĘ. ZOSTAŃ JESZCZE CHWILĘ
+{n} BYŁ MOIM JEDYNYM PRZYJACIELEM! KTO MI TERAZ POWIE, CO ROBIĆ?
+A JEŚLI ZAPYTAM SZEFA, CZY MOGĘ GRYŹĆ?`,
+id:`NARSIS
+BAYANGANKU MINTA TANDA TANGAN
+AKU BEGITU TAMPAN SAMPAI CERMIN RETAK KARENA IRI
+KALAU KECANTIKAN ITU ANGKA, NILAINYA TAK TERHINGGA: AKU
+JAWABANNYA {a}. TAPI AYO BAHAS RAMBUTKU
+BERUNTUNG: YANG MENANGKAPMU YANG PALING TAMPAN
+{n} JATUH? TAK ADA YANG RINDU. KALAU AKU, PASTI
+APEL COCOK JADI MAHKOTAKU?
+SARKAS
+WAH, CEPAT SEKALI. AKU HAMPIR TERTIDUR
+SANTAI SAJA. KAMU CUMA AKAN DIMAKAN
+ORISINAL SEKALI: BERPIKIR LAGI
+JAWABANNYA {a}. TAPI PUNYAMU JUGA ANGKA KOK
+WAH, KEJUTAN, AKU MENANGKAPMU
+KASIHAN {n}. SUNGGUH… NGGAK DENG
+APA KALI INI DIA BERPIKIR? NGGAK
+SADIS
+AKU SUKA SAAT KAMU RAGU
+SETIAP DETIK KAMU BERPIKIR MEMBUATKU SENANG
+PENDERITAAN MATEMATIKAMU LAGU FAVORITKU
+JAWABANNYA {a}! SENANGNYA MELIHATMU SALAH!
+JANGAN LEPAS TERLALU CEPAT, AKU INGIN MENIKMATINYA
+{n}! YA SUDAH, APEL LEBIH BANYAK UNTUKKU
+SOAL MANA YANG PALING MENYAKITKAN? PEMBAGIAN?
+PSIKOPAT
+INI BUKAN URUSAN PRIBADI. AKU CUMA LAPAR
+AKU TERSENYUM KARENA KATANYA ITU MENENANGKAN
+AKU PUNYA RENCANA UNTUK SETIAP ANGKA YANG KAMU TULIS
+JAWABANNYA {a}. DICATAT. AKU MENCATAT SEMUANYA
+TENANG. TARIK NAPAS. SELESAIKAN. ATAU TIDAK
+{n} HANYA ALAT, BUKAN TUJUAN
+EMPATI ADALAH BILANGAN IMAJINER
+PARANOID
+ANGKA 7 ITU MENATAPKU ANEH
+APEL ITU BEKERJA UNTUK PEMERINTAH, AKU TAHU
+SIAPA YANG MEMBERITAHUMU JAWABANNYA? NGAKU!
+{a}? ANGKA ITU DIRANCANG!
+AKU MENANGKAPMU SEBELUM KAMU MENANGKAPKU!
+BILANGAN GENAP MENYINGKIRKAN {n}. SUDAH KUDUGA
+BAGAIMANA KALAU GARIS BILANGAN ITU JEBAKAN?
+DRAMATIS
+LIHAT AKU! AKU BERJALAN DENGAN DRAMATIS!
+INI HARI TERBAIK DALAM KEMATIANKU
+TEPUK TANGAN UNTUKKU, DONG!
+TIDAK! JAWABANNYA {a}! TRAGEDI YANG INDAH!
+INI MOMENKU! SOROTAN KE SINI!
+{n}! TIDAK! …AKU TERLIHAT CAKEP SAAT MENANGIS?
+BOLEH AKU BERNYANYI SAAT DIA BERPIKIR?
+OBSESIF
+TULIS ANGKANYA LURUS, YA
+DESIMALMU TIDAK SEJAJAR
+AKU BERJALAN DENGAN LANGKAH GENAP. SELALU GENAP
+JAWABANNYA {a}. TEPAT. BUKAN SEKITAR {a}
+AKU MEMEGANGMU SECARA SIMETRIS. ITU PENTING
+{n} JATUH MIRING. BERANTAKAN SEKALI
+APAKAH APELNYA TEPAT DI TENGAH ANGKA?
+BERGANTUNG
+BOLEH AKU MENGEJARMU?
+MENURUTMU AKU SUDAH BAGUS?
+JANGAN TINGGALKAN AKU SENDIRIAN DENGAN ANGKA-ANGKA INI
+JAWABANNYA {a}? KAMU MARAH PADAKU?
+JANGAN PERGI. TINGGAL SEBENTAR LAGI
+{n} SATU-SATUNYA TEMANKU! SEKARANG SIAPA YANG MENYURUHKU?
+BAGAIMANA KALAU AKU TANYA BOS BOLEH MENGGIGIT?`,
+});
+Object.assign(PRAW,{
+vi:`TỰ LUYẾN
+BÓNG TRONG GƯƠNG XIN TA CHỮ KÝ
+TA ĐẸP ĐẾN MỨC GƯƠNG NỨT VÌ GHEN
+NẾU SẮC ĐẸP LÀ MỘT CON SỐ, NÓ SẼ LÀ VÔ CỰC: TA
+ĐÁP ÁN LÀ {a}. NHƯNG HÃY NÓI VỀ MÁI TÓC CỦA TA
+MAY CHO NGƯƠI: KẺ ĐẸP NHẤT BẮT ĐƯỢC NGƯƠI
+{n} NGÃ RỒI À? CHẲNG AI NHỚ. TA THÌ CÓ NGƯỜI NHỚ
+QUẢ TÁO LÀM VƯƠNG MIỆN CHO TA CÓ HỢP KHÔNG?
+MỈA MAI
+CHÀ, NHANH GHÊ. SUÝT NỮA TA NGỦ GẬT
+CỨ TỪ TỪ. NGƯƠI CHỈ BỊ ĂN THÔI MÀ
+ĐỘC ĐÁO THẬT: LẠI ĐANG NGHĨ
+ĐÁP ÁN LÀ {a}. NHƯNG CỦA NGƯƠI CŨNG LÀ MỘT CON SỐ
+ÔI KHÔNG, BẤT NGỜ QUÁ, BẮT ĐƯỢC RỒI
+TIẾC CHO {n} QUÁ. THẬT ĐÓ… ĐÙA THÔI
+LẦN NÀY CÔ ẤY CÓ NGHĨ KHÔNG? CHẮC KHÔNG
+BẠO DÂM
+TA THÍCH LÚC NGƯƠI DO DỰ
+MỖI GIÂY NGƯƠI SUY NGHĨ LÀM TA VUI HƠN
+NỖI KHỔ TOÁN HỌC CỦA NGƯƠI LÀ BÀI HÁT TA YÊU
+ĐÁP ÁN LÀ {a}! XEM NGƯƠI SAI THẬT SƯỚNG!
+ĐỪNG THOÁT NHANH QUÁ, TA MUỐN TẬN HƯỞNG
+{n}! THÔI KỆ, THÊM TÁO CHO TA
+BÀI NÀO LÀM CÔ ẤY ĐAU NHẤT? PHÉP CHIA?
+THÁI NHÂN CÁCH
+KHÔNG PHẢI CHUYỆN CÁ NHÂN. TA CHỈ ĐÓI
+TA CƯỜI VÌ ĐỌC ĐƯỢC RẰNG NÓ LÀM NGƯỜI TA YÊN TÂM
+TA CÓ KẾ HOẠCH CHO MỌI CON SỐ NGƯƠI VIẾT
+ĐÁP ÁN LÀ {a}. ĐÃ GHI LẠI. TA GHI MỌI THỨ
+BÌNH TĨNH. HÍT THỞ. GIẢI ĐI. HOẶC KHÔNG
+{n} LÀ PHƯƠNG TIỆN, KHÔNG PHẢI MỤC ĐÍCH
+SỰ ĐỒNG CẢM LÀ MỘT SỐ ẢO
+HOANG TƯỞNG
+SỐ 7 ĐÓ NHÌN TA KỲ LẮM
+QUẢ TÁO LÀM VIỆC CHO CHÍNH PHỦ, TA BIẾT
+AI MÁCH NGƯƠI ĐÁP ÁN? KHAI RA!
+{a}? CON SỐ ĐÓ BỊ GIAN LẬN!
+TA BẮT NGƯƠI TRƯỚC KHI NGƯƠI BẮT TA!
+CÁC SỐ CHẴN ĐÃ XỬ {n}. TA BIẾT MÀ
+LỠ TRỤC SỐ LÀ MỘT CÁI BẪY THÌ SAO?
+KỊCH TÍNH
+NHÌN TA NÀY! TA ĐANG BƯỚC ĐI ĐẦY KỊCH TÍNH!
+ĐÂY LÀ NGÀY ĐẸP NHẤT TỪ KHI TA CHẾT
+VỖ TAY CHO TA ĐI!
+KHÔNG! ĐÁP ÁN LÀ {a}! BI KỊCH ĐẸP LÀM SAO!
+ĐÂY LÀ KHOẢNH KHẮC CỦA TA! ĐÈN CHIẾU VÀO ĐÂY!
+{n}! KHÔNG! …TA KHÓC CÓ ĐẸP KHÔNG?
+HAY TA HÁT TRONG LÚC CÔ ẤY NGHĨ?
+ÁM ẢNH
+VIẾT SỐ CHO THẲNG VÀO
+DẤU THẬP PHÂN CỦA NGƯƠI BỊ LỆCH
+TA ĐI SỐ BƯỚC CHẴN. LUÔN LUÔN CHẴN
+ĐÁP ÁN LÀ {a}. CHÍNH XÁC. KHÔNG PHẢI KHOẢNG {a}
+TA GIỮ NGƯƠI ĐỐI XỨNG. ĐIỀU ĐÓ QUAN TRỌNG
+{n} NGÃ CHÉO. LỘN XỘN QUÁ
+QUẢ TÁO CÓ NẰM GIỮA CON SỐ KHÔNG?
+LỆ THUỘC
+TA ĐUỔI THEO NGƯƠI ĐƯỢC KHÔNG?
+NGƯƠI THẤY TA LÀM ỔN KHÔNG?
+ĐỪNG BỎ TA LẠI MỘT MÌNH VỚI MẤY CON SỐ NÀY
+ĐÁP ÁN LÀ {a} À? NGƯƠI GIẬN TA À?
+ĐỪNG ĐI MÀ. Ở LẠI THÊM CHÚT NỮA
+{n} LÀ BẠN DUY NHẤT CỦA TA! GIỜ AI BẢO TA PHẢI LÀM GÌ?
+HAY TA HỎI TRÙM XEM CÓ ĐƯỢC CẮN KHÔNG?`,
+th:`หลงตัวเอง
+เงาในกระจกขอลายเซ็นข้า
+ข้าหล่อจนกระจกร้าวเพราะอิจฉา
+ถ้าความงามเป็นตัวเลข มันคืออนันต์ ซึ่งก็คือข้า
+คำตอบคือ {a} แต่มาคุยเรื่องผมข้าดีกว่า
+โชคดีนะ คนที่หล่อที่สุดจับเจ้าได้
+{n} ล้มแล้ว? ไม่มีใครคิดถึงหรอก ถ้าเป็นข้าล่ะก็คิดถึง
+แอปเปิลเป็นมงกุฎให้ข้าจะเข้าไหม?
+ประชดประชัน
+ว้าว เร็วจัง ข้าเกือบหลับแล้ว
+ใจเย็น ไม่ต้องรีบ แค่โดนกินเท่านั้นเอง
+สร้างสรรค์มาก กำลังคิดอีกแล้ว
+คำตอบคือ {a} แต่ของเจ้าก็เป็นตัวเลขเหมือนกันนะ
+โอ้ ไม่นะ เซอร์ไพรส์จัง จับได้แล้ว
+น่าเสียดาย {n} จริงๆ นะ… ล้อเล่น
+รอบนี้เธอจะคิดไหม? ไม่หรอก
+ซาดิสต์
+ข้าชอบตอนเจ้าลังเล
+ทุกวินาทีที่เจ้าคิดทำให้ข้ามีความสุข
+ความทรมานกับเลขของเจ้าคือเพลงโปรดของข้า
+คำตอบคือ {a}! ดูเจ้าตอบผิดช่างสนุก!
+อย่าเพิ่งหลุดเร็วนัก ข้าอยากสนุกก่อน
+{n}! ช่างเถอะ แอปเปิลเหลือให้ข้ามากขึ้น
+โจทย์ไหนทำให้เธอเจ็บที่สุด? การหาร?
+ไซโคพาธ
+ไม่ใช่เรื่องส่วนตัว ข้าแค่หิว
+ข้ายิ้มเพราะอ่านเจอว่ามันทำให้คนสบายใจ
+ข้ามีแผนสำหรับทุกตัวเลขที่เจ้าเขียน
+คำตอบคือ {a} จดไว้แล้ว ข้าจดทุกอย่าง
+ใจเย็น หายใจ แก้โจทย์ หรือไม่ก็ได้
+{n} เป็นแค่เครื่องมือ ไม่ใช่เป้าหมาย
+ความเห็นใจคือจำนวนจินตภาพ
+หวาดระแวง
+เลข 7 ตัวนั้นมองข้าแปลกๆ
+แอปเปิลทำงานให้รัฐบาล ข้ารู้
+ใครบอกคำตอบเจ้า? สารภาพมา!
+{a}? ตัวเลขนั้นถูกจัดฉาก!
+ข้าจับเจ้าก่อนที่เจ้าจะจับข้า!
+เลขคู่กำจัด {n} ข้ารู้อยู่แล้ว
+ถ้าเส้นจำนวนเป็นกับดักล่ะ?
+ชอบเรียกร้องความสนใจ
+มองข้าสิ! ข้าเดินอย่างดราม่า!
+นี่คือวันที่ดีที่สุดหลังความตายของข้า
+ปรบมือให้ข้าหน่อย!
+ไม่นะ! คำตอบคือ {a}! โศกนาฏกรรมช่างงดงาม!
+นี่คือช่วงเวลาของข้า! ส่องไฟมาที่นี่!
+{n}! ไม่นะ! …ข้าร้องไห้แล้วดูดีไหม?
+ข้าร้องเพลงระหว่างที่เธอคิดดีไหม?
+ย้ำคิดย้ำทำ
+เขียนตัวเลขให้ตรงด้วย
+ทศนิยมของเจ้าไม่ตรงแนว
+ข้าเดินแต่ก้าวเลขคู่ เลขคู่เสมอ
+คำตอบคือ {a} ตรงเป๊ะ ไม่ใช่ประมาณ {a}
+ข้าจับเจ้าแบบสมมาตร มันสำคัญ
+{n} ล้มเอียง รกจริงๆ
+แอปเปิลอยู่ตรงกลางตัวเลขพอดีไหม?
+พึ่งพาผู้อื่น
+ข้าไล่ตามเจ้าได้ไหม?
+เจ้าคิดว่าข้าทำได้ดีไหม?
+อย่าทิ้งข้าไว้กับตัวเลขพวกนี้
+คำตอบคือ {a} เหรอ? โกรธข้าไหม?
+อย่าไปเลยนะ อยู่อีกหน่อย
+{n} เป็นเพื่อนคนเดียวของข้า! ตอนนี้ใครจะบอกข้าว่าต้องทำอะไร?
+ข้าถามบอสดีไหมว่ากัดได้หรือเปล่า?`,
+sv:`NARCISSIST
+MIN SPEGELBILD BAD OM MIN AUTOGRAF
+JAG ÄR SÅ VACKER ATT SPEGLAR SPRICKER AV AVUND
+OM SKÖNHET VAR ETT TAL VORE DET OÄNDLIGT: JAG
+DET VAR {a}. MEN LÅT OSS PRATA OM MITT HÅR
+TUR FÖR DIG: DEN SNYGGASTE FÅNGADE DIG
+{n} FÖLL? INGEN SAKNAR HONOM. MIG SKULLE DE SAKNA
+SKULLE ÄPPLET PASSA SOM MIN KRONA?
+SARKASTISK
+WOW, SÅ SNABBT. JAG SOMNADE NÄSTAN
+INGEN BRÅDSKA. DU SKA BARA BLI UPPÄTEN
+SÅ ORIGINELLT: HON TÄNKER IGEN
+DET VAR {a}. MEN DITT VAR OCKSÅ ETT TAL
+ÅH NEJ, VILKEN ÖVERRASKNING, FÅNGAD
+SYND OM {n}. VERKLIGEN… INTE
+TÄNKER HON DEN HÄR GÅNGEN? NÄ
+SADISTISK
+JAG ÄLSKAR NÄR DU TVEKAR
+VARJE SEKUND DU TÄNKER GÖR MIG GLADARE
+DITT MATTELIDANDE ÄR MIN FAVORITLÅT
+DET VAR {a}! VILKEN NJUTNING ATT SE DIG MISSLYCKAS!
+SLIT DIG INTE LOSS FÖR FORT, JAG VILL NJUTA
+{n}! NÅVÄL, MER ÄPPLE TILL MIG
+VILKET TAL GÖR MEST ONT FÖR HENNE? DIVISION?
+PSYKOPAT
+DET ÄR INGET PERSONLIGT. JAG ÄR BARA HUNGRIG
+JAG LER FÖR JAG LÄSTE ATT DET LUGNAR FOLK
+JAG HAR EN PLAN FÖR VARJE TAL DU SKRIVER
+DET VAR {a}. NOTERAT. JAG NOTERAR ALLT
+LUGN. ANDAS. LÖS. ELLER INTE
+{n} VAR ETT MEDEL, INTE ETT MÅL
+EMPATI ÄR ETT IMAGINÄRT TAL
+PARANOID
+DEN DÄR 7:AN TITTAR KONSTIGT PÅ MIG
+ÄPPLET JOBBAR FÖR REGERINGEN, JAG VET DET
+VEM BERÄTTADE SVARET? ERKÄNN!
+{a}? DET TALET VAR RIGGAT!
+JAG FÅNGADE DIG INNAN DU FÅNGADE MIG!
+DE JÄMNA TALEN TOG {n}. JAG VISSTE DET
+TÄNK OM TALLINJEN ÄR EN FÄLLA?
+TEATRALISK
+TITTA PÅ MIG! JAG GÅR DRAMATISKT!
+DET HÄR ÄR DEN BÄSTA DAGEN I MIN DÖD
+APPLÅDER FÖR MIG, TACK!
+NEEJ! DET VAR {a}! EN SÅ VACKER TRAGEDI!
+DET HÄR ÄR MITT ÖGONBLICK! STRÅLKASTAREN HIT!
+{n}! NEEJ! …SER JAG BRA UT NÄR JAG GRÅTER?
+SKA JAG SJUNGA MEDAN HON TÄNKER?
+TVÅNGSMÄSSIG
+SKRIV TALET RAKT, TACK
+DINA DECIMALER ÄR SNEDA
+JAG GÅR I JÄMNA STEG. ALLTID JÄMNA
+DET VAR {a}. EXAKT. INTE UNGEFÄR {a}
+JAG HÅLLER DIG SYMMETRISKT. DET ÄR VIKTIGT
+{n} FÖLL DIAGONALT. VILKEN RÖRA
+ÄR ÄPPLET MITT PÅ TALET?
+BEROENDE
+FÅR JAG JAGA DIG? SNÄLLA?
+TYCKER DU ATT JAG GÖR BRA IFRÅN MIG?
+LÄMNA MIG INTE ENSAM MED DE HÄR TALEN
+VAR DET {a}? ÄR DU ARG PÅ MIG?
+GÅ INTE, SNÄLLA. STANNA LITE TILL
+{n} VAR MIN ENDA VÄN! VEM SÄGER NU VAD JAG SKA GÖRA?
+SKA JAG FRÅGA BOSSEN OM JAG FÅR BITA?`,
+uk:`НАРЦИС
+МОЄ ВІДОБРАЖЕННЯ ПОПРОСИЛО АВТОГРАФ
+Я ТАКИЙ ГАРНИЙ, ЩО ДЗЕРКАЛА ТРІСКАЮТЬ ВІД ЗАЗДРОСТІ
+ЯКБИ КРАСА БУЛА ЧИСЛОМ, ВОНА Б БУЛА НЕСКІНЧЕННІСТЮ: МНОЮ
+БУЛО {a}. АЛЕ КРАЩЕ ПРО МОЄ ВОЛОССЯ
+ПОЩАСТИЛО: ТЕБЕ СПІЙМАВ НАЙГАРНІШИЙ
+{n} ВПАВ? НІХТО НЕ СКУЧАТИМЕ. ЗА МНОЮ Б СКУЧАЛИ
+ЯБЛУКО ПАСУВАТИМЕ МЕНІ ЯК КОРОНА?
+САРКАСТ
+ОГО, ЯК ШВИДКО. Я МАЙЖЕ ЗАСНУВ
+НЕ ПОСПІШАЙ. ТЕБЕ ЛИШЕ З'ЇДЯТЬ
+ЯК ОРИГІНАЛЬНО: ЗНОВУ ДУМАЄ
+БУЛО {a}. АЛЕ ТВОЄ ТЕЖ БУЛО ЧИСЛОМ
+О НІ, ЯКИЙ СЮРПРИЗ, СПІЙМАВ
+ЯК ШКОДА {n}. ЧЕСНО… ЖАРТУЮ
+МОЖЕ, ЦЬОГО РАЗУ ВОНА ПОДУМАЄ? НЄ
+САДИСТ
+ОБОЖНЮЮ, КОЛИ ТИ ВАГАЄШСЯ
+КОЖНА СЕКУНДА ТВОЇХ РОЗДУМІВ РОБИТЬ МЕНЕ ЩАСЛИВІШИМ
+ТВОЇ МУКИ З МАТЕМАТИКОЮ — МОЯ УЛЮБЛЕНА ПІСНЯ
+БУЛО {a}! ЯК ПРИЄМНО ДИВИТИСЯ, ЯК ТИ ПОМИЛЯЄШСЯ!
+НЕ ВИРИВАЙСЯ ТАК ШВИДКО, Я ХОЧУ НАСОЛОДИТИСЯ
+{n}! НУ Й ГАРАЗД, БІЛЬШЕ ЯБЛУКА МЕНІ
+ЯКА ЗАДАЧА ЇЙ НАЙБОЛЮЧІША? ДІЛЕННЯ?
+ПСИХОПАТ
+НІЧОГО ОСОБИСТОГО. Я ПРОСТО ГОЛОДНИЙ
+УСМІХАЮСЯ, БО ПРОЧИТАВ, ЩО ЦЕ ЗАСПОКОЮЄ
+У МЕНЕ Є ПЛАН НА КОЖНЕ ТВОЄ ЧИСЛО
+БУЛО {a}. ЗАПИСАВ. Я ЗАПИСУЮ ВСЕ
+СПОКІЙНО. ДИХАЙ. РОЗВ'ЯЗУЙ. АБО НІ
+{n} БУВ ЗАСОБОМ, А НЕ МЕТОЮ
+ЕМПАТІЯ — УЯВНЕ ЧИСЛО
+ПАРАНОЇК
+ЦЯ 7 ДИВНО НА МЕНЕ ДИВИТЬСЯ
+ЯБЛУКО ПРАЦЮЄ НА УРЯД, Я ЗНАЮ
+ХТО ПІДКАЗАВ ТОБІ ВІДПОВІДЬ? ЗІЗНАВАЙСЯ!
+{a}? ЦЕ ЧИСЛО ПІДЛАШТОВАНЕ!
+Я СПІЙМАВ ТЕБЕ РАНІШЕ, НІЖ ТИ МЕНЕ!
+{n} ПРИБРАЛИ ПАРНІ ЧИСЛА. Я ТАК І ЗНАВ
+А ЯКЩО ЧИСЛОВА ПРЯМА — ПАСТКА?
+ІСТЕРОЇД
+ДИВІТЬСЯ НА МЕНЕ! Я ЙДУ ДРАМАТИЧНО!
+НАЙКРАЩИЙ ДЕНЬ МОЄЇ СМЕРТІ
+ОПЛЕСКИ МЕНІ, БУДЬ ЛАСКА!
+НІІІ! БУЛО {a}! ЯКА ПРЕКРАСНА ТРАГЕДІЯ!
+ЦЕ МІЙ МОМЕНТ! СВІТЛО СЮДИ!
+{n}! НІІІ! …Я ГАРНИЙ, КОЛИ ПЛАЧУ?
+МОЖЕ, ЗАСПІВАТИ, ПОКИ ВОНА ДУМАЄ?
+ПЕДАНТ
+ПИШИ ЧИСЛО РІВНО, БУДЬ ЛАСКА
+ТВОЇ ДЕСЯТКОВІ ЗНАКИ НЕ ВИРІВНЯНІ
+Я ХОДЖУ ПАРНОЮ КІЛЬКІСТЮ КРОКІВ. ЗАВЖДИ
+БУЛО {a}. РІВНО. НЕ «ПРИБЛИЗНО {a}»
+ТРИМАЮ ТЕБЕ СИМЕТРИЧНО. ЦЕ ВАЖЛИВО
+{n} ВПАВ ПО ДІАГОНАЛІ. ЯКИЙ БЕЗЛАД
+ЯБЛУКО РІВНО ПОСЕРЕДИНІ ЧИСЛА?
+ЗАЛЕЖНИЙ
+МОЖНА МЕНІ ЗА ТОБОЮ ПОГНАТИСЯ?
+ЯК ДУМАЄШ, У МЕНЕ ВИХОДИТЬ?
+НЕ ЗАЛИШАЙ МЕНЕ САМОГО З ЦИМИ ЧИСЛАМИ
+БУЛО {a}? ТИ НА МЕНЕ СЕРДИШСЯ?
+НЕ ЙДИ, БУДЬ ЛАСКА. ПОБУДЬ ЩЕ
+{n} БУВ МОЇМ ЄДИНИМ ДРУГОМ! ХТО ТЕПЕР СКАЖЕ, ЩО РОБИТИ?
+МОЖЕ, СПИТАТИ В БОСА, ЧИ МОЖНА КУСАТИ?`,
+cs:`NARCIS
+MŮJ ODRAZ MĚ POŽÁDAL O AUTOGRAM
+JSEM TAK KRÁSNÝ, ŽE ZRCADLA PRASKAJÍ ZÁVISTÍ
+KDYBY KRÁSA BYLA ČÍSLO, BYLA BY NEKONEČNÁ: JÁ
+BYLO TO {a}. ALE POJĎME MLUVIT O MÝCH VLASECH
+MÁŠ ŠTĚSTÍ: CHYTIL TĚ TEN NEJHEZČÍ
+{n} PADL? NIKOMU NEBUDE CHYBĚT. JÁ BYCH CHYBĚL
+SLUŠELO BY MI JABLKO JAKO KORUNA?
+SARKASTICKÝ
+PÁNI, TAK RYCHLE. SKORO JSEM USNUL
+KLIDNĚ, NESPĚCHEJ. JEN TĚ SNĚDÍ
+JAK ORIGINÁLNÍ: ZASE PŘEMÝŠLÍ
+BYLO TO {a}. ALE TO TVOJE BYLO TAKY ČÍSLO
+OJE, TO JE PŘEKVAPENÍ, MÁM TĚ
+JE MI LÍTO {n}. FAKT… NE
+ZAMYSLÍ SE TENTOKRÁT? NE
+SADISTA
+MILUJU, KDYŽ VÁHÁŠ
+KAŽDÁ SEKUNDA TVÉHO PŘEMÝŠLENÍ MĚ TĚŠÍ
+TVOJE MATEMATICKÉ UTRPENÍ JE MOJE OBLÍBENÁ PÍSNIČKA
+BYLO TO {a}! JAKÁ RADOST VIDĚT TĚ CHYBOVAT!
+NEVYPROSŤ SE MOC RYCHLE, CHCI SI TO UŽÍT
+{n}! NEVADÍ, VÍC JABLKA PRO MĚ
+KTERÝ PŘÍKLAD JI BOLÍ NEJVÍC? DĚLENÍ?
+PSYCHOPAT
+NENÍ TO OSOBNÍ. JEN MÁM HLAD
+USMÍVÁM SE, PROTOŽE JSEM ČETL, ŽE TO UKLIDŇUJE
+MÁM PLÁN NA KAŽDÉ ČÍSLO, KTERÉ NAPÍŠEŠ
+BYLO TO {a}. ZAPSÁNO. ZAPISUJU VŠECHNO
+KLID. DÝCHEJ. VYŘEŠ TO. NEBO NE
+{n} BYL PROSTŘEDEK, NE CÍL
+EMPATIE JE IMAGINÁRNÍ ČÍSLO
+PARANOIDNÍ
+TA SEDMIČKA SE NA MĚ DIVNĚ DÍVÁ
+JABLKO PRACUJE PRO VLÁDU, JÁ TO VÍM
+KDO TI PROZRADIL ODPOVĚĎ? PŘIZNEJ SE!
+{a}? TO ČÍSLO BYLO ZMANIPULOVANÉ!
+CHYTIL JSEM TĚ DŘÍV, NEŽ TY MĚ!
+SUDÁ ČÍSLA ODSTRANILA {n}. VĚDĚL JSEM TO
+CO KDYŽ JE ČÍSELNÁ OSA PAST?
+HISTRIONSKÝ
+DÍVEJTE SE NA MĚ! JDU DRAMATICKY!
+TO JE NEJKRÁSNĚJŠÍ DEN MÉ SMRTI
+POTLESK PRO MĚ, PROSÍM!
+NEEE! BYLO TO {a}! JAKÁ KRÁSNÁ TRAGÉDIE!
+TO JE MŮJ OKAMŽIK! REFLEKTOR SEM!
+{n}! NEEE! …SLUŠÍ MI PLÁČ?
+CO KDYŽ ZAZPÍVÁM, ZATÍMCO PŘEMÝŠLÍ?
+PUNTIČKÁŘ
+NAPIŠ TO ČÍSLO ROVNĚ, PROSÍM
+TVÁ DESETINNÁ MÍSTA NEJSOU ZAROVNANÁ
+CHODÍM V SUDÝCH KROCÍCH. VŽDY SUDÝCH
+BYLO TO {a}. PŘESNĚ. NE ZHRUBA {a}
+DRŽÍM TĚ SYMETRICKY. JE TO DŮLEŽITÉ
+{n} PADL ŠIKMO. JAKÝ NEPOŘÁDEK
+JE JABLKO PŘESNĚ UPROSTŘED ČÍSLA?
+ZÁVISLÝ
+MŮŽU TĚ PRONÁSLEDOVAT? SMÍM?
+MYSLÍŠ, ŽE MI TO JDE?
+NENECHÁVEJ MĚ SAMOTNÉHO S TĚMI ČÍSLY
+BYLO TO {a}? ZLOBÍŠ SE NA MĚ?
+NEODCHÁZEJ, PROSÍM. ZŮSTAŇ JEŠTĚ CHVÍLI
+{n} BYL MŮJ JEDINÝ KAMARÁD! KDO MI TEĎ ŘEKNE, CO DĚLAT?
+CO KDYŽ SE ZEPTÁM ŠÉFA, JESTLI SMÍM KOUSAT?`,
+el:`ΝΑΡΚΙΣΣΙΣΤΗΣ
+Η ΑΝΤΑΝΑΚΛΑΣΗ ΜΟΥ ΜΟΥ ΖΗΤΗΣΕ ΑΥΤΟΓΡΑΦΟ
+ΕΙΜΑΙ ΤΟΣΟ ΟΜΟΡΦΟΣ ΠΟΥ ΟΙ ΚΑΘΡΕΦΤΕΣ ΣΠΑΝΕ ΑΠΟ ΖΗΛΙΑ
+ΑΝ Η ΟΜΟΡΦΙΑ ΗΤΑΝ ΑΡΙΘΜΟΣ, ΘΑ ΗΤΑΝ ΑΠΕΙΡΟ: ΕΓΩ
+ΗΤΑΝ {a}. ΑΛΛΑ ΑΣ ΜΙΛΗΣΟΥΜΕ ΓΙΑ ΤΑ ΜΑΛΛΙΑ ΜΟΥ
+ΤΥΧΕΡΗ: ΣΕ ΕΠΙΑΣΕ Ο ΠΙΟ ΩΡΑΙΟΣ
+ΕΠΕΣΕ Ο {n}; ΚΑΝΕΙΣ ΔΕΝ ΘΑ ΤΟΝ ΝΟΣΤΑΛΓΗΣΕΙ. ΕΜΕΝΑ ΝΑΙ
+ΘΑ ΜΟΥ ΠΗΓΑΙΝΕ ΤΟ ΜΗΛΟ ΓΙΑ ΣΤΕΜΜΑ;
+ΣΑΡΚΑΣΤΙΚΟΣ
+ΟΥΑΟΥ, ΤΙ ΤΑΧΥΤΗΤΑ. ΣΧΕΔΟΝ ΑΠΟΚΟΙΜΗΘΗΚΑ
+ΗΡΕΜΑ, ΜΗ ΒΙΑΖΕΣΑΙ. ΑΠΛΩΣ ΘΑ ΣΕ ΦΑΝΕ
+ΤΙ ΠΡΩΤΟΤΥΠΟ: ΞΑΝΑ ΣΚΕΦΤΕΤΑΙ
+ΗΤΑΝ {a}. ΑΛΛΑ ΚΑΙ ΤΟ ΔΙΚΟ ΣΟΥ ΑΡΙΘΜΟΣ ΗΤΑΝ
+Ω ΟΧΙ, ΤΙ ΕΚΠΛΗΞΗ, ΣΕ ΕΠΙΑΣΑ
+ΚΡΙΜΑ ΓΙΑ ΤΟΝ {n}. ΑΛΗΘΕΙΑ… ΟΧΙ
+ΘΑ ΣΚΕΦΤΕΙ ΑΥΤΗ ΤΗ ΦΟΡΑ; ΜΠΑ
+ΣΑΔΙΣΤΗΣ
+ΛΑΤΡΕΥΩ ΟΤΑΝ ΔΙΣΤΑΖΕΙΣ
+ΚΑΘΕ ΔΕΥΤΕΡΟΛΕΠΤΟ ΠΟΥ ΣΚΕΦΤΕΣΑΙ ΜΕ ΚΑΝΕΙ ΠΙΟ ΧΑΡΟΥΜΕΝΟ
+Ο ΜΑΘΗΜΑΤΙΚΟΣ ΣΟΥ ΠΟΝΟΣ ΕΙΝΑΙ ΤΟ ΑΓΑΠΗΜΕΝΟ ΜΟΥ ΤΡΑΓΟΥΔΙ
+ΗΤΑΝ {a}! ΤΙ ΑΠΟΛΑΥΣΗ ΝΑ ΣΕ ΒΛΕΠΩ ΝΑ ΑΠΟΤΥΓΧΑΝΕΙΣ!
+ΜΗΝ ΞΕΦΥΓΕΙΣ ΓΡΗΓΟΡΑ, ΘΕΛΩ ΝΑ ΤΟ ΧΑΡΩ
+{n}! ΤΕΛΟΣ ΠΑΝΤΩΝ, ΠΕΡΙΣΣΟΤΕΡΟ ΜΗΛΟ ΓΙΑ ΜΕΝΑ
+ΠΟΙΑ ΑΣΚΗΣΗ ΤΗΝ ΠΟΝΑΕΙ ΠΙΟ ΠΟΛΥ; Η ΔΙΑΙΡΕΣΗ;
+ΨΥΧΟΠΑΘΗΣ
+ΤΙΠΟΤΑ ΠΡΟΣΩΠΙΚΟ. ΑΠΛΩΣ ΠΕΙΝΑΩ
+ΧΑΜΟΓΕΛΑΩ ΓΙΑΤΙ ΔΙΑΒΑΣΑ ΟΤΙ ΗΡΕΜΕΙ ΤΟΥΣ ΑΝΘΡΩΠΟΥΣ
+ΕΧΩ ΣΧΕΔΙΟ ΓΙΑ ΚΑΘΕ ΑΡΙΘΜΟ ΠΟΥ ΓΡΑΦΕΙΣ
+ΗΤΑΝ {a}. ΣΗΜΕΙΩΘΗΚΕ. ΣΗΜΕΙΩΝΩ ΤΑ ΠΑΝΤΑ
+ΗΡΕΜΑ. ΑΝΑΠΝΕΥΣΕ. ΛΥΣΕ ΤΟ. Η ΟΧΙ
+Ο {n} ΗΤΑΝ ΜΕΣΟ, ΟΧΙ ΣΚΟΠΟΣ
+Η ΕΝΣΥΝΑΙΣΘΗΣΗ ΕΙΝΑΙ ΦΑΝΤΑΣΤΙΚΟΣ ΑΡΙΘΜΟΣ
+ΠΑΡΑΝΟΪΚΟΣ
+ΑΥΤΟ ΤΟ 7 ΜΕ ΚΟΙΤΑΕΙ ΠΕΡΙΕΡΓΑ
+ΤΟ ΜΗΛΟ ΔΟΥΛΕΥΕΙ ΓΙΑ ΤΗΝ ΚΥΒΕΡΝΗΣΗ, ΤΟ ΞΕΡΩ
+ΠΟΙΟΣ ΣΟΥ ΕΙΠΕ ΤΗΝ ΑΠΑΝΤΗΣΗ; ΟΜΟΛΟΓΗΣΕ!
+{a}; ΑΥΤΟΣ Ο ΑΡΙΘΜΟΣ ΗΤΑΝ ΣΤΗΜΕΝΟΣ!
+ΣΕ ΕΠΙΑΣΑ ΠΡΙΝ ΜΕ ΠΙΑΣΕΙΣ!
+ΟΙ ΖΥΓΟΙ ΑΡΙΘΜΟΙ ΕΞΑΦΑΝΙΣΑΝ ΤΟΝ {n}. ΤΟ ΗΞΕΡΑ
+ΚΙ ΑΝ Η ΑΡΙΘΜΟΓΡΑΜΜΗ ΕΙΝΑΙ ΠΑΓΙΔΑ;
+ΘΕΑΤΡΙΝΙΣΤΗΣ
+ΚΟΙΤΑΞΤΕ ΜΕ! ΠΕΡΠΑΤΑΩ ΔΡΑΜΑΤΙΚΑ!
+ΕΙΝΑΙ Η ΚΑΛΥΤΕΡΗ ΜΕΡΑ ΤΟΥ ΘΑΝΑΤΟΥ ΜΟΥ
+ΧΕΙΡΟΚΡΟΤΗΜΑΤΑ ΓΙΑ ΜΕΝΑ, ΠΑΡΑΚΑΛΩ!
+ΟΧΙΙΙ! ΗΤΑΝ {a}! ΤΙ ΟΜΟΡΦΗ ΤΡΑΓΩΔΙΑ!
+ΕΙΝΑΙ Η ΣΤΙΓΜΗ ΜΟΥ! ΤΟΝ ΠΡΟΒΟΛΕΑ ΕΔΩ!
+{n}! ΟΧΙΙΙ! …ΕΙΜΑΙ ΩΡΑΙΟΣ ΟΤΑΝ ΚΛΑΙΩ;
+ΝΑ ΤΡΑΓΟΥΔΗΣΩ ΟΣΟ ΣΚΕΦΤΕΤΑΙ;
+ΨΥΧΑΝΑΓΚΑΣΤΙΚΟΣ
+ΓΡΑΨΕ ΤΟΝ ΑΡΙΘΜΟ ΙΣΙΑ, ΣΕ ΠΑΡΑΚΑΛΩ
+ΤΑ ΔΕΚΑΔΙΚΑ ΣΟΥ ΔΕΝ ΕΙΝΑΙ ΣΤΟΙΧΙΣΜΕΝΑ
+ΠΕΡΠΑΤΑΩ ΜΕ ΖΥΓΑ ΒΗΜΑΤΑ. ΠΑΝΤΑ ΖΥΓΑ
+ΗΤΑΝ {a}. ΑΚΡΙΒΩΣ. ΟΧΙ ΠΕΡΙΠΟΥ {a}
+ΣΕ ΚΡΑΤΑΩ ΣΥΜΜΕΤΡΙΚΑ. ΕΙΝΑΙ ΣΗΜΑΝΤΙΚΟ
+Ο {n} ΕΠΕΣΕ ΔΙΑΓΩΝΙΑ. ΤΙ ΑΚΑΤΑΣΤΑΣΙΑ
+ΕΙΝΑΙ ΤΟ ΜΗΛΟ ΑΚΡΙΒΩΣ ΣΤΟ ΚΕΝΤΡΟ ΤΟΥ ΑΡΙΘΜΟΥ;
+ΕΞΑΡΤΗΤΙΚΟΣ
+ΜΠΟΡΩ ΝΑ ΣΕ ΚΥΝΗΓΗΣΩ; ΕΠΙΤΡΕΠΕΤΑΙ;
+ΝΟΜΙΖΕΙΣ ΟΤΙ ΤΑ ΠΑΩ ΚΑΛΑ;
+ΜΗ ΜΕ ΑΦΗΝΕΙΣ ΜΟΝΟ ΜΕ ΑΥΤΟΥΣ ΤΟΥΣ ΑΡΙΘΜΟΥΣ
+ΗΤΑΝ {a}; ΕΙΣΑΙ ΘΥΜΩΜΕΝΗ ΜΑΖΙ ΜΟΥ;
+ΜΗ ΦΥΓΕΙΣ, ΣΕ ΠΑΡΑΚΑΛΩ. ΜΕΙΝΕ ΛΙΓΟ ΑΚΟΜΑ
+Ο {n} ΗΤΑΝ Ο ΜΟΝΑΔΙΚΟΣ ΜΟΥ ΦΙΛΟΣ! ΠΟΙΟΣ ΘΑ ΜΟΥ ΛΕΕΙ ΤΙ ΝΑ ΚΑΝΩ;
+ΝΑ ΡΩΤΗΣΩ ΤΟ ΑΦΕΝΤΙΚΟ ΑΝ ΜΠΟΡΩ ΝΑ ΔΑΓΚΩΣΩ;`,
+he:`נרקיסיסט
+ההשתקפות שלי ביקשה ממני חתימה
+אני כל כך יפה שמראות נסדקות מקנאה
+אם יופי היה מספר, הוא היה אינסוף: אני
+זה היה {a}. אבל בואי נדבר על השיער שלי
+איזה מזל: תפס אותך היפה ביותר
+{n} נפל? אף אחד לא יתגעגע. אליי כן
+התפוח יתאים לי ככתר?
+עוקצני
+וואו, כמה מהר. כמעט נרדמתי
+אין לחץ. רק יאכלו אותך
+כמה מקורי: שוב חושבת
+זה היה {a}. אבל גם שלך היה מספר
+אוי לא, איזו הפתעה, תפסתי אותך
+חבל על {n}. באמת… לא
+אולי הפעם היא תחשוב? לא
+סדיסט
+אני אוהב כשאת מהססת
+כל שנייה שאת חושבת משמחת אותי
+הסבל המתמטי שלך הוא השיר האהוב עליי
+זה היה {a}! איזה תענוג לראות אותך טועה!
+אל תשתחררי מהר מדי, אני רוצה ליהנות
+{n}! נו טוב, יותר תפוח בשבילי
+איזה תרגיל הכי כואב לה? חילוק?
+פסיכופת
+זה לא אישי. אני פשוט רעב
+אני מחייך כי קראתי שזה מרגיע אנשים
+יש לי תוכנית לכל מספר שתכתבי
+זה היה {a}. נרשם. אני רושם הכול
+רגע. תנשמי. תפתרי. או שלא
+{n} היה אמצעי, לא מטרה
+אמפתיה היא מספר מדומה
+פרנואיד
+ה-7 הזה מסתכל עליי מוזר
+התפוח עובד בשביל הממשלה, אני יודע
+מי אמר לך את התשובה? תודי!
+{a}? המספר הזה היה מבוים!
+תפסתי אותך לפני שתפסת אותי!
+המספרים הזוגיים חיסלו את {n}. ידעתי
+מה אם ישר המספרים הוא מלכודת?
+דרמטי
+תסתכלו עליי! אני הולך בדרמטיות!
+זה היום הכי טוב במוות שלי
+מחיאות כפיים בשבילי, בבקשה!
+לא! זה היה {a}! איזו טרגדיה יפה!
+זה הרגע שלי! זרקור לכאן!
+{n}! לא! …אני נראה טוב כשאני בוכה?
+אולי אשיר בזמן שהיא חושבת?
+כפייתי
+תכתבי את המספר ישר, בבקשה
+הספרות העשרוניות שלך לא מיושרות
+אני הולך בצעדים זוגיים. תמיד זוגיים
+זה היה {a}. בדיוק. לא בערך {a}
+אני מחזיק אותך בסימטריה. זה חשוב
+{n} נפל באלכסון. איזה בלגן
+התפוח בדיוק באמצע המספר?
+תלותי
+מותר לי לרדוף אחרייך?
+את חושבת שאני מסתדר?
+אל תשאירי אותי לבד עם המספרים האלה
+זה היה {a}? את כועסת עליי?
+אל תלכי, בבקשה. תישארי עוד קצת
+{n} היה החבר היחיד שלי! מי יגיד לי עכשיו מה לעשות?
+אולי אשאל את הבוס אם מותר לי לנשוך?`,
+ro:`NARCISIST
+REFLEXIA MEA MI-A CERUT UN AUTOGRAF
+SUNT ATÂT DE FRUMOS ÎNCÂT OGLINZILE CRAPĂ DE INVIDIE
+DACĂ FRUMUSEȚEA AR FI UN NUMĂR, AR FI INFINIT: EU
+ERA {a}. DAR HAI SĂ VORBIM DESPRE PĂRUL MEU
+NOROCUL TĂU: TE-A PRINS CEL MAI FRUMOS
+{n} A CĂZUT? NIMĂNUI NU-I VA LIPSI. EU AȘ LIPSI
+MI-AR STA BINE MĂRUL CA ȘI COROANĂ?
+SARCASTIC
+UAU, CE VITEZĂ. APROAPE AM ADORMIT
+LINIȘTE, NU TE GRĂBI. DOAR TE MĂNÂNCĂ
+CE ORIGINAL: IAR SE GÂNDEȘTE
+ERA {a}. DAR HEI, ȘI AL TĂU ERA UN NUMĂR
+OH NU, CE SURPRIZĂ, TE-AM PRINS
+PĂCAT DE {n}. SERIOS… NU
+OARE DE DATA ASTA SE GÂNDEȘTE? NAH
+SADIC
+ADOR CÂND EZIȚI
+FIECARE SECUNDĂ ÎN CARE TE GÂNDEȘTI MĂ FACE MAI FERICIT
+SUFERINȚA TA LA MATE E MELODIA MEA PREFERATĂ
+ERA {a}! CE PLĂCERE SĂ TE VĂD GREȘIND!
+NU TE ELIBERA PREA REPEDE, VREAU SĂ MĂ BUCUR
+{n}! BINE, MAI MULT MĂR PENTRU MINE
+CE PROBLEMĂ O DOARE CEL MAI TARE? ÎMPĂRȚIREA?
+PSIHOPAT
+NU E NIMIC PERSONAL. DOAR MI-E FOAME
+ZÂMBESC PENTRU CĂ AM CITIT CĂ LINIȘTEȘTE
+AM UN PLAN PENTRU FIECARE NUMĂR PE CARE ÎL SCRII
+ERA {a}. NOTAT. NOTEZ TOT
+CALM. RESPIRĂ. REZOLVĂ. SAU NU
+{n} A FOST UN MIJLOC, NU UN SCOP
+EMPATIA E UN NUMĂR IMAGINAR
+PARANOIC
+CIFRA 7 SE UITĂ CIUDAT LA MINE
+MĂRUL LUCREAZĂ PENTRU GUVERN, ȘTIU ASTA
+CINE ȚI-A SPUS RĂSPUNSUL? MĂRTURISEȘTE!
+{a}? NUMĂRUL ĂLA ERA ARANJAT!
+TE-AM PRINS ÎNAINTE SĂ MĂ PRINZI TU!
+NUMERELE PARE L-AU ELIMINAT PE {n}. ȘTIAM EU
+DAR DACĂ AXA NUMERELOR E O CAPCANĂ?
+HISTRIONIC
+UITAȚI-VĂ LA MINE! MERG DRAMATIC!
+E CEA MAI FRUMOASĂ ZI A MORȚII MELE
+APLAUZE PENTRU MINE, VĂ ROG!
+NUUU! ERA {a}! CE TRAGEDIE FRUMOASĂ!
+E MOMENTUL MEU! REFLECTORUL AICI!
+{n}! NUUU! …ARĂT BINE CÂND PLÂNG?
+SĂ CÂNT CÂT SE GÂNDEȘTE?
+OBSESIV
+SCRIE NUMĂRUL DREPT, TE ROG
+ZECIMALELE TALE NU SUNT ALINIATE
+MERG CU PAȘI PARI. MEREU PARI
+ERA {a}. EXACT. NU CAM {a}
+TE ȚIN SIMETRIC. E IMPORTANT
+{n} A CĂZUT ÎN DIAGONALĂ. CE DEZORDINE
+E MĂRUL CHIAR ÎN CENTRUL NUMĂRULUI?
+DEPENDENT
+POT SĂ TE URMĂRESC? AM VOIE?
+CREZI CĂ MĂ DESCURC BINE?
+NU MĂ LĂSA SINGUR CU NUMERELE ASTEA
+ERA {a}? EȘTI SUPĂRATĂ PE MINE?
+NU PLECA, TE ROG. MAI RĂMÂI PUȚIN
+{n} ERA SINGURUL MEU PRIETEN! CINE ÎMI SPUNE ACUM CE SĂ FAC?
+SĂ-L ÎNTREB PE ȘEF DACĂ AM VOIE SĂ MUȘC?`,
+hu:`NÁRCISZTIKUS
+A TÜKÖRKÉPEM AUTOGRAMOT KÉRT TŐLEM
+OLYAN SZÉP VAGYOK, HOGY A TÜKRÖK MEGREPEDNEK AZ IRIGYSÉGTŐL
+HA A SZÉPSÉG SZÁM VOLNA, VÉGTELEN LENNE: ÉN
+{a} VOLT. DE BESZÉLJÜNK A HAJAMRÓL
+SZERENCSÉD VAN: A LEGSZEBB KAPOTT EL
+{n} ELESETT? SENKINEK SEM FOG HIÁNYOZNI. ÉN IGEN
+JÓL ÁLLNA NEKEM AZ ALMA KORONAKÉNT?
+SZARKASZTIKUS
+HŰHA, MILYEN GYORS. MAJDNEM ELALUDTAM
+NYUGI, NEM KELL SIETNI. CSAK MEGESZNEK
+MILYEN EREDETI: MEGINT GONDOLKODIK
+{a} VOLT. DE HÉ, A TIED IS SZÁM VOLT
+JAJ NE, MICSODA MEGLEPETÉS, ELKAPTALAK
+SAJNÁLOM {n}-T. TÉNYLEG… NEM
+EZÚTTAL GONDOLKODIK? Á
+SZADISTA
+IMÁDOM, AMIKOR HABOZOL
+MINDEN MÁSODPERC, AMÍG GONDOLKODSZ, BOLDOGABBÁ TESZ
+A MATEKKÍNOD A KEDVENC DALOM
+{a} VOLT! MILYEN ÉLVEZET LÁTNI, AHOGY HIBÁZOL!
+NE SZABADULJ KI TÚL GYORSAN, ÉLVEZNI AKAROM
+{n}! SEBAJ, TÖBB ALMA NEKEM
+MELYIK FELADAT FÁJ NEKI A LEGJOBBAN? AZ OSZTÁS?
+PSZICHOPATA
+NEM SZEMÉLYES. CSAK ÉHES VAGYOK
+MOSOLYGOK, MERT OLVASTAM, HOGY EZ MEGNYUGTAT
+MINDEN SZÁMRA VAN TERVEM, AMIT LEÍRSZ
+{a} VOLT. FELJEGYEZVE. MINDENT FELJEGYZEK
+NYUGI. LÉLEGEZZ. OLDD MEG. VAGY NE
+{n} ESZKÖZ VOLT, NEM CÉL
+AZ EMPÁTIA KÉPZETES SZÁM
+PARANOID
+AZ A 7-ES FURCSÁN NÉZ RÁM
+AZ ALMA A KORMÁNYNAK DOLGOZIK, TUDOM
+KI SÚGTA MEG A VÁLASZT? VALLD BE!
+{a}? AZ A SZÁM BUNDÁS VOLT!
+ELKAPTALAK, MIELŐTT TE ELKAPTÁL VOLNA!
+A PÁROS SZÁMOK ELTÜNTETTÉK {n}-T. TUDTAM
+MI VAN, HA A SZÁMEGYENES CSAPDA?
+HISZTRIÓNIKUS
+NÉZZETEK! DRÁMAIAN SÉTÁLOK!
+EZ A HALÁLOM LEGSZEBB NAPJA
+TAPSOT NEKEM, KÉREM!
+NEEE! {a} VOLT! MILYEN GYÖNYÖRŰ TRAGÉDIA!
+EZ AZ ÉN PILLANATOM! IDE A REFLEKTORT!
+{n}! NEEE! …JÓL NÉZEK KI, AMIKOR SÍROK?
+ÉNEKELJEK, AMÍG GONDOLKODIK?
+KÉNYSZERES
+ÍRD EGYENESEN A SZÁMOT, KÉRLEK
+A TIZEDESEID NINCSENEK EGY VONALBAN
+PÁROS LÉPÉSEKBEN JÁROK. MINDIG PÁROSBAN
+{a} VOLT. PONTOSAN. NEM NAGYJÁBÓL {a}
+SZIMMETRIKUSAN FOGLAK. EZ FONTOS
+{n} ÁTLÓSAN ESETT EL. MICSODA RENDETLENSÉG
+AZ ALMA PONTOSAN A SZÁM KÖZEPÉN VAN?
+FÜGGŐ
+SZABAD ÜLDÖZNÖM TÉGED?
+SZERINTED JÓL CSINÁLOM?
+NE HAGYJ EGYEDÜL EZEKKEL A SZÁMOKKAL
+{a} VOLT? HARAGSZOL RÁM?
+NE MENJ EL, KÉRLEK. MARADJ MÉG EGY KICSIT
+{n} VOLT AZ EGYETLEN BARÁTOM! MOST KI MONDJA MEG, MIT CSINÁLJAK?
+MEGKÉRDEZZEM A FŐNÖKÖT, HOGY HARAPHATOK-E?`,
+da:`NARCISSIST
+MIT SPEJLBILLEDE BAD OM MIN AUTOGRAF
+JEG ER SÅ SMUK, AT SPEJLE REVNER AF MISUNDELSE
+HVIS SKØNHED VAR ET TAL, VAR DET UENDELIGT: MIG
+DET VAR {a}. MEN LAD OS TALE OM MIT HÅR
+HELDIG DIG: DEN SMUKKESTE FANGEDE DIG
+{n} FALDT? INGEN SAVNER HAM. MIG VILLE DE SAVNE
+VILLE ÆBLET KLÆDE MIG SOM KRONE?
+SARKASTISK
+WOW, SÅ HURTIGT. JEG FALDT NÆSTEN I SØVN
+INGEN HAST. DU BLIVER BARE SPIST
+HVOR ORIGINALT: HUN TÆNKER IGEN
+DET VAR {a}. MEN DIT VAR OGSÅ ET TAL
+ÅH NEJ, SIKKEN EN OVERRASKELSE, FANGET
+SYND FOR {n}. VIRKELIG… IKKE
+TÆNKER HUN MON DENNE GANG? NÆ
+SADISTISK
+JEG ELSKER, NÅR DU TØVER
+HVERT SEKUND DU TÆNKER, GØR MIG GLADERE
+DIN MATEMATIKLIDELSE ER MIN YNDLINGSSANG
+DET VAR {a}! SIKKEN FORNØJELSE AT SE DIG FEJLE!
+RIV DIG IKKE LØS FOR HURTIGT, JEG VIL NYDE DET
+{n}! NÅ, MERE ÆBLE TIL MIG
+HVILKEN OPGAVE GØR MEST ONDT PÅ HENDE? DIVISION?
+PSYKOPAT
+DET ER IKKE PERSONLIGT. JEG ER BARE SULTEN
+JEG SMILER, FORDI JEG LÆSTE, AT DET BEROLIGER
+JEG HAR EN PLAN FOR HVERT TAL, DU SKRIVER
+DET VAR {a}. NOTERET. JEG NOTERER ALT
+ROLIG. TRÆK VEJRET. LØS DET. ELLER LAD VÆR
+{n} VAR ET MIDDEL, IKKE ET MÅL
+EMPATI ER ET IMAGINÆRT TAL
+PARANOID
+DET 7-TAL KIGGER UNDERLIGT PÅ MIG
+ÆBLET ARBEJDER FOR REGERINGEN, DET VED JEG
+HVEM FORTALTE DIG SVARET? INDRØM DET!
+{a}? DET TAL VAR AFTALT SPIL!
+JEG FANGEDE DIG, FØR DU FANGEDE MIG!
+DE LIGE TAL FJERNEDE {n}. JEG VIDSTE DET
+HVAD HVIS TALLINJEN ER EN FÆLDE?
+TEATRALSK
+SE PÅ MIG! JEG GÅR DRAMATISK!
+DET ER DEN BEDSTE DAG I MIN DØD
+KLAPSALVER TIL MIG, TAK!
+NEJ! DET VAR {a}! SIKKEN SMUK TRAGEDIE!
+DET ER MIT ØJEBLIK! SPOTLIGHT HER!
+{n}! NEJ! …SER JEG GODT UD, NÅR JEG GRÆDER?
+SKAL JEG SYNGE, MENS HUN TÆNKER?
+TVANGSPRÆGET
+SKRIV TALLET LIGE, TAK
+DINE DECIMALER STÅR SKÆVT
+JEG GÅR I LIGE SKRIDT. ALTID LIGE
+DET VAR {a}. PRÆCIS. IKKE CIRKA {a}
+JEG HOLDER DIG SYMMETRISK. DET ER VIGTIGT
+{n} FALDT DIAGONALT. SIKKE ET ROD
+ER ÆBLET PRÆCIS MIDT PÅ TALLET?
+AFHÆNGIG
+MÅ JEG JAGTE DIG? MÅ JEG?
+SYNES DU, JEG KLARER DET GODT?
+LAD MIG IKKE VÆRE ALENE MED DISSE TAL
+VAR DET {a}? ER DU SUR PÅ MIG?
+GÅ IKKE, VÆR SÖD. BLIV LIDT ENDNU
+{n} VAR MIN ENESTE VEN! HVEM SIGER NU, HVAD JEG SKAL GØRE?
+SKAL JEG SPØRGE CHEFEN, OM JEG MÅ BIDE?`,
+});
+
+const PT={};for(const k of Object.keys(PRAW)){const L=PRAW[k].split('\n').map(l=>l.toUpperCase().replace(/\{(\w+)\}/g,m=>m.toLowerCase()));PT[k]={};
+  PERS.forEach((p,i)=>{const b=L.slice(i*8,i*8+8);PT[k][p]={l:b[0],t:b.slice(1,4),w:[b[4]],g:[b[5]],k:[b[6]],th:[b[7]]}})}
+const persSrc=p=>LANG.startsWith('es')||!PT[LANG]?PES[p]:PT[LANG][p];
+function PL(z,cat,v){const p=z&&z.pers;if(!p)return null;const a=persSrc(p)[cat];if(!a)return null;return v?a.map(s=>s.replace(/\{(\w+)\}/g,(m,k)=>v[k]!=null?v[k]:m)):a}
+const persLabel=z=>z&&z.pers?persSrc(z.pers).l:'';
+function persSay(z,cat,v,kind){const a=PL(z,cat,v);if(!a||!a.length)return false;say(z,pick(a),kind);return true}
+
 
 const flagURL=cc=>`https://flagcdn.com/w40/${cc}.png`;
 const flagImg=l=>`<img class="fl" alt="" src="${flagURL(l.cc)}" onerror="this.style.visibility='hidden'">`;
@@ -4051,7 +5697,7 @@ function wrongFeedback(val,ans,t){
   if(k||R()<.35)lawToast(LAWS[k||pick(['occam','dunning','hofstadter'])],'era '+fmt(ans));
   const z=nearestZ();
   const pool=ZES()?[`¡ERA ${fmt(ans)}!`,`¿${fmt(val)}? JAJA`,...(TAUNT_TOPIC[S.topic.id]||[]),...TAUNTS]:[ZS('era',[],{a:fmt(ans)})[0],ZS('jaja',[],{v:fmt(val)})[0],...ZS('taunts',TAUNTS)];
-  if(z)say(z,R()<.5?pool[0]:pick(pool));
+  if(z&&!(z.pers&&z.pers!=='narc'&&R()<.7&&persSay(z,'w',{a:fmt(ans)})))say(z,R()<.5?pool[0]:pick(pool));
 }
 function typeKey(k){
   if(!canType())return;
@@ -4247,7 +5893,7 @@ function padDraw(){
 }
 
 /* ============ Zombis que persiguen ============ */
-function mkZ(x,type){return{id:++S.uid,x,type,walk:R()*6,dead:false,deadT:0,gore:false,grab:false,hp:1,max:1,spdK:type==='runner'?1.7:type==='boss'?.6:type==='skel'?.75:.85+R()*.3,hitT:0,cd:1.5+R()*2,aim:0,range:W*(.17+R()*.14)}}
+function mkZ(x,type){return{id:++S.uid,x,type,pers:type==='skel'?null:type==='boss'?'narc':pick(PERS),walk:R()*6,dead:false,deadT:0,gore:false,grab:false,hp:1,max:1,spdK:type==='runner'?1.7:type==='boss'?.6:type==='skel'?.75:.85+R()*.3,hitT:0,cd:1.5+R()*2,aim:0,range:W*(.17+R()*.14)}}
 function spawnZ(){
   const side=R()<.5?-1:1,nSk=S.zombies.filter(z=>alive(z)&&z.type==='skel').length,sk=S.stage>=2&&nSk<(S.stage>=8?2:1)&&R()<.3,run=!sk&&S.stage>=5&&R()<.25;
   const z=mkZ(S.cam+side*(W/2+10)/S.u,sk?'skel':run?'runner':'walker');S.zombies.push(z);
@@ -4282,7 +5928,7 @@ const SKEL_LINES=['¡A LA CARGA, HUESOS!','MI PUNTERÍA ES TAN PERFECTA COMO YO'
 function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?'EL JEFE':pick(NAMES))}
 function say(z,txt,kind){zname(z);S.bubbles=S.bubbles.filter(b=>b.z!==z);if(S.bubbles.length>=2)S.bubbles.shift();
   S.bubbles.push({z,txt,t:0,life:Math.min(5,Math.max(2.4,1.2+txt.length*.06)),kind:kind||'say'});if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
-function taunt(z){const r=R();if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
+function taunt(z){const r=R();{const th=R()<.3;if(z.pers&&(z.pers!=='narc'||R()<.4)&&persSay(z,th?'th':'t',null,th?'think':'say'))return}if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
 function blood(sx,sy,n,spd=1){for(let i=0;i<n;i++){const ang=-Math.PI*R()*1.1+.05,s=(30+R()*110)*spd;S.parts.push({x:sx,y:sy,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.6+R()*.8,c:pick([P.r2,P.r2,P.r,'#e8735f']),blood:true})}}
 function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);
   // si muere el zombi que te tiene agarrada, el agarre termina (antes quedaba un agarre fantasma)
@@ -4308,7 +5954,7 @@ function meteor(x){
   for(let i=0;i<46;i++){const ang=-Math.PI*R(),s=30+R()*120;S.parts.push({x:sx,y:GY-3,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.4+R()*.6,c:pick([P.y,P.o,P.r2,P.w,P.l3])})}
   let killed=0;
   for(const z of S.zombies)if(alive(z)&&z.type!=='boss'&&!z.grab&&Math.abs(scx(z.x)-sx)<ER){killZ(z,true);killed++}
-  if(killed){const n=nearestZ();if(n&&R()<.8)say(n,pick(ZES()?[`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]:ZS('kill',[],{n:S.lastKilled})),'shout')}
+  if(killed){const n=nearestZ();if(n&&R()<.8&&!(n.pers&&n.pers!=='narc'&&persSay(n,'k',{n:S.lastKilled},'shout')))say(n,pick(ZES()?[`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]:ZS('kill',[],{n:S.lastKilled})),'shout')}
   if(S.boss&&alive(S.boss))S.shards.push({x0:x,z:S.boss,t:0,T:.55});
   else if(!killed){const n=nearestZ();if(n)S.shards.push({x0:x,z:n,t:0,T:.45})}
   newt('<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.');
@@ -4346,7 +5992,7 @@ function startGrab(z){
   $('#alSub').textContent=S.grab.need>1?L10('grab2'):L10('caughtSub');
   $('#alert').classList.add('on');
   S.input='';renderInput();padClear();if(!S.prob)newProblem();
-  say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
+  if(!(z.pers&&z.pers!=='narc'&&persSay(z,'g',null,'shout')))say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
 }
 function escape(){
   const a=S.a,g=S.grab,z=g.z,pr=S.prob;
@@ -5292,7 +6938,7 @@ function bubble(b){
   const z=b.z,zx=scx(z.x);if(zx<-20||zx>W+20)return;
   const kind=b.kind||'say',al=b.t>b.life-.3?(b.life-b.t)/.3:1,sc=b.t<.12?b.t/.12*1.15:b.t<.2?1.15-(b.t-.12)/.08*.15:1;
   ctx.globalAlpha=Math.max(0,al);
-  const nm=zname(z),lines=wrapP(b.txt,Math.min(120,W*.5)),w=Math.max(pw(nm),...lines.map(l=>pw(l)))+8,h=lines.length*9+5;
+  const nm=zname(z)+(z.pers?' · '+persLabel(z):''),lines=wrapP(b.txt,Math.min(120,W*.5)),w=Math.max(pw(nm),...lines.map(l=>pw(l)))+8,h=lines.length*9+5;
   const head=z.type==='boss'?50:z.type==='skel'?32:36,bob=Math.round(Math.sin(b.t*4+z.id)),jit=kind==='shout'&&b.t<1.2?Math.round((R()-.5)*2):0;
   const cx=clamp(zx,w/2+2,W-w/2-2),cy=GY-head-h/2-6+bob,sw=Math.max(4,Math.round(w*sc)),sh=Math.max(3,Math.round(h*sc)),x=Math.round(cx-sw/2)+jit,top=Math.round(cy-sh/2)+jit;
   const edge=kind==='shout'?P.red:kind==='think'?P.l1:P.w;
