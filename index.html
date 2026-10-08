@@ -1178,7 +1178,11 @@ function isSlash(sy){
   const a=st[0],b=st[st.length-1],top=a[1]<b[1]?a:b,bot=a[1]<b[1]?b:a;if(top[0]<=bot[0])return false;
   const L=Math.hypot(b[0]-a[0],b[1]-a[1])||1;let md=0;for(const q of st)md=Math.max(md,Math.abs((b[0]-a[0])*(a[1]-q[1])-(a[0]-q[0])*(b[1]-a[1]))/L);return md<L*.14;
 }
+// agarrada: escribir (un trazo o un dígito correcto) regala un poco de tiempo, con tope para no cambiar la dificultad
+function graceBonus(v){const g=S.grab;if(!g||g.need>1&&false)return;g.bonus=g.bonus||0;const add=Math.min(v,.22-g.bonus);if(add<=0)return;g.bonus+=add;g.g=Math.max(0,g.g-add);
+  if(!g.said||S.time-g.said>.9){g.said=S.time;S.texts.push({x:S.a.x,y:GY-34,txt:'+ TIEMPO',c:P.y,t:0,life:.7,world:true})}}
 function acceptChar(ch){
+  if(S.grab)graceBonus(.06);
   S.input+=ch;SFX.digit(S.input.length-1);renderInput();flashInbox('good');
   if((S.prob.keys||[S.prob.key]).includes(S.input)){record(true);if(S.a.st==='grab')escape();else commit(S.prob.ans,true)}
 }
@@ -1281,6 +1285,7 @@ const blocked=t=>!!(t&&t.closest&&t.closest('button,#kp,.screen.show'));
 document.addEventListener('pointerdown',e=>{
   if(S.mode!=='play'||document.body.classList.contains('kb')||!e.isPrimary||e.button>0||blocked(e.target))return;
   if(!canType()||padLock)return;
+  if(S.a.st==='grab')graceBonus(.035);
   e.preventDefault();ac();drawPid=e.pointerId;clearTimeout(padTimer);
   const p=pt(e),last=syms[syms.length-1];
   if(last&&!last.done&&inside(last,p))curSym=last;
