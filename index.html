@@ -325,14 +325,23 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 body.a11y :focus-visible{outline:3px solid var(--red)!important;outline-offset:2px}
 body:not(.a11y) #bAch1{grid-column:1/-1}
 /* poder del arcoíris */
-#bPow{--pc:#e0262b;border-color:var(--pc)!important;animation:powPulse 1s ease-in-out infinite;box-shadow:0 0 0 2px var(--pc),4px 4px 0 var(--line)}
-#bPow i{width:16px;height:16px;background:var(--pc);display:block}
-#bPow[hidden]{display:none}
-@keyframes powPulse{50%{transform:scale(1.1)}}
+/* panel de poderes: los 7 colores del arcoíris en columna a la izquierda */
+#pdock{position:fixed;left:var(--sl);top:30%;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:3px;pointer-events:none}
+body:not(.play) #pdock{display:none}
+#pdock .pw{position:relative;pointer-events:none;width:28px;height:28px;padding:0;background:var(--bg);border:2px solid var(--pc);opacity:.32;filter:grayscale(.7);cursor:default;overflow:hidden;box-shadow:none;transition:opacity .3s,filter .3s,transform .15s}
+#pdock .pw img{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);image-rendering:pixelated}
+#pdock .pw.own{opacity:1;filter:none;pointer-events:auto;cursor:pointer;animation:powPulse 1s ease-in-out infinite;box-shadow:0 0 0 2px var(--pc),0 0 14px var(--pc)}
+#pdock .pw.act{opacity:1;filter:none;box-shadow:0 0 0 2px var(--fg)}
+#pdock .pw .pf{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--pc)}
+#pdock .pw:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+#pstreak{display:flex;gap:2px;margin-top:2px}#pstreak i{width:3px;height:6px;background:var(--line)}#pstreak i.on{background:var(--red)}#pstreak.full i{background:var(--fg)}
+#plab{position:absolute;left:34px;top:0;width:min(150px,38vw);font-size:10px;line-height:1.35;letter-spacing:.03em;pointer-events:none;opacity:0;transition:opacity .4s;text-shadow:0 0 6px var(--bg),0 0 3px var(--bg)}#plab.on{opacity:1}
+#plab b{display:block;font-size:11px;letter-spacing:.08em}
+@keyframes powPulse{50%{transform:scale(1.12)}}
 /* telaraña: el aviso sin barra de tiempo */
 #alert.web .bar{display:none}#alert.web .big{color:var(--fg)}#alert.web{white-space:normal;width:min(92vw,560px)}#alert.web .big{font-size:clamp(22px,6.4vw,44px);line-height:1.1}
 /* logro desbloqueado */
-#achT{left:50%;bottom:calc(var(--sb) + 190px);transform:translate(-50%,20px);pointer-events:none;display:flex;align-items:center;gap:10px;padding:8px 14px 6px;background:var(--bg);border:2px solid var(--red);box-shadow:4px 4px 0 var(--fg);z-index:47;opacity:0;transition:opacity .3s,transform .3s;max-width:min(92vw,420px);box-sizing:border-box}
+#achT{left:50%;bottom:calc(var(--sb) + 130px);transform:translate(-50%,20px);pointer-events:none;display:flex;align-items:center;gap:10px;padding:8px 14px 6px;background:var(--bg);border:2px solid var(--red);box-shadow:4px 4px 0 var(--fg);z-index:47;opacity:0;transition:opacity .3s,transform .3s;max-width:min(92vw,420px);box-sizing:border-box}
 #achT.on{opacity:1;transform:translate(-50%,0)}body.kb #achT{bottom:calc(var(--sb) + 300px)}
 #achT img{width:36px;height:36px;image-rendering:pixelated;flex:none;background:color-mix(in srgb,var(--fg) 14%,transparent)}
 #achT div{display:flex;flex-direction:column;gap:2px;text-align:left;min-width:0}
@@ -389,9 +398,10 @@ body:not(.a11y) #bAch1{grid-column:1/-1}
   <div id="top" class="hud hidden">
     <div id="pStage" class="pill"><span id="hN">1</span><span id="hTopic">SUMA</span><span id="pips"></span></div>
     <div class="sp"></div>
-    <button class="rb" id="bPow" hidden aria-label="Poder"><i></i></button><button class="rb" id="bClear" aria-label="Borrar lo dibujado">⌫</button>
+    <button class="rb" id="bClear" aria-label="Borrar lo dibujado">⌫</button>
     <button class="rb" id="bPause" aria-label="Pausa y ajustes">❚❚</button>
   </div>
+  <div id="pdock" aria-label="Poderes"></div>
   <div id="exprw" class="hud hidden"><canvas id="exc" width="10" height="10"></canvas><div id="pre" hidden></div><div id="expr" hidden></div></div>
   <div id="drawhint" class="hud hidden">dibuja el número en cualquier parte</div>
   <div id="inbox" class="hud pill hidden"><span class="pr">=</span><span id="inTxt"></span><span class="cur"></span></div>
@@ -5897,8 +5907,8 @@ function failChar(ch){
 function record(ok,val){
   const Rn=S.run,id=S.topic.id,t=S.thinkT,h=SAVE.hist[id]||(SAVE.hist[id]={ok:0,bad:0});
   if(ok){const dk=dayKey();SAVE.days=SAVE.days||{};SAVE.days[dk]=(SAVE.days[dk]||0)+1;Rn.correct++;Rn.streak++;Rn.maxStreak=Math.max(Rn.maxStreak,Rn.streak);Rn.okT[id]=(Rn.okT[id]||0)+1;h.ok++;SAVE.sk[id]=clamp(skill(id)+(t<6?.09:.05),0,1);
-    unlock('first');if(Rn.streak>=5)unlock('st5');if(Rn.streak>=10)unlock('st10');if(Rn.streak>=25)unlock('st25');if(t<2)unlock('fast');if(dayStreak()>=7)unlock('days7');if(Rn.streak%POWSTREAK===0)grantPow();S.sayPre=XL('n_ok')+' '}
-  else{Rn.wrong++;S.stageBad=(S.stageBad||0)+1;Rn.streakBefore=Rn.streak;Rn.streak=0;Rn.errT[id]=(Rn.errT[id]||0)+1;h.bad++;SAVE.sk[id]=clamp(skill(id)-.12,0,1);if(t<2)Rn.fastWrong++;
+    unlock('first');if(Rn.streak>=5)unlock('st5');if(Rn.streak>=10)unlock('st10');if(Rn.streak>=25)unlock('st25');if(t<2)unlock('fast');if(dayStreak()>=7)unlock('days7');if(Rn.streak%POWSTREAK===0)grantPow();else updPowBtn();S.sayPre=XL('n_ok')+' '}
+  else{Rn.wrong++;S.stageBad=(S.stageBad||0)+1;setTimeout(updPowBtn,0);Rn.streakBefore=Rn.streak;Rn.streak=0;Rn.errT[id]=(Rn.errT[id]||0)+1;h.bad++;SAVE.sk[id]=clamp(skill(id)-.12,0,1);if(t<2)Rn.fastWrong++;
     if(val!=null&&S.prob){Rn.lastWrong={val,ans:S.prob.ans,topic:id};wrongFeedback(val,S.prob.ans,t)}}
   Rn.thinkSum+=t;Rn.thinkN++;
   S.d=dOf(id);persist();
@@ -7202,6 +7212,7 @@ function drawApple2(reflect){
 }
 function niceStep(u){const raw=30/u,p=Math.pow(10,Math.floor(Math.log10(raw)));for(const m of[1,2,5,10])if(p*m>=raw-1e-9)return p*m;return p*10}
 // diálogo sin globo: solo el nombre y el texto con borde; mientras dibujas se atenúa para que tu trazo quede encima
+function questionBottom(){if(S.mode!=='play'||!S.prob)return null;const e=$('#exc');if(!e||$('#exprw').classList.contains('hidden'))return null;const r=e.getBoundingClientRect(),c=canvasRect();return(r.bottom-c.y)/c.sc}
 function ptextO(str,cx,y,col,full){const x=Math.round(cx-pw(full||str)/2);for(const[dx,dy]of[[-1,0],[1,0],[0,-1],[0,1],[1,1]])ptext(str,x+dx,y+dy,1,P.k);ptext(str,x,y,1,col)}
 function bubble(b){
   const z=b.z,zx=scx(z.x);if(zx<-20||zx>W+20)return;
@@ -7209,7 +7220,7 @@ function bubble(b){
   const nm=zname(z),lines=wrapP(b.txt,Math.min(150,W*.55));
   const head=(z.type==='boss'?(z.prof?68:50):z.type==='skel'?32:z.type==='ender'?42:z.type==='spider'?20:z.type==='creeper'?30:36)+(z.hat&&z.hat!=='none'?6:0);
   const w=Math.max(pw(nm),...lines.map(l=>pw(l))),h=lines.length*9,jit=kind==='shout'&&b.t<1.2?Math.round((R()-.5)*2):0;
-  const cx=Math.round(clamp(zx,w/2+3,W-w/2-3))+jit,top=Math.round(GY-head-h+Math.sin(b.t*4+z.id))+jit;
+  let top=Math.round(GY-head-h+Math.sin(b.t*4+z.id))+jit;const cx=Math.round(clamp(zx,w/2+3,W-w/2-3))+jit,qb=questionBottom();if(qb!=null)top=Math.max(top,Math.round(qb+14));
   ctx.globalAlpha=Math.max(0,al);
   ptextO(nm,cx,top-10,z.type==='skel'?P.l2:P.red);
   const col=kind==='shout'?P.w:kind==='think'?P.l1:P.l3;let left=Math.floor((b.t-.1)*34);
@@ -7531,7 +7542,7 @@ function drawEnder(z){const x=Math.round(scx(z.x));if(x<-30||x>W+30)return;const
   ctx.restore()}
 
 /* ============ Daño, corazones y escudo ============ */
-function useShield(){if(!S.shield)return false;S.shield=false;S.dBoost=0;S.d=dOf(S.topic.id);S.flash=.3;
+function useShield(){if(!S.shield)return false;S.shield=false;S.dBoost=0;updPowBtn();S.d=dOf(S.topic.id);S.flash=.3;
   S.texts.push({x:S.a.x,y:GY-44,txt:XL('n_shield'),c:'#e8862a',t:0,life:1.2,world:true});if(!muted&&ac()){hit('platos',.6);bell(1760,.06)}return true}
 function damage(kind){if(useShield())return;
   S.arrowHits=(S.arrowHits||0)+1;S.shake=8;S.flash=.35;blood(apx(),GY-6,14);const left=2-S.arrowHits;
@@ -7544,12 +7555,23 @@ const powOf=id=>POW.find(p=>p.id===id);
 const powOn=id=>!!(S.powA&&S.powA.id===id&&S.powA.t>0);
 const POWSTREAK=6;
 function powTxt(id){return`<b style="color:${powOf(id).c}">${XL('p_'+id)}</b> ✓ ${XL('pa_'+id)} · ✗ ${XL('pd_'+id)}`}
-function updPowBtn(){const b=$('#bPow');if(!S.pow){b.hidden=true;return}const p=powOf(S.pow);b.hidden=false;b.style.setProperty('--pc',p.c);b.setAttribute('aria-label',XL('n_powBtn',[XL('p_'+p.id)]))}
-function grantPow(){if(S.pow)return;S.pow=pick(POW).id;updPowBtn();newt(XL('n_powGot',[XL('p_'+S.pow)])+'<br>'+powTxt(S.pow),true);
+const PICON={r:['...##...','..####..','.######.','########','########','.######.','..####..','...##...'],o:['########','#......#','#......#','#......#','.#....#.','.#....#.','..#..#..','...##...'],y:['....###.','...###..','..###...','.######.','...###..','..##....','.##.....','.#......'],g:['..####..','.#....#.','#..##..#','#.#..#.#','#..##..#','.#....#.','..####..','...##...'],b:['...##...','#..##..#','.#.##.#.','..####..','########','..####..','.#.##.#.','#..##..#'],i:['########','.######.','..####..','...##...','...##...','..####..','.######.','########'],v:['..####..','.#....#.','#..##..#','#.#..#.#','#.#..#.#','#..##.#.','.#....#.','..####..']};
+const PICOS={};function picon(id){return PICOS[id]||(PICOS[id]=pixURL(PICON[id],{'#':powOf(id).c}))}
+function buildDock(){const d=$('#pdock');if(d.dataset.b)return;d.dataset.b=1;
+  d.innerHTML=POW.map(p=>`<button class="pw" data-id="${p.id}" style="--pc:${p.c}" tabindex="-1" disabled><img alt="" src="${picon(p.id)}"><i class="pf"></i></button>`).join('')+'<div id="pstreak">'+'<i></i>'.repeat(POWSTREAK)+'</div><div id="plab"></div>';
+  d.addEventListener('click',e=>{const b=e.target.closest('.pw.own');if(b){e.stopPropagation();usePow()}})}
+function updPowBtn(){buildDock();
+  for(const b of document.querySelectorAll('#pdock .pw')){const id=b.dataset.id,own=S.pow===id,act=powOn(id)||(id==='o'&&S.shield);
+    b.classList.toggle('own',own);b.classList.toggle('act',!!act);b.disabled=!own;b.tabIndex=own?0:-1;if(!act)b.querySelector('.pf').style.width='0';
+    b.setAttribute('aria-label',own?XL('n_powBtn',[XL('p_'+id)]):XL('p_'+id))}
+  const st=$('#pstreak');const n=S.pow?POWSTREAK:((S.run&&S.run.streak)||0)%POWSTREAK;st.classList.toggle('full',!!S.pow);[...st.children].forEach((e,i)=>e.classList.toggle('on',i<n));
+  const l=$('#plab'),id=S.pow||(S.powA&&S.powA.id)||(S.shield?'o':null);
+  if(id){l.innerHTML=`<b style="color:${powOf(id).c}">${XL('p_'+id)}</b>${S.pow?'':'✓ '+XL('pa_'+id)+'<br>'}✗ ${XL('pd_'+id)}`;l.style.top='0';l.classList.add('on')}else l.classList.remove('on')}
+function grantPow(){if(S.pow)return;S.pow=pick(POW).id;updPowBtn();S.texts.push({x:S.a.x,y:GY-46,txt:XL('n_powGot',[XL('p_'+S.pow)]),c:powOf(S.pow).c,t:0,life:1.6,world:true});
   if(!muted&&ac())[523,659,784,988,1175,1397,1568].forEach((f,i)=>bell(f,.05,i*.06));speak(XL('n_powGot',[XL('p_'+S.pow)])+' '+XL('pa_'+S.pow)+'. '+XL('pd_'+S.pow)+'. '+XL('n_powUse'))}
 function usePow(){const id=S.pow;if(!id||S.mode!=='play'||!['rest','air','grab'].includes(S.a.st))return;S.pow=null;updPowBtn();
   SAVE.powUsed=SAVE.powUsed||{};SAVE.powUsed[id]=1;persist();unlock('pow');if(Object.keys(SAVE.powUsed).length>=7)unlock('pow7');
-  newt(powTxt(id),true);speak(XL('p_'+id));const c=powOf(id).c;S.flash=.4;
+  speak(XL('p_'+id));const c=powOf(id).c;S.flash=.4;
   for(let i=0;i<30;i++){const a=R()*Math.PI*2,s=30+R()*80;S.parts.push({x:apx(),y:GY-8,vx:Math.cos(a)*s,vy:Math.sin(a)*s,t:0,life:.7,c})}
   if(!muted&&ac()){tone(300,.5,'sawtooth',.05,900);bell(1568,.06,.1)}
   const T=(t)=>{S.powA={id,t,T:t}};
@@ -7560,9 +7582,10 @@ function usePow(){const id=S.pow;if(!id||S.mode!=='play'||!['rest','air','grab']
   else if(id==='b')T(8);
   else if(id==='i'){T(12);if(!S.topic.boss){S.quota++;updHUD()}}
   else if(id==='v'){T(10);S.vhole={x:S.a.x,t:0};for(const z of S.zombies)if(alive(z)&&Math.abs(scx(z.x)-apx())<W*.35){if(z.type==='boss'){z.hp--;z.hitT=.4;if(z.hp<=0){killZ(z,true);checkClear()}updHUD()}else z.suck={t:0,x0:z.x}}if(!muted&&ac())tone(80,1.2,'sawtooth',.08,-50)}
+  updPowBtn()
 }
-$('#bPow').onclick=e=>{e.stopPropagation();usePow()};
-function powUpdate(dt){if(S.powA){S.powA.t-=dt;if(S.powA.t<=0)S.powA=null}if(S.boltT>0)S.boltT-=dt;
+
+function powUpdate(dt){if(S.powA){S.powA.t-=dt;const f=document.querySelector(`#pdock .pw[data-id=${S.powA.id}] .pf`);if(f)f.style.width=Math.max(0,S.powA.t/S.powA.T*100)+'%';if(S.powA.t<=0){S.powA=null;updPowBtn()}}if(S.boltT>0)S.boltT-=dt;
   if(S.vhole){S.vhole.t+=dt;if(S.vhole.t>1.4)S.vhole=null}
   for(const z of S.zombies)if(z.suck&&alive(z)){z.suck.t+=dt;const hx=S.vhole?S.vhole.x:S.a.x;z.x+=(hx-z.x)*Math.min(1,dt*5);if(z.suck.t>.6)killZ(z,false)}}
 function powDraw(){const a=S.a;if(S.mode!=='play'||['eaten','hidden'].includes(a.st))return;const cx=Math.round(apx()),cy=Math.round(GY-8-a.y*YPX);
