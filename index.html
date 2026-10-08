@@ -2,6 +2,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-title" content="Math Sucks">
 <title>Math Sucks</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -348,8 +353,8 @@ body:not(.a11y) #bAch1{grid-column:1/-1}
 .calB{padding:4px 10px 2px;font-size:14px}.calB[disabled]{opacity:.3;pointer-events:none}
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;width:100%}
 .cal .wd{font-size:10px;text-align:center;color:var(--mut);padding:2px 0;overflow:hidden;white-space:nowrap}
-.cal .cd{aspect-ratio:1.5;display:flex;flex-direction:column;align-items:center;justify-content:center;background:color-mix(in srgb,var(--fg) 8%,transparent);min-width:0;overflow:hidden}
-.cal.zh .cd{aspect-ratio:1.1}
+.cal .cd{aspect-ratio:2.6;display:flex;flex-direction:column;align-items:center;justify-content:center;background:color-mix(in srgb,var(--fg) 8%,transparent);min-width:0;overflow:hidden}
+.cal.zh .cd{aspect-ratio:1.7}
 .cal .cd.e{background:transparent}
 .cal .cd b{font-size:10px;font-weight:400;line-height:1}.cal .cd small{font-size:7px;line-height:1.1;color:var(--mut);white-space:nowrap}
 .cal .cd.td{box-shadow:inset 0 0 0 2px var(--fg)}
@@ -364,6 +369,14 @@ body:not(.a11y) #bAch1{grid-column:1/-1}
 #introCap.on{animation:capIn 4s ease forwards}
 @keyframes capIn{0%{opacity:0;transform:translateY(8px)}10%{opacity:1;transform:none}88%{opacity:1}100%{opacity:0}}
 #bSkip{position:absolute;right:var(--sr);bottom:var(--sb);pointer-events:auto;background:var(--bg)}
+/* compacto en la derrota y fundido al desplegar la solución */
+#sOver .heat{padding:6px;gap:4px}#sOver .hm{gap:1px}#sOver .hm2{gap:1px;margin-top:4px}
+#sOver .hm i{aspect-ratio:3/1}#sOver .hm2 i{aspect-ratio:2.4/1}
+#sOver .cal{gap:1px}#sOver .cal .cd b{font-size:9px}#sOver .calH b{font-size:11px}#sOver .calB{padding:2px 8px 0}#sOver .hmTab{padding:4px 4px 2px;font-size:10px}
+#sOver .heat .mini{font-size:10px}
+#oFail[open] #oFailB{animation:fadeUp .5s both}
+#sOver.exp #oFailB{animation:fadeUp .5s both}
+#sOver:not(.exp) #oQuote,#sOver:not(.exp) #oLawN,#sOver:not(.exp) #oHeat,#sOver:not(.exp) #mapLbl{animation:fadeUp .5s both}
 /* final */
 #sEnd .card{gap:14px}#sEnd .dead{font-size:clamp(28px,8.5vw,60px)}
 #sEnd.show .dead{animation:stamp .6s cubic-bezier(.2,1.6,.4,1) .5s both}
