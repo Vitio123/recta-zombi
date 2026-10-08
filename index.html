@@ -144,6 +144,12 @@ summary::-webkit-details-marker{display:none}
 #kp button{font-size:28px;font-weight:300;height:56px;border-radius:14px;background:transparent;color:var(--fg);border:1px solid var(--line);cursor:pointer}
 #kp button:active{background:var(--fg);color:var(--bg)}
 body.kb #kp{display:grid}
+#pick{position:fixed;z-index:37;display:none;flex-wrap:wrap;justify-content:center;gap:8px;padding:10px;max-width:min(92vw,340px);box-sizing:border-box;background:var(--card);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:2px solid var(--line);border-radius:16px;box-shadow:4px 4px 0 var(--line)}
+#pick.on{display:flex}
+#pick span{flex-basis:100%;text-align:center;font-size:13px;letter-spacing:.15em;color:var(--mut)}
+#pick button{font-size:28px;font-weight:300;min-width:56px;height:56px;border-radius:14px;background:transparent;color:var(--fg);border:2px solid var(--line);cursor:pointer}
+#pick button:active{background:var(--fg);color:var(--bg)}
+#pick button.no{font-size:20px;color:var(--mut)}
 #kp .frk{display:none;grid-column:span 4;height:42px;font-size:18px;letter-spacing:.2em}body.frac #kp .frk{display:block}body.kb.frac #inbox{bottom:calc(var(--sb) + 254px)}body.kb.frac #bHelp{bottom:calc(var(--sb) + 312px)}
 body.kb #inbox{bottom:calc(var(--sb) + 204px)}
 body.kb #drawhint{display:none}
@@ -281,6 +287,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
   </div></div>
 </div>
 <canvas id="pc"></canvas>
+<div id="pick" aria-label="Elige el número que escribiste"></div>
 <button id="bHelp" class="chip" hidden>¿NO SABES? VER UN EJEMPLO</button>
 <div id="kp" aria-label="Teclado numérico">
   <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button data-k="-">−</button>
@@ -409,8 +416,11 @@ function draw1(n,x,base,s,col){
 }
 
 /* ============ Disposición: pantalla completa, vertical como app de teléfono ============ */
+// alto útil: con el teclado numérico abierto la escena solo usa el área que queda encima de él
+const kpEl=document.getElementById('kp');
+function viewH(){return document.body.classList.contains('kb')?Math.max(200,innerHeight-kpEl.offsetHeight):innerHeight}
 function layout(){
-  const vw=innerWidth,vh=innerHeight;PORT=vh>vw*1.05;
+  const vw=innerWidth,vh=viewH();PORT=vh>vw*1.05;cv.style.height=vh+'px';
   if(PORT){W=228;H=clamp(Math.round(228*vh/vw),300,520)}else{H=270;W=clamp(Math.round(270*vw/vh),380,640)}
   GY=Math.round(H*(PORT?.6:.73));X0=Math.round(W/2);
   cv.width=W*2;cv.height=H*2;ctx.setTransform(2,0,0,2,0,0);ctx.imageSmoothingEnabled=false;
@@ -419,7 +429,7 @@ function layout(){
   buildBG();
 }
 let LAYKEY='';
-function relayout(){const k=innerWidth+'x'+innerHeight;if(k===LAYKEY)return;LAYKEY=k;layout();padResize();}
+function relayout(){const k=innerWidth+'x'+viewH();if(k===LAYKEY)return;LAYKEY=k;layout();padResize();}
 
 /* ============ Fondo: cielo con dither, montaña, ciudad y pizarras con fórmulas ============ */
 let FAR,MID,FR_C,fctx,CLOUDS=[];
@@ -856,6 +866,47 @@ const OCR=(()=>{
   return{rasterize,predict};
 })();
 
+/* ============ Memoria de trazo: guarda cómo escribe el jugador cada número y corrige al OCR con eso ============ */
+const INK=(()=>{
+  const KEY='rzInk1',CAP=30;
+  const blur=x=>{const o=new Float32Array(784);let m=0;
+    for(let y=0;y<28;y++)for(let c=0;c<28;c++){let a=0,n=0;for(let j=-1;j<=1;j++)for(let i=-1;i<=1;i++){const yy=y+j,xx=c+i;if(yy>=0&&yy<28&&xx>=0&&xx<28){a+=x[yy*28+xx];n++}}o[y*28+c]=a/n;m+=o[y*28+c]*o[y*28+c]}
+    m=Math.sqrt(m)||1;for(let i=0;i<784;i++)o[i]/=m;return o};
+  const enc=x=>{let s='';for(let i=0;i<784;i++)s+=String.fromCharCode(Math.round(Math.min(1,Math.max(0,x[i]))*255));return btoa(s)};
+  const dec=s=>{const b=atob(s),o=new Float32Array(784);for(let i=0;i<784;i++)o[i]=b.charCodeAt(i)/255;return o};
+  const sim=(a,b)=>{let s=0;for(let i=0;i<784;i++)s+=a[i]*b[i];return s};
+  const raw=[],V=[];for(let d=0;d<10;d++){raw.push([]);V.push([])}
+  try{const j=JSON.parse(localStorage.getItem(KEY)||'null');
+    if(j&&typeof j==='object')for(let d=0;d<10;d++)for(const s of (Array.isArray(j[d])?j[d]:[]).slice(-CAP)){try{if(typeof s!=='string')continue;const v=blur(dec(s));raw[d].push(s);V[d].push(v)}catch(e){}}
+  }catch(e){}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(raw))}catch(e){}};
+  // x = trazo rasterizado 28×28 que el jugador confirmó como el dígito d
+  function learn(x,d){
+    d=+d;if(!x||!(d>=0&&d<=9))return;
+    const v=blur(x);let best=0;for(const w of V[d])best=Math.max(best,sim(v,w));
+    if(best>.97&&V[d].length>=4)return;
+    raw[d].push(enc(x));V[d].push(v);
+    if(raw[d].length>CAP){raw[d].shift();V[d].shift()}
+    save();
+  }
+  // mezcla la salida de la red con el parecido a los trazos propios del jugador
+  function adjust(x,p){
+    const v=blur(x),s=new Float32Array(10).fill(-1);let mx=-1,use=0;
+    for(let d=0;d<10;d++){
+      if(V[d].length<2)continue;
+      const t=V[d].map(w=>sim(v,w)).sort((a,b)=>b-a),k=Math.min(3,t.length);let a=0;for(let i=0;i<k;i++)a+=t[i];
+      s[d]=a/k;if(s[d]>mx)mx=s[d];use++;
+    }
+    if(use<2||mx<.8)return p;
+    const w=Math.min(1,(mx-.8)/.15)*.75,q=new Float32Array(10),o=new Float32Array(10);let z=0,m=0;
+    for(let d=0;d<10;d++)if(s[d]>=0){q[d]=Math.exp(20*(s[d]-mx));z+=q[d];m+=p[d]}
+    const M=m+w*(1-m);
+    for(let d=0;d<10;d++)o[d]=s[d]>=0?(1-w)*p[d]+w*M*q[d]/z:p[d]*(1-w*w);
+    return o;
+  }
+  return{learn,adjust,count:()=>raw.map(a=>a.length)};
+})();
+
 /* ============ Currículo: de la suma al cálculo. Cada problema = un número al que salta la manzana ============ */
 const up10=n=>Math.ceil(n/10)*10;
 const addHint=(a,b)=>{if(a<10&&b<10)return`empieza en ${a} y avanza ${b} lugares a la derecha`;if(a%10>=9&&b%10<9)[a,b]=[b,a];if(b>=9&&b%10>=9){const r=up10(b);return`${b} es casi ${r}: ${a} + ${r} = ${a+r}; me pasé ${r-b}, así que resto ${r-b}: ${a+b}`}const ua=a%10,ub=b%10,ta=a-ua,tb=b-ub;return`de izquierda a derecha: ${ta} + ${tb} = ${ta+tb} y ${ua} + ${ub} = ${ua+ub}; junta ${ta+tb} + ${ua+ub}`};
@@ -1169,7 +1220,7 @@ function renderExprCanvas(p){
   if(mp){drawN(p.pre,Math.round((w-mp.w)/2),2+mp.a,1,P.l1)}
   drawN(mk,Math.round((w-m.w)/2),2+(mp?mp.a+mp.d+gap:0)+m.a,1,P.w);
   CTXOVR=null;
-  const maxW=innerWidth*.92,maxH=innerHeight*(PORT?.2:.24),k=Math.max(2,Math.floor(Math.min(maxW/w,maxH/h,PORT?9:14)));
+  const maxW=innerWidth*.92,maxH=viewH()*(PORT?.2:.24),k=Math.max(2,Math.floor(Math.min(maxW/w,maxH/h,PORT?9:14)));
   cvE.style.width=w*k+'px';cvE.style.height=h*k+'px';
 }
 function showExpr(p){if(p){const w=$('#exprw');w.classList.add('out');clearTimeout(exprT);exprT=setTimeout(()=>{renderExprCanvas(p);w.classList.remove('out')},180);return}const w=$('#exprw');w.classList.add('out');clearTimeout(exprT);exprT=setTimeout(()=>{if(!p){$('#expr').innerHTML='';$('#pre').innerHTML='';return}
@@ -1247,6 +1298,7 @@ function wrongFeedback(val,ans,t){
 }
 function typeKey(k){
   if(!canType())return;
+  if(chPick){resolvePick(k);return}
   if(nextChars().includes(k))acceptChar(k);else{failChar(k);if(S.a.st!=='air')padClear()}
 }
 document.addEventListener('keydown',e=>{
@@ -1290,14 +1342,36 @@ function toTitle(){crackHide();S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[
 const pc=$('#pc'),pctx=pc.getContext('2d');
 let PDW=innerWidth,PH=innerHeight,DPR=1,padDirty=true,padLock=false,padTimer=null,curStroke=null,curSym=null,drawPid=null;
 const syms=[];
+// OCR dudoso: en vez de adivinar, se muestran las teclas candidatas para que elijas el número que escribiste
+let chPick=null,pickQ=[];const pickEl=$('#pick');
+function hidePick(){chPick=null;pickQ=[];pickEl.classList.remove('on')}
+function showPick(sy,cand){
+  chPick={sy,cand};
+  pickEl.innerHTML='<span>¿CUÁL ES?</span>'+cand.map(d=>`<button data-k="${d}">${d}</button>`).join('')+'<button data-k="x" class="no" aria-label="Borrar">✕</button>';
+  pickEl.classList.add('on');
+  const r=pickEl.getBoundingClientRect();let top=sy.y1+16;if(top+r.height>PH-6)top=sy.y0-16-r.height;
+  pickEl.style.left=clamp((sy.x0+sy.x1)/2-r.width/2,6,Math.max(6,PDW-r.width-6))+'px';pickEl.style.top=Math.max(6,top)+'px';
+}
+function resolvePick(k){
+  const sy=chPick.sy,q=pickQ;hidePick();padDirty=true;sy.ch=k;
+  if(sy.x&&/^\d$/.test(k))INK.learn(sy.x,k); // lo que el jugador confirma a mano es la mejor muestra de su letra
+  if(!nextChars().includes(k)){sy.ok=false;padFlash(S.a.st==='rest'?900:560);failChar(k);return}
+  sy.ok=true;acceptChar(k);
+  for(let i=0;i<q.length;i++){
+    if(!canType())break;const n=q[i];n.queued=false;finalize(n);
+    if(chPick){pickQ.push(...q.slice(i+1));break}
+    if(n.ok===false)break;
+  }
+}
+pickEl.addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(!b)return;e.preventDefault();if(b.dataset.k==='x')padClear();else typeKey(b.dataset.k)});
 function padResize(){DPR=Math.min(2,window.devicePixelRatio||1);PDW=innerWidth;PH=innerHeight;pc.width=Math.round(PDW*DPR);pc.height=Math.round(PH*DPR);padDirty=true}
-function padClear(){syms.length=0;curStroke=null;curSym=null;drawPid=null;clearTimeout(padTimer);padDirty=true}
+function padClear(){hidePick();syms.length=0;curStroke=null;curSym=null;drawPid=null;clearTimeout(padTimer);padDirty=true}
 function padFlash(ms){padLock=true;clearTimeout(padTimer);setTimeout(()=>{padLock=false;padClear()},ms)}
 const pt=e=>[e.clientX,e.clientY];
 const REF=()=>Math.max(24,Math.min(PDW,PH)*.04);
 function symAdd(sy,p){if(p[0]<sy.x0)sy.x0=p[0];if(p[0]>sy.x1)sy.x1=p[0];if(p[1]<sy.y0)sy.y0=p[1];if(p[1]>sy.y1)sy.y1=p[1]}
 function inside(sy,p){const m=14+.08*Math.min(260,Math.max(sy.x1-sy.x0,sy.y1-sy.y0));return p[0]>=sy.x0-m&&p[0]<=sy.x1+m&&p[1]>=sy.y0-m&&p[1]<=sy.y1+m}
-const blocked=t=>!!(t&&t.closest&&t.closest('button,#kp,.screen.show'));
+const blocked=t=>!!(t&&t.closest&&t.closest('button,#kp,#pick,.screen.show'));
 document.addEventListener('pointerdown',e=>{
   if(S.mode!=='play'||document.body.classList.contains('kb')||!e.isPrimary||e.button>0||blocked(e.target))return;
   if(!canType()||padLock)return;
@@ -1328,9 +1402,12 @@ function classify(sy){
   const w=sy.x1-sy.x0,h=sy.y1-sy.y0,m=Math.max(w,h),r=REF();
   if(sy.st.length===1&&w>=r*.5&&h<w*.42)return{kind:'minus',ch:'-'};
   if(m<r*.8)return{kind:'dot',ch:'.'};
-  const p=new Float32Array(10);for(const lw of[1.8,2.3,3])OCR.predict(OCR.rasterize(sy.st,lw)).forEach((v,i)=>p[i]+=v/3);let b=0;for(let i=1;i<10;i++)if(p[i]>p[b])b=i;
-  return{kind:'digit',ch:String(b),p,best:b};
+  const LWS=[1.6,2,2.4,3],p0=new Float32Array(10);for(const lw of LWS)OCR.predict(OCR.rasterize(sy.st,lw)).forEach((v,i)=>p0[i]+=v/LWS.length);
+  const x=OCR.rasterize(sy.st,2.3),p=INK.adjust(x,p0);let b=0;for(let i=1;i<10;i++)if(p[i]>p[b])b=i;
+  return{kind:'digit',ch:String(b),p,best:b,x};
 }
+// confusiones frecuentes de este jugador (trazo rápido): si lo leído es la clave y lo esperado la otra, se pregunta en vez de fallar
+const XC={5:[8,2],8:[5],2:[5]};
 const CONF={0:[8,6,9],8:[0,3,9,6],2:[1,7,3,8],1:[2,7,4],7:[1,2],6:[0,5,8],9:[4,8,0],4:[9,1],5:[6,3],3:[8,5,2]};
 function matches(c,exp){
   if(exp==='-')return c.kind==='minus';
@@ -1352,20 +1429,28 @@ function splitSym(sy){
   return parts.map(st=>{const q={st,x0:1e9,x1:-1e9,y0:1e9,y1:-1e9,done:false,ok:null,ch:''};for(const s of st)for(const p of s)symAdd(q,p);return q}).sort((a,b)=>a.x0-b.x0);
 }
 function finalize(sy){
-  if(sy.done)return;
+  if(sy.done||sy.queued)return;
   const parts=splitSym(sy);
   if(parts.length>1){
     syms.splice(syms.indexOf(sy),1,...parts);
-    for(const q of parts){if(!q.done)finalize(q);if(q.ok!==true){for(const r of parts)r.done=true;break}}
+    for(const q of parts){if(!q.done)finalize(q);if(q.ok===false){for(const r of parts)r.done=true;break}}
     padDirty=true;return;
   }
+  if(chPick){sy.queued=true;pickQ.push(sy);return}
   sy.done=true;padDirty=true;
   if(!canType()){padClear();return}
   const exps=nextChars();
   if(exps.includes('/')&&isSlash(sy)){sy.ok=true;sy.ch='/';acceptChar('/');return}
   const c=classify(sy);sy.ch=c.ch;
+  if(c.kind==='digit'){
+    const ord=[...c.p.keys()].sort((a,b)=>c.p[b]-c.p[a]),p1=c.p[ord[0]];sy.x=c.x;
+    const xc=exps.filter(e=>(XC[ord[0]]||[]).includes(+e));
+    if(xc.length&&!exps.includes(String(ord[0]))){showPick(sy,[ord[0],...xc.map(Number)].slice(0,4));return}
+    // seguro: coincide con lo esperado (≥80 %) o es claramente otro número (≥97 %). Si no, el jugador elige.
+    if(!(exps.includes(String(ord[0]))?p1>=.8:p1>=.97)){showPick(sy,ord.filter((d,i)=>i<2||c.p[d]>=.04).slice(0,4));return}
+  }
   const got=exps.find(e=>c.kind==='digit'&&c.best===+e)||exps.find(e=>e!=='/'&&matches(c,e));
-  if(got){sy.ok=true;sy.ch=got;acceptChar(got)}
+  if(got){sy.ok=true;sy.ch=got;if(c.kind==='digit'&&/^\d$/.test(got)&&c.p[+got]>=.8)INK.learn(c.x,got);acceptChar(got)}
   else{sy.ok=false;padFlash(S.a.st==='rest'?900:560);failChar(c.ch)}
 }
 function padDraw(){
@@ -2518,9 +2603,21 @@ lgEl.addEventListener('pointerdown',e=>{if(S.mode!=='title')return;e.preventDefa
 for(const ev of['pointerup','pointercancel','lostpointercapture'])lgEl.addEventListener(ev,()=>{S.bhOn=false});
 window.addEventListener('pointerup',()=>{S.bhOn=false});
 // espaguetización: columnas del escenario estiradas en vertical y aplastadas hacia el agujero negro
+// la interfaz del menú también cae: cada bloque se estira en vertical, se aplasta y viaja hacia el logo (más cerca = antes)
+let BHU=[];
+function bhUIReset(){for(const u of BHU){const s=u.el.style;s.translate=s.scale=s.opacity=s.willChange=''}BHU=[]}
+function bhUI(k,hx,hy){
+  if(!BHU.length)BHU=[...document.querySelector('#sTitle .card').children].filter(el=>el!==lgEl&&!el.hidden).map(el=>{const b=el.getBoundingClientRect();el.style.willChange='translate,scale,opacity';return{el,cx:b.left+b.width/2,cy:b.top+b.height/2}});
+  const e=k*k*(3-2*k);
+  for(const u of BHU){
+    const dx=hx-u.cx,dy=hy-u.cy,d=Math.hypot(dx,dy),pull=clamp(e*1.5-.5*d/Math.max(300,innerHeight),0,1),sy=Math.max(.05,1+2.2*Math.sin(pull*Math.PI)-.95*pull);
+    const s=u.el.style;s.translate=`${dx*pull*.92}px ${dy*pull*.92}px`;s.scale=`${Math.max(.05,1-.92*pull)} ${sy}`;s.opacity=String(1-.85*pull);
+  }
+}
 function bhWarp(){
-  const k=S.bhK;if(!(k>0)||S.mode!=='title')return;
-  const vw=innerWidth,vh=innerHeight,sc=Math.min(vw/W,vh/H),r=lgEl.getBoundingClientRect(),cw=cv.width,ch=cv.height;
+  const k=S.bhK;if(!(k>0)||S.mode!=='title'){if(BHU.length)bhUIReset();return}
+  const vw=innerWidth,vh=viewH(),sc=Math.min(vw/W,vh/H),r=lgEl.getBoundingClientRect(),cw=cv.width,ch=cv.height;
+  bhUI(k,r.left+r.width/2,r.top+r.height/2);
   const hx=((r.left+r.width/2)-(vw-W*sc)/2)/sc*2,hy=((r.top+r.height/2)-(vh-H*sc)/2)/sc*2;
   if(WK.width!==cw||WK.height!==ch){WK.width=cw;WK.height=ch}
   wkc.clearRect(0,0,cw,ch);wkc.drawImage(cv,0,0);
@@ -2537,12 +2634,12 @@ function loop(t){
   relayout();
   if(S.mode!=='pause')update(dt);
   syncMusic();
-  if(S.mode==='title'){const r=lgEl.getBoundingClientRect(),sc=Math.min(innerWidth/W,innerHeight/H);S.bhX=((r.left+r.width/2)-(innerWidth-W*sc)/2)/sc}
+  if(S.mode==='title'){const r=lgEl.getBoundingClientRect(),sc=Math.min(innerWidth/W,viewH()/H);S.bhX=((r.left+r.width/2)-(innerWidth-W*sc)/2)/sc}
   draw();bhWarp();if(padDirty)padDraw();
   if(S.mode==='title')drawLogo(S.time);
   requestAnimationFrame(loop);
 }
-window.__G={S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
+window.__G={INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
 const fontsReady=Promise.race([Promise.all([document.fonts.load('16px "Pixelify Sans"'),document.fonts.load('8px Silkscreen')]).catch(()=>{}),new Promise(r=>setTimeout(r,2000))]);
 fontsReady.then(()=>{relayout();titleScene();setMode('title');requestAnimationFrame(loop)});
 })();
