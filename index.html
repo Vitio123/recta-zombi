@@ -108,7 +108,7 @@ body.kb #pc{display:none}
 .btn.alt{background:transparent;color:var(--fg);font-weight:400;font-size:14px;padding:12px 20px 9px}
 .btn.red{background:var(--red);border-color:var(--red);color:#fff}
 .btns{display:flex;flex-direction:column;gap:10px;align-items:stretch;width:100%;max-width:300px}
-.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}.row .chip{white-space:nowrap;text-align:center;padding-left:6px;padding-right:6px}.row .chip:last-child:nth-child(odd){grid-column:1/-1}
 .chip{font-size:13px;letter-spacing:.12em;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 14px 7px;cursor:pointer}
 .chip:active{transform:scale(.96)}
 .mini{font-size:13px;color:var(--mut);letter-spacing:.08em;line-height:1.5}
@@ -216,7 +216,7 @@ body.kb #kp button{animation:btnIn .35s ease backwards}
 @keyframes glowR{0%,100%{box-shadow:4px 4px 0 color-mix(in srgb,var(--fg) 35%,transparent),0 0 0 0 color-mix(in srgb,var(--red) 0%,transparent)}50%{box-shadow:4px 4px 0 color-mix(in srgb,var(--fg) 35%,transparent),0 0 22px 2px color-mix(in srgb,var(--red) 55%,transparent)}}
 #tStats{letter-spacing:.14em}
 details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;letter-spacing:.24em;color:var(--mut);list-style:none;text-align:center;padding:4px 0}details.prog summary::before{content:'▸ '}details.prog[open] summary::before{content:'▾ '}
-details.prog .heat{margin-top:8px;animation:fadeUp .4s both}
+#tHeat{animation:fadeUp .4s both}#tHeat[hidden]{display:none}#tHeat{gap:3px}#tHeat .hm,#tHeat .hm2{margin-top:0}#tHeat .hm i,#tHeat .hm2 i{aspect-ratio:2/1}#tHeat .mini{font-size:11px;line-height:1.25}#logo{touch-action:none;cursor:pointer;-webkit-touch-callout:none}
 @keyframes fadeUp{0%{opacity:0;transform:translateY(10px);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
 .hud{transition:opacity .6s ease,filter .6s ease}.hud.hidden{filter:blur(4px)}
 #newt,#lawt{transition:opacity .6s ease,filter .6s ease}#newt:not(.on),#lawt:not(.on){filter:blur(3px)}
@@ -244,9 +244,10 @@ details.prog .heat{margin-top:8px;animation:fadeUp .4s both}
     <canvas id="logo" width="64" height="64"></canvas>
     <h1 class="ttl">RECTA <span class="z">ZOMBI</span><small>DE 1 + 1 AL CÁLCULO</small></h1>
     <p class="lead">Dibuja el resultado donde quieras. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… los zombis se burlan. Y mucho.</p>
+    <div class="heat" id="tHeat" hidden></div>
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
     <div class="mini" id="tStats"></div>
-    <details class="prog"><summary>TU PROGRESO</summary><div class="heat" id="tHeat"></div></details>
+    <details class="prog"><summary>TU PROGRESO</summary></details>
     <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
@@ -472,12 +473,23 @@ function appleCanvas(bite=0,side=1){
   return APCV;
 }
 function drawApple(x,y,bite=0,side=1){ctx.drawImage(appleCanvas(bite,side),x-1,y-1)}
-// ojos: miran al zombi más cercano, parpadean, se asustan cuando la agarran
-function appleFace(c,x,y,w,h,scared,look,blink){
-  const e=Math.max(1,Math.round(w/14)),ex=x+Math.round(w*.3),ey=y+Math.round(h*.46),gap=Math.round(w*.3);
-  for(const k of[0,1]){const px=ex+k*gap;if(blink&&!scared){c.fillStyle='#1a0b0b';c.fillRect(px,ey+e,2*e,e);continue}
-    c.fillStyle='#fff6ec';c.fillRect(px,ey,2*e,(scared?3:2)*e);c.fillStyle='#1a0b0b';c.fillRect(px+(look>0?e:0),ey+e,e,e)}
-  if(scared){c.fillStyle='#1a0b0b';c.fillRect(ex+e,ey+4*e,gap,e)}
+// ojos: miran al zombi más cercano, parpadean y cambian de humor (miedo, alegría, tristeza, sorpresa)
+function appleFace(c,x,y,w,h,mood,lx,ly,blink){
+  const e=Math.max(1,Math.round(w/14)),ink='#1a0b0b',wh='#fff6ec',cx=x+(w>>1),ey=y+Math.round(h*.36),my=ey+5*e,F=(a,b,cw,ch,col)=>{c.fillStyle=col;c.fillRect(a,b,cw,ch)};
+  const scared=mood==='scared',happy=mood==='happy',jit=scared?((S.time*30|0)%2)*e:0;
+  for(const k of[0,1]){
+    const px=(k?cx+e:cx-4*e)+jit;
+    if(happy){F(px+e,ey+e,e,e,ink);F(px,ey+2*e,e,e,ink);F(px+2*e,ey+2*e,e,e,ink);continue}
+    if(blink&&!scared){F(px,ey+2*e,3*e,e,ink);continue}
+    F(px,ey,3*e,4*e,wh);
+    if(scared)F(px+e,ey+e,e,2*e,ink);else F(px+(1+lx)*e,ey+(1+ly)*e,e,2*e,ink);
+  }
+  const brow={worry:[[0,0,-1],[-1,0,0]],sad:[[0,1,0],[0,1,0]],scared:[[-1,-1,-2],[-2,-1,-1]],air:[[-1,-1,-1],[-1,-1,-1]]}[mood];
+  if(brow)for(const k of[0,1]){const px=(k?cx+e:cx-4*e)+jit;for(let i=0;i<3;i++)F(px+i*e,ey-2*e+brow[k][i]*e,e,e,ink)}
+  if(happy){F(cx-2*e,my,e,e,ink);F(cx-e,my+e,2*e,e,ink);F(cx+e,my,e,e,ink)}
+  else if(scared){F(cx-e,my,2*e,2*e,ink);F(x+w-3*e,ey-e,e,2*e,'#7ad0ff')}
+  else if(mood==='worry'||mood==='sad'){F(cx-2*e,my+e,e,e,ink);F(cx-e,my,2*e,e,ink);F(cx+e,my+e,e,e,ink)}
+  else F(cx-e,my,2*e,e,ink);
 }
 function pline(x0,y0,x1,y1,c){x0=Math.round(x0);y0=Math.round(y0);x1=Math.round(x1);y1=Math.round(y1);ctx.fillStyle=c;let dx=Math.abs(x1-x0),sx=x0<x1?1:-1,dy=-Math.abs(y1-y0),sy=y0<y1?1:-1,e=dx+dy;for(let i=0;i<800;i++){ctx.fillRect(x0,y0,1,1);if(x0===x1&&y0===y1)break;const e2=2*e;if(e2>=dy){e+=dy;x0+=sx}if(e2<=dx){e+=dx;y0+=sy}}}
 function dline(x0,y0,x1,y1,c,gap=3){const n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0))|0;ctx.fillStyle=c;for(let i=0;i<=n;i+=gap){const t=n?i/n:0;ctx.fillRect(Math.round(x0+(x1-x0)*t),Math.round(y0+(y1-y0)*t),1,1)}}
@@ -1105,7 +1117,7 @@ let lawT=null;
 function lawToast(L,extra){const e=$('#lawt');e.innerHTML=`<b>${L.n}</b>${L.s}${extra?' · '+extra:''}`;e.classList.add('on');clearTimeout(lawT);lawT=setTimeout(()=>e.classList.remove('on'),3600)}
 
 function setMode(m){
-  S.mode=m;
+  S.mode=m;if(m!=='title')S.bhOn=false;
   for(const[id,mm]of[['#sTitle','title'],['#sLesson','lesson'],['#sPause','pause'],['#sOver','over'],['#sTut','tut']])$(id).classList.toggle('show',m===mm);if(m!=='play')$('#bHelp').hidden=true;
   const play=m==='play',pz=m==='pause';
   document.body.classList.toggle('play',play);
@@ -1268,6 +1280,8 @@ function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}syncChips()};
 for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':'dark')}
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
+{const pg=$('#sTitle details.prog'),sm=pg.querySelector('summary');
+  pg.addEventListener('toggle',()=>{const o=pg.open;$('#sTitle .lead').hidden=o;$('#tHeat').hidden=!o;$('#tStats').hidden=o;sm.textContent=o?'CERRAR PROGRESO':'TU PROGRESO'})}
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='play')setMode('pause')});
 document.addEventListener('contextmenu',e=>{if(S.mode==='play')e.preventDefault()});
 function toTitle(){crackHide();S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
@@ -1446,8 +1460,8 @@ function shardHit(sh){
 }
 function land(){
   const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';a.sq=a.ok?.5:.32;a.sqv=0;
-  if(a.ok)meteor(a.x);
-  else{SFX.thud();for(let i=0;i<8;i++)S.parts.push({x:scx(a.x),y:GY-1,vx:(R()-.5)*60,vy:-R()*50,t:0,life:.4,c:P.l1});
+  if(a.ok){meteor(a.x);S.happyT=1.5}
+  else{S.sadT=1.5;SFX.thud();for(let i=0;i<8;i++)S.parts.push({x:scx(a.x),y:GY-1,vx:(R()-.5)*60,vy:-R()*50,t:0,life:.4,c:P.l1});
     const lp=S.run.lastProb;if(lp)S.texts.push({x:a.x,y:GY-38,txt:'✕ ERA '+fmt(lp.ans),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick([`JAJAJA, ERA ${fmt(lp.ans)}. QUÉ VERGÜENZA AJENA`,'¡ESE NO ERA! APÚNTALO EN TU DIARIO DE FRACASOS','MI ABUELA ZOMBI LO HACÍA MEJOR. SIN CABEZA','APLAUSOS… DE BURLA',`¿${fmt(S.a.x)}? YO HABRÍA DICHO ${fmt(lp.ans)}, PORQUE SOY GENIAL`]),'shout')}}
   if(a.ok&&!S.topic.boss)S.ok++;
   if(a.ok&&S.run.streak>0&&S.run.streak%5===0)eggStart();
@@ -2205,6 +2219,37 @@ const EGGS=[
   {n:'PITÁGORAS',f:'a² + b² = c²',a:['  .*.*.*.*.*.*.     *',' *:           :*   **',' *   .**  **.  *  * *',' :   :o:  :o:  : *  *',' *      ..     ******',' :*    ....   *:     ','  *##*.    .*##*     ','  *####****####*     ','  :############:     ','   *##########*      ','    *########*       ','     :*####*:        ','       :**:          ']},
   {n:'MARIE CURIE',f:'Po · Ra',a:['        .***.        ','       *#####*       ','    .*#########*.    ','   *###*:...:*###*   ','  :##*         *##:  ','  *#*  .*. .*.  *#*  ','  *#   :o: :o:   #*  ','  :#      .      #:  ','   *     ...     *   ','   :*   .***.   *:   ','    :*.  ...  .*:    ','      :**...**:      ','       .*###*.    o  ','      *#######*  ( ) ','                 ._. ']},
 ];
+function faceArt(o){
+  const Wd=21,Ht=15,g=Array.from({length:Ht},()=>Array(Wd).fill(' '));
+  const px=(x,y,c)=>{if(x>=0&&x<Wd&&y>=0&&y<Ht)g[y][x]=c},hl=(a,b,y,c)=>{for(let x=a;x<=b;x++)px(x,y,c)};
+  for(let y=0;y<Ht;y++)for(let x=0;x<Wd;x++){const d=((x-10)/6)**2+((y-7)/5.6)**2;if(d<=1)px(x,y,d>.6?'*':' ')}
+  for(const x of[8,12]){px(x-1,6,':');px(x,6,'o');px(x+1,6,':')}
+  if(o.patch)hl(11,13,6,'#');
+  px(10,8,'.');px(10,9,'.');hl(9,11,10,'.');
+  if(o.hat==='turban'){hl(5,15,0,'*');hl(3,17,1,'#');hl(3,17,2,'#');hl(4,16,3,'*');hl(5,15,4,'.');px(10,1,'o')}
+  if(o.hat==='cap'){hl(7,13,0,'*');hl(5,15,1,'#');hl(3,17,2,'#');hl(4,16,3,'*')}
+  if(o.hat==='skull'){hl(6,14,1,'#');hl(5,15,2,'#');hl(5,15,3,'*')}
+  if(o.hat==='musk'){hl(6,14,1,'*');hl(5,15,2,'#');hl(1,19,3,'#');px(15,0,'.');px(16,0,'*');px(17,1,'.');px(18,1,'*')}
+  if(o.hat==='quiff'){hl(6,15,1,'#');hl(5,14,2,'#');hl(4,11,3,'*');hl(5,8,4,'.')}
+  if(o.hat==='wig'){hl(5,15,0,'*');hl(3,17,1,'#');hl(2,18,2,'#');px(10,1,'.');for(let y=3;y<=13;y++){hl(1+(y%2),4,y,'#');hl(16,19-(y%2),y,'#')}}
+  if(o.long)for(let y=5;y<=13;y++){hl(2,4,y,'#');hl(16,18,y,'#');px(1,y,'*');px(19,y,'*')}
+  if(o.beard)for(let y=9;y<Ht;y++){const w=Math.max(1,6-Math.floor((y-9)*.9));for(let x=10-w;x<=10+w;x++)px(x,y,(x===10-w||x===10+w)?'*':'#');if(y===10)hl(9,11,10,' ')}
+  if(o.must){hl(7,9,9,'#');hl(11,13,9,'#')}
+  if(o.side){for(let y=6;y<=10;y++){px(4,y,'#');px(16,y,'#')}}
+  (o.prop||[]).forEach((r,j)=>{for(let i=0;i<r.length;i++)if(r[i]!==' ')px(17+i,15-o.prop.length+j,r[i])});
+  return g.map(r=>r.join(''));
+}
+EGGS.push(
+  {n:'EUCLIDES',f:'mcd(48, 18) = 6',a:faceArt({beard:1,prop:['.**.',' ** ',' ** ','/  \\','o  o']})},
+  {n:'ARQUÍMEDES',f:'V = 4/3 π r³',a:faceArt({beard:1,hat:'skull',prop:[' ** ','*..*','*..*',' ** ']})},
+  {n:'AL-JWARIZMI',f:'x² + 10x = 39',a:faceArt({hat:'turban',must:1,beard:1})},
+  {n:'FIBONACCI',f:'1 1 2 3 5 8 13',a:faceArt({hat:'cap',must:1,prop:['**  ','  * ','*.* ',' *  ']})},
+  {n:'RENÉ DESCARTES',f:'pienso, luego existo',a:faceArt({hat:'musk',long:1,must:1})},
+  {n:'GOTTFRIED LEIBNIZ',f:'∫ y dx',a:faceArt({hat:'wig'})},
+  {n:'LEONHARD EULER',f:'e^iπ + 1 = 0',a:faceArt({hat:'skull',patch:1,side:1})},
+  {n:'CARL F. GAUSS',f:'1 + 2 + … + 100 = 5050',a:faceArt({hat:'skull',side:1,prop:['5050']})},
+  {n:'ALAN TURING',f:'halt(x) = ?',a:faceArt({hat:'quiff',prop:['0101','1010']})}
+);
 function eggStart(){if(THEME!=='dark'||S.egg)return;const e=pick(EGGS),cs=3,wd=Math.max(...e.a.map(r=>r.length))*cs;S.egg={e,t:0,cs,x:Math.round(clamp(W*(.08+R()*.5),4,W-wd-4)),y:Math.round(TOPPAD+34+R()*Math.max(4,GY*.12))}}
 function eggDraw(){
   const g=S.egg;if(!g||THEME!=='dark')return;const k=g.t,al=k<1.6?k/1.6:k>8?Math.max(0,1-(k-8)/2):1;if(al<=0)return;
@@ -2215,7 +2260,7 @@ function eggDraw(){
 
 /* ============ Bucle ============ */
 function update(dt){
-  S.time+=dt;if(S.egg){S.egg.t+=dt;if(S.egg.t>10)S.egg=null}if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
+  S.time+=dt;S.happyT=Math.max(0,(S.happyT||0)-dt);S.sadT=Math.max(0,(S.sadT||0)-dt);S.bhK=clamp((S.bhK||0)+(S.bhOn&&S.mode==='title'?dt*.9:-dt*2.2),0,1);if(S.egg){S.egg.t+=dt;if(S.egg.t>10)S.egg=null}if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
   for(const c of CLOUDS){c.x+=c.v*dt;if(c.x>W+10)c.x=-c.c.width}
   S.shake=Math.max(0,S.shake-dt*18);S.flash=Math.max(0,S.flash-dt*1.4);S.fade=Math.max(0,S.fade-dt*.8);
   for(const q of S.parts){q.t+=dt;q.vy+=240*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;if(q.y>GY){q.y=GY;q.vy*=-.2;q.vx*=.5}}
@@ -2229,7 +2274,7 @@ function update(dt){
   for(const t of S.stains)t.t+=dt;if(S.stains.length>180)S.stains.splice(0,S.stains.length-180);S.stains=S.stains.filter(t=>t.t<30);
   for(const z of S.zombies){if(z.dead)z.deadT+=dt;z.hitT=Math.max(0,z.hitT-dt)}
   S.zombies=S.zombies.filter(z=>!(z.dead&&z.deadT>1.2));
-  if(S.mode!=='play'){for(const z of S.zombies)z.walk+=dt*1.5;return}
+  if(S.mode!=='play'){if(S.mode==='title')titleZ(dt);else for(const z of S.zombies)z.walk+=dt*1.5;return}
   const a=S.a;
   const camOld=S.cam;S.cam+=(a.x-S.cam)*Math.min(1,dt*3.2);
   // proyectiles del meteorito hacia el zombi más cercano / el jefe
@@ -2298,7 +2343,7 @@ function update(dt){
 function drawZ(z,refl){
   if(z.type==='skel'){drawSkel(z);return}
   const big=z.type==='boss',x=Math.round(scx(z.x));if(x<-30||x>W+30)return;
-  const a=S.a,f=z.grab&&S.grab?-S.grab.side:(Math.sign(scx(a.x)-x)||1);
+  const a=S.a,f=z.grab&&S.grab?-S.grab.side:S.mode==='title'&&z.dir?z.dir:(Math.sign(scx(a.x)-x)||1);
   const col=z.hitT>0&&((S.time*20|0)%2)?P.red:P.l3,red=P.red,dk=P.r;
   const p=z.walk,st=Math.sin(p),bob=st>.55?1:0,K=big?1.6:1;
   ctx.save();
@@ -2319,7 +2364,8 @@ function drawZ(z,refl){
   ctx.fillStyle=red;ctx.fillRect(sx-Math.round(lean*.4),hip-Math.round(5*K)+bob,big?3:2,big?3:2);if(z.id%2)ctx.fillRect(sx-f,hip-Math.round(8*K)+bob,1,2);
   // brazos estirados hacia la manzana
   if(z.grab&&S.grab){const ax=apx(),ay=GY-5-a.y*YPX;L(sx,sh+1,ax-f*2,ay-2,lw);L(sx,sh+3,ax-f*2,ay+2,lw)}
-  else if(!z.dead){const sway=Math.sin(p*.5)>0?0:1,al=Math.round(9*K);L(sx,sh+1,sx+f*al,sh+1+sway,lw);L(sx,sh+3,sx+f*(al-1),sh+3+(1-sway),lw);ctx.fillStyle=red;ctx.fillRect(sx+f*al,sh+1+sway,1,1)}
+  else if(!z.dead){const sway=Math.sin(p*.5)>0?0:1,al=Math.round(9*K);L(sx,sh+1,sx+f*al,sh+1+sway,lw);L(sx,sh+3,sx+f*(al-1),sh+3+(1-sway),lw);ctx.fillStyle=red;ctx.fillRect(sx+f*al,sh+1+sway,1,1);
+    if(z.sym){const hxp=sx+f*al,tw=pw(z.sym,1);ptextS(z.sym,Math.round(hxp-tw/2),sh-6+Math.round(Math.sin(S.time*3+z.id)),1,P.y,P.k)}}
   // cabeza ladeada
   const hs=big?9:6,hx=sx-(hs>>1)+f,hy=sh-hs+(Math.sin(p*.5+1)>.3?1:0);
   ctx.fillStyle=col;ctx.fillRect(hx,hy,hs,hs);
@@ -2361,7 +2407,11 @@ function drawApple2(reflect){
   if(!reflect&&a.y>.02&&a.st!=='eaten'){const sw=Math.max(3,Math.round(13-Math.min(9,a.y*1.3)));ctx.globalAlpha=.32;ctx.fillStyle='#000';ctx.fillRect(cx-(sw>>1),GY-1,sw,2);ctx.globalAlpha=1}
   const sx=cx-(w>>1),sy=by-h;ctx.imageSmoothingEnabled=false;
   ctx.drawImage(appleCanvas(a.st==='eaten'&&S.deathBy!=='arrow'?S.eatT*3:0,S.grab?S.grab.side:1),sx,sy,w,h);
-  if(!reflect&&a.st!=='eaten'){const z=nearestZ();appleFace(ctx,sx,sy,w,h,!!S.grab,z?Math.sign(scx(z.x)-cx):0,(S.time%3.3)<.12)}
+  if(!reflect&&a.st!=='eaten'){const z=nearestZ();let mood='idle',lx=z?Math.sign(scx(z.x)-cx):0,ly=0;
+    if(S.grab)mood='scared';else if(S.happyT>0)mood='happy';else if(S.sadT>0){mood='sad';ly=1}
+    else if(z&&Math.abs(scx(z.x)-cx)<48)mood='worry';else if(a.st==='air'){mood='air';ly=-1}
+    if(mood==='idle'&&!z){lx=clamp(Math.floor(Math.sin(S.time*.9)*1.6),-1,1);ly=Math.sin(S.time*.5+2)>.85?1:0}
+    appleFace(ctx,sx,sy,w,h,mood,lx,ly,(S.time%3.3)<.12||(S.time%7.1)<.1)}
   if(!reflect&&S.mode==='play'){const hits=S.arrowHits||0;for(let i=0;i<hits;i++)pline(sx+3+i*4,sy+4,sx+7+i*4,sy-4,P.l2);
     if(hits||S.zombies.some(z=>alive(z)&&z.type==='skel'))for(let i=0;i<2;i++){const hx=sx-1+i*5,hy=sy-8;ctx.fillStyle=i<2-hits?P.red:P.m2;ctx.fillRect(hx,hy,1,1);ctx.fillRect(hx+2,hy,1,1);ctx.fillRect(hx,hy+1,3,1);ctx.fillRect(hx+1,hy+2,1,1)}}
 }
@@ -2443,10 +2493,42 @@ function draw(){
   if(S.fade>0){ctx.fillStyle=rgba(P.k,S.fade);ctx.fillRect(0,0,W,H)}
 }
 const rgba=(h,a)=>`rgba(${parseInt(h.slice(1,3),16)},${parseInt(h.slice(3,5),16)},${parseInt(h.slice(5,7),16)},${clamp(a,0,1)})`;
+const MSYMS=['+','−','×','÷','=','π','√','∫','∞','Σ','Δ','θ','x²','%','≠','e','i','7','12','n!','a/b','sin','f(x)',"f'"];
 function titleScene(){
   S.egg=null;if(R()<.4)setTimeout(()=>{if(S.mode==='title')eggStart()},2200);
   S.a.x=0;S.a.y=0;S.a.st='rest';S.cam=0;S.u=S.uT=S.uPrev=21;S.zombies=[];
-  for(let i=0;i<4;i++){const s=i%2?1:-1,z=mkZ(s*(3+i*1.6),'walker');z.walk=i;S.zombies.push(z)}
+  for(let i=0;i<5;i++){const z=mkZ((i-2)*3.2,'walker');z.walk=i;z.dir=i%2?-1:1;z.sym=pick(MSYMS);S.zombies.push(z)}
+}
+// menú: los zombis caminan de lado a lado cargando símbolos; si el agujero negro del logo te tiene agarrado, huyen
+function titleZ(dt){
+  const hole=S.bhOn?(S.bhX-X0)/S.u:null;
+  for(const z of S.zombies){
+    const flee=hole!==null;
+    if(flee)z.dir=Math.sign(z.x-hole)||1;
+    const lurch=.25+1.15*Math.max(0,Math.sin(z.walk)),sp=(flee?3:.9)*z.spdK;
+    z.walk+=dt*(flee?7:3.2);
+    z.x+=z.dir*sp*lurch*dt;
+    if(flee)z.x=clamp(z.x,-6.8,6.8);
+    else if(Math.abs(z.x)>8){z.x=-Math.sign(z.x)*7.6;z.dir=-Math.sign(z.x);z.sym=pick(MSYMS)}
+  }
+}
+const WK=document.createElement('canvas'),wkc=WK.getContext('2d'),lgEl=$('#logo');
+lgEl.addEventListener('pointerdown',e=>{if(S.mode!=='title')return;e.preventDefault();try{lgEl.setPointerCapture(e.pointerId)}catch(_){}
+  S.bhOn=true;tone(70,.6,'sawtooth',.04,-25);const z=pick(S.zombies);if(z)say(z,pick(['¡EL AGUJERO!','¡HUYAN!','¡ME ESTIRO!','¡MIS HUESOS!','¡AAAAH!']),'shout')});
+for(const ev of['pointerup','pointercancel','lostpointercapture'])lgEl.addEventListener(ev,()=>{S.bhOn=false});
+window.addEventListener('pointerup',()=>{S.bhOn=false});
+// espaguetización: columnas del escenario estiradas en vertical y aplastadas hacia el agujero negro
+function bhWarp(){
+  const k=S.bhK;if(!(k>0)||S.mode!=='title')return;
+  const vw=innerWidth,vh=innerHeight,sc=Math.min(vw/W,vh/H),r=lgEl.getBoundingClientRect(),cw=cv.width,ch=cv.height;
+  const hx=((r.left+r.width/2)-(vw-W*sc)/2)/sc*2,hy=((r.top+r.height/2)-(vh-H*sc)/2)/sc*2;
+  if(WK.width!==cw||WK.height!==ch){WK.width=cw;WK.height=ch}
+  wkc.clearRect(0,0,cw,ch);wkc.drawImage(cv,0,0);
+  ctx0.save();ctx0.setTransform(1,0,0,1,0,0);ctx0.imageSmoothingEnabled=false;ctx0.fillStyle=P.k;ctx0.fillRect(0,0,cw,ch);
+  const sg=cw*.3;
+  for(let x=0;x<cw;x+=2){const dx=x-hx,f=Math.exp(-(dx*dx)/(2*sg*sg)),s=1+k*7*f,dy=hy*(1-s)+Math.sin(x*.05+S.time*7)*k*f*7;
+    ctx0.drawImage(WK,x,0,2,ch,hx+dx*(1-.72*k*f),dy,Math.max(1,2*(1-.72*k*f)+.6),ch*s)}
+  ctx0.restore();
 }
 let last=0;
 function syncMusic(){const want=S.mode==='play'&&!muted&&S.a.st!=='eaten';if(want&&!MUS.on)musicStart(!!S.topic.boss);else if(!want&&MUS.on)musicStop()}
@@ -2455,7 +2537,8 @@ function loop(t){
   relayout();
   if(S.mode!=='pause')update(dt);
   syncMusic();
-  draw();if(padDirty)padDraw();
+  if(S.mode==='title'){const r=lgEl.getBoundingClientRect(),sc=Math.min(innerWidth/W,innerHeight/H);S.bhX=((r.left+r.width/2)-(innerWidth-W*sc)/2)/sc}
+  draw();bhWarp();if(padDirty)padDraw();
   if(S.mode==='title')drawLogo(S.time);
   requestAnimationFrame(loop);
 }
