@@ -305,3 +305,112 @@ cnoprob|İlk sorudan önce yakalandın.
 cera|cevap {0} idi
 cxera|✕ CEVAP {0} İDİ
 cescribo|{0} YAZIYORUM
+a_first|İLK ADIM
+ad_first|İlk sorunu çöz
+a_st5|SERİDE
+ad_st5|Üst üste 5 doğru
+a_st10|DURDURULAMAZ
+ad_st10|Üst üste 10 doğru
+a_st25|ÇELİK ZİHİN
+ad_st25|Üst üste 25 doğru
+a_k50|ZOMBİ AVCISI
+ad_k50|50 zombi yok et
+a_k500|TERS KIYAMET
+ad_k500|500 zombi yok et
+a_boss|PATRON AVCISI
+ad_boss|Bir patronu yen
+a_prof|MATEMATİKÇİ
+ad_prof|Matematik öğretmenini yen
+a_esc|KAÇIŞ USTASI
+ad_esc|Seni yakalayan zombiden kurtul
+a_web|AĞ YOK ARTIK
+ad_web|Bir örümceğin ağından kaç
+a_creep|BOMBA İMHACI
+ad_creep|Bir creeper'ı patlamadan yok et
+a_ender|BANA BAKMA
+ad_ender|Bir enderman yok et
+a_pow|GÖKKUŞAĞI
+ad_pow|Bir güç kullan
+a_pow7|YEDİ RENK
+ad_pow7|7 gücün hepsini kullan
+a_fast|YILDIRIM
+ad_fast|2 saniyeden kısa sürede doğru cevap ver
+a_perf|TEK ÇİZİK YOK
+ad_perf|Bir seviyeyi hatasız geç
+a_lv8|YARI YOL
+ad_lv8|8. seviyeye ulaş
+a_days7|İSTİKRAR
+ad_days7|Üst üste 7 gün oyna
+a_hole|OLAY UFKU
+ad_hole|Menüdeki kara deliği sonuna kadar büyüt
+a_egg|YILDIZLARA BAK
+ad_egg|Bir bilim insanının takımyıldızını keşfet
+n_ach|BAŞARIMLAR
+n_achGot|BAŞARIM AÇILDI!
+n_achN|{0} / {1}
+n_mat|IZGARA
+n_cal|TAKVİM
+n_a11y|ERİŞİLEBİLİR
+n_a11yOn|Erişilebilir mod açık. Oyun ekran okuyucun tarafından anlatılır ve daha yavaş ilerler. Aşağıdaki sayı tuş takımıyla cevap ver.
+n_a11yOff|Erişilebilir mod kapalı.
+n_a11yBtn|Ekran okuyucu modunu aç
+n_sayProb|{0}. Cevap ver.
+n_ok|Doğru!
+n_bad|Yanlış. Cevap {0} idi.
+n_grab|{0} seni yakaladı! Kurtulmak için hızlı cevap ver.
+n_level|Seviye {0}: {1}.
+n_near|{0} yakında, {1}.
+n_left|solunda
+n_right|sağında
+n_kinds|zombi;iskelet;örümcek;creeper;enderman;patron;matematik öğretmeni
+n_minus|eksi
+n_dot|virgül
+n_hearts|{0} canın kaldı.
+n_skip|ATLA ▸
+n_intro|GİRİŞİ İZLE
+n_powGot|GÜÇ: {0}!
+n_powUse|Kullanmak için renkli düğmeye ya da boşluk tuşuna bas.
+n_powBtn|Gücü kullan: {0}
+n_shield|KALKAN!
+n_dodge|IŞINLANDI!
+n_frozen|DONDU!
+p_r|KIRMIZI · ÖFKE
+pa_r|12 sn dev göktaşı
+pd_r|Zombiler daha hızlı koşar
+p_o|TURUNCU · KALKAN
+pa_o|Sonraki darbeyi engeller
+pd_o|Kırılana kadar sorular zorlaşır
+p_y|SARI · YILDIRIM
+pa_y|Tüm zombileri çarpar
+pd_y|10 sn boyunca iki katı gelir
+p_g|YEŞİL · İPUCU
+pa_g|20 sn ilk rakamı görürsün
+pd_g|Kurtulmak zorlaşır
+p_b|MAVİ · BUZ
+pa_b|Düşmanları 8 sn dondurur
+pd_b|Donmuşken göktaşı onları kıramaz
+p_i|ÇİVİT · AĞIR ÇEKİM
+pa_i|Düşmanlar 12 sn yarı hızda
+pd_i|Seviyede bir doğru cevap daha gerekir
+p_v|MOR · KARA DELİK
+pa_v|Yakındaki düşmanları yutar
+pd_v|Uzay-zaman 10 sn bükülür
+n_spider|<b>ÖRÜMCEK</b> · ağ atar: seni yakalar ve çıkmak için bir soru çözmen gerekir.
+n_creeper|<b>CREEPER</b> · yaklaşır ve patlar: zıplayıp uzaklaş ya da önce yok et!
+n_ender|<b>ENDERMAN</b> · seni kovalamaz: hiç olmaması gereken yerde aniden belirir.
+n_webbed|AĞA YAKALANDIN!
+n_webSub|ÇIKMAK İÇİN ÇÖZ
+n_fuse|Bir creeper {0} patlamak üzere!
+n_boom|BUM!
+n_boomT|BUM! BİR CREEPER SENİ PATLATTI
+n_prof|MATEMATİK ÖĞRETMENİ
+n_laugh|HA, HA, HA!
+n_profT|KÂĞIT ÇIKARIN: SÜRPRİZ SINAV!;BU ÇIKMAZ… SINAVDA ÇIKAR!;SIFIR. YİNE SIFIR;HANİ İŞLEMLER?;ÖDEV DÜNE KADARDI;ÇÖZÜLENE KADAR KİMSE ÇIKMIYOR;KALDIN, ELMACIK
+i1|Bir gün dünya bir atom patlaması yaşadı.
+i2|Her şeyin arkasında kötü adam vardı: matematik öğretmeni… ve zombi ordusu.
+i3|Uzay istasyonundan Dünya'ya son umut gönderildi…
+i4|…bir elma. Newton'ın kafasına düşenin ta kendisi. Öğretmeni yen.
+e1|OYNADIĞIN İÇİN TEŞEKKÜRLER
+e2|ARTIK BİR MATEMATİKÇİSİN
+e3|{0} doğru · {1} zombi · {2} başarım
+n_to|üssü

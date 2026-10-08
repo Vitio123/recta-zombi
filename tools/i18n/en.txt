@@ -305,3 +305,112 @@ cnoprob|They caught you before the first problem.
 cera|it was {0}
 cxera|✕ IT WAS {0}
 cescribo|I WRITE {0}
+a_first|FIRST STEP
+ad_first|Solve your first problem
+a_st5|ON A ROLL
+ad_st5|5 correct in a row
+a_st10|UNSTOPPABLE
+ad_st10|10 correct in a row
+a_st25|MIND OF STEEL
+ad_st25|25 correct in a row
+a_k50|ZOMBIE HUNTER
+ad_k50|Take out 50 zombies
+a_k500|REVERSE APOCALYPSE
+ad_k500|Take out 500 zombies
+a_boss|BOSS HUNTER
+ad_boss|Defeat a boss
+a_prof|MATHEMATICIAN
+ad_prof|Defeat the math teacher
+a_esc|ESCAPE ARTIST
+ad_esc|Break free from a zombie that caught you
+a_web|NO MORE WEBS
+ad_web|Escape from a spider's web
+a_creep|BOMB SQUAD
+ad_creep|Take out a creeper before it explodes
+a_ender|DON'T LOOK AT ME
+ad_ender|Take out an enderman
+a_pow|RAINBOW
+ad_pow|Use a power
+a_pow7|ALL SEVEN COLORS
+ad_pow7|Use all 7 powers
+a_fast|LIGHTNING
+ad_fast|Answer correctly in under 2 seconds
+a_perf|NOT A SCRATCH
+ad_perf|Clear a level without a mistake
+a_lv8|HALFWAY THERE
+ad_lv8|Reach level 8
+a_days7|CONSISTENCY
+ad_days7|Play 7 days in a row
+a_hole|EVENT HORIZON
+ad_hole|Grow the menu's black hole to the max
+a_egg|LOOK AT THE STARS
+ad_egg|Discover a scientist's constellation
+n_ach|ACHIEVEMENTS
+n_achGot|ACHIEVEMENT UNLOCKED!
+n_achN|{0} OF {1}
+n_mat|GRID
+n_cal|CALENDAR
+n_a11y|ACCESSIBLE
+n_a11yOn|Accessible mode on. The game is narrated by your screen reader and runs slower. Answer with the number pad below.
+n_a11yOff|Accessible mode off.
+n_a11yBtn|Turn on screen reader mode
+n_sayProb|{0}. Answer.
+n_ok|Correct!
+n_bad|Wrong. It was {0}.
+n_grab|{0} caught you! Answer fast to break free.
+n_level|Level {0}: {1}.
+n_near|{0} nearby, on your {1}.
+n_left|left
+n_right|right
+n_kinds|zombie;skeleton;spider;creeper;enderman;boss;math teacher
+n_minus|minus
+n_dot|point
+n_hearts|You have {0} heart left.
+n_skip|SKIP ▸
+n_intro|WATCH INTRO
+n_powGot|POWER {0}!
+n_powUse|Tap the colored button or the space bar to use it.
+n_powBtn|Use power: {0}
+n_shield|SHIELD!
+n_dodge|IT TELEPORTED!
+n_frozen|FROZEN!
+p_r|RED · FURY
+pa_r|Giant meteorite for 12 s
+pd_r|Zombies run faster
+p_o|ORANGE · SHIELD
+pa_o|Blocks the next hit
+pd_o|Harder problems until it breaks
+p_y|YELLOW · LIGHTNING
+pa_y|Strikes down every zombie
+pd_y|Twice as many come for 10 s
+p_g|GREEN · HINT
+pa_g|See the first digit for 20 s
+pd_g|Harder to break free
+p_b|BLUE · ICE
+pa_b|Freezes enemies for 8 s
+pd_b|While frozen, the meteorite can't break them
+p_i|INDIGO · SLOW MOTION
+pa_i|Enemies move at half speed for 12 s
+pd_i|You need one more correct answer this level
+p_v|VIOLET · BLACK HOLE
+pa_v|Swallows nearby enemies
+pd_v|Spacetime warps for 10 s
+n_spider|<b>SPIDER</b> · shoots webs: it traps you and you must solve a problem to get out.
+n_creeper|<b>CREEPER</b> · creeps up and explodes: jump away or take it out first!
+n_ender|<b>ENDERMAN</b> · doesn't chase you: it suddenly shows up where it shouldn't.
+n_webbed|STUCK IN THE WEB!
+n_webSub|SOLVE TO GET OUT
+n_fuse|A creeper is about to explode on your {0}!
+n_boom|BOOM!
+n_boomT|BOOM! A CREEPER BLEW YOU UP
+n_prof|THE MATH TEACHER
+n_laugh|HA, HA, HA!
+n_profT|TAKE OUT A SHEET: POP QUIZ!;THAT WON'T BE ON THE TEST… OH YES IT WILL!;ZERO. ZERO AGAIN;SHOW YOUR WORK!;THAT HOMEWORK WAS DUE YESTERDAY;NOBODY LEAVES UNTIL IT'S SOLVED;FAILED, LITTLE APPLE
+i1|One day, the world suffered an atomic explosion.
+i2|Behind it all was the villain: the math teacher… and his zombie army.
+i3|From the space station, they sent Earth its last hope…
+i4|…an apple. The same one that fell on Newton. Defeat the teacher.
+e1|THANKS FOR PLAYING
+e2|NOW YOU'RE A MATHEMATICIAN
+e3|{0} correct · {1} zombies · {2} achievements
+n_to|to the power of

@@ -305,3 +305,112 @@ cnoprob|Te-au prins înainte de prima problemă.
 cera|era {0}
 cxera|✕ ERA {0}
 cescribo|SCRIU {0}
+a_first|PRIMUL PAS
+ad_first|Rezolvă prima problemă
+a_st5|ÎN FORMĂ
+ad_st5|5 corecte la rând
+a_st10|DE NEOPRIT
+ad_st10|10 corecte la rând
+a_st25|MINTE DE OȚEL
+ad_st25|25 corecte la rând
+a_k50|VÂNĂTOR DE ZOMBI
+ad_k50|Elimină 50 de zombi
+a_k500|APOCALIPSA PE DOS
+ad_k500|Elimină 500 de zombi
+a_boss|VÂNĂTOR DE ȘEFI
+ad_boss|Învinge un șef
+a_prof|MATEMATICIAN
+ad_prof|Învinge profesorul de matematică
+a_esc|MAESTRUL EVADĂRII
+ad_esc|Scapă de un zombi care te-a prins
+a_web|GATA CU PÂNZELE
+ad_web|Scapă din pânza unui păianjen
+a_creep|PIROTEHNIST
+ad_creep|Elimină un creeper înainte să explodeze
+a_ender|NU TE UITA LA MINE
+ad_ender|Elimină un enderman
+a_pow|CURCUBEU
+ad_pow|Folosește o putere
+a_pow7|CELE ȘAPTE CULORI
+ad_pow7|Folosește toate cele 7 puteri
+a_fast|FULGER
+ad_fast|Răspunde corect în mai puțin de 2 secunde
+a_perf|FĂRĂ O ZGÂRIETURĂ
+ad_perf|Treci un nivel fără greșeală
+a_lv8|LA JUMĂTATEA DRUMULUI
+ad_lv8|Ajungi la nivelul 8
+a_days7|CONSECVENȚĂ
+ad_days7|Joacă 7 zile la rând
+a_hole|ORIZONTUL EVENIMENTELOR
+ad_hole|Mărește la maximum gaura neagră din meniu
+a_egg|PRIVEȘTE STELELE
+ad_egg|Descoperă constelația unui om de știință
+n_ach|REALIZĂRI
+n_achGot|REALIZARE DEBLOCATĂ!
+n_achN|{0} DIN {1}
+n_mat|GRILĂ
+n_cal|CALENDAR
+n_a11y|ACCESIBIL
+n_a11yOn|Modul accesibil este activat. Cititorul de ecran povestește jocul, care merge mai încet. Răspunde cu tastatura numerică de jos.
+n_a11yOff|Modul accesibil este dezactivat.
+n_a11yBtn|Activează modul pentru cititor de ecran
+n_sayProb|{0}. Răspunde.
+n_ok|Corect!
+n_bad|Greșit. Era {0}.
+n_grab|Te-a prins {0}! Răspunde repede ca să scapi.
+n_level|Nivelul {0}: {1}.
+n_near|{0} aproape, în {1} ta.
+n_left|stânga
+n_right|dreapta
+n_kinds|zombi;schelet;păianjen;creeper;enderman;șef;profesorul de matematică
+n_minus|minus
+n_dot|virgulă
+n_hearts|Îți mai rămâne {0} inimă.
+n_skip|SARI ▸
+n_intro|VEZI INTRO
+n_powGot|PUTERE {0}!
+n_powUse|Atinge butonul colorat sau bara de spațiu ca s-o folosești.
+n_powBtn|Folosește puterea: {0}
+n_shield|SCUT!
+n_dodge|S-A TELEPORTAT!
+n_frozen|ÎNGHEȚAT!
+p_r|ROȘU · FURIE
+pa_r|Meteorit uriaș timp de 12 s
+pd_r|Zombii aleargă mai repede
+p_o|PORTOCALIU · SCUT
+pa_o|Blochează următoarea lovitură
+pd_o|Probleme mai grele până se sparge
+p_y|GALBEN · FULGER
+pa_y|Lovește toți zombii
+pd_y|Vin de două ori mai mulți timp de 10 s
+p_g|VERDE · INDICIU
+pa_g|Vezi prima cifră timp de 20 s
+pd_g|Scapi mai greu
+p_b|ALBASTRU · GHEAȚĂ
+pa_b|Îngheață dușmanii 8 s
+pd_b|Înghețați, meteoritul nu-i sparge
+p_i|INDIGO · ÎNCETINIRE
+pa_i|Dușmanii la jumătate de viteză 12 s
+pd_i|Îți trebuie încă un răspuns corect în nivel
+p_v|VIOLET · GAURĂ NEAGRĂ
+pa_v|Înghite dușmanii din apropiere
+pd_v|Spațiu-timpul se deformează 10 s
+n_spider|<b>PĂIANJEN</b> · aruncă pânză: te prinde și trebuie să rezolvi o problemă ca să ieși.
+n_creeper|<b>CREEPER</b> · se apropie și explodează: îndepărtează-te sărind sau elimină-l înainte!
+n_ender|<b>ENDERMAN</b> · nu te urmărește: apare deodată unde nu trebuie.
+n_webbed|PRINSĂ ÎN PÂNZĂ!
+n_webSub|REZOLVĂ CA SĂ IEȘI
+n_fuse|Un creeper e pe cale să explodeze în {0} ta!
+n_boom|BUM!
+n_boomT|BUM! TE-A ARUNCAT ÎN AER UN CREEPER
+n_prof|PROFESORUL DE MATEMATICĂ
+n_laugh|HA, HA, HA!
+n_profT|SCOATEȚI O FOAIE: EXTEMPORAL!;ASTA NU INTRĂ… LA TEZĂ INTRĂ!;ZERO. IAR ZERO;ȘI REZOLVAREA?;TEMA ERA PENTRU IERI;NIMENI NU PLEACĂ PÂNĂ NU REZOLVĂ;CORIGENȚĂ, MĂRUȚULE
+i1|Într-o zi, lumea a suferit o explozie atomică.
+i2|În spatele tuturor era răufăcătorul: profesorul de matematică… și armata lui de zombi.
+i3|De pe stația spațială a fost trimisă pe Pământ ultima speranță…
+i4|…un măr. Chiar cel care a căzut pe Newton. Învinge-l pe profesor.
+e1|MULȚUMIM CĂ AI JUCAT
+e2|ACUM EȘTI MATEMATICIAN
+e3|{0} corecte · {1} zombi · {2} realizări
+n_to|la puterea

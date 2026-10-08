@@ -305,3 +305,112 @@ cnoprob|Sie haben dich vor der ersten Aufgabe erwischt.
 cera|es war {0}
 cxera|✕ ES WAR {0}
 cescribo|ICH SCHREIBE {0}
+a_first|ERSTER SCHRITT
+ad_first|Löse deine erste Aufgabe
+a_st5|IM FLOW
+ad_st5|5 richtige hintereinander
+a_st10|UNAUFHALTSAM
+ad_st10|10 richtige hintereinander
+a_st25|STAHLHARTER VERSTAND
+ad_st25|25 richtige hintereinander
+a_k50|ZOMBIEJÄGER
+ad_k50|Erledige 50 Zombies
+a_k500|UMGEKEHRTE APOKALYPSE
+ad_k500|Erledige 500 Zombies
+a_boss|BOSSJÄGER
+ad_boss|Besiege einen Boss
+a_prof|MATHEMATIKER
+ad_prof|Besiege den Mathelehrer
+a_esc|ENTFESSLUNGSKÜNSTLER
+ad_esc|Befreie dich von einem Zombie, der dich gepackt hat
+a_web|KEINE NETZE MEHR
+ad_web|Entkomme dem Netz einer Spinne
+a_creep|ENTSCHÄRFER
+ad_creep|Erledige einen Creeper, bevor er explodiert
+a_ender|SCHAU MICH NICHT AN
+ad_ender|Erledige einen Enderman
+a_pow|REGENBOGEN
+ad_pow|Setze eine Kraft ein
+a_pow7|ALLE SIEBEN FARBEN
+ad_pow7|Setze alle 7 Kräfte ein
+a_fast|BLITZ
+ad_fast|Antworte richtig in unter 2 Sekunden
+a_perf|OHNE KRATZER
+ad_perf|Schaffe ein Level ohne Fehler
+a_lv8|HALBZEIT
+ad_lv8|Erreiche Level 8
+a_days7|AUSDAUER
+ad_days7|Spiele 7 Tage hintereinander
+a_hole|EREIGNISHORIZONT
+ad_hole|Lass das Schwarze Loch im Menü maximal wachsen
+a_egg|SCHAU IN DIE STERNE
+ad_egg|Entdecke das Sternbild eines Wissenschaftlers
+n_ach|ERFOLGE
+n_achGot|ERFOLG FREIGESCHALTET!
+n_achN|{0} VON {1}
+n_mat|RASTER
+n_cal|KALENDER
+n_a11y|BARRIEREFREI
+n_a11yOn|Barrierefreier Modus an. Das Spiel wird von deinem Screenreader vorgelesen und läuft langsamer. Antworte mit dem Ziffernblock unten.
+n_a11yOff|Barrierefreier Modus aus.
+n_a11yBtn|Screenreader-Modus einschalten
+n_sayProb|{0}. Antworte.
+n_ok|Richtig!
+n_bad|Falsch. Es war {0}.
+n_grab|{0} hat dich gepackt! Antworte schnell, um dich zu befreien.
+n_level|Level {0}: {1}.
+n_near|{0} in der Nähe, {1}.
+n_left|links
+n_right|rechts
+n_kinds|Zombie;Skelett;Spinne;Creeper;Enderman;Boss;Mathelehrer
+n_minus|minus
+n_dot|Komma
+n_hearts|Dir bleibt {0} Herz.
+n_skip|ÜBERSPRINGEN ▸
+n_intro|INTRO ANSEHEN
+n_powGot|KRAFT {0}!
+n_powUse|Tippe auf den farbigen Knopf oder die Leertaste, um sie einzusetzen.
+n_powBtn|Kraft einsetzen: {0}
+n_shield|SCHILD!
+n_dodge|ER HAT SICH TELEPORTIERT!
+n_frozen|EINGEFROREN!
+p_r|ROT · WUT
+pa_r|Riesenmeteorit für 12 s
+pd_r|Die Zombies rennen schneller
+p_o|ORANGE · SCHILD
+pa_o|Blockt den nächsten Treffer
+pd_o|Schwerere Aufgaben, bis er bricht
+p_y|GELB · BLITZ
+pa_y|Trifft alle Zombies auf einmal
+pd_y|10 s lang kommen doppelt so viele
+p_g|GRÜN · TIPP
+pa_g|Du siehst 20 s lang die erste Ziffer
+pd_g|Du kommst schwerer frei
+p_b|BLAU · EIS
+pa_b|Friert die Gegner 8 s lang ein
+pd_b|Eingefroren zerbricht der Meteorit sie nicht
+p_i|INDIGO · ZEITLUPE
+pa_i|Gegner 12 s lang halb so schnell
+pd_i|Du brauchst eine richtige Antwort mehr im Level
+p_v|VIOLETT · SCHWARZES LOCH
+pa_v|Verschluckt Gegner in der Nähe
+pd_v|Die Raumzeit verzerrt sich 10 s lang
+n_spider|<b>SPINNE</b> · schießt Netze: Sie fängt dich, und du musst eine Aufgabe lösen, um freizukommen.
+n_creeper|<b>CREEPER</b> · schleicht heran und explodiert: Spring weg oder erledige ihn vorher!
+n_ender|<b>ENDERMAN</b> · verfolgt dich nicht: Er taucht plötzlich auf, wo er nicht sollte.
+n_webbed|IM NETZ GEFANGEN!
+n_webSub|LÖSE, UM FREIZUKOMMEN
+n_fuse|Ein Creeper explodiert gleich, {0} von dir!
+n_boom|BUMM!
+n_boomT|BUMM! EIN CREEPER HAT DICH GESPRENGT
+n_prof|DER MATHELEHRER
+n_laugh|HA, HA, HA!
+n_profT|ZETTEL RAUS: ÜBERRASCHUNGSTEST!;DAS KOMMT NICHT DRAN… IN DER PRÜFUNG SCHON!;NULL. SCHON WIEDER NULL;UND DER RECHENWEG?;DIE HAUSAUFGABE WAR FÜR GESTERN;KEINER GEHT, BIS ES GELÖST IST;DURCHGEFALLEN, KLEINER APFEL
+i1|Eines Tages erlebte die Welt eine Atomexplosion.
+i2|Hinter allem steckte der Bösewicht: der Mathelehrer… und seine Zombiearmee.
+i3|Von der Raumstation schickte man die letzte Hoffnung zur Erde…
+i4|…einen Apfel. Denselben, der Newton auf den Kopf fiel. Besiege den Lehrer.
+e1|DANKE FÜRS SPIELEN
+e2|JETZT BIST DU MATHEMATIKER
+e3|{0} richtig · {1} Zombies · {2} Erfolge
+n_to|hoch

@@ -305,3 +305,112 @@ cnoprob|Kamu tertangkap sebelum soal pertama.
 cera|jawabannya {0}
 cxera|✕ JAWABANNYA {0}
 cescribo|TULIS {0}
+a_first|LANGKAH PERTAMA
+ad_first|Jawab benar soal pertamamu
+a_st5|LAGI PANAS
+ad_st5|5 benar berturut-turut
+a_st10|TAK TERHENTIKAN
+ad_st10|10 benar berturut-turut
+a_st25|OTAK BAJA
+ad_st25|25 benar berturut-turut
+a_k50|PEMBURU ZOMBI
+ad_k50|Kalahkan 50 zombi
+a_k500|KIAMAT TERBALIK
+ad_k500|Kalahkan 500 zombi
+a_boss|PEMBURU BOS
+ad_boss|Kalahkan seorang bos
+a_prof|MATEMATIKAWAN
+ad_prof|Kalahkan guru matematika
+a_esc|AHLI KABUR
+ad_esc|Lepaskan diri dari zombi yang menangkapmu
+a_web|BEBAS JARING
+ad_web|Kabur dari jaring laba-laba
+a_creep|PENJINAK BOM
+ad_creep|Kalahkan creeper sebelum meledak
+a_ender|JANGAN LIHAT AKU
+ad_ender|Kalahkan enderman
+a_pow|PELANGI
+ad_pow|Gunakan sebuah kekuatan
+a_pow7|TUJUH WARNA
+ad_pow7|Gunakan ketujuh kekuatan
+a_fast|KILAT
+ad_fast|Jawab benar dalam kurang dari 2 detik
+a_perf|TANPA GORESAN
+ad_perf|Lewati level tanpa salah
+a_lv8|SETENGAH JALAN
+ad_lv8|Capai level 8
+a_days7|KONSISTEN
+ad_days7|Main 7 hari berturut-turut
+a_hole|CAKRAWALA PERISTIWA
+ad_hole|Besarkan lubang hitam di menu sampai maksimal
+a_egg|LIHAT BINTANG
+ad_egg|Temukan rasi bintang seorang ilmuwan
+n_ach|PENCAPAIAN
+n_achGot|PENCAPAIAN TERBUKA!
+n_achN|{0} DARI {1}
+n_mat|KISI
+n_cal|KALENDER
+n_a11y|AKSESIBEL
+n_a11yOn|Mode aksesibel aktif. Game dibacakan oleh pembaca layarmu dan berjalan lebih lambat. Jawab dengan papan angka di bawah.
+n_a11yOff|Mode aksesibel nonaktif.
+n_a11yBtn|Aktifkan mode pembaca layar
+n_sayProb|{0}. Jawab.
+n_ok|Benar!
+n_bad|Salah. Jawabannya {0}.
+n_grab|{0} menangkapmu! Jawab cepat untuk lepas.
+n_level|Level {0}: {1}.
+n_near|{0} dekat, di {1}mu.
+n_left|kiri
+n_right|kanan
+n_kinds|zombi;kerangka;laba-laba;creeper;enderman;bos;guru matematika
+n_minus|minus
+n_dot|koma
+n_hearts|Nyawamu tinggal {0}.
+n_skip|LEWATI ▸
+n_intro|TONTON INTRO
+n_powGot|KEKUATAN {0}!
+n_powUse|Ketuk tombol berwarna atau spasi untuk memakainya.
+n_powBtn|Gunakan kekuatan: {0}
+n_shield|PERISAI!
+n_dodge|IA BERTELEPORTASI!
+n_frozen|BEKU!
+p_r|MERAH · AMARAH
+pa_r|Meteorit raksasa selama 12 dtk
+pd_r|Zombi berlari lebih cepat
+p_o|JINGGA · PERISAI
+pa_o|Menahan serangan berikutnya
+pd_o|Soal lebih sulit sampai perisai pecah
+p_y|KUNING · PETIR
+pa_y|Menyambar semua zombi
+pd_y|Datang dua kali lipat selama 10 dtk
+p_g|HIJAU · PETUNJUK
+pa_g|Kamu melihat angka pertama selama 20 dtk
+pd_g|Lebih sulit melepaskan diri
+p_b|BIRU · ES
+pa_b|Membekukan musuh selama 8 dtk
+pd_b|Saat beku, meteorit tak bisa menghancurkan mereka
+p_i|NILA · GERAK LAMBAT
+pa_i|Musuh bergerak setengah kecepatan selama 12 dtk
+pd_i|Butuh satu jawaban benar lagi di level ini
+p_v|UNGU · LUBANG HITAM
+pa_v|Menelan musuh di dekatmu
+pd_v|Ruang-waktu melengkung selama 10 dtk
+n_spider|<b>LABA-LABA</b> · menembakkan jaring: kamu terjebak dan harus menjawab soal untuk keluar.
+n_creeper|<b>CREEPER</b> · mendekat lalu meledak: lompat menjauh atau kalahkan lebih dulu!
+n_ender|<b>ENDERMAN</b> · tidak mengejarmu: tiba-tiba muncul di tempat yang tak semestinya.
+n_webbed|TERJEBAK DI JARING!
+n_webSub|JAWAB UNTUK KELUAR
+n_fuse|Creeper di {0}mu akan meledak!
+n_boom|BUM!
+n_boomT|BUM! KAMU DILEDAKKAN CREEPER
+n_prof|GURU MATEMATIKA
+n_laugh|HA, HA, HA!
+n_profT|KELUARKAN KERTAS: KUIS DADAKAN!;ITU TIDAK KELUAR… DI UJIAN KELUAR!;NOL. NOL LAGI;MANA CARANYA?;PR-NYA UNTUK KEMARIN;TAK ADA YANG PULANG SEBELUM SELESAI;TIDAK LULUS, APEL KECIL
+i1|Suatu hari, dunia dilanda ledakan atom.
+i2|Di balik semuanya ada penjahat: guru matematika… dan pasukan zombinya.
+i3|Dari stasiun luar angkasa, harapan terakhir dikirim ke Bumi…
+i4|…sebuah apel. Apel yang sama yang jatuh menimpa Newton. Kalahkan sang guru.
+e1|TERIMA KASIH SUDAH BERMAIN
+e2|SEKARANG KAMU MATEMATIKAWAN
+e3|{0} benar · {1} zombi · {2} pencapaian
+n_to|pangkat

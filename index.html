@@ -314,15 +314,68 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 #langGrid .lg.cur{background:var(--red);border-color:var(--red);color:#fff;box-shadow:3px 3px 0 var(--fg)}
 #langGrid .lg:hover,#langGrid .lg:focus-visible{background:var(--fg);color:var(--bg);outline:none}
 :root{--f-ui:'Silkscreen','Pixelify Sans','Noto Sans','Segoe UI','Microsoft YaHei','Malgun Gothic','Yu Gothic','Nirmala UI','Leelawadee UI',system-ui,sans-serif}
+/* lector de pantalla */
+.sr{position:fixed;left:0;top:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;padding:0;margin:-1px}
+#srOn:focus{clip-path:none;width:auto;height:auto;margin:0;z-index:60;left:8px;top:8px;padding:10px 14px;background:var(--fg);color:var(--bg);font:14px var(--f-ui)}
+body.a11y :focus-visible{outline:3px solid var(--red)!important;outline-offset:2px}
+/* poder del arcoíris */
+#bPow{--pc:#e0262b;border-color:var(--pc)!important;animation:powPulse 1s ease-in-out infinite;box-shadow:0 0 0 2px var(--pc),4px 4px 0 var(--line)}
+#bPow i{width:16px;height:16px;background:var(--pc);display:block}
+#bPow[hidden]{display:none}
+@keyframes powPulse{50%{transform:scale(1.1)}}
+/* telaraña: el aviso sin barra de tiempo */
+#alert.web .bar{display:none}#alert.web .big{color:var(--fg)}#alert.web{white-space:normal;width:min(92vw,560px)}#alert.web .big{font-size:clamp(22px,6.4vw,44px);line-height:1.1}
+/* logro desbloqueado */
+#achT{left:50%;top:calc(var(--st) + 56px);transform:translate(-50%,-20px);display:flex;align-items:center;gap:10px;padding:8px 14px 6px;background:var(--bg);border:2px solid var(--red);box-shadow:4px 4px 0 var(--fg);z-index:47;opacity:0;transition:opacity .3s,transform .3s;max-width:min(92vw,420px);box-sizing:border-box}
+#achT.on{opacity:1;transform:translate(-50%,0)}
+#achT img{width:36px;height:36px;image-rendering:pixelated;flex:none;background:color-mix(in srgb,var(--fg) 14%,transparent)}
+#achT div{display:flex;flex-direction:column;gap:2px;text-align:left;min-width:0}
+#achT b{font-size:11px;letter-spacing:.18em;color:var(--red)}#achT span{font-size:14px;letter-spacing:.06em;overflow-wrap:anywhere}
+/* pantalla de logros */
+#sAch{z-index:45}#sAch .card{width:min(560px,100%);background:var(--bg)}
+#achGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(140px,40vw),1fr));gap:8px;width:100%;max-height:min(58vh,520px);overflow-y:auto!important;touch-action:pan-y;padding:2px 4px 6px 2px;box-sizing:border-box;-webkit-overflow-scrolling:touch}
+.ach{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 6px;border:2px solid var(--line);text-align:center;min-width:0;opacity:.45;filter:grayscale(1)}
+.ach.got{opacity:1;filter:none;border-color:var(--red);box-shadow:3px 3px 0 var(--line)}
+.ach img{width:40px;height:40px;image-rendering:pixelated;background:color-mix(in srgb,var(--fg) 14%,transparent)}
+.ach b{font-size:11px;letter-spacing:.08em;line-height:1.25;overflow-wrap:anywhere}.ach span{font-size:10px;color:var(--mut);line-height:1.3;overflow-wrap:anywhere}
+/* matriz / calendario */
+.hmTabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%}
+.hmTab{font-size:11px;padding:6px 6px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hmTab.on{background:var(--fg);color:var(--bg)}
+.calH{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px;width:100%}
+.calH b{font-size:12px;letter-spacing:.08em;text-align:center;font-weight:400;text-transform:uppercase;overflow-wrap:anywhere}
+.calB{padding:4px 10px 2px;font-size:14px}.calB[disabled]{opacity:.3;pointer-events:none}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;width:100%}
+.cal .wd{font-size:10px;text-align:center;color:var(--mut);padding:2px 0;overflow:hidden;white-space:nowrap}
+.cal .cd{aspect-ratio:1.5;display:flex;flex-direction:column;align-items:center;justify-content:center;background:color-mix(in srgb,var(--fg) 8%,transparent);min-width:0;overflow:hidden}
+.cal.zh .cd{aspect-ratio:1.1}
+.cal .cd.e{background:transparent}
+.cal .cd b{font-size:10px;font-weight:400;line-height:1}.cal .cd small{font-size:7px;line-height:1.1;color:var(--mut);white-space:nowrap}
+.cal .cd.td{box-shadow:inset 0 0 0 2px var(--fg)}
+#sOver .cal .cd{background:transparent;box-shadow:inset 0 0 0 1px var(--fg)}#sOver .cal .cd.e{box-shadow:none}#sOver .cal .cd.td{box-shadow:inset 0 0 0 2px var(--red)}
+.cal .cd.h3 b,.cal .cd.h4 b,.cal .cd.h3 small,.cal .cd.h4 small{color:#fff}
+/* agujero negro que crece en el menú */
+#sTitle.bhg .card{overflow:visible!important}#sTitle.bhg #logo{position:relative;z-index:5}
+/* intro */
+#intro{position:fixed;inset:0;z-index:44;display:none;pointer-events:none}
+#intro.on{display:block}
+#introCap{position:absolute;left:var(--sl);right:var(--sr);bottom:calc(var(--sb) + 64px);text-align:center;font-size:clamp(15px,4.2vw,24px);line-height:1.45;letter-spacing:.06em;color:#fff;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;opacity:0}
+#introCap.on{animation:capIn 4s ease forwards}
+@keyframes capIn{0%{opacity:0;transform:translateY(8px)}10%{opacity:1;transform:none}88%{opacity:1}100%{opacity:0}}
+#bSkip{position:absolute;right:var(--sr);bottom:var(--sb);pointer-events:auto;background:var(--bg)}
+/* final */
+#sEnd .card{gap:14px}#sEnd .dead{font-size:clamp(28px,8.5vw,60px)}
+#sEnd.show .dead{animation:stamp .6s cubic-bezier(.2,1.6,.4,1) .5s both}
 </style>
 
+<button id="srOn" class="sr">Activar modo para lector de pantalla</button><div id="live" class="sr" role="alert" aria-live="assertive"></div><div id="live2" class="sr" role="status" aria-live="polite"></div>
 <div id="game">
-  <canvas id="c" width="960" height="540"></canvas>
-  <canvas id="crack"></canvas>
+  <canvas id="c" width="960" height="540" aria-hidden="true"></canvas>
+  <canvas id="crack" aria-hidden="true"></canvas>
   <div id="top" class="hud hidden">
     <div id="pStage" class="pill"><span id="hN">1</span><span id="hTopic">SUMA</span><span id="pips"></span></div>
     <div class="sp"></div>
-    <button class="rb" id="bClear" aria-label="Borrar lo dibujado">⌫</button>
+    <button class="rb" id="bPow" hidden aria-label="Poder"><i></i></button><button class="rb" id="bClear" aria-label="Borrar lo dibujado">⌫</button>
     <button class="rb" id="bPause" aria-label="Pausa y ajustes">❚❚</button>
   </div>
   <div id="exprw" class="hud hidden"><canvas id="exc" width="10" height="10"></canvas><div id="pre" hidden></div><div id="expr" hidden></div></div>
@@ -335,14 +388,14 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
   <div id="alert" class="hud"><div class="big" id="alBig">TE ATRAPÓ</div><div class="sub" id="alSub">RESUELVE ANTES DE QUE TE COMA</div><div class="bar"><i id="grabBar"></i></div></div>
 
   <div class="screen show" id="sTitle"><div class="card">
-    <canvas id="logo" width="64" height="64"></canvas>
+    <canvas id="logo" width="64" height="64" aria-hidden="true"></canvas>
     <h1 class="ttl">M<canvas id="logoA" width="40" height="40" role="img" aria-label="a"></canvas>TH <span class="z">SUCKS</span><small>DE 1 + 1 AL CÁLCULO</small></h1>
     <p class="lead">Dibuja el resultado donde quieras. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… los zombis se burlan. Y mucho.</p>
     <div class="heat" id="tHeat" hidden></div>
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
     <div class="mini" id="tStats"></div>
     <details class="prog"><summary>TU PROGRESO</summary></details>
-    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bLang1"></button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
+    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bLang1"></button><button class="chip" id="bAch1">★</button><button class="chip" id="bA11y1">♿</button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
     <div id="lKick"></div>
@@ -360,10 +413,14 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
   <div class="screen" id="sPause"><div class="card">
     <h2 class="ttl">PAUSA</h2>
     <div class="btns"><button class="btn" id="bResume">CONTINUAR</button></div>
-    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button><button class="chip" id="bLang2"></button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
+    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button><button class="chip" id="bLang2"></button><button class="chip" id="bAch2">★</button><button class="chip" id="bA11y2">♿</button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
     <button class="btn alt" id="bQuit">SALIR AL MENÚ</button>
     <div class="mini" id="credits">♪ FluidR3 GM (CC BY 3.0) · VCSL (CC0) · TR-808 M. Fischer</div>
   </div></div>
+  <div class="screen" id="sAch"><div class="card"><h2 class="ttl" id="achTtl">★</h2><div class="mini" id="achCnt"></div><div id="achGrid" role="list"></div><div class="btns"><button class="btn alt" id="bIntro">▶</button><button class="btn" id="bAchBack">← OK</button></div></div></div>
+  <div class="screen" id="sEnd"><div class="card"><div class="mini">e^iπ + 1 = 0</div><h2 class="ttl" id="eT1"></h2><h2 class="dead" id="eT2"></h2><div class="mini" id="eStats"></div><div class="btns"><button class="btn red" id="bEndInf">MODO ∞</button><button class="btn alt" id="bEndMenu">MENÚ</button></div></div></div>
+  <div id="intro"><div id="introCap" aria-hidden="true"></div><button class="chip" id="bSkip">SALTAR ▸</button></div>
+  <div id="achT" class="hud" aria-hidden="true"></div>
   <div class="screen" id="sLang"><div class="card"><h2 class="ttl" id="langTtl">🌐</h2><div id="langGrid"></div><button class="btn alt" id="bLangBack">← OK</button></div></div>
   <div class="screen" id="sOver"><div class="card">
     <h2 class="dead" id="oTtl">TE COMIERON</h2>
@@ -377,7 +434,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
     <i class="orn" aria-hidden="true"></i>
   </div></div>
 </div>
-<canvas id="pc"></canvas>
+<canvas id="pc" aria-hidden="true"></canvas>
 <div id="pick" aria-label="Elige el número que escribiste"></div>
 <button id="bHelp" class="chip" hidden>¿NO SABES? VER UN EJEMPLO</button>
 <div id="kp" aria-label="Teclado numérico">
@@ -1551,7 +1608,7 @@ function L10(k,v){
 const L10list=k=>L10(k).split(';').map(x=>x.trim()).filter(Boolean);
 
 // textos de contenido (lecciones, explicaciones, leyes, animaciones): CES = español; CT[idioma] = traducción
-const CES={"c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 16 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS","cnoprob":"Te atraparon antes del primer problema.","cera":"era {0}","cxera":"✕ ERA {0}","cescribo":"ESCRIBO {0}"};
+const CES={"c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 16 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS","cnoprob":"Te atraparon antes del primer problema.","cera":"era {0}","cxera":"✕ ERA {0}","cescribo":"ESCRIBO {0}","a_first":"PRIMER PASO","ad_first":"Acierta tu primer problema","a_st5":"EN RACHA","ad_st5":"5 aciertos seguidos","a_st10":"IMPARABLE","ad_st10":"10 aciertos seguidos","a_st25":"MENTE DE ACERO","ad_st25":"25 aciertos seguidos","a_k50":"CAZAZOMBIS","ad_k50":"Elimina 50 zombis","a_k500":"APOCALIPSIS AL REVÉS","ad_k500":"Elimina 500 zombis","a_boss":"CAZAJEFES","ad_boss":"Vence a un jefe","a_prof":"MATEMÁTICO","ad_prof":"Vence al profesor de matemáticas","a_esc":"ESCAPISTA","ad_esc":"Suéltate de un zombi que te atrapó","a_web":"SIN TELARAÑAS","ad_web":"Escapa de la telaraña de una araña","a_creep":"DESACTIVADOR","ad_creep":"Elimina un creeper antes de que explote","a_ender":"NO ME MIRES","ad_ender":"Elimina a un enderman","a_pow":"ARCOÍRIS","ad_pow":"Usa un poder","a_pow7":"LOS SIETE COLORES","ad_pow7":"Usa los 7 poderes","a_fast":"RELÁMPAGO","ad_fast":"Acierta en menos de 2 segundos","a_perf":"SIN UN RASGUÑO","ad_perf":"Pasa un nivel sin fallar","a_lv8":"MEDIO CAMINO","ad_lv8":"Llega al nivel 8","a_days7":"CONSTANCIA","ad_days7":"Juega 7 días seguidos","a_hole":"HORIZONTE DE SUCESOS","ad_hole":"Agranda el agujero negro del menú al máximo","a_egg":"MIRA LAS ESTRELLAS","ad_egg":"Descubre la constelación de un científico","n_ach":"LOGROS","n_achGot":"¡LOGRO DESBLOQUEADO!","n_achN":"{0} DE {1}","n_mat":"MATRIZ","n_cal":"CALENDARIO","n_a11y":"ACCESIBLE","n_a11yOn":"Modo accesible activado. El juego se narra con tu lector de pantalla y va más lento. Responde con el teclado numérico de abajo.","n_a11yOff":"Modo accesible desactivado.","n_a11yBtn":"Activar modo para lector de pantalla","n_sayProb":"{0}. Responde.","n_ok":"¡Correcto!","n_bad":"Fallaste. Era {0}.","n_grab":"¡Te atrapó {0}! Responde rápido para soltarte.","n_level":"Nivel {0}: {1}.","n_near":"{0} cerca, a tu {1}.","n_left":"izquierda","n_right":"derecha","n_kinds":"zombi;esqueleto;araña;creeper;enderman;jefe;profesor de matemáticas","n_minus":"menos","n_dot":"punto","n_hearts":"Te queda {0} corazón.","n_skip":"SALTAR ▸","n_intro":"VER INTRO","n_powGot":"¡PODER {0}!","n_powUse":"Toca el botón de color o la barra espaciadora para usarlo.","n_powBtn":"Usar poder: {0}","n_shield":"¡ESCUDO!","n_dodge":"¡SE TELETRANSPORTÓ!","n_frozen":"¡CONGELADO!","p_r":"ROJO · FURIA","pa_r":"Meteorito gigante por 12 s","pd_r":"Los zombis corren más rápido","p_o":"NARANJA · ESCUDO","pa_o":"Bloquea el próximo golpe","pd_o":"Problemas más difíciles hasta que se rompa","p_y":"AMARILLO · RAYO","pa_y":"Fulmina a todos los zombis","pd_y":"Llegan el doble durante 10 s","p_g":"VERDE · PISTA","pa_g":"Ves la primera cifra por 20 s","pd_g":"Te cuesta más soltarte","p_b":"AZUL · HIELO","pa_b":"Congela a los enemigos 8 s","pd_b":"Congelados, el meteorito no los rompe","p_i":"AÑIL · CÁMARA LENTA","pa_i":"Los enemigos van a media velocidad 12 s","pd_i":"Necesitas un acierto más en el nivel","p_v":"VIOLETA · AGUJERO NEGRO","pa_v":"Se traga a los enemigos cercanos","pd_v":"El espacio-tiempo se deforma 10 s","n_spider":"<b>ARAÑA</b> · lanza telaraña: te atrapa y tienes que resolver un problema para salir.","n_creeper":"<b>CREEPER</b> · se acerca y explota: ¡aléjate saltando o elimínalo antes!","n_ender":"<b>ENDERMAN</b> · no te persigue: aparece de repente donde menos debe.","n_webbed":"¡ATRAPADA EN LA TELARAÑA!","n_webSub":"RESUELVE PARA SALIR","n_fuse":"¡Un creeper va a explotar a tu {0}!","n_boom":"¡BUM!","n_boomT":"¡BUM! TE EXPLOTÓ UN CREEPER","n_prof":"EL PROFESOR DE MATEMÁTICAS","n_laugh":"¡JA, JA, JA!","n_profT":"¡SAQUEN UNA HOJA: EXAMEN SORPRESA!;ESO NO ENTRA… ¡EN EL EXAMEN SÍ!;CERO. OTRA VEZ CERO;¿Y EL PROCEDIMIENTO?;LA TAREA ERA PARA AYER;NADIE SALE HASTA QUE RESUELVA;REPROBADA, MANZANITA","i1":"Un día, el mundo sufrió una explosión atómica.","i2":"Detrás de todo estaba el villano: el profesor de matemáticas… y su ejército de zombis.","i3":"Desde la estación espacial enviaron a la Tierra la última esperanza…","i4":"…una manzana. La misma que le cayó a Newton. Vence al profesor.","e1":"GRACIAS POR JUGAR","e2":"AHORA ERES MATEMÁTICO","e3":"{0} aciertos · {1} zombis · {2} logros","n_to":"elevado a"};
 const CT={};
 // las traducciones del contenido se descargan solo para el idioma elegido (i18n/xx.json)
 async function loadCT(l){if(l.startsWith('es')||CT[l])return false;for(const b of['i18n/','web/i18n/']){try{const r=await fetch(b+l+'.json');if(r.ok){CT[l]=await r.json();return true}}catch(e){}}return false}
@@ -4311,6 +4368,7 @@ function applyLang(){
   $('#langTtl').textContent='🌐 '+L10('lang');
   const ex=$('#exAgain');if(ex)ex.textContent=L10('replay');
   $('#pick').setAttribute('aria-label',L10('which'));
+  if(typeof kpLabels==='function')kpLabels();
 }
 function buildLangGrid(){
   const g=$('#langGrid');g.innerHTML=LANGS.map(l=>`<button class="chip lg${l.c===LANG?' cur':''}" data-l="${l.c}" lang="${l.c}">${flagImg(l)}<span>${l.n}</span></button>`).join('');
@@ -5071,7 +5129,8 @@ ukulele:{name:'UKELELE POP',bpm:[100,116],swing:0,div:4,kit:'kit',sets:['kit','n
 const GENRES2=Object.keys(G2);
 let LASTG2='';
 function newGroove2(boss){
-  if(boss)return newScore(pick(['sym5','moon3']),true);
+  if(boss)return newScore(S.topic&&S.topic.final?'toccata':plNext('boss'),true);
+  if(boss!==null)return newScore(plNext('game'),false);
   let id;do{id=pick(GENRES2)}while(id===LASTG2&&GENRES2.length>1);LASTG2=id;
   const d=G2[id],prog=pick(d.progs).map(chd);
   return{kind:'genre',genre:id,def:d,bpm:ri(d.bpm[0],d.bpm[1]),swing:d.swing,div:d.div,len:16,prog,sets:d.sets,motif:newMotif(),
@@ -5121,10 +5180,93 @@ moon3:()=>{const bars=[['C#3','E3','G#3'],['C#3','E3','G#3'],['B#2','D#3','F#3',
 };
 const SCSETS={sym40:['violin','strings','cello','contrabass'],turca:['piano','kit'],sym5:['strings','cello','violin','contrabass','timpani','kit'],moon3:['piano','strings','timpani','contrabass','kit']};
 const SCNAME={sym40:'MOZART · SINFONÍA N.º 40',turca:'MOZART · RONDO ALLA TURCA',sym5:'BEETHOVEN · SINFONÍA N.º 5',moon3:'BEETHOVEN · CLARO DE LUNA'};
+/* ---------- más clásica: Mozart, Beethoven, Pachelbel, Grieg y Bach ---------- */
+// Pequeña serenata nocturna, K. 525 (Mozart)
+SCORES.nacht=()=>{const m=mel('G4/1 r/.5 D4/.5 G4/1 r/.5 D4/.5 G4/.5 D4/.5 G4/.5 B4/.5 D5/1 r/1 C5/1 r/.5 A4/.5 C5/1 r/.5 A4/.5 C5/.5 A4/.5 F#4/.5 A4/.5 D4/1 r/1 '+
+    'G5/.75 F#5/.25 E5/.75 D5/.25 D5/.75 C5/.25 B4/.75 A4/.25 G4/.5 B4/.5 A4/.5 C5/.5 B4/.5 D5/.5 C5/.5 A4/.5 B4/.5 G4/.5 A4/.5 F#4/.5 G4/1 D4/1 G4/2 r/2'),
+    bars=['G','G','D','D','G','D','G','G'];
+  const vi=[],lo=[];bars.forEach((n,i)=>{const ch=chd(n),v=voice(ch,64,3);for(let e=0;e<8;e++)vi.push({b:i*4+e*.5,ms:v,d:.35,v:e%2?.35:.45});lo.push({b:i*4,ms:[ch.r-12],d:.9,v:.7},{b:i*4+1,ms:[ch.r],d:.9,v:.5},{b:i*4+2,ms:[ch.r-12],d:.9,v:.65},{b:i*4+3,ms:[ch.r],d:.9,v:.5})});
+  return{bpm:138,len:32,roots:bars.map(n=>chd(n).r),tracks:[{inst:'violin',ev:m,v:.8,leg:.85,att:.015},{inst:'strings',ev:vi,v:1,leg:1},{inst:'cello',ev:lo,v:1,leg:.9}]}};
+// Para Elisa (Beethoven): 3/8, la corchea es el pulso
+SCORES.elise=()=>{const A='E5/.5 D#5/.5 E5/.5 B4/.5 D5/.5 C5/.5 A4/1 r/.5 C4/.5 E4/.5 A4/.5 B4/1 r/.5 E4/.5 G#4/.5 B4/.5 C5/1 r/.5 E4/.5 E5/.5 D#5/.5 '+
+    'E5/.5 D#5/.5 E5/.5 B4/.5 D5/.5 C5/.5 A4/1 r/.5 C4/.5 E4/.5 A4/.5 B4/1 r/.5 E4/.5 C5/.5 B4/.5 ';
+  const m=mel('r/2 E5/.5 D#5/.5 '+A+'A4/1 r/.5 B4/.5 C5/.5 D5/.5 E5/1.5 G4/.5 F5/.5 E5/.5 D5/1.5 F4/.5 E5/.5 D5/.5 C5/1.5 E4/.5 D5/.5 C5/.5 B4/1 r/.5 E4/.5 E5/.5 r/.5 r/1 E5/.5 D#5/.5 E5/.5 D#5/.5 '+A+'A4/2 r/1');
+  const lhB={Am:['A2','E3','A3'],E:['E2','E3','G#3'],C:['C3','G3','C4'],G:['G2','D3','G3']},bars=['','','Am','E','Am','','Am','E','Am','C','G','Am','E','','','Am','E','Am','','Am','E','Am'];
+  const lh=[];bars.forEach((n,i)=>{if(!n)return;lhB[n].forEach((x,j)=>lh.push({b:i*3+j*.5,ms:[nm(x)],d:1.2-j*.3,v:.55}))});
+  const rt={Am:45,E:52,C:48,G:55,'':45};
+  return{bpm:168,meter:3,len:66,roots:bars.map(n=>rt[n]),tracks:[{inst:'piano',ev:m,v:.85,leg:1},{inst:'piano',ev:lh,v:.7,leg:1},{inst:'strings',ev:bars.map((n,i)=>n?{b:i*3,ms:lhB[n].map(nm).map(x=>x+12),d:2.8,v:.25}:null).filter(Boolean),v:1,leg:1,att:.3}]}};
+// Himno de la alegría, Sinfonía n.º 9 (Beethoven)
+SCORES.ode=()=>{const a='F#4/1 F#4/1 G4/1 A4/1 A4/1 G4/1 F#4/1 E4/1 D4/1 D4/1 E4/1 F#4/1 ',m=mel(a+'F#4/1.5 E4/.5 E4/2 '+a+'E4/1.5 D4/.5 D4/2 E4/1 E4/1 F#4/1 D4/1 E4/1 F#4/.5 G4/.5 F#4/1 D4/1 E4/1 F#4/.5 G4/.5 F#4/1 E4/1 D4/1 E4/1 A3/2 '+a+'E4/1.5 D4/.5 D4/2'),
+    bars=['D','A','D','A','D','A','D','D','A','D','A','A','D','A','D','D'];
+  const st=[],lo=[];bars.forEach((n,i)=>{const ch=chd(n);st.push({b:i*4,ms:voice(ch,62,3),d:3.9,v:.4});lo.push({b:i*4,ms:[ch.r-12],d:1.8,v:.7},{b:i*4+2,ms:[ch.r-12],d:1.8,v:.6})});
+  return{bpm:118,len:64,roots:bars.map(n=>chd(n).r),tracks:[{inst:'violin',ev:m,v:.8,leg:.95,oct:12,att:.03},{inst:'strings',ev:m,v:.5,leg:.95},{inst:'strings',ev:st,v:1,leg:1,att:.2},{inst:'contrabass',ev:lo,v:1,leg:1}]}};
+// Canon en re (Pachelbel): cada vuelta suma una voz, igual que el original
+SCORES.canon=()=>{const bass=['D3','A2','B2','F#2','G2','D2','G2','A2'].map(nm),ch=['D','A','Bm','F#m','G','D','G','A'];
+  const v1=mel('F#5/2 E5/2 D5/2 C#5/2 B4/2 A4/2 B4/2 C#5/2 D5/2 C#5/2 B4/2 A4/2 G4/2 F#4/2 G4/2 E4/2 D4/1 F#4/1 A4/1 G4/1 F#4/1 D4/1 F#4/1 E4/1 D4/1 B3/1 D4/1 A4/1 G4/1 B4/1 A4/1 G4/1 '+
+    'F#4/.5 D4/.5 E4/.5 C#5/.5 D5/.5 D4/.5 C#4/.5 A4/.5 B4/.5 D4/.5 A3/.5 F#4/.5 G4/.5 E4/.5 F#4/.5 D4/.5 G4/.5 B3/.5 D4/.5 G4/.5 F#4/.5 D4/.5 E4/.5 C#4/.5 D4/.5 B4/.5 A4/.5 G4/.5 A4/.5 F#4/.5 E4/.5 C#4/.5');
+  const lo=[];for(let r=0;r<4;r++)bass.forEach((n,i)=>lo.push({b:r*16+i*2,ms:[n],d:1.9,v:.7}));
+  const pad=[];for(let r=0;r<4;r++)ch.forEach((n,i)=>pad.push({b:r*16+i*2,ms:voice(chd(n),60,3),d:1.9,v:.28}));
+  return{bpm:84,len:64,roots:[0,1,2,3].flatMap(()=>[0,2,4,6].map(i=>chd(ch[i]).r)),tracks:[{inst:'violin',ev:v1,v:.75,leg:.95,att:.04},{inst:'violin',ev:v1.map(e=>({b:e.b+8,ms:e.ms,d:e.d,v:.8})).filter(e=>e.b<64),v:.55,leg:.95,att:.04,oct:-12},{inst:'cello',ev:lo,v:1,leg:1},{inst:'strings',ev:pad,v:1,leg:1,att:.25}]}};
+// En la gruta del rey de la montaña (Grieg): cada vuelta más rápida
+SCORES.mountain=()=>{const a='B3/.5 C#4/.5 D4/.5 E4/.5 F#4/.5 D4/.5 F#4/1 F4/.5 C#4/.5 F4/1 E4/.5 C4/.5 E4/1 ',b='B3/.5 C#4/.5 D4/.5 E4/.5 F#4/.5 D4/.5 F#4/.5 B4/.5 A4/.5 F#4/.5 D4/.5 F#4/.5 A4/2 ';
+  const m=mel(a+b+a+b+'F#4/.5 G#4/.5 A#4/.5 B4/.5 C#5/.5 A#4/.5 C#5/1 D5/.5 A#4/.5 D5/1 C#5/.5 A#4/.5 C#5/1 F#4/.5 G#4/.5 A#4/.5 B4/.5 C#5/.5 A#4/.5 C#5/.5 F#5/.5 E5/.5 C#5/.5 A#4/.5 C#5/.5 E5/2');
+  const lo=[];for(let i=0;i<48;i++)lo.push({b:i,ms:[i<32?(i%2?nm('F#2'):nm('B2')):(i%2?nm('C#3'):nm('F#2'))],d:.3,v:i%2?.55:.75});
+  return{bpm:112,len:48,accel:.14,roots:[47,47,47,47,47,47,47,47,42,42,42,42],tracks:[{inst:'cello',ev:m,v:.85,leg:.55},{inst:'strings',ev:m,v:.5,leg:.5,oct:12},{inst:'contrabass',ev:lo,v:1,leg:.6}]}};
+// Tocata y fuga en re menor, BWV 565 (Bach)
+SCORES.toccata=()=>{const ph=o=>`A${o}/.25 G${o}/.25 A${o}/1.75 r/.5 G${o}/.25 F${o}/.25 E${o}/.25 D${o}/.25 C#${o}/.75 D${o}/2.25 r/1.25 `,
+    m=mel(ph(5)+ph(4)+ph(3)+'D2/1 [C#3,E3,G3]/1 [C#3,E3,G3,Bb3]/1 [C#3,E3,G3,Bb3,C#4]/1 [C#3,E3,G3,Bb3,C#4,E4]/2 [D3,F3,A3,D4]/2');
+  const ped=[{b:24,ms:[nm('D2')],d:8,v:.8}];
+  return{bpm:76,len:32,roots:[50,50,50,50,50,50,50,50],tracks:[{inst:'brass',ev:m,v:.6,leg:1,att:.02},{inst:'strings',ev:m,v:.9,leg:1,att:.02},{inst:'strings',ev:m,v:.5,leg:1,oct:-12},{inst:'contrabass',ev:ped,v:1,leg:1}],
+    perc:[{b:0,p:'gong',v:.4},{b:24,p:'clash',v:.6},{b:28,p:'gong',v:.6}]}};
+Object.assign(SCSETS,{nacht:['violin','strings','cello'],elise:['piano','strings'],ode:['violin','strings','contrabass'],canon:['violin','cello','strings'],mountain:['cello','strings','contrabass'],toccata:['brass','strings','contrabass']});
+Object.assign(SCNAME,{nacht:'MOZART · PEQUEÑA SERENATA NOCTURNA',elise:'BEETHOVEN · PARA ELISA',ode:'BEETHOVEN · HIMNO DE LA ALEGRÍA',canon:'PACHELBEL · CANON EN RE',mountain:'GRIEG · EN LA GRUTA DEL REY DE LA MONTAÑA',toccata:'BACH · TOCATA Y FUGA EN RE MENOR'});
+// raíz (midi) de cada compás de las partituras de antes, para el bajo y los «braaam»
+const SCROOTS={sym40:['Gm','Gm','Gm','Cm','D7','D7','D7','Gm','Gm','Gm','Gm','Cm','D7','D7','D7','Gm'],turca:['Am','Am','Am','Am','Em','Em','B7','Em','Am','Am','Am','Am','E7','Dm','E7','Am'],
+  sym5:['Cm','Cm','Cm','Cm','Cm','D','D','Cm','Cm','G','Cm','Cm'],moon3:['C#m','C#m','G#','G#','C#m','A','D','G#']};
+const SCMETER={turca:2};
+/* ---------- arreglo «cinematográfico»: cada vuelta suma capas (Payday, Transformers, Call of Duty, Zack Snyder) ---------- */
+// partes: [pieza, patrón (16 pasos = compás de 4; 12 = compás de 3), kit]
+const STY={
+  epic:{name:'ÉPICO',low:'bdorch',ost:'str',braam:1,d:[['bdorch','X.......X.....x.','X.....X.....'],['tomLo','...x..x....x.xx.','..x..x..x.xx'],['tomHi','........x.......','......x.....'],['snare','....x.......x...','......x.....']]},
+  heist:{name:'ATRACO',low:'kick',ost:'bass',kit:'kit808',d:[['kick','X...X...X...X...','X...X...X...'],['clap','....X.......X...','......X.....'],['ohat','..x...x...x...x.','..x...x...x.'],['shaker','gggggggggggggggg','gggggggggggg']]},
+  war:{name:'BÉLICO',low:'bdorch',ost:'cello',braam:1,d:[['snare','x.ggx.x.x.ggx.xx','x.ggx.x.x.gg'],['bdorch','X.......X.......','X.....X.....'],['tomLo','....x.......x...','...x.....x..'],['roll','..............g.','..........g.']]},
+  rock:{name:'ROCK',low:'kick',ost:'gtr',d:[['kick','X.....X.X.......','X.....X.x...'],['snare','....X.......X...','......X.....'],['hat','x.x.x.x.x.x.x.x.','x.x.x.x.x.x.'],['tomLo','..............x.','..........x.']]},
+};
+const STYFOR={sym40:['epic','heist'],turca:['war','heist'],nacht:['rock','heist'],elise:['heist','epic'],ode:['war','rock','epic'],canon:['epic','heist'],mountain:['epic','rock'],toccata:['epic','rock'],sym5:['epic','war'],moon3:['rock','epic']};
+const STYSETS={epic:['brass','strings'],heist:['kit808','synbass','synth'],war:['cello','brass'],rock:['drive']};
+const PLIST={menu:['sym40','turca','nacht','elise','ode','canon'],game:['sym40','turca','nacht','elise','ode','canon','mountain','moon3'],boss:['sym5','moon3','mountain','toccata']};
+const PLQ={};
+function plNext(kind,not){let q=PLQ[kind];if(!q||!q.length){q=PLQ[kind]=[...PLIST[kind]].sort(()=>R()-.5)}let i=q.findIndex(x=>x!==not);if(i<0)i=0;return q.splice(i,1)[0]}
+// braaam: metales graves + tres sierras desafinadas por un filtro que se abre y se cierra
+function braam(t,root,dur){const d=MUS.bus;if(!d)return;sNote('brass',root-12,dur,1,pan('brass'),{att:.12,rel:.6});sNote('brass',root-5,dur,.8,pan('brass'),{att:.12,rel:.6});
+  const f=440*Math.pow(2,(root-24-69)/12),lp=AC.createBiquadFilter(),g=AC.createGain();lp.type='lowpass';lp.Q.value=6;lp.frequency.setValueAtTime(120,t);lp.frequency.exponentialRampToValueAtTime(1400,t+dur*.25);lp.frequency.exponentialRampToValueAtTime(160,t+dur);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.08);g.gain.exponentialRampToValueAtTime(.0001,t+dur);lp.connect(g).connect(d);
+  for(const c of[-9,0,7]){const o=AC.createOscillator();o.type='sawtooth';o.frequency.value=f;o.detune.value=c;o.connect(lp);o.start(t);o.stop(t+dur+.05)}
+  const s=AC.createOscillator(),sg=AC.createGain();s.type='sine';s.frequency.setValueAtTime(f,t);s.frequency.exponentialRampToValueAtTime(f*.7,t+dur);sg.gain.setValueAtTime(.3,t);sg.gain.exponentialRampToValueAtTime(.0001,t+dur);s.connect(sg).connect(d);s.start(t);s.stop(t+dur+.05)}
+// ostinatos: cuerdas en semicorcheas (Zimmer), bajo sintético (Payday), chelos en corcheas (CoD), guitarra con distorsión (Transformers)
+function ostinato(kind,t,pos,root,sd,lv){const r=root<52?root+12:root;
+  if(kind==='str'){const n=[r,r,r+7,r][pos%4];sNote('strings',t,n,sd*.8,(pos%4===0?.75:.5)*lv,pan('strings'),{att:.005,rel:.06})||sNote('cello',t,n-12,sd*.8,.6*lv,pan('cello'),{rel:.06})}
+  else if(kind==='bass'){if(pos%2)return;const n=(pos%8===6?r:r-12);sNote('synbass',t,n,sd*1.6,.85*lv,MUS.bus,{rel:.05})||bass(t,n,sd*1.6,.7*lv,MUS.bus)}
+  else if(kind==='cello'){if(pos%2)return;sNote('cello',t,(pos%4?r:r-12),sd*1.7,.7*lv,pan('cello'),{att:.01,rel:.08})}
+  else if(kind==='gtr'){if(pos%2)return;for(const n of[r-12,r-5,r])sNote('drive',t,n,sd*(pos%8===0?3:1.3),.5*lv,pan('drive'),{rel:.05})}}
+function scoreArr(g,k,t,sd,spb){
+  const rep=Math.floor(MUS.step/(g.len*4)),bs=(g.meter||4)*4,pos=k%bs,bar=Math.floor(k/bs),nb=Math.floor(g.len*4/bs),phr=bar%4,st=STY[g.style];if(!st)return;
+  const kit=n=>st.kit&&SND.sets[st.kit]&&SND.sets[st.kit].hits[n]?st.kit:'kit',root=g.roots?g.roots[bar%g.roots.length]:null,lv=rep>=3?1:rep===2?.9:.62,ten=MUS.tension||0,boss=g.boss;
+  if(rep===0&&!boss&&!ten){if(pos===0)dr(kit(st.low),st.low,t,.42);if(pos%4===2&&bar%2)dr('kit','shaker',t,.18);return}
+  for(const[p,a,b]of st.d){const s=bs===12?b:a,v=PV[s[pos%s.length]]||0;if(v)dr(kit(p),p,t,v*lv)}
+  if(root!=null&&st.ost)ostinato(st.ost,t,pos,root,sd,lv);
+  if(rep>=2||boss){if(pos===0&&phr===0){dr('kit','crash',t,.55);if(st.braam&&root!=null&&SND.sets.brass)braam(t,root,spb*(g.meter||4)*1.6)}
+    if(phr===3&&pos>=bs-4)dr('kit',pos<bs-2?'tomHi':'tomLo',t,.55+(pos-bs+4)*.1)}
+  if(rep>=3&&pos%2===1)dr('kit','hat',t,.22);
+  if(rep+1>=g.reps&&bar===nb-1&&pos===0&&NB)riser(t,sd*bs);
+}
+
 function newScore(id,boss){
   const sc=SCORES[id](),q={};const put=(b,x)=>{const k=Math.round(b*4);(q[k]=q[k]||[]).push(x)};
   sc.tracks.forEach(tr=>tr.ev.forEach(e=>put(e.b,{tr,e})));(sc.perc||[]).forEach(p=>put(p.b,{p}));
-  return{kind:'score',id,boss,genre:id,name:SCNAME[id],bpm:sc.bpm,len:sc.len,q,sets:SCSETS[id],div:4};
+  const ro=sc.roots||(SCROOTS[id]||[]).map(n=>chd(n).r),style=pick(STYFOR[id]||['epic']);
+  return{kind:'score',id,boss,genre:id,name:SCNAME[id],bpm:sc.bpm,len:sc.len,q,sets:[...new Set([...SCSETS[id],'kit'])],opt:[...STYSETS[style],'brass','glock','xylo'],div:4,
+    roots:ro.length?ro:null,meter:sc.meter||SCMETER[id]||4,style,reps:4,accel:sc.accel||0,mel:sc.tracks[0],dbl:style==='rock'?'drive':'brass',hi:pick(['glock','xylo'])};
 }
 
 /* ---------- reproductor ---------- */
@@ -5173,18 +5315,25 @@ function genrePump(){
     MUS.step++;MUS.nextT+=sd;if(MUS.step%16===0)MUS.bar++;
   }
 }
+// al terminar las vueltas de una obra no se repite: entra la siguiente de la lista
+function scoreNext(g){const kind=MUS.kind==='menu'||MUS.kind==='end'||MUS.kind==='intro'?'menu':g.boss?'boss':'game';
+  if(!g.nx)g.nx=newScore(plNext(kind,g.id),g.boss);const nx=g.nx;if(nx.sets.every(n=>SND.sets[n]))return nx;nx.sets.forEach(sLoad);return null}
 function scorePump(){
   if(!MUS.on||!AC||!MUS.bus||!MUS.groove||MUS.groove.kind!=='score')return;
-  const g=MUS.groove,ten=MUS.tension,dz=MUS.danger||0,spb=60/(g.bpm*(1+ten*.25)),sd=spb/4,L=g.len*4;
+  let g=MUS.groove;
   while(MUS.nextT<AC.currentTime+.15){
-    const k=MUS.step%L,t=MUS.nextT;
+    const L=g.len*4;
+    if(MUS.step>0&&MUS.step%L===0&&Math.floor(MUS.step/L)>=g.reps){const nx=scoreNext(g);if(nx){MUS.groove=g=nx;MUS.step=0;MUS.bar=0;(g.opt||[]).forEach(sLoad);continue}g.reps++}
+    const rep=Math.floor(MUS.step/L),ten=MUS.tension,dz=MUS.danger||0,spb=60/(g.bpm*(1+ten*.25)*(1+(g.accel||.03)*Math.min(rep,4))),sd=spb/4,k=MUS.step%L,t=MUS.nextT;
     for(const x of g.q[k]||[]){
       if(x.p){dr('kit',x.p,t,x.v);continue}
-      const tr=x.tr,e=x.e,dur=e.d*spb*(tr.leg||.9);
-      for(const m of e.ms)sNote(tr.inst,t+(R()-.5)*.006,m+(tr.oct||0),dur,(e.v==null?1:e.v)*tr.v*(.94+R()*.1),pan(tr.inst),{att:tr.att||.006,rel:.25})}
-    // jefe: cuanto más cerca el peligro, más pulso de timbal y bombo
-    if(g.boss&&(dz>.55||ten>0)&&k%8===0)sNote('timpani',t,k%16===0?nm('C2'):nm('G2'),sd*3,.35+dz*.4,pan('timpani'));
-    if(g.boss&&ten>.4&&k%4===0)dr('kit','bdorch',t,.3+ten*.4);
+      const tr=x.tr,e=x.e,dur=e.d*spb*(tr.leg||.9),vv=(e.v==null?1:e.v)*tr.v;
+      for(const m of e.ms){const mm=m+(tr.oct||0);sNote(tr.inst,t+(R()-.5)*.006,mm,dur,vv*(.94+R()*.1),pan(tr.inst),{att:tr.att||.006,rel:.25});
+        if(tr===g.mel){if(rep>=2&&g.dbl)sNote(g.dbl,t,mm-12,dur,.5*vv,pan(g.dbl),{att:.02,rel:.3});if(rep>=3&&g.hi)sNote(g.hi,t,mm+12,Math.min(dur,.6),.35*vv,pan(g.hi),{rel:.3})}}}
+    try{scoreArr(g,k,t,sd,spb)}catch(e){}
+    // peligro: cuanto más cerca, más pulso de timbal y bombo
+    if((g.boss||ten>0)&&(dz>.55||ten>0)&&k%8===0)sNote('timpani',t,k%16===0?nm('C2'):nm('G2'),sd*3,.35+dz*.4,pan('timpani'));
+    if(ten>.4&&k%4===0)dr('kit','bdorch',t,.3+ten*.4);
     MUS.step++;MUS.nextT+=sd;if(MUS.step%16===0)MUS.bar++;
   }
 }
@@ -5193,9 +5342,9 @@ let MUSREQ=0;
 function musicWant(kind){
   if(!ac())return;
   const id=++MUSREQ;MUS.pend=kind;
-  const g=kind==='menu'?newScore(pick(['sym40','turca']),false):(MUS.groove&&MUS.groove.kind?MUS.groove:(MUS.groove=newGroove2(!!S.topic.boss)));
+  const g=kind==='menu'?newScore(plNext('menu'),false):kind==='intro'?newScore('toccata',false):kind==='end'?newScore('ode',false):(MUS.groove&&MUS.groove.kind?MUS.groove:(MUS.groove=newGroove2(!!S.topic.boss)));
   const go=()=>{if(id!==MUSREQ||MUS.on||MUS.pend!==kind)return;MUS.kind=kind;MUS.pend=null;
-    if(g.sets.every(n=>SND.sets[n]))musicStart2(g);else if(kind!=='menu'){MUS.groove=oldGroove(!!S.topic.boss);oldMusicStart(!!S.topic.boss)}};
+    if(g.sets.every(n=>SND.sets[n])){musicStart2(g);(g.opt||[]).forEach(sLoad)}else if(kind!=='menu'){MUS.groove=oldGroove(!!S.topic.boss);oldMusicStart(!!S.topic.boss)}};
   Promise.all(g.sets.map(sLoad)).then(go);
 }
 // efectos con muestras reales cuando ya están cargadas
@@ -5564,7 +5713,7 @@ function persist(){try{localStorage.setItem(SAVEK,JSON.stringify(SAVE))}catch(e)
 const skill=id=>SAVE.sk[id]==null?.15:SAVE.sk[id];
 // presión: sube con cada muerte y con el tiempo jugado (0 → 1)
 const hard=()=>clamp((SAVE.deaths||0)*.04+(SAVE.playT||0)/60*.01,0,1);
-const dOf=id=>Math.min(1,(S.stage>16?Math.max(.7,skill(id)):skill(id))+.35*hard());
+const dOf=id=>Math.min(1,(S.stage>16?Math.max(.7,skill(id)):skill(id))+.35*hard()+(S.dBoost||0));
 const S={mode:'title',stage:1,topic:TOPICS[0],d:.15,ok:0,quota:5,boss:null,
   a:{x:0,y:0,vy:0,st:'rest',from:0,to:0,t:0,T:1,peak:0,v0:0,sg:1,ok:true,f:0},
   cam:0,u:21,uT:21,uPrev:21,zombies:[],spawnT:4,prob:null,lay:null,input:'',thinkT:0,
@@ -5576,10 +5725,11 @@ const scx=x=>X0+(x-S.cam)*S.u;
 const fitU=d=>clamp(W*.36/Math.max(d,4),.08,40);
 // tiempo para soltarse: base generosa que baja con el nivel, + ~0,9 s por cada carácter extra de la respuesta (escribir "-12.5" lleva más que "7")
 const ansLen=()=>{const p=S.prob;return p?String((p.keys||[p.key])[0]||'').length||1:1};
-const grabTime=()=>(Math.max(3.8,(8.2-Math.min(S.stage,16)*.16-S.d*.8)*(1-.22*hard()))+(ansLen()-1)*.9)*(S.grab&&S.grab.need>1?1.35:1);
-const maxLive=()=>Math.min(6,1+Math.ceil(S.stage/2.5))+(S.stage>16?1:0)+Math.round(2*hard());
-const spawnInt=()=>Math.max(1.4,(5.6-S.stage*.2-S.d)*(1-.35*hard()));
-const zSpd=()=>(8+Math.min(16,S.stage*1.1)+S.d*5)*(1+.45*hard());
+const grabTime=()=>(Math.max(3.8,(8.2-Math.min(S.stage,16)*.16-S.d*.8)*(1-.22*hard()))+(ansLen()-1)*.9)*(S.grab&&S.grab.need>1?1.35:1)*(A11Y?1.8:1)*(powOn('g')?.7:1);
+const maxLive=()=>Math.min(7,1+Math.ceil(S.stage/2.3))+(S.stage>16?1:0)+Math.round(2*hard())+(powOn('y')?2:0);
+const spawnInt=()=>Math.max(1.2,(5.4-S.stage*.22-S.d)*(1-.35*hard()))*(A11Y?1.4:1)*(powOn('y')?.5:1);
+const zSpd=()=>(8+Math.min(16,S.stage*1.1)+S.d*5)*(1+.45*hard())*(A11Y?.6:1)*(powOn('r')?1.35:1);
+const ERx=()=>ER*(powOn('r')?2.5:1);
 const alive=z=>!z.dead;
 const ER=46;
 const topicFor=n=>n<=TOPICS.length?TOPICS[n-1]:pick(TOPICS);
@@ -5589,6 +5739,8 @@ function nodesStr(ns){return(ns||[]).map(n=>typeof n==='string'?n:n.t==='s'?n.v:
 
 /* ============ Flujo ============ */
 function newGame(n){
+  if(n===1&&!SAVE.introSeen&&freshSave()&&S.mode!=='intro'){ac();startIntro();return}
+  S.pow=null;S.powA=null;S.shield=false;S.dBoost=0;S.web=null;updPowBtn();
   if(window.rzTrack)rzTrack('play');ac();crackHide();S.stains=[];S.stage=n;S.run=newRun(n);
   Object.assign(S,{parts:[],texts:[],fx:[],shake:0,flash:0,fade:1,input:'',eatT:0,lastChomp:0});
   startStage();
@@ -5599,6 +5751,7 @@ function startStage(){
   SAVE.best=Math.max(SAVE.best,Math.min(S.stage,16));persist();
   S.zombies=[];S.stains=[];S.boss=null;S.trail=[];S.grab=null;S.bubbles=[];S.prob=null;S.lay=null;S.input='';S.rings=[];S.shards=[];renderInput();padClear();
   Object.assign(S.a,{x:T.x0,y:0,vy:0,st:'hidden',from:T.x0,to:T.x0});S.cam=T.x0;S.u=S.uT=S.uPrev=21;
+  S.web=null;S.powA=null;S.vhole=null;S.stageBad=0;$('#alert').classList.remove('web');if(S.stage>=8)unlock('lv8');
   S.run.stageProbs=0;MUS.groove=newGroove2(!!T.boss);if(MUS.on)musicStop();MUS.pend=null;MUSREQ++;MUS.tension=0;S.arrows=[];S.arrowHits=0;S.deathBy=null;S.helpUsed=false;hideHelp();if(S.stage>1&&R()<.2)setTimeout(eggStart,5000);
   updHUD();
   const L=LESSONS[T.id];
@@ -5617,7 +5770,9 @@ function beginStage(){
   const T=S.topic,a=S.a,boss=!!T.boss;
   a.st='fall';a.y=(GY-TOPPAD+30)/YPX;a.vy=0;a.bounced=false;a.sq=0;a.sqv=0;
   S.spawnT=S.stage<=2?6:3.5;S.tauntT=6;
-  if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z)}
+  if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z);
+    if(T.final){z.prof=true;z.pers=null;z.name=XL('n_prof');setTimeout(()=>{if(S.mode==='play'&&alive(z)){laugh(5);say(z,XL('n_laugh'),'shout')}},1800)}}
+  speak(XL('n_level',[S.stage>16?'∞':S.stage,T.name])+(boss?' '+(T.final?XL('n_prof'):XL('c2975f2')):''),true);
   banner(boss?(T.final?XL('cd944be'):XL('c2975f2')):S.stage>16?'MODO ∞':XL('ce6cf13')+S.stage,T.name,(boss?XL('cc3d5fc',[T.boss]):XL('c4bd829',[S.quota]))+' · ♪ '+grooveName(MUS.groove)+(hard()>.01?XL('cb76c46',[Math.round(hard()*100)]):''),boss);
   updHUD();
 }
@@ -5629,12 +5784,15 @@ function lawToast(L,extra){const e=$('#lawt');e.innerHTML=`<b>${L.n}</b>${L.s}${
 
 function setMode(m){
   S.mode=m;if(m!=='title')S.bhOn=false;
-  for(const[id,mm]of[['#sTitle','title'],['#sLesson','lesson'],['#sPause','pause'],['#sOver','over'],['#sTut','tut']])$(id).classList.toggle('show',m===mm);if(m!=='play')$('#bHelp').hidden=true;
+  for(const[id,mm]of[['#sTitle','title'],['#sLesson','lesson'],['#sPause','pause'],['#sOver','over'],['#sTut','tut'],['#sEnd','end']])$(id).classList.toggle('show',m===mm);if(m!=='play')$('#bHelp').hidden=true;
   const play=m==='play',pz=m==='pause';
   document.body.classList.toggle('play',play);
   $('#top').classList.toggle('hidden',!(play||pz));
   ['#inbox','#drawhint','#exprw'].forEach(s=>$(s).classList.toggle('hidden',!play));
   if(!play){$('#alert').classList.remove('on');$('#newt').classList.remove('on');$('#lawt').classList.remove('on');padClear()}else if(S.grab)$('#alert').classList.add('on');
+  for(const sc of document.querySelectorAll('#game .screen'))if(sc.id!=='sLang'&&sc.id!=='sAch')sc.inert=!sc.classList.contains('show');
+  if(m==='play'&&S.web&&!S.grab){$('#alBig').textContent=XL('n_webbed');$('#alSub').textContent=XL('n_webSub');$('#alert').classList.add('on','web')}
+  if(A11Y&&['title','over','pause','lesson','end','tut'].includes(m))setTimeout(()=>{const b=document.querySelector('#game .screen.show .btn');if(b)b.focus()},120);
   if(m==='title'){heatmap($('#tHeat'));$('#bStart').textContent=L10('play');$('#bFresh').hidden=true;const okT=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);$('#tStats').textContent=L10('rec',{b:SAVE.best,n:okT,p:Math.round(hard()*100)})}
   syncChips();
 }
@@ -5654,6 +5812,7 @@ function newProblem(){
   const T=S.topic;S.prob=mkProb(T,S.a.x,S.d);hideHelp();
   {const fr=S.prob.keys.some(k=>k.includes('/'));document.body.classList.toggle('frac',fr);$('#drawhint').textContent=fr?L10('hint2'):L10('hint1')}
   S.lay=null;S.input='';S.thinkT=0;S.run.stageProbs++;renderInput();
+  speak((S.sayPre||'')+XL('n_sayProb',[speakQ(S.prob)]),true);S.sayPre='';
   if(!S.grab)S.uT=fitU(Math.abs(S.prob.ans-S.a.x)*(1.2+R()*1.2));
   if(!padLock)padClear();
   showExpr(S.prob);
@@ -5708,12 +5867,12 @@ function graceBonus(v){const g=S.grab;if(!g||g.need>1&&false)return;g.bonus=g.bo
   if(!g.said||S.time-g.said>.9){g.said=S.time;S.texts.push({x:S.a.x,y:GY-34,txt:'+ TIEMPO',c:P.y,t:0,life:.7,world:true})}}
 function acceptChar(ch){
   if(S.grab)graceBonus(.06);
-  S.input+=ch;SFX.digit(S.input.length-1);renderInput();flashInbox('good');
-  if((S.prob.keys||[S.prob.key]).includes(S.input)){record(true);if(S.a.st==='grab')escape();else commit(S.prob.ans,true)}
+  S.input+=ch;r2d2(ch);renderInput();flashInbox('good');
+  if((S.prob.keys||[S.prob.key]).includes(S.input)){record(true);if(S.a.st==='grab')escape();else if(S.web)webFree();else commit(S.prob.ans,true)}
 }
 function failChar(ch){
   SFX.err();flashInbox('bad');S.shake=3;
-  if(S.a.st==='rest'&&ch!==undefined){
+  if(S.a.st==='rest'&&ch!==undefined&&!S.web){
     const s=S.input+ch,val=fracVal(s);
     if(/\d/.test(s)&&isFinite(val)&&Math.abs(val)<1e6){record(false,r2(val));S.input=s;renderInput();commit(r2(val),false);return}
   }
@@ -5723,8 +5882,9 @@ function failChar(ch){
 }
 function record(ok,val){
   const Rn=S.run,id=S.topic.id,t=S.thinkT,h=SAVE.hist[id]||(SAVE.hist[id]={ok:0,bad:0});
-  if(ok){const dk=dayKey();SAVE.days=SAVE.days||{};SAVE.days[dk]=(SAVE.days[dk]||0)+1;Rn.correct++;Rn.streak++;Rn.maxStreak=Math.max(Rn.maxStreak,Rn.streak);Rn.okT[id]=(Rn.okT[id]||0)+1;h.ok++;SAVE.sk[id]=clamp(skill(id)+(t<6?.09:.05),0,1)}
-  else{Rn.wrong++;Rn.streakBefore=Rn.streak;Rn.streak=0;Rn.errT[id]=(Rn.errT[id]||0)+1;h.bad++;SAVE.sk[id]=clamp(skill(id)-.12,0,1);if(t<2)Rn.fastWrong++;
+  if(ok){const dk=dayKey();SAVE.days=SAVE.days||{};SAVE.days[dk]=(SAVE.days[dk]||0)+1;Rn.correct++;Rn.streak++;Rn.maxStreak=Math.max(Rn.maxStreak,Rn.streak);Rn.okT[id]=(Rn.okT[id]||0)+1;h.ok++;SAVE.sk[id]=clamp(skill(id)+(t<6?.09:.05),0,1);
+    unlock('first');if(Rn.streak>=5)unlock('st5');if(Rn.streak>=10)unlock('st10');if(Rn.streak>=25)unlock('st25');if(t<2)unlock('fast');if(dayStreak()>=7)unlock('days7');if(Rn.streak%POWSTREAK===0)grantPow();S.sayPre=XL('n_ok')+' '}
+  else{Rn.wrong++;S.stageBad=(S.stageBad||0)+1;Rn.streakBefore=Rn.streak;Rn.streak=0;Rn.errT[id]=(Rn.errT[id]||0)+1;h.bad++;SAVE.sk[id]=clamp(skill(id)-.12,0,1);if(t<2)Rn.fastWrong++;
     if(val!=null&&S.prob){Rn.lastWrong={val,ans:S.prob.ans,topic:id};wrongFeedback(val,S.prob.ans,t)}}
   Rn.thinkSum+=t;Rn.thinkN++;
   S.d=dOf(id);persist();
@@ -5739,7 +5899,9 @@ function heatmap(el){
   const mx=Math.max(4,...cells);
   html=cells.map((v,i)=>{const l=v?Math.min(4,1+Math.floor(3*v/mx)):0;return XL('c9aa89e',[l,v])}).join('');
   const sk=TOPICS.map(t=>{const v=skill(t.id),seen=SAVE.hist[t.id];const l=!seen?0:Math.min(4,1+Math.floor(v*4));return`<i class="h${l}" title="${t.name}: ${Math.round(v*100)} %"></i>`}).join('');
-  el.innerHTML=XL('cb49f85',[html,tot,act,streak,streak===1?'':'S',sk]);
+  const tabs=`<div class="hmTabs" role="tablist"><button class="chip hmTab${HEATV==='m'?' on':''}" data-v="m" role="tab" aria-selected="${HEATV==='m'}">▦ ${XL('n_mat')}</button><button class="chip hmTab${HEATV==='c'?' on':''}" data-v="c" role="tab" aria-selected="${HEATV==='c'}">▤ ${XL('n_cal')}</button></div>`;
+  let body=XL('cb49f85',[html,tot,act,streak,streak===1?'':'S',sk]);if(HEATV==='c')body=body.replace(/<div class="hm">[\s\S]*?<\/div>/,calHTML(el));
+  el.innerHTML=tabs+body;
 }
 function wrongKind(val,ans,t){
   const A=String(Math.abs(ans)),V=String(Math.abs(val));
@@ -5762,6 +5924,8 @@ function typeKey(k){
   if(nextChars().includes(k))acceptChar(k);else{failChar(k);if(S.a.st!=='air')padClear()}
 }
 document.addEventListener('keydown',e=>{
+  if(S.mode==='intro'&&(e.key==='Escape'||e.key==='Enter'||e.key===' ')){e.preventDefault();endIntro();return}
+  if(e.key===' '&&S.mode==='play'&&S.pow&&!e.repeat){e.preventDefault();usePow();return}
   if(e.key==='Escape'){if(S.mode==='play')setMode('pause');else if(S.mode==='pause')setMode('play');return}
   if(e.key==='Enter'&&S.mode==='title'){e.preventDefault();$('#bStart').click();return}
   if(e.key==='Enter'&&S.mode==='over'){e.preventDefault();$('#bCont').click();return}
@@ -5788,7 +5952,7 @@ function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){
   if(S.prob&&!exprT)renderExprCanvas(S.prob);else if(S.prob){clearTimeout(exprT);exprT=0;renderExprCanvas(S.prob);$('#exprw').classList.remove('out')}
   if(S.mode==='over'&&S.exP&&$('#oFail').open)playExplain()}
 const APPLES=['roja','verde','amarilla'];
-function syncChips(){volRender();for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
+function syncChips(){volRender();if(typeof achN==='function')for(const i of[1,2]){$('#bAch'+i).textContent='★ '+XL('n_ach')+' '+achN()+'/'+ACH.length;const b=$('#bA11y'+i);b.textContent='♿ '+XL('n_a11y')+(A11Y?' ✓':'');b.setAttribute('aria-pressed',A11Y?'true':'false')}for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}syncChips()};
 for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':'dark')}
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
@@ -5797,7 +5961,7 @@ $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips
 applyLang();loadCT(LANG).then(v=>{if(v)refreshContent()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='play')setMode('pause')});
 document.addEventListener('contextmenu',e=>{if(S.mode==='play')e.preventDefault()});
-function toTitle(){crackHide();S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
+function toTitle(){crackHide();S.web=null;S.powA=null;$('#alert').classList.remove('on','web');$('#intro').classList.remove('on');S.grab=null;S.prob=null;S.a.st='rest';S.zombies=[];titleScene();setMode('title')}
 
 /* ============ Dibujo libre: toda la pantalla es la pizarra ============ */
 const pc=$('#pc'),pctx=pc.getContext('2d');
@@ -5950,11 +6114,19 @@ function padDraw(){
 }
 
 /* ============ Zombis que persiguen ============ */
-function mkZ(x,type){return{id:++S.uid,x,type,pers:type==='skel'?null:type==='boss'?'narc':pick(PERS),walk:R()*6,dead:false,deadT:0,gore:false,grab:false,hp:1,max:1,spdK:type==='runner'?1.7:type==='boss'?.6:type==='skel'?.75:.85+R()*.3,hitT:0,cd:1.5+R()*2,aim:0,range:W*(.17+R()*.14)}}
+function mkZ(x,type){return outfit({id:++S.uid,x,type,pers:['skel','spider','creeper','ender'].includes(type)?null:type==='boss'?'narc':pick(PERS),walk:R()*6,dead:false,deadT:0,gore:false,grab:false,hp:1,max:1,spdK:type==='runner'?1.7:type==='boss'?.6:type==='skel'?.75:type==='spider'?1.15:type==='creeper'?.8:type==='ender'?0:.85+R()*.3,hitT:0,cd:1.5+R()*2,aim:0,range:W*(.17+R()*.14)})}
 function spawnZ(){
-  const side=R()<.5?-1:1,nSk=S.zombies.filter(z=>alive(z)&&z.type==='skel').length,sk=S.stage>=2&&nSk<(S.stage>=8?2:1)&&R()<.3,run=!sk&&S.stage>=5&&R()<.25;
-  const z=mkZ(S.cam+side*(W/2+10)/S.u,sk?'skel':run?'runner':'walker');S.zombies.push(z);
-  if(sk){SFX.bones();say(z,pick(ZS('skel',SKEL_LINES)),'shout');if(!SAVE.seen.skel){SAVE.seen.skel=1;persist();newt(XL('c82f821'),true)}}
+  const side=R()<.5?-1:1,st=S.stage,n=t=>S.zombies.filter(z=>alive(z)&&z.type===t).length,r=R();
+  let type='walker';
+  if(st>=8&&!n('ender')&&r<.12)type='ender';
+  else if(st>=6&&n('creeper')<(st>=12?2:1)&&r<.3)type='creeper';
+  else if(st>=3&&!n('spider')&&r<.45)type='spider';
+  else if(st>=2&&n('skel')<(st>=8?2:1)&&R()<.3)type='skel';
+  else if(st>=5&&R()<.28)type='runner';
+  const sk=type==='skel',z=mkZ(S.cam+side*(W/2+10)/S.u,type);S.zombies.push(z);
+  if(type==='ender'){z.x=S.a.x+(R()<.5?-1:1)*(30+R()*70)/S.u;z.tp=2+R()*2;enderTP(z,z.x)}
+  if(['spider','creeper','ender'].includes(type)){if(!SAVE.seen[type]){SAVE.seen[type]=1;persist();newt(XL('n_'+type),true)}if(type==='creeper'&&!muted&&ac())nz(AC.currentTime,.4,'highpass',3500,1,.04,AC.destination);if(type==='spider')SFX.rise();speak(XL('n_near',[kindName(z),sideOf(z)]))}
+  else if(sk){SFX.bones();say(z,pick(ZS('skel',SKEL_LINES)),'shout');if(!SAVE.seen.skel){SAVE.seen.skel=1;persist();newt(XL('c82f821'),true)}}
   else{SFX.rise();if(R()<.35)taunt(z)}
 }
 // esqueleto: se queda a distancia, apunta (aviso "!") y dispara una flecha en arco
@@ -5973,6 +6145,7 @@ const skelMiss=()=>Math.max(.12,.5-(Math.min(S.stage,16)-1)*.025-.1*hard());
 function shoot(z){const miss=R()<skelMiss(),off=miss?(R()<.5?-1:1)*(12+R()*16)/S.u:0;
   S.arrows.push({z,x0:z.x,x1:S.a.x+off,miss,h0:15,t:0,T:.6+Math.abs(scx(z.x)-scx(S.a.x))/(W*.9)});SFX.bow()}
 function arrowHit(ar){
+  if(useShield())return;
   S.arrowHits=(S.arrowHits||0)+1;S.shake=7;S.flash=.35;SFX.arrowHit();blood(apx(),GY-6,14);
   const left=2-S.arrowHits;S.texts.push({x:S.a.x,y:GY-42,txt:left>0?XL('c64e959'):XL('c2ead57'),c:P.r2,t:0,life:1.5,world:true});
   if(alive(ar.z))say(ar.z,ZS('hit',['¡EN EL BLANCO! ¿VISTE QUÉ ARTE?','¡JA! DOS DE DOS, COMO SIEMPRE'])[left>0?0:1],'shout');
@@ -5982,12 +6155,13 @@ function nearestZ(){let b=null,bd=1e9;const ax=scx(S.a.x);for(const z of S.zombi
 const NAMES=['PEPE','LUCHO','MARGA','TOÑO','KEVIN','ROSA','BETO','CHELA','RAMIRO','NENA','GUS','LOLA'],SKN=['HUESITOS','CALAVERA','FÉMUR','TIBIA','COSTILLA'];
 const THINK=['QUÉ GUAPO SOY… ¿Y SI ME CLONO?','PIENSO, LUEGO GOBIERNO','CEREBROOO… DE SÚBDITA','MI MEJOR ÁNGULO SON TODOS','MANDARÉ HACER UNA ESTATUA DE MÍ','MI REINO POR UN CEREBRO','¿QUIÉN ES ESE GUAPO? AH, SOY YO'];
 const SKEL_LINES=['¡A LA CARGA, HUESOS!','MI PUNTERÍA ES TAN PERFECTA COMO YO','DOS FLECHAS. NO NECESITO MÁS','HUESO PURO: CERO GRASA, CERO PIEDAD','APUNTO… PORQUE PUEDO'];
-function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?XL('c69ca5d'):pick(NAMES))}
+function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?(z.prof?XL('n_prof'):XL('c69ca5d')):['spider','creeper','ender'].includes(z.type)?kindName(z).toUpperCase():pick(zNames()))}
 function say(z,txt,kind){zname(z);S.bubbles=S.bubbles.filter(b=>b.z!==z);if(S.bubbles.length>=2)S.bubbles.shift();
   S.bubbles.push({z,txt,t:0,life:Math.min(5,Math.max(2.4,1.2+txt.length*.06)),kind:kind||'say'});if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
-function taunt(z){const r=R();{const th=R()<.3;if(z.pers&&(z.pers!=='narc'||R()<.4)&&persSay(z,th?'th':'t',null,th?'think':'say'))return}if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
+function taunt(z){if(z.prof){profSay(z);return}if(['spider','creeper','ender'].includes(z.type))return;const r=R();{const th=R()<.3;if(z.pers&&(z.pers!=='narc'||R()<.4)&&persSay(z,th?'th':'t',null,th?'think':'say'))return}if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
 function blood(sx,sy,n,spd=1){for(let i=0;i<n;i++){const ang=-Math.PI*R()*1.1+.05,s=(30+R()*110)*spd;S.parts.push({x:sx,y:sy,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.6+R()*.8,c:pick([P.r2,P.r2,P.r,'#e8735f']),blood:true})}}
 function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);
+  if(S.mode==='play'){SAVE.kills=(SAVE.kills||0)+1;if(SAVE.kills>=50)unlock('k50');if(SAVE.kills>=500)unlock('k500');if(z.type==='boss')unlock('boss');if(z.type==='creeper'&&!z.boomed)unlock('creep');if(z.type==='ender')unlock('ender');if(z.type==='creeper'&&!z.boomed){gore=false;for(let i=0;i<20;i++)S.parts.push({x:scx(z.x),y:GY-10,vx:(R()-.5)*90,vy:-R()*80,t:0,life:.7,c:pick(['#4fae35','#2a6a1b'])})}}
   // si muere el zombi que te tiene agarrada, el agarre termina (antes quedaba un agarre fantasma)
   if(S.grab&&S.grab.z===z){S.grab=null;$('#alert').classList.remove('on');MUS.tension=0;if(S.a.st==='grab'){S.a.st='rest';S.a.y=0}}
   z.dead=true;z.deadT=0;z.gore=gore;z.grab=false;S.run.kills++;if(gore){blood(scx(z.x),GY-14,40);SFX.gore();for(let i=0;i<9;i++)S.stains.push({x:z.x+(R()-.5)*16/S.u,w:1+ri(0,3),t:0,up:R()<.4})}S.bubbles=S.bubbles.filter(b=>b.z!==z)}
@@ -6010,7 +6184,10 @@ function meteor(x){
   const sx=scx(x);
   for(let i=0;i<46;i++){const ang=-Math.PI*R(),s=30+R()*120;S.parts.push({x:sx,y:GY-3,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.4+R()*.6,c:pick([P.y,P.o,P.r2,P.w,P.l3])})}
   let killed=0;
-  for(const z of S.zombies)if(alive(z)&&z.type!=='boss'&&!z.grab&&Math.abs(scx(z.x)-sx)<ER){killZ(z,true);killed++}
+  for(const z of S.zombies)if(alive(z)&&z.type!=='boss'&&!z.grab&&Math.abs(scx(z.x)-sx)<ERx()){
+    if(powOn('b')){S.texts.push({x:z.x,y:GY-34,txt:XL('n_frozen'),c:'#9fd4ff',t:0,life:.9,world:true});continue}
+    if(z.type==='ender'&&R()<.5){enderTP(z,S.cam+(R()<.5?-1:1)*W*.35/S.u);z.tp=2+R()*2;S.texts.push({x:z.x,y:GY-40,txt:XL('n_dodge'),c:'#c86bff',t:0,life:1.1,world:true});continue}
+    killZ(z,true);killed++}
   if(killed){const n=nearestZ();if(n&&R()<.8&&!(n.pers&&n.pers!=='narc'&&persSay(n,'k',{n:S.lastKilled},'shout')))say(n,pick(ZES()?[`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]:ZS('kill',[],{n:S.lastKilled})),'shout')}
   if(S.boss&&alive(S.boss))S.shards.push({x0:x,z:S.boss,t:0,T:.55});
   else if(!killed){const n=nearestZ();if(n)S.shards.push({x0:x,z:n,t:0,T:.45})}
@@ -6029,7 +6206,7 @@ function land(){
   const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';a.sq=a.ok?.5:.32;a.sqv=0;
   if(a.ok){meteor(a.x);S.happyT=1.5}
   else{S.sadT=1.5;SFX.thud();for(let i=0;i<8;i++)S.parts.push({x:scx(a.x),y:GY-1,vx:(R()-.5)*60,vy:-R()*50,t:0,life:.4,c:P.l1});
-    const lp=S.run.lastProb;if(lp)S.texts.push({x:a.x,y:GY-38,txt:XL('cxera',[fmt(lp.ans)]),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick(ZES()?[`JAJAJA, ERA ${fmt(lp.ans)}. QUÉ VERGÜENZA AJENA`,'¡ESE NO ERA! APÚNTALO EN TU DIARIO DE FRACASOS','MI ABUELA ZOMBI LO HACÍA MEJOR. SIN CABEZA','APLAUSOS… DE BURLA',`¿${fmt(S.a.x)}? YO HABRÍA DICHO ${fmt(lp.ans)}, PORQUE SOY GENIAL`]:ZS('wrong',[],{a:fmt(lp.ans)})),'shout')}}
+    const lp=S.run.lastProb;if(lp)S.sayPre=XL('n_bad',[fmt(lp.ans)])+' ';const bz=S.boss&&alive(S.boss)&&S.boss.prof?S.boss:null;if(bz&&R()<.5)laugh(3);if(lp)S.texts.push({x:a.x,y:GY-38,txt:XL('cxera',[fmt(lp.ans)]),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick(ZES()?[`JAJAJA, ERA ${fmt(lp.ans)}. QUÉ VERGÜENZA AJENA`,'¡ESE NO ERA! APÚNTALO EN TU DIARIO DE FRACASOS','MI ABUELA ZOMBI LO HACÍA MEJOR. SIN CABEZA','APLAUSOS… DE BURLA',`¿${fmt(S.a.x)}? YO HABRÍA DICHO ${fmt(lp.ans)}, PORQUE SOY GENIAL`]:ZS('wrong',[],{a:fmt(lp.ans)})),'shout')}}
   if(a.ok&&!S.topic.boss)S.ok++;
   if(a.ok&&S.run.streak>0&&S.run.streak%5===0)eggStart();
   updHUD();
@@ -6043,13 +6220,16 @@ function checkClear(){
   return false;
 }
 function startGrab(z){
+  if(useShield()){z.x+=(Math.sign(z.x-S.a.x)||1)*40/S.u;z.hitT=.4;return}
+  if(S.web){S.web=null;$('#alert').classList.remove('web')}
+  speak(XL('n_grab',[zname(z)]),true);if(z.prof){laugh(4)}
   const a=S.a;a.st='grab';const side=Math.sign(z.x-a.x)||1;z.grab=true;
   S.grab={z,g:0,side,need:z.type==='boss'?2:1};S.shake=6;S.flash=.25;SFX.grab();
   $('#alBig').textContent=z.type==='boss'?L10('boss'):L10('caught');
   $('#alSub').textContent=S.grab.need>1?L10('grab2'):L10('caughtSub');
   $('#alert').classList.add('on');
   S.input='';renderInput();padClear();if(!S.prob)newProblem();
-  if(!(z.pers&&z.pers!=='narc'&&persSay(z,'g',null,'shout')))say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
+  if(z.prof)say(z,pick(XL('n_profT').split(';')),'shout');else if(!(z.pers&&z.pers!=='narc'&&persSay(z,'g',null,'shout')))say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
 }
 function escape(){
   const a=S.a,g=S.grab,z=g.z,pr=S.prob;
@@ -6060,7 +6240,7 @@ function escape(){
   }
   if(z.type==='boss'){z.grab=false;z.hp--;z.hitT=.4;blood(scx(z.x),GY-26,50);SFX.hitBoss();z.x+=(Math.sign(z.x-a.x)||1)*90/S.u;if(z.hp<=0)killZ(z,true)}
   else killZ(z,true);
-  S.run.esc++;S.grab=null;$('#alert').classList.remove('on');MUS.tension=0;a.st='rest';a.y=0;S.flash=.35;S.shake=8;
+  S.run.esc++;unlock('esc');S.grab=null;$('#alert').classList.remove('on');MUS.tension=0;a.st='rest';a.y=0;S.flash=.35;S.shake=8;
   S.texts.push({x:z.x,y:GY-50,txt:pick([XL('cec1bcc'),XL('c4676a0'),XL('cd39c5d'),XL('c76d2f8')]),c:P.r2,t:0,life:1.3,world:true});
   newt(XL('caae3ef'),true);
   S.prob=pr;commit(pr.ans,true,true);
@@ -6070,9 +6250,10 @@ function eaten(){
 }
 function stageClear(){
   const a=S.a,T=S.topic;a.st='clear';S.prob=null;S.lay=null;showExpr(null);S.clearT=0;padClear();SFX.clear();
-  for(const z of S.zombies)if(alive(z))killZ(z,false);
+  for(const z of S.zombies)if(alive(z)&&!(T.final&&z===S.boss))killZ(z,false);
   SAVE.best=Math.max(SAVE.best,Math.min(16,S.stage+1));persist();
-  if(T.final)banner('e^iπ + 1 = 0',XL('c9002a7'),XL('cea725f'));
+  if(!S.stageBad)unlock('perf');
+  if(T.final){startEnding(S.boss);return}
   else banner(XL('ce6cf13')+S.stage+' ✓',T.name,XL('c623f5e'));
 }
 
@@ -6133,7 +6314,7 @@ function overSprites(){const k=$('#sOver .card');if(k.dataset.spr)return;k.datas
 function gameOver(){
   SAVE.deaths=(SAVE.deaths||0)+1;persist();
   setMode('over');
-  $('#oTtl').textContent=pick(L10list(S.deathBy==='arrow'?'arrow':'eaten'));
+  $('#oTtl').textContent=S.deathBy==='boom'?XL('n_boomT'):pick(L10list(S.deathBy==='arrow'?'arrow':'eaten'));speak($('#oTtl').textContent,true);
   const law=pickLaw();$('#oQuote').textContent=law.txt;$('#oLawN').textContent='— '+law.L.n;
   const frac=S.topic.boss?(S.boss?(S.boss.max-Math.max(0,S.boss.hp))/S.boss.max:0):S.ok/Math.max(1,S.quota);
   const pos=clamp((Math.min(S.stage,16)-1+frac*.95)/15,0,1),L=v=>(4+92*v).toFixed(2)+'%';
@@ -6823,7 +7004,7 @@ EGGS.push(
   {n:'CARL F. GAUSS',f:'1 + 2 + … + 100 = 5050',a:faceArt({hat:'skull',side:1,prop:['5050']})},
   {n:'ALAN TURING',f:'halt(x) = ?',a:faceArt({hat:'quiff',prop:['0101','1010']})}
 );
-function eggStart(){if(THEME!=='dark'||S.egg)return;const e=pick(EGGS),cs=3,wd=Math.max(...e.a.map(r=>r.length))*cs;S.egg={e,t:0,cs,x:Math.round(clamp(W*(.08+R()*.5),4,W-wd-4)),y:Math.round(TOPPAD+34+R()*Math.max(4,GY*.12))}}
+function eggStart(){if(THEME!=='dark'||S.egg)return;unlock('egg');const e=pick(EGGS),cs=3,wd=Math.max(...e.a.map(r=>r.length))*cs;S.egg={e,t:0,cs,x:Math.round(clamp(W*(.08+R()*.5),4,W-wd-4)),y:Math.round(TOPPAD+34+R()*Math.max(4,GY*.12))}}
 function eggDraw(){
   const g=S.egg;if(!g||THEME!=='dark')return;const k=g.t,al=k<1.6?k/1.6:k>8?Math.max(0,1-(k-8)/2):1;if(al<=0)return;
   g.e.a.forEach((row,j)=>{for(let i=0;i<row.length;i++){const ch=row[i];if(ch===' ')continue;const b={'.':.55,':':.75,'*':.95,'#':1,'o':1}[ch]||.7,x=g.x+i*g.cs,y=g.y+j*g.cs;
@@ -6833,7 +7014,9 @@ function eggDraw(){
 
 /* ============ Bucle ============ */
 function update(dt){
-  S.time+=dt;S.happyT=Math.max(0,(S.happyT||0)-dt);S.sadT=Math.max(0,(S.sadT||0)-dt);S.bhK=clamp((S.bhK||0)+(S.bhOn&&S.mode==='title'?dt*.9:-dt*2.2),0,1);if(S.egg){S.egg.t+=dt;if(S.egg.t>10)S.egg=null}if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
+  S.time+=dt;S.happyT=Math.max(0,(S.happyT||0)-dt);S.sadT=Math.max(0,(S.sadT||0)-dt);S.bhK=clamp((S.bhK||0)+(S.bhOn&&S.mode==='title'?dt*.9:-dt*2.2),0,1);bhGrow(dt);
+  if(S.mode==='intro'){introUpdate(dt);return}
+  if(S.mode==='ending'){endUpdate(dt);return}if(S.egg){S.egg.t+=dt;if(S.egg.t>10)S.egg=null}if(S.mode==='play')SAVE.playT=(SAVE.playT||0)+dt;
   for(const c of CLOUDS){c.x+=c.v*dt;if(c.x>W+10)c.x=-c.c.width}
   S.shake=Math.max(0,S.shake-dt*18);S.flash=Math.max(0,S.flash-dt*1.4);S.fade=Math.max(0,S.fade-dt*.8);
   for(const q of S.parts){q.t+=dt;q.vy+=240*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;if(q.y>GY){q.y=GY;q.vy*=-.2;q.vx*=.5}}
@@ -6848,13 +7031,13 @@ function update(dt){
   for(const z of S.zombies){if(z.dead)z.deadT+=dt;z.hitT=Math.max(0,z.hitT-dt)}
   S.zombies=S.zombies.filter(z=>!(z.dead&&z.deadT>1.2));
   if(S.mode!=='play'){if(S.mode==='title')titleZ(dt);else for(const z of S.zombies)z.walk+=dt*1.5;return}
-  const a=S.a;
+  const a=S.a;powUpdate(dt);a11yTick(dt);const slow=powOn('i')?.5:1,frz=powOn('b'),zdt=dt*slow;
   const camOld=S.cam;S.cam+=(a.x-S.cam)*Math.min(1,dt*3.2);
   // proyectiles del meteorito hacia el zombi más cercano / el jefe
   for(const sh of S.shards){sh.t+=dt;if(sh.t>=sh.T&&!sh.done){sh.done=true;shardHit(sh)}}
   S.shards=S.shards.filter(s=>!s.done);
   // flechas: si al caer la manzana sigue ahí, la hiere; si saltó, se clava en el suelo
-  for(const ar of S.arrows){ar.t+=dt;if(!ar.done&&ar.t>=ar.T){ar.done=true;const sa=S.a;
+  for(const ar of S.arrows){ar.t+=zdt;if(!ar.done&&ar.t>=ar.T){ar.done=true;const sa=S.a;
     // agarrada no cuenta: el zombi que la sujeta le hace de escudo
     if(sa.st==='rest'&&!S.grab&&Math.abs(scx(sa.x)-scx(ar.x1))<7)arrowHit(ar);
     else{ar.stuck=true;hit('cajaChina',.6);if(ar.miss&&sa.st==='rest')S.texts.push({x:ar.x1,y:GY-30,txt:XL('c2df2ab'),c:P.y,t:0,life:.9,world:true});
@@ -6873,10 +7056,15 @@ function update(dt){
     if(!alive(z))continue;
     if(z.grab&&S.grab){z.x=a.x+S.grab.side*(z.type==='boss'?11:7)/S.u;z.walk+=dt*2;continue}
     if(!active){z.walk+=dt;continue}
-    if(z.type==='skel'){skelAI(z,dt,ax);continue}
+    if(frz&&z.type!=='boss')continue;
+    if(z.suck)continue;
+    if(z.type==='skel'){skelAI(z,zdt,ax);continue}
+    if(z.type==='spider'){spiderAI(z,zdt,ax);if(a.st==='rest'&&!S.grab&&Math.abs(scx(z.x)-ax)<6)startGrab(z);continue}
+    if(z.type==='creeper'){creeperAI(z,zdt,ax);continue}
+    if(z.type==='ender'){enderAI(z,zdt,ax);continue}
     const zx=scx(z.x),dir=Math.sign(ax-zx);
     if(Math.abs(zx-ax)>W*.8)z.x=S.cam+(zx<ax?-1:1)*(W/2+12)/S.u;
-    const sp=zSpd()*z.spdK,lurch=.25+1.15*Math.max(0,Math.sin(z.walk));z.walk+=dt*(z.type==='runner'?5:3.2);const mv=sp*lurch*dt;z.x+=dir*mv/S.u;
+    const sp=zSpd()*z.spdK,lurch=.25+1.15*Math.max(0,Math.sin(z.walk));z.walk+=zdt*(z.type==='runner'?5:3.2);const mv=sp*lurch*zdt;z.x+=dir*mv/S.u;
     z.sd=(z.sd||0)+mv;if(z.sd>(z.nx||6)){z.sd=0;z.nx=4+R()*9;S.stains.push({x:z.x-dir*2/S.u,w:1+ri(0,2),t:0,up:R()<.3})}
     if(a.st==='rest'&&!S.grab&&Math.abs(scx(z.x)-ax)<(z.type==='boss'?11:7))startGrab(z);
   }
@@ -6901,7 +7089,7 @@ function update(dt){
   }else if(a.st==='rest'){
     if(S.prob)S.thinkT+=dt;helpCheck();
   }else if(a.st==='grab'){
-    const g=S.grab;g.g+=dt/grabTime()*(chPick?.4:1);a.y=Math.min(1,g.g)*.95;MUS.tension=clamp(g.g,.05,1); // si el juego te está preguntando qué escribiste, el reloj casi se detiene
+    const g=S.grab;g.g+=dt*slow/grabTime()*(chPick?.4:1);a.y=Math.min(1,g.g)*.95;MUS.tension=clamp(g.g,.05,1); // si el juego te está preguntando qué escribiste, el reloj casi se detiene
     $('#grabBar').style.width=Math.min(100,g.g*100)+'%';
     if(g.g>=1)eaten();
   }else if(a.st==='eaten'){
@@ -6917,16 +7105,20 @@ function update(dt){
 /* ============ Dibujo ============ */
 function drawZ(z,refl){
   if(z.type==='skel'){drawSkel(z);return}
+  if(z.type==='spider'){drawSpider(z);return}
+  if(z.type==='creeper'){drawCreeper(z);return}
+  if(z.type==='ender'){drawEnder(z);return}
   const big=z.type==='boss',x=Math.round(scx(z.x));if(x<-30||x>W+30)return;
   const a=S.a,f=z.grab&&S.grab?-S.grab.side:S.mode==='title'&&z.dir?z.dir:(Math.sign(scx(a.x)-x)||1);
   const col=z.hitT>0&&((S.time*20|0)%2)?P.red:P.l3,red=P.red,dk=P.r;
-  const p=z.walk,st=Math.sin(p),bob=st>.55?1:0,K=big?1.6:1;
+  const p=z.walk,st=Math.sin(p),bob=st>.55?1:0,K=z.prof?2:big?1.6:1;
   ctx.save();
   let hip=GY-Math.round(12*K);
   if(z.dead){const k=Math.min(1,z.deadT/.45);hip+=Math.round(k*10*K);ctx.globalAlpha*=Math.max(0,1-Math.max(0,z.deadT-.45)/.7)}
   if(z.dead&&z.gore){ctx.fillStyle=red;ctx.fillRect(x-4,GY-4,9,4);ctx.fillStyle=dk;ctx.fillRect(x-2,GY-6,5,2);ctx.fillRect(x+3,GY-3,3,2);ctx.restore();return}
   const L=(x0,y0,x1,y1,w=1)=>{for(let o=0;o<w;o++)pline(x0+o,y0,x1+o,y1,col)};
   const lw=big?2:1;
+  if(z.cloth&&!z.dead){const lean0=Math.round(f*2.5*K),th0=Math.round(10*K);drawCloth(z,x,hip,x+lean0,hip-th0+bob,lean0,th0,big?4:2,f,bob,true)}
   // pierna buena da el paso; la otra se arrastra rígida
   const step=z.grab?0:Math.round(st*4*K);
   L(x,hip,x+f*step,GY-1,lw);
@@ -6935,6 +7127,8 @@ function drawZ(z,refl){
   const lean=Math.round(f*2.5*K),th=Math.round(10*K),tw=big?4:2;
   ctx.fillStyle=col;for(let i=0;i<th;i++)ctx.fillRect(x+Math.round(lean*i/th)-(tw>>1),hip-i+bob,tw,1);
   const sx=x+lean,sh=hip-th+bob;
+  if(z.prof){ctx.fillStyle='#3a2f28';for(let i=1;i<th-1;i++)ctx.fillRect(x+Math.round(lean*i/th)-(tw>>1)-1,hip-i+bob,tw+2,1)}
+  if(z.cloth)drawCloth(z,x,hip,sx,sh,lean,th,tw,f,bob,false);
   // sangre en la ropa
   ctx.fillStyle=red;ctx.fillRect(sx-Math.round(lean*.4),hip-Math.round(5*K)+bob,big?3:2,big?3:2);if(z.id%2)ctx.fillRect(sx-f,hip-Math.round(8*K)+bob,1,2);
   // brazos estirados hacia la manzana
@@ -6942,14 +7136,16 @@ function drawZ(z,refl){
   else if(!z.dead){const sway=Math.sin(p*.5)>0?0:1,al=Math.round(9*K);L(sx,sh+1,sx+f*al,sh+1+sway,lw);L(sx,sh+3,sx+f*(al-1),sh+3+(1-sway),lw);ctx.fillStyle=red;ctx.fillRect(sx+f*al,sh+1+sway,1,1);
     if(z.sym){const hxp=sx+f*al,tw=pw(z.sym,1);z.symX=hxp;z.symY=sh-3;ptextS(z.sym,Math.round(hxp-tw/2),sh-6+Math.round(Math.sin(S.time*3+z.id)),1,P.y,P.k)}}
   // cabeza ladeada
-  const hs=big?9:6,hx=sx-(hs>>1)+f,hy=sh-hs+(Math.sin(p*.5+1)>.3?1:0);
+  const hs=z.prof?11:big?9:6,hx=sx-(hs>>1)+f,hy=sh-hs+(Math.sin(p*.5+1)>.3?1:0);
   ctx.fillStyle=col;ctx.fillRect(hx,hy,hs,hs);
   ctx.fillStyle=P.k;ctx.fillRect(f>0?hx:hx+hs-1,hy,1,big?2:1);
   ctx.fillStyle=red;ctx.fillRect(f>0?hx+hs-2:hx+1,hy+2,1,1);ctx.fillStyle=P.k;ctx.fillRect(f>0?hx+hs-4:hx+3,hy+2,1,1);
   const open=z.grab&&S.grab?1+Math.round(S.grab.g*(big?3:2)):1;ctx.fillStyle=red;ctx.fillRect(hx+1,hy+hs-2,hs-2,Math.min(big?3:2,open));
   ctx.fillRect(hx+2,hy+hs+((S.time*3+z.id)%3|0),1,1);
-  if(big){ctx.fillStyle=red;ctx.fillRect(hx,hy-2,1,2);ctx.fillRect(hx+hs-1,hy-2,1,2);
-    if(!refl&&!z.dead){const bw=26,bx=x-13,by=hy-7;ctx.fillStyle=P.k;ctx.fillRect(bx-1,by-1,bw+2,4);for(let i=0;i<z.max;i++){ctx.fillStyle=i<z.hp?red:P.m1;ctx.fillRect(bx+Math.floor(i*bw/z.max),by,Math.floor(bw/z.max)-1,2)}}}
+  if(z.hat&&z.hat!=='none')drawHat(z,hx,hy,hs,f);
+  if(z.prof)drawProf(z,hx,hy,hs,sx,sh,f);
+  if(big){if(!z.prof){ctx.fillStyle=red;ctx.fillRect(hx,hy-2,1,2);ctx.fillRect(hx+hs-1,hy-2,1,2)}
+    if(!refl&&!z.dead){const bw=26,bx=x-13,by=hy-(z.prof?11:7);ctx.fillStyle=P.k;ctx.fillRect(bx-1,by-1,bw+2,4);for(let i=0;i<z.max;i++){ctx.fillStyle=i<z.hp?red:P.m1;ctx.fillRect(bx+Math.floor(i*bw/z.max),by,Math.floor(bw/z.max)-1,2)}}}
   ctx.restore();
 }
 function drawSkel(z){
@@ -6961,7 +7157,7 @@ function drawSkel(z){
   pline(x,hip,x+f*step,GY-1,bone);pline(x,hip,x-f*step,GY-1,bone);
   ctx.fillStyle=bone;ctx.fillRect(x-2,hip+bob,5,1);for(let i=1;i<=9;i++)ctx.fillRect(x,hip-i+bob,1,1);for(const r of[3,5,7])ctx.fillRect(x-2,hip-r+bob,5,1);
   const sh=hip-9+bob,hx=x+f*6,hy=sh+3,pull=z.aim>0?Math.round((1-z.aim/1.1)*4):0,sx=hx-f*pull;
-  ctx.fillRect(x-3+f,sh-7,7,6);ctx.fillRect(x-2+f,sh-1,5,1);
+  ctx.fillRect(x-3+f,sh-7,7,6);ctx.fillRect(x-2+f,sh-1,5,1);if(z.hat)drawHat(z,x-3+f,sh-7,7,f);ctx.fillStyle=bone;
   ctx.fillStyle=z.aim>0?P.red:P.k;ctx.fillRect(x-2+f+(f>0?1:0),sh-5,2,2);ctx.fillRect(x+1+f+(f>0?1:0),sh-5,1,2);
   pline(x,sh+1,hx,hy,bone);pline(x,sh+2,sx,hy,bone);
   ctx.fillStyle='#8a5a2a';for(let i=-6;i<=6;i++)ctx.fillRect(hx+f*Math.round(2-(i*i)/18),hy+i,1,1);
@@ -6988,30 +7184,22 @@ function drawApple2(reflect){
     if(mood==='idle'&&!z){lx=clamp(Math.floor(Math.sin(S.time*.9)*1.6),-1,1);ly=Math.sin(S.time*.5+2)>.85?1:0}
     appleFace(ctx,sx,sy,w,h,mood,lx,ly,(S.time%3.3)<.12||(S.time%7.1)<.1)}
   if(!reflect&&S.mode==='play'){const hits=S.arrowHits||0;for(let i=0;i<hits;i++)pline(sx+3+i*4,sy+4,sx+7+i*4,sy-4,P.l2);
-    if(hits||S.zombies.some(z=>alive(z)&&z.type==='skel'))for(let i=0;i<2;i++){const hx=sx-1+i*5,hy=sy-8;ctx.fillStyle=i<2-hits?P.red:P.m2;ctx.fillRect(hx,hy,1,1);ctx.fillRect(hx+2,hy,1,1);ctx.fillRect(hx,hy+1,3,1);ctx.fillRect(hx+1,hy+2,1,1)}}
+    if(hits||S.zombies.some(z=>alive(z)&&(z.type==='skel'||z.type==='creeper')))for(let i=0;i<2;i++){const hx=sx-1+i*5,hy=sy-8;ctx.fillStyle=i<2-hits?P.red:P.m2;ctx.fillRect(hx,hy,1,1);ctx.fillRect(hx+2,hy,1,1);ctx.fillRect(hx,hy+1,3,1);ctx.fillRect(hx+1,hy+2,1,1)}}
 }
 function niceStep(u){const raw=30/u,p=Math.pow(10,Math.floor(Math.log10(raw)));for(const m of[1,2,5,10])if(p*m>=raw-1e-9)return p*m;return p*10}
+// diálogo sin globo: solo el nombre y el texto con borde; mientras dibujas se atenúa para que tu trazo quede encima
+function ptextO(str,cx,y,col,full){const x=Math.round(cx-pw(full||str)/2);for(const[dx,dy]of[[-1,0],[1,0],[0,-1],[0,1],[1,1]])ptext(str,x+dx,y+dy,1,P.k);ptext(str,x,y,1,col)}
 function bubble(b){
   const z=b.z,zx=scx(z.x);if(zx<-20||zx>W+20)return;
-  const kind=b.kind||'say',al=b.t>b.life-.3?(b.life-b.t)/.3:1,sc=b.t<.12?b.t/.12*1.15:b.t<.2?1.15-(b.t-.12)/.08*.15:1;
+  const kind=b.kind||'say',inked=syms.length>0||!!curStroke,al=(b.t>b.life-.3?(b.life-b.t)/.3:1)*(inked?.35:1)*(b.t<.12?b.t/.12:1);
+  const nm=zname(z),lines=wrapP(b.txt,Math.min(150,W*.55));
+  const head=(z.type==='boss'?(z.prof?68:50):z.type==='skel'?32:z.type==='ender'?42:z.type==='spider'?20:z.type==='creeper'?30:36)+(z.hat&&z.hat!=='none'?6:0);
+  const w=Math.max(pw(nm),...lines.map(l=>pw(l))),h=lines.length*9,jit=kind==='shout'&&b.t<1.2?Math.round((R()-.5)*2):0;
+  const cx=Math.round(clamp(zx,w/2+3,W-w/2-3))+jit,top=Math.round(GY-head-h+Math.sin(b.t*4+z.id))+jit;
   ctx.globalAlpha=Math.max(0,al);
-  const nm=zname(z)+(z.pers?' · '+persLabel(z):''),lines=wrapP(b.txt,Math.min(120,W*.5)),w=Math.max(pw(nm),...lines.map(l=>pw(l)))+8,h=lines.length*9+5;
-  const head=z.type==='boss'?50:z.type==='skel'?32:36,bob=Math.round(Math.sin(b.t*4+z.id)),jit=kind==='shout'&&b.t<1.2?Math.round((R()-.5)*2):0;
-  const cx=clamp(zx,w/2+2,W-w/2-2),cy=GY-head-h/2-6+bob,sw=Math.max(4,Math.round(w*sc)),sh=Math.max(3,Math.round(h*sc)),x=Math.round(cx-sw/2)+jit,top=Math.round(cy-sh/2)+jit;
-  const edge=kind==='shout'?P.red:kind==='think'?P.l1:P.w;
-  ctx.fillStyle=P.k;ctx.fillRect(x+1,top+1,sw-2,sh-2);
-  ctx.fillStyle=edge;ctx.fillRect(x+2,top,sw-4,1);ctx.fillRect(x+2,top+sh-1,sw-4,1);ctx.fillRect(x,top+2,1,sh-4);ctx.fillRect(x+sw-1,top+2,1,sh-4);
-  for(const[dx,dy]of[[1,1],[sw-2,1],[1,sh-2],[sw-2,sh-2]])ctx.fillRect(x+dx,top+dy,1,1);
-  if(kind==='shout')for(let i=3;i<sw-3;i+=5){ctx.fillRect(x+i,top-2,1,2);ctx.fillRect(x+i+2,top+sh,1,2);if(i<sh-3){ctx.fillRect(x-2,top+i,2,1);ctx.fillRect(x+sw,top+i+2,2,1)}}
-  if(kind==='think')for(let i=4;i<sw-4;i+=6){ctx.fillRect(x+i,top-1,3,1);ctx.fillRect(x+i+2,top+sh,3,1)}
-  const tx=clamp(Math.round(zx),x+3,x+sw-4);ctx.fillStyle=edge;
-  if(kind==='think'){ctx.fillRect(tx,top+sh+2,2,2);ctx.fillRect(tx+1,top+sh+5,1,1)}
-  else{ctx.fillRect(tx,top+sh,1,2);ctx.fillRect(tx+1,top+sh+2,1,2);ctx.fillRect(tx+2,top+sh+4,1,1)}
-  if(sc>=.95){
-    ptext(nm,x+3,top-(kind==='shout'?11:9),1,z.type==='skel'?P.l2:P.red);
-    let left=Math.floor((b.t-.15)*32);
-    lines.forEach((l,i)=>{if(left<=0)return;ptext(l.slice(0,left),x+4,top+3+i*9,1,kind==='shout'?P.w:P.l3);left-=l.length+1});
-  }
+  ptextO(nm,cx,top-10,z.type==='skel'?P.l2:P.red);
+  const col=kind==='shout'?P.w:kind==='think'?P.l1:P.l3;let left=Math.floor((b.t-.1)*34);
+  lines.forEach((l,i)=>{if(left<=0)return;ptextO(l.slice(0,left),cx,top+i*9,col,l);left-=l.length+1});
   ctx.globalAlpha=1;
 }
 function ring(x,y,r,col){ctx.fillStyle=col;const n=Math.max(12,Math.round(r*1.6));for(let i=0;i<n;i++){const a=i/n*Math.PI*2;ctx.fillRect(Math.round(x+Math.cos(a)*r),Math.round(y+Math.sin(a)*r*.45),2,1)}}
@@ -7049,10 +7237,10 @@ function draw(){
   if(S.mode==='play'&&(a.st==='rest'||a.st==='grab')){const ax=Math.round(scx(a.x));ctx.fillStyle=P.y;ctx.fillRect(ax-1,GY-2,3,7);const t=fmt(a.x),tw=pw(t,LS+1);ctx.fillStyle=P.w;ctx.fillRect(Math.round(ax-tw/2)-3,GY+6+8*LS,tw+6,7*(LS+1)+4);ptextC(t,ax,GY+8+8*LS,LS+1,P.k)}
   S.trail.forEach(([x,y],i)=>{if(i%3)return;ctx.fillStyle=a.ok?P.o:P.m3;ctx.fillRect(Math.round(scx(x)),Math.round(GY-5-y*YPX),1,1)});
   for(const st_ of S.stains){const x=Math.round(scx(st_.x));if(x<-4||x>W+4)continue;ctx.globalAlpha=Math.max(0,1-st_.t/30);ctx.fillStyle=st_.t<1?P.red:P.r;ctx.fillRect(x,GY-1,st_.w,2);if(st_.up)ctx.fillRect(x+1,GY-2,1,1)}ctx.globalAlpha=1;
-  for(const r of S.rings){const k=r.t/.6;ctx.globalAlpha=1-k;ring(scx(r.x),GY-2,4+k*ER,k<.4?P.w:P.y);ring(scx(r.x),GY-2,2+k*ER*.6,P.o)}ctx.globalAlpha=1;
+  for(const r of S.rings){const k=r.t/.6;ctx.globalAlpha=1-k;ring(scx(r.x),GY-2,4+k*ERx(),k<.4?P.w:P.y);ring(scx(r.x),GY-2,2+k*ERx()*.6,P.o)}ctx.globalAlpha=1;
   for(const z of S.zombies)drawZ(z,false);
   drawArrows();
-  drawApple2(false);
+  drawApple2(false);drawWeb();powDraw();
   // centro de masa (discreto)
   if(S.mode!=='title'&&!['eaten','hidden'].includes(a.st)){const cx=Math.round(apx()),cy=Math.round(GY-5-a.y*YPX);dline(cx+2,cy-1,cx+8,cy-9,P.y,2);ptext('c.m.',cx+9,cy-14,1,P.y)}
   for(const f of S.fx){ctx.globalAlpha=Math.max(0,1-f.t/1.2);const x=Math.round(scx(f.x)),y=GY-5,L=10+Math.min(14,f.f*.4);pline(x,y,x+f.dir*L*.7,y-L*.7,P.y);ptext('F',x+f.dir*L*.7+(f.dir>0?2:-7),y-L*.7-8,1,P.y);ctx.globalAlpha=1}
@@ -7102,7 +7290,7 @@ function titleZ(dt){
 }
 const WK=document.createElement('canvas'),wkc=WK.getContext('2d'),lgEl=$('#logo');
 lgEl.addEventListener('pointerdown',e=>{if(S.mode!=='title')return;e.preventDefault();try{lgEl.setPointerCapture(e.pointerId)}catch(_){}
-  S.bhOn=true;tone(70,.6,'sawtooth',.04,-25);const z=pick(S.zombies);if(z)say(z,pick(ZS('hole',['¡EL AGUJERO!','¡HUYAN!','¡ME ESTIRO!','¡MIS HUESOS!','¡AAAAH!'])),'shout')});
+  S.bhOn=true;S.bhMax=false;tone(70,.6,'sawtooth',.04,-25);const z=pick(S.zombies);if(z)say(z,pick(ZS('hole',['¡EL AGUJERO!','¡HUYAN!','¡ME ESTIRO!','¡MIS HUESOS!','¡AAAAH!'])),'shout')});
 for(const ev of['pointerup','pointercancel','lostpointercapture'])lgEl.addEventListener(ev,()=>{S.bhOn=false});
 window.addEventListener('pointerup',()=>{S.bhOn=false});
 // espaguetización: columnas del escenario estiradas en vertical y aplastadas hacia el agujero negro
@@ -7113,7 +7301,7 @@ function bhUI(k,hx,hy){
   if(!BHU.length)BHU=[...document.querySelector('#sTitle .card').children].filter(el=>el!==lgEl&&!el.hidden).map(el=>{const b=el.getBoundingClientRect();el.style.willChange='translate,scale,opacity';return{el,cx:b.left+b.width/2,cy:b.top+b.height/2}});
   const e=k*k*(3-2*k);
   for(const u of BHU){
-    const dx=hx-u.cx,dy=hy-u.cy,d=Math.hypot(dx,dy),pull=clamp(e*1.5-.5*d/Math.max(300,innerHeight),0,1),sy=Math.max(.05,1+2.2*Math.sin(pull*Math.PI)-.95*pull);
+    const dx=hx-u.cx,dy=hy-u.cy,d=Math.hypot(dx,dy),pull=clamp(e*(1.5+1.5*(S.bhG||0))-.5*d/Math.max(300,innerHeight),0,1),sy=Math.max(.05,1+2.2*Math.sin(pull*Math.PI)-.95*pull);
     const s=u.el.style;s.translate=`${dx*pull*.92}px ${dy*pull*.92}px`;s.scale=`${Math.max(.05,1-.92*pull)} ${sy}`;s.opacity=String(1-.85*pull);
   }
 }
@@ -7123,6 +7311,10 @@ const HZ={'es-419':'ESTÁS CRUZANDO EL HORIZONTE DE EVENTOS','es-ES':'ESTÁS CRU
   vi:'BẠN ĐANG VƯỢT QUA CHÂN TRỜI SỰ KIỆN',th:'คุณกำลังข้ามขอบฟ้าเหตุการณ์',sv:'DU KORSAR HÄNDELSEHORISONTEN',uk:'ТИ ПЕРЕТИНАЄШ ГОРИЗОНТ ПОДІЙ',cs:'PŘEKRAČUJEŠ HORIZONT UDÁLOSTÍ',el:'ΠΕΡΝΑΣ ΤΟΝ ΟΡΙΖΟΝΤΑ ΓΕΓΟΝΟΤΩΝ',
   he:'אתה חוצה את אופק האירועים',ro:'TRAVERSEZI ORIZONTUL EVENIMENTELOR',hu:'ÁTLÉPED AZ ESEMÉNYHORIZONTOT',da:'DU KRYDSER BEGIVENHEDSHORISONTEN'};
 function bhWarnSync(){const e=$('#bhWarn'),on=S.mode==='title'&&(S.bhK||0)>.3;if(on!==e.classList.contains('on')){if(on){$('#bhWarnT').textContent=HZ[LANG]||HZ.en;e.dir=langOf(LANG).rtl?'rtl':'ltr';if(!muted&&AC)tone(55,.5,'sawtooth',.03,-20)}e.classList.toggle('on',on)}}
+function bhGrow(dt){const on=S.bhOn&&S.mode==='title';S.bhG=clamp((S.bhG||0)+(on?dt/5.5:-dt*.9),0,1);
+  lgEl.style.scale=S.bhG>0?String(1+2.6*Math.pow(S.bhG,1.2)):'';lgEl.style.translate=S.bhG>0?`0 ${Math.round(S.bhG*90)}px`:'';$('#sTitle').classList.toggle('bhg',S.bhG>.005);
+  if(on){S.bhRum=(S.bhRum||0)-dt;if(S.bhRum<=0){S.bhRum=.32;if(!muted&&AC)tone(64-30*S.bhG,.4,'sawtooth',.02+.05*S.bhG,-15)}}
+  if(on&&S.bhG>=1){S.bhOn=false;S.flash=1;S.shake=10;unlock('hole');if(!muted&&ac()){hit('bombo',1.6);hit('gong',1.2);tone(40,1.4,'sawtooth',.14,-20)}}}
 function bhWarp(){
   const k=S.bhK;if(!(k>0)||S.mode!=='title'){if(BHU.length)bhUIReset();return}
   const vw=innerWidth,vh=viewH(),sc=Math.min(vw/W,vh/H),r=lgEl.getBoundingClientRect(),cw=cv.width,ch=cv.height;
@@ -7131,14 +7323,14 @@ function bhWarp(){
   if(WK.width!==cw||WK.height!==ch){WK.width=cw;WK.height=ch}
   wkc.clearRect(0,0,cw,ch);wkc.drawImage(cv,0,0);
   ctx0.save();ctx0.setTransform(1,0,0,1,0,0);ctx0.imageSmoothingEnabled=false;ctx0.fillStyle=P.k;ctx0.fillRect(0,0,cw,ch);
-  const sg=cw*.3;
-  for(let x=0;x<cw;x+=2){const dx=x-hx,f=Math.exp(-(dx*dx)/(2*sg*sg)),pull=k*(.4+.58*f),s=(1+k*7*f)*(1-.6*k*(1-f)),dy=hy*(1-s)+Math.sin(x*.05+S.time*7)*k*f*7;
+  const gg=S.bhG||0,sg=cw*(.3+.4*gg);
+  for(let x=0;x<cw;x+=2){const dx=x-hx,f=Math.exp(-(dx*dx)/(2*sg*sg)),pull=Math.min(.97,k*(.4+.58*f)+.25*gg*f),s=(1+k*(7+9*gg)*f)*(1-.6*k*(1-f)),dy=hy*(1-s)+Math.sin(x*.05+S.time*7)*k*f*7;
     ctx0.drawImage(WK,x,0,2,ch,hx+dx*(1-pull),dy,Math.max(1,2*(1-pull)+.6),ch*s)}
   ctx0.restore();
 }
 let last=0;
 function syncMusic(){if(AC)acWas=AC.state;
-  const ok=!muted&&AC&&AC.state==='running',kind=!ok?null:S.mode==='title'?'menu':(S.mode==='play'&&S.a.st!=='eaten')?'game':null;
+  const ok=!muted&&AC&&AC.state==='running',kind=!ok?null:S.mode==='title'?'menu':S.mode==='intro'?'intro':S.mode==='end'||(S.mode==='ending'&&S.endT>9.4)?'end':S.mode==='ending'?'game':(S.mode==='play'&&S.a.st!=='eaten')?'game':null;
   if(kind!==MUS.kind){if(MUS.on)musicStop();MUS.kind=kind;MUS.pend=null;MUSREQ++}
   if(kind&&!MUS.on&&MUS.pend!==kind)musicWant(kind)}
 function grooveName(g){return g?(g.name||(G2[g.genre]&&G2[g.genre].name)||GNAME[g.genre]||''):''}
@@ -7150,11 +7342,397 @@ function loop(t){
   if(S.mode!=='pause')update(dt);
   syncMusic();
   if(S.mode==='title'){const r=lgEl.getBoundingClientRect(),sc=Math.min(innerWidth/W,viewH()/H);S.bhX=((r.left+r.width/2)-(innerWidth-W*sc)/2)/sc;S.bhY=((r.top+r.height/2)-(viewH()-H*sc)/2)/sc}
-  draw();bhSymsDraw();bhWarp();bhWarnSync();if(padDirty)padDraw();
+  if(S.mode==='intro')drawIntro();else{draw();if(S.mode==='ending'||S.mode==='end')endDraw();powWarp()}bhSymsDraw();bhWarp();bhWarnSync();if(padDirty)padDraw();
   if(S.mode==='title'){drawLogo(S.time);drawLogoA(S.time)}
   requestAnimationFrame(loop);
 }
-window.__G={SND,sLoad,newGroove2,newScore,musicStart2,musicStop,G2,setMode,say,taunt,nearestZ,INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
+/* ============ Accesibilidad: lector de pantalla (TalkBack, VoiceOver, Narrador) ============
+   El navegador no dice si hay un lector activo: se detecta cuando llega un «clic» sin toque ni tecla antes
+   (así activan los botones TalkBack y VoiceOver) o con el botón invisible que el lector anuncia primero. */
+let A11Y=false;try{A11Y=localStorage.getItem('rzA11y')==='1'}catch(e){}
+const liveA=$('#live'),liveP=$('#live2');
+function speak(txt,urgent){if(!A11Y||!txt)return;const el=urgent?liveA:liveP;txt=String(txt).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();el.textContent='';setTimeout(()=>{el.textContent=txt},40)}
+function setA11y(on){A11Y=!!on;try{localStorage.setItem('rzA11y',on?'1':'0')}catch(e){}
+  document.body.classList.toggle('a11y',A11Y);if(A11Y){document.body.classList.add('kb');padClear()}
+  syncChips();if(A11Y)speak(XL('n_a11yOn'),true);else{liveA.textContent=XL('n_a11yOff')}
+  requestAnimationFrame(()=>{if(typeof fitCards==='function')fitCards()})}
+let lastPD=-1e9,lastKD=-1e9;
+for(const ev of['pointerdown','pointerup','touchend','mousedown'])addEventListener(ev,()=>{lastPD=performance.now()},true);
+addEventListener('keydown',()=>{lastKD=performance.now()},true);
+addEventListener('click',e=>{const n=performance.now();if(A11Y||!e.isTrusted||n-lastPD<900||n-lastKD<900)return;
+  if(e.target&&e.target.closest&&e.target.closest('button,summary,[role=slider]'))setA11y(true)},true);
+$('#srOn').onclick=()=>setA11y(true);
+for(const i of[1,2])$('#bA11y'+i).onclick=()=>setA11y(!A11Y);
+// el teclado numérico también responde al «clic» del lector (que no manda toques)
+$('#kp').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||performance.now()-lastPD<900)return;typeKey(b.dataset.k)});
+function kpLabels(){for(const b of document.querySelectorAll('#kp button')){const k=b.dataset.k;b.setAttribute('aria-label',k==='-'?XL('n_minus'):k==='.'?XL('n_dot'):k==='/'?L10('frac'):k)}
+  $('#srOn').textContent=XL('n_a11yBtn')}
+const kindName=z=>{const a=XL('n_kinds').split(';'),i={walker:0,runner:0,skel:1,spider:2,creeper:3,ender:4,boss:5}[z.type]||0;return z.prof?a[6]:a[i]};
+const sideOf=z=>XL(scx(z.x)<scx(S.a.x)?'n_left':'n_right');
+const speakQ=p=>prettyQ(p.str).replace(/·/g,' × ').replace(/\^/g,' '+XL('n_to')+' ');
+// pitidos de proximidad: suenan del lado del enemigo y más rápido cuanto más cerca
+function beep(side,k){if(muted||!ac())return;const t=AC.currentTime+.005,o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=420+k*700;
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.07,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.09);let n=o.connect(g);
+  if(AC.createStereoPanner){const p=AC.createStereoPanner();p.pan.value=clamp(side,-1,1)*.85;n=n.connect(p)}n.connect(AC.destination);o.start(t);o.stop(t+.12)}
+function a11yTick(dt){if(!A11Y||S.mode!=='play')return;const z=nearestZ();if(!z)return;const ax=scx(S.a.x),d=Math.abs(scx(z.x)-ax);if(d>W*.5)return;
+  S.beepT=(S.beepT||0)-dt;if(S.beepT<=0){S.beepT=.16+.9*d/(W*.5);beep(Math.sign(scx(z.x)-ax),1-d/(W*.5))}
+  if(d<W*.22&&(!z.warned||S.time-z.warned>5)){z.warned=S.time;speak(XL('n_near',[kindName(z),sideOf(z)]))}}
+
+/* ============ Nombres de los enemigos según el país ============ */
+const NAMEPOOL={
+  mx:'PEPE CHUY LUPE MEMO PACO CHELA TOÑO LALO NACHO RAMIRO LUCHA BETO',ar:'PEPE NACHO TITO FACU MATEO CHIQUI POCHO LUCHO TOTI PAULA FLOR JUANCHO',co:'PIPE JUANCHO MAFE CAMILO ÑERO TATA CHUCHO NANDO LUCHO VALE PACHO MONO',
+  cl:'PANCHO CHAMACO NACHO CHELO TOMI CATA FERNA RULO KENA COTE PELAO MATI',pe:'CHOLO PEPE CHATO LUCHO KIKE TOÑO CHABUCA PANCHO MECHE TOTO GORDO NENA',ve:'PANA CHAMO GOYO NENO YEYE PACO MAITO CHUCHO LELO BEBA MUÑECO GOCHO',
+  es:'PACO MANOLO PEPA JAVI CHEMA LOLA PACA NANDO KIKE CURRO MARI TOÑI',us:'BOB CHAD KEVIN KAREN BRAD TINA DUSTIN STACY HANK JOEY MANDY TODD',gb:'NIGEL TREVOR NEVILLE GAVIN MAVIS DOREEN CLIVE BARRY PIP RUPERT GLADYS DEREK',
+  br:'ZÉ TONHO JUJU KIKO BIA DUDU NANDO TETÊ GUGU PIPO LULU XUXA',pt:'ZÉ MANEL TOZÉ QUIM ZECA LENA NÉ BINO TÓ FIFI MIGUEL ZEZÉ',fr:'GÉRARD JACQUOT DÉDÉ MIMI LULU GIGI FIFI ROGER PIERROT TITI NONO JOJO',
+  de:'HANS DIETER GÜNTHER HEINZ UWE KLAUS HELGA BÄRBEL JÜRGEN RUDI UTE FRITZ',jp:'タロウ ケンジ ハナコ ゴロウ サブロウ ミツコ ジロウ ヒロシ ユキ トシオ ケイコ ポチ',cn:'小明 老王 大壮 二狗 小红 阿强 胖虎 老李 小美 阿呆 铁柱 翠花',
+  kr:'철수 영희 민수 덕배 순자 만복 똘이 영식 말순 칠득 복남 길동',it:'PEPPINO GIGI TONINO BEPPE NINO LUIGINO PINUCCIA GINO CARMELA TOTÒ FRANCO RENZO',ru:'ВАСЯ ПЕТЯ ГОША ЛЮСЯ ЖОРА ВОВА ТОЛИК ЗИНА СЕРЁГА ГАЛЯ КОЛЯ ФЕДЯ',
+  sa:'عبدو حمودي سعودي زعطوط أبو فلان فهودي ناصر سمسم بطوطة خالد شادي',in:'पप्पू गोलू चिंटू बबलू मुन्ना रिंकू टिंकू गुड्डू सोनू पिंकी मोनू राजू',tr:'HÜSEYİN CEMAL TEMEL DURSUN AYŞE KEMAL BÜLENT SÜLEYMAN ŞÜKRÜ HACER OSMAN FADİME',
+  nl:'HENK JAN KEES SJAAK TRUUS GERRIT ANKIE PIET JOOP DIRK MIEP BAS',pl:'JANUSZ ZBYSZEK MIREK HALINA GRAŻYNA STASIEK KAZIK HENIEK BOGDAN ZDZISIEK JADZIA ROMEK',id:'UDIN ASEP JAJANG UJANG IPUL KOKO ENGKUS BUDI NENG JUJUN TATANG ICHA',
+  vn:'TÈO TÍ SỬU DẦN HÙNG LAN CU BI MÍT TÚN BỜM HOA',th:'สมชาย สมศรี ป้อม ต้อม แดง เอก หนิง บอย จุ๋ม ต๋อง กุ้ง หมู',se:'SVEN ÅKE BOSSE LASSE GÖRAN BIRGITTA STIG KJELL INGVAR OLLE BRITT TAGE',
+  ua:'ВАСИЛЬ ПЕТРО СТЕПАН ГАЛЯ МИКОЛА ОКСАНА ТАРАС ГРИЦЬКО ОСТАП МОТРЯ ІВАСИК ФЕДІР',cz:'PEPA FRANTA JARDA MÁŇA LÁĎA VENDA BÁRA HONZA KÁJA ZDENĚK MIREK BOŽENA',gr:'ΤΑΚΗΣ ΜΑΚΗΣ ΣΑΚΗΣ ΚΩΣΤΑΣ ΓΙΑΝΝΗΣ ΛΕΝΙΩ ΦΩΦΩ ΜΗΤΣΟΣ ΤΑΣΟΣ ΚΙΚΗ ΣΤΑΘΗΣ ΡΟΥΛΑ',
+  il:'שמוליק מוישה יוסי אבי חיים צביקה רחלי דודו שוקי פנינה מושיקו רותי',ro:'GIGEL COSTEL VIOREL IONEL MIRCEA FĂNEL MARIOARA DOREL NELU LENUȚA CORNEL TITI',hu:'JÓZSI PISTA FERI LAJOS BÉLA MANCI JUCI GYURI TIBI ICA LACI KATI',
+  dk:'BENT JØRGEN KNUD BIRTHE SØREN PREBEN HANNE OLE TAGE LONE ARNE GRETHE',au:'BAZZA SHAZZA DAZZA KEVO MICKO TONE BRUCE SHEILA DAZ JONO GAZZA TRACE'};
+function nameRegion(){const nav=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'']).map(s=>String(s).toLowerCase()),
+    reg=p=>{for(const n of nav){const m=/^([a-z]+)-([a-z]{2})\b/.exec(n);if(m&&m[1]===p)return m[2]}return''};
+  if(LANG==='es-ES')return'es';
+  if(LANG==='es-419'){const r=reg('es');return r!=='es'&&NAMEPOOL[r]?r:{uy:'ar',py:'ar',bo:'pe',ec:'co',gt:'mx',hn:'mx',sv:'mx',ni:'mx',cr:'co',pa:'co',cu:'ve',do:'ve',pr:'ve'}[r]||'mx'}
+  if(LANG==='en'){const r=reg('en');return r==='au'||r==='nz'?'au':r==='gb'||r==='ie'?'gb':'us'}
+  if(LANG==='pt')return reg('pt')==='pt'?'pt':'br';
+  return langOf(LANG).cc}
+const zNames=()=>(NAMEPOOL[nameRegion()]||NAMEPOOL.us).split(' ');
+
+/* ============ Sombreros y ropa: cada zombi sale vestido distinto ============ */
+const HATS=['top','cap','cowboy','beanie','party','helmet','sombrero','chef','bowler','beret','viking','prop','band','none','none'];
+const CLOTHES=['tie','bowtie','scarf','shirt','vest','cape','pack','belt','none'];
+const OCOL=['#c4161c','#e8862a','#e8c33a','#4f8a2a','#2f6fb0','#7a3fa0','#8a5a2a','#d84a8a','#3aa8a0','#b0b0b0'];
+function outfit(z){if(z.type==='walker'||z.type==='runner'){z.hat=pick(HATS);z.cloth=pick(CLOTHES);z.hc=pick(OCOL);z.cc=pick(OCOL.filter(c=>c!==z.hc))}else if(z.type==='skel'&&R()<.5){z.hat=pick(['viking','top','helmet','band']);z.hc=pick(OCOL)}return z}
+function drawHat(z,hx,hy,hs,f){const c=z.hc||'#c4161c',F=(x,y,w,h,col)=>{ctx.fillStyle=col||c;ctx.fillRect(Math.round(x),Math.round(y),w,h)},m=hx+(hs>>1);
+  switch(z.hat){
+    case'top':F(hx-1,hy-1,hs+2,1);F(hx,hy-6,hs,5);F(hx,hy-2,hs,1,P.k);break;
+    case'cap':F(hx,hy-2,hs,2);F(f>0?hx+hs:hx-3,hy-1,3,1);F(m,hy-3,1,1);break;
+    case'cowboy':F(hx-2,hy-1,hs+4,1);F(hx-3,hy-2,1,1);F(hx+hs+2,hy-2,1,1);F(hx,hy-4,hs,3);F(hx,hy-2,hs,1,P.k);break;
+    case'beanie':F(hx,hy-2,hs,2);F(hx,hy-1,hs,1,'#00000055');F(m-1,hy-4,2,2,'#f4f1e8');break;
+    case'party':for(let i=0;i<5;i++){const w=Math.max(1,hs-2-i*2+2);F(m-(w>>1),hy-1-i,w,1,i%2?'#e8c33a':c)}F(m,hy-6,1,1,'#f4f1e8');break;
+    case'helmet':F(hx-1,hy-2,hs+2,2,'#e8c33a');F(hx+1,hy-3,hs-2,1,'#e8c33a');F(m,hy-3,1,2,'#b08a1a');break;
+    case'sombrero':F(hx-4,hy-1,hs+8,1);F(hx-4,hy,1,1,'#e8c33a');F(hx+hs+3,hy,1,1,'#e8c33a');F(hx+1,hy-4,hs-2,3);F(hx+1,hy-2,hs-2,1,'#c4161c');break;
+    case'chef':F(hx,hy-3,hs,3,'#f4f1e8');F(hx-1,hy-6,hs+2,3,'#f4f1e8');F(hx,hy-1,hs,1,'#c8c8c8');break;
+    case'bowler':F(hx-1,hy-1,hs+2,1);F(hx,hy-3,hs,2);F(hx+1,hy-4,hs-2,1);break;
+    case'beret':F(f>0?hx-1:hx,hy-2,hs+1,2);F(m,hy-3,1,1);break;
+    case'viking':F(hx,hy-2,hs,2,'#9a9a9a');F(hx-1,hy-3,1,2,'#f4f1e8');F(hx-2,hy-5,1,2,'#f4f1e8');F(hx+hs,hy-3,1,2,'#f4f1e8');F(hx+hs+1,hy-5,1,2,'#f4f1e8');break;
+    case'prop':{F(hx,hy-2,hs,2);F(m,hy-4,1,2,'#555');const w=1+Math.round(Math.abs(Math.sin(S.time*22+z.id))*3);F(m-w,hy-4,2*w+1,1,'#e8c33a');break}
+    case'band':{F(hx,hy+1,hs,1);const b=f>0?hx-1:hx+hs,wv=Math.round(Math.sin(S.time*9+z.id));F(b,hy+1,1,1);F(b-f,hy+2+wv,1,1);F(b-2*f,hy+2,1,1);break}
+  }}
+function drawCloth(z,x,hip,sx,sh,lean,th,tw,f,bob,back){const c=z.cc||'#2f6fb0',F=(a,b,w,h,col)=>{ctx.fillStyle=col||c;ctx.fillRect(Math.round(a),Math.round(b),w,h)},cxAt=y=>x+Math.round(lean*(hip+bob-y)/th);
+  if(back){if(z.cloth==='cape')for(let i=0;i<th+2;i++){const y=sh+1+i,w=1+(i>>1),wv=Math.round(Math.sin(S.time*6+i*.6+z.id)*.8),bx=cxAt(Math.min(y,hip))-f*(2+i*.35)+wv;F(f>0?bx-w:bx,y,w,1)}
+    else if(z.cloth==='pack'){const bx=cxAt(sh+3)-f*(2+(tw>>1))-(f>0?2:0);F(bx,sh+2,3,5)}return}
+  switch(z.cloth){
+    case'tie':{for(let i=1;i<=5;i++)F(cxAt(sh+i)+(f>0?0:-1),sh+i,1,1);F(cxAt(sh+1)-1,sh+1,2,1);break}
+    case'bowtie':{const cx=cxAt(sh+1);F(cx-2,sh+1,4,1);F(cx-2,sh,1,1);F(cx+1,sh+2,1,1);break}
+    case'scarf':{const cx=cxAt(sh);F(cx-2,sh,4,2);F(cx-f*2,sh+2,1,3);break}
+    case'shirt':case'vest':for(let i=1;i<th-1;i++){const y=sh+i;F(cxAt(y)-(tw>>1),y,tw,1)}if(z.cloth==='vest')F(cxAt(sh+3),sh+3,1,1,'#e8c33a');break;
+    case'belt':{const cx=cxAt(hip-1);F(cx-(tw>>1)-1,hip-1+bob,tw+2,1,'#5a3a22');F(cx,hip-1+bob,1,1,'#e8c33a');break}
+  }}
+// el profesor de matemáticas: calvo, lentes, bigote, corbata y birrete con borla
+function drawProf(z,hx,hy,hs,sx,sh,f){const F=(x,y,w,h,col)=>{ctx.fillStyle=col;ctx.fillRect(Math.round(x),Math.round(y),w,h)};
+  F(hx-1,hy+1,1,4,'#b5b5b5');F(hx+hs,hy+1,1,4,'#b5b5b5');
+  const ey=hy+3,g1=f>0?hx+hs-7:hx+1;for(const gx of[g1,g1+4]){F(gx,ey,3,1,'#f4f1e8');F(gx,ey+2,3,1,'#f4f1e8');F(gx,ey,1,3,'#f4f1e8');F(gx+2,ey,1,3,'#f4f1e8');F(gx+1,ey+1,1,1,P.red)}F(g1+3,ey+1,1,1,'#f4f1e8');
+  F(hx+2,hy+hs-4,hs-4,1,'#4a4a4a');
+  F(hx-3,hy-2,hs+6,2,'#1b1a17');F(hx-3,hy-2,hs+6,1,'#4a4a4a');F(hx+2,hy-4,hs-4,2,'#1b1a17');const tx=f>0?hx-3:hx+hs+2;F(tx,hy-1,1,4,'#e8c33a');F(tx-1,hy+3,3,1,'#e8c33a');
+  for(let i=1;i<=7;i++)F(sx+(f>0?0:-1),sh+i,1,1,P.red);F(sx-1,sh+1,2,1,P.red);
+  if(!z.dead&&!z.grab){const hxp=sx+f*14,hyp=sh+1;pline(hxp,hyp,hxp+f*9,hyp-8,'#8a5a2a');F(hxp+f*9,hyp-9,1,1,'#f4f1e8')}}
+
+/* ============ Arañas, creepers y endermans ============ */
+function tpFx(z,col){const x=scx(z.x);for(let i=0;i<22;i++)S.parts.push({x:x+(R()-.5)*8,y:GY-4-R()*28,vx:(R()-.5)*30,vy:-R()*40,t:0,life:.5+R()*.5,c:pick(['#c86bff','#7a3fa0','#e8b8ff'])})}
+function enderTP(z,nx){tpFx(z);z.x=nx;tpFx(z);z.tpFlash=.35;if(!muted&&ac()){tone(900,.25,'sine',.05,-700);tone(300,.3,'triangle',.04,500,.05)}}
+function spiderAI(z,dt,ax){
+  const zx=scx(z.x),dist=Math.abs(zx-ax),dir=Math.sign(ax-zx)||1;
+  if(dist>W*.8)z.x=S.cam+(zx<ax?-1:1)*(W/2+12)/S.u;
+  z.walk+=dt*10;
+  if(z.ws){z.ws.t+=dt;if(z.ws.t>=z.ws.T){z.ws=null;if(S.a.st==='rest'&&!S.grab&&!S.web&&!useShield())webbed(z)}return}
+  if(z.flee>0){z.flee-=dt;z.x-=dir*zSpd()*1.3*dt/S.u;return}
+  if(dist>W*.17)z.x+=dir*zSpd()*z.spdK*dt/S.u;
+  else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab&&!S.web){z.cd=6+R()*3;z.ws={t:0,T:.5};if(!muted&&ac())tone(1400,.18,'sine',.04,-1100)}}
+}
+function webbed(z){S.web={z,t:0};S.input='';renderInput();padClear();if(!S.prob)newProblem();
+  $('#alBig').textContent=XL('n_webbed');$('#alSub').textContent=XL('n_webSub');$('#alert').classList.add('on','web');S.shake=4;
+  if(!muted&&ac()){hit('guiro',.8);tone(500,.4,'sawtooth',.03,-300)}speak(XL('n_webbed')+' '+XL('n_webSub'),true)}
+function webFree(){const w=S.web;S.web=null;$('#alert').classList.remove('on','web');unlock('web');S.run.esc++;
+  if(w&&alive(w.z)){w.z.flee=2.5;w.z.cd=7}
+  for(let i=0;i<18;i++)S.parts.push({x:apx(),y:GY-8,vx:(R()-.5)*90,vy:-R()*70,t:0,life:.5,c:P.w});
+  S.texts.push({x:S.a.x,y:GY-40,txt:'✓',c:P.w,t:0,life:1,world:true});SFX.clear();S.prob=null;newProblem()}
+function creeperAI(z,dt,ax){
+  if(z.fuse!=null){z.fuse-=dt;if(!(z.hiss>0)){z.hiss=.25;if(!muted&&ac())nz(AC.currentTime,.3,'highpass',3000+R()*2000,1,.05,AC.destination)}else z.hiss-=dt;if(z.fuse<=0)creeperBoom(z);return}
+  const zx=scx(z.x),dist=Math.abs(zx-ax),dir=Math.sign(ax-zx)||1;
+  if(dist>W*.8)z.x=S.cam+(zx<ax?-1:1)*(W/2+12)/S.u;
+  z.walk+=dt*4;z.x+=dir*zSpd()*z.spdK*dt/S.u;
+  if(dist<18&&S.a.st!=='air'){z.fuse=z.fuseT=A11Y?2.6:1.5;speak(XL('n_fuse',[sideOf(z)]),true)}
+}
+function creeperBoom(z){const zx=scx(z.x);z.boomed=true;killZ(z,false);S.shake=13;S.flash=.7;
+  for(let i=0;i<70;i++){const ang=-Math.PI*R(),s=40+R()*170;S.parts.push({x:zx,y:GY-8,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.5+R()*.8,c:pick(['#4fae35','#2a6a1b',P.w,P.l2,P.m2,'#e8862a'])})}
+  S.rings.push({x:z.x,t:0});S.texts.push({x:z.x,y:GY-46,txt:XL('n_boom'),c:'#4fae35',t:0,life:1.2,world:true});
+  if(!muted&&ac()){hit('bombo',1.5);hit('platos',1);tone(55,.9,'sawtooth',.12,-30);nz(AC.currentTime,.8,'lowpass',900,.7,.6,AC.destination)}
+  const near=Math.abs(apx()-zx)<30&&!['air','eaten','clear','hidden'].includes(S.a.st);
+  if(near)damage('boom');
+  for(const o of S.zombies)if(alive(o)&&o!==z&&o.type!=='boss'&&Math.abs(scx(o.x)-zx)<34)killZ(o,true)}
+function enderAI(z,dt,ax){z.walk+=dt*1.4;z.tpFlash=Math.max(0,(z.tpFlash||0)-dt);z.tp=(z.tp==null?2.5:z.tp)-dt;
+  if(z.tp<=0){z.tp=2.4+R()*2.4;const a=S.a;let nx;
+    if(a.st==='air'&&R()<.55)nx=a.to+(R()-.5)*3/S.u;
+    else if(R()<.5)nx=a.x+(R()<.5?-1:1)*(10+R()*9)/S.u;
+    else nx=S.cam+(R()-.5)*W*.8/S.u;
+    enderTP(z,nx)}
+  if(S.a.st==='rest'&&!S.grab&&Math.abs(scx(z.x)-ax)<8)startGrab(z)}
+function drawSpider(z){const x=Math.round(scx(z.x));if(x<-30||x>W+30)return;const f=Math.sign(scx(S.a.x)-x)||1,col=z.hitT>0?P.red:P.l3;ctx.save();
+  if(z.dead){ctx.globalAlpha*=Math.max(0,1-z.deadT/1.1);ctx.fillStyle=col;ctx.fillRect(x-4,GY-2,9,2);for(const s of[-1,1])for(let i=0;i<4;i++)ctx.fillRect(x+s*(5+i*2),GY-1,2,1);ctx.restore();return}
+  const by=GY-6,w=z.walk;
+  for(const s of[-1,1])for(let i=0;i<4;i++){const ph=Math.round(Math.sin(w+i*1.7+(s>0?1:0))*1.4),kx=x+s*(3+i*1.4),ky=by-3-(i%2),fx=x+s*(5+i*1.8)+ph;pline(x+s,by,kx,ky,col);pline(kx,ky,fx,GY-1,col)}
+  ctx.fillStyle=col;ctx.fillRect(x-f*5-2,by-3,6,5);ctx.fillRect(x-f*5-1,by-4,4,7);ctx.fillRect(x+f*2-1,by-1,4,3);
+  ctx.fillStyle=P.red;ctx.fillRect(x-f*5,by-2,2,1);ctx.fillRect(x-f*5,by,2,1);ctx.fillRect(x-f*5+(f>0?0:1),by-1,1,1);
+  ctx.fillRect(x+f*3,by-1,1,1);ctx.fillRect(x+f*3+(f>0?-1:1),by,1,1);
+  if(z.ws){const k=z.ws.t/z.ws.T,ax=apx(),ay=GY-8;ctx.globalAlpha=.8;dline(x+f*3,by,x+f*3+(ax-x-f*3)*k,by+(ay-by)*k,P.w,2)}
+  ctx.restore()}
+function drawWeb(){if(!S.web||S.a.st!=='rest')return;const cx=Math.round(apx()),cy=GY-8;ctx.globalAlpha=.85;
+  for(let i=0;i<8;i++){const a=i/8*Math.PI*2;pline(cx,cy,cx+Math.cos(a)*12,cy+Math.sin(a)*10,P.w)}
+  for(const r of[5,9]){for(let i=0;i<16;i++){const a=i/16*Math.PI*2;ctx.fillStyle=P.l2;ctx.fillRect(Math.round(cx+Math.cos(a)*r),Math.round(cy+Math.sin(a)*r*.85),1,1)}}ctx.globalAlpha=1}
+function drawCreeper(z){const x=Math.round(scx(z.x));if(x<-30||x>W+30)return;ctx.save();
+  if(z.dead){ctx.restore();return}
+  const fu=z.fuse!=null,fl=fu&&((S.time*(z.fuse<.6?22:9))|0)%2,sw=fu?Math.round((1-z.fuse/z.fuseT)*2):0,G1=fl?'#f4f1e8':z.hitT>0?P.red:'#4fae35',G2=fl?'#dcdcdc':'#2a6a1b',st=Math.sin(z.walk)>0?1:0;
+  const F=(a,b,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(a,b,w,h)};
+  F(x-3-sw,GY-3+st,3,3,G2);F(x+1+sw,GY-3+(1-st),3,3,G2);
+  const bw=4+sw,bh=9;F(x-(bw>>1),GY-3-bh,bw,bh,G1);
+  const hw=7+sw,hx=x-(hw>>1),hy=GY-3-bh-hw;F(hx,hy,hw,hw,G1);
+  for(let j=0;j<hw;j++)for(let i=0;i<hw;i++)if(((i*7+j*5+z.id)%6)===0)F(hx+i,hy+j,1,1,G2);
+  for(let j=0;j<bh;j++)if(((j*3+z.id)%4)===0)F(x-(bw>>1)+(j%bw),GY-3-bh+j,1,1,G2);
+  const k='#111';F(hx+1,hy+2,2,2,k);F(hx+hw-3,hy+2,2,2,k);F(hx+(hw>>1)-1,hy+4,2,1,k);F(hx+(hw>>1)-2,hy+5,4,2,k);F(hx+(hw>>1)-2,hy+hw-1,1,1,k);F(hx+(hw>>1)+1,hy+hw-1,1,1,k);
+  ctx.restore()}
+function drawEnder(z){const x=Math.round(scx(z.x));if(x<-30||x>W+30)return;const f=Math.sign(scx(S.a.x)-x)||1;ctx.save();
+  if(z.dead){ctx.globalAlpha*=Math.max(0,1-z.deadT/1.1)}
+  const body=THEME==='dark'?'#262626':'#111',ed=THEME==='dark'?'#555':'#000',st=Math.round(Math.sin(z.walk)*1.5),F=(a,b,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(a,b,w,h)};
+  if(z.tpFlash>0&&((S.time*30)|0)%2){ctx.restore();return}
+  pline(x-1,GY-15,x-1-st,GY-1,ed);pline(x+1,GY-15,x+1+st,GY-1,ed);
+  F(x-2,GY-25,5,10,body);F(x-2,GY-25,1,10,ed);
+  if(z.grab&&S.grab){const ax=apx(),ay=GY-6-S.a.y*YPX;pline(x,GY-24,ax-f*2,ay,ed)}else{pline(x-3,GY-24,x-3,GY-9,ed);pline(x+3,GY-24,x+3,GY-9,ed)}
+  F(x-3,GY-32,7,7,body);F(x-3,GY-32,7,1,ed);
+  const e='#d58bff';F(x-3+(f>0?1:0),GY-29,2,1,e);F(x+1+(f>0?1:0),GY-29,2,1,e);F(x-3+(f>0?1:0)+(f>0?1:0),GY-29,1,1,'#ff6bff');
+  if(((S.time*3+z.id)|0)%2===0)F(x+Math.round(Math.sin(S.time*2+z.id)*6),GY-10-Math.round((S.time*12+z.id*5)%20),1,1,'#c86bff');
+  ctx.restore()}
+
+/* ============ Daño, corazones y escudo ============ */
+function useShield(){if(!S.shield)return false;S.shield=false;S.dBoost=0;S.d=dOf(S.topic.id);S.flash=.3;
+  S.texts.push({x:S.a.x,y:GY-44,txt:XL('n_shield'),c:'#e8862a',t:0,life:1.2,world:true});if(!muted&&ac()){hit('platos',.6);bell(1760,.06)}return true}
+function damage(kind){if(useShield())return;
+  S.arrowHits=(S.arrowHits||0)+1;S.shake=8;S.flash=.35;blood(apx(),GY-6,14);const left=2-S.arrowHits;
+  S.texts.push({x:S.a.x,y:GY-42,txt:left>0?XL('c64e959'):XL('c2ead57'),c:P.r2,t:0,life:1.5,world:true});if(left>0)speak(XL('n_hearts',[left]),true);
+  if(S.arrowHits>=2){S.deathBy=kind;if(S.grab){S.grab.z.grab=false;S.grab=null}eaten()}}
+
+/* ============ Poderes del arcoíris: cada uno ayuda y cobra algo a cambio ============ */
+const POW=[{id:'r',c:'#e0262b'},{id:'o',c:'#e8862a'},{id:'y',c:'#f5d23a'},{id:'g',c:'#4fae35'},{id:'b',c:'#3a9be8'},{id:'i',c:'#5a4ad0'},{id:'v',c:'#b04ae0'}];
+const powOf=id=>POW.find(p=>p.id===id);
+const powOn=id=>!!(S.powA&&S.powA.id===id&&S.powA.t>0);
+const POWSTREAK=6;
+function powTxt(id){return`<b style="color:${powOf(id).c}">${XL('p_'+id)}</b> ✓ ${XL('pa_'+id)} · ✗ ${XL('pd_'+id)}`}
+function updPowBtn(){const b=$('#bPow');if(!S.pow){b.hidden=true;return}const p=powOf(S.pow);b.hidden=false;b.style.setProperty('--pc',p.c);b.setAttribute('aria-label',XL('n_powBtn',[XL('p_'+p.id)]))}
+function grantPow(){if(S.pow)return;S.pow=pick(POW).id;updPowBtn();newt(XL('n_powGot',[XL('p_'+S.pow)])+'<br>'+powTxt(S.pow),true);
+  if(!muted&&ac())[523,659,784,988,1175,1397,1568].forEach((f,i)=>bell(f,.05,i*.06));speak(XL('n_powGot',[XL('p_'+S.pow)])+' '+XL('pa_'+S.pow)+'. '+XL('pd_'+S.pow)+'. '+XL('n_powUse'))}
+function usePow(){const id=S.pow;if(!id||S.mode!=='play'||!['rest','air','grab'].includes(S.a.st))return;S.pow=null;updPowBtn();
+  SAVE.powUsed=SAVE.powUsed||{};SAVE.powUsed[id]=1;persist();unlock('pow');if(Object.keys(SAVE.powUsed).length>=7)unlock('pow7');
+  newt(powTxt(id),true);speak(XL('p_'+id));const c=powOf(id).c;S.flash=.4;
+  for(let i=0;i<30;i++){const a=R()*Math.PI*2,s=30+R()*80;S.parts.push({x:apx(),y:GY-8,vx:Math.cos(a)*s,vy:Math.sin(a)*s,t:0,life:.7,c})}
+  if(!muted&&ac()){tone(300,.5,'sawtooth',.05,900);bell(1568,.06,.1)}
+  const T=(t)=>{S.powA={id,t,T:t}};
+  if(id==='r')T(12);
+  else if(id==='o'){S.shield=true;S.dBoost=.25;S.d=dOf(S.topic.id)}
+  else if(id==='y'){S.bolts=[];for(const z of S.zombies)if(alive(z)&&z.type!=='boss'){S.bolts.push(scx(z.x));killZ(z,true)}S.boltT=.45;S.shake=10;T(10);if(!muted&&ac()){hit('platos',1.2);nz(AC.currentTime,.5,'highpass',2000,.5,.5,AC.destination)}}
+  else if(id==='g')T(20);
+  else if(id==='b')T(8);
+  else if(id==='i'){T(12);if(!S.topic.boss){S.quota++;updHUD()}}
+  else if(id==='v'){T(10);S.vhole={x:S.a.x,t:0};for(const z of S.zombies)if(alive(z)&&Math.abs(scx(z.x)-apx())<W*.35){if(z.type==='boss'){z.hp--;z.hitT=.4;if(z.hp<=0){killZ(z,true);checkClear()}updHUD()}else z.suck={t:0,x0:z.x}}if(!muted&&ac())tone(80,1.2,'sawtooth',.08,-50)}
+}
+$('#bPow').onclick=e=>{e.stopPropagation();usePow()};
+function powUpdate(dt){if(S.powA){S.powA.t-=dt;if(S.powA.t<=0)S.powA=null}if(S.boltT>0)S.boltT-=dt;
+  if(S.vhole){S.vhole.t+=dt;if(S.vhole.t>1.4)S.vhole=null}
+  for(const z of S.zombies)if(z.suck&&alive(z)){z.suck.t+=dt;const hx=S.vhole?S.vhole.x:S.a.x;z.x+=(hx-z.x)*Math.min(1,dt*5);if(z.suck.t>.6)killZ(z,false)}}
+function powDraw(){const a=S.a;if(S.mode!=='play'||['eaten','hidden'].includes(a.st))return;const cx=Math.round(apx()),cy=Math.round(GY-8-a.y*YPX);
+  if(S.shield){ctx.globalAlpha=.55+.25*Math.sin(S.time*6);ring(cx,cy+6,11,'#e8862a');ring(cx,cy+6,12,'#e8862a');ctx.globalAlpha=1}
+  if(S.powA){const p=powOf(S.powA.id),k=S.powA.t/S.powA.T;ctx.globalAlpha=.5+.3*Math.sin(S.time*8);ring(cx,cy+6,9+Math.sin(S.time*5)*1.5,p.c);ctx.globalAlpha=1;
+    ctx.fillStyle=P.m1;ctx.fillRect(cx-10,cy+12,20,2);ctx.fillStyle=p.c;ctx.fillRect(cx-10,cy+12,Math.round(20*k),2)}
+  if(powOn('g')&&S.prob&&!S.input){const k=S.prob.key,h=(k[0]==='-'?MINUS+(k[1]||''):k[0])+'…';ptextC(h,cx,cy-24,2,'#4fae35',P.k)}
+  if(S.boltT>0&&S.bolts){ctx.globalAlpha=Math.min(1,S.boltT*3);for(const bx of S.bolts){let x=bx,y=TOPPAD;ctx.fillStyle='#f5d23a';while(y<GY){const nx=x+(R()-.5)*8,ny=y+6;pline(x,y,nx,ny,'#f5d23a');pline(x+1,y,nx+1,ny,P.w);x=nx;y=ny}}ctx.globalAlpha=1}
+  if(S.vhole){const k=S.vhole.t/1.4,r=Math.round(4+10*Math.sin(Math.PI*k)),hx=scx(S.vhole.x),hy=GY-34;ctx.fillStyle='#000';ctx.beginPath();ctx.arc(hx,hy,r,0,7);ctx.fill();ring(hx,hy,r+2,'#b04ae0');ring(hx,hy,r+4,P.w)}
+  if(powOn('b'))for(const z of S.zombies)if(alive(z)&&z.type!=='boss'){const x=Math.round(scx(z.x));ctx.globalAlpha=.35;ctx.fillStyle='#9fd4ff';ctx.fillRect(x-5,GY-26,11,26);ctx.globalAlpha=1}}
+// violeta: el espacio-tiempo ondula (más difícil leer la recta)
+function powWarp(){if(!powOn('v'))return;const k=Math.min(1,S.powA.t/3),cw=cv.width,ch=cv.height;if(WK.width!==cw||WK.height!==ch){WK.width=cw;WK.height=ch}
+  wkc.clearRect(0,0,cw,ch);wkc.drawImage(cv,0,0);ctx0.save();ctx0.setTransform(1,0,0,1,0,0);ctx0.imageSmoothingEnabled=false;
+  for(let y=0;y<ch;y+=4){const dx=Math.sin(y*.03+S.time*5)*9*k;ctx0.drawImage(WK,0,y,cw,4,dx,y,cw,4)}ctx0.restore()}
+
+/* ============ Logros ============ */
+const ACC_C={r:'#d42a2a',o:'#e8862a',y:'#f5d23a',g:'#4fae35',G:'#2a6a1b',b:'#2f8fe0',i:'#4b3aa8',v:'#9a3fd0',w:'#f4f1e8',k:'#1b1a17',p:'#f2a0a8',n:'#8a5a2a',s:'#9a9a9a'};
+const ACH=[
+  ['first',['....yy....','...yyy....','..yyyy....','....yy....','....yy....','....yy....','....yy....','..yyyyyy..','..yyyyyy..']],
+  ['st5',['....r.....','...rr.....','...rro....','..rroo.r..','..roooorr.','.rrooyoor.','.rooyyyor.','.rooyyyor.','..rooyor..','...rrrr...']],
+  ['st10',['.....yyyy.','....yyyy..','...yyyy...','..yyyyyyy.','.....yyy..','....yyy...','...yyy....','..yy......','.y........']],
+  ['st25',['..pppppp..','.pwppppwp.','pppwppwppp','pwpppppppp','ppppwpppwp','pppwpppwpp','.pppppppp.','..pppppp..','....ss....','....ss....']],
+  ['k50',['..wwwwww..','.wwwwwwww.','wwwwwwwwww','wwkkwwkkww','wwkkwwkkww','wwwwkkwwww','.wwwwwwww.','..w.ww.w..','..wwwwww..']],
+  ['k500',['r........r','.r.rrrr.r.','..rrrrrr..','.rrkrrkrr.','.rrkrrkrr.','.rrrrrrrr.','..r.rr.r..','.r.rrrr.r.','r........r']],
+  ['boss',['y...y...y.','yy.yyy.yy.','yyyyyyyyy.','yyryyybyy.','yyyyyyyyy.','yyyyyyyyy.']],
+  ['prof',['....kk....','..kkkkkk..','kkkkkkkkkk','..kkkkkky.','..s....sy.','.wwwssww.y','.w.wsw.w..','.wwwsswww.','...ssss...']],
+  ['esc',['ss........','s.s.......','.ss.s.....','...s.s....','....r.....','.....s.s..','......s.s.','.......ss.','........ss']],
+  ['web',['w...w...w.','.w..w..w..','..wwwww...','.ww.w.ww..','wwwwkwwwww','.ww.w.ww..','..wwwww...','.w..w..w..','w...w...w.']],
+  ['creep',['gggggggggg','gGgggggGgg','gkkggggkkg','gkkggggkkg','ggggkkgggg','gggkkkkggg','gggkkkkggg','gggkggkggg','gGgggggggg']],
+  ['ender',['kkkkkkkkkk','kkkkkkkkkk','kkkkkkkkkk','kvpvkkvpvk','kkkkkkkkkk','kkkkkkkkkk','.kkkkkkkk.']],
+  ['pow',['...rrrr...','..roooor..','.roy..yor.','roy.gg.yor','oyg.bb.gyo','ygb.ii.bgy','gbi.vv.ibg']],
+  ['pow7',['rrrrrrrrrr','oooooooooo','yyyyyyyyyy','gggggggggg','bbbbbbbbbb','iiiiiiiiii','vvvvvvvvvv']],
+  ['fast',['...ssss...','....ss....','..wwwwww..','.ww....ww.','ww...r..ww','ww..r...ww','ww.......w','.ww....ww.','..wwwwww..']],
+  ['perf',['.bbbbbbbb.','.bwwwwwwb.','.bwbbbbwb.','.bwbwwbwb.','.bwbbbbwb.','..bwwwwb..','...bwwb...','....bb....']],
+  ['lv8',['k.........','kwrwrwr...','krwrwrw...','kwrwrwr...','krwrwrw...','k.........','k.........','k.........']],
+  ['days7',['rrrrrrrrrr','r.r.r.r..r','wwwwwwwwww','wrwrwrwrww','wwwwwwwwww','wrwrwrwrww','wwwwwwwwww']],
+  ['hole',['...wwww...','..w....w..','.w.kkkk.w.','wwkkkkkkww','wwkkkkkkww','.w.kkkk.w.','..w....w..','...wwww...']],
+  ['egg',['y.......y.','.....y....','..y.......','.......y..','....y.....','y.........','......y..y','..y.......']],
+];
+const ACHIMG={};
+function achImg(id){if(ACHIMG[id])return ACHIMG[id];const rows=ACH.find(a=>a[0]===id)[1],w=12,h=12,c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d'),oy=Math.floor((10-rows.length)/2);
+  rows.forEach((r,j)=>[...r].forEach((ch,i)=>{if(ACC_C[ch]){x.fillStyle=ACC_C[ch];x.fillRect(i+1,j+1+oy,1,1)}}));return ACHIMG[id]=c.toDataURL()}
+const achQ=[];let achBusy=false;
+function unlock(id){SAVE.ach=SAVE.ach||{};if(SAVE.ach[id])return;SAVE.ach[id]=Date.now();persist();achQ.push(id);if(!achBusy)achNext();syncChips()}
+function achNext(){const id=achQ.shift();if(!id){achBusy=false;return}achBusy=true;const e=$('#achT');
+  e.innerHTML=`<img alt="" src="${achImg(id)}"><div><b>${XL('n_achGot')}</b><span>${XL('a_'+id)}</span></div>`;e.classList.remove('on');void e.offsetWidth;e.classList.add('on');
+  if(!muted&&ac())[1047,1319,1568,2093,2637].forEach((f,i)=>bell(f,.055,i*.07));speak(XL('n_achGot')+' '+XL('a_'+id)+'. '+XL('ad_'+id),true);
+  setTimeout(()=>{e.classList.remove('on');setTimeout(achNext,450)},3300)}
+const achN=()=>Object.keys(SAVE.ach||{}).filter(k=>ACH.some(a=>a[0]===k)).length;
+function openAch(){const g=$('#achGrid');g.innerHTML=ACH.map(([id])=>{const got=SAVE.ach&&SAVE.ach[id];return`<div class="ach${got?' got':''}" role="listitem" aria-label="${XL('a_'+id)}. ${XL('ad_'+id)}"><img alt="" src="${achImg(id)}"><b>${XL('a_'+id)}</b><span>${XL('ad_'+id)}</span></div>`}).join('');
+  $('#achTtl').textContent='★ '+XL('n_ach');$('#achCnt').textContent=XL('n_achN',[achN(),ACH.length]);$('#bIntro').textContent='▶ '+XL('n_intro');
+  const s=$('#sAch');s.classList.add('show');s.inert=false;requestAnimationFrame(()=>{fitCards();if(A11Y)$('#bAchBack').focus()})}
+function closeAch(){const s=$('#sAch');s.classList.remove('show');s.inert=true}
+for(const i of[1,2])$('#bAch'+i).onclick=openAch;
+$('#bAchBack').onclick=closeAch;
+$('#bIntro').onclick=()=>{closeAch();if(S.mode==='pause'){S.grab=null;S.web=null}startIntro()};
+function dayStreak(){const d=SAVE.days||{},t=new Date();let n=0;for(;;){if(!d[dayKey(t)])break;n++;t.setDate(t.getDate()-1)}return n}
+
+/* ============ Calendario de progreso (además de la matriz) ============ */
+let HEATV='m';try{HEATV=localStorage.getItem('rzHeatV')||'m'}catch(e){}
+const calLoc=()=>{if(LANG==='zh')return'zh-CN';if(LANG.startsWith('es')){const n=(navigator.languages||[]).find(s=>/^es-[a-z]{2}$/i.test(s));return LANG==='es-ES'?'es-ES':(n&&!/es-es/i.test(n)?n:'es-MX')}return LANG};
+function firstDay(loc){try{const L=new Intl.Locale(loc),wi=L.getWeekInfo?L.getWeekInfo():L.weekInfo;if(wi&&wi.firstDay)return wi.firstDay%7}catch(e){}return/^(en|pt|ja|ko|zh|he|ar|hi|th|id|es-MX)/.test(loc)?0:1}
+const LUND=['初一','初二','初三','初四','初五','初六','初七','初八','初九','初十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','廿一','廿二','廿三','廿四','廿五','廿六','廿七','廿八','廿九','三十'];
+let LUNF=null,LUNM=null;
+function lunar(d){try{if(!LUNF){LUNF=new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{day:'numeric'});LUNM=new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{month:'long'})}
+  const n=parseInt(LUNF.format(d),10);if(n===1)return LUNM.format(d);return LUND[n-1]||''}catch(e){return''}}
+function calHTML(el){const off=Math.min(0,+(el.dataset.mo||0)),now=new Date(),first=new Date(now.getFullYear(),now.getMonth()+off,1),Y=first.getFullYear(),M=first.getMonth(),loc=calLoc();
+  const days=SAVE.days||{},vals=Object.values(days),mx=Math.max(4,...(vals.length?vals:[0])),fd=firstDay(loc),tk=dayKey();
+  let wf,mf;try{wf=new Intl.DateTimeFormat(loc,{weekday:LANG==='zh'||LANG==='ja'||LANG==='ko'?'short':'narrow'});mf=new Intl.DateTimeFormat(loc,{month:'long',year:'numeric'})}catch(e){wf=new Intl.DateTimeFormat('en',{weekday:'narrow'});mf=new Intl.DateTimeFormat('en',{month:'long',year:'numeric'})}
+  const wk=[];for(let i=0;i<7;i++)wk.push(`<span class="wd">${wf.format(new Date(2024,0,7+(fd+i)%7))}</span>`);
+  const lead=(first.getDay()-fd+7)%7,nd=new Date(Y,M+1,0).getDate();let cells='';for(let i=0;i<lead;i++)cells+='<span class="cd e"></span>';
+  for(let d=1;d<=nd;d++){const dt=new Date(Y,M,d),k=dayKey(dt),v=days[k]||0,l=v?Math.min(4,1+Math.floor(3*v/mx)):0;
+    cells+=`<span class="cd h${l}${k===tk?' td':''}" title="${v}"><b>${d}</b>${LANG==='zh'?`<small>${lunar(dt)}</small>`:''}</span>`}
+  let ttl=mf.format(first);if(LANG==='zh'){const lm=(()=>{try{return new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{month:'long',year:'numeric'}).format(new Date(Y,M,15))}catch(e){return''}})();if(lm)ttl+=` · 农历${lm}`}
+  return`<div class="calH"><button class="chip calB" data-d="-1" aria-label="‹">‹</button><b>${ttl}</b><button class="chip calB" data-d="1" aria-label="›"${off>=0?' disabled':''}>›</button></div><div class="cal${LANG==='zh'?' zh':''}">${wk.join('')}${cells}</div>`}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.hmTab,.calB');if(!b)return;const el=b.closest('.heat');if(!el)return;e.preventDefault();
+  if(b.classList.contains('hmTab')){HEATV=b.dataset.v;try{localStorage.setItem('rzHeatV',HEATV)}catch(_){}}else el.dataset.mo=Math.min(0,(+(el.dataset.mo||0))+(+b.dataset.d));
+  heatmap(el);requestAnimationFrame(fitCards)});
+
+/* ============ R2-D2: cada número o signo tiene su propio pitido robótico ============ */
+function r2d2(ch){if(muted||!ac())return;let s=7;for(const c of String(ch))s=(s*131+c.charCodeAt(0)*977)%233280;let q=s;const rnd=()=>(q=(q*9301+49297)%233280)/233280;
+  const d=AC.destination,sym=!/\d/.test(ch),n=sym?2:2+Math.floor(rnd()*3);let t=AC.currentTime+.005;
+  for(let i=0;i<n;i++){const dur=sym?.09:.035+rnd()*.05,f0=sym?(ch==='-'?2600:ch==='.'?1800:1200):900+rnd()*2400,f1=sym?(ch==='-'?500:ch==='.'?2400:3000):Math.max(380,f0*(.45+rnd()*1.5)),
+      o=AC.createOscillator(),g=AC.createGain(),m=AC.createOscillator(),mg=AC.createGain();
+    o.type=rnd()<.65?'sine':'square';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f1,t+dur);
+    m.type='square';m.frequency.value=sym?30:14+rnd()*40;mg.gain.value=rnd()<.45?0:90+rnd()*420;m.connect(mg).connect(o.frequency);
+    const v=o.type==='square'?.022:.055;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.005);g.gain.setValueAtTime(v,t+dur*.75);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g).connect(d);o.start(t);m.start(t);o.stop(t+dur+.02);m.stop(t+dur+.02);t+=dur+(rnd()<.35?.025:.004)}}
+
+/* ============ La risa grave del profesor ============ */
+function laugh(n=4){if(muted||!ac())return;const d=AC.destination,t0=AC.currentTime+.02;
+  for(let i=0;i<n;i++){const t=t0+i*.24,f=92-i*5,o=AC.createOscillator(),s=AC.createOscillator(),b1=AC.createBiquadFilter(),b2=AC.createBiquadFilter(),g=AC.createGain(),gs=AC.createGain();
+    o.type='sawtooth';o.frequency.setValueAtTime(f*1.15,t);o.frequency.exponentialRampToValueAtTime(f*.8,t+.2);
+    b1.type='bandpass';b1.frequency.value=650;b1.Q.value=5;b2.type='bandpass';b2.frequency.value=1080;b2.Q.value=7;
+    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.6,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+.2);
+    o.connect(b1).connect(g);o.connect(b2).connect(g);g.connect(d);
+    s.type='sine';s.frequency.setValueAtTime(f/2,t);gs.gain.setValueAtTime(.0001,t);gs.gain.exponentialRampToValueAtTime(.3,t+.02);gs.gain.exponentialRampToValueAtTime(.0001,t+.22);s.connect(gs).connect(d);
+    o.start(t);s.start(t);o.stop(t+.25);s.stop(t+.25);nz(t,.06,'bandpass',1600,1.2,.12,d)}
+  if(!A11Y&&window.speechSynthesis){try{const u=new SpeechSynthesisUtterance(XL('n_laugh').toLowerCase());u.pitch=0;u.rate=.7;u.volume=Math.min(1,volGain());u.lang=LANG.startsWith('es')?'es':LANG;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}}
+function profSay(z){say(z,pick(XL('n_profT').split(';')),'shout');if(R()<.4){laugh(3);setTimeout(()=>{if(alive(z))say(z,XL('n_laugh'),'shout')},900)}}
+
+/* ============ Intro: explosión atómica, el profesor y la manzana desde la estación espacial ============ */
+const freshSave=()=>!Object.keys(SAVE.hist||{}).length&&!(SAVE.best>1);
+function startIntro(){S.introT=0;S.introCap=-1;S.introEv={};S.zombies=[];S.parts=[];S.texts=[];S.bubbles=[];crackHide();setMode('intro');$('#intro').classList.add('on');$('#bSkip').textContent=XL('n_skip');
+  for(let i=0;i<7;i++){const z=mkZ((i-3)*2.6,'walker');z.dir=i%2?-1:1;z.rise=i*.25;S.zombies.push(z)}S.a.x=0;S.cam=0;S.u=S.uT=S.uPrev=21;S.a.st='hidden';
+  if(A11Y)setTimeout(()=>$('#bSkip').focus(),60)}
+function endIntro(){if(S.mode!=='intro')return;$('#intro').classList.remove('on');SAVE.introSeen=1;persist();S.zombies=[];newGame(1)}
+$('#bSkip').onclick=e=>{e.stopPropagation();endIntro()};
+function introUpdate(dt){S.introT+=dt;const t=S.introT,ev=S.introEv,once=(k,f)=>{if(!ev[k]&&t>=+k){ev[k]=1;f()}};
+  const ci=t<4.5?0:t<8.5?1:t<12.5?2:3;if(ci!==S.introCap){S.introCap=ci;const c=$('#introCap');c.classList.remove('on');void c.offsetWidth;c.textContent=XL('i'+(ci+1));c.classList.add('on');speak(XL('i'+(ci+1)),true)}
+  once('0.8',()=>{S.shake=16;if(!muted&&ac()){hit('bombo',1.6);hit('gong',1.3);tone(40,2.5,'sawtooth',.18,-15);nz(AC.currentTime,2.4,'lowpass',500,.6,.8,AC.destination)}});
+  once('5.2',()=>{laugh(6)});
+  once('9.3',()=>{if(!muted&&ac())[1568,1976,1568,1976].forEach((f,i)=>tone(f,.08,'square',.025,0,i*.12))});
+  once('10.4',()=>{if(!muted&&ac())tone(200,1.5,'sawtooth',.04,-150)});
+  once('12.6',()=>{if(!muted&&ac())nz(AC.currentTime,3.6,'bandpass',900,.8,.25,AC.destination,.6)});
+  S.shake=Math.max(0,S.shake-dt*10);
+  for(const q of S.parts){q.t+=dt;q.x+=q.vx*dt;q.y+=q.vy*dt}S.parts=S.parts.filter(q=>q.t<q.life);
+  if(t>4.5&&t<8.5)for(const z of S.zombies){z.walk+=dt*3;z.x+=z.dir*.6*dt}
+  if(t>16.6)endIntro()}
+function mushroom(cx,gy,k,t){const h=Math.round(80*Math.min(1,k*1.4)),cap=Math.round(8+30*Math.min(1,k));
+  for(let y=0;y<h;y++){const w=Math.round(4+3*Math.sin(y*.3+t*6)+(y<8?8-y:0));ctx.fillStyle=y%3?'#e8862a':'#c4161c';ctx.fillRect(cx-(w>>1),gy-y,w,1)}
+  const cy=gy-h;for(let j=-cap;j<=cap*.6;j++)for(let i=-cap*1.4;i<=cap*1.4;i++){const d=(i/(cap*1.4))**2+(j/cap)**2;if(d>1)continue;const n=Math.sin(i*.7+t*4)+Math.cos(j*.9-t*3);
+    ctx.fillStyle=d<.25?'#f5d23a':d<.55?'#e8862a':n>.6?'#7a1014':'#c4161c';if(((i*3+j*7)&3)||d<.8)ctx.fillRect(Math.round(cx+i),Math.round(cy+j),1,1)}}
+function drawProfFace(cx,cy,s,t){const F=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(Math.round(cx+x*s),Math.round(cy+y*s),Math.ceil(w*s),Math.ceil(h*s))},open=(Math.sin(t*14)>0);
+  F(-8,-9,16,18,P.l3);F(-10,-3,2,6,'#b5b5b5');F(8,-3,2,6,'#b5b5b5');F(-12,-12,24,3,'#1b1a17');F(-6,-15,12,3,'#1b1a17');F(9,-11,1,7,'#e8c33a');
+  for(const gx of[-7,1]){F(gx,-4,6,1,P.w);F(gx,0,6,1,P.w);F(gx,-4,1,5,P.w);F(gx+5,-4,1,5,P.w);F(gx+2,-2,2,1,P.red)}F(-1,-3,2,1,P.w);
+  F(-4,3,8,1,'#4a4a4a');F(-4,5,8,open?3:1,P.red);if(open)F(-3,5,6,1,P.w)}
+function drawStation(x,y){const F=(a,b,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(Math.round(x+a),Math.round(y+b),w,h)};
+  F(-22,-1,44,2,'#9a9a9a');for(const s of[-1,1]){F(s>0?8:-20,-8,12,6,'#2f6fb0');F(s>0?8:-20,2,12,6,'#2f6fb0');for(let i=0;i<12;i+=3){F((s>0?8:-20)+i,-8,1,6,'#9fd4ff');F((s>0?8:-20)+i,2,1,6,'#9fd4ff')}}
+  F(-5,-3,10,6,'#dedede');F(-3,-5,6,2,'#b5b5b5');F(4,-1,2,2,P.red);if(((S.time*2)|0)%2)F(-6,-4,1,1,'#ff4040')}
+function drawIntro(){const t=S.introT||0;ctx.save();if(S.shake>0)ctx.translate(Math.round((R()-.5)*S.shake),Math.round((R()-.5)*S.shake));
+  if(t<8.5){ctx.drawImage(FAR,0,0);ctx.drawImage(MID,0,0);ctx.drawImage(NEAR,0,0);ctx.fillStyle=P.k;ctx.fillRect(0,GY+1,W,H-GY);ctx.fillStyle=P.l2;ctx.fillRect(6,GY,W-12,1);
+    if(t>.8){const k=clamp((t-.8)/2.5,0,1);ctx.fillStyle=rgba('#c4161c',.18+.3*k);ctx.fillRect(0,0,W,GY);mushroom(Math.round(W/2),GY,k,t);
+      const rk=clamp((t-.8)/1.6,0,1);if(rk<1){ctx.globalAlpha=1-rk;ring(W/2,GY-2,6+rk*W*.6,P.w);ring(W/2,GY-2,4+rk*W*.45,'#e8862a');ctx.globalAlpha=1}
+      if(R()<.6)S.parts.push({x:W/2+(R()-.5)*30,y:GY-R()*20,vx:(R()-.5)*120,vy:-R()*90,t:0,life:1,c:pick(['#e8862a','#c4161c',P.m2,P.l1])})}
+    if(t>4.5){for(const z of S.zombies){const k=clamp((t-4.5-z.rise)/.8,0,1);ctx.save();ctx.beginPath();ctx.rect(0,0,W,GY+1);ctx.clip();ctx.translate(0,Math.round((1-k)*22));drawZ(z,true);ctx.restore()}
+      const fk=clamp((t-5)/1,0,1);ctx.globalAlpha=fk;drawProfFace(W/2,TOPPAD+44,3,t);ctx.globalAlpha=1;if(fk>.5)ptextC(XL('n_laugh'),W/2,TOPPAD+86,2,P.red,P.k)}
+    if(t>.8&&t<1.4){ctx.fillStyle=rgba('#ffffff',1-(t-.8)/.6);ctx.fillRect(0,0,W,H)}}
+  else if(t<12.5){ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);for(let i=0;i<90;i++){const x=(i*97)%W,y=(i*57)%H;ctx.fillStyle=i%7?'#666':'#fff';ctx.fillRect(x,y,1,1)}
+    const ex=W/2,ey=H+H*.9,er=H*1.25;for(let y=Math.floor(ey-er);y<H;y++){const hw=Math.sqrt(Math.max(0,er*er-(y-ey)**2));for(let x=Math.max(0,Math.floor(ex-hw));x<Math.min(W,ex+hw);x+=1){const n=((x*13+y*7)%11),v=Math.sin(x*.045+Math.sin(y*.07)*1.7)+Math.cos(y*.06-x*.021+Math.sin(x*.11)*.8)*.9+Math.sin((x+y)*.13)*.35;
+      ctx.fillStyle=v>1.1?(n<3?'#e8862a':'#c4161c'):v>.2?'#2a6a1b':(n<2?'#3a9be8':'#1c4f8a');ctx.fillRect(x,y,1,1)}}
+    ctx.globalAlpha=.4;ctx.fillStyle='#c4161c';for(let x=0;x<W;x++){const hw=x-ex,yy=ey-Math.sqrt(Math.max(0,er*er-hw*hw));ctx.fillRect(x,Math.round(yy)-2,1,2)}ctx.globalAlpha=1;
+    const sx=W*.15+(t-8.5)*14,sy=H*.25;drawStation(sx,sy);
+    if(t>10.2){const k=clamp((t-10.2)/2.3,0,1),ax=sx+k*(W*.45),ay=sy+k*k*(H*.55);for(let i=0;i<4;i++)S.parts.push({x:ax,y:ay,vx:-30-R()*30,vy:-20-R()*20,t:0,life:.6,c:pick(['#e8862a','#f5d23a',P.w])});ctx.drawImage(appleCanvas(0,1),Math.round(ax-7),Math.round(ay-7))}}
+  else{const k=clamp((t-12.5)/4,0,1);ctx.fillStyle='#1a0a05';ctx.fillRect(0,0,W,H);for(let i=0;i<40;i++){const y=(i*37+t*600)%H,x=(i*71)%W;ctx.fillStyle=i%3?'#7a1014':'#e8862a';ctx.fillRect(x,Math.round(y),1,10)}
+    const ax=W*.3+k*W*.25,ay=H*.15+k*H*.5,sc=3;for(let i=0;i<6;i++)S.parts.push({x:ax+(R()-.5)*20,y:ay-14,vx:-40-R()*80,vy:-90-R()*80,t:0,life:.5,c:pick(['#e8862a','#f5d23a','#c4161c',P.w])});
+    ctx.imageSmoothingEnabled=false;const ap=appleCanvas(0,1);ctx.drawImage(ap,Math.round(ax-ap.width*sc/2),Math.round(ay-ap.height*sc/2),ap.width*sc,ap.height*sc);
+    if(t>16){ctx.fillStyle=rgba('#000000',(t-16)/.6);ctx.fillRect(0,0,W,H)}}
+  for(const q of S.parts){ctx.globalAlpha=Math.max(0,1-q.t/q.life);ctx.fillStyle=q.c;ctx.fillRect(Math.round(q.x),Math.round(q.y),1,1)}ctx.globalAlpha=1;
+  ctx.restore()}
+
+/* ============ Final: el profesor se ríe, se abre un agujero negro y la manzana se lo lleva ============ */
+function startEnding(boss){S.endT=0;S.zombies=S.zombies.filter(z=>z!==boss);S.endBoss=Object.assign({},boss,{dead:false,gore:false,hitT:0,grab:false,x:S.a.x-W*.26/S.u});S.cam=S.a.x-W*.13/S.u;S.endEv={};S.prob=null;showExpr(null);padClear();
+  for(const z of S.zombies)if(alive(z))z.endSuck=R()*.6;S.mode='ending';setMode('ending');unlock('prof');unlock('boss')}
+function endUpdate(dt){S.endT+=dt;const t=S.endT,ev=S.endEv,once=(k,f)=>{if(!ev[k]&&t>=k){ev[k]=1;f()}},b=S.endBoss,hx=b.x;
+  once(.1,()=>{laugh(7);say(b,XL('n_laugh'),'shout')});once(2.3,()=>{if(!muted&&ac()){tone(50,4,'sawtooth',.1,-20);hit('gong',1.2)}});
+  once(6.4,()=>{if(!muted&&ac())[523,659,784,1047,1319,1568].forEach((f,i)=>bell(f,.06,i*.12))});once(9.6,()=>{S.flash=1;if(!muted&&ac()){hit('platos',1.3);hit('bombo',1.4)}});
+  S.shake=t<2.2?3:t<6?2+Math.min(6,(t-2.2)*2):t<9.6?3:Math.max(0,S.shake-dt*10);S.flash=Math.max(0,S.flash-dt*.9);
+  b.walk+=dt*8;for(const q of S.parts){q.t+=dt;q.x+=q.vx*dt;q.y+=q.vy*dt}S.parts=S.parts.filter(q=>q.t<q.life);for(const x of S.texts)x.t+=dt;S.texts=S.texts.filter(x=>x.t<x.life);
+  for(const bb of S.bubbles)bb.t+=dt;S.bubbles=S.bubbles.filter(bb=>bb.t<bb.life);
+  const a=S.a;if(t>6.4){const k=clamp((t-6.4)/3.2,0,1);a.st='rest';a.y=k*k*((GY-TOPPAD-70)/YPX);a.sq=Math.sin(t*6)*.08}
+  S.cam+=((hx+S.a.x)/2-S.cam)*Math.min(1,dt*1.5);
+  if(t>11)setEnd()}
+function holeAt(){const t=S.endT,b=S.endBoss,bx=scx(b.x),by=GY-32,ax=apx(),ay=GY-10-S.a.y*YPX-26;
+  if(t<6.4)return{x:bx,y:by,r:clamp((t-2.2)/3.6,0,1)*42};const k=clamp((t-6.4)/3.2,0,1);return{x:bx+(ax-bx)*Math.min(1,k*2),y:by+(ay-by)*Math.min(1,k*2),r:42*(1-k*k)+3}}
+function endDraw(){const t=S.endT;if(t<2.2){const b=S.endBoss;b.x+=(R()-.5)*.02;drawZ(b,false)}
+  if(t>=2.2&&t<9.6){const h=holeAt(),b=S.endBoss;
+    if(t<4.2){const k=(t-2.2)/2;ctx.save();ctx.globalAlpha=1-k;ctx.translate(h.x,h.y);ctx.scale(1-k*.8,1+k*3);ctx.translate(-h.x,-h.y-k*20);drawZ(b,true);ctx.restore()}
+    for(let i=0;i<6;i++){const a=R()*Math.PI*2,d=h.r*2+R()*60;S.parts.push({x:h.x+Math.cos(a)*d,y:h.y+Math.sin(a)*d*.6,vx:-Math.cos(a)*d*1.6,vy:-Math.sin(a)*d,t:0,life:.6,c:pick([P.w,P.l2,P.red,'#e8862a'])})}
+    endWarp(clamp((t-2.2)/2,0,1)*(t>8.5?Math.max(0,(9.6-t)/1.1):1),h);
+    drawLogo(S.time*2);ctx.imageSmoothingEnabled=false;const r=Math.round(h.r*1.6);if(r>2)ctx.drawImage(lgEl,Math.round(h.x-r),Math.round(h.y-r),2*r,2*r)}
+  if(t>6.4){const a=S.a,cx=apx(),cy=GY-8-a.y*YPX;for(let i=0;i<7;i++){ctx.globalAlpha=.45;ring(cx,cy+6,10+i*2+Math.sin(S.time*6+i),POW[i].c)}ctx.globalAlpha=1}
+  if(S.flash>0){ctx.fillStyle=rgba('#ffffff',S.flash);ctx.fillRect(0,0,W,H)}}
+// el espacio-tiempo se curva: columnas estiradas hacia el agujero
+function endWarp(k,h){if(!(k>0))return;const rt=cv.width/W,cw=cv.width,ch=cv.height,hx=h.x*rt,hy=h.y*rt;if(WK.width!==cw||WK.height!==ch){WK.width=cw;WK.height=ch}
+  wkc.clearRect(0,0,cw,ch);wkc.drawImage(cv,0,0);ctx0.save();ctx0.setTransform(1,0,0,1,0,0);ctx0.imageSmoothingEnabled=false;ctx0.fillStyle=P.k;ctx0.fillRect(0,0,cw,ch);const sg=cw*.22;
+  for(let x=0;x<cw;x+=2){const dx=x-hx,f=Math.exp(-(dx*dx)/(2*sg*sg)),pull=k*.55*f,s=1+k*1.6*f,dy=hy*(1-s)+Math.sin(x*.04+S.time*6)*k*f*6;ctx0.drawImage(WK,x,0,2,ch,hx+dx*(1-pull),dy,2,ch*s)}
+  ctx0.restore()}
+function setEnd(){if(S.mode!=='ending')return;$('#eT1').textContent=XL('e1');$('#eT2').textContent=XL('e2');$('#eStats').textContent=XL('e3',[S.run.correct,S.run.kills,achN()+'/'+ACH.length]);
+  $('#bEndMenu').textContent=L10('menu');setMode('end');speak(XL('e1')+'. '+XL('e2'),true)}
+$('#bEndInf').onclick=()=>{S.stage=17;S.a.st='rest';startStage()};
+$('#bEndMenu').onclick=()=>toTitle();
+
+window.__G={unlock,usePow,grantPow,startIntro,startEnding,setA11y,webbed,heatmap,spawnZ,r2d2,laugh,POW,ACH,SND,sLoad,newGroove2,newScore,musicStart2,musicStop,G2,setMode,say,taunt,nearestZ,INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
 const fontsReady=Promise.race([Promise.all([document.fonts.load('16px "Pixelify Sans"'),document.fonts.load('8px Silkscreen')]).catch(()=>{}),new Promise(r=>setTimeout(r,2000))]);
 fontsReady.then(()=>{relayout();titleScene();setMode('title');requestAnimationFrame(loop)});
 })();

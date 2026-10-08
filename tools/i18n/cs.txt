@@ -305,3 +305,112 @@ cnoprob|Chytili tě ještě před prvním příkladem.
 cera|bylo to {0}
 cxera|✕ BYLO TO {0}
 cescribo|PÍŠU {0}
+a_first|PRVNÍ KROK
+ad_first|Vyřeš svůj první příklad
+a_st5|V RÁŽI
+ad_st5|5 správně za sebou
+a_st10|NEZASTAVITELNÝ
+ad_st10|10 správně za sebou
+a_st25|OCELOVÁ HLAVA
+ad_st25|25 správně za sebou
+a_k50|LOVEC ZOMBIÍ
+ad_k50|Znič 50 zombií
+a_k500|APOKALYPSA NARUBY
+ad_k500|Znič 500 zombií
+a_boss|LOVEC BOSSŮ
+ad_boss|Poraz bosse
+a_prof|MATEMATIK
+ad_prof|Poraz učitele matematiky
+a_esc|MISTR ÚNIKU
+ad_esc|Vyprosti se ze sevření zombie
+a_web|KONEC SÍTÍ
+ad_web|Uteč z pavoučí sítě
+a_creep|PYROTECHNIK
+ad_creep|Znič creepera, než vybuchne
+a_ender|NEDÍVEJ SE NA MĚ
+ad_ender|Znič endermana
+a_pow|DUHA
+ad_pow|Použij schopnost
+a_pow7|SEDM BAREV
+ad_pow7|Použij všech 7 schopností
+a_fast|BLESK
+ad_fast|Odpověz správně za méně než 2 sekundy
+a_perf|BEZ ŠKRÁBNUTÍ
+ad_perf|Projdi úroveň bez chyby
+a_lv8|V PŮLI CESTY
+ad_lv8|Dostaň se na úroveň 8
+a_days7|VYTRVALOST
+ad_days7|Hraj 7 dní v řadě
+a_hole|HORIZONT UDÁLOSTÍ
+ad_hole|Zvětši černou díru v menu na maximum
+a_egg|DÍVEJ SE NA HVĚZDY
+ad_egg|Objev souhvězdí vědce
+n_ach|ÚSPĚCHY
+n_achGot|ÚSPĚCH ODEMČEN!
+n_achN|{0} Z {1}
+n_mat|MŘÍŽKA
+n_cal|KALENDÁŘ
+n_a11y|PŘÍSTUPNOST
+n_a11yOn|Režim přístupnosti zapnut. Hru čte tvá čtečka obrazovky a běží pomaleji. Odpovídej číselnou klávesnicí dole.
+n_a11yOff|Režim přístupnosti vypnut.
+n_a11yBtn|Zapnout režim čtečky obrazovky
+n_sayProb|{0}. Odpověz.
+n_ok|Správně!
+n_bad|Špatně. Bylo to {0}.
+n_grab|Chytil tě {0}! Odpověz rychle, ať se vyprostíš.
+n_level|Úroveň {0}: {1}.
+n_near|{0} poblíž, {1}.
+n_left|vlevo
+n_right|vpravo
+n_kinds|zombie;kostlivec;pavouk;creeper;enderman;boss;učitel matematiky
+n_minus|mínus
+n_dot|čárka
+n_hearts|Zbývá ti srdcí: {0}.
+n_skip|PŘESKOČIT ▸
+n_intro|PODÍVAT SE NA INTRO
+n_powGot|SCHOPNOST {0}!
+n_powUse|Klepni na barevné tlačítko nebo mezerník.
+n_powBtn|Použít schopnost: {0}
+n_shield|ŠTÍT!
+n_dodge|TELEPORTOVAL SE!
+n_frozen|ZMRAZENÝ!
+p_r|ČERVENÁ · ZUŘIVOST
+pa_r|Obří meteorit na 12 s
+pd_r|Zombie běhají rychleji
+p_o|ORANŽOVÁ · ŠTÍT
+pa_o|Zablokuje další úder
+pd_o|Těžší příklady, dokud se nerozbije
+p_y|ŽLUTÁ · BLESK
+pa_y|Zasáhne všechny zombie
+pd_y|10 s jich přichází dvakrát víc
+p_g|ZELENÁ · NÁPOVĚDA
+pa_g|20 s vidíš první číslici
+pd_g|Hůř se vyprostíš
+p_b|MODRÁ · LED
+pa_b|Zmrazí nepřátele na 8 s
+pd_b|Zmrzlé meteorit nerozbije
+p_i|INDIGO · ZPOMALENÍ
+pa_i|Nepřátelé 12 s poloviční rychlostí
+pd_i|V úrovni potřebuješ o jednu správnou odpověď víc
+p_v|FIALOVÁ · ČERNÁ DÍRA
+pa_v|Pohltí nepřátele poblíž
+pd_v|Časoprostor se 10 s kroutí
+n_spider|<b>PAVOUK</b> · střílí sítě: chytí tě a musíš vyřešit příklad, abys unikl.
+n_creeper|<b>CREEPER</b> · přiblíží se a vybuchne: odskoč nebo ho znič dřív!
+n_ender|<b>ENDERMAN</b> · nepronásleduje tě: náhle se objeví tam, kde nemá.
+n_webbed|CHYCENÁ V SÍTI!
+n_webSub|VYŘEŠ A UTEČ
+n_fuse|Creeper {0} od tebe zaraz vybuchne!
+n_boom|BUM!
+n_boomT|BUM! VYHODIL TĚ CREEPER
+n_prof|UČITEL MATEMATIKY
+n_laugh|CHA, CHA, CHA!
+n_profT|VYNDEJTE SI PAPÍR: PÍSEMKA!;TO NEBUDE… V TESTU BUDE!;NULA. ZASE NULA;A KDE JE POSTUP?;ÚKOL BYL NA VČERA;NIKDO NEODEJDE, DOKUD TO NEVYŘEŠÍ;PĚTKA, JABLÍČKO
+i1|Jednoho dne zasáhl svět atomový výbuch.
+i2|Za vším stál padouch: učitel matematiky… a jeho armáda zombií.
+i3|Z vesmírné stanice poslali na Zemi poslední naději…
+i4|…jablko. To samé, které spadlo na Newtona. Poraz učitele.
+e1|DÍKY ZA HRANÍ
+e2|TEĎ JSI MATEMATIK
+e3|{0} správně · {1} zombií · {2} úspěchů
+n_to|na

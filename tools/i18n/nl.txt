@@ -305,3 +305,112 @@ cnoprob|Ze hadden je al voor de eerste som.
 cera|het was {0}
 cxera|✕ HET WAS {0}
 cescribo|IK SCHRIJF {0}
+a_first|EERSTE STAP
+ad_first|Los je eerste opgave op
+a_st5|LEKKER BEZIG
+ad_st5|5 goed op rij
+a_st10|ONSTUITBAAR
+ad_st10|10 goed op rij
+a_st25|STALEN GEEST
+ad_st25|25 goed op rij
+a_k50|ZOMBIEJAGER
+ad_k50|Schakel 50 zombies uit
+a_k500|OMGEKEERDE APOCALYPS
+ad_k500|Schakel 500 zombies uit
+a_boss|BAASJAGER
+ad_boss|Versla een eindbaas
+a_prof|WISKUNDIGE
+ad_prof|Versla de wiskundeleraar
+a_esc|ONTSNAPPINGSKUNSTENAAR
+ad_esc|Bevrijd je van een zombie die je greep
+a_web|GEEN WEBBEN MEER
+ad_web|Ontsnap uit het web van een spin
+a_creep|EXPLOSIEVENOPRUIMER
+ad_creep|Schakel een creeper uit voor hij ontploft
+a_ender|KIJK ME NIET AAN
+ad_ender|Schakel een enderman uit
+a_pow|REGENBOOG
+ad_pow|Gebruik een kracht
+a_pow7|ALLE ZEVEN KLEUREN
+ad_pow7|Gebruik alle 7 krachten
+a_fast|BLIKSEM
+ad_fast|Antwoord goed in minder dan 2 seconden
+a_perf|ZONDER SCHRAM
+ad_perf|Haal een level zonder fout
+a_lv8|HALVERWEGE
+ad_lv8|Bereik level 8
+a_days7|VOLHARDING
+ad_days7|Speel 7 dagen op rij
+a_hole|WAARNEMINGSHORIZON
+ad_hole|Laat het zwarte gat in het menu maximaal groeien
+a_egg|KIJK NAAR DE STERREN
+ad_egg|Ontdek het sterrenbeeld van een wetenschapper
+n_ach|PRESTATIES
+n_achGot|PRESTATIE ONTGRENDELD!
+n_achN|{0} VAN {1}
+n_mat|RASTER
+n_cal|KALENDER
+n_a11y|TOEGANKELIJK
+n_a11yOn|Toegankelijke modus aan. Je schermlezer vertelt het spel en het gaat langzamer. Antwoord met het cijferblok onderaan.
+n_a11yOff|Toegankelijke modus uit.
+n_a11yBtn|Schermlezermodus inschakelen
+n_sayProb|{0}. Antwoord.
+n_ok|Goed!
+n_bad|Fout. Het was {0}.
+n_grab|{0} heeft je te pakken! Antwoord snel om los te komen.
+n_level|Level {0}: {1}.
+n_near|{0} dichtbij, aan je {1}.
+n_left|linkerkant
+n_right|rechterkant
+n_kinds|zombie;skelet;spin;creeper;enderman;eindbaas;wiskundeleraar
+n_minus|min
+n_dot|komma
+n_hearts|Je hebt nog {0} hart.
+n_skip|OVERSLAAN ▸
+n_intro|INTRO BEKIJKEN
+n_powGot|KRACHT {0}!
+n_powUse|Tik op de gekleurde knop of de spatiebalk om hem te gebruiken.
+n_powBtn|Kracht gebruiken: {0}
+n_shield|SCHILD!
+n_dodge|HIJ TELEPORTEERDE!
+n_frozen|BEVROREN!
+p_r|ROOD · WOEDE
+pa_r|Reuzenmeteoriet, 12 s lang
+pd_r|Zombies rennen sneller
+p_o|ORANJE · SCHILD
+pa_o|Blokkeert de volgende klap
+pd_o|Moeilijkere opgaven tot het breekt
+p_y|GEEL · BLIKSEM
+pa_y|Treft alle zombies
+pd_y|10 s lang komen er twee keer zoveel
+p_g|GROEN · HINT
+pa_g|Je ziet 20 s lang het eerste cijfer
+pd_g|Moeilijker om los te komen
+p_b|BLAUW · IJS
+pa_b|Bevriest vijanden 8 s lang
+pd_b|Bevroren breekt de meteoriet ze niet
+p_i|INDIGO · SLOW MOTION
+pa_i|Vijanden 12 s lang op halve snelheid
+pd_i|Je hebt één goed antwoord meer nodig in het level
+p_v|VIOLET · ZWART GAT
+pa_v|Slokt vijanden in de buurt op
+pd_v|De ruimtetijd vervormt 10 s lang
+n_spider|<b>SPIN</b> · schiet webben: ze vangt je en je moet een opgave oplossen om los te komen.
+n_creeper|<b>CREEPER</b> · sluipt dichterbij en ontploft: spring weg of schakel hem eerst uit!
+n_ender|<b>ENDERMAN</b> · zit je niet achterna: hij duikt plots op waar hij niet hoort.
+n_webbed|GEVANGEN IN HET WEB!
+n_webSub|LOS OP OM VRIJ TE KOMEN
+n_fuse|Een creeper ontploft zo aan je {0}!
+n_boom|BOEM!
+n_boomT|BOEM! EEN CREEPER BLIES JE OP
+n_prof|DE WISKUNDELERAAR
+n_laugh|HA, HA, HA!
+n_profT|PAK EEN BLAADJE: OVERHORING!;DAT KOMT NIET… OP DE TOETS WEL!;NUL. WEER NUL;EN DE UITWERKING?;HET HUISWERK WAS VOOR GISTEREN;NIEMAND GAAT WEG TOT HET OPGELOST IS;GEZAKT, APPELTJE
+i1|Op een dag werd de wereld getroffen door een atoomexplosie.
+i2|Achter alles zat de schurk: de wiskundeleraar… en zijn zombieleger.
+i3|Vanuit het ruimtestation stuurden ze de laatste hoop naar de aarde…
+i4|…een appel. Dezelfde die op Newton viel. Versla de leraar.
+e1|BEDANKT VOOR HET SPELEN
+e2|NU BEN JE WISKUNDIGE
+e3|{0} goed · {1} zombies · {2} prestaties
+n_to|tot de macht

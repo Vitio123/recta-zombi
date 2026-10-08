@@ -305,3 +305,112 @@ cnoprob|Bạn bị bắt trước cả bài đầu tiên.
 cera|đáp án là {0}
 cxera|✕ ĐÁP ÁN LÀ {0}
 cescribo|VIẾT {0}
+a_first|BƯỚC ĐẦU TIÊN
+ad_first|Giải đúng bài đầu tiên
+a_st5|ĐANG LÊN PHONG ĐỘ
+ad_st5|Đúng 5 câu liên tiếp
+a_st10|KHÔNG THỂ CẢN
+ad_st10|Đúng 10 câu liên tiếp
+a_st25|BỘ ÓC THÉP
+ad_st25|Đúng 25 câu liên tiếp
+a_k50|THỢ SĂN XÁC SỐNG
+ad_k50|Hạ 50 xác sống
+a_k500|TẬN THẾ ĐẢO NGƯỢC
+ad_k500|Hạ 500 xác sống
+a_boss|THỢ SĂN TRÙM
+ad_boss|Đánh bại một trùm
+a_prof|NHÀ TOÁN HỌC
+ad_prof|Đánh bại thầy dạy toán
+a_esc|BẬC THẦY TẨU THOÁT
+ad_esc|Thoát khỏi xác sống đã tóm bạn
+a_web|HẾT MẠNG NHỆN
+ad_web|Thoát khỏi mạng nhện
+a_creep|CHUYÊN GIA GỠ BOM
+ad_creep|Hạ creeper trước khi nó nổ
+a_ender|ĐỪNG NHÌN TA
+ad_ender|Hạ một enderman
+a_pow|CẦU VỒNG
+ad_pow|Dùng một sức mạnh
+a_pow7|BẢY SẮC MÀU
+ad_pow7|Dùng đủ 7 sức mạnh
+a_fast|TIA CHỚP
+ad_fast|Trả lời đúng dưới 2 giây
+a_perf|KHÔNG MỘT VẾT XƯỚC
+ad_perf|Qua màn không sai câu nào
+a_lv8|NỬA CHẶNG ĐƯỜNG
+ad_lv8|Đến màn 8
+a_days7|BỀN BỈ
+ad_days7|Chơi 7 ngày liên tiếp
+a_hole|CHÂN TRỜI SỰ KIỆN
+ad_hole|Phóng hố đen ở menu to hết cỡ
+a_egg|NGẮM SAO
+ad_egg|Khám phá chòm sao của một nhà khoa học
+n_ach|THÀNH TÍCH
+n_achGot|MỞ KHÓA THÀNH TÍCH!
+n_achN|{0} / {1}
+n_mat|LƯỚI
+n_cal|LỊCH
+n_a11y|TRỢ NĂNG
+n_a11yOn|Đã bật chế độ trợ năng. Trình đọc màn hình sẽ đọc trò chơi và nhịp độ chậm hơn. Hãy trả lời bằng bàn phím số bên dưới.
+n_a11yOff|Đã tắt chế độ trợ năng.
+n_a11yBtn|Bật chế độ trình đọc màn hình
+n_sayProb|{0}. Hãy trả lời.
+n_ok|Đúng rồi!
+n_bad|Sai rồi. Đáp án là {0}.
+n_grab|{0} tóm được bạn! Trả lời nhanh để thoát.
+n_level|Màn {0}: {1}.
+n_near|{0} ở gần, bên {1} bạn.
+n_left|trái
+n_right|phải
+n_kinds|xác sống;bộ xương;nhện;creeper;enderman;trùm;thầy dạy toán
+n_minus|âm
+n_dot|phẩy
+n_hearts|Bạn còn {0} trái tim.
+n_skip|BỎ QUA ▸
+n_intro|XEM MỞ ĐẦU
+n_powGot|SỨC MẠNH {0}!
+n_powUse|Chạm nút màu hoặc phím cách để dùng.
+n_powBtn|Dùng sức mạnh: {0}
+n_shield|KHIÊN!
+n_dodge|NÓ DỊCH CHUYỂN RỒI!
+n_frozen|ĐÓNG BĂNG!
+p_r|ĐỎ · CUỒNG NỘ
+pa_r|Thiên thạch khổng lồ trong 12 giây
+pd_r|Xác sống chạy nhanh hơn
+p_o|CAM · KHIÊN
+pa_o|Chặn đòn tiếp theo
+pd_o|Bài khó hơn cho đến khi khiên vỡ
+p_y|VÀNG · SẤM SÉT
+pa_y|Đánh gục mọi xác sống
+pd_y|Kéo đến gấp đôi trong 10 giây
+p_g|LỤC · GỢI Ý
+pa_g|Thấy chữ số đầu trong 20 giây
+pd_g|Khó thoát hơn
+p_b|LAM · BĂNG
+pa_b|Đóng băng kẻ địch 8 giây
+pd_b|Khi bị đóng băng, thiên thạch không phá được
+p_i|CHÀM · CHẬM
+pa_i|Kẻ địch chậm một nửa trong 12 giây
+pd_i|Cần thêm một câu đúng trong màn
+p_v|TÍM · HỐ ĐEN
+pa_v|Nuốt kẻ địch ở gần
+pd_v|Không-thời gian cong vênh 10 giây
+n_spider|<b>NHỆN</b> · bắn tơ: bạn bị dính và phải giải một bài để thoát.
+n_creeper|<b>CREEPER</b> · lại gần rồi phát nổ: nhảy ra xa hoặc hạ nó trước!
+n_ender|<b>ENDERMAN</b> · không đuổi theo bạn: bỗng xuất hiện ở chỗ chẳng nên có.
+n_webbed|DÍNH MẠNG NHỆN!
+n_webSub|GIẢI ĐỂ THOÁT
+n_fuse|Creeper bên {0} sắp nổ!
+n_boom|BÙM!
+n_boomT|BÙM! CREEPER LÀM BẠN NỔ TUNG
+n_prof|THẦY DẠY TOÁN
+n_laugh|HA, HA, HA!
+n_profT|LẤY GIẤY RA: KIỂM TRA BẤT NGỜ!;CÁI NÀY KHÔNG THI… À CÓ THI ĐẤY!;KHÔNG ĐIỂM. LẠI KHÔNG ĐIỂM;LỜI GIẢI ĐÂU?;BÀI TẬP NỘP TỪ HÔM QUA;GIẢI XONG MỚI ĐƯỢC VỀ;TRƯỢT RỒI, TÁO NHỎ
+i1|Một ngày nọ, thế giới hứng chịu một vụ nổ nguyên tử.
+i2|Kẻ đứng sau tất cả là phản diện: thầy dạy toán… cùng đội quân xác sống.
+i3|Từ trạm vũ trụ, hy vọng cuối cùng được gửi xuống Trái Đất…
+i4|…một quả táo. Chính quả đã rơi trúng Newton. Hãy đánh bại thầy.
+e1|CẢM ƠN ĐÃ CHƠI
+e2|GIỜ BẠN LÀ NHÀ TOÁN HỌC
+e3|{0} câu đúng · {1} xác sống · {2} thành tích
+n_to|mũ

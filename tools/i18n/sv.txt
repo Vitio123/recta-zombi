@@ -305,3 +305,112 @@ cnoprob|De tog dig före första uppgiften.
 cera|det var {0}
 cxera|✕ DET VAR {0}
 cescribo|JAG SKRIVER {0}
+a_first|FÖRSTA STEGET
+ad_first|Lös din första uppgift
+a_st5|I FARTEN
+ad_st5|5 rätt i rad
+a_st10|OSTOPPBAR
+ad_st10|10 rätt i rad
+a_st25|STÅLHJÄRNA
+ad_st25|25 rätt i rad
+a_k50|ZOMBIEJÄGARE
+ad_k50|Besegra 50 zombier
+a_k500|OMVÄND APOKALYPS
+ad_k500|Besegra 500 zombier
+a_boss|BOSSJÄGARE
+ad_boss|Besegra en boss
+a_prof|MATEMATIKER
+ad_prof|Besegra mattläraren
+a_esc|UTBRYTARKUNG
+ad_esc|Slit dig loss från en zombie som tagit dig
+a_web|INGA FLER NÄT
+ad_web|Fly ur en spindels nät
+a_creep|BOMBTEKNIKER
+ad_creep|Besegra en creeper innan den exploderar
+a_ender|TITTA INTE PÅ MIG
+ad_ender|Besegra en enderman
+a_pow|REGNBÅGE
+ad_pow|Använd en kraft
+a_pow7|ALLA SJU FÄRGER
+ad_pow7|Använd alla 7 krafter
+a_fast|BLIXTEN
+ad_fast|Svara rätt på under 2 sekunder
+a_perf|INTE EN SKRAPA
+ad_perf|Klara en nivå utan fel
+a_lv8|HALVVÄGS
+ad_lv8|Nå nivå 8
+a_days7|UTHÅLLIGHET
+ad_days7|Spela 7 dagar i rad
+a_hole|HÄNDELSEHORISONT
+ad_hole|Låt menyns svarta hål växa till max
+a_egg|TITTA PÅ STJÄRNORNA
+ad_egg|Upptäck en forskares stjärnbild
+n_ach|PRESTATIONER
+n_achGot|PRESTATION UPPLÅST!
+n_achN|{0} AV {1}
+n_mat|RUTNÄT
+n_cal|KALENDER
+n_a11y|TILLGÄNGLIG
+n_a11yOn|Tillgängligt läge på. Spelet läses upp av din skärmläsare och går långsammare. Svara med sifferknapparna nedtill.
+n_a11yOff|Tillgängligt läge av.
+n_a11yBtn|Slå på skärmläsarläge
+n_sayProb|{0}. Svara.
+n_ok|Rätt!
+n_bad|Fel. Det var {0}.
+n_grab|{0} tog dig! Svara snabbt för att slita dig loss.
+n_level|Nivå {0}: {1}.
+n_near|{0} nära, till {1}.
+n_left|vänster
+n_right|höger
+n_kinds|zombie;skelett;spindel;creeper;enderman;boss;mattläraren
+n_minus|minus
+n_dot|komma
+n_hearts|Du har {0} hjärta kvar.
+n_skip|HOPPA ÖVER ▸
+n_intro|SE INTROT
+n_powGot|KRAFT {0}!
+n_powUse|Tryck på den färgade knappen eller mellanslag för att använda den.
+n_powBtn|Använd kraft: {0}
+n_shield|SKÖLD!
+n_dodge|DEN TELEPORTERADE SIG!
+n_frozen|FRUSEN!
+p_r|RÖD · RASERI
+pa_r|Jättemeteorit i 12 s
+pd_r|Zombierna springer fortare
+p_o|ORANGE · SKÖLD
+pa_o|Blockerar nästa slag
+pd_o|Svårare uppgifter tills den går sönder
+p_y|GUL · BLIXT
+pa_y|Slår ner alla zombier
+pd_y|Dubbelt så många kommer i 10 s
+p_g|GRÖN · LEDTRÅD
+pa_g|Du ser första siffran i 20 s
+pd_g|Svårare att slita dig loss
+p_b|BLÅ · IS
+pa_b|Fryser fienderna i 8 s
+pd_b|Frusna kan meteoriten inte krossa dem
+p_i|INDIGO · SLOW MOTION
+pa_i|Fienderna i halv fart i 12 s
+pd_i|Du behöver ett rätt svar till på nivån
+p_v|VIOLETT · SVART HÅL
+pa_v|Slukar fiender i närheten
+pd_v|Rumtiden förvrängs i 10 s
+n_spider|<b>SPINDEL</b> · skjuter nät: den fångar dig och du måste lösa en uppgift för att ta dig ut.
+n_creeper|<b>CREEPER</b> · smyger fram och exploderar: hoppa undan eller besegra den först!
+n_ender|<b>ENDERMAN</b> · jagar dig inte: den dyker plötsligt upp där den inte borde.
+n_webbed|FAST I NÄTET!
+n_webSub|LÖS FÖR ATT KOMMA UT
+n_fuse|En creeper ska explodera till {0}!
+n_boom|PANG!
+n_boomT|PANG! EN CREEPER SPRÄNGDE DIG
+n_prof|MATTELÄRAREN
+n_laugh|HA, HA, HA!
+n_profT|FRAM MED ETT PAPPER: OVÄNTAT FÖRHÖR!;DET KOMMER INTE… PÅ PROVET GÖR DET!;NOLL. NOLL IGEN;OCH UTRÄKNINGEN?;LÄXAN VAR TILL IGÅR;INGEN GÅR FÖRRÄN DET ÄR LÖST;UNDERKÄND, LILLA ÄPPLE
+i1|En dag drabbades världen av en atomexplosion.
+i2|Bakom allt låg skurken: mattläraren… och hans zombiearmé.
+i3|Från rymdstationen skickades det sista hoppet till jorden…
+i4|…ett äpple. Samma som föll på Newton. Besegra läraren.
+e1|TACK FÖR ATT DU SPELADE
+e2|NU ÄR DU MATEMATIKER
+e3|{0} rätt · {1} zombier · {2} prestationer
+n_to|upphöjt till

@@ -305,3 +305,112 @@ cnoprob|Złapali cię przed pierwszym zadaniem.
 cera|było {0}
 cxera|✕ BYŁO {0}
 cescribo|PISZĘ {0}
+a_first|PIERWSZY KROK
+ad_first|Rozwiąż pierwsze zadanie
+a_st5|W FORMIE
+ad_st5|5 dobrych z rzędu
+a_st10|NIE DO ZATRZYMANIA
+ad_st10|10 dobrych z rzędu
+a_st25|UMYSŁ ZE STALI
+ad_st25|25 dobrych z rzędu
+a_k50|ŁOWCA ZOMBIE
+ad_k50|Pokonaj 50 zombie
+a_k500|APOKALIPSA NA ODWRÓT
+ad_k500|Pokonaj 500 zombie
+a_boss|ŁOWCA BOSSÓW
+ad_boss|Pokonaj bossa
+a_prof|MATEMATYK
+ad_prof|Pokonaj nauczyciela matematyki
+a_esc|MISTRZ UCIECZKI
+ad_esc|Wyrwij się zombie, który cię złapał
+a_web|KONIEC Z SIECIAMI
+ad_web|Ucieknij z pajęczyny pająka
+a_creep|SAPER
+ad_creep|Pokonaj creepera, zanim wybuchnie
+a_ender|NIE PATRZ NA MNIE
+ad_ender|Pokonaj endermana
+a_pow|TĘCZA
+ad_pow|Użyj mocy
+a_pow7|SIEDEM KOLORÓW
+ad_pow7|Użyj wszystkich 7 mocy
+a_fast|BŁYSKAWICA
+ad_fast|Odpowiedz dobrze w mniej niż 2 sekundy
+a_perf|BEZ ZADRAPANIA
+ad_perf|Przejdź poziom bez błędu
+a_lv8|PÓŁMETEK
+ad_lv8|Dojdź do poziomu 8
+a_days7|WYTRWAŁOŚĆ
+ad_days7|Graj 7 dni z rzędu
+a_hole|HORYZONT ZDARZEŃ
+ad_hole|Powiększ czarną dziurę w menu do maksimum
+a_egg|SPÓJRZ W GWIAZDY
+ad_egg|Odkryj gwiazdozbiór naukowca
+n_ach|OSIĄGNIĘCIA
+n_achGot|OSIĄGNIĘCIE ODBLOKOWANE!
+n_achN|{0} Z {1}
+n_mat|SIATKA
+n_cal|KALENDARZ
+n_a11y|DOSTĘPNOŚĆ
+n_a11yOn|Tryb dostępności włączony. Grę czyta twój czytnik ekranu i toczy się wolniej. Odpowiadaj klawiaturą numeryczną na dole.
+n_a11yOff|Tryb dostępności wyłączony.
+n_a11yBtn|Włącz tryb czytnika ekranu
+n_sayProb|{0}. Odpowiedz.
+n_ok|Dobrze!
+n_bad|Źle. Było {0}.
+n_grab|{0} cię złapał! Odpowiedz szybko, żeby się wyrwać.
+n_level|Poziom {0}: {1}.
+n_near|{0} blisko, po twojej {1}.
+n_left|lewej
+n_right|prawej
+n_kinds|zombie;szkielet;pająk;creeper;enderman;boss;nauczyciel matematyki
+n_minus|minus
+n_dot|przecinek
+n_hearts|Zostało ci serc: {0}.
+n_skip|POMIŃ ▸
+n_intro|ZOBACZ INTRO
+n_powGot|MOC {0}!
+n_powUse|Dotknij kolorowego przycisku lub spacji, aby jej użyć.
+n_powBtn|Użyj mocy: {0}
+n_shield|TARCZA!
+n_dodge|TELEPORTOWAŁ SIĘ!
+n_frozen|ZAMROŻONY!
+p_r|CZERWONY · FURIA
+pa_r|Gigantyczny meteoryt przez 12 s
+pd_r|Zombie biegają szybciej
+p_o|POMARAŃCZOWY · TARCZA
+pa_o|Blokuje następny cios
+pd_o|Trudniejsze zadania, dopóki nie pęknie
+p_y|ŻÓŁTY · PIORUN
+pa_y|Razi wszystkie zombie
+pd_y|Przez 10 s przychodzi ich dwa razy więcej
+p_g|ZIELONY · PODPOWIEDŹ
+pa_g|Przez 20 s widzisz pierwszą cyfrę
+pd_g|Trudniej się wyrwać
+p_b|NIEBIESKI · LÓD
+pa_b|Zamraża wrogów na 8 s
+pd_b|Zamrożonych meteoryt nie rozbija
+p_i|INDYGO · ZWOLNIONE TEMPO
+pa_i|Wrogowie przez 12 s z połową prędkości
+pd_i|Na poziomie potrzebujesz jednej dobrej odpowiedzi więcej
+p_v|FIOLETOWY · CZARNA DZIURA
+pa_v|Połyka pobliskich wrogów
+pd_v|Czasoprzestrzeń wygina się przez 10 s
+n_spider|<b>PAJĄK</b> · strzela pajęczyną: łapie cię i musisz rozwiązać zadanie, żeby się wydostać.
+n_creeper|<b>CREEPER</b> · podchodzi i wybucha: odskocz albo pokonaj go wcześniej!
+n_ender|<b>ENDERMAN</b> · nie goni cię: nagle pojawia się tam, gdzie nie powinien.
+n_webbed|ZŁAPANA W PAJĘCZYNĘ!
+n_webSub|ROZWIĄŻ, ŻEBY WYJŚĆ
+n_fuse|Creeper zaraz wybuchnie po twojej {0}!
+n_boom|BUM!
+n_boomT|BUM! WYSADZIŁ CIĘ CREEPER
+n_prof|NAUCZYCIEL MATEMATYKI
+n_laugh|HA, HA, HA!
+n_profT|KARTECZKI NA ŁAWKI: KARTKÓWKA!;TEGO NIE BĘDZIE… NA SPRAWDZIANIE BĘDZIE!;ZERO. ZNOWU ZERO;A GDZIE OBLICZENIA?;ZADANIE BYŁO NA WCZORAJ;NIKT NIE WYJDZIE, DOPÓKI NIE ROZWIĄŻE;PAŁA, JABŁUSZKO
+i1|Pewnego dnia świat przeżył wybuch atomowy.
+i2|Za wszystkim stał złoczyńca: nauczyciel matematyki… i jego armia zombie.
+i3|Ze stacji kosmicznej wysłano na Ziemię ostatnią nadzieję…
+i4|…jabłko. To samo, które spadło na Newtona. Pokonaj nauczyciela.
+e1|DZIĘKI ZA GRĘ
+e2|TERAZ JESTEŚ MATEMATYKIEM
+e3|{0} dobrych · {1} zombie · {2} osiągnięć
+n_to|do potęgi

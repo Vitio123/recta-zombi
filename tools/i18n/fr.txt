@@ -305,3 +305,112 @@ cnoprob|Ils t'ont attrapée avant le premier problème.
 cera|c'était {0}
 cxera|✕ C'ÉTAIT {0}
 cescribo|J'ÉCRIS {0}
+a_first|PREMIER PAS
+ad_first|Réussis ton premier problème
+a_st5|EN FORME
+ad_st5|5 bonnes réponses d'affilée
+a_st10|INARRÊTABLE
+ad_st10|10 bonnes réponses d'affilée
+a_st25|ESPRIT D'ACIER
+ad_st25|25 bonnes réponses d'affilée
+a_k50|CHASSEUR DE ZOMBIES
+ad_k50|Élimine 50 zombies
+a_k500|APOCALYPSE À L'ENVERS
+ad_k500|Élimine 500 zombies
+a_boss|CHASSEUR DE BOSS
+ad_boss|Bats un boss
+a_prof|MATHÉMATICIEN
+ad_prof|Bats le prof de maths
+a_esc|ROI DE L'ÉVASION
+ad_esc|Libère-toi d'un zombie qui t'a attrapé
+a_web|PLUS DE TOILES
+ad_web|Échappe à la toile d'une araignée
+a_creep|DÉMINEUR
+ad_creep|Élimine un creeper avant qu'il explose
+a_ender|NE ME REGARDE PAS
+ad_ender|Élimine un enderman
+a_pow|ARC-EN-CIEL
+ad_pow|Utilise un pouvoir
+a_pow7|LES SEPT COULEURS
+ad_pow7|Utilise les 7 pouvoirs
+a_fast|ÉCLAIR
+ad_fast|Réponds juste en moins de 2 secondes
+a_perf|SANS UNE ÉGRATIGNURE
+ad_perf|Termine un niveau sans erreur
+a_lv8|À MI-CHEMIN
+ad_lv8|Atteins le niveau 8
+a_days7|RÉGULARITÉ
+ad_days7|Joue 7 jours d'affilée
+a_hole|HORIZON DES ÉVÉNEMENTS
+ad_hole|Agrandis au maximum le trou noir du menu
+a_egg|REGARDE LES ÉTOILES
+ad_egg|Découvre la constellation d'un scientifique
+n_ach|SUCCÈS
+n_achGot|SUCCÈS DÉBLOQUÉ !
+n_achN|{0} SUR {1}
+n_mat|GRILLE
+n_cal|CALENDRIER
+n_a11y|ACCESSIBLE
+n_a11yOn|Mode accessible activé. Le jeu est raconté par ton lecteur d'écran et va plus lentement. Réponds avec le pavé numérique en bas.
+n_a11yOff|Mode accessible désactivé.
+n_a11yBtn|Activer le mode lecteur d'écran
+n_sayProb|{0}. Réponds.
+n_ok|Juste !
+n_bad|Raté. C'était {0}.
+n_grab|{0} t'a attrapé ! Réponds vite pour te libérer.
+n_level|Niveau {0} : {1}.
+n_near|{0} tout près, à ta {1}.
+n_left|gauche
+n_right|droite
+n_kinds|zombie;squelette;araignée;creeper;enderman;boss;prof de maths
+n_minus|moins
+n_dot|virgule
+n_hearts|Il te reste {0} cœur.
+n_skip|PASSER ▸
+n_intro|VOIR L'INTRO
+n_powGot|POUVOIR {0} !
+n_powUse|Touche le bouton coloré ou la barre d'espace pour l'utiliser.
+n_powBtn|Utiliser le pouvoir : {0}
+n_shield|BOUCLIER !
+n_dodge|IL S'EST TÉLÉPORTÉ !
+n_frozen|GELÉ !
+p_r|ROUGE · FUREUR
+pa_r|Météorite géante pendant 12 s
+pd_r|Les zombies courent plus vite
+p_o|ORANGE · BOUCLIER
+pa_o|Bloque le prochain coup
+pd_o|Problèmes plus durs jusqu'à ce qu'il casse
+p_y|JAUNE · FOUDRE
+pa_y|Foudroie tous les zombies
+pd_y|Il en arrive deux fois plus pendant 10 s
+p_g|VERT · INDICE
+pa_g|Tu vois le premier chiffre pendant 20 s
+pd_g|Plus dur de te libérer
+p_b|BLEU · GLACE
+pa_b|Gèle les ennemis pendant 8 s
+pd_b|Gelés, la météorite ne les brise pas
+p_i|INDIGO · RALENTI
+pa_i|Les ennemis vont à mi-vitesse pendant 12 s
+pd_i|Il te faut une bonne réponse de plus dans le niveau
+p_v|VIOLET · TROU NOIR
+pa_v|Avale les ennemis proches
+pd_v|L'espace-temps se déforme pendant 10 s
+n_spider|<b>ARAIGNÉE</b> · lance sa toile : elle te piège et tu dois résoudre un problème pour sortir.
+n_creeper|<b>CREEPER</b> · s'approche et explose : éloigne-toi en sautant ou élimine-le avant !
+n_ender|<b>ENDERMAN</b> · ne te poursuit pas : il apparaît soudain là où il ne faut pas.
+n_webbed|PIÉGÉE DANS LA TOILE !
+n_webSub|RÉSOUS POUR SORTIR
+n_fuse|Un creeper va exploser à ta {0} !
+n_boom|BOUM !
+n_boomT|BOUM ! UN CREEPER T'A EXPLOSÉ
+n_prof|LE PROF DE MATHS
+n_laugh|HA, HA, HA !
+n_profT|SORTEZ UNE FEUILLE : INTERRO SURPRISE !;ÇA NE TOMBE PAS… À L'EXAMEN, SI !;ZÉRO. ENCORE ZÉRO;ET LE RAISONNEMENT ?;LES DEVOIRS ÉTAIENT POUR HIER;PERSONNE NE SORT AVANT D'AVOIR TROUVÉ;RECALÉE, PETITE POMME
+i1|Un jour, le monde a subi une explosion atomique.
+i2|Derrière tout ça, il y avait le méchant : le prof de maths… et son armée de zombies.
+i3|Depuis la station spatiale, on a envoyé sur Terre le dernier espoir…
+i4|…une pomme. Celle-là même qui est tombée sur Newton. Bats le prof.
+e1|MERCI D'AVOIR JOUÉ
+e2|TU ES MAINTENANT MATHÉMATICIEN
+e3|{0} bonnes réponses · {1} zombies · {2} succès
+n_to|puissance

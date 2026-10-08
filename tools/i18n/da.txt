@@ -305,3 +305,112 @@ cnoprob|De fangede dig før første opgave.
 cera|det var {0}
 cxera|✕ DET VAR {0}
 cescribo|JEG SKRIVER {0}
+a_first|FØRSTE SKRIDT
+ad_first|Løs din første opgave
+a_st5|PÅ STRIBE
+ad_st5|5 rigtige i træk
+a_st10|USTOPPELIG
+ad_st10|10 rigtige i træk
+a_st25|STÅLHJERNE
+ad_st25|25 rigtige i træk
+a_k50|ZOMBIEJÆGER
+ad_k50|Besejr 50 zombier
+a_k500|OMVENDT APOKALYPSE
+ad_k500|Besejr 500 zombier
+a_boss|BOSSJÆGER
+ad_boss|Besejr en boss
+a_prof|MATEMATIKER
+ad_prof|Besejr matematiklæreren
+a_esc|UDBRYDERKONGE
+ad_esc|Riv dig løs fra en zombie, der har fanget dig
+a_web|INGEN FLERE SPIND
+ad_web|Flygt fra en edderkops spind
+a_creep|BOMBERYDDER
+ad_creep|Besejr en creeper, før den eksploderer
+a_ender|KIG IKKE PÅ MIG
+ad_ender|Besejr en enderman
+a_pow|REGNBUE
+ad_pow|Brug en kraft
+a_pow7|ALLE SYV FARVER
+ad_pow7|Brug alle 7 kræfter
+a_fast|LYNET
+ad_fast|Svar rigtigt på under 2 sekunder
+a_perf|IKKE EN SKRAMME
+ad_perf|Klar en bane uden fejl
+a_lv8|HALVVEJS
+ad_lv8|Nå bane 8
+a_days7|VEDHOLDENHED
+ad_days7|Spil 7 dage i træk
+a_hole|BEGIVENHEDSHORISONT
+ad_hole|Lad menuens sorte hul vokse til max
+a_egg|SE PÅ STJERNERNE
+ad_egg|Opdag en videnskabsmands stjernebillede
+n_ach|PRÆSTATIONER
+n_achGot|PRÆSTATION LÅST OP!
+n_achN|{0} AF {1}
+n_mat|GITTER
+n_cal|KALENDER
+n_a11y|TILGÆNGELIG
+n_a11yOn|Tilgængelig tilstand slået til. Din skærmlæser læser spillet op, og det går langsommere. Svar med taltasterne nederst.
+n_a11yOff|Tilgængelig tilstand slået fra.
+n_a11yBtn|Slå skærmlæsertilstand til
+n_sayProb|{0}. Svar.
+n_ok|Rigtigt!
+n_bad|Forkert. Det var {0}.
+n_grab|{0} fangede dig! Svar hurtigt for at slippe fri.
+n_level|Bane {0}: {1}.
+n_near|{0} tæt på, til {1}.
+n_left|venstre
+n_right|højre
+n_kinds|zombie;skelet;edderkop;creeper;enderman;boss;matematiklæreren
+n_minus|minus
+n_dot|komma
+n_hearts|Du har {0} hjerte tilbage.
+n_skip|SPRING OVER ▸
+n_intro|SE INTRO
+n_powGot|KRAFT {0}!
+n_powUse|Tryk på den farvede knap eller mellemrum for at bruge den.
+n_powBtn|Brug kraft: {0}
+n_shield|SKJOLD!
+n_dodge|DEN TELEPORTEREDE!
+n_frozen|FROSSET!
+p_r|RØD · RASERI
+pa_r|Kæmpemeteorit i 12 s
+pd_r|Zombierne løber hurtigere
+p_o|ORANGE · SKJOLD
+pa_o|Blokerer næste slag
+pd_o|Sværere opgaver, til det går i stykker
+p_y|GUL · LYN
+pa_y|Rammer alle zombier
+pd_y|Der kommer dobbelt så mange i 10 s
+p_g|GRØN · LEDETRÅD
+pa_g|Du ser det første ciffer i 20 s
+pd_g|Sværere at slippe fri
+p_b|BLÅ · IS
+pa_b|Fryser fjenderne i 8 s
+pd_b|Frosne kan meteoritten ikke knuse dem
+p_i|INDIGO · SLOWMOTION
+pa_i|Fjenderne i halv fart i 12 s
+pd_i|Du skal have ét rigtigt svar mere på banen
+p_v|VIOLET · SORT HUL
+pa_v|Sluger fjender i nærheden
+pd_v|Rumtiden forvrænges i 10 s
+n_spider|<b>EDDERKOP</b> · skyder spind: den fanger dig, og du skal løse en opgave for at komme ud.
+n_creeper|<b>CREEPER</b> · sniger sig ind og eksploderer: hop væk eller besejr den først!
+n_ender|<b>ENDERMAN</b> · jagter dig ikke: den dukker pludselig op, hvor den ikke burde.
+n_webbed|FANGET I SPINDET!
+n_webSub|LØS FOR AT KOMME UD
+n_fuse|En creeper er ved at eksplodere til {0}!
+n_boom|BUM!
+n_boomT|BUM! EN CREEPER SPRÆNGTE DIG
+n_prof|MATEMATIKLÆREREN
+n_laugh|HA, HA, HA!
+n_profT|FIND ET STYKKE PAPIR: OVERRASKELSESPRØVE!;DET KOMMER IKKE… TIL EKSAMEN GØR DET!;NUL. NUL IGEN;OG UDREGNINGEN?;LEKTIERNE VAR TIL I GÅR;INGEN GÅR, FØR DET ER LØST;DUMPET, LILLE ÆBLE
+i1|En dag blev verden ramt af en atomeksplosion.
+i2|Bag det hele stod skurken: matematiklæreren… og hans zombiehær.
+i3|Fra rumstationen sendte man det sidste håb til Jorden…
+i4|…et æble. Det samme, der faldt på Newton. Besejr læreren.
+e1|TAK FORDI DU SPILLEDE
+e2|NU ER DU MATEMATIKER
+e3|{0} rigtige · {1} zombier · {2} præstationer
+n_to|i

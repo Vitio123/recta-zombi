@@ -305,3 +305,112 @@ cnoprob|Te pegaram antes do primeiro problema.
 cera|era {0}
 cxera|✕ ERA {0}
 cescribo|ESCREVO {0}
+a_first|PRIMEIRO PASSO
+ad_first|Acerte seu primeiro problema
+a_st5|EMBALADA
+ad_st5|5 acertos seguidos
+a_st10|IMPARÁVEL
+ad_st10|10 acertos seguidos
+a_st25|MENTE DE AÇO
+ad_st25|25 acertos seguidos
+a_k50|CAÇA-ZUMBIS
+ad_k50|Elimine 50 zumbis
+a_k500|APOCALIPSE AO CONTRÁRIO
+ad_k500|Elimine 500 zumbis
+a_boss|CAÇA-CHEFES
+ad_boss|Derrote um chefe
+a_prof|MATEMÁTICO
+ad_prof|Derrote o professor de matemática
+a_esc|ESCAPISTA
+ad_esc|Solte-se de um zumbi que te pegou
+a_web|SEM TEIAS
+ad_web|Escape da teia de uma aranha
+a_creep|DESARMADOR
+ad_creep|Elimine um creeper antes que ele exploda
+a_ender|NÃO OLHE PARA MIM
+ad_ender|Elimine um enderman
+a_pow|ARCO-ÍRIS
+ad_pow|Use um poder
+a_pow7|AS SETE CORES
+ad_pow7|Use os 7 poderes
+a_fast|RELÂMPAGO
+ad_fast|Acerte em menos de 2 segundos
+a_perf|SEM UM ARRANHÃO
+ad_perf|Passe de nível sem errar
+a_lv8|METADE DO CAMINHO
+ad_lv8|Chegue ao nível 8
+a_days7|CONSTÂNCIA
+ad_days7|Jogue 7 dias seguidos
+a_hole|HORIZONTE DE EVENTOS
+ad_hole|Aumente ao máximo o buraco negro do menu
+a_egg|OLHE AS ESTRELAS
+ad_egg|Descubra a constelação de um cientista
+n_ach|CONQUISTAS
+n_achGot|CONQUISTA DESBLOQUEADA!
+n_achN|{0} DE {1}
+n_mat|MATRIZ
+n_cal|CALENDÁRIO
+n_a11y|ACESSÍVEL
+n_a11yOn|Modo acessível ativado. O jogo é narrado pelo seu leitor de tela e fica mais lento. Responda com o teclado numérico abaixo.
+n_a11yOff|Modo acessível desativado.
+n_a11yBtn|Ativar modo para leitor de tela
+n_sayProb|{0}. Responda.
+n_ok|Certo!
+n_bad|Errou. Era {0}.
+n_grab|{0} te pegou! Responda rápido para se soltar.
+n_level|Nível {0}: {1}.
+n_near|{0} perto, à sua {1}.
+n_left|esquerda
+n_right|direita
+n_kinds|zumbi;esqueleto;aranha;creeper;enderman;chefe;professor de matemática
+n_minus|menos
+n_dot|vírgula
+n_hearts|Te resta {0} coração.
+n_skip|PULAR ▸
+n_intro|VER INTRO
+n_powGot|PODER {0}!
+n_powUse|Toque no botão colorido ou na barra de espaço para usar.
+n_powBtn|Usar poder: {0}
+n_shield|ESCUDO!
+n_dodge|SE TELETRANSPORTOU!
+n_frozen|CONGELADO!
+p_r|VERMELHO · FÚRIA
+pa_r|Meteorito gigante por 12 s
+pd_r|Os zumbis correm mais
+p_o|LARANJA · ESCUDO
+pa_o|Bloqueia o próximo golpe
+pd_o|Problemas mais difíceis até ele quebrar
+p_y|AMARELO · RAIO
+pa_y|Fulmina todos os zumbis
+pd_y|Chegam o dobro por 10 s
+p_g|VERDE · DICA
+pa_g|Você vê o primeiro algarismo por 20 s
+pd_g|Fica mais difícil se soltar
+p_b|AZUL · GELO
+pa_b|Congela os inimigos por 8 s
+pd_b|Congelados, o meteorito não os quebra
+p_i|ANIL · CÂMERA LENTA
+pa_i|Os inimigos vão à metade da velocidade por 12 s
+pd_i|Você precisa de mais um acerto no nível
+p_v|VIOLETA · BURACO NEGRO
+pa_v|Engole os inimigos próximos
+pd_v|O espaço-tempo se deforma por 10 s
+n_spider|<b>ARANHA</b> · lança teia: te prende e você precisa resolver um problema para sair.
+n_creeper|<b>CREEPER</b> · se aproxima e explode: afaste-se pulando ou elimine-o antes!
+n_ender|<b>ENDERMAN</b> · não te persegue: aparece de repente onde não devia.
+n_webbed|PRESA NA TEIA!
+n_webSub|RESOLVA PARA SAIR
+n_fuse|Um creeper vai explodir à sua {0}!
+n_boom|BUM!
+n_boomT|BUM! UM CREEPER TE EXPLODIU
+n_prof|O PROFESSOR DE MATEMÁTICA
+n_laugh|HA, HA, HA!
+n_profT|PEGUEM UMA FOLHA: PROVA SURPRESA!;ISSO NÃO CAI… NA PROVA CAI SIM!;ZERO. ZERO DE NOVO;CADÊ A CONTA?;A LIÇÃO ERA PARA ONTEM;NINGUÉM SAI ATÉ RESOLVER;REPROVADA, MAÇÃZINHA
+i1|Um dia, o mundo sofreu uma explosão atômica.
+i2|Por trás de tudo estava o vilão: o professor de matemática… e seu exército de zumbis.
+i3|Da estação espacial enviaram à Terra a última esperança…
+i4|…uma maçã. A mesma que caiu em Newton. Derrote o professor.
+e1|OBRIGADO POR JOGAR
+e2|AGORA VOCÊ É MATEMÁTICO
+e3|{0} acertos · {1} zumbis · {2} conquistas
+n_to|elevado a

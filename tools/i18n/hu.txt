@@ -305,3 +305,112 @@ cnoprob|Már az első feladat előtt elkaptak.
 cera|{0} volt
 cxera|✕ {0} VOLT
 cescribo|LEÍROM: {0}
+a_first|ELSŐ LÉPÉS
+ad_first|Oldd meg az első feladatot
+a_st5|LENDÜLETBEN
+ad_st5|5 helyes egymás után
+a_st10|MEGÁLLÍTHATATLAN
+ad_st10|10 helyes egymás után
+a_st25|ACÉLAGY
+ad_st25|25 helyes egymás után
+a_k50|ZOMBIVADÁSZ
+ad_k50|Győzz le 50 zombit
+a_k500|FORDÍTOTT APOKALIPSZIS
+ad_k500|Győzz le 500 zombit
+a_boss|FŐNÖKVADÁSZ
+ad_boss|Győzz le egy főnököt
+a_prof|MATEMATIKUS
+ad_prof|Győzd le a matektanárt
+a_esc|SZABADULÓMŰVÉSZ
+ad_esc|Szabadulj ki egy zombi szorításából
+a_web|NINCS TÖBB HÁLÓ
+ad_web|Menekülj ki egy pók hálójából
+a_creep|TŰZSZERÉSZ
+ad_creep|Győzz le egy creepert, mielőtt felrobban
+a_ender|NE NÉZZ RÁM
+ad_ender|Győzz le egy endermant
+a_pow|SZIVÁRVÁNY
+ad_pow|Használj egy erőt
+a_pow7|MIND A HÉT SZÍN
+ad_pow7|Használd mind a 7 erőt
+a_fast|VILLÁM
+ad_fast|Válaszolj helyesen 2 másodpercen belül
+a_perf|EGY KARCOLÁS NÉLKÜL
+ad_perf|Teljesíts egy szintet hiba nélkül
+a_lv8|FÉLÚTON
+ad_lv8|Érd el a 8. szintet
+a_days7|KITARTÁS
+ad_days7|Játssz 7 napig egymás után
+a_hole|ESEMÉNYHORIZONT
+ad_hole|Növeld a menü fekete lyukát a maximumra
+a_egg|NÉZD A CSILLAGOKAT
+ad_egg|Fedezd fel egy tudós csillagképét
+n_ach|EREDMÉNYEK
+n_achGot|EREDMÉNY FELOLDVA!
+n_achN|{0} / {1}
+n_mat|RÁCS
+n_cal|NAPTÁR
+n_a11y|AKADÁLYMENTES
+n_a11yOn|Akadálymentes mód bekapcsolva. A képernyőolvasód felolvassa a játékot, és az lassabban megy. Válaszolj a lenti számbillentyűzettel.
+n_a11yOff|Akadálymentes mód kikapcsolva.
+n_a11yBtn|Képernyőolvasó mód bekapcsolása
+n_sayProb|{0}. Válaszolj.
+n_ok|Helyes!
+n_bad|Hibás. {0} volt.
+n_grab|Elkapott: {0}! Válaszolj gyorsan, hogy kiszabadulj.
+n_level|{0}. szint: {1}.
+n_near|{0} a közelben, {1}.
+n_left|tőled balra
+n_right|tőled jobbra
+n_kinds|zombi;csontváz;pók;creeper;enderman;főnök;matektanár
+n_minus|mínusz
+n_dot|vessző
+n_hearts|{0} szíved maradt.
+n_skip|KIHAGYÁS ▸
+n_intro|INTRÓ MEGNÉZÉSE
+n_powGot|ERŐ: {0}!
+n_powUse|Koppints a színes gombra vagy nyomd meg a szóközt a használathoz.
+n_powBtn|Erő használata: {0}
+n_shield|PAJZS!
+n_dodge|TELEPORTÁLT!
+n_frozen|BEFAGYOTT!
+p_r|PIROS · DÜH
+pa_r|Óriásmeteorit 12 mp-ig
+pd_r|A zombik gyorsabban futnak
+p_o|NARANCS · PAJZS
+pa_o|Kivédi a következő ütést
+pd_o|Nehezebb feladatok, amíg el nem törik
+p_y|SÁRGA · VILLÁM
+pa_y|Lesújt minden zombira
+pd_y|10 mp-ig kétszer annyi jön
+p_g|ZÖLD · SÚGÁS
+pa_g|20 mp-ig látod az első számjegyet
+pd_g|Nehezebben szabadulsz
+p_b|KÉK · JÉG
+pa_b|8 mp-re befagyasztja az ellenséget
+pd_b|Befagyva a meteorit nem töri szét őket
+p_i|INDIGÓ · LASSÍTÁS
+pa_i|Az ellenség 12 mp-ig fél sebességgel jön
+pd_i|Eggyel több helyes válasz kell a szinten
+p_v|IBOLYA · FEKETE LYUK
+pa_v|Elnyeli a közeli ellenségeket
+pd_v|A téridő 10 mp-ig torzul
+n_spider|<b>PÓK</b> · hálót lő: elkap, és meg kell oldanod egy feladatot, hogy kiszabadulj.
+n_creeper|<b>CREEPER</b> · odasettenkedik és felrobban: ugorj el, vagy győzd le előbb!
+n_ender|<b>ENDERMAN</b> · nem üldöz: hirtelen felbukkan ott, ahol nem kéne.
+n_webbed|BELEAKADTÁL A HÁLÓBA!
+n_webSub|OLDD MEG, HOGY KIJUSS
+n_fuse|Egy creeper mindjárt felrobban {0}!
+n_boom|BUMM!
+n_boomT|BUMM! FELROBBANTOTT EGY CREEPER
+n_prof|A MATEKTANÁR
+n_laugh|HA, HA, HA!
+n_profT|ELŐ EGY LAPOT: RÖPDOLGOZAT!;EZ NEM LESZ BENNE… A DOLGOZATBAN IGEN!;NULLA. MEGINT NULLA;ÉS A LEVEZETÉS?;A HÁZI TEGNAPRA VOLT;SENKI SEM MEGY, AMÍG MEG NEM OLDJA;MEGBUKTÁL, KIS ALMA
+i1|Egy napon atomrobbanás rázta meg a világot.
+i2|Minden mögött a gonosz állt: a matektanár… és a zombiserege.
+i3|Az űrállomásról elküldték a Földre az utolsó reményt…
+i4|…egy almát. Ugyanazt, amelyik Newtonra esett. Győzd le a tanárt.
+e1|KÖSZÖNJÜK, HOGY JÁTSZOTTÁL
+e2|MOST MÁR MATEMATIKUS VAGY
+e3|{0} helyes · {1} zombi · {2} eredmény
+n_to|a

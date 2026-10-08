@@ -305,3 +305,112 @@ cnoprob|Ti hanno presa prima del primo problema.
 cera|era {0}
 cxera|✕ ERA {0}
 cescribo|SCRIVO {0}
+a_first|PRIMO PASSO
+ad_first|Risolvi il tuo primo problema
+a_st5|IN SERIE
+ad_st5|5 risposte giuste di fila
+a_st10|INARRESTABILE
+ad_st10|10 risposte giuste di fila
+a_st25|MENTE D'ACCIAIO
+ad_st25|25 risposte giuste di fila
+a_k50|CACCIAZOMBI
+ad_k50|Elimina 50 zombi
+a_k500|APOCALISSE AL CONTRARIO
+ad_k500|Elimina 500 zombi
+a_boss|CACCIABOSS
+ad_boss|Sconfiggi un boss
+a_prof|MATEMATICO
+ad_prof|Sconfiggi il prof di matematica
+a_esc|ESCAPOLOGO
+ad_esc|Liberati da uno zombi che ti ha preso
+a_web|NIENTE RAGNATELE
+ad_web|Scappa dalla ragnatela di un ragno
+a_creep|ARTIFICIERE
+ad_creep|Elimina un creeper prima che esploda
+a_ender|NON GUARDARMI
+ad_ender|Elimina un enderman
+a_pow|ARCOBALENO
+ad_pow|Usa un potere
+a_pow7|I SETTE COLORI
+ad_pow7|Usa tutti e 7 i poteri
+a_fast|FULMINE
+ad_fast|Rispondi giusto in meno di 2 secondi
+a_perf|SENZA UN GRAFFIO
+ad_perf|Supera un livello senza sbagliare
+a_lv8|A METÀ STRADA
+ad_lv8|Arriva al livello 8
+a_days7|COSTANZA
+ad_days7|Gioca 7 giorni di fila
+a_hole|ORIZZONTE DEGLI EVENTI
+ad_hole|Ingrandisci al massimo il buco nero del menu
+a_egg|GUARDA LE STELLE
+ad_egg|Scopri la costellazione di uno scienziato
+n_ach|OBIETTIVI
+n_achGot|OBIETTIVO SBLOCCATO!
+n_achN|{0} DI {1}
+n_mat|GRIGLIA
+n_cal|CALENDARIO
+n_a11y|ACCESSIBILE
+n_a11yOn|Modalità accessibile attiva. Il gioco viene narrato dal tuo lettore di schermo e va più lento. Rispondi con il tastierino numerico in basso.
+n_a11yOff|Modalità accessibile disattivata.
+n_a11yBtn|Attiva la modalità lettore di schermo
+n_sayProb|{0}. Rispondi.
+n_ok|Giusto!
+n_bad|Sbagliato. Era {0}.
+n_grab|{0} ti ha preso! Rispondi in fretta per liberarti.
+n_level|Livello {0}: {1}.
+n_near|{0} vicino, alla tua {1}.
+n_left|sinistra
+n_right|destra
+n_kinds|zombi;scheletro;ragno;creeper;enderman;boss;prof di matematica
+n_minus|meno
+n_dot|virgola
+n_hearts|Ti resta {0} cuore.
+n_skip|SALTA ▸
+n_intro|GUARDA L'INTRO
+n_powGot|POTERE {0}!
+n_powUse|Tocca il pulsante colorato o la barra spaziatrice per usarlo.
+n_powBtn|Usa il potere: {0}
+n_shield|SCUDO!
+n_dodge|SI È TELETRASPORTATO!
+n_frozen|CONGELATO!
+p_r|ROSSO · FURIA
+pa_r|Meteorite gigante per 12 s
+pd_r|Gli zombi corrono di più
+p_o|ARANCIONE · SCUDO
+pa_o|Blocca il prossimo colpo
+pd_o|Problemi più difficili finché non si rompe
+p_y|GIALLO · FULMINE
+pa_y|Fulmina tutti gli zombi
+pd_y|Ne arrivano il doppio per 10 s
+p_g|VERDE · INDIZIO
+pa_g|Vedi la prima cifra per 20 s
+pd_g|Liberarti è più difficile
+p_b|BLU · GHIACCIO
+pa_b|Congela i nemici per 8 s
+pd_b|Congelati, il meteorite non li rompe
+p_i|INDACO · RALLENTATORE
+pa_i|I nemici vanno a metà velocità per 12 s
+pd_i|Ti serve una risposta giusta in più nel livello
+p_v|VIOLA · BUCO NERO
+pa_v|Inghiotte i nemici vicini
+pd_v|Lo spaziotempo si deforma per 10 s
+n_spider|<b>RAGNO</b> · lancia ragnatele: ti intrappola e devi risolvere un problema per uscire.
+n_creeper|<b>CREEPER</b> · si avvicina ed esplode: allontanati saltando o eliminalo prima!
+n_ender|<b>ENDERMAN</b> · non ti insegue: compare all'improvviso dove non dovrebbe.
+n_webbed|INTRAPPOLATA NELLA RAGNATELA!
+n_webSub|RISOLVI PER USCIRE
+n_fuse|Un creeper sta per esplodere alla tua {0}!
+n_boom|BUM!
+n_boomT|BUM! UN CREEPER TI HA FATTO ESPLODERE
+n_prof|IL PROF DI MATEMATICA
+n_laugh|AH, AH, AH!
+n_profT|TIRATE FUORI UN FOGLIO: COMPITO A SORPRESA!;QUESTO NON C'È… NEL COMPITO SÌ!;ZERO. DI NUOVO ZERO;E IL PROCEDIMENTO?;I COMPITI ERANO PER IERI;NESSUNO ESCE FINCHÉ NON È RISOLTO;BOCCIATA, MELINA
+i1|Un giorno, il mondo subì un'esplosione atomica.
+i2|Dietro a tutto c'era il cattivo: il prof di matematica… e il suo esercito di zombi.
+i3|Dalla stazione spaziale mandarono sulla Terra l'ultima speranza…
+i4|…una mela. La stessa che cadde in testa a Newton. Sconfiggi il prof.
+e1|GRAZIE PER AVER GIOCATO
+e2|ORA SEI UN MATEMATICO
+e3|{0} risposte giuste · {1} zombi · {2} obiettivi
+n_to|elevato alla
