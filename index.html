@@ -288,6 +288,8 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 [dir=rtl] .fl{margin:0 0 2px 8px}
 #bLang1,#bLang2{display:flex;align-items:center;justify-content:center;white-space:nowrap}
 #sLang{z-index:45}
+#game .card{transition:opacity .22s ease}
+#game.lfade .screen.show:not(#sLang) .card,#game.lfade #alert{opacity:0;transition:opacity .16s ease}
 #sLang .card{width:min(520px,100%)}
 #langTtl{font-size:clamp(22px,6vw,34px)}
 #langGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;max-height:min(62vh,520px);overflow-y:auto!important;touch-action:pan-y;padding:2px 4px 6px 2px;box-sizing:border-box;-webkit-overflow-scrolling:touch}
@@ -1555,10 +1557,17 @@ function buildLangGrid(){
 function openLang(){buildLangGrid();$('#sLang').classList.add('show');requestAnimationFrame(()=>{fitCards();const c=$('#langGrid .cur');if(c)c.scrollIntoView({block:'center'})})}
 function closeLang(){$('#sLang').classList.remove('show')}
 function setLang(c){
-  if(!LTXT[c])return;LANG=c;try{localStorage.setItem('rzLang',c)}catch(e){}
-  applyLang();closeLang();
-  if(typeof syncChips==='function')syncChips();
-  if(typeof S!=='undefined'&&S.mode==='title')setMode('title');
+  if(!LTXT[c]||c===LANG){closeLang();return}
+  LANG=c;try{localStorage.setItem('rzLang',c)}catch(e){}
+  // fundido sutil: los textos cambian con la tarjeta ya transparente, así no se nota que los botones se reacomodan
+  const g=$('#game');g.classList.add('lfade');closeLang();
+  setTimeout(()=>{
+    applyLang();
+    if(typeof syncChips==='function')syncChips();
+    if(typeof S!=='undefined'&&S.mode==='title')setMode('title');
+    if(typeof fitCards==='function')fitCards();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>g.classList.remove('lfade')));
+  },170);
 }
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#bLang1,#bLang2,#bLangBack,#langGrid .lg');if(!b)return;
   if(b.id==='bLangBack')closeLang();else if(b.dataset.l)setLang(b.dataset.l);else openLang()});
