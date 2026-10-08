@@ -302,3 +302,6 @@ cmanz|MELE
 cpoll|PULCINI
 cvaca|MUCCHE
 cnoprob|Ti hanno presa prima del primo problema.
+cera|era {0}
+cxera|✕ ERA {0}
+cescribo|SCRIVO {0}

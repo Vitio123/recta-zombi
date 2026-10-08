@@ -302,3 +302,6 @@ cmanz|ÆBLER
 cpoll|KYLLINGER
 cvaca|KØER
 cnoprob|De fangede dig før første opgave.
+cera|det var {0}
+cxera|✕ DET VAR {0}
+cescribo|JEG SKRIVER {0}

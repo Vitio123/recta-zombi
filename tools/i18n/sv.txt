@@ -302,3 +302,6 @@ cmanz|ÄPPLEN
 cpoll|KYCKLINGAR
 cvaca|KOR
 cnoprob|De tog dig före första uppgiften.
+cera|det var {0}
+cxera|✕ DET VAR {0}
+cescribo|JAG SKRIVER {0}

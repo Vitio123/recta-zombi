@@ -302,3 +302,6 @@ cmanz|ELMA
 cpoll|CİVCİV
 cvaca|İNEK
 cnoprob|İlk sorudan önce yakalandın.
+cera|cevap {0} idi
+cxera|✕ CEVAP {0} İDİ
+cescribo|{0} YAZIYORUM

@@ -302,3 +302,6 @@ cmanz|APPELS
 cpoll|KUIKENS
 cvaca|KOEIEN
 cnoprob|Ze hadden je al voor de eerste som.
+cera|het was {0}
+cxera|✕ HET WAS {0}
+cescribo|IK SCHRIJF {0}

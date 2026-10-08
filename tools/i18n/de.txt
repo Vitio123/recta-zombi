@@ -302,3 +302,6 @@ cmanz|ÄPFEL
 cpoll|KÜKEN
 cvaca|KÜHE
 cnoprob|Sie haben dich vor der ersten Aufgabe erwischt.
+cera|es war {0}
+cxera|✕ ES WAR {0}
+cescribo|ICH SCHREIBE {0}

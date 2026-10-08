@@ -302,3 +302,6 @@ cmanz|JABLEK
 cpoll|KUŘAT
 cvaca|KRAV
 cnoprob|Chytili tě ještě před prvním příkladem.
+cera|bylo to {0}
+cxera|✕ BYLO TO {0}
+cescribo|PÍŠU {0}

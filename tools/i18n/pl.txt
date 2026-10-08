@@ -302,3 +302,6 @@ cmanz|JABŁEK
 cpoll|KURCZĄT
 cvaca|KRÓW
 cnoprob|Złapali cię przed pierwszym zadaniem.
+cera|było {0}
+cxera|✕ BYŁO {0}
+cescribo|PISZĘ {0}

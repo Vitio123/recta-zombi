@@ -302,3 +302,6 @@ cmanz|MERE
 cpoll|PUI
 cvaca|VACI
 cnoprob|Te-au prins înainte de prima problemă.
+cera|era {0}
+cxera|✕ ERA {0}
+cescribo|SCRIU {0}

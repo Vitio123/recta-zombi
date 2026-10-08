@@ -302,3 +302,6 @@ cmanz|POMMES
 cpoll|POUSSINS
 cvaca|VACHES
 cnoprob|Ils t'ont attrapée avant le premier problème.
+cera|c'était {0}
+cxera|✕ C'ÉTAIT {0}
+cescribo|J'ÉCRIS {0}

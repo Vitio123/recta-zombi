@@ -302,3 +302,6 @@ cmanz|ALMA
 cpoll|CSIBE
 cvaca|TEHÉN
 cnoprob|Már az első feladat előtt elkaptak.
+cera|{0} volt
+cxera|✕ {0} VOLT
+cescribo|LEÍROM: {0}

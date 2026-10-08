@@ -302,3 +302,6 @@ cmanz|MAÇÃS
 cpoll|PINTINHOS
 cvaca|VACAS
 cnoprob|Te pegaram antes do primeiro problema.
+cera|era {0}
+cxera|✕ ERA {0}
+cescribo|ESCREVO {0}

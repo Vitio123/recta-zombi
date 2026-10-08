@@ -302,3 +302,6 @@ cmanz|りんご
 cpoll|ひよこ
 cvaca|牛
 cnoprob|最初の問題の前につかまった。
+cera|答えは{0}
+cxera|✕ 答えは{0}
+cescribo|{0}を書く

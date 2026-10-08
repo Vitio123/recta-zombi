@@ -302,3 +302,6 @@ cmanz|사과
 cpoll|병아리
 cvaca|소
 cnoprob|첫 문제 전에 붙잡혔어요.
+cera|정답은 {0}
+cxera|✕ 정답은 {0}
+cescribo|{0}을 써요

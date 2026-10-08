@@ -302,3 +302,6 @@ cmanz|QUẢ TÁO
 cpoll|GÀ CON
 cvaca|CON BÒ
 cnoprob|Bạn bị bắt trước cả bài đầu tiên.
+cera|đáp án là {0}
+cxera|✕ ĐÁP ÁN LÀ {0}
+cescribo|VIẾT {0}

@@ -302,3 +302,6 @@ cmanz|APEL
 cpoll|ANAK AYAM
 cvaca|SAPI
 cnoprob|Kamu tertangkap sebelum soal pertama.
+cera|jawabannya {0}
+cxera|✕ JAWABANNYA {0}
+cescribo|TULIS {0}

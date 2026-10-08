@@ -302,3 +302,6 @@ cmanz|APPLES
 cpoll|CHICKS
 cvaca|COWS
 cnoprob|They caught you before the first problem.
+cera|it was {0}
+cxera|✕ IT WAS {0}
+cescribo|I WRITE {0}

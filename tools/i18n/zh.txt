@@ -302,3 +302,6 @@ cmanz|苹果
 cpoll|小鸡
 cvaca|奶牛
 cnoprob|第一题之前你就被抓住了。
+cera|答案是 {0}
+cxera|✕ 答案是 {0}
+cescribo|写 {0}
