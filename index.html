@@ -247,7 +247,7 @@ details.prog .heat{margin-top:8px;animation:fadeUp .4s both}
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
     <div class="mini" id="tStats"></div>
     <details class="prog"><summary>TU PROGRESO</summary><div class="heat" id="tHeat"></div></details>
-    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bGenre1">♪ MÚSICA</button></div>
+    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
     <div id="lKick"></div>
@@ -265,7 +265,7 @@ details.prog .heat{margin-top:8px;animation:fadeUp .4s both}
   <div class="screen" id="sPause"><div class="card">
     <h2 class="ttl">PAUSA</h2>
     <div class="btns"><button class="btn" id="bResume">CONTINUAR</button></div>
-    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bGenre2">♪ MÚSICA</button><button class="chip" id="bMute">SONIDO</button><button class="chip" id="bKb">TECLADO</button></div>
+    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button></div>
     <button class="btn alt" id="bQuit">SALIR AL MENÚ</button>
   </div></div>
   <div class="screen" id="sOver"><div class="card">
@@ -485,14 +485,25 @@ function dline(x0,y0,x1,y1,c,gap=3){const n=Math.max(Math.abs(x1-x0),Math.abs(y1
 /* ============ Logo: agujero negro pixel con disco de acreción ============ */
 const lgc=$('#logo').getContext('2d');
 function drawLogo(t){
-  const c=lgc;c.clearRect(0,0,64,64);c.imageSmoothingEnabled=false;
-  const sy=['π','∫','√','+','÷','∞'],orb=(front)=>{for(let i=0;i<6;i++){const an=t*.6+i*Math.PI/3,sn=Math.sin(an);if((sn>0)!==front||(front&&Math.abs(Math.cos(an))<.6))continue;c.globalAlpha=front?.95:.35;ptext(sy[i],Math.round(32+Math.cos(an)*27)-2,Math.round(33+sn*10)-3,1,front?P.red:P.l1,c)}c.globalAlpha=1};
-  orb(false);
-  const ph=t*2.4,bob=Math.abs(Math.sin(ph))*7,sq=Math.max(0,.18-bob*.04),w=Math.round(14*3*(1+sq)),h=Math.round(14*3*(1-sq*.8));
-  c.globalAlpha=.28;c.fillStyle='#000';const sw=Math.round(30-bob*1.6);c.fillRect(32-(sw>>1),59,sw,2);c.globalAlpha=1;
-  const x=32-(w>>1),y=Math.round(60-h-bob);c.drawImage(appleCanvas(0,1),x,y,w,h);
-  appleFace(c,x,y,w,h,false,Math.sin(t*.7)>0?1:-1,(t%3.6)<.14);
-  orb(true);
+  const c=lgc;c.clearRect(0,0,64,64);
+  const cx=31.5,cy=31.5,cols=[P.m2,P.m3,P.l1,P.l2,P.l3,P.w,P.w];
+  for(let y=0;y<64;y++)for(let x=0;x<64;x++){
+    const dx=x-cx,dy=y-cy,r=Math.hypot(dx,dy),u=dx,v=dy/.34,rd=Math.hypot(u,v);
+    const inDisk=rd>13&&rd<30,ang=Math.atan2(v,u);
+    const sw=.55+.45*Math.sin(ang*3-rd*.55+t*2.2);
+    let col=null;
+    const diskI=inDisk?(1-(rd-13)/17)*sw*(dx>0?1.15:.85):0;
+    if(inDisk&&dy>0)col=diskI;
+    else if(r<11)col=-1;
+    else if(r<12.6)col=.95+.05*Math.sin(t*3+ang);
+    else if(r<17&&dy<3){const k=(1-(r-12.6)/4.4)*(.55+.45*Math.sin(Math.atan2(dy,dx)*2+t*1.5))*(dy<0?1:.4);if(k>.15)col=k*.8}
+    if(col===null&&inDisk)col=diskI*.75;
+    if(col===null){if(((x*7+y*13)%97)===0&&Math.sin(t+x)>.2){c.fillStyle=P.l2;c.fillRect(x,y,1,1)}continue}
+    if(col<0){c.fillStyle='#000';c.fillRect(x,y,1,1);continue}
+    const q=clamp(col,0,1)*(cols.length-1)+bay(x,y)-.5,i=clamp(Math.round(q),0,cols.length-1);
+    if(col<.08)continue;
+    c.fillStyle=cols[i];c.fillRect(x,y,1,1);
+  }
 }
 
 /* ============ Audio: efectos + percusión aleatoria con los instrumentos de la lámina ============ */
@@ -597,11 +608,10 @@ function keys(t,midis,dur,v,d){for(const m of midis){const f=440*Math.pow(2,(m-6
 const DRUMS=new Set(['kick','snare','clap','hat','ohat','sub']);
 const GENRES=['percusion','hiphop','regueton','salsa','cumbia','rock','chip','trap','session'];
 const GNAME={percusion:'PERCUSIÓN',hiphop:'HIP HOP',regueton:'REGUETÓN',salsa:'SALSA',cumbia:'CUMBIA',rock:'ROCK',chip:'8 BITS',trap:'TRAP',session:'SESSION'};
-let GENRE_PREF='random';
-try{GENRE_PREF=localStorage.getItem('rzGenre')||'random'}catch(e){}
+let GENRE_PREF='random',LASTG='';
 const row=(len,on)=>{const a=Array(len).fill(0);for(const i of on)a[i]=1;return a};
 function newGroove(boss){
-  const g0=GENRE_PREF==='random'?pick(GENRES):GENRE_PREF,g={genre:g0,parts:[],swing:0,len:16,div:4,keysPat:null};
+  const g0=(()=>{let g;do{g=pick(GENRES)}while(g===LASTG&&GENRES.length>1);LASTG=g;return g})(),g={genre:g0,parts:[],swing:0,len:16,div:4,keysPat:null};
   const add=(name,pat,vel)=>g.parts.push({name,pat,vel,lay:g.parts.length>=3?1:0}); // las 3 primeras = base
   if(g0==='session'){ // estilo sesiones de Bizarrap: bombo en negras, 808 que se desliza, subida y drop con bajo wobble
     g.bpm=ri(122,128);g.session=true;g.deep=true;
@@ -1240,16 +1250,17 @@ $('#bResume').onclick=()=>setMode('play');
 $('#bQuit').onclick=()=>toTitle();
 $('#bMenu').onclick=()=>toTitle();
 $('#bPause').onclick=()=>{if(S.mode==='play')setMode('pause');else if(S.mode==='pause')setMode('play')};
-$('#bMute').onclick=()=>{muted=!muted;$('#bMute').textContent=muted?'SIN SONIDO':'SONIDO'};
+const toggleMute=()=>{muted=!muted;try{localStorage.setItem('rzMute',muted?'1':'0')}catch(e){}syncChips()};
+for(const id of['#bMute','#bMute1'])$(id).onclick=toggleMute;
+try{muted=localStorage.getItem('rzMute')==='1'}catch(e){}
 function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){}buildBG();S.lay=null;padDirty=true;syncChips();
   // la pregunta está dibujada en un lienzo aparte con los colores del tema anterior: se vuelve a dibujar
   if(S.prob&&!exprT)renderExprCanvas(S.prob);else if(S.prob){clearTimeout(exprT);exprT=0;renderExprCanvas(S.prob);$('#exprw').classList.remove('out')}
   if(S.mode==='over'&&S.exP&&$('#oFail').open)playExplain()}
 const APPLES=['roja','verde','amarilla'];
-function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+APPLEC.toUpperCase();b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ NOCHE':'☀ DÍA',gl='♪ '+(GENRE_PREF==='random'?'ALEATORIA':GNAME[GENRE_PREF]);for(const i of[1,2]){$('#bTheme'+i).textContent=tl;$('#bGenre'+i).textContent=gl}$('#bKb').textContent=document.body.classList.contains('kb')?'DIBUJAR':'TECLADO'}
-const cycleGenre=()=>{const L=['random',...GENRES];GENRE_PREF=L[(L.indexOf(GENRE_PREF)+1)%L.length];try{localStorage.setItem('rzGenre',GENRE_PREF)}catch(e){}MUS.groove=newGroove(!!S.topic.boss);if(MUS.on){musicStop()}syncChips()};
+function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+APPLEC.toUpperCase();b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ NOCHE':'☀ DÍA';for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ SIN SONIDO':'♪ SONIDO';$('#bKb').textContent=document.body.classList.contains('kb')?'DIBUJAR':'TECLADO'}
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}syncChips()};
-for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':'dark');$('#bGenre'+i).onclick=cycleGenre}
+for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':'dark')}
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='play')setMode('pause')});
 document.addEventListener('contextmenu',e=>{if(S.mode==='play')e.preventDefault()});
