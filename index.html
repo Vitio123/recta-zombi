@@ -1533,6 +1533,1096 @@ function L10(k,v){
 }
 const L10list=k=>L10(k).split(';').map(x=>x.trim()).filter(Boolean);
 
+
+/* ============ Voz de los zombis en cada idioma (43 líneas por idioma; es usa los textos originales, más largos) ============ */
+const ZCATS={taunts:[0,10],think:[10,13],skel:[13,16],aim:[16,18],hit:[18,20],kill:[20,23],era:[23,24],jaja:[24,25],wrong:[25,28],grab:[28,32],help:[32,33],miss:[33,36],dodge:[36,38],hole:[38,42],tictac:[42,43]};
+const ZRAW={
+en:`KNEEL BEFORE YOUR ZOMBIE EMPEROR
+I'M GORGEOUS. YOU, ON THE OTHER HAND, CALCULATE
+MY ROTTEN BRAIN THINKS BETTER THAN YOURS
+ROYAL DECREE: EVERY ANSWER OF YOURS IS WRONG
+HOW CUTE, YOU THINK YOU CAN ADD
+I APPLAUD YOU. WITH ONE HAND. THE OTHER FELL OFF
+SILENCE, PEASANT. THE KING SPEAKS
+ZOMBIE TAX: ONE BRAIN PER MISTAKE
+MY MIRROR SAYS I'M THE FAIREST OF THE APOCALYPSE
+YOUR CALCULATOR ASKED FOR ASYLUM IN MY KINGDOM
+SO HANDSOME… WHAT IF I CLONE MYSELF?
+I THINK, THEREFORE I RULE
+MY KINGDOM FOR A BRAIN
+CHARGE, BONES!
+MY AIM IS AS PERFECT AS I AM
+PURE BONE: ZERO FAT, ZERO MERCY
+HOLD STILL, PEASANT!
+ONE… TWO… HOW HANDSOME I AM…
+BULLSEYE! SEE THAT ARTISTRY?
+HA! TWO FOR TWO, AS ALWAYS
+NOOO, {n}! WELL, HE WAS UGLY
+INSOLENT FRUIT! I DEMAND RESPECT!
+GUARDS! ARREST THAT FRUIT!
+IT WAS {a}!
+{v}? HAHA
+HAHAHA, IT WAS {a}. SECOND-HAND EMBARRASSMENT
+MY ZOMBIE GRANDMA DID IT BETTER. HEADLESS
+APPLAUSE… FOR MOCKERY
+ON YOUR KNEES!
+GOT YOU, PEASANT
+AND NOW WHO RULES?
+THE CLOCK IS TICKING, PEASANT
+LOST? THERE'S A HELP BUTTON. USE IT, YOU NEED IT
+I MISSED ON PURPOSE, SADLY
+THE BOW IS BENT, NOT ME
+THE WIND ENVIES ME
+IT JUMPED? THAT'S ILLEGAL IN MY KINGDOM!
+WARNING SHOT, PEASANT
+THE HOLE!
+RUN AWAY!
+I'M STRETCHING!
+AAAAH!
+{q}? TICK TOCK, PEASANT`,
+pt:`AJOELHE-SE DIANTE DO SEU IMPERADOR ZUMBI
+SOU LINDÍSSIMO. VOCÊ, EM COMPENSAÇÃO, CALCULA
+MEU CÉREBRO PODRE PENSA MELHOR QUE O SEU
+DECRETO REAL: TODA RESPOSTA SUA ESTÁ ERRADA
+QUE FOFO, ACHA QUE SABE SOMAR
+EU TE APLAUDO. COM UMA MÃO. A OUTRA CAIU
+SILÊNCIO, PLEBEIA. O REI FALA
+IMPOSTO ZUMBI: UM CÉREBRO POR ERRO
+MEU ESPELHO DIZ QUE SOU O MAIS BELO DO APOCALIPSE
+SUA CALCULADORA PEDIU ASILO NO MEU REINO
+QUE LINDO SOU… E SE EU ME CLONAR?
+PENSO, LOGO GOVERNO
+MEU REINO POR UM CÉREBRO
+À CARGA, OSSOS!
+MINHA PONTARIA É TÃO PERFEITA QUANTO EU
+OSSO PURO: ZERO GORDURA, ZERO PIEDADE
+FIQUE QUIETA, PLEBEIA!
+UM… DOIS… COMO SOU LINDO…
+NO ALVO! VIU QUE ARTE?
+HA! DUAS DE DUAS, COMO SEMPRE
+NÃÃÃO, {n}! BEM, ERA FEIO
+INSOLENTE! EXIJO RESPEITO!
+GUARDAS! PRENDAM ESSA FRUTA!
+ERA {a}!
+{v}? HAHA
+HAHAHA, ERA {a}. QUE VERGONHA ALHEIA
+MINHA VOVÓ ZUMBI FAZIA MELHOR. SEM CABEÇA
+APLAUSOS… DE ZOMBARIA
+DE JOELHOS!
+TE PEGUEI, PLEBEIA
+E AGORA, QUEM MANDA?
+O RELÓGIO CORRE, PLEBEIA
+PERDIDA? HÁ UM BOTÃO DE AJUDA. USE, VOCÊ PRECISA
+ERREI DE PROPÓSITO, INFELIZMENTE
+O ARCO ESTÁ TORTO, NÃO EU
+O VENTO TEM INVEJA DE MIM
+PULOU? ISSO É ILEGAL NO MEU REINO!
+TIRO DE AVISO, PLEBEIA
+O BURACO!
+FUJAM!
+ESTOU ESTICANDO!
+AAAAH!
+{q}? TIQUE-TAQUE, PLEBEIA`,
+fr:`À GENOUX DEVANT TON EMPEREUR ZOMBIE
+JE SUIS SUPERBE. TOI, TU CALCULES
+MON CERVEAU POURRI PENSE MIEUX QUE LE TIEN
+DÉCRET ROYAL : TOUTES TES RÉPONSES SONT FAUSSES
+QU'ILS SONT MIGNONS, TU CROIS SAVOIR ADDITIONNER
+JE T'APPLAUDIS. D'UNE MAIN. L'AUTRE EST TOMBÉE
+SILENCE, SUJETTE. LE ROI PARLE
+IMPÔT ZOMBIE : UN CERVEAU PAR ERREUR
+MON MIROIR DIT QUE JE SUIS LE PLUS BEAU DE L'APOCALYPSE
+TA CALCULATRICE A DEMANDÉ L'ASILE DANS MON ROYAUME
+QUE JE SUIS BEAU… ET SI JE ME CLONAIS ?
+JE PENSE, DONC JE RÈGNE
+MON ROYAUME POUR UN CERVEAU
+À L'ASSAUT, LES OS !
+MA VISÉE EST AUSSI PARFAITE QUE MOI
+OS PUR : ZÉRO GRAISSE, ZÉRO PITIÉ
+NE BOUGE PAS, SUJETTE !
+UN… DEUX… QUE JE SUIS BEAU…
+EN PLEIN DANS LE MILLE ! VOIS-TU CET ART ?
+HA ! DEUX SUR DEUX, COMME TOUJOURS
+NOOON, {n} ! BON, IL ÉTAIT LAID
+INSOLENTE ! J'EXIGE LE RESPECT !
+GARDES ! ARRÊTEZ CETTE POMME !
+C'ÉTAIT {a} !
+{v} ? HAHA
+HAHAHA, C'ÉTAIT {a}. QUELLE HONTE
+MA GRAND-MÈRE ZOMBIE FAISAIT MIEUX. SANS TÊTE
+APPLAUDISSEMENTS… MOQUEURS
+À GENOUX !
+JE T'AI, SUJETTE
+ET MAINTENANT, QUI COMMANDE ?
+LE TEMPS PASSE, SUJETTE
+PERDUE ? IL Y A UN BOUTON D'AIDE. UTILISE-LE
+J'AI RATÉ EXPRÈS, HÉLAS
+L'ARC EST TORDU, PAS MOI
+LE VENT ME JALOUSE
+ELLE A SAUTÉ ? C'EST ILLÉGAL DANS MON ROYAUME !
+TIR DE SOMMATION, SUJETTE
+LE TROU !
+FUYEZ !
+JE M'ÉTIRE !
+AAAAH !
+{q} ? TIC TAC, SUJETTE`,
+de:`KNIE NIEDER VOR DEINEM ZOMBIE-KAISER
+ICH BIN WUNDERSCHÖN. DU DAGEGEN RECHNEST
+MEIN VERFAULTES GEHIRN DENKT BESSER ALS DEINS
+KÖNIGLICHES DEKRET: ALLE DEINE ANTWORTEN SIND FALSCH
+WIE NIEDLICH, DU GLAUBST, DU KANNST ADDIEREN
+ICH APPLAUDIERE. MIT EINER HAND. DIE ANDERE IST ABGEFALLEN
+RUHE, UNTERTANIN. DER KÖNIG SPRICHT
+ZOMBIE-STEUER: EIN GEHIRN PRO FEHLER
+MEIN SPIEGEL SAGT, ICH BIN DER SCHÖNSTE DER APOKALYPSE
+DEIN TASCHENRECHNER HAT BEI MIR ASYL BEANTRAGT
+SO SCHÖN… WAS, WENN ICH MICH KLONE?
+ICH DENKE, ALSO HERRSCHE ICH
+MEIN KÖNIGREICH FÜR EIN GEHIRN
+ANGRIFF, KNOCHEN!
+MEIN ZIEL IST SO PERFEKT WIE ICH
+REINER KNOCHEN: NULL FETT, NULL GNADE
+STILL HALTEN, UNTERTANIN!
+EINS… ZWEI… WIE SCHÖN ICH BIN…
+INS SCHWARZE! SIEHST DU DIE KUNST?
+HA! ZWEI VON ZWEI, WIE IMMER
+NEIIIN, {n}! NA GUT, ER WAR HÄSSLICH
+FRECH! ICH VERLANGE RESPEKT!
+WACHEN! VERHAFTET DIESE FRUCHT!
+ES WAR {a}!
+{v}? HAHA
+HAHAHA, ES WAR {a}. FREMDSCHÄMEN
+MEINE ZOMBIE-OMA KONNTE DAS BESSER. OHNE KOPF
+APPLAUS… ZUM SPOTT
+AUF DIE KNIE!
+ICH HAB DICH, UNTERTANIN
+UND JETZT, WER HERRSCHT?
+DIE UHR TICKT, UNTERTANIN
+VERLOREN? ES GIBT EINEN HILFE-KNOPF. NUTZ IHN
+ABSICHTLICH VERFEHLT, LEIDER
+DER BOGEN IST KRUMM, NICHT ICH
+DER WIND BENEIDET MICH
+SIE IST GESPRUNGEN? DAS IST ILLEGAL IN MEINEM REICH!
+WARNSCHUSS, UNTERTANIN
+DAS LOCH!
+FLIEHT!
+ICH WERDE GEDEHNT!
+AAAAH!
+{q}? TICK TACK, UNTERTANIN`,
+ja:`ゾンビ皇帝の前にひざまずけ
+私は美しい。おまえは計算しているだけだ
+腐った私の脳は、おまえより賢い
+勅令:おまえの答えはすべて間違いだ
+かわいいな、足し算ができると思っているのか
+拍手してやろう。片手でな。もう片方は落ちた
+静かに、下僕。王が話す
+ゾンビ税:ミスひとつにつき脳みそひとつ
+鏡が言う。私は終末でいちばん美しいと
+おまえの電卓が我が国に亡命した
+美しすぎる…クローンを作ろうか?
+我思う、ゆえに我統べる
+我が王国を脳みそと交換だ
+突撃、骨ども!
+私の狙いは私と同じくらい完璧だ
+純粋な骨:脂肪ゼロ、慈悲ゼロ
+動くな、下僕!
+いち…にぃ…なんて美しいんだ…
+命中! この芸術が見えたか?
+ハッ! 2本中2本、いつも通りだ
+ノオオ、{n}! まあ、ブサイクだったが
+無礼者! 敬意を払え!
+衛兵! あの果物を捕らえよ!
+答えは{a}だ!
+{v}? ハハハ
+ハハハ、答えは{a}。恥ずかしいぞ
+ゾンビのばあちゃんの方が上手い。頭がなくてもな
+拍手…あざけりのな
+ひざまずけ!
+捕まえたぞ、下僕
+さあ、誰が支配者だ?
+時計は進んでいるぞ、下僕
+迷ったか? ヘルプボタンがある。使え
+わざと外した、残念だったな
+弓が曲がっているのだ、私ではない
+風が私に嫉妬している
+跳んだ? 我が王国では違法だ!
+警告射撃だ、下僕
+あの穴だ!
+逃げろ!
+体が伸びる!
+ぎゃあああ!
+{q}? チクタク、下僕`,
+zh:`在你的僵尸皇帝面前跪下
+我英俊无比。而你,只会算数
+我腐烂的大脑比你的更会思考
+皇家法令:你的每个答案都是错的
+真可爱,你以为你会加法
+我为你鼓掌。用一只手。另一只掉了
+安静,臣民。国王在说话
+僵尸税:每错一次,交一个大脑
+我的镜子说,我是末日里最美的
+你的计算器向我的王国申请了庇护
+我太帅了……要不要克隆自己?
+我思故我治
+我愿用王国换一个大脑
+冲啊,骨头们!
+我的枪法和我一样完美
+纯骨:零脂肪,零怜悯
+别动,臣民!
+一……二……我真帅……
+正中靶心!看到这艺术了吗?
+哈!两发两中,一如既往
+不——,{n}!好吧,他很丑
+放肆!我要求尊重!
+卫兵!逮捕那个水果!
+答案是{a}!
+{v}?哈哈
+哈哈哈,答案是{a}。替你尴尬
+我的僵尸奶奶做得更好。没有脑袋也行
+掌声……是嘲笑的
+跪下!
+抓到你了,臣民
+现在谁说了算?
+时钟在走,臣民
+迷路了?有个帮助按钮。快用吧
+我是故意射偏的,可惜
+弓是弯的,不是我
+风都嫉妒我
+它跳起来了?在我的王国这是违法的!
+警告射击,臣民
+那个洞!
+快逃!
+我被拉长了!
+啊啊啊!
+{q}?滴答滴答,臣民`,
+ko:`너희 좀비 황제 앞에 무릎 꿇어라
+나는 눈부시게 잘생겼다. 너는 계산이나 해라
+내 썩은 뇌가 네 뇌보다 낫다
+왕명이다: 네 답은 전부 틀렸다
+귀엽군, 덧셈을 할 줄 안다고 생각하다니
+박수를 쳐주지. 한 손으로. 다른 손은 떨어졌다
+조용히 해라, 백성. 왕이 말한다
+좀비 세금: 실수 하나에 뇌 하나
+거울이 말하길 내가 종말에서 가장 아름답단다
+네 계산기가 내 왕국에 망명을 신청했다
+너무 잘생겼군… 나를 복제할까?
+나는 생각한다, 고로 다스린다
+뇌 하나를 위해 왕국을 내놓겠다
+돌격, 뼈들아!
+내 조준은 나만큼 완벽하다
+순수한 뼈: 지방 0, 자비 0
+가만히 있어라, 백성!
+하나… 둘… 나는 정말 잘생겼군…
+명중! 이 예술이 보이느냐?
+하! 두 발 모두 명중, 늘 그렇듯
+안 돼, {n}! 뭐, 못생겼었지
+무례하구나! 존경을 요구한다!
+경비병! 저 과일을 체포하라!
+정답은 {a}였다!
+{v}? 하하
+하하하, 정답은 {a}. 보는 내가 창피하군
+우리 좀비 할머니가 더 잘했다. 머리 없이도
+박수… 조롱의 박수
+무릎 꿇어라!
+잡았다, 백성
+이제 누가 지배하지?
+시계가 흐른다, 백성
+길을 잃었느냐? 도움 버튼이 있다. 써라
+일부러 빗나갔다, 아쉽게도
+활이 휜 거지, 내가 아니다
+바람이 나를 질투한다
+뛰었다고? 내 왕국에선 불법이다!
+경고 사격이다, 백성
+구멍이다!
+도망쳐라!
+몸이 늘어난다!
+으아아아!
+{q}? 째깍째깍, 백성`,
+it:`INGINOCCHIATI DAVANTI AL TUO IMPERATORE ZOMBIE
+SONO BELLISSIMO. TU, INVECE, CALCOLI
+IL MIO CERVELLO MARCIO PENSA MEGLIO DEL TUO
+DECRETO REALE: OGNI TUA RISPOSTA È SBAGLIATA
+CHE TENERO, PENSI DI SAPER SOMMARE
+TI APPLAUDO. CON UNA MANO. L'ALTRA È CADUTA
+SILENZIO, SUDDITA. PARLA IL RE
+TASSA ZOMBIE: UN CERVELLO PER OGNI ERRORE
+IL MIO SPECCHIO DICE CHE SONO IL PIÙ BELLO DELL'APOCALISSE
+LA TUA CALCOLATRICE HA CHIESTO ASILO NEL MIO REGNO
+CHE BELLO CHE SONO… E SE MI CLONASSI?
+PENSO, DUNQUE REGNO
+IL MIO REGNO PER UN CERVELLO
+ALL'ATTACCO, OSSA!
+LA MIA MIRA È PERFETTA COME ME
+OSSO PURO: ZERO GRASSO, ZERO PIETÀ
+STAI FERMA, SUDDITA!
+UNO… DUE… CHE BELLO CHE SONO…
+NEL SEGNO! HAI VISTO CHE ARTE?
+HA! DUE SU DUE, COME SEMPRE
+NOOO, {n}! BEH, ERA BRUTTO
+INSOLENTE! PRETENDO RISPETTO!
+GUARDIE! ARRESTATE QUEL FRUTTO!
+ERA {a}!
+{v}? AH AH
+AH AH AH, ERA {a}. CHE VERGOGNA
+MIA NONNA ZOMBIE LO FACEVA MEGLIO. SENZA TESTA
+APPLAUSI… DI DERISIONE
+IN GINOCCHIO!
+TI HO PRESA, SUDDITA
+E ADESSO CHI COMANDA?
+L'OROLOGIO CORRE, SUDDITA
+PERSA? C'È UN PULSANTE DI AIUTO. USALO
+HO SBAGLIATO APPOSTA, PECCATO
+È L'ARCO CHE È STORTO, NON IO
+IL VENTO MI INVIDIA
+È SALTATA? È ILLEGALE NEL MIO REGNO!
+COLPO DI AVVERTIMENTO, SUDDITA
+IL BUCO!
+SCAPPATE!
+MI ALLUNGO!
+AAAAH!
+{q}? TIC TAC, SUDDITA`,
+ru:`НА КОЛЕНИ ПЕРЕД ТВОИМ ЗОМБИ-ИМПЕРАТОРОМ
+Я ПРЕКРАСЕН. А ТЫ, ВИДИМО, СЧИТАЕШЬ
+МОЙ ГНИЛОЙ МОЗГ ДУМАЕТ ЛУЧШЕ ТВОЕГО
+КОРОЛЕВСКИЙ УКАЗ: ВСЕ ТВОИ ОТВЕТЫ НЕВЕРНЫ
+КАК МИЛО, ТЫ ДУМАЕШЬ, ЧТО УМЕЕШЬ СКЛАДЫВАТЬ
+АПЛОДИРУЮ. ОДНОЙ РУКОЙ. ВТОРАЯ ОТВАЛИЛАСЬ
+ТИШЕ, ПОДДАННАЯ. ГОВОРИТ КОРОЛЬ
+ЗОМБИ-НАЛОГ: ОДИН МОЗГ ЗА ОШИБКУ
+МОЁ ЗЕРКАЛО ГОВОРИТ: Я САМЫЙ КРАСИВЫЙ В АПОКАЛИПСИСЕ
+ТВОЙ КАЛЬКУЛЯТОР ПРОСИТ УБЕЖИЩА В МОЁМ КОРОЛЕВСТВЕ
+КАК Я КРАСИВ… А ЕСЛИ СКЛОНИРОВАТЬ СЕБЯ?
+Я МЫСЛЮ, СЛЕДОВАТЕЛЬНО ПРАВЛЮ
+МОЁ КОРОЛЕВСТВО ЗА МОЗГ
+В АТАКУ, КОСТИ!
+МОЯ МЕТКОСТЬ ТАК ЖЕ СОВЕРШЕННА, КАК Я
+ЧИСТАЯ КОСТЬ: НОЛЬ ЖИРА, НОЛЬ ЖАЛОСТИ
+НЕ ДВИГАЙСЯ, ПОДДАННАЯ!
+РАЗ… ДВА… КАК ЖЕ Я КРАСИВ…
+В ЯБЛОЧКО! ВИДЕЛА ЭТО ИСКУССТВО?
+ХА! ДВА ИЗ ДВУХ, КАК ВСЕГДА
+НЕЕЕТ, {n}! НУ, ОН БЫЛ УРОДЛИВ
+НАГЛЕЦ! ТРЕБУЮ УВАЖЕНИЯ!
+СТРАЖА! АРЕСТУЙТЕ ЭТОТ ФРУКТ!
+БЫЛО {a}!
+{v}? ХА-ХА
+ХА-ХА-ХА, БЫЛО {a}. МНЕ ЗА ТЕБЯ СТЫДНО
+МОЯ БАБУШКА-ЗОМБИ СДЕЛАЛА БЫ ЛУЧШЕ. БЕЗ ГОЛОВЫ
+АПЛОДИСМЕНТЫ… НАСМЕШЛИВЫЕ
+НА КОЛЕНИ!
+ПОЙМАЛ ТЕБЯ, ПОДДАННАЯ
+А ТЕПЕРЬ КТО ТУТ ГЛАВНЫЙ?
+ВРЕМЯ ИДЁТ, ПОДДАННАЯ
+ЗАБЛУДИЛАСЬ? ЕСТЬ КНОПКА ПОМОЩИ. НАЖМИ
+Я ПРОМАХНУЛСЯ НАРОЧНО, К СОЖАЛЕНИЮ
+ЛУК КРИВОЙ, А НЕ Я
+ВЕТЕР МНЕ ЗАВИДУЕТ
+ОНА ПРЫГНУЛА? В МОЁМ КОРОЛЕВСТВЕ ЭТО ЗАПРЕЩЕНО!
+ПРЕДУПРЕДИТЕЛЬНЫЙ ВЫСТРЕЛ, ПОДДАННАЯ
+ДЫРА!
+БЕЖИМ!
+Я РАСТЯГИВАЮСЬ!
+ААААА!
+{q}? ТИК-ТАК, ПОДДАННАЯ`,
+ar:`اركع أمام إمبراطورك الزومبي
+أنا وسيم جدًا. أما أنت فتحسب فقط
+دماغي العفن يفكر أفضل من دماغك
+مرسوم ملكي: كل إجاباتك خاطئة
+يا لطيفك، تظن أنك تعرف الجمع
+أصفّق لك. بيد واحدة. الأخرى سقطت
+صمتًا أيها الرعية. الملك يتكلم
+ضريبة الزومبي: دماغ لكل خطأ
+مرآتي تقول إنني أجمل من في القيامة
+آلتك الحاسبة طلبت اللجوء إلى مملكتي
+ما أجملني… ماذا لو استنسخت نفسي؟
+أفكر إذن أحكم
+مملكتي مقابل دماغ
+هجوم يا عظام!
+تصويبي كامل مثلي تمامًا
+عظم خالص: صفر دهون، صفر رحمة
+لا تتحركي أيتها الرعية!
+واحد… اثنان… ما أجملني…
+في الهدف! هل رأيت هذا الفن؟
+ها! اثنتان من اثنتين كالعادة
+لااا، {n}! حسنًا، كان قبيحًا
+وقحة! أطالب بالاحترام!
+أيها الحرس! اعتقلوا تلك الفاكهة!
+كان {a}!
+{v}؟ هاها
+هاهاها، كان {a}. يا للخجل
+جدتي الزومبي كانت تفعلها أفضل. بلا رأس
+تصفيق… للسخرية
+على ركبتيك!
+أمسكت بك أيتها الرعية
+والآن من الحاكم؟
+الساعة تدور أيتها الرعية
+ضائعة؟ هناك زر مساعدة. استخدميه
+أخطأت عمدًا للأسف
+القوس معوج وليس أنا
+الريح تحسدني
+قفزت؟ هذا غير قانوني في مملكتي!
+طلقة تحذيرية أيتها الرعية
+الحفرة!
+اهربوا!
+أتمدد!
+آآآآه!
+{q}؟ تك تك أيتها الرعية`,
+hi:`अपने ज़ॉम्बी सम्राट के आगे घुटने टेको
+मैं बेहद खूबसूरत हूँ। तुम बस हिसाब लगाती हो
+मेरा सड़ा दिमाग़ तुमसे बेहतर सोचता है
+शाही फ़रमान: तुम्हारा हर जवाब ग़लत है
+कितनी प्यारी हो, सोचती हो जोड़ना आता है
+मैं तालियाँ बजाता हूँ। एक हाथ से। दूसरा गिर गया
+चुप, प्रजा। राजा बोल रहा है
+ज़ॉम्बी टैक्स: हर ग़लती पर एक दिमाग़
+मेरा आईना कहता है कि मैं प्रलय का सबसे सुंदर हूँ
+तुम्हारे कैलकुलेटर ने मेरे राज्य में शरण माँगी
+कितना सुंदर हूँ मैं… ख़ुद को क्लोन कर लूँ?
+मैं सोचता हूँ, इसलिए राज करता हूँ
+एक दिमाग़ के बदले मेरा राज्य
+हमला, हड्डियो!
+मेरा निशाना मेरी तरह ही परफ़ेक्ट है
+शुद्ध हड्डी: ज़ीरो चर्बी, ज़ीरो दया
+हिलना मत, प्रजा!
+एक… दो… मैं कितना सुंदर हूँ…
+सटीक निशाना! देखी यह कला?
+हा! दो में से दो, हमेशा की तरह
+नहींं, {n}! ख़ैर, वह बदसूरत था
+गुस्ताख़! मुझे सम्मान चाहिए!
+सिपाहियो! उस फल को गिरफ़्तार करो!
+जवाब {a} था!
+{v}? हाहा
+हाहाहा, जवाब {a} था। कितनी शर्म की बात
+मेरी ज़ॉम्बी दादी बेहतर करती थीं। बिना सिर के
+तालियाँ… मज़ाक की
+घुटनों पर!
+पकड़ लिया, प्रजा
+अब कौन राज करता है?
+घड़ी चल रही है, प्रजा
+खो गईं? मदद का बटन है। दबाओ
+मैंने जानबूझकर चूका, अफ़सोस
+धनुष टेढ़ा है, मैं नहीं
+हवा मुझसे जलती है
+वह कूद गई? मेरे राज्य में यह गैरक़ानूनी है!
+चेतावनी का निशाना, प्रजा
+वह गड्ढा!
+भागो!
+मैं खिंच रहा हूँ!
+आआआह!
+{q}? टिक टिक, प्रजा`,
+tr:`ZOMBİ İMPARATORUNUN ÖNÜNDE DİZ ÇÖK
+BEN HARİKA YAKIŞIKLIYIM. SEN İSE HESAP YAPIYORSUN
+ÇÜRÜK BEYNİM SENİNKİNDEN İYİ DÜŞÜNÜR
+KRALİYET FERMANI: HER CEVABIN YANLIŞ
+NE TATLI, TOPLAMA YAPABİLDİĞİNİ SANIYORSUN
+ALKIŞLIYORUM. TEK ELLE. DİĞERİ DÜŞTÜ
+SUS, KULUM. KRAL KONUŞUYOR
+ZOMBİ VERGİSİ: HER HATAYA BİR BEYİN
+AYNAM APOKALİPSİN EN GÜZELİ OLDUĞUMU SÖYLÜYOR
+HESAP MAKİNEN KRALLIĞIMDA SIĞINMA İSTEDİ
+NE YAKIŞIKLIYIM… KENDİMİ KLONLASAM?
+DÜŞÜNÜYORUM, ÖYLEYSE HÜKMEDİYORUM
+BİR BEYİN İÇİN KRALLIĞIMI VERİRİM
+HÜCUM, KEMİKLER!
+NİŞANIM BENİM KADAR MÜKEMMEL
+SAF KEMİK: SIFIR YAĞ, SIFIR MERHAMET
+KIPIRDAMA, KULUM!
+BİR… İKİ… NE YAKIŞIKLIYIM…
+TAM İSABET! BU SANATI GÖRDÜN MÜ?
+HA! İKİDE İKİ, HER ZAMANKİ GİBİ
+HAYIIIR, {n}! NEYSE, ÇİRKİNDİ
+SAYGISIZ! SAYGI İSTİYORUM!
+MUHAFIZLAR! O MEYVEYİ TUTUKLAYIN!
+CEVAP {a} İDİ!
+{v}? HAHA
+HAHAHA, CEVAP {a} İDİ. UTANDIM SENİN İÇİN
+ZOMBİ ANNEANNEM DAHA İYİ YAPARDI. KAFASIZ
+ALKIŞLAR… ALAY İÇİN
+DİZ ÇÖK!
+YAKALADIM SENİ, KULUM
+ŞİMDİ KİM HÜKMEDİYOR?
+SAAT İŞLİYOR, KULUM
+KAYBOLDUN MU? YARDIM DÜĞMESİ VAR. KULLAN
+BİLEREK ISKALADIM, NE YAZIK
+YAY EĞRİ, BEN DEĞİL
+RÜZGÂR BENİ KISKANIYOR
+ZIPLADI MI? KRALLIĞIMDA BU YASAK!
+UYARI ATIŞI, KULUM
+ÇUKUR!
+KAÇIN!
+UZUYORUM!
+AAAAH!
+{q}? TIK TAK, KULUM`,
+nl:`KNIEL VOOR JE ZOMBIEKEIZER
+IK BEN SCHITTEREND. JIJ DAARENTEGEN REKENT
+MIJN VERROTTE HERSENEN DENKEN BETER DAN DE JOUWE
+KONINKLIJK DECREET: AL JE ANTWOORDEN ZIJN FOUT
+WAT SCHATTIG, JE DENKT DAT JE KUNT OPTELLEN
+IK APPLAUDISSEER. MET ÉÉN HAND. DE ANDERE IS ERAF
+STIL, ONDERDAAN. DE KONING SPREEKT
+ZOMBIEBELASTING: ÉÉN BREIN PER FOUT
+MIJN SPIEGEL ZEGT DAT IK DE MOOISTE VAN DE APOCALYPS BEN
+JE REKENMACHINE VROEG ASIEL AAN IN MIJN RIJK
+WAT BEN IK MOOI… MOET IK MEZELF KLONEN?
+IK DENK, DUS IK HEERS
+MIJN RIJK VOOR EEN BREIN
+AANVAL, BOTTEN!
+MIJN RICHTEN IS ZO PERFECT ALS IK
+PUUR BOT: NUL VET, NUL GENADE
+BLIJF STAAN, ONDERDAAN!
+ÉÉN… TWEE… WAT BEN IK MOOI…
+RAAK! ZAG JE DIE KUNST?
+HA! TWEE VAN DE TWEE, ZOALS ALTIJD
+NEEE, {n}! NOU, HIJ WAS LELIJK
+BRUTAAL! IK EIS RESPECT!
+WACHTEN! ARRESTEER DIE VRUCHT!
+HET WAS {a}!
+{v}? HAHA
+HAHAHA, HET WAS {a}. FOEI
+MIJN ZOMBIEOMA DEED HET BETER. ZONDER HOOFD
+APPLAUS… VOOR DE SPOT
+OP JE KNIEËN!
+GOTCHA, ONDERDAAN
+EN NU, WIE HEERST?
+DE KLOK TIKT, ONDERDAAN
+VERDWAALD? ER IS EEN HULPKNOP. GEBRUIK HEM
+MET OPZET GEMIST, HELAAS
+DE BOOG IS KROM, IK NIET
+DE WIND IS JALOERS OP MIJ
+IS ZE GESPRONGEN? DAT IS ILLEGAAL IN MIJN RIJK!
+WAARSCHUWINGSSCHOT, ONDERDAAN
+HET GAT!
+VLUCHT!
+IK REK UIT!
+AAAAH!
+{q}? TIK TAK, ONDERDAAN`,
+pl:`UKLĘKNIJ PRZED SWOIM CESARZEM ZOMBIE
+JESTEM PRZEPIĘKNY. TY NATOMIAST LICZYSZ
+MÓJ ZGNIŁY MÓZG MYŚLI LEPIEJ NIŻ TWÓJ
+DEKRET KRÓLEWSKI: KAŻDA TWOJA ODPOWIEDŹ JEST BŁĘDNA
+JAKIE SŁODKIE, MYŚLISZ, ŻE UMIESZ DODAWAĆ
+KLASZCZĘ. JEDNĄ RĘKĄ. DRUGA ODPADŁA
+CISZA, PODDANA. KRÓL MÓWI
+PODATEK ZOMBIE: JEDEN MÓZG ZA BŁĄD
+MOJE LUSTRO MÓWI, ŻE JESTEM NAJPIĘKNIEJSZY W APOKALIPSIE
+TWÓJ KALKULATOR PROSIŁ O AZYL W MOIM KRÓLESTWIE
+JAKI JESTEM PIĘKNY… A MOŻE SIĘ SKLONUJĘ?
+MYŚLĘ, WIĘC RZĄDZĘ
+MOJE KRÓLESTWO ZA MÓZG
+DO ATAKU, KOŚCI!
+MÓJ CEL JEST TAK DOSKONAŁY JAK JA
+CZYSTA KOŚĆ: ZERO TŁUSZCZU, ZERO LITOŚCI
+NIE RUSZAJ SIĘ, PODDANA!
+RAZ… DWA… JAKI JESTEM PIĘKNY…
+W DZIESIĄTKĘ! WIDZIAŁAŚ TĘ SZTUKĘ?
+HA! DWA NA DWA, JAK ZAWSZE
+NIEEE, {n}! NO CÓŻ, BYŁ BRZYDKI
+NIEPOSŁUSZNA! ŻĄDAM SZACUNKU!
+STRAŻE! ARESZTUJCIE TEN OWOC!
+TO BYŁO {a}!
+{v}? HAHA
+HAHAHA, TO BYŁO {a}. AŻ MI WSTYD
+MOJA BABCIA ZOMBIE ROBIŁA TO LEPIEJ. BEZ GŁOWY
+BRAWA… DRWIĄCE
+NA KOLANA!
+MAM CIĘ, PODDANA
+A TERAZ KTO RZĄDZI?
+ZEGAR TYKA, PODDANA
+ZAGUBIONA? JEST PRZYCISK POMOCY. UŻYJ GO
+PUDŁOWAŁEM CELOWO, NIESTETY
+TO ŁUK JEST KRZYWY, NIE JA
+WIATR MI ZAZDROŚCI
+SKOCZYŁA? TO NIELEGALNE W MOIM KRÓLESTWIE!
+STRZAŁ OSTRZEGAWCZY, PODDANA
+DZIURA!
+UCIEKAJCIE!
+ROZCIĄGAM SIĘ!
+AAAAH!
+{q}? TYK TAK, PODDANA`,
+id:`BERLUTUTLAH DI HADAPAN KAISAR ZOMBIMU
+AKU TAMPAN LUAR BIASA. KAMU CUMA MENGHITUNG
+OTAK BUSUKKU BERPIKIR LEBIH BAIK DARIPADA OTAKMU
+TITAH RAJA: SEMUA JAWABANMU SALAH
+IMUT SEKALI, KAMU PIKIR BISA MENJUMLAH
+AKU BERTEPUK TANGAN. SEBELAH SAJA. YANG LAIN COPOT
+DIAM, RAKYATKU. RAJA BICARA
+PAJAK ZOMBI: SATU OTAK UNTUK SETIAP KESALAHAN
+CerminKU BILANG AKULAH YANG TERINDAH DI KIAMAT
+KALKULATORMU MINTA SUAKA DI KERAJAANKU
+BETAPA TAMPANNYA AKU… BAGAIMANA KALAU KUKLONING?
+AKU BERPIKIR, MAKA AKU BERKUASA
+KERAJAANKU DEMI SEBUAH OTAK
+SERBU, TULANG-TULANG!
+BIDIKANKU SESEMPURNA DIRIKU
+TULANG MURNI: NOL LEMAK, NOL BELAS KASIH
+DIAM DI SITU, RAKYATKU!
+SATU… DUA… BETAPA TAMPANNYA AKU…
+TEPAT SASARAN! LIHAT SENI ITU?
+HA! DUA DARI DUA, SEPERTI BIASA
+TIDAAAK, {n}! YAH, DIA JELEK
+LANCANG! AKU MENUNTUT HORMAT!
+PENGAWAL! TANGKAP BUAH ITU!
+JAWABANNYA {a}!
+{v}? HAHA
+HAHAHA, JAWABANNYA {a}. MEMALUKAN
+NENEK ZOMBIKU LEBIH BAIK. TANPA KEPALA
+TEPUK TANGAN… EJEKAN
+BERLUTUT!
+KUTANGKAP KAU, RAKYATKU
+SEKARANG SIAPA YANG BERKUASA?
+JAM BERJALAN, RAKYATKU
+TERSESAT? ADA TOMBOL BANTUAN. PAKAILAH
+AKU SENGAJA MELESET, SAYANGNYA
+BUSURNYA YANG BENGKOK, BUKAN AKU
+ANGIN IRI PADAKU
+DIA MELOMPAT? ITU ILEGAL DI KERAJAANKU!
+TEMBAKAN PERINGATAN, RAKYATKU
+LUBANGNYA!
+LARI!
+AKU MELAR!
+AAAAH!
+{q}? TIK TOK, RAKYATKU`,
+vi:`QUỲ XUỐNG TRƯỚC HOÀNG ĐẾ ZOMBIE CỦA NGƯƠI
+TA ĐẸP TRAI VÔ ĐỊCH. CÒN NGƯƠI CHỈ BIẾT TÍNH TOÁN
+BỘ NÃO THỐI CỦA TA NGHĨ TỐT HƠN NGƯƠI
+SẮC LỆNH: MỌI CÂU TRẢ LỜI CỦA NGƯƠI ĐỀU SAI
+DỄ THƯƠNG QUÁ, NGƯƠI TƯỞNG MÌNH BIẾT CỘNG
+TA VỖ TAY. BẰNG MỘT TAY. TAY KIA RỤNG RỒI
+IM LẶNG, THẦN DÂN. VUA ĐANG NÓI
+THUẾ ZOMBIE: MỘT BỘ NÃO CHO MỖI LỖI SAI
+GƯƠNG CỦA TA NÓI TA ĐẸP NHẤT THỜI TẬN THẾ
+MÁY TÍNH CỦA NGƯƠI XIN TỴ NẠN Ở VƯƠNG QUỐC TA
+TA ĐẸP QUÁ… HAY LÀ TA NHÂN BẢN MÌNH?
+TA NGHĨ, VẬY TA CAI TRỊ
+VƯƠNG QUỐC CỦA TA ĐỔI LẤY MỘT BỘ NÃO
+XUNG PHONG, XƯƠNG ƠI!
+TÀI BẮN CỦA TA HOÀN HẢO NHƯ TA VẬY
+XƯƠNG THUẦN: KHÔNG MỠ, KHÔNG THƯƠNG XÓT
+ĐỨNG YÊN, THẦN DÂN!
+MỘT… HAI… TA ĐẸP QUÁ…
+TRÚNG ĐÍCH! THẤY NGHỆ THUẬT CHƯA?
+HA! HAI TRÊN HAI, NHƯ MỌI KHI
+KHÔNGGG, {n}! THÔI, HẮN XẤU MÀ
+LÁO XƯỢC! TA ĐÒI SỰ TÔN TRỌNG!
+LÍNH CANH! BẮT QUẢ KIA!
+ĐÁP ÁN LÀ {a}!
+{v}? HAHA
+HAHAHA, ĐÁP ÁN LÀ {a}. XẤU HỔ THAY
+BÀ NỘI ZOMBIE CỦA TA LÀM TỐT HƠN. DÙ KHÔNG CÓ ĐẦU
+VỖ TAY… CHẾ GIỄU
+QUỲ XUỐNG!
+BẮT ĐƯỢC NGƯƠI RỒI, THẦN DÂN
+GIỜ AI CAI TRỊ NÀO?
+ĐỒNG HỒ ĐANG CHẠY, THẦN DÂN
+LẠC ĐƯỜNG À? CÓ NÚT TRỢ GIÚP. DÙNG ĐI
+TA CỐ Ý BẮN TRƯỢT, TIẾC THAY
+CÁI CUNG BỊ CONG, KHÔNG PHẢI TA
+GIÓ GHEN TỴ VỚI TA
+NÓ NHẢY À? ĐIỀU ĐÓ BẤT HỢP PHÁP Ở VƯƠNG QUỐC TA!
+PHÁT BẮN CẢNH CÁO, THẦN DÂN
+CÁI HỐ!
+CHẠY ĐI!
+TA ĐANG BỊ KÉO DÀI!
+AAAAH!
+{q}? TÍCH TẮC, THẦN DÂN`,
+th:`คุกเข่าต่อหน้าจักรพรรดิซอมบี้ของเจ้า
+ข้าหล่อเหลาที่สุด ส่วนเจ้าก็แค่คำนวณ
+สมองเน่าของข้าคิดดีกว่าเจ้า
+พระราชโองการ: คำตอบของเจ้าผิดทุกข้อ
+น่ารักจัง คิดว่าตัวเองบวกเลขเป็นหรือ
+ข้าปรบมือให้ ด้วยมือข้างเดียว อีกข้างหลุดไปแล้ว
+เงียบ ไพร่ฟ้า พระราชากำลังตรัส
+ภาษีซอมบี้: ผิดหนึ่งครั้ง จ่ายสมองหนึ่งก้อน
+กระจกบอกว่าข้าหล่อที่สุดในวันสิ้นโลก
+เครื่องคิดเลขของเจ้าขอลี้ภัยในอาณาจักรข้า
+ข้าหล่อจัง… หรือข้าควรโคลนตัวเอง?
+ข้าคิด ข้าจึงปกครอง
+ยอมแลกอาณาจักรเพื่อสมองหนึ่งก้อน
+บุก! เหล่ากระดูก!
+การเล็งของข้าสมบูรณ์แบบเหมือนตัวข้า
+กระดูกบริสุทธิ์: ไขมันศูนย์ ความเมตตาศูนย์
+อยู่นิ่งๆ ไพร่ฟ้า!
+หนึ่ง… สอง… ข้าหล่อจริงๆ…
+เข้าเป้า! เห็นศิลปะนี้ไหม?
+ฮ่า! สองจากสอง เหมือนเดิม
+ไม่นะ {n}! ก็เขาน่าเกลียดนี่
+อวดดี! ข้าต้องการความเคารพ!
+ทหาร! จับผลไม้นั่นไว้!
+คำตอบคือ {a}!
+{v}? ฮ่าๆ
+ฮ่าๆๆ คำตอบคือ {a} น่าอายแทน
+ยายซอมบี้ของข้าทำได้ดีกว่า ทั้งที่ไม่มีหัว
+ปรบมือ… เยาะเย้ย
+คุกเข่าลง!
+จับได้แล้ว ไพร่ฟ้า
+ตอนนี้ใครเป็นใหญ่?
+นาฬิกาเดินอยู่ ไพร่ฟ้า
+หลงทางหรือ? มีปุ่มช่วยเหลือ กดซะ
+ข้าตั้งใจยิงพลาด น่าเสียดาย
+ธนูต่างหากที่โค้ง ไม่ใช่ข้า
+ลมอิจฉาข้า
+มันกระโดดหรือ? ผิดกฎหมายในอาณาจักรข้า!
+ยิงเตือน ไพร่ฟ้า
+หลุมนั่น!
+หนีเร็ว!
+ข้ากำลังถูกยืด!
+อ๊ากกก!
+{q}? ติ๊กต่อก ไพร่ฟ้า`,
+sv:`KNÄBÖJ INFÖR DIN ZOMBIEKEJSARE
+JAG ÄR SNYGG. DU DÄREMOT RÄKNAR
+MIN ROTTNA HJÄRNA TÄNKER BÄTTRE ÄN DIN
+KUNGLIGT DEKRET: ALLA DINA SVAR ÄR FEL
+SÅ SÖTT, DU TROR ATT DU KAN ADDERA
+JAG APPLÅDERAR. MED EN HAND. DEN ANDRA FÖLL AV
+TYST, UNDERSÅTE. KUNGEN TALAR
+ZOMBIESKATT: EN HJÄRNA PER FEL
+MIN SPEGEL SÄGER ATT JAG ÄR APOKALYPSENS VACKRASTE
+DIN RÄKNARE BEGÄRDE ASYL I MITT RIKE
+SÅ SNYGG JAG ÄR… SKA JAG KLONA MIG?
+JAG TÄNKER, ALLTSÅ REGERAR JAG
+MITT RIKE FÖR EN HJÄRNA
+ANFALL, BEN!
+MITT SIKTE ÄR LIKA PERFEKT SOM JAG
+RENT BEN: NOLL FETT, NOLL NÅD
+STÅ STILL, UNDERSÅTE!
+EN… TVÅ… SÅ SNYGG JAG ÄR…
+I MITTEN! SÅG DU DEN KONSTEN?
+HA! TVÅ AV TVÅ, SOM VANLIGT
+NEEJ, {n}! JA, HAN VAR ful
+FRÄCKA! JAG KRÄVER RESPEKT!
+VAKTER! ARRESTERA DEN FRUKTEN!
+DET VAR {a}!
+{v}? HAHA
+HAHAHA, DET VAR {a}. SKAMSET
+MIN ZOMBIEMORMOR GJORDE DET BÄTTRE. UTAN HUVUD
+APPLÅDER… FÖR HÅNET
+PÅ KNÄ!
+JAG HAR DIG, UNDERSÅTE
+OCH NU, VEM STYR?
+KLOCKAN TICKAR, UNDERSÅTE
+TAPPAT BORT DIG? DET FINNS EN HJÄLPKNAPP. ANVÄND DEN
+JAG MISSADE MED FLIT, TYVÄRR
+BÅGEN ÄR KROK, INTE JAG
+VINDEN ÖGONAR MIG
+HOPPADE HON? DET ÄR OLAGLIGT I MITT RIKE!
+VARNINGSSKOTT, UNDERSÅTE
+HÅLET!
+FLY!
+JAG TÖJS UT!
+AAAAH!
+{q}? TICK TACK, UNDERSÅTE`,
+uk:`СТАНЬ НА КОЛІНА ПЕРЕД СВОЇМ ЗОМБІ-ІМПЕРАТОРОМ
+Я ЧУДОВИЙ. А ТИ ЛИШЕ РАХУЄШ
+МІЙ ГНИЛИЙ МОЗОК ДУМАЄ КРАЩЕ ЗА ТВІЙ
+КОРОЛІВСЬКИЙ УКАЗ: УСІ ТВОЇ ВІДПОВІДІ НЕВІРНІ
+ЯКА МИЛА, ДУМАЄШ, ЩО ВМІЄШ ДОДАВАТИ
+ПЛЕСКАЮ. ОДНІЄЮ РУКОЮ. ДРУГА ВІДВАЛИЛАСЬ
+ТИХО, ПІДДАНА. ГОВОРИТЬ КОРОЛЬ
+ЗОМБІ-ПОДАТОК: ОДИН МОЗОК ЗА ПОМИЛКУ
+МОЄ ДЗЕРКАЛО КАЖЕ, ЩО Я НАЙКРАСИВІШИЙ В АПОКАЛІПСИСІ
+ТВІЙ КАЛЬКУЛЯТОР ПРОСИТЬ ПРИТУЛКУ В МОЄМУ КОРОЛІВСТВІ
+ЯКИЙ Я ГАРНИЙ… А ЯКЩО ЗАКЛОНУВАТИ СЕБЕ?
+Я МИСЛЮ, ОТЖЕ ПРАВЛЮ
+МОЄ КОРОЛІВСТВО ЗА МОЗОК
+В АТАКУ, КІСТКИ!
+МОЯ ВЛУЧНІСТЬ ТАКА Ж ДОСКОНАЛА, ЯК Я
+ЧИСТА КІСТКА: НУЛЬ ЖИРУ, НУЛЬ ЖАЛОСТІ
+НЕ РУХАЙСЯ, ПІДДАНА!
+РАЗ… ДВА… ЯКИЙ Я ГАРНИЙ…
+У ЯБЛУЧКО! БАЧИЛА ЦЕ МИСТЕЦТВО?
+ХА! ДВА З ДВОХ, ЯК ЗАВЖДИ
+НІІІ, {n}! НУ, ВІН БУВ ВРОДЛИВИЙ… НІ, ПОТВОРНИЙ
+НАХАБО! ВИМАГАЮ ПОВАГИ!
+ВАРТА! АРЕШТУЙТЕ ЦЕЙ ФРУКТ!
+БУЛО {a}!
+{v}? ХА-ХА
+ХА-ХА-ХА, БУЛО {a}. МЕНІ СОРОМНО ЗА ТЕБЕ
+МОЯ БАБУСЯ-ЗОМБІ РОБИЛА КРАЩЕ. БЕЗ ГОЛОВИ
+ОПЛЕСКИ… НАСМІШКУВАТІ
+НА КОЛІНА!
+ЗЛОВИВ ТЕБЕ, ПІДДАНА
+А ТЕПЕР ХТО ПРАВИТЬ?
+ГОДИННИК ЙДЕ, ПІДДАНА
+ЗАБЛУКАЛА? Є КНОПКА ДОПОМОГИ. НАТИСНИ
+Я ПРОМАЗАВ НАВМИСНЕ, НА ЖАЛЬ
+ЛУК КРИВИЙ, А НЕ Я
+ВІТЕР МЕНІ ЗАЗДРИТЬ
+ВОНА СТРИБНУЛА? У МОЄМУ КОРОЛІВСТВІ ЦЕ ЗАБОРОНЕНО!
+ПОПЕРЕДЖУВАЛЬНИЙ ПОСТРІЛ, ПІДДАНА
+ДІРА!
+ТІКАЙТЕ!
+Я РОЗТЯГУЮСЬ!
+ААААА!
+{q}? ТІК-ТАК, ПІДДАНА`,
+cs:`KLEKNI PŘED SVÝM ZOMBIE CÍSAŘEM
+JSEM KRÁSNÝ. TY NAOPAK POČÍTÁŠ
+MŮJ ZTROUCHNIVĚLÝ MOZEK MYSLÍ LÉPE NEŽ TVŮJ
+KRÁLOVSKÝ DEKRET: VŠECHNY TVÉ ODPOVĚDI JSOU ŠPATNĚ
+JAK ROZKOŠNÉ, MYSLÍŠ, ŽE UMÍŠ SČÍTAT
+TLESKÁM. JEDNOU RUKOU. DRUHÁ MI ODPADLA
+TICHO, POddANÁ. KRÁL MLUVÍ
+ZOMBIE DAŇ: JEDEN MOZEK ZA CHYBU
+MÉ ZRCADLO ŘÍKÁ, ŽE JSEM NEJKRÁSNĚJŠÍ V APOKALYPSE
+TVOJE KALKULAČKA ŽÁDÁ AZYL V MÉM KRÁLOVSTVÍ
+JAK JSEM KRÁSNÝ… CO KDYBYCH SE KLONOVAL?
+MYSLÍM, TEDY VLÁDNU
+MÉ KRÁLOVSTVÍ ZA MOZEK
+ÚTOK, KOSTI!
+MŮJ ZÁMĚR JE TAK DOKONALÝ JAKO JÁ
+ČISTÁ KOST: NULA TUKU, NULA MILOSRDENSTVÍ
+NEHÝBEJ SE, POddANÁ!
+JEDNA… DVĚ… JAK JSEM KRÁSNÝ…
+DO ČERNÉHO! VIDĚLA JSI TO UMĚNÍ?
+HA! DVĚ ZE DVOU, JAKO VŽDY
+NEEE, {n}! NO, BYL ošklivý
+DRZOST! POŽADUJI RESPEKT!
+STRÁŽE! ZATKNĚTE TO OVOCE!
+BYLO TO {a}!
+{v}? HAHA
+HAHAHA, BYLO TO {a}. STYDÍM SE ZA TEBE
+MÁ ZOMBIE BABIČKA TO DĚLALA LÉPE. BEZ HLAVY
+POTLESK… POSMĚŠNÝ
+NA KOLENA!
+MÁM TĚ, POddANÁ
+A TEĎ, KDO VLÁDNE?
+HODINY TIKAJÍ, POddANÁ
+ZTRATILA JSI SE? JE TU TLAČÍTKO NÁPOVĚDY. POUŽIJ HO
+MINUL JSEM ZÁMĚRNĚ, BOHUŽEL
+LUK JE KŘIVÝ, NE JÁ
+VÍTR MI ZÁVIDÍ
+SKOČILA? TO JE V MÉM KRÁLOVSTVÍ NEZÁKONNÉ!
+VÝSTRAŽNÝ VÝSTŘEL, POddANÁ
+DÍRA!
+UTÍKEJTE!
+PROTAHUJI SE!
+AAAAH!
+{q}? TIK TAK, POddANÁ`,
+el:`ΓΟΝΑΤΙΣΕ ΜΠΡΟΣΤΑ ΣΤΟΝ ΖΟΜΠΙ ΑΥΤΟΚΡΑΤΟΡΑ ΣΟΥ
+ΕΙΜΑΙ ΩΡΑΙΟΤΑΤΟΣ. ΕΣΥ ΑΠΛΑ ΥΠΟΛΟΓΙΖΕΙΣ
+ΤΟ ΣΑΠΙΟ ΜΥΑΛΟ ΜΟΥ ΣΚΕΦΤΕΤΑΙ ΚΑΛΥΤΕΡΑ ΑΠΟ ΤΟ ΔΙΚΟ ΣΟΥ
+ΒΑΣΙΛΙΚΟ ΔΙΑΤΑΓΜΑ: ΚΑΘΕ ΑΠΑΝΤΗΣΗ ΣΟΥ ΕΙΝΑΙ ΛΑΘΟΣ
+ΤΙ ΓΛΥΚΟ, ΝΟΜΙΖΕΙΣ ΟΤΙ ΞΕΡΕΙΣ ΝΑ ΠΡΟΣΘΕΤΕΙΣ
+ΣΕ ΧΕΙΡΟΚΡΟΤΩ. ΜΕ ΕΝΑ ΧΕΡΙ. ΤΟ ΑΛΛΟ ΕΠΕΣΕ
+ΣΙΩΠΗ, ΥΠΗΚΟΕ. Ο ΒΑΣΙΛΙΑΣ ΜΙΛΑΕΙ
+ΖΟΜΠΙ ΦΟΡΟΣ: ΕΝΑ ΜΥΑΛΟ ΓΙΑ ΚΑΘΕ ΛΑΘΟΣ
+Ο ΚΑΘΡΕΦΤΗΣ ΜΟΥ ΛΕΕΙ ΟΤΙ ΕΙΜΑΙ Ο ΟΜΟΡΦΟΤΕΡΟΣ ΤΗΣ ΑΠΟΚΑΛΥΨΗΣ
+Η ΑΡΙΘΜΟΜΗΧΑΝΗ ΣΟΥ ΖΗΤΗΣΕ ΑΣΥΛΟ ΣΤΟ ΒΑΣΙΛΕΙΟ ΜΟΥ
+ΠΟΣΟ ΩΡΑΙΟΣ ΕΙΜΑΙ… ΚΑΙ ΑΝ ΚΛΩΝΟΠΟΙΗΘΩ;
+ΣΚΕΦΤΟΜΑΙ, ΑΡΑ ΚΥΒΕΡΝΩ
+ΤΟ ΒΑΣΙΛΕΙΟ ΜΟΥ ΓΙΑ ΕΝΑ ΜΥΑΛΟ
+ΕΠΙΘΕΣΗ, ΚΟΚΑΛΑ!
+Ο ΣΤΟΧΟΣ ΜΟΥ ΕΙΝΑΙ ΤΕΛΕΙΟΣ ΟΠΩΣ ΚΑΙ ΕΓΩ
+ΚΑΘΑΡΟ ΚΟΚΑΛΟ: ΜΗΔΕΝ ΛΙΠΟΣ, ΜΗΔΕΝ ΕΛΕΟΣ
+ΜΗΝ ΚΙΝΕΣΑΙ, ΥΠΗΚΟΕ!
+ΕΝΑ… ΔΥΟ… ΠΟΣΟ ΩΡΑΙΟΣ ΕΙΜΑΙ…
+ΣΤΟΧΟΣ! ΕΙΔΕΣ ΑΥΤΗ ΤΗΝ ΤΕΧΝΗ;
+ΧΑ! ΔΥΟ ΣΤΑ ΔΥΟ, ΟΠΩΣ ΠΑΝΤΑ
+ΟΧΙΙΙ, {n}! ΕΝΤΑΞΕΙ, ΗΤΑΝ ΑΣΧΗΜΟΣ
+ΑΥΘΑΔΗ! ΑΠΑΙΤΩ ΣΕΒΑΣΜΟ!
+ΦΡΟΥΡΟΙ! ΣΥΛΛΑΒΕΤΕ ΑΥΤΟ ΤΟ ΦΡΟΥΤΟ!
+ΗΤΑΝ {a}!
+{v}; ΧΑΧΑ
+ΧΑΧΑΧΑ, ΗΤΑΝ {a}. ΝΤΡΟΠΗ ΜΟΥ ΓΙΑ ΣΕΝΑ
+Η ΖΟΜΠΙ ΓΙΑΓΙΑ ΜΟΥ ΤΟ ΕΚΑΝΕ ΚΑΛΥΤΕΡΑ. ΧΩΡΙΣ ΚΕΦΑΛΙ
+ΧΕΙΡΟΚΡΟΤΗΜΑΤΑ… ΕΙΡΩΝΙΚΑ
+ΓΟΝΑΤΑ!
+ΣΕ ΠΙΑΣΑ, ΥΠΗΚΟΕ
+ΚΑΙ ΤΩΡΑ ΠΟΙΟΣ ΚΥΒΕΡΝΑ;
+ΤΟ ΡΟΛΟΪ ΤΡΕΧΕΙ, ΥΠΗΚΟΕ
+ΧΑΘΗΚΕΣ; ΥΠΑΡΧΕΙ ΚΟΥΜΠΙ ΒΟΗΘΕΙΑΣ. ΠΑΤΑ ΤΟ
+ΤΟ ΕΧΑΣΑ ΣΚΟΠΙΜΑ, ΔΥΣΤΥΧΩΣ
+ΤΟ ΤΟΞΟ ΕΙΝΑΙ ΣΤΡΕΒΛΟ, ΟΧΙ ΕΓΩ
+Ο ΑΝΕΜΟΣ ΜΕ ΖΗΛΕΥΕΙ
+ΕΚΑΝΕ ΑΛΜΑ; ΑΥΤΟ ΕΙΝΑΙ ΠΑΡΑΝΟΜΟ ΣΤΟ ΒΑΣΙΛΕΙΟ ΜΟΥ!
+ΠΡΟΕΙΔΟΠΟΙΗΤΙΚΗ ΒΟΛΗ, ΥΠΗΚΟΕ
+Η ΤΡΥΠΑ!
+ΤΡΕΞΤΕ!
+ΞΕΠΕΡΝΩ ΤΑ ΟΡΙΑ ΜΟΥ!
+ΑΑΑΑΧ!
+{q}; ΤΙΚ ΤΑΚ, ΥΠΗΚΟΕ`,
+he:`כרע ברך לפני קיסר הזומבים שלך
+אני יפהפה. ואת רק מחשבת
+המוח הרקוב שלי חושב טוב יותר משלך
+צו מלכותי: כל התשובות שלך שגויות
+איזה מתוק, את חושבת שאת יודעת לחבר
+אני מוחא כפיים. ביד אחת. השנייה נפלה
+שקט, נתינה. המלך מדבר
+מס זומבים: מוח אחד על כל טעות
+המראה שלי אומרת שאני היפה באפוקליפסה
+המחשבון שלך ביקש מקלט בממלכה שלי
+כמה אני יפה… אולי אשכפל את עצמי?
+אני חושב, משמע אני שולט
+ממלכתי תמורת מוח
+התקפה, עצמות!
+הכוונת שלי מושלמת כמוני
+עצם טהורה: אפס שומן, אפס רחמים
+אל תזוזי, נתינה!
+אחת… שתיים… כמה אני יפה…
+בול! ראית את האמנות הזאת?
+הא! שתיים מתוך שתיים, כרגיל
+לאאא, {n}! נו, הוא היה מכוער
+חצופה! אני דורש כבוד!
+שומרים! עצרו את הפרי הזה!
+זה היה {a}!
+{v}? חה חה
+חה חה חה, זה היה {a}. בושה
+סבתא הזומבית שלי עשתה את זה טוב יותר. בלי ראש
+מחיאות כפיים… של לעג
+על הברכיים!
+תפסתי אותך, נתינה
+ועכשיו מי שולט?
+השעון מתקתק, נתינה
+הלכת לאיבוד? יש כפתור עזרה. השתמשי בו
+פספסתי בכוונה, חבל
+הקשת עקומה, לא אני
+הרוח מקנאה בי
+היא קפצה? זה לא חוקי בממלכה שלי!
+ירייה אזהרה, נתינה
+החור!
+ברחו!
+אני נמתח!
+אאאאה!
+{q}? טיק טק, נתינה`,
+ro:`ÎNGENUNCHEAZĂ ÎN FAȚA ÎMPĂRATULUI TĂU ZOMBI
+SUNT FRUMOS. TU, ÎN SCHIMB, CALCULEZI
+CREIERUL MEU PUTRED GÂNDEȘTE MAI BINE DECÂT AL TĂU
+DECRET REGAL: TOATE RĂSPUNSURILE TALE SUNT GREȘITE
+CÂT DE DRĂGUȚ, CREZI CĂ ȘTII SĂ ADUNI
+TE APLAUD. CU O MÂNĂ. CEALALTĂ A CĂZUT
+TĂCERE, SUPUSO. REGELE VORBEȘTE
+TAXA ZOMBI: UN CREIER PENTRU FIECARE GREȘEALĂ
+OGLINDA MEA ZICE CĂ SUNT CEL MAI FRUMOS DIN APOCALIPSĂ
+CALCULATORUL TĂU A CERUT ASIL ÎN REGATUL MEU
+CÂT DE FRUMOS SUNT… SĂ MĂ CLONEZ?
+GÂNDESC, DECI DOMNESC
+REGATUL MEU PENTRU UN CREIER
+LA ATAC, OASELOR!
+ȚINTA MEA E LA FEL DE PERFECTĂ CA MINE
+OS PUR: ZERO GRĂSIME, ZERO MILĂ
+STAI LOCULUI, SUPUSO!
+UNU… DOI… CÂT DE FRUMOS SUNT…
+ÎN ȚINTĂ! AI VĂZUT ARTA?
+HA! DOUĂ DIN DOUĂ, CA ÎNTOTDEAUNA
+NUUU, {n}! BINE, ERA URÂT
+NECUVIINCIOASO! CER RESPECT!
+GARDIENI! ARESTAȚI FRUCTUL ĂLA!
+ERA {a}!
+{v}? HAHA
+HAHAHA, ERA {a}. RUȘINE
+BUNICA MEA ZOMBI O FĂCEA MAI BINE. FĂRĂ CAP
+APLAUZE… BATJOCORITOARE
+ÎN GENUNCHI!
+TE-AM PRINS, SUPUSO
+ȘI ACUM, CINE DOMNEȘTE?
+CEASUL MERGE, SUPUSO
+TE-AI PIERDUT? E UN BUTON DE AJUTOR. FOLOSEȘTE-L
+AM ATINS ÎN GOL INTENȚIONAT, DIN PĂCATE
+ARCUL E STRÂMB, NU EU
+VÂNTUL MĂ INVIDIAZĂ
+A SĂRIT? ESTE ILEGAL ÎN REGATUL MEU!
+FOC DE AVERTISMENT, SUPUSO
+GROAPA!
+FUGIȚI!
+MĂ ÎNTIND!
+AAAAH!
+{q}? TIC TAC, SUPUSO`,
+hu:`TÉRDELJ LE A ZOMBI CSÁSZÁRODNAK
+GYÖNYÖRŰ VAGYOK. TE VISZONT SZÁMOLSZ
+ROTHADT AGYAM JOBBAN GONDOLKODIK, MINT A TIED
+KIRÁLYI RENDELET: MINDEN VÁLASZOD HIBÁS
+MILYEN KEDVES, AZT HISZED, TUDSZ ÖSSZEADNI
+TAPSOLOK. EGY KÉZZEL. A MÁSIK LEESETT
+CSEND, ALATTVALÓ. A KIRÁLY BESZÉL
+ZOMBIADÓ: HIBÁNKÉNT EGY AGY
+A TÜKÖRÖM SZERINT ÉN VAGYOK AZ APOKALIPSZIS LEGSZEBBJE
+A SZÁMOLÓGÉPED MENEKÜLTSTÁTUSZT KÉRT A KIRÁLYSÁGOMBAN
+MILYEN SZÉP VAGYOK… TALÁN KLÓNOZZAM MAGAM?
+GONDOLKODOM, TEHÁT URALKODOM
+A KIRÁLYSÁGOM EGY AGYÉRT
+TÁMADÁS, CSONTOK!
+A CÉLZÁSOM ÉPPÚGY TÖKÉLETES, MINT ÉN
+TISZTA CSONT: NULLA ZSÍR, NULLA IRGALOM
+NE MOZDULJ, ALATTVALÓ!
+EGY… KETTŐ… MILYEN SZÉP VAGYOK…
+TÍZES! LÁTTAD EZT A MŰVÉSZETET?
+HA! KETTŐ A KETTŐBŐL, MINT MINDIG
+NEEE, {n}! HÁT, ÚGYIS CSÚNYA VOLT
+HÁTAS! TISZTELETET KÖVETELEK!
+ŐRÖK! TARTÓZTASSÁK LE AZT A GYÜMÖLCSÖT!
+{a} VOLT!
+{v}? HAHA
+HAHAHA, {a} VOLT. SZÉGYELLEM MAGAM HELYETTED
+A ZOMBI NAGYMAMÁM JOBBAN CSINÁLTA. FEJ NÉLKÜL
+TAPS… GÚNYOS
+TÉRDRE!
+MEGVAN, ALATTVALÓ
+ÉS MOST KI URALKODIK?
+AZ ÓRA JÁR, ALATTVALÓ
+ELTÉVEDTÉL? VAN SÚGÓ GOMB. HASZNÁLD
+SZÁNDÉKOSAN LŐTTEM mellé, SAJNOS
+AZ ÍJ GÖRBE, NEM ÉN
+A SZÉL IRIGYEL ENGEM
+UGRÁLT? EZ TILOS AZ ÉN KIRÁLYSÁGOMBAN!
+FIGYELMEZTETŐ LÖVÉS, ALATTVALÓ
+A LYUK!
+FUTÁS!
+MEGNYÚLOK!
+AAAAH!
+{q}? TIKK-TAKK, ALATTVALÓ`,
+da:`KNÆL FOR DIN ZOMBIEKEJSER
+JEG ER SMUK. DU DERIMOD REGNER
+MIN RÅDNE HJERNE TÆNKER BEDRE END DIN
+KONGELIG BEKENDTGØRELSE: ALLE DINE SVAR ER FORKERTE
+SÅ SØDT, DU TROR, DU KAN LÆGGE SAMMEN
+JEG KLAPPER. MED ÉN HÅND. DEN ANDEN FALDT AF
+STILHED, UNDERSÅT. KONGEN TALER
+ZOMBIESKAT: ÉN HJERNE PER FEJL
+MIT SPEJL SIGER, AT JEG ER APOKALYPSENS SMUKKESTE
+DIN LOMMEREGNER BAD OM ASYL I MIT RIGE
+SÅ SMUK JEG ER… SKAL JEG KLONE MIG?
+JEG TÆNKER, ALTSÅ REGERER JEG
+MIT RIGE FOR EN HJERNE
+ANGRIB, KNOGLER!
+MIT SIGTE ER LIGE SÅ PERFEKT SOM MIG
+REN KNOGLE: NUL FEDT, NUL NÅDE
+STÅ STILLE, UNDERSÅT!
+EN… TO… SÅ SMUK JEG ER…
+I MIDTEN! SÅ DU DEN KUNST?
+HA! TO UD AF TO, SOM ALTID
+NEJJJ, {n}! NÅ, HAN VAR grim
+FRÆKKE! JEG KRÆVER RESPEKT!
+VAGTER! ARRESTÉR DEN FRUGT!
+DET VAR {a}!
+{v}? HAHA
+HAHAHA, DET VAR {a}. PINLIGT
+MIN ZOMBIEBEDSTEMOR GJORDE DET BEDRE. UDEN HOVED
+KLAP… FOR HÅNEN
+PÅ KNÆ!
+JEG HAR DIG, UNDERSÅT
+OG NU, HVEM REGERER?
+URET TIKKER, UNDERSÅT
+FORVILDET? DER ER EN HJÆLPEKNAP. BRUG DEN
+JEG MISTE MED OPSÆT, DESVÆRRE
+BUEN ER KRUM, IKKE JEG
+VINDEN ER MISUNDELIG PÅ MIG
+SPRANG HUN? DET ER ULOVLIGT I MIT RIGE!
+ADVARSELSSKUD, UNDERSÅT
+HULLET!
+FLYG!
+JEG STRÆKKES!
+AAAAH!
+{q}? TIK TAK, UNDERSÅT`
+};
+const ZT={};for(const k of Object.keys(ZRAW))ZT[k]=ZRAW[k].split('\n').map(l=>l.toUpperCase().replace(/\{(\w+)\}/g,m=>m.toLowerCase()));
+// ZS(cat, original_es, vars): en español usa los textos originales; en otros idiomas, los traducidos (con {n},{a},{v},{q})
+function ZS(cat,orig,v){
+  if(LANG.startsWith('es')||!ZT[LANG]){return typeof orig==='function'?orig():orig}
+  const [a,b]=ZCATS[cat];let r=ZT[LANG].slice(a,b);
+  if(v)r=r.map(s=>s.replace(/\{(\w+)\}/g,(m,n)=>v[n]!=null?v[n]:m));
+  return r;
+}
+const ZES=()=>LANG.startsWith('es')||!ZT[LANG];
+
 const flagURL=cc=>`https://flagcdn.com/w40/${cc}.png`;
 const flagImg=l=>`<img class="fl" alt="" src="${flagURL(l.cc)}" onerror="this.style.visibility='hidden'">`;
 const langOf=c=>LANGS.find(l=>l.c===c)||LANGS[0];
@@ -1623,11 +2713,20 @@ Object.assign(FSRC,{'^':'..#..|.#.#.|#...#|.....|.....|.....|.....','…':'.....
 const GL={};
 for(const k in FSRC){const rows=FSRC[k].split('|');let mn=9,mx=-1;for(const r of rows)for(let i=0;i<r.length;i++)if(r[i]==='#'){if(i<mn)mn=i;if(i>mx)mx=i}GL[k]={rows,mn:mx<0?0:mn,w:mx<0?2:mx-mn+1}}
 const ACC={'á':['a',1],'é':['e',1],'í':['ı',1],'ó':['o',1],'ú':['u',1],'Á':['A',1],'É':['E',1],'Í':['I',1],'Ó':['O',1],'Ú':['U',1],'ñ':['n',2],'Ñ':['N',2],'ü':['u',3],'−':['-',0],'—':['-',0],'≡':['=',0]};
-function glyph(ch){const a=ACC[ch];if(a)return{g:GL[a[0]],acc:a[1],up:a[0]===a[0].toUpperCase()&&/[A-Z]/.test(a[0])};const g=GL[ch];return{g:g||GL['?'],acc:0,up:false}}
-function pw(str,s=1){let w=0;for(const ch of str){if(ch===' '){w+=3;continue}w+=glyph(ch).g.w+1}return Math.max(0,w-1)*s}
+const MK={'\u0301':1,'\u0300':1,'\u0302':1,'\u030C':1,'\u0306':1,'\u030A':1,'\u030B':1,'\u0327':1,'\u0328':1,'\u0307':1,'\u0303':2,'\u0308':3},GLSPC={'Ł':'L','Ø':'O','Đ':'D','Æ':'A','Œ':'O','ß':'S'};
+function glyph(ch){const a=ACC[ch];if(a)return{g:GL[a[0]],acc:a[1],up:a[0]===a[0].toUpperCase()&&/[A-Z]/.test(a[0])};const g=GL[ch];if(g)return{g,acc:0,up:false};
+  if(GLSPC[ch])return{g:GL[GLSPC[ch]],acc:0,up:false};
+  const n=ch.normalize('NFD');if(n.length>1&&GL[n[0]]&&MK[n[1]])return{g:GL[n[0]],acc:MK[n[1]],up:/[A-Z]/.test(n[0])};
+  return{g:GL['?'],acc:0,up:false,miss:true}}
+// ¿hay letras que el alfabeto pixel no cubre (CJK, cirílico, árabe, hindi…)? entonces todo el texto se dibuja con la fuente del sistema
+const FBSTACK='"Noto Sans","Segoe UI","Microsoft YaHei","Malgun Gothic","Yu Gothic","Nirmala UI","Leelawadee UI",sans-serif',FBC=document.createElement('canvas').getContext('2d'),FBN=new Map();
+function needsFB(str){let r=FBN.get(str);if(r!==undefined)return r;r=false;for(const ch of str){if(ch===' ')continue;if(glyph(ch).miss&&ch!=='?'){r=true;break}}if(FBN.size>400)FBN.clear();FBN.set(str,r);return r}
+function fbWidth(str){FBC.font=`bold 8px ${FBSTACK}`;return Math.ceil(FBC.measureText(str).width)}
+function pw(str,s=1){if(needsFB(str))return fbWidth(str)*s;let w=0;for(const ch of str){if(ch===' '){w+=3;continue}w+=glyph(ch).g.w+1}return Math.max(0,w-1)*s}
 // dibuja texto pixel: (x,y) = esquina superior izquierda de la caja de 7 filas
 function ptext(str,x,y,s,col,c=ctx){
   c.fillStyle=col;x=Math.round(x);y=Math.round(y);
+  if(needsFB(str)){c.font=`bold ${8*s}px ${FBSTACK}`;c.textBaseline='alphabetic';c.textAlign='left';c.fillText(str,x,y+6.3*s);return}
   for(const ch of str){
     if(ch===' '){x+=3*s;continue}
     const G0=glyph(ch),g=G0.g;
@@ -1644,7 +2743,8 @@ function ptext(str,x,y,s,col,c=ctx){
 function ptextS(str,x,y,s,col,sh=P.k,c=ctx){ptext(str,x+s,y+s,s,sh,c);ptext(str,x,y,s,col,c)}
 let PCTX=null;
 function ptextC(str,cx,y,s,col,sh){const x=Math.round(cx-pw(str,s)/2);sh?ptextS(str,x,y,s,col,sh):ptext(str,x,y,s,col,PCTX||ctx)}
-function wrapP(str,maxw,s=1){const out=[];let line='';for(const w of str.split(' ')){const t=line?line+' '+w:w;if(pw(t,s)>maxw&&line){out.push(line);line=w}else line=t}if(line)out.push(line);return out}
+function wrapP(str,maxw,s=1){const out=[];
+  if(/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0e00-\u0e7f]/.test(str)&&!/ /.test(str.trim())){let line='';for(const ch of str){if(pw(line+ch,s)>maxw&&line){out.push(line);line=ch}else line+=ch}if(line)out.push(line);return out}let line='';for(const w of str.split(' ')){const t=line?line+' '+w:w;if(pw(t,s)>maxw&&line){out.push(line);line=w}else line=t}if(line)out.push(line);return out}
 
 /* ============ Maquetador de fórmulas pixel: fracciones, potencias, raíces, matrices, integrales, límites ============ */
 const Sx=(v,c)=>({t:'s',v,c}),Fr=(n,d)=>({t:'f',n,d}),Pw=(b,e)=>({t:'p',b,e}),Rt=(v,i)=>({t:'r',v,i}),Mx=rows=>({t:'m',rows}),Ig=(lo,hi,b)=>({t:'i',lo,hi,b}),Lm=(sub,b)=>({t:'l',sub,b});
@@ -2647,7 +3747,7 @@ function wrongFeedback(val,ans,t){
   const k=wrongKind(val,ans,t);
   if(k||R()<.35)lawToast(LAWS[k||pick(['occam','dunning','hofstadter'])],'era '+fmt(ans));
   const z=nearestZ();
-  const pool=[`¡ERA ${fmt(ans)}!`,`¿${fmt(val)}? JAJA`,...(TAUNT_TOPIC[S.topic.id]||[]),...TAUNTS];
+  const pool=ZES()?[`¡ERA ${fmt(ans)}!`,`¿${fmt(val)}? JAJA`,...(TAUNT_TOPIC[S.topic.id]||[]),...TAUNTS]:[ZS('era',[],{a:fmt(ans)})[0],ZS('jaja',[],{v:fmt(val)})[0],...ZS('taunts',TAUNTS)];
   if(z)say(z,R()<.5?pool[0]:pick(pool));
 }
 function typeKey(k){
@@ -2848,7 +3948,7 @@ function mkZ(x,type){return{id:++S.uid,x,type,walk:R()*6,dead:false,deadT:0,gore
 function spawnZ(){
   const side=R()<.5?-1:1,nSk=S.zombies.filter(z=>alive(z)&&z.type==='skel').length,sk=S.stage>=2&&nSk<(S.stage>=8?2:1)&&R()<.3,run=!sk&&S.stage>=5&&R()<.25;
   const z=mkZ(S.cam+side*(W/2+10)/S.u,sk?'skel':run?'runner':'walker');S.zombies.push(z);
-  if(sk){SFX.bones();say(z,pick(SKEL_LINES),'shout');if(!SAVE.seen.skel){SAVE.seen.skel=1;persist();newt('<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!',true)}}
+  if(sk){SFX.bones();say(z,pick(ZS('skel',SKEL_LINES)),'shout');if(!SAVE.seen.skel){SAVE.seen.skel=1;persist();newt('<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!',true)}}
   else{SFX.rise();if(R()<.35)taunt(z)}
 }
 // esqueleto: se queda a distancia, apunta (aviso "!") y dispara una flecha en arco
@@ -2860,7 +3960,7 @@ function skelAI(z,dt,ax){
   const mv=zSpd()*z.spdK*dt/S.u;
   if(dist>z.range||zx<6||zx>W-6){z.x+=dir*mv;z.walk+=dt*3.4}
   else if(dist<z.range*.55){z.x-=dir*mv*.7;z.walk+=dt*3.4}
-  else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab){z.aim=1.1;z.cd=skelCD();SFX.draw();if(R()<.3)say(z,pick(['¡QUIETA, PLEBEYA!','POSA PARA MI FLECHA','UNO… DOS… QUÉ GUAPO SOY…']))}}
+  else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab){z.aim=1.1;z.cd=skelCD();SFX.draw();if(R()<.3)say(z,pick(ZS('aim',['¡QUIETA, PLEBEYA!','POSA PARA MI FLECHA','UNO… DOS… QUÉ GUAPO SOY…'])))}}
 }
 // probabilidad de fallar: 50 % en el nivel 1, baja con cada nivel y con la presión (mínimo 12 %)
 const skelMiss=()=>Math.max(.12,.5-(Math.min(S.stage,16)-1)*.025-.1*hard());
@@ -2869,7 +3969,7 @@ function shoot(z){const miss=R()<skelMiss(),off=miss?(R()<.5?-1:1)*(12+R()*16)/S
 function arrowHit(ar){
   S.arrowHits=(S.arrowHits||0)+1;S.shake=7;S.flash=.35;SFX.arrowHit();blood(apx(),GY-6,14);
   const left=2-S.arrowHits;S.texts.push({x:S.a.x,y:GY-42,txt:left>0?'¡FLECHAZO! TE QUEDA 1':'¡FLECHADA!',c:P.r2,t:0,life:1.5,world:true});
-  if(alive(ar.z))say(ar.z,left>0?'¡EN EL BLANCO! ¿VISTE QUÉ ARTE?':'¡JA! DOS DE DOS, COMO SIEMPRE','shout');
+  if(alive(ar.z))say(ar.z,ZS('hit',['¡EN EL BLANCO! ¿VISTE QUÉ ARTE?','¡JA! DOS DE DOS, COMO SIEMPRE'])[left>0?0:1],'shout');
   if(S.arrowHits>=2){S.deathBy='arrow';if(S.grab){S.grab.z.grab=false;S.grab=null}eaten()}
 }
 function nearestZ(){let b=null,bd=1e9;const ax=scx(S.a.x);for(const z of S.zombies){if(!alive(z))continue;const d=Math.abs(scx(z.x)-ax);if(d<bd&&d<W*.6){bd=d;b=z}}return b}
@@ -2879,7 +3979,7 @@ const SKEL_LINES=['¡A LA CARGA, HUESOS!','MI PUNTERÍA ES TAN PERFECTA COMO YO'
 function zname(z){return z.name||(z.name=z.type==='skel'?pick(SKN):z.type==='boss'?'EL JEFE':pick(NAMES))}
 function say(z,txt,kind){zname(z);S.bubbles=S.bubbles.filter(b=>b.z!==z);if(S.bubbles.length>=2)S.bubbles.shift();
   S.bubbles.push({z,txt,t:0,life:Math.min(5,Math.max(2.4,1.2+txt.length*.06)),kind:kind||'say'});if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
-function taunt(z){const r=R();if(r<.3)say(z,pick(THINK),'think');else if(r<.45&&S.prob)say(z,`¿${S.prob.str.replace(' = ?','').slice(0,20)}? TIC TAC, SÚBDITA`);else say(z,pick([...TAUNTS,...(TAUNT_TOPIC[S.topic.id]||[])]))}
+function taunt(z){const r=R();if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
 function blood(sx,sy,n,spd=1){for(let i=0;i<n;i++){const ang=-Math.PI*R()*1.1+.05,s=(30+R()*110)*spd;S.parts.push({x:sx,y:sy,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.6+R()*.8,c:pick([P.r2,P.r2,P.r,'#e8735f']),blood:true})}}
 function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);
   // si muere el zombi que te tiene agarrada, el agarre termina (antes quedaba un agarre fantasma)
@@ -2905,7 +4005,7 @@ function meteor(x){
   for(let i=0;i<46;i++){const ang=-Math.PI*R(),s=30+R()*120;S.parts.push({x:sx,y:GY-3,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.4+R()*.6,c:pick([P.y,P.o,P.r2,P.w,P.l3])})}
   let killed=0;
   for(const z of S.zombies)if(alive(z)&&z.type!=='boss'&&!z.grab&&Math.abs(scx(z.x)-sx)<ER){killZ(z,true);killed++}
-  if(killed){const n=nearestZ();if(n&&R()<.8)say(n,pick([`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]),'shout')}
+  if(killed){const n=nearestZ();if(n&&R()<.8)say(n,pick(ZES()?[`¡NOOO, ${S.lastKilled}! BUENO, ERA FEO`,'¡INSOLENTE! ¡EXIJO RESPETO!','ESO NO CUENTA, YO NO ESTABA POSANDO','¡GUARDIAS! ¡ARRESTEN A ESA FRUTA!',`${S.lastKilled} ERA PRESCINDIBLE. YO NO`]:ZS('kill',[],{n:S.lastKilled})),'shout')}
   if(S.boss&&alive(S.boss))S.shards.push({x0:x,z:S.boss,t:0,T:.55});
   else if(!killed){const n=nearestZ();if(n)S.shards.push({x0:x,z:n,t:0,T:.45})}
   newt('<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.');
@@ -2923,7 +4023,7 @@ function land(){
   const a=S.a;a.x=r2(a.to);a.y=0;a.st='rest';a.sq=a.ok?.5:.32;a.sqv=0;
   if(a.ok){meteor(a.x);S.happyT=1.5}
   else{S.sadT=1.5;SFX.thud();for(let i=0;i<8;i++)S.parts.push({x:scx(a.x),y:GY-1,vx:(R()-.5)*60,vy:-R()*50,t:0,life:.4,c:P.l1});
-    const lp=S.run.lastProb;if(lp)S.texts.push({x:a.x,y:GY-38,txt:'✕ ERA '+fmt(lp.ans),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick([`JAJAJA, ERA ${fmt(lp.ans)}. QUÉ VERGÜENZA AJENA`,'¡ESE NO ERA! APÚNTALO EN TU DIARIO DE FRACASOS','MI ABUELA ZOMBI LO HACÍA MEJOR. SIN CABEZA','APLAUSOS… DE BURLA',`¿${fmt(S.a.x)}? YO HABRÍA DICHO ${fmt(lp.ans)}, PORQUE SOY GENIAL`]),'shout')}}
+    const lp=S.run.lastProb;if(lp)S.texts.push({x:a.x,y:GY-38,txt:'✕ ERA '+fmt(lp.ans),c:P.r2,t:0,life:1.8,world:true});{const z=nearestZ();if(z&&lp)say(z,pick(ZES()?[`JAJAJA, ERA ${fmt(lp.ans)}. QUÉ VERGÜENZA AJENA`,'¡ESE NO ERA! APÚNTALO EN TU DIARIO DE FRACASOS','MI ABUELA ZOMBI LO HACÍA MEJOR. SIN CABEZA','APLAUSOS… DE BURLA',`¿${fmt(S.a.x)}? YO HABRÍA DICHO ${fmt(lp.ans)}, PORQUE SOY GENIAL`]:ZS('wrong',[],{a:fmt(lp.ans)})),'shout')}}
   if(a.ok&&!S.topic.boss)S.ok++;
   if(a.ok&&S.run.streak>0&&S.run.streak%5===0)eggStart();
   updHUD();
@@ -2943,7 +4043,7 @@ function startGrab(z){
   $('#alSub').textContent=S.grab.need>1?L10('grab2'):L10('caughtSub');
   $('#alert').classList.add('on');
   S.input='';renderInput();padClear();if(!S.prob)newProblem();
-  say(z,pick(['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]),'shout');
+  say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
 }
 function escape(){
   const a=S.a,g=S.grab,z=g.z,pr=S.prob;
@@ -2976,7 +4076,7 @@ const knows=id=>{const h=SAVE.hist[id];return!!h&&h.ok>=4&&h.ok/(h.ok+h.bad)>=.7
 function hideHelp(){const b=$('#bHelp');if(!b||b.hidden||b.classList.contains('fading'))return;b.classList.add('fading');setTimeout(()=>{b.hidden=true;b.classList.remove('fading')},260)}
 function helpCheck(){
   if(S.helpUsed||!S.prob||S.grab||S.stage>16||S.run.stageProbs>2||S.thinkT<6||knows(S.topic.id))return;
-  const b=$('#bHelp');if(b.hidden){b.hidden=false;const z=nearestZ();if(z)say(z,'¿PERDIDA? HAY UN BOTÓN DE AYUDA. ÚSALO, TE HACE FALTA','think')}
+  const b=$('#bHelp');if(b.hidden){b.hidden=false;const z=nearestZ();if(z)say(z,ZS('help',['¿PERDIDA? HAY UN BOTÓN DE AYUDA. ÚSALO, TE HACE FALTA'])[0],'think')}
 }
 function openTut(){
   const T=S.topic,cur=S.prob;let p=null;
@@ -3752,7 +4852,7 @@ function update(dt){
     // agarrada no cuenta: el zombi que la sujeta le hace de escudo
     if(sa.st==='rest'&&!S.grab&&Math.abs(scx(sa.x)-scx(ar.x1))<7)arrowHit(ar);
     else{ar.stuck=true;hit('cajaChina',.6);if(ar.miss&&sa.st==='rest')S.texts.push({x:ar.x1,y:GY-30,txt:'¡FALLÓ!',c:P.y,t:0,life:.9,world:true});
-      if(alive(ar.z)&&R()<.5)say(ar.z,pick(ar.miss?['FALLÉ A PROPÓSITO, POR LÁSTIMA','EL ARCO ESTÁ TORCIDO, NO YO','DISPARO DE ADVERTENCIA, PLEBEYA','EL VIENTO ME ENVIDIA']:['¿SALTÓ? ¡ESO ES ILEGAL EN MI REINO!','FALLÉ A PROPÓSITO, POR LÁSTIMA','EL VIENTO ME ENVIDIA']))}}}
+      if(alive(ar.z)&&R()<.5)say(ar.z,pick(ZES()?(ar.miss?['FALLÉ A PROPÓSITO, POR LÁSTIMA','EL ARCO ESTÁ TORCIDO, NO YO','DISPARO DE ADVERTENCIA, PLEBEYA','EL VIENTO ME ENVIDIA']:['¿SALTÓ? ¡ESO ES ILEGAL EN MI REINO!','FALLÉ A PROPÓSITO, POR LÁSTIMA','EL VIENTO ME ENVIDIA']):(ar.miss?[...ZS('miss',[]),ZS('dodge',[])[1]]:[ZS('dodge',[])[0],...ZS('miss',[])])))}}}
   S.arrows=S.arrows.filter(ar=>!ar.done||(ar.stuck&&ar.t<ar.T+1.2));
   // aparición y persecución
   const active=['rest','air','grab'].includes(a.st);
@@ -3983,7 +5083,7 @@ function titleZ(dt){
 }
 const WK=document.createElement('canvas'),wkc=WK.getContext('2d'),lgEl=$('#logo');
 lgEl.addEventListener('pointerdown',e=>{if(S.mode!=='title')return;e.preventDefault();try{lgEl.setPointerCapture(e.pointerId)}catch(_){}
-  S.bhOn=true;tone(70,.6,'sawtooth',.04,-25);const z=pick(S.zombies);if(z)say(z,pick(['¡EL AGUJERO!','¡HUYAN!','¡ME ESTIRO!','¡MIS HUESOS!','¡AAAAH!']),'shout')});
+  S.bhOn=true;tone(70,.6,'sawtooth',.04,-25);const z=pick(S.zombies);if(z)say(z,pick(ZS('hole',['¡EL AGUJERO!','¡HUYAN!','¡ME ESTIRO!','¡MIS HUESOS!','¡AAAAH!'])),'shout')});
 for(const ev of['pointerup','pointercancel','lostpointercapture'])lgEl.addEventListener(ev,()=>{S.bhOn=false});
 window.addEventListener('pointerup',()=>{S.bhOn=false});
 // espaguetización: columnas del escenario estiradas en vertical y aplastadas hacia el agujero negro
@@ -4023,7 +5123,7 @@ function loop(t){
   if(S.mode==='title')drawLogo(S.time);
   requestAnimationFrame(loop);
 }
-window.__G={INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
+window.__G={say,taunt,nearestZ,INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
 const fontsReady=Promise.race([Promise.all([document.fonts.load('16px "Pixelify Sans"'),document.fonts.load('8px Silkscreen')]).catch(()=>{}),new Promise(r=>setTimeout(r,2000))]);
 fontsReady.then(()=>{relayout();titleScene();setMode('title');requestAnimationFrame(loop)});
 })();
