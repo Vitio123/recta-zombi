@@ -414,3 +414,9 @@ e1|DÍKY ZA HRANÍ
 e2|TEĎ JSI MATEMATIK
 e3|{0} správně · {1} zombií · {2} úspěchů
 n_to|na
+n_eggK|UČITEL TĚ VYZÝVÁ
+n_eggPh|Tvoje odpověď
+n_eggGo|ODPOVĚDĚT
+n_eggNew|DALŠÍ PŘÍKLAD
+n_eggOk|SPRÁVNĚ! Jsi připraven na učitele.
+n_eggBad|Špatně. Bylo to {0}.

@@ -414,3 +414,9 @@ e1|OBRIGADO POR JOGAR
 e2|AGORA VOCÊ É MATEMÁTICO
 e3|{0} acertos · {1} zumbis · {2} conquistas
 n_to|elevado a
+n_eggK|O PROFESSOR TE DESAFIA
+n_eggPh|Sua resposta
+n_eggGo|RESPONDER
+n_eggNew|OUTRO
+n_eggOk|CORRETO! Você está pronto para o professor.
+n_eggBad|Errado. Era {0}.

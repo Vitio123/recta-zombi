@@ -414,3 +414,9 @@ e1|GRAZIE PER AVER GIOCATO
 e2|ORA SEI UN MATEMATICO
 e3|{0} risposte giuste · {1} zombi · {2} obiettivi
 n_to|elevato alla
+n_eggK|IL PROF TI SFIDA
+n_eggPh|La tua risposta
+n_eggGo|RISPONDI
+n_eggNew|UN ALTRO
+n_eggOk|GIUSTO! Sei pronto per il prof.
+n_eggBad|Sbagliato. Era {0}.

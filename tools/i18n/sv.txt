@@ -414,3 +414,9 @@ e1|TACK FÖR ATT DU SPELADE
 e2|NU ÄR DU MATEMATIKER
 e3|{0} rätt · {1} zombier · {2} prestationer
 n_to|upphöjt till
+n_eggK|LÄRAREN UTMANAR DIG
+n_eggPh|Ditt svar
+n_eggGo|SVARA
+n_eggNew|EN TILL
+n_eggOk|RÄTT! Du är redo för läraren.
+n_eggBad|Fel. Det var {0}.

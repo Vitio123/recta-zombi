@@ -414,3 +414,9 @@ e1|MERCI D'AVOIR JOUÉ
 e2|TU ES MAINTENANT MATHÉMATICIEN
 e3|{0} bonnes réponses · {1} zombies · {2} succès
 n_to|puissance
+n_eggK|LE PROF TE DÉFIE
+n_eggPh|Ta réponse
+n_eggGo|RÉPONDRE
+n_eggNew|UN AUTRE
+n_eggOk|CORRECT ! Tu es prêt pour le prof.
+n_eggBad|Faux. C'était {0}.

@@ -414,3 +414,9 @@ e1|MULȚUMIM CĂ AI JUCAT
 e2|ACUM EȘTI MATEMATICIAN
 e3|{0} corecte · {1} zombi · {2} realizări
 n_to|la puterea
+n_eggK|PROFESORUL TE PROVOACĂ
+n_eggPh|Răspunsul tău
+n_eggGo|RĂSPUNDE
+n_eggNew|ÎNCĂ UNA
+n_eggOk|CORECT! Ești gata pentru profesor.
+n_eggBad|Greșit. Era {0}.

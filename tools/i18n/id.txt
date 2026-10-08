@@ -414,3 +414,9 @@ e1|TERIMA KASIH SUDAH BERMAIN
 e2|SEKARANG KAMU MATEMATIKAWAN
 e3|{0} benar · {1} zombi · {2} pencapaian
 n_to|pangkat
+n_eggK|GURU MENANTANGMU
+n_eggPh|Jawabanmu
+n_eggGo|JAWAB
+n_eggNew|SOAL LAIN
+n_eggOk|BENAR! Kamu siap melawan guru.
+n_eggBad|Salah. Jawabannya {0}.

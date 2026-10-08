@@ -414,3 +414,9 @@ e1|CẢM ƠN ĐÃ CHƠI
 e2|GIỜ BẠN LÀ NHÀ TOÁN HỌC
 e3|{0} câu đúng · {1} xác sống · {2} thành tích
 n_to|mũ
+n_eggK|THẦY GIÁO THÁCH ĐẤU BẠN
+n_eggPh|Câu trả lời của bạn
+n_eggGo|TRẢ LỜI
+n_eggNew|BÀI KHÁC
+n_eggOk|ĐÚNG! Bạn đã sẵn sàng đấu thầy giáo.
+n_eggBad|Sai. Đáp án là {0}.

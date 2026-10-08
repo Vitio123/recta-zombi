@@ -414,3 +414,9 @@ e1|OYNADIĞIN İÇİN TEŞEKKÜRLER
 e2|ARTIK BİR MATEMATİKÇİSİN
 e3|{0} doğru · {1} zombi · {2} başarım
 n_to|üssü
+n_eggK|ÖĞRETMEN SENİ DÜELLOYA ÇAĞIRIYOR
+n_eggPh|Cevabın
+n_eggGo|CEVAPLA
+n_eggNew|BİR TANE DAHA
+n_eggOk|DOĞRU! Öğretmene hazırsın.
+n_eggBad|Yanlış. Cevap {0} idi.

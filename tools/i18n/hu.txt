@@ -414,3 +414,9 @@ e1|KÖSZÖNJÜK, HOGY JÁTSZOTTÁL
 e2|MOST MÁR MATEMATIKUS VAGY
 e3|{0} helyes · {1} zombi · {2} eredmény
 n_to|a
+n_eggK|A TANÁR KIHÍV
+n_eggPh|A válaszod
+n_eggGo|VÁLASZ
+n_eggNew|MÉG EGY
+n_eggOk|HELYES! Készen állsz a tanárra.
+n_eggBad|Hibás. {0} volt.

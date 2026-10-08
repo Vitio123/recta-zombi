@@ -2,9 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#000000">
-<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=2">
+<link rel="apple-touch-icon" href="icons/icon-180.png?v=2">
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-title" content="Math Sucks">
 <title>Math Sucks</title>
@@ -54,19 +54,19 @@ body.kb #pc{display:none}
 #pre{font-size:clamp(17px,3.8vw,30px);letter-spacing:.06em;color:var(--mut);margin-bottom:2px;text-shadow:0 0 10px var(--bg)}
 #expr{display:inline-block;white-space:pre-wrap;word-spacing:-.06em;max-width:100%;font-size:clamp(48px,11vw,108px);font-weight:300;line-height:1.05;letter-spacing:.02em;text-shadow:0 0 22px var(--bg),0 0 6px var(--bg)}
 #exprw .q{color:var(--red);font-weight:400}
-#exprw .fr,#exprw .mx,#exprw .ig,#exprw .lm,#exprw .rt{vertical-align:middle}
-#exprw .fr{display:inline-flex;flex-direction:column;align-items:center;font-size:.6em;line-height:1.02}
-#exprw .fr>span:first-child{border-bottom:.06em solid currentColor;padding:0 .14em .04em}
-#exprw sup{font-size:.5em;vertical-align:.85em;line-height:0}
-#exprw .rt{display:inline-flex;align-items:flex-start}
-#exprw .rt .rad{border-top:.05em solid currentColor;padding:.02em .08em 0;margin-top:.12em}
-#exprw .rt sup{vertical-align:.4em;margin-right:-.15em}
-#exprw .mx{display:inline-grid;font-size:.55em;gap:0 .7em;padding:.05em .35em;border-left:.07em solid;border-right:.07em solid;border-radius:.08em;line-height:1.15}
-#exprw .ig{display:inline-flex;align-items:center}
-#exprw .ig .s{font-size:1.35em;font-weight:200;line-height:1}
-#exprw .ig .lims{display:inline-flex;flex-direction:column;justify-content:space-between;align-self:stretch;font-size:.38em;margin:0 .15em 0 -.05em}
-#exprw .lm{display:inline-flex;flex-direction:column;align-items:center;line-height:1}
-#exprw .lm small{font-size:.36em;letter-spacing:.04em}
+#exprw .fr,#exprw .mx,#exprw .ig,#exprw .lm,#exprw .rt,#sEgg .fr,#sEgg .mx,#sEgg .ig,#sEgg .lm,#sEgg .rt{vertical-align:middle}
+:is(#exprw,#sEgg) .fr{display:inline-flex;flex-direction:column;align-items:center;font-size:.6em;line-height:1.02}
+:is(#exprw,#sEgg) .fr>span:first-child{border-bottom:.06em solid currentColor;padding:0 .14em .04em}
+:is(#exprw,#sEgg) sup{font-size:.5em;vertical-align:.85em;line-height:0}
+:is(#exprw,#sEgg) .rt{display:inline-flex;align-items:flex-start}
+:is(#exprw,#sEgg) .rt .rad{border-top:.05em solid currentColor;padding:.02em .08em 0;margin-top:.12em}
+:is(#exprw,#sEgg) .rt sup{vertical-align:.4em;margin-right:-.15em}
+:is(#exprw,#sEgg) .mx{display:inline-grid;font-size:.55em;gap:0 .7em;padding:.05em .35em;border-left:.07em solid;border-right:.07em solid;border-radius:.08em;line-height:1.15}
+:is(#exprw,#sEgg) .ig{display:inline-flex;align-items:center}
+:is(#exprw,#sEgg) .ig .s{font-size:1.35em;font-weight:200;line-height:1}
+:is(#exprw,#sEgg) .ig .lims{display:inline-flex;flex-direction:column;justify-content:space-between;align-self:stretch;font-size:.38em;margin:0 .15em 0 -.05em}
+:is(#exprw,#sEgg) .lm{display:inline-flex;flex-direction:column;align-items:center;line-height:1}
+:is(#exprw,#sEgg) .lm small{font-size:.36em;letter-spacing:.04em}
 #pre{color:var(--fg)}#pre .mx{font-size:1em;margin:0 .2em}#pre .fr{font-size:.8em}
 
 #inbox{left:50%;bottom:calc(var(--sb) + 12px);transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:8px 26px 4px;font-size:40px;font-weight:300;min-width:120px;justify-content:center}
@@ -113,7 +113,7 @@ body.kb #pc{display:none}
 .btn.alt{background:transparent;color:var(--fg);font-weight:400;font-size:14px;padding:12px 20px 9px}
 .btn.red{background:var(--red);border-color:var(--red);color:#fff}
 .btns{display:flex;flex-direction:column;gap:10px;align-items:stretch;width:100%;max-width:300px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}.row .chip{white-space:nowrap;text-align:center;padding-left:6px;padding-right:6px}.row .chip:last-child:nth-child(odd){grid-column:1/-1}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}.row .chip{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;padding-left:6px;padding-right:6px}.row .chip:last-child:nth-child(odd){grid-column:1/-1}
 .chip{font-size:13px;letter-spacing:.12em;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 14px 7px;cursor:pointer}
 .chip:active{transform:scale(.96)}
 .mini{font-size:13px;color:var(--mut);letter-spacing:.08em;line-height:1.5}
@@ -148,7 +148,7 @@ summary::-webkit-details-marker{display:none}
 #kp{position:fixed;left:0;right:0;bottom:0;z-index:35;display:none;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px var(--sr) calc(var(--sb) + 6px) var(--sl);background:var(--card);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-radius:22px 22px 0 0}
 #kp button{font-size:28px;font-weight:300;height:56px;border-radius:14px;background:transparent;color:var(--fg);border:1px solid var(--line);cursor:pointer}
 #kp button:active{background:var(--fg);color:var(--bg)}
-body.kb #kp{display:grid}
+body.kb.play #kp{display:grid}
 #pick{position:fixed;z-index:37;display:none;flex-wrap:wrap;justify-content:center;gap:8px;padding:10px;max-width:min(92vw,340px);box-sizing:border-box;background:var(--card);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:2px solid var(--line);border-radius:16px;box-shadow:4px 4px 0 var(--line)}
 #pick.on{display:flex}
 #pick span{flex-basis:100%;text-align:center;font-size:13px;letter-spacing:.15em;color:var(--mut)}
@@ -200,7 +200,7 @@ body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + 270px)}
 .hm{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:2px;width:100%}
 .hm i,.hm2 i{aspect-ratio:1;background:color-mix(in srgb,var(--fg) 8%,transparent)}
 .hm2{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;width:100%;margin-top:8px}
-i.h1{background:color-mix(in srgb,var(--red) 30%,transparent)!important}i.h2{background:color-mix(in srgb,var(--red) 55%,transparent)!important}i.h3{background:color-mix(in srgb,var(--red) 80%,transparent)!important}i.h4{background:var(--red)!important}
+:is(i,.cd).h1{background:color-mix(in srgb,var(--red) 30%,transparent)!important}:is(i,.cd).h2{background:color-mix(in srgb,var(--red) 55%,transparent)!important}:is(i,.cd).h3{background:color-mix(in srgb,var(--red) 80%,transparent)!important}:is(i,.cd).h4{background:var(--red)!important}
 .heat{width:100%;display:flex;flex-direction:column;gap:6px;text-align:left}
 #exc{image-rendering:pixelated;image-rendering:crisp-edges;display:inline-block;filter:drop-shadow(0 0 6px var(--bg))}
 #exprw{transition:opacity .45s ease,filter .45s ease,transform .45s ease}
@@ -226,7 +226,7 @@ body.kb #kp button{animation:btnIn .35s ease backwards}
 @keyframes helpIn{0%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9)}100%{opacity:1;transform:translateX(-50%)}}
 @keyframes helpOut{100%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9)}}
 /* menú */
- #logoA{width:1.9em;height:1.9em;margin:-.6em -.28em -.2em;vertical-align:baseline;image-rendering:pixelated;image-rendering:crisp-edges}
+ #logoA{cursor:pointer;touch-action:manipulation;width:1.9em;height:1.9em;margin:-.6em -.28em -.2em;vertical-align:baseline;image-rendering:pixelated;image-rendering:crisp-edges}
 .ttl .z{color:var(--red);display:inline-block;animation:zWob 3.2s ease-in-out infinite;text-shadow:3px 3px 0 color-mix(in srgb,var(--red) 30%,transparent)}
 @keyframes zWob{0%,100%{transform:none}46%{transform:none}48%{transform:translate(2px,-1px) skewX(-6deg)}50%{transform:translate(-2px,1px)}52%{transform:none}}
 #bStart{font-size:20px;padding:18px 22px 15px;animation:btnIn .45s backwards,glowR 2.2s ease-in-out .6s infinite}
@@ -284,7 +284,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 #sOver #trDots span.done{background:var(--red);border-color:var(--fg)}
 #sOver #trDots span.boss{background:var(--fg)!important}#sOver #trDots span.boss.done{background:var(--red)!important}
 #sOver .hm i,#sOver .hm2 i{background:transparent;box-shadow:inset 0 0 0 1px var(--fg)}
-#sOver i.h1{background:color-mix(in srgb,var(--red) 40%,var(--bg))!important}#sOver i.h2{background:color-mix(in srgb,var(--red) 65%,var(--bg))!important}#sOver i.h3{background:color-mix(in srgb,var(--red) 85%,var(--bg))!important}#sOver i.h4{background:var(--red)!important}
+#sOver :is(i,.cd).h1{background:color-mix(in srgb,var(--red) 40%,var(--bg))!important}#sOver :is(i,.cd).h2{background:color-mix(in srgb,var(--red) 65%,var(--bg))!important}#sOver :is(i,.cd).h3{background:color-mix(in srgb,var(--red) 85%,var(--bg))!important}#sOver :is(i,.cd).h4{background:var(--red)!important}
 #sOver .heat{border:2px solid var(--fg);padding:8px;box-sizing:border-box}
 #sOver .heat .mini{color:var(--fg);opacity:.9}
 
@@ -323,7 +323,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 .sr{position:fixed;left:0;top:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;padding:0;margin:-1px}
 #srOn:focus{clip-path:none;width:auto;height:auto;margin:0;z-index:60;left:8px;top:8px;padding:10px 14px;background:var(--fg);color:var(--bg);font:14px var(--f-ui)}
 body.a11y :focus-visible{outline:3px solid var(--red)!important;outline-offset:2px}
-body:not(.a11y) #bAch1{grid-column:1/-1}
+#bAch1,#bAch2,#bA11y1,#bA11y2,#bLang2{grid-column:1/-1}
 /* poder del arcoíris */
 /* panel de poderes: los 7 colores del arcoíris en columna a la izquierda */
 #pdock{position:fixed;left:var(--sl);top:30%;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:3px;pointer-events:none}
@@ -389,6 +389,37 @@ body:not(.play) #pdock{display:none}
 /* final */
 #sEnd .card{gap:14px}#sEnd .dead{font-size:clamp(28px,8.5vw,60px)}
 #sEnd.show .dead{animation:stamp .6s cubic-bezier(.2,1.6,.4,1) .5s both}
+
+/* progreso: matriz y calendario comparten un marco de alto fijo; cambiar de pestaña o de mes no mueve nada */
+.heat{--hmH:138px}#sOver .heat{--hmH:112px}
+.hmV{height:var(--hmH);display:flex;flex-direction:column;gap:3px;width:100%;min-width:0;animation:fadeUp .3s both}
+.mxM{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:2px;margin-left:15px;height:11px;font-size:9px;line-height:11px;color:var(--mut);text-transform:uppercase;white-space:nowrap;overflow:visible}
+.mxB{flex:1;display:flex;gap:3px;min-height:0}
+.mxW{display:grid;grid-template-rows:repeat(7,minmax(0,1fr));gap:2px;width:12px;font-size:8px;line-height:1;color:var(--mut);align-items:center;text-align:center}
+.hmV .hm{flex:1;height:100%;margin:0!important;grid-template-rows:repeat(7,minmax(0,1fr));grid-template-columns:repeat(20,minmax(0,1fr));grid-auto-flow:column;gap:2px!important}
+.hmV .hm i{aspect-ratio:auto!important;min-height:0}
+.hmV .hm i.f{background:transparent!important;box-shadow:none!important}
+.hmV .hm i.td,.hmV .cal .cd.td{outline:2px solid var(--fg);outline-offset:-2px;box-shadow:none!important}
+#sOver .hmV .hm i.td,#sOver .hmV .cal .cd.td{outline-color:var(--red)}
+.hmV .calH{height:22px;flex:none}.hmV .calB{padding:2px 10px 0;height:22px}
+.hmV .cal{flex:1;min-height:0;grid-template-rows:12px repeat(6,minmax(0,1fr));gap:2px!important}
+.hmV .cal .wd{padding:0;font-size:9px;line-height:12px}
+.hmV .cal .cd{aspect-ratio:auto!important;min-height:0}
+.hmV .cal .cd b{font-size:9px!important}
+.hmS{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;width:100%}
+.hmS span{border:1px solid var(--line);padding:4px 3px 3px;text-align:center;font-size:9px;line-height:1.25;letter-spacing:.06em;color:var(--mut);overflow-wrap:anywhere}
+.hmS b{color:var(--red);font-size:13px;font-weight:400;letter-spacing:0}
+#sOver .hmS span{border-color:var(--fg)}
+
+#sEgg{z-index:46}#sEgg .card{gap:10px;background:var(--bg)}
+#eggX{font-size:clamp(34px,9vw,56px);font-weight:300;line-height:1.1;text-align:center;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+#eggX .q,#eggX .q2{color:var(--red)}
+#eggPre{text-align:center;color:var(--fg)}#eggPre .mx{font-size:1em;margin:0 .2em}#eggPre .fr{font-size:.8em}
+#eggIn{width:min(220px,100%);box-sizing:border-box;font:28px var(--f-ui,inherit);text-align:center;padding:8px 10px 4px;background:transparent;color:var(--fg);border:2px solid var(--fg);box-shadow:4px 4px 0 var(--line);outline:none}
+#eggIn:focus{border-color:var(--red)}#eggIn::placeholder{font-size:13px;letter-spacing:.1em;color:var(--mut)}
+#eggMsg{min-height:2.6em;text-align:center}#eggMsg.ok{color:var(--fg)}#eggMsg.bad{color:var(--red)}
+#logoA.poke{animation:poke .5s}
+@keyframes poke{0%,100%{transform:none}20%{transform:rotate(-14deg) scale(1.15)}45%{transform:rotate(11deg) scale(1.1)}70%{transform:rotate(-6deg)}}
 </style>
 
 <button id="srOn" class="sr">Activar modo para lector de pantalla</button><div id="live" class="sr" role="alert" aria-live="assertive"></div><div id="live2" class="sr" role="status" aria-live="polite"></div>
@@ -445,6 +476,7 @@ body:not(.play) #pdock{display:none}
   <div class="screen" id="sEnd"><div class="card"><div class="mini">e^iπ + 1 = 0</div><h2 class="ttl" id="eT1"></h2><h2 class="dead" id="eT2"></h2><div class="mini" id="eStats"></div><div class="btns"><button class="btn red" id="bEndInf">MODO ∞</button><button class="btn alt" id="bEndMenu">MENÚ</button></div></div></div>
   <div id="intro"><div id="introCap" aria-hidden="true"></div><button class="chip" id="bSkip">SALTAR ▸</button></div>
   <div id="achT" class="hud" aria-hidden="true"></div>
+  <div class="screen" id="sEgg" role="dialog" aria-modal="true" aria-labelledby="eggTtl"><div class="card"><div class="mini" id="eggK"></div><h2 class="ttl" id="eggTtl"></h2><div id="eggPre" class="mini"></div><div id="eggX"></div><input id="eggIn" inputmode="decimal" autocomplete="off" spellcheck="false"><div class="mini" id="eggMsg" aria-live="polite"></div><div class="btns"><button class="btn red" id="bEggGo"></button><button class="btn alt" id="bEggBack">← OK</button></div></div></div>
   <div class="screen" id="sLang"><div class="card"><h2 class="ttl" id="langTtl">🌐</h2><div id="langGrid"></div><button class="btn alt" id="bLangBack">← OK</button></div></div>
   <div class="screen" id="sOver"><div class="card">
     <h2 class="dead" id="oTtl">TE COMIERON</h2>
@@ -1632,7 +1664,7 @@ function L10(k,v){
 const L10list=k=>L10(k).split(';').map(x=>x.trim()).filter(Boolean);
 
 // textos de contenido (lecciones, explicaciones, leyes, animaciones): CES = español; CT[idioma] = traducción
-const CES={"c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 16 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS","cnoprob":"Te atraparon antes del primer problema.","cera":"era {0}","cxera":"✕ ERA {0}","cescribo":"ESCRIBO {0}","a_first":"PRIMER PASO","ad_first":"Acierta tu primer problema","a_st5":"EN RACHA","ad_st5":"5 aciertos seguidos","a_st10":"IMPARABLE","ad_st10":"10 aciertos seguidos","a_st25":"MENTE DE ACERO","ad_st25":"25 aciertos seguidos","a_k50":"CAZAZOMBIS","ad_k50":"Elimina 50 zombis","a_k500":"APOCALIPSIS AL REVÉS","ad_k500":"Elimina 500 zombis","a_boss":"CAZAJEFES","ad_boss":"Vence a un jefe","a_prof":"MATEMÁTICO","ad_prof":"Vence al profesor de matemáticas","a_esc":"ESCAPISTA","ad_esc":"Suéltate de un zombi que te atrapó","a_web":"SIN TELARAÑAS","ad_web":"Escapa de la telaraña de una araña","a_creep":"DESACTIVADOR","ad_creep":"Elimina un creeper antes de que explote","a_ender":"NO ME MIRES","ad_ender":"Elimina a un enderman","a_pow":"ARCOÍRIS","ad_pow":"Usa un poder","a_pow7":"LOS SIETE COLORES","ad_pow7":"Usa los 7 poderes","a_fast":"RELÁMPAGO","ad_fast":"Acierta en menos de 2 segundos","a_perf":"SIN UN RASGUÑO","ad_perf":"Pasa un nivel sin fallar","a_lv8":"MEDIO CAMINO","ad_lv8":"Llega al nivel 8","a_days7":"CONSTANCIA","ad_days7":"Juega 7 días seguidos","a_hole":"HORIZONTE DE SUCESOS","ad_hole":"Agranda el agujero negro del menú al máximo","a_egg":"MIRA LAS ESTRELLAS","ad_egg":"Descubre la constelación de un científico","n_ach":"LOGROS","n_achGot":"¡LOGRO DESBLOQUEADO!","n_achN":"{0} DE {1}","n_mat":"MATRIZ","n_cal":"CALENDARIO","n_a11y":"ACCESIBLE","n_a11yOn":"Modo accesible activado. El juego se narra con tu lector de pantalla y va más lento. Responde con el teclado numérico de abajo.","n_a11yOff":"Modo accesible desactivado.","n_a11yBtn":"Activar modo para lector de pantalla","n_sayProb":"{0}. Responde.","n_ok":"¡Correcto!","n_bad":"Fallaste. Era {0}.","n_grab":"¡Te atrapó {0}! Responde rápido para soltarte.","n_level":"Nivel {0}: {1}.","n_near":"{0} cerca, a tu {1}.","n_left":"izquierda","n_right":"derecha","n_kinds":"zombi;esqueleto;araña;creeper;enderman;jefe;profesor de matemáticas","n_minus":"menos","n_dot":"punto","n_hearts":"Te queda {0} corazón.","n_skip":"SALTAR ▸","n_intro":"VER INTRO","n_powGot":"¡PODER {0}!","n_powUse":"Toca el botón de color o la barra espaciadora para usarlo.","n_powBtn":"Usar poder: {0}","n_shield":"¡ESCUDO!","n_dodge":"¡SE TELETRANSPORTÓ!","n_frozen":"¡CONGELADO!","p_r":"ROJO · FURIA","pa_r":"Meteorito gigante por 12 s","pd_r":"Los zombis corren más rápido","p_o":"NARANJA · ESCUDO","pa_o":"Bloquea el próximo golpe","pd_o":"Problemas más difíciles hasta que se rompa","p_y":"AMARILLO · RAYO","pa_y":"Fulmina a todos los zombis","pd_y":"Llegan el doble durante 10 s","p_g":"VERDE · PISTA","pa_g":"Ves la primera cifra por 20 s","pd_g":"Te cuesta más soltarte","p_b":"AZUL · HIELO","pa_b":"Congela a los enemigos 8 s","pd_b":"Congelados, el meteorito no los rompe","p_i":"AÑIL · CÁMARA LENTA","pa_i":"Los enemigos van a media velocidad 12 s","pd_i":"Necesitas un acierto más en el nivel","p_v":"VIOLETA · AGUJERO NEGRO","pa_v":"Se traga a los enemigos cercanos","pd_v":"El espacio-tiempo se deforma 10 s","n_spider":"<b>ARAÑA</b> · lanza telaraña: te atrapa y tienes que resolver un problema para salir.","n_creeper":"<b>CREEPER</b> · se acerca y explota: ¡aléjate saltando o elimínalo antes!","n_ender":"<b>ENDERMAN</b> · no te persigue: aparece de repente donde menos debe.","n_webbed":"¡ATRAPADA EN LA TELARAÑA!","n_webSub":"RESUELVE PARA SALIR","n_fuse":"¡Un creeper va a explotar a tu {0}!","n_boom":"¡BUM!","n_boomT":"¡BUM! TE EXPLOTÓ UN CREEPER","n_prof":"EL PROFESOR DE MATEMÁTICAS","n_laugh":"¡JA, JA, JA!","n_profT":"¡SAQUEN UNA HOJA: EXAMEN SORPRESA!;ESO NO ENTRA… ¡EN EL EXAMEN SÍ!;CERO. OTRA VEZ CERO;¿Y EL PROCEDIMIENTO?;LA TAREA ERA PARA AYER;NADIE SALE HASTA QUE RESUELVA;REPROBADA, MANZANITA","i1":"Un día, el mundo sufrió una explosión atómica.","i2":"Detrás de todo estaba el villano: el profesor de matemáticas… y su ejército de zombis.","i3":"Desde la estación espacial enviaron a la Tierra la última esperanza…","i4":"…una manzana. La misma que le cayó a Newton. Vence al profesor.","e1":"GRACIAS POR JUGAR","e2":"AHORA ERES MATEMÁTICO","e3":"{0} aciertos · {1} zombis · {2} logros","n_to":"elevado a"};
+const CES={"c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 16 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS","cnoprob":"Te atraparon antes del primer problema.","cera":"era {0}","cxera":"✕ ERA {0}","cescribo":"ESCRIBO {0}","a_first":"PRIMER PASO","ad_first":"Acierta tu primer problema","a_st5":"EN RACHA","ad_st5":"5 aciertos seguidos","a_st10":"IMPARABLE","ad_st10":"10 aciertos seguidos","a_st25":"MENTE DE ACERO","ad_st25":"25 aciertos seguidos","a_k50":"CAZAZOMBIS","ad_k50":"Elimina 50 zombis","a_k500":"APOCALIPSIS AL REVÉS","ad_k500":"Elimina 500 zombis","a_boss":"CAZAJEFES","ad_boss":"Vence a un jefe","a_prof":"MATEMÁTICO","ad_prof":"Vence al profesor de matemáticas","a_esc":"ESCAPISTA","ad_esc":"Suéltate de un zombi que te atrapó","a_web":"SIN TELARAÑAS","ad_web":"Escapa de la telaraña de una araña","a_creep":"DESACTIVADOR","ad_creep":"Elimina un creeper antes de que explote","a_ender":"NO ME MIRES","ad_ender":"Elimina a un enderman","a_pow":"ARCOÍRIS","ad_pow":"Usa un poder","a_pow7":"LOS SIETE COLORES","ad_pow7":"Usa los 7 poderes","a_fast":"RELÁMPAGO","ad_fast":"Acierta en menos de 2 segundos","a_perf":"SIN UN RASGUÑO","ad_perf":"Pasa un nivel sin fallar","a_lv8":"MEDIO CAMINO","ad_lv8":"Llega al nivel 8","a_days7":"CONSTANCIA","ad_days7":"Juega 7 días seguidos","a_hole":"HORIZONTE DE SUCESOS","ad_hole":"Agranda el agujero negro del menú al máximo","a_egg":"MIRA LAS ESTRELLAS","ad_egg":"Descubre la constelación de un científico","n_ach":"LOGROS","n_achGot":"¡LOGRO DESBLOQUEADO!","n_achN":"{0} DE {1}","n_mat":"MATRIZ","n_cal":"CALENDARIO","n_a11y":"ACCESIBLE","n_a11yOn":"Modo accesible activado. El juego se narra con tu lector de pantalla y va más lento. Responde con el teclado numérico de abajo.","n_a11yOff":"Modo accesible desactivado.","n_a11yBtn":"Activar modo para lector de pantalla","n_sayProb":"{0}. Responde.","n_ok":"¡Correcto!","n_bad":"Fallaste. Era {0}.","n_grab":"¡Te atrapó {0}! Responde rápido para soltarte.","n_level":"Nivel {0}: {1}.","n_near":"{0} cerca, a tu {1}.","n_left":"izquierda","n_right":"derecha","n_kinds":"zombi;esqueleto;araña;creeper;enderman;jefe;profesor de matemáticas","n_minus":"menos","n_dot":"punto","n_hearts":"Te queda {0} corazón.","n_skip":"SALTAR ▸","n_intro":"VER INTRO","n_powGot":"¡PODER {0}!","n_powUse":"Toca el botón de color o la barra espaciadora para usarlo.","n_powBtn":"Usar poder: {0}","n_shield":"¡ESCUDO!","n_dodge":"¡SE TELETRANSPORTÓ!","n_frozen":"¡CONGELADO!","p_r":"ROJO · FURIA","pa_r":"Meteorito gigante por 12 s","pd_r":"Los zombis corren más rápido","p_o":"NARANJA · ESCUDO","pa_o":"Bloquea el próximo golpe","pd_o":"Problemas más difíciles hasta que se rompa","p_y":"AMARILLO · RAYO","pa_y":"Fulmina a todos los zombis","pd_y":"Llegan el doble durante 10 s","p_g":"VERDE · PISTA","pa_g":"Ves la primera cifra por 20 s","pd_g":"Te cuesta más soltarte","p_b":"AZUL · HIELO","pa_b":"Congela a los enemigos 8 s","pd_b":"Congelados, el meteorito no los rompe","p_i":"AÑIL · CÁMARA LENTA","pa_i":"Los enemigos van a media velocidad 12 s","pd_i":"Necesitas un acierto más en el nivel","p_v":"VIOLETA · AGUJERO NEGRO","pa_v":"Se traga a los enemigos cercanos","pd_v":"El espacio-tiempo se deforma 10 s","n_spider":"<b>ARAÑA</b> · lanza telaraña: te atrapa y tienes que resolver un problema para salir.","n_creeper":"<b>CREEPER</b> · se acerca y explota: ¡aléjate saltando o elimínalo antes!","n_ender":"<b>ENDERMAN</b> · no te persigue: aparece de repente donde menos debe.","n_webbed":"¡ATRAPADA EN LA TELARAÑA!","n_webSub":"RESUELVE PARA SALIR","n_fuse":"¡Un creeper va a explotar a tu {0}!","n_boom":"¡BUM!","n_boomT":"¡BUM! TE EXPLOTÓ UN CREEPER","n_prof":"EL PROFESOR DE MATEMÁTICAS","n_laugh":"¡JA, JA, JA!","n_profT":"¡SAQUEN UNA HOJA: EXAMEN SORPRESA!;ESO NO ENTRA… ¡EN EL EXAMEN SÍ!;CERO. OTRA VEZ CERO;¿Y EL PROCEDIMIENTO?;LA TAREA ERA PARA AYER;NADIE SALE HASTA QUE RESUELVA;REPROBADA, MANZANITA","i1":"Un día, el mundo sufrió una explosión atómica.","i2":"Detrás de todo estaba el villano: el profesor de matemáticas… y su ejército de zombis.","i3":"Desde la estación espacial enviaron a la Tierra la última esperanza…","i4":"…una manzana. La misma que le cayó a Newton. Vence al profesor.","e1":"GRACIAS POR JUGAR","e2":"AHORA ERES MATEMÁTICO","e3":"{0} aciertos · {1} zombis · {2} logros","n_to":"elevado a","n_eggK":"EL PROFESOR TE RETA","n_eggPh":"Tu respuesta","n_eggGo":"RESPONDER","n_eggNew":"OTRO PROBLEMA","n_eggOk":"¡CORRECTO! Ya estás listo para el profesor.","n_eggBad":"Incorrecto. Era {0}."};
 const CT={};
 // las traducciones del contenido se descargan solo para el idioma elegido (i18n/xx.json)
 async function loadCT(l){if(l.startsWith('es')||CT[l])return false;for(const b of['i18n/','web/i18n/']){try{const r=await fetch(b+l+'.json');if(r.ok){CT[l]=await r.json();return true}}catch(e){}}return false}
@@ -5069,25 +5101,18 @@ function ukeShape(ch){return voice(ch,70,4).concat(ch.r+24>78?[]:[ch.r+24]).slic
 /* ---------- 13 géneros ---------- */
 // cada parte de batería: [pieza, patrón de 16 pasos (. g o x X), kit opcional, base=1 si suena también en la intro]
 const G2={
-percusion:{name:'PERCUSIÓN',bpm:[100,112],swing:.08,div:4,kit:'kit',sets:['kit','bass','marimba','xylo'],
-  drums:[['kick','X.....x.X..x....',0,1],['snare','....X.......X...',0,1],['hat','x.o.x.o.x.o.x.o.',0,1],['ghost','.......g.......g'],['ohat','..............o.'],
-    ['bongoHi','.x.x.....x.x....'],['bongoLo','.....x.......x..'],['bongoSlap','.......x........'],['conga','......x...x...x.'],['congaSlap','..o.......o.....'],
-    ['cowbell','x...x...x...x...'],['claves','x..x..x...x.x...'],['guiro','..o.......o.....'],['tamb','....o.......o...'],['shaker','.o.o.o.o.o.o.o.o']],
-  progs:[['Am','F','G','Em'],['Dm','F','G','Am'],['Em','G','Am','D']],lead:{inst:'xylo',c:79,v:.7,len:1.2},
-  step(c){if(!c.intro)for(const[st,l]of[[0,3],[6,2],[10,4]])if(c.s===st)sNote('bass',c.t,c.ch.r-12,c.sd*l*.9,.85,pan('bass'));
-    if(!c.intro&&(c.s===4||c.s===12))voice(c.ch,64).forEach((m,i)=>sNote('marimba',c.t+i*.006,m,c.sd*2,.45,pan('marimba')))}},
-hiphop:{name:'HIP HOP',bpm:[84,93],swing:.2,div:4,kit:'kit',sets:['kit','bass','epiano','piano'],
+hiphop:{name:'HIP HOP / RAP',leads:['piano','epiano','violin','glock'],bpm:[84,93],swing:.2,div:4,kit:'kit',sets:['kit','bass','epiano','piano'],
   drums:[['kick','X......x..x.....',0,1],['snare','....X.......X...',0,1],['hat','x.o.x.o.x.o.x.o.',0,1],['ohat','..............o.'],['bongoHi','..o......o....o.'],['bongoLo','...o..o........o'],['rim','..........o.....']],
   progs:[['Dm7','Bbmaj7','Gm7','A7'],['Em7','Cmaj7','Am7','B7'],['Cm7','Abmaj7','Fm7','G7']],lead:{inst:'piano',c:79,v:.5,len:1.6,coro:1},
   step(c){if(c.s===0)voice(c.ch,62).forEach((m,i)=>sNote('epiano',c.t+.018+i*.012,m,c.sd*15,.55,pan('epiano')));
     if(!c.intro)for(const[st,l]of[[0,6],[7,2],[10,4]])if(c.s===st)sNote('bass',c.t,c.ch.r-12,c.sd*l*.85,.9,pan('bass'))}},
-regueton:{name:'REGUETÓN',bpm:[90,98],swing:0,div:4,kit:'kit808',sets:['kit808','kit','synbass','nylon','synth'],
+regueton:{name:'REGUETÓN',leads:['synth','nylon','marimba','glock'],bpm:[90,98],swing:0,div:4,kit:'kit808',sets:['kit808','kit','synbass','nylon','synth'],
   drums:[['kick','X...X...X...X...',0,1],['snare','...x..x....x..x.',0,1],['clap','...o.......o....'],['hat','x.x.x.x.x.x.x.xo',0,1],
     ['bongoHi','..o....o..o....o','kit'],['bongoLo','.....o.......o..','kit'],['conga','......o.......o.','kit'],['shaker','.o.o.o.o.o.o.o.o']],
   progs:[['Am','F','C','G'],['Dm','Bb','F','C'],['Em','C','G','D']],lead:{inst:'synth',c:76,v:.5,len:1.4,coro:1},
   step(c){if(!c.intro)for(const st of[0,3,8,11])if(c.s===st)sNote('synbass',c.t,c.ch.r-12,c.sd*2.6,.95,pan('synbass'));
     const ar=voice(c.ch,64,3),ord=[0,1,2,1,0,2,1,2];if(c.s%2===0)sNote('nylon',c.t,ar[ord[(c.s>>1)%8]]+12,c.sd*3,.55,pan('nylon'))}},
-salsa:{name:'SALSA',bpm:[176,194],swing:0,div:2,kit:'kit',sets:['kit','piano','bass','brass'],
+salsa:{name:'SALSA',leads:['brass','piano','violin'],bpm:[176,194],swing:0,div:2,kit:'kit',sets:['kit','piano','bass','brass'],
   drums:[['bongoHi','XoxoxoxoXoxoxoxo',0,1],['bongoSlap','...x.......x....'],['bongoLo','.......x.......x'],['claves','x..x..x...x.x...',0,1],['congaSlap','..x.......x.....'],
     ['conga','......x.......x.'],['congaHi','.......x.......x'],['shaker','xoxoxoxoxoxoxoxo'],['wood','x.xx.x.xx.x.xx.x'],['kick','...o.......o....']],
   progs:[['C','F','G','F'],['Am','Dm','E7','Am'],['G','C','D7','C']],lead:{inst:'brass',c:74,v:.75,len:1.1,coro:1},
@@ -5096,69 +5121,127 @@ salsa:{name:'SALSA',bpm:[176,194],swing:0,div:2,kit:'kit',sets:['kit','piano','b
     const mont=[[hi,hi+12],v,[hi+12],v,[hi,hi+12],v,[hi+12],voice(c.nx,67,3)];if(!c.intro&&[0,1,3,4,6,7].includes(sIn))mont[sIn].forEach(m=>sNote('piano',c.t,m,c.sd*.85,.6,pan('piano')));
     if(sIn===3)sNote('bass',c.t,c.ch.r-12+7,c.sd*2.8,.9,pan('bass'));if(sIn===6)sNote('bass',c.t,c.nx.r-12,c.sd*2.6,.95,pan('bass'));
     if(c.coro&&(c.s===2||c.s===5))voice(c.ch,72,3).forEach(m=>sNote('brass',c.t,m,c.sd*.8,.7,pan('brass')))}},
-cumbia:{name:'CUMBIA',bpm:[92,100],swing:0,div:4,kit:'kit',sets:['kit','bass','accordion','steel'],
+cumbia:{name:'CUMBIA',leads:['accordion','synth','brass'],bpm:[92,100],swing:0,div:4,kit:'kit',sets:['kit','bass','accordion','steel'],
   drums:[['guiro','X.oxX.oxX.oxX.ox',0,1],['kick','X.......X.......',0,1],['clap','....o.......o...'],['conga','...x..xx...x..xx'],['shaker','x.o.x.o.x.o.x.o.'],['cowMute','..o.......o.....'],['cajon','x.......x..x....']],
   progs:[['G','C','D','G'],['Am','Dm','E','Am'],['C','F','G','C']],lead:{inst:'accordion',c:74,v:.6,len:1.3},major:1,
   step(c){if(!c.intro)for(const[st,iv]of[[0,0],[4,7],[8,0],[12,7]])if(c.s===st)sNote('bass',c.t,c.ch.r-12+iv,c.sd*2.6,.9,pan('bass'));
     if(c.s%4===2)strum('steel',c.t,gtrShape(c.ch).slice(2),c.sd*.7,.5,c.s%8===2?1:-1,.008)}},
-rock:{name:'ROCK',bpm:[118,134],swing:0,div:4,kit:'kit',sets:['kit','bass','drive'],
+rock:{name:'ROCK',leads:['drive','eguitar','piano'],bpm:[118,134],swing:0,div:4,kit:'kit',sets:['kit','bass','drive'],
   drums:[['kick','X.....x.X.x.....',0,1],['snare','....X.......X...',0,1],['hat','x.x.x.x.x.x.x.x.',0,1],['ohat','..............o.']],
   progs:[['E','C','G','D'],['A','F','C','G'],['D','Bb','F','C']],lead:{inst:'drive',c:71,v:.55,len:1.6,coro:1},
   step(c){const r=c.ch.r<52?c.ch.r:c.ch.r-12,pc=[r,r+7,r+12];
     if(!c.intro&&c.s%2===0)sNote('bass',c.t,r-12,c.sd*1.7,.9,pan('bass'));
     if(c.coro){if(c.s===0||c.s===8)strum('drive',c.t,pc,c.sd*7.5,.75,1,.006)}
     else if(c.s%2===0&&!c.intro)strum('drive',c.t,pc,c.sd*.9,.55,1,.004,{lp:2600})}},
-chip:{name:'SYNTHWAVE',bpm:[100,112],swing:0,div:4,kit:'kit808',sets:['kit808','synth','synbass','glock','strings'],
-  drums:[['kick','X.......X.......',0,1],['snare','....X.......X...',0,1],['hat','x.x.x.x.x.x.x.x.',0,1],['clap','....o.......o...'],['ohat','..o...o...o...o.']],
-  progs:[['Am','F','C','G'],['Em','C','G','D'],['Dm','Bb','F','C']],lead:{inst:'glock',c:84,v:.6,len:1.4},
-  step(c){const ar=[0,c.ch.iv[1],7,12];sNote('synth',c.t,c.ch.r+12+ar[c.s%4],c.sd*.8,.35,pan('synth'),{lp:3500});
-    if(!c.intro&&c.s%2===0)sNote('synbass',c.t,c.ch.r-12+(c.s%4?12:0),c.sd*1.6,.85,pan('synbass'));
-    if(c.s===0)voice(c.ch,64).forEach(m=>sNote('strings',c.t,m,c.sd*15,.3,pan('strings'),{att:.25,rel:.6}))}},
-trap:{name:'TRAP',bpm:[136,148],swing:0,div:4,kit:'kit808',sets:['kit808','glock','strings'],trap:1,deep:1,
-  drums:[['kick','X......x..x.....',0,1],['clap','........X.......',0,1],['snare','........x.......'],['hat','xoxoxoxoxoxoxoxo',0,1]],
-  progs:[['Am','F','Dm','E'],['Em','C','G','B'],['Dm','A','Bb','A']],lead:{inst:'glock',c:84,v:.55,len:1.5},
-  step(c){if(c.s===0)voice(c.ch,60).forEach(m=>sNote('strings',c.t,m,c.sd*15,.35,pan('strings'),{att:.4,rel:.8}));
-    if(!c.intro&&!c.brk&&!c.bd&&(c.s===0||c.s===7||c.s===10))INST.sub(c.t,.95,MUS.bus,c.ch.r-12)}},
-session:{name:'SESSION',bpm:[122,128],swing:0,div:4,kit:'kit808',sets:['kit808','synth','strings'],session:1,deep:1,
-  drums:[['kick','X...X...X...X...',0,1],['clap','....X.......X...',0,1],['hat','..x...x...x...x.'],['hat','.o.o.o.o.o.o.o.o'],['ohat','..............o.']],
-  progs:[['Am','F','G','Em'],['Dm','F','C','G'],['Em','C','D','Bm']],lead:{inst:'synth',c:76,v:.5,len:1.1},
-  step(c){if(c.s%4===2&&!c.intro)voice(c.ch,67).forEach(m=>sNote('synth',c.t,m,c.sd*1.2,.35,pan('synth'),{lp:4200}));
-    if(c.s===0)voice(c.ch,60).forEach(m=>sNote('strings',c.t,m,c.sd*15,.25,pan('strings'),{att:.3,rel:.6}))}},
-jazz:{name:'JAZZ',bpm:[124,148],swing:.33,div:4,kit:'kit',sets:['kit','upright','piano','brass'],
+jazz:{name:'JAZZ',leads:['piano','brass','xylo','epiano'],bpm:[124,148],swing:.33,div:4,kit:'kit',sets:['kit','upright','piano','brass'],
   drums:[['ride','x...x.o.x...x.o.',0,1],['phat','....x.......x...',0,1],['kick','g...g...g...g...'],['ghost','.......g..g.....']],
   progs:[['Dm7','G7','Cmaj7','A7'],['Em7','A7','Dm7','G7'],['Gm7','C7','Fmaj7','D7'],['Cm7','F7','Bbmaj7','G7']],lead:{inst:'piano',c:76,v:.6,len:.9,swingLead:1},
   step(c){// bajo que camina en negras: fundamental, nota del acorde, quinta y aproximación cromática al siguiente
     if(c.s%4===0&&!c.intro){const k=c.s/4,r=c.ch.r-12,tgt=c.nx.r-12,ns=[r,r+c.ch.iv[1],r+7,tgt+(tgt>r?-1:1)];sNote('upright',c.t,ns[k],c.sd*3.6,.85,pan('upright'))}
     if(c.s===0||c.s===6){const v=voice(c.ch,62);sNote('piano',c.t,v[1],c.sd*(c.s?2:1.5),.45,pan('piano'));sNote('piano',c.t,v[v.length-1],c.sd*(c.s?2:1.5),.42,pan('piano'))}
     if(c.coro&&(c.s===14))voice(c.nx,70,3).forEach(m=>sNote('brass',c.t,m,c.sd*1.5,.55,pan('brass')))}},
-bossa:{name:'BOSSA NOVA',bpm:[128,140],swing:0,div:4,kit:'kit',sets:['kit','nylon','upright','violin'],
-  drums:[['rim','x..x..x...x..x..',0,1],['shaker','xoxoxoxoxoxoxoxo',0,1],['kick','x..o....x..o....']],
-  progs:[['Cmaj7','Am7','Dm7','G7'],['Fmaj7','Dm7','Gm7','C7'],['Am7','D7','Gmaj7','E7']],lead:{inst:'violin',c:74,v:.45,len:2,coro:1,legato:1},major:1,
-  step(c){const bn=c.ch.r<52?c.ch.r:c.ch.r-12;if(c.s===0||c.s===8)sNote('nylon',c.t,bn,c.sd*3.6,.6,pan('nylon'));if(c.s===4||c.s===12)sNote('nylon',c.t,bn+7,c.sd*3.6,.5,pan('nylon'));
-    if([0,3,6,10,13].includes(c.s))voice(c.ch,62,4).forEach((m,i)=>sNote('nylon',c.t+i*.004,m,c.sd*2.2,.45,pan('nylon')));
-    if(!c.intro){if(c.s===0||c.s===8)sNote('upright',c.t,c.ch.r-12,c.sd*5.5,.8,pan('upright'));if(c.s===6||c.s===14)sNote('upright',c.t,c.ch.r-12+7,c.sd*1.8,.7,pan('upright'))}}},
-funk:{name:'FUNK',bpm:[100,112],swing:.05,div:4,kit:'kit',sets:['kit','bass','eguitar','epiano','brass'],
+funk:{name:'FUNK',leads:['brass','synth','epiano','eguitar'],bpm:[100,112],swing:.05,div:4,kit:'kit',sets:['kit','bass','eguitar','epiano','brass'],
   drums:[['kick','X..x..x...x.....',0,1],['snare','....X..g.g..X..g',0,1],['hat','xoxoxoxoxoxoxoxo',0,1],['ohat','..........o.....'],['tamb','....o.......o...']],
   progs:[['E9','E9','A9','A9'],['Dm7','Dm7','G9','G9'],['Am7','D9','Am7','D9']],lead:{inst:'brass',c:74,v:.65,len:.8,coro:1},
   step(c){if(!c.intro)for(const[st,l,iv]of[[0,2,0],[3,1,0],[6,1,12],[7,1,0],[10,2,0],[13,1,10],[14,1,12]])if(c.s===st)sNote('bass',c.t,c.ch.r-12+iv,c.sd*l*.8,.95,pan('bass'));
     const sh=gtrShape(c.ch).slice(2,5);if(c.s%2===1||[2,6,10,14].includes(c.s))strum('eguitar',c.t,sh,c.s%4===2?c.sd*.9:.05,c.s%4===2?.6:.35,c.s%2?-1:1,.005);
     if(c.s===3||c.s===11)voice(c.ch,64).forEach(m=>sNote('epiano',c.t,m,c.sd*.9,.5,pan('epiano')))}},
-ukulele:{name:'UKELELE POP',bpm:[100,116],swing:0,div:4,kit:'kit',sets:['kit','nylon','bass','glock'],
+ukulele:{name:'POP',leads:['glock','piano','synth','violin'],bpm:[100,116],swing:0,div:4,kit:'kit',sets:['kit','nylon','bass','glock'],
   drums:[['kick','X.......x.x.....',0,1],['clap','....X.......X...',0,1],['tambShake','..o...o...o...o.'],['shaker','.o.o.o.o.o.o.o.o']],
   progs:[['C','G','Am','F'],['G','D','Em','C'],['F','C','Dm','Bb']],lead:{inst:'glock',c:84,v:.55,len:1.3,coro:1},major:1,
   step(c){// rasgueo de ukelele: abajo, abajo-arriba, arriba-abajo-arriba (cuerdas de nylon agudas, cortas)
     const st={0:1,4:1,6:-1,10:-1,12:1,14:-1};if(st[c.s])strum('nylon',c.t,ukeShape(c.ch),.32,st[c.s]>0?.6:.42,st[c.s],.012,{lp:6500});
     if(!c.intro&&(c.s===0||c.s===8||c.s===14))sNote('bass',c.t,c.ch.r-12+(c.s===14?(c.nx.r>c.ch.r?-1:2):0),c.sd*(c.s===14?1.6:5),.8,pan('bass'))}},
+rocknroll:{name:'ROCK AND ROLL',bpm:[164,180],swing:.28,div:4,kit:'kit',sets:['kit','bass','piano','eguitar'],opt:['drive'],major:1,
+  drums:[['kick','X.......X.......',0,1],['snare','....X.......X...',0,1],['hat','x.x.x.x.x.x.x.x.',0,1],['ohat','..............o.'],['tamb','....o.......o...'],['clap','....o.......o...']],
+  progs:[['A','A','A','A','D','D','A','A','E','D','A','E'],['C','C','C','C','F','F','C','C','G','F','C','G'],['E','E','E','E','A','A','E','E','B','A','E','B']],
+  lead:{inst:'piano',c:76,v:.6,len:1,coro:1},leads:['piano','brass','eguitar','drive'],
+  step(c){// boogie: el bajo sube y baja por el acorde en corcheas; el piano martilla el acorde
+    const r=c.ch.r-12,up=[0,4,7,9,10,9,7,4];if(!c.intro&&c.s%2===0)sNote('bass',c.t,r+up[c.s>>1],c.sd*1.7,.85,pan('bass'));
+    if(!c.intro&&c.s%2===0)voice(c.ch,64,3).forEach(m=>sNote('piano',c.t,m,c.sd*.8,c.s%4?.32:.48,pan('piano')));
+    if(c.s%4===0){const g=c.ch.r<52?c.ch.r+12:c.ch.r;strum('eguitar',c.t,[g-12,g-5,g+(c.s%8?-3:0)],c.sd*1.6,.45,1,.005)}}},
+blues:{name:'BLUES',bpm:[72,84],swing:.33,div:2,kit:'kit',sets:['kit','upright','eguitar','piano'],opt:['drive','brass'],
+  drums:[['kick','X...X...X...X...',0,1],['snare','..X...X...X...X.',0,1],['ride','xoxoxoxoxoxoxoxo',0,1],['ghost','.....g.......g..'],['phat','..x...x...x...x.']],
+  progs:[['E7','E7','E7','E7','A7','A7','E7','E7','B7','A7','E7','B7'],['A7','D7','A7','A7','D7','D7','A7','A7','E7','D7','A7','E7'],['G7','G7','G7','G7','C7','C7','G7','G7','D7','C7','G7','D7']],
+  lead:{inst:'eguitar',c:72,v:.6,len:1.4},leads:['eguitar','piano','drive','brass'],
+  step(c){// shuffle: bajo que sube y baja (1-3-5-6-b7) y guitarra que alterna quinta y sexta
+    const sIn=c.s%8,r=c.ch.r-12,up=[0,4,7,9,10,9,7,4];if(!c.intro)sNote('upright',c.t,r+up[sIn],c.sd*.95,.8,pan('upright'));
+    const g=c.ch.r<50?c.ch.r+12:c.ch.r;strum('eguitar',c.t,[g,g+[7,7,9,9,7,7,10,9][sIn]],c.sd*.8,sIn%2?.3:.45,1,.004,{lp:3000});
+    if(c.coro&&(sIn===2||sIn===6))voice(c.ch,67,4).forEach(m=>sNote('piano',c.t,m,c.sd*.7,.4,pan('piano')))}},
+country:{name:'COUNTRY',bpm:[108,122],swing:0,div:4,kit:'kit',sets:['kit','bass','steel','violin'],opt:['accordion'],major:1,
+  drums:[['kick','X.......X.......',0,1],['snare','....X.......X...',0,1],['ghost','.g.g.g.g.g.g.g.g',0,1],['shaker','x.x.x.x.x.x.x.x.'],['tamb','....o.......o...']],
+  progs:[['G','C','D','G'],['D','G','A','D'],['C','F','G','C'],['A','D','E','A']],
+  lead:{inst:'violin',c:76,v:.5,len:1.2},leads:['violin','steel','accordion','piano'],
+  step(c){// bum-chic: bajo en 1 y 3 (fundamental y quinta), guitarra de acero rasgueando en 2 y 4
+    if(!c.intro&&(c.s===0||c.s===8))sNote('bass',c.t,c.ch.r-12+(c.s?-5:0),c.sd*3.5,.85,pan('bass'));
+    const sh=gtrShape(c.ch);if(c.s===0||c.s===8)sNote('steel',c.t,sh[0],c.sd*2,.5,pan('steel'));
+    if(c.s===4||c.s===12)strum('steel',c.t,sh.slice(2),c.sd*1.2,.5,1,.009);if(c.s===6||c.s===14)strum('steel',c.t,sh.slice(3),c.sd*.8,.32,-1,.008)}},
+rnb:{name:'R&B',bpm:[68,78],swing:.12,div:4,kit:'kit808',sets:['kit808','synbass','epiano'],opt:['strings','synth','violin'],
+  drums:[['kick','X......x.X......',0,1],['clap','....X.......X...',0,1],['hat','x.x.x.x.xxx.x.x.',0,1],['rim','..........x.....'],['ohat','..............o.'],['shaker','.o.o.o.o.o.o.o.o','kit']],
+  progs:[['Fmaj7','Em7','Dm7','Cmaj7'],['Abmaj7','Gm7','Fm7','Bb7'],['Cmaj7','Am7','Dm7','G9'],['Ebmaj7','Dm7','Cm7','F9']],
+  lead:{inst:'epiano',c:74,v:.5,len:1.6},leads:['epiano','synth','violin','glock'],
+  step(c){// acordes largos de piano eléctrico, bajo sintético pegado al bombo y redobles de hi-hat en tresillo
+    if(c.s===0||c.s===10)voice(c.ch,62).forEach((m,i)=>sNote('epiano',c.t+.02+i*.014,m,c.sd*(c.s?6:9),c.s?.38:.5,pan('epiano')));
+    if(!c.intro&&[0,7,9].includes(c.s))sNote('synbass',c.t,c.ch.r-12,c.sd*(c.s?1.8:5),.9,pan('synbass'));
+    if(!c.intro&&c.s===14&&R()<.5)for(const k of[1,2])dr('kit808','hat',c.t+c.sd*k/3,.3)}},
+soul:{name:'SOUL',bpm:[92,104],swing:.08,div:4,kit:'kit',sets:['kit','bass','piano','brass'],opt:['strings','violin','epiano'],
+  drums:[['kick','X.....x...x.....',0,1],['snare','....X.......X...',0,1],['hat','x.x.x.x.x.x.x.x.',0,1],['tamb','....x.......x...'],['ohat','..............o.']],
+  progs:[['C','Am','F','G'],['Dm7','G7','Cmaj7','Am7'],['F','Em7','Dm7','C'],['Bb','F','Gm7','C7']],
+  lead:{inst:'brass',c:74,v:.6,len:1.2},leads:['brass','piano','violin','epiano'],
+  step(c){// piano góspel en los tiempos 2 y 4, bajo melódico y metales que responden en el coro
+    if(!c.intro)for(const[st,l,iv]of[[0,3,0],[6,1,12],[8,2,7],[10,2,0],[14,1,c.nx.r>c.ch.r?-1:1]])if(c.s===st)sNote('bass',c.t,c.ch.r-12+iv,c.sd*l*.85,.9,pan('bass'));
+    if(c.s===4||c.s===12||c.s===0)voice(c.ch,64,4).forEach((m,i)=>sNote('piano',c.t+i*.008,m,c.sd*(c.s?1.6:3),c.s?.48:.36,pan('piano')));
+    if(c.coro&&(c.s===6||c.s===7))voice(c.ch,70,3).forEach(m=>sNote('brass',c.t,m,c.sd*.7,.55,pan('brass')))}},
+disco:{name:'DISCO',bpm:[116,124],swing:0,div:4,kit:'kit',sets:['kit','bass','eguitar','strings'],opt:['brass','synth','violin'],
+  drums:[['kick','X...X...X...X...',0,1],['clap','....X.......X...',0,1],['ohat','..x...x...x...x.',0,1],['hat','x.x.x.x.x.x.x.x.'],['tamb','.o.o.o.o.o.o.o.o'],['cowbell','x.......x.......']],
+  progs:[['Am7','Dm7','Am7','Dm7'],['Fmaj7','Em7','Dm7','Em7'],['Cm7','Fm7','Cm7','G7'],['Dm7','G9','Cmaj7','Am7']],
+  lead:{inst:'strings',c:79,v:.45,len:1.4},leads:['strings','brass','synth','violin'],
+  step(c){// bajo de octavas que bombea, guitarra «chicken scratch» y cuerdas que barren en el coro
+    if(!c.intro&&c.s%2===0)sNote('bass',c.t,c.ch.r-12+(c.s%4?12:0),c.sd*1.4,.9,pan('bass'));
+    if(c.s%2===1)strum('eguitar',c.t,gtrShape(c.ch).slice(2,5),.05,.32,c.s%4===1?1:-1,.004);
+    if(c.s===0&&(c.coro||c.sec%2))voice(c.ch,64).forEach(m=>sNote('strings',c.t,m,c.sd*15,.3,pan('strings'),{att:.2,rel:.5}))}},
+house:{name:'HOUSE',bpm:[122,126],swing:0,div:4,kit:'kit808',sets:['kit808','piano','synbass'],opt:['synth','strings','glock'],
+  drums:[['kick','X...X...X...X...',0,1],['clap','....X.......X...',0,1],['ohat','..x...x...x...x.',0,1],['hat','x.x.x.x.x.x.x.x.'],['shaker','.o.o.o.o.o.o.o.o'],['rim','...x......x..x..']],
+  progs:[['Am7','Fmaj7','Dm7','Em7'],['Cm7','Abmaj7','Fm7','G7'],['Dm9','Gm7','Am7','Gm7']],
+  lead:{inst:'synth',c:76,v:.45,len:1.2,coro:1},leads:['synth','piano','glock','strings'],
+  step(c){// piano house: acordes sincopados y bajo sintético a contratiempo
+    if(!c.intro&&[0,3,6,10,13].includes(c.s))voice(c.ch,64,4).forEach(m=>sNote('piano',c.t,m,c.sd*1.1,.5,pan('piano')));
+    if(!c.intro&&c.s%4===2)sNote('synbass',c.t,c.ch.r-12,c.sd*1.5,.9,pan('synbass'))}},
+techno:{name:'TECHNO',bpm:[128,134],swing:0,div:4,kit:'kit808',sets:['kit808','synth','synbass'],opt:['strings','glock'],
+  drums:[['kick','X...X...X...X...',0,1],['ohat','..x...x...x...x.',0,1],['hat','x.x.x.x.x.x.x.x.'],['clap','....x.......x...'],['rim','.x..x..x.x..x..x'],['shaker','oooooooooooooooo']],
+  progs:[['Am','Am','Am','Am'],['Am','Am','F','G'],['Dm','Dm','Bb','C'],['Em','Em','Em','C']],
+  lead:{inst:'glock',c:84,v:.4,len:1.2,coro:1},leads:['glock','strings','synth'],
+  step(c){// secuencia de 16 pasos que se abre poco a poco y bajo retumbando entre bombos
+    const sq=[0,12,0,7,0,10,0,3,0,12,7,0,10,0,3,7];sNote('synth',c.t,c.ch.r+12+sq[c.s],c.sd*.7,.32,pan('synth'),{lp:700+(c.bar%8)*450});
+    if(!c.intro&&c.s%4)sNote('synbass',c.t,c.ch.r-12,c.sd*.8,.5+(c.s%4===2?.2:0),pan('synbass'),{rel:.04})}},
+reggae:{name:'REGGAE',bpm:[72,80],swing:.12,div:4,kit:'kit',sets:['kit','bass','eguitar','epiano'],opt:['brass','glock'],major:1,
+  drums:[['kick','........X.......',0,1],['rim','........X.......',0,1],['hat','x.o.x.o.x.o.x.o.',0,1],['ohat','......o.......o.'],['shaker','.o.o.o.o.o.o.o.o']],
+  progs:[['C','F','G','F'],['Am','D','Am','D'],['G','Em','C','D'],['Dm','G','Dm','G']],
+  lead:{inst:'brass',c:74,v:.55,len:1.4,coro:1},leads:['brass','epiano','glock','xylo'],
+  step(c){// one drop: rasgueo corto a contratiempo, órgano que burbujea y bajo profundo
+    if(c.s===4||c.s===12)strum('eguitar',c.t,voice(c.ch,67,3),.09,.55,-1,.004);
+    if(c.s%4===2)voice(c.ch,60,3).forEach(m=>sNote('epiano',c.t,m,c.sd*.6,.3,pan('epiano')));
+    if(!c.intro)for(const[st,l,iv]of[[0,4,0],[6,2,7],[10,2,12],[13,2,7]])if(c.s===st)sNote('bass',c.t,c.ch.r-12+iv,c.sd*l*.9,.95,pan('bass'))}},
+ska:{name:'SKA',bpm:[156,170],swing:0,div:4,kit:'kit',sets:['kit','bass','eguitar','brass'],opt:['piano','xylo'],major:1,
+  drums:[['kick','X.......X.......',0,1],['snare','....X.......X...',0,1],['hat','x.x.x.x.x.x.x.x.',0,1],['ohat','..o...o...o...o.']],
+  progs:[['C','Am','F','G'],['G','Em','C','D'],['F','Dm','Bb','C'],['D','Bm','G','A']],
+  lead:{inst:'brass',c:74,v:.65,len:1},leads:['brass','piano','xylo','synth'],
+  step(c){// guitarra y piano en el contratiempo y bajo que camina en negras
+    if(c.s%4===2){strum('eguitar',c.t,voice(c.ch,67,3),.07,.6,-1,.003);if(c.coro)voice(c.ch,72,3).forEach(m=>sNote('piano',c.t,m,c.sd*.6,.35,pan('piano')))}
+    if(c.s%4===0&&!c.intro){const k=c.s/4,r=c.ch.r-12,tgt=c.nx.r-12,ns=[r,r+c.ch.iv[1],r+7,tgt+(tgt>r?-1:1)];sNote('bass',c.t,ns[k],c.sd*3.2,.85,pan('bass'))}}},
 };
 const GENRES2=Object.keys(G2);
-let LASTG2='';
+const GQ=[];
+function genreNew(not){
+  if(!GQ.length)GQ.push(...[...GENRES2].sort(()=>R()-.5));let i=GQ.findIndex(x=>x!==not);if(i<0)i=0;const id=GQ.splice(i,1)[0];
+  const d=G2[id],prog=pick(d.progs).map(chd);
+  return{kind:'genre',genre:id,def:d,bpm:ri(d.bpm[0],d.bpm[1]),swing:d.swing,div:d.div,len:16,prog,sets:d.sets,motif:newMotif(),seed:ri(0,9),
+    opt:[...new Set([...(d.opt||[]),...(d.leads||[])])].filter(x=>!d.sets.includes(x)),
+    drums:d.drums.map(([p,s,k,base])=>({p,v:pat(s),kit:k||d.kit,base:!!base}))};
+}
 function newGroove2(boss){
   if(boss)return newScore(S.topic&&S.topic.final?'toccata':plNext('boss'),true);
-  if(boss!==null)return newScore(plNext('game'),false);
-  let id;do{id=pick(GENRES2)}while(id===LASTG2&&GENRES2.length>1);LASTG2=id;
-  const d=G2[id],prog=pick(d.progs).map(chd);
-  return{kind:'genre',genre:id,def:d,bpm:ri(d.bpm[0],d.bpm[1]),swing:d.swing,div:d.div,len:16,prog,sets:d.sets,motif:newMotif(),
-    drums:d.drums.map(([p,s,k,base])=>({p,v:pat(s),kit:k||d.kit,base:!!base}))};
+  return genreNew(MUS.groove&&MUS.groove.genre);
 }
 
 /* ---------- Mozart (menú) y Beethoven (jefes): partituras ---------- */
@@ -5310,20 +5393,25 @@ function musicStart2(g){
   MUS.id=setInterval(g.kind==='score'?scorePump:genrePump,25);
 }
 // melodía generada sobre notas del acorde (llamada y respuesta, motivo nuevo cada 16 compases)
+const LCFG={piano:{c:76,v:.55},epiano:{c:74,v:.5},brass:{c:74,v:.62},violin:{c:76,v:.45,legato:1},strings:{c:76,v:.4,legato:1},synth:{c:76,v:.42},glock:{c:84,v:.5},
+  xylo:{c:79,v:.6},marimba:{c:76,v:.6},eguitar:{c:71,v:.55},drive:{c:71,v:.48},steel:{c:74,v:.55},accordion:{c:74,v:.55},nylon:{c:72,v:.55}};
 function leadNote(c){
-  const L=c.g.def.lead;if(!L||c.intro||c.brk)return;if(L.coro&&!c.coro)return;
+  const d=c.g.def,L=d.lead;if(!L||c.intro||c.brk)return;if(L.coro&&!c.coro)return;
   const mb=c.bar%8,mi=c.g.motif[(c.s+(mb>=6?4:0))%16];if(mi<0||!(mb>=4||c.coro))return;
-  const iv=c.ch.iv,deg=[0,iv[1],iv[2],12,12+iv[1],12+iv[2]];let n=c.ch.r+deg[mi];while(n<L.c-7)n+=12;while(n>L.c+7)n-=12;
-  sNote(L.inst,c.t+(L.swingLead&&c.s%2?c.sd*.33:0),n,c.sd*(L.legato?3:L.len*1.6),L.v*(c.bd?.6:1),pan(L.inst),L.legato?{att:.06,rel:.3}:{})}
+  const ls=(d.leads||[L.inst]).filter(n=>SND.sets[n]),k=Math.floor(c.bar/8)+c.g.seed,iv=c.ch.iv,deg=[0,iv[1],iv[2],12,12+iv[1],12+iv[2]];
+  const play=(inst,up,vm)=>{const o=Object.assign({},L,LCFG[inst]);let n=c.ch.r+deg[mi];while(n<o.c-7)n+=12;while(n>o.c+7)n-=12;
+    sNote(inst,c.t+(L.swingLead&&c.s%2?c.sd*.33:0),n+up,c.sd*(o.legato?3:o.len*1.6),o.v*vm*(c.bd?.6:1),pan(inst),o.legato?{att:.06,rel:.3}:{})};
+  if(!ls.length)return play(L.inst,0,1);
+  play(ls[k%ls.length],0,1);if(c.coro&&ls.length>1)play(ls[(k+1)%ls.length],12,.45)}
 function genrePump(){
   if(!MUS.on||!AC||!MUS.bus||!MUS.groove||MUS.groove.kind!=='genre')return;
   const g=MUS.groove,ten=MUS.tension,bpm=g.bpm*(1+ten*.3),sd=60/bpm/g.div,d=g.def;
   while(MUS.nextT<AC.currentTime+.15){
     const s=MUS.step%16,t=MUS.nextT+(g.swing&&s%2?sd*g.swing:0);
     const brk=MUS.bar%16===15&&s>=8,sec=Math.floor(MUS.bar/4)%8,intro=MUS.bar<4,bd=sec===4,coro=sec>=6;
-    const ci=g.div===2?Math.floor(MUS.step/8)%4:MUS.bar%4,ch=g.prog[ci],nx=g.prog[(ci+1)%4];
+    const PL=g.prog.length,ci=g.div===2?Math.floor(MUS.step/8)%PL:MUS.bar%PL,ch=g.prog[ci],nx=g.prog[(ci+1)%PL];
     if(s===0&&MUS.bar%16===0&&MUS.bar>0)g.motif=newMotif();
-    for(const p of g.drums){const v=p.v[s];if(!v)continue;if(intro&&!p.base)continue;if(bd&&['kick','snare','clap'].includes(p.p))continue;if(brk&&p.p==='kick')continue;dr(p.kit,p.p,t,v)}
+    const blk=MUS.bar>>2;for(let pi=0;pi<g.drums.length;pi++){const p=g.drums[pi],v=p.v[s];if(!v)continue;if(intro&&!p.base)continue;if(!p.base&&!coro&&(blk*7+pi*13+g.seed)%10>6)continue;if(bd&&['kick','snare','clap'].includes(p.p))continue;if(brk&&p.p==='kick')continue;dr(p.kit,p.p,t,v)}
     // redobles de tom al cerrar cada 8 compases y platillo al empezar sección
     if(g.def.kit==='kit'&&MUS.bar%8===7&&s>=12&&!bd)dr('kit',s<13?'tomHi':s<15?'tomMid':'tomLo',t,.5+(s-12)*.12);
     if(s===0&&MUS.bar%4===0&&MUS.bar>0&&(sec===1||sec===5||sec===6))dr(g.def.kit==='kit808'?'kit808':'kit','crash',t,.6);
@@ -5336,7 +5424,10 @@ function genrePump(){
     // tensión (te agarraron): cencerro y matraca que apuran
     if(ten>0){if(s%4===0)dr('kit','cowbell',t,.4+ten*.4);if(ten>.55&&s%8===6)dr('kit','ratchet',t,.6)}
     const dz=MUS.danger||0;MUS.lp.frequency.setTargetAtTime(5200+dz*11000+ten*6000,AC.currentTime,.4);
-    MUS.step++;MUS.nextT+=sd;if(MUS.step%16===0)MUS.bar++;
+    MUS.step++;MUS.nextT+=sd;
+    if(MUS.step%16===0){MUS.bar++;const B=g.div===2?16:32;
+      if(MUS.bar===B-8&&!g.nx){g.nx=genreNew(g.genre);[...g.nx.sets,...g.nx.opt].forEach(sLoad)}
+      if(MUS.bar>=B&&g.nx&&g.nx.sets.every(n=>SND.sets[n])){MUS.groove=g.nx;MUS.step=0;MUS.bar=0;dr('kit','crash',MUS.nextT,.5);return}}
   }
 }
 // al terminar las vueltas de una obra no se repite: entra la siguiente de la lista
@@ -5915,17 +6006,29 @@ function record(ok,val){
 }
 const dayKey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function heatmap(el){
-  const days=SAVE.days||{},N=20*7,today=new Date();today.setHours(0,0,0,0);
-  const start=new Date(today);start.setDate(start.getDate()-(N-1)-today.getDay()+6-6);
-  let html='',tot=0,act=0,streak=0;
-  const cells=[];for(let i=0;i<N;i++){const d=new Date(today);d.setDate(today.getDate()-(N-1-i));const v=days[dayKey(d)]||0;tot+=v;if(v)act++;cells.push(v)}
-  for(let i=N-1;i>=0&&cells[i];i--)streak++;
-  const mx=Math.max(4,...cells);
-  html=cells.map((v,i)=>{const l=v?Math.min(4,1+Math.floor(3*v/mx)):0;return XL('c9aa89e',[l,v])}).join('');
+  const days=SAVE.days||{},today=new Date();today.setHours(0,0,0,0);
+  let tot=0,act=0,streak=0;for(const v of Object.values(days)){tot+=v;if(v)act++}
+  // la racha sigue viva si hoy todavía no jugaste
+  {const d=new Date(today);if(!days[dayKey(d)])d.setDate(d.getDate()-1);while(days[dayKey(d)]){streak++;d.setDate(d.getDate()-1)}}
   const sk=TOPICS.map(t=>{const v=skill(t.id),seen=SAVE.hist[t.id];const l=!seen?0:Math.min(4,1+Math.floor(v*4));return`<i class="h${l}" title="${t.name}: ${Math.round(v*100)} %"></i>`}).join('');
   const tabs=`<div class="hmTabs" role="tablist"><button class="chip hmTab${HEATV==='m'?' on':''}" data-v="m" role="tab" aria-selected="${HEATV==='m'}">▦ ${XL('n_mat')}</button><button class="chip hmTab${HEATV==='c'?' on':''}" data-v="c" role="tab" aria-selected="${HEATV==='c'}">▤ ${XL('n_cal')}</button></div>`;
-  let body=XL('cb49f85',[html,tot,act,streak,streak===1?'':'S',sk]);if(HEATV==='c')body=body.replace(/<div class="hm">[\s\S]*?<\/div>/,calHTML(el));
-  el.innerHTML=tabs+body;
+  const tmp=document.createElement('div');tmp.innerHTML=XL('cb49f85',['',tot,act,streak,streak===1?'':'S',sk]);
+  const mins=tmp.querySelectorAll('.mini'),stats=(mins[0]?mins[0].textContent:'').split(/\s*·\s*/).map(s=>`<span>${hx(s).replace(/\d+/,'<b>$&</b>')}</span>`).join('');
+  el.innerHTML=tabs+`<div class="hmV">${HEATV==='c'?calHTML(el):matHTML()}</div><div class="hmS">${stats}</div>`+(tmp.querySelector('.hm2')?tmp.querySelector('.hm2').outerHTML:'')+(mins[1]?mins[1].outerHTML:'');
+}
+// matriz: 20 semanas en columnas alineadas al primer día de la semana del país, con meses arriba y días a la izquierda
+function matHTML(){
+  const days=SAVE.days||{},W=20,loc=calLoc(),fd=firstDay(loc),today=new Date();today.setHours(0,0,0,0);const tk=dayKey(today);
+  const start=new Date(today);start.setDate(today.getDate()-(today.getDay()-fd+7)%7-7*(W-1));
+  const vals=Object.values(days),mx=Math.max(4,...(vals.length?vals:[0]));
+  let mf,wf;try{mf=new Intl.DateTimeFormat(loc,{month:'short'});wf=new Intl.DateTimeFormat(loc,{weekday:LANG==='zh'||LANG==='ja'||LANG==='ko'?'short':'narrow'})}catch(e){mf=new Intl.DateTimeFormat('en',{month:'short'});wf=new Intl.DateTimeFormat('en',{weekday:'narrow'})}
+  let mon='',cells='',lastM=-1;
+  for(let w=0;w<W;w++){const d0=new Date(start);d0.setDate(start.getDate()+w*7);const m=d0.getMonth();
+    if(m!==lastM){if(w<W-2&&!(w===0&&d0.getDate()>20))mon+=`<span style="grid-column:${w+1}/span 3">${hx(mf.format(d0).replace('.',''))}</span>`;lastM=m}}
+  for(let i=0;i<W*7;i++){const d=new Date(start);d.setDate(start.getDate()+i);if(d>today){cells+='<i class="f"></i>';continue}
+    const k=dayKey(d),v=days[k]||0,l=v?Math.min(4,1+Math.floor(3*v/mx)):0;cells+=XL('c9aa89e',[l,v]).replace(`class="h${l}"`,`class="h${l}${k===tk?' td':''}"`)}
+  const wd=[];for(let i=0;i<7;i++)wd.push(`<span>${i%2?'':hx(wf.format(new Date(2024,0,7+(fd+i)%7)))}</span>`);
+  return`<div class="mxM">${mon}</div><div class="mxB"><div class="mxW">${wd.join('')}</div><div class="hm">${cells}</div></div>`;
 }
 function wrongKind(val,ans,t){
   const A=String(Math.abs(ans)),V=String(Math.abs(val));
@@ -5951,7 +6054,7 @@ document.addEventListener('keydown',e=>{
   if(S.mode==='intro'&&(e.key==='Escape'||e.key==='Enter'||e.key===' ')){e.preventDefault();endIntro();return}
   if(e.key===' '&&S.mode==='play'&&S.pow&&!e.repeat){e.preventDefault();usePow();return}
   if(e.key==='Escape'){if(S.mode==='play')setMode('pause');else if(S.mode==='pause')setMode('play');return}
-  if(e.key==='Enter'&&S.mode==='title'){e.preventDefault();$('#bStart').click();return}
+  if(e.key==='Enter'&&S.mode==='title'&&!document.querySelector('#sEgg.show,#sAch.show,#sLang.show')){e.preventDefault();$('#bStart').click();return}
   if(e.key==='Enter'&&S.mode==='over'){e.preventDefault();$('#bCont').click();return}
   if(e.key==='Enter'&&S.mode==='lesson'){e.preventDefault();beginStage();return}
   if(e.key==='Enter'&&S.mode==='pause'){setMode('play');return}
@@ -7377,15 +7480,19 @@ function loop(t){
 let A11Y=false;try{A11Y=localStorage.getItem('rzA11y')==='1'}catch(e){}
 const liveA=$('#live'),liveP=$('#live2');
 function speak(txt,urgent){if(!A11Y||!txt)return;const el=urgent?liveA:liveP;txt=String(txt).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();el.textContent='';setTimeout(()=>{el.textContent=txt},40)}
-function setA11y(on){A11Y=!!on;try{localStorage.setItem('rzA11y',on?'1':'0')}catch(e){}
-  document.body.classList.toggle('a11y',A11Y);if(A11Y){document.body.classList.add('kb');padClear()}
+let KB0=false,A11YSET=false;try{A11YSET=localStorage.getItem('rzA11y')!=null}catch(e){}
+function setA11y(on,auto){const was=A11Y;A11Y=!!on;if(!auto)A11YSET=true;try{localStorage.setItem('rzA11y',on?'1':'0')}catch(e){}
+  document.body.classList.toggle('a11y',A11Y);if(A11Y&&!was)KB0=document.body.classList.contains('kb');
+  if(A11Y){document.body.classList.add('kb');padClear()}else if(was&&!KB0){document.body.classList.remove('kb');padClear()}
   syncChips();if(A11Y)speak(XL('n_a11yOn'),true);else{liveA.textContent=XL('n_a11yOff')}
   requestAnimationFrame(()=>{if(typeof fitCards==='function')fitCards()})}
 let lastPD=-1e9,lastKD=-1e9;
 for(const ev of['pointerdown','pointerup','touchend','mousedown'])addEventListener(ev,()=>{lastPD=performance.now()},true);
 addEventListener('keydown',()=>{lastKD=performance.now()},true);
-addEventListener('click',e=>{const n=performance.now();if(A11Y||!e.isTrusted||n-lastPD<900||n-lastKD<900)return;
-  if(e.target&&e.target.closest&&e.target.closest('button,summary,[role=slider]'))setA11y(true)},true);
+addEventListener('click',e=>{const n=performance.now();if(A11Y||A11YSET||!e.isTrusted||n-lastPD<900||n-lastKD<900)return;
+  if(e.target&&e.target.closest&&e.target.closest('button,summary,[role=slider]'))setA11y(true,1)},true);
+// al recargar con el modo ya activo, el teclado numérico tiene que estar desde el principio
+if(A11Y)document.body.classList.add('kb');
 $('#srOn').onclick=()=>setA11y(true);
 for(const i of[1,2])$('#bA11y'+i).onclick=()=>setA11y(!A11Y);
 // el teclado numérico también responde al «clic» del lector (que no manda toques)
@@ -7658,7 +7765,8 @@ function calHTML(el){const off=Math.min(0,+(el.dataset.mo||0)),now=new Date(),fi
   const wk=[];for(let i=0;i<7;i++)wk.push(`<span class="wd">${wf.format(new Date(2024,0,7+(fd+i)%7))}</span>`);
   const lead=(first.getDay()-fd+7)%7,nd=new Date(Y,M+1,0).getDate();let cells='';for(let i=0;i<lead;i++)cells+='<span class="cd e"></span>';
   for(let d=1;d<=nd;d++){const dt=new Date(Y,M,d),k=dayKey(dt),v=days[k]||0,l=v?Math.min(4,1+Math.floor(3*v/mx)):0;
-    cells+=`<span class="cd h${l}${k===tk?' td':''}" title="${v}"><b>${d}</b>${LANG==='zh'?`<small>${lunar(dt)}</small>`:''}</span>`}
+    cells+=`<span class="cd h${l}${k===tk?' td':''}" title="${LANG==='zh'?lunar(dt)+' · ':''}${v}"><b>${d}</b></span>`}
+  for(let i=lead+nd;i<42;i++)cells+='<span class="cd e"></span>';
   let ttl=mf.format(first);if(LANG==='zh'){const lm=(()=>{try{return new Intl.DateTimeFormat('zh-CN-u-ca-chinese',{month:'long',year:'numeric'}).format(new Date(Y,M,15))}catch(e){return''}})();if(lm)ttl+=` · 农历${lm}`}
   return`<div class="calH"><button class="chip calB" data-d="-1" aria-label="‹">‹</button><b>${ttl}</b><button class="chip calB" data-d="1" aria-label="›"${off>=0?' disabled':''}>›</button></div><div class="cal${LANG==='zh'?' zh':''}">${wk.join('')}${cells}</div>`}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.hmTab,.calB');if(!b)return;const el=b.closest('.heat');if(!el)return;e.preventDefault();
@@ -7769,7 +7877,39 @@ function setEnd(){if(S.mode!=='ending')return;$('#eT1').textContent=XL('e1');$('
 $('#bEndInf').onclick=()=>{S.stage=17;S.a.st='rest';startStage()};
 $('#bEndMenu').onclick=()=>toTitle();
 
-window.__G={unlock,usePow,grantPow,startIntro,startEnding,setA11y,webbed,heatmap,spawnZ,r2d2,laugh,POW,ACH,SND,sLoad,newGroove2,newScore,musicStart2,musicStop,G2,setMode,say,taunt,nearestZ,INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
+
+/* ============ Easter egg: la caca del título te reta con un problema de jefe final ============ */
+let EGGP=null,EGGD=false;
+function pooNew(){
+  const pool=TOPICS.slice(7),T=pick(pool),p=mkProb(T,T.x0,1);EGGP=p;EGGD=false;
+  $('#eggK').textContent=XL('n_eggK');$('#eggTtl').textContent=T.name;
+  $('#eggPre').innerHTML=p.pre?toHTML(p.pre):'';$('#eggPre').hidden=!p.pre;
+  $('#eggX').innerHTML=toHTML(p.k)+`<span>${hx(p.q.replace('?',''))}</span><span class="q">?</span>`;
+  const i=$('#eggIn');i.value='';i.placeholder=XL('n_eggPh');i.disabled=false;
+  const m=$('#eggMsg');m.textContent='';m.className='mini';$('#bEggGo').textContent=XL('n_eggGo');
+  speak(XL('n_eggK')+'. '+XL('n_sayProb',[speakQ(p)]),true);
+}
+function pooOpen(){
+  if(S.mode!=='title'||S.bhOn)return;LA.classList.remove('poke');void LA.offsetWidth;LA.classList.add('poke');
+  laugh(3);pooNew();const s=$('#sEgg');s.classList.add('show');s.inert=false;
+  requestAnimationFrame(()=>{fitCards();$('#eggIn').focus()});
+}
+function pooClose(){const s=$('#sEgg');s.classList.remove('show');s.inert=true}
+function pooCheck(){
+  if(!EGGP)return;if(EGGD){pooNew();requestAnimationFrame(()=>{fitCards();$('#eggIn').focus()});return}
+  const v=$('#eggIn').value.trim().replace(/\s+/g,'').replace(/,/g,'.').replace(/[−–]/g,'-');if(!v){$('#eggIn').focus();return}
+  let ok=EGGP.keys.includes(v);if(!ok){const f=/^(-?\d*\.?\d+)\/(-?\d*\.?\d+)$/.exec(v),n=f?f[1]/f[2]:Number(v);ok=isFinite(n)&&Math.abs(n-EGGP.ans)<=.011}
+  EGGD=true;$('#eggIn').disabled=true;const m=$('#eggMsg');
+  if(ok){m.className='mini ok';m.textContent=XL('n_eggOk');SFX.clear()}
+  else{m.className='mini bad';m.textContent=XL('n_eggBad',[fmt(EGGP.ans)])+' '+(EGGP.ex||[]).join(' ');SFX.err();laugh(4)}
+  speak(m.textContent,true);$('#bEggGo').textContent=XL('n_eggNew');requestAnimationFrame(fitCards);$('#bEggGo').focus();
+}
+LA.addEventListener('click',pooOpen);
+$('#bEggGo').onclick=pooCheck;$('#bEggBack').onclick=pooClose;
+$('#eggIn').addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'){e.preventDefault();pooCheck()}else if(e.key==='Escape')pooClose()});
+$('#sEgg').addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();pooClose()}});
+$('#sEgg').inert=true;
+window.__G={pooOpen,pooCheck,unlock,usePow,grantPow,startIntro,startEnding,setA11y,webbed,heatmap,spawnZ,r2d2,laugh,POW,ACH,SND,sLoad,newGroove2,newScore,musicStart2,musicStop,G2,setMode,say,taunt,nearestZ,INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};
 const fontsReady=Promise.race([Promise.all([document.fonts.load('16px "Pixelify Sans"'),document.fonts.load('8px Silkscreen')]).catch(()=>{}),new Promise(r=>setTimeout(r,2000))]);
 fontsReady.then(()=>{relayout();titleScene();setMode('title');requestAnimationFrame(loop)});
 })();

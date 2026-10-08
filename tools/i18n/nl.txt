@@ -414,3 +414,9 @@ e1|BEDANKT VOOR HET SPELEN
 e2|NU BEN JE WISKUNDIGE
 e3|{0} goed · {1} zombies · {2} prestaties
 n_to|tot de macht
+n_eggK|DE LERAAR DAAGT JE UIT
+n_eggPh|Jouw antwoord
+n_eggGo|ANTWOORDEN
+n_eggNew|NOG EEN
+n_eggOk|GOED! Je bent klaar voor de leraar.
+n_eggBad|Fout. Het was {0}.

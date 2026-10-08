@@ -414,3 +414,9 @@ e1|TAK FORDI DU SPILLEDE
 e2|NU ER DU MATEMATIKER
 e3|{0} rigtige · {1} zombier · {2} præstationer
 n_to|i
+n_eggK|LÆREREN UDFORDRER DIG
+n_eggPh|Dit svar
+n_eggGo|SVAR
+n_eggNew|EN TIL
+n_eggOk|RIGTIGT! Du er klar til læreren.
+n_eggBad|Forkert. Det var {0}.

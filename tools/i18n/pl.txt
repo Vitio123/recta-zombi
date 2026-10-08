@@ -414,3 +414,9 @@ e1|DZIĘKI ZA GRĘ
 e2|TERAZ JESTEŚ MATEMATYKIEM
 e3|{0} dobrych · {1} zombie · {2} osiągnięć
 n_to|do potęgi
+n_eggK|NAUCZYCIEL RZUCA CI WYZWANIE
+n_eggPh|Twoja odpowiedź
+n_eggGo|ODPOWIEDZ
+n_eggNew|NASTĘPNE
+n_eggOk|DOBRZE! Jesteś gotowy na nauczyciela.
+n_eggBad|Źle. To było {0}.

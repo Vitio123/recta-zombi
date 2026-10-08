@@ -414,3 +414,9 @@ e1|THANKS FOR PLAYING
 e2|NOW YOU'RE A MATHEMATICIAN
 e3|{0} correct · {1} zombies · {2} achievements
 n_to|to the power of
+n_eggK|THE TEACHER CHALLENGES YOU
+n_eggPh|Your answer
+n_eggGo|ANSWER
+n_eggNew|ANOTHER ONE
+n_eggOk|CORRECT! You're ready for the teacher.
+n_eggBad|Wrong. It was {0}.

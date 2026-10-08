@@ -414,3 +414,9 @@ e1|DANKE FÜRS SPIELEN
 e2|JETZT BIST DU MATHEMATIKER
 e3|{0} richtig · {1} Zombies · {2} Erfolge
 n_to|hoch
+n_eggK|DER LEHRER FORDERT DICH HERAUS
+n_eggPh|Deine Antwort
+n_eggGo|ANTWORTEN
+n_eggNew|NOCH EINE
+n_eggOk|RICHTIG! Du bist bereit für den Lehrer.
+n_eggBad|Falsch. Es war {0}.
