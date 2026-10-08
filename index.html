@@ -270,6 +270,18 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 #sOver .btn:hover,#sOver .btn:focus-visible{outline:none;transform:translate(-2px,-2px)}
 #sOver .btn:active{transform:translate(2px,2px)}
 @keyframes poke{50%{transform:translateX(4px)}}
+/* progreso de derrota: líneas siempre visibles (blanco en noche, negro en día) */
+#sOver .track{border-color:var(--fg);background:transparent}
+#sOver .track .line{height:4px;background:repeating-linear-gradient(90deg,var(--fg) 0 6px,transparent 6px 10px);opacity:1}
+#sOver .track .line i{background:var(--red);height:4px;box-shadow:0 0 0 1px var(--fg)}
+#sOver #trDots span{width:12px;height:12px;margin-left:-6px;top:26px;border:2px solid var(--fg);background:var(--bg);opacity:1}
+#sOver #trDots span.done{background:var(--red);border-color:var(--fg)}
+#sOver #trDots span.boss{background:var(--fg)!important}#sOver #trDots span.boss.done{background:var(--red)!important}
+#sOver .hm i,#sOver .hm2 i{background:transparent;box-shadow:inset 0 0 0 1px var(--fg)}
+#sOver i.h1{background:color-mix(in srgb,var(--red) 40%,var(--bg))!important}#sOver i.h2{background:color-mix(in srgb,var(--red) 65%,var(--bg))!important}#sOver i.h3{background:color-mix(in srgb,var(--red) 85%,var(--bg))!important}#sOver i.h4{background:var(--red)!important}
+#sOver .heat{border:2px solid var(--fg);padding:8px;box-sizing:border-box}
+#sOver .heat .mini{color:var(--fg);opacity:.9}
+
 </style>
 
 <div id="game">
