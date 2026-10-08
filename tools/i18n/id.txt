@@ -424,3 +424,53 @@ n_eEuc|EUCLIDES
 n_eCog|aku berpikir, maka aku ada
 n_eGcd|FPB(48, 18) = 6
 n_eggHint|GAMBAR JAWABANMU DI SINI
+a_st50|LEGENDA
+ad_st50|50 jawaban benar berturut-turut
+a_k100|SERATUS KEPALA
+ad_k100|Kalahkan 100 zombi
+a_lv4|PEMANASAN
+ad_lv4|Capai level 4
+a_lv12|HAMPIR KALKULUS
+ad_lv12|Capai level 12
+a_lv16|TATAP MUKA
+ad_lv16|Capai level 16, level sang guru
+a_inf|MELAMPAUI TAK HINGGA
+ad_inf|Mainkan mode ∞
+a_days3|KEBIASAAN
+ad_days3|Main 3 hari berturut-turut
+a_days30|SEBULAN MATEMATIKA
+ad_days30|Main 30 hari berturut-turut
+a_ok100|SERATUS BENAR
+ad_ok100|Kumpulkan total 100 jawaban benar
+a_ok1000|SERIBU NEURON
+ad_ok1000|Kumpulkan total 1000 jawaban benar
+a_die10|KERAS KEPALA
+ad_die10|Mati 10 kali dan terus bermain
+a_die50|ABADI (HAMPIR)
+ad_die50|Mati 50 kali
+a_night|BURUNG HANTU MATEMATIKA
+ad_night|Jawab benar antara tengah malam dan jam 5 pagi
+a_lang|POLIGLOT
+ad_lang|Ganti bahasa permainan
+a_theme|SIANG DAN MALAM
+ad_theme|Ganti tema
+a_apple|APEL LAIN
+ad_apple|Ganti warna apel
+a_tut|MURID
+ad_tut|Tonton contoh yang sudah diselesaikan
+a_poo|JANGAN SENTUH ITU
+ad_poo|Colek kotoran di judul
+a_share|TUKANG PAMER
+ad_share|Bagikan hasilmu
+a_neg|DI BAWAH NOL
+ad_neg|Jawab benar soal berjawaban negatif
+tip_k|KEMAJUANMU
+tip_weak|Topik terlemahmu adalah {0}: {1} % benar. Latih sebelum bos menyadarinya.
+tip_best|Rekormu level {0}. Berikutnya: {1}.
+tip_streak|Kamu sudah main {0} hari berturut-turut. Jangan putuskan rantainya.
+tip_nostreak|Main hari ini dan mulai rangkaian harian.
+tip_ach|Kamu punya {0} dari {1} pencapaian. Tantangan berikutnya: {2}.
+tip_pres|Tekanan di {0} %: setiap kekalahan membuat zombi lebih cepat.
+tip_kills|Kamu sudah mengalahkan {0} zombi. Mereka juga menghitung.
+tip_pow|Setiap {0} jawaban benar berturut-turut memberimu kekuatan pelangi.
+tip_draw|Gambar angka besar dan jelas: apel lebih memahamimu.

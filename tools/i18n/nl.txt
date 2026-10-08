@@ -424,3 +424,53 @@ n_eEuc|EUCLIDES
 n_eCog|ik denk, dus ik ben
 n_eGcd|ggd(48, 18) = 6
 n_eggHint|TEKEN HIER JE ANTWOORD
+a_st50|LEGENDE
+ad_st50|50 goed op rij
+a_k100|HONDERD HOOFDEN
+ad_k100|Versla 100 zombies
+a_lv4|OPWARMEN
+ad_lv4|Haal level 4
+a_lv12|BIJNA ANALYSE
+ad_lv12|Haal level 12
+a_lv16|OOG IN OOG
+ad_lv16|Haal level 16, het level van de leraar
+a_inf|VOORBIJ ONEINDIG
+ad_inf|Speel de ∞-modus
+a_days3|GEWOONTE
+ad_days3|Speel 3 dagen op rij
+a_days30|EEN MAAND WISKUNDE
+ad_days30|Speel 30 dagen op rij
+a_ok100|HONDERDTAL
+ad_ok100|In totaal 100 goede antwoorden
+a_ok1000|DUIZEND NEURONEN
+ad_ok1000|In totaal 1000 goede antwoorden
+a_die10|KOPPIG
+ad_die10|Ga 10 keer dood en speel door
+a_die50|ONSTERFELIJK (BIJNA)
+ad_die50|Ga 50 keer dood
+a_night|REKENUIL
+ad_night|Antwoord goed tussen middernacht en 5 uur 's ochtends
+a_lang|POLYGLOT
+ad_lang|Verander de taal van het spel
+a_theme|DAG EN NACHT
+ad_theme|Verander het thema
+a_apple|NOG EEN APPEL
+ad_apple|Verander de kleur van de appel
+a_tut|LEERLING
+ad_tut|Bekijk een uitgewerkt voorbeeld
+a_poo|NIET AANKOMEN
+ad_poo|Por in de drol van de titel
+a_share|OPSCHEPPER
+ad_share|Deel je resultaat
+a_neg|ONDER NUL
+ad_neg|Beantwoord een negatief antwoord goed
+tip_k|JOUW VOORTGANG
+tip_weak|Je zwakste onderwerp is {0}: {1} % goed. Oefen het voordat de baas het merkt.
+tip_best|Je record is level {0}. Hierna: {1}.
+tip_streak|Je speelt al {0} dagen op rij. Verbreek de reeks niet.
+tip_nostreak|Speel vandaag en begin een dagreeks.
+tip_ach|Je hebt {0} van de {1} prestaties. Volgende uitdaging: {2}.
+tip_pres|De druk staat op {0} %: elke nederlaag maakt de zombies sneller.
+tip_kills|Je hebt {0} zombies verslagen. Zij houden ook de tel bij.
+tip_pow|Elke {0} goede antwoorden op rij krijg je een regenboogkracht.
+tip_draw|Teken de cijfers groot en duidelijk: de appel begrijpt je beter.

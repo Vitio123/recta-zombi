@@ -424,3 +424,53 @@ n_eEuc|EUKLEIDÉS
 n_eCog|myslím, tedy jsem
 n_eGcd|NSD(48, 18) = 6
 n_eggHint|NAKRESLI ODPOVĚĎ SEM
+a_st50|LEGENDA
+ad_st50|50 správných odpovědí v řadě
+a_k100|STO HLAV
+ad_k100|Znič 100 zombíků
+a_lv4|ROZCVIČKA
+ad_lv4|Dosáhni úrovně 4
+a_lv12|SKORO ANALÝZA
+ad_lv12|Dosáhni úrovně 12
+a_lv16|TVÁŘÍ V TVÁŘ
+ad_lv16|Dosáhni úrovně 16, úrovně profesora
+a_inf|ZA NEKONEČNO
+ad_inf|Zahraj si režim ∞
+a_days3|ZVYK
+ad_days3|Hraj 3 dny po sobě
+a_days30|MĚSÍC MATIKY
+ad_days30|Hraj 30 dní po sobě
+a_ok100|STOVKA
+ad_ok100|Celkem 100 správných odpovědí
+a_ok1000|TISÍC NEURONŮ
+ad_ok1000|Celkem 1000 správných odpovědí
+a_die10|TVRDOHLAVÝ
+ad_die10|Zemři 10krát a hraj dál
+a_die50|NESMRTELNÝ (SKORO)
+ad_die50|Zemři 50krát
+a_night|MATEMATICKÁ SOVA
+ad_night|Odpověz správně mezi půlnocí a 5. hodinou ranní
+a_lang|POLYGLOT
+ad_lang|Změň jazyk hry
+a_theme|DEN A NOC
+ad_theme|Změň motiv
+a_apple|JINÉ JABLKO
+ad_apple|Změň barvu jablka
+a_tut|UČEŇ
+ad_tut|Podívej se na vyřešený příklad
+a_poo|NESAHEJ NA TO
+ad_poo|Šťouchni do hovínka v názvu
+a_share|CHVASTOUN
+ad_share|Sdílej svůj výsledek
+a_neg|POD NULOU
+ad_neg|Vyřeš příklad se záporným výsledkem
+tip_k|TVŮJ POKROK
+tip_weak|Tvé nejslabší téma je {0}: {1} % správně. Procvič ho, než si toho boss všimne.
+tip_best|Tvůj rekord je úroveň {0}. Dál: {1}.
+tip_streak|Hraješ už {0} dní po sobě. Nepřeruš sérii.
+tip_nostreak|Zahraj si dnes a začni sérii dní.
+tip_ach|Máš {0} z {1} úspěchů. Další výzva: {2}.
+tip_pres|Tlak je na {0} %: každá porážka zrychlí zombíky.
+tip_kills|Zničil jsi {0} zombíků. Oni to taky počítají.
+tip_pow|Za každých {0} správných odpovědí v řadě získáš duhovou sílu.
+tip_draw|Kresli čísla velká a zřetelná: jablko ti lépe rozumí.

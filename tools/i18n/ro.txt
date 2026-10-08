@@ -424,3 +424,53 @@ n_eEuc|EUCLID
 n_eCog|gândesc, deci exist
 n_eGcd|cmmdc(48, 18) = 6
 n_eggHint|DESENEAZĂ AICI RĂSPUNSUL
+a_st50|LEGENDĂ
+ad_st50|50 răspunsuri corecte la rând
+a_k100|O SUTĂ DE CAPETE
+ad_k100|Elimină 100 de zombi
+a_lv4|ÎNCĂLZIRE
+ad_lv4|Ajungi la nivelul 4
+a_lv12|APROAPE ANALIZĂ
+ad_lv12|Ajungi la nivelul 12
+a_lv16|FAȚĂ ÎN FAȚĂ
+ad_lv16|Ajungi la nivelul 16, nivelul profesorului
+a_inf|DINCOLO DE INFINIT
+ad_inf|Joacă modul ∞
+a_days3|OBICEI
+ad_days3|Joacă 3 zile la rând
+a_days30|O LUNĂ DE MATE
+ad_days30|Joacă 30 de zile la rând
+a_ok100|CENTURION
+ad_ok100|Strânge 100 de răspunsuri corecte
+a_ok1000|O MIE DE NEURONI
+ad_ok1000|Strânge 1000 de răspunsuri corecte
+a_die10|ÎNCĂPĂȚÂNAT
+ad_die10|Mori de 10 ori și continuă să joci
+a_die50|NEMURITOR (APROAPE)
+ad_die50|Mori de 50 de ori
+a_night|BUFNIȚA MATEMATICĂ
+ad_night|Răspunde corect între miezul nopții și ora 5
+a_lang|POLIGLOT
+ad_lang|Schimbă limba jocului
+a_theme|ZI ȘI NOAPTE
+ad_theme|Schimbă tema
+a_apple|ALT MĂR
+ad_apple|Schimbă culoarea mărului
+a_tut|UCENIC
+ad_tut|Privește un exemplu rezolvat
+a_poo|NU ATINGE AIA
+ad_poo|Împunge caca din titlu
+a_share|FĂLOS
+ad_share|Distribuie rezultatul
+a_neg|SUB ZERO
+ad_neg|Răspunde corect cu un număr negativ
+tip_k|PROGRESUL TĂU
+tip_weak|Tema ta cea mai slabă e {0}: {1} % corecte. Exersează înainte să observe șeful.
+tip_best|Recordul tău e nivelul {0}. Urmează: {1}.
+tip_streak|Joci de {0} zile la rând. Nu rupe seria.
+tip_nostreak|Joacă azi și începe o serie de zile.
+tip_ach|Ai {0} din {1} realizări. Următoarea provocare: {2}.
+tip_pres|Presiunea e la {0} %: fiecare înfrângere face zombii mai rapizi.
+tip_kills|Ai eliminat {0} zombi. Și ei țin socoteala.
+tip_pow|La fiecare {0} răspunsuri corecte la rând primești o putere curcubeu.
+tip_draw|Desenează cifrele mari și clare: mărul te înțelege mai bine.

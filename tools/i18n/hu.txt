@@ -424,3 +424,53 @@ n_eEuc|EUKLIDÉSZ
 n_eCog|gondolkodom, tehát vagyok
 n_eGcd|lnko(48, 18) = 6
 n_eggHint|RAJZOLD IDE A VÁLASZT
+a_st50|LEGENDA
+ad_st50|50 jó válasz egymás után
+a_k100|SZÁZ FEJ
+ad_k100|Győzz le 100 zombit
+a_lv4|BEMELEGÍTÉS
+ad_lv4|Érd el a 4. szintet
+a_lv12|MAJDNEM ANALÍZIS
+ad_lv12|Érd el a 12. szintet
+a_lv16|SZEMTŐL SZEMBE
+ad_lv16|Érd el a 16. szintet, a tanárét
+a_inf|A VÉGTELENEN TÚL
+ad_inf|Játssz ∞ módban
+a_days3|SZOKÁS
+ad_days3|Játssz 3 napig egymás után
+a_days30|EGY HÓNAP MATEK
+ad_days30|Játssz 30 napig egymás után
+a_ok100|SZÁZAS
+ad_ok100|Összesen 100 jó válasz
+a_ok1000|EZER NEURON
+ad_ok1000|Összesen 1000 jó válasz
+a_die10|MAKACS
+ad_die10|Halj meg 10-szer, és játssz tovább
+a_die50|HALHATATLAN (MAJDNEM)
+ad_die50|Halj meg 50-szer
+a_night|MATEKBAGOLY
+ad_night|Válaszolj jól éjfél és hajnali 5 között
+a_lang|POLIGLOTT
+ad_lang|Változtasd meg a játék nyelvét
+a_theme|NAPPAL ÉS ÉJSZAKA
+ad_theme|Változtasd meg a témát
+a_apple|MÁSIK ALMA
+ad_apple|Változtasd meg az alma színét
+a_tut|TANONC
+ad_tut|Nézz meg egy megoldott példát
+a_poo|NE NYÚLJ HOZZÁ
+ad_poo|Bökd meg a kakit a címben
+a_share|NAGYMENŐ
+ad_share|Oszd meg az eredményedet
+a_neg|NULLA ALATT
+ad_neg|Találj el egy negatív választ
+tip_k|A FEJLŐDÉSED
+tip_weak|A leggyengébb témád: {0}, {1} % jó válasz. Gyakorold, mielőtt a főnök észreveszi.
+tip_best|A rekordod a(z) {0}. szint. Következik: {1}.
+tip_streak|{0} napja játszol egymás után. Ne szakítsd meg a sorozatot.
+tip_nostreak|Játssz ma, és kezdj egy napi sorozatot.
+tip_ach|{1} eredményből {0} megvan. Következő kihívás: {2}.
+tip_pres|A nyomás {0} %: minden vereség gyorsabbá teszi a zombikat.
+tip_kills|{0} zombit győztél le. Ők is számolják.
+tip_pow|Minden {0} egymás utáni jó válaszért szivárványerőt kapsz.
+tip_draw|Rajzold a számokat nagyra és tisztán: az alma jobban megért.

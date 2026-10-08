@@ -424,3 +424,53 @@ n_eEuc|EUCLIDE
 n_eCog|je pense, donc je suis
 n_eGcd|PGCD(48, 18) = 6
 n_eggHint|DESSINE TA RÉPONSE ICI
+a_st50|LÉGENDE
+ad_st50|50 bonnes réponses d'affilée
+a_k100|CENT TÊTES
+ad_k100|Élimine 100 zombies
+a_lv4|ÉCHAUFFEMENT
+ad_lv4|Atteins le niveau 4
+a_lv12|PRESQUE LE CALCUL
+ad_lv12|Atteins le niveau 12
+a_lv16|FACE À FACE
+ad_lv16|Atteins le niveau 16, celui du prof
+a_inf|VERS L'INFINI ET AU-DELÀ
+ad_inf|Joue au mode ∞
+a_days3|HABITUDE
+ad_days3|Joue 3 jours d'affilée
+a_days30|UN MOIS DE MATHS
+ad_days30|Joue 30 jours d'affilée
+a_ok100|CENTURION
+ad_ok100|Cumule 100 bonnes réponses
+a_ok1000|MILLE NEURONES
+ad_ok1000|Cumule 1000 bonnes réponses
+a_die10|TÊTU
+ad_die10|Meurs 10 fois et continue à jouer
+a_die50|IMMORTEL (PRESQUE)
+ad_die50|Meurs 50 fois
+a_night|HIBOU DES MATHS
+ad_night|Réponds juste entre minuit et 5 h du matin
+a_lang|POLYGLOTTE
+ad_lang|Change la langue du jeu
+a_theme|JOUR ET NUIT
+ad_theme|Change le thème
+a_apple|UNE AUTRE POMME
+ad_apple|Change la couleur de la pomme
+a_tut|APPRENTI
+ad_tut|Regarde un exemple résolu
+a_poo|NE TOUCHE PAS ÇA
+ad_poo|Touche le caca du titre
+a_share|FRIMEUR
+ad_share|Partage ton résultat
+a_neg|SOUS ZÉRO
+ad_neg|Trouve une réponse négative
+tip_k|TA PROGRESSION
+tip_weak|Ton thème le plus faible est {0} : {1} % de réussite. Entraîne-toi avant que le boss le remarque.
+tip_best|Ton record est le niveau {0}. Ensuite : {1}.
+tip_streak|Tu joues depuis {0} jours d'affilée. Ne casse pas la série.
+tip_nostreak|Joue aujourd'hui pour commencer une série de jours.
+tip_ach|Tu as {0} succès sur {1}. Prochain défi : {2}.
+tip_pres|La pression est à {0} % : chaque défaite rend les zombies plus rapides.
+tip_kills|Tu as éliminé {0} zombies. Eux aussi tiennent les comptes.
+tip_pow|Tous les {0} bonnes réponses d'affilée, tu gagnes un pouvoir arc-en-ciel.
+tip_draw|Dessine les chiffres grands et nets : la pomme te comprend mieux.

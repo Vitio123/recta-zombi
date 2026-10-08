@@ -424,3 +424,53 @@ n_eEuc|EUCLIDE
 n_eCog|penso, dunque sono
 n_eGcd|MCD(48, 18) = 6
 n_eggHint|DISEGNA QUI LA RISPOSTA
+a_st50|LEGGENDA
+ad_st50|50 risposte giuste di fila
+a_k100|CENTO TESTE
+ad_k100|Elimina 100 zombi
+a_lv4|RISCALDAMENTO
+ad_lv4|Arriva al livello 4
+a_lv12|QUASI ANALISI
+ad_lv12|Arriva al livello 12
+a_lv16|FACCIA A FACCIA
+ad_lv16|Arriva al livello 16, quello del prof
+a_inf|OLTRE L'INFINITO
+ad_inf|Gioca la modalità ∞
+a_days3|ABITUDINE
+ad_days3|Gioca 3 giorni di fila
+a_days30|UN MESE DI MATE
+ad_days30|Gioca 30 giorni di fila
+a_ok100|CENTURIONE
+ad_ok100|Totalizza 100 risposte giuste
+a_ok1000|MILLE NEURONI
+ad_ok1000|Totalizza 1000 risposte giuste
+a_die10|TESTARDO
+ad_die10|Muori 10 volte e continua a giocare
+a_die50|IMMORTALE (QUASI)
+ad_die50|Muori 50 volte
+a_night|GUFO MATEMATICO
+ad_night|Rispondi giusto tra mezzanotte e le 5
+a_lang|POLIGLOTTA
+ad_lang|Cambia la lingua del gioco
+a_theme|GIORNO E NOTTE
+ad_theme|Cambia il tema
+a_apple|UN'ALTRA MELA
+ad_apple|Cambia il colore della mela
+a_tut|APPRENDISTA
+ad_tut|Guarda un esempio risolto
+a_poo|NON TOCCARLA
+ad_poo|Tocca la cacca del titolo
+a_share|SBRUFFONE
+ad_share|Condividi il tuo risultato
+a_neg|SOTTO ZERO
+ad_neg|Indovina una risposta negativa
+tip_k|I TUOI PROGRESSI
+tip_weak|Il tuo argomento più debole è {0}: {1} % di risposte giuste. Esercitati prima che il boss se ne accorga.
+tip_best|Il tuo record è il livello {0}. Prossimo: {1}.
+tip_streak|Giochi da {0} giorni di fila. Non rompere la serie.
+tip_nostreak|Gioca oggi e inizia una serie di giorni.
+tip_ach|Hai {0} trofei su {1}. Prossima sfida: {2}.
+tip_pres|La pressione è al {0} %: ogni sconfitta rende gli zombi più veloci.
+tip_kills|Hai eliminato {0} zombi. Anche loro tengono il conto.
+tip_pow|Ogni {0} risposte giuste di fila ottieni un potere arcobaleno.
+tip_draw|Disegna i numeri grandi e chiari: la mela ti capisce meglio.

@@ -424,3 +424,53 @@ n_eEuc|EUKLEIDES
 n_eCog|jag tänker, alltså finns jag
 n_eGcd|sgd(48, 18) = 6
 n_eggHint|RITA DITT SVAR HÄR
+a_st50|LEGEND
+ad_st50|50 rätt i rad
+a_k100|HUNDRA HUVUDEN
+ad_k100|Besegra 100 zombier
+a_lv4|UPPVÄRMNING
+ad_lv4|Nå nivå 4
+a_lv12|NÄSTAN ANALYS
+ad_lv12|Nå nivå 12
+a_lv16|ANSIKTE MOT ANSIKTE
+ad_lv16|Nå nivå 16, lärarens nivå
+a_inf|BORTOM OÄNDLIGHETEN
+ad_inf|Spela ∞-läget
+a_days3|VANA
+ad_days3|Spela 3 dagar i rad
+a_days30|EN MÅNAD MATTE
+ad_days30|Spela 30 dagar i rad
+a_ok100|HUNDRATAL
+ad_ok100|Totalt 100 rätta svar
+a_ok1000|TUSEN NEURONER
+ad_ok1000|Totalt 1000 rätta svar
+a_die10|ENVIS
+ad_die10|Dö 10 gånger och fortsätt spela
+a_die50|ODÖDLIG (NÄSTAN)
+ad_die50|Dö 50 gånger
+a_night|MATTEUGGLA
+ad_night|Svara rätt mellan midnatt och 05.00
+a_lang|POLYGLOTT
+ad_lang|Byt spelets språk
+a_theme|DAG OCH NATT
+ad_theme|Byt tema
+a_apple|ETT ANNAT ÄPPLE
+ad_apple|Byt äpplets färg
+a_tut|LÄRLING
+ad_tut|Titta på ett löst exempel
+a_poo|RÖR INTE DEN
+ad_poo|Peta på bajset i titeln
+a_share|SKRYTMÅNS
+ad_share|Dela ditt resultat
+a_neg|UNDER NOLL
+ad_neg|Svara rätt på ett negativt svar
+tip_k|DINA FRAMSTEG
+tip_weak|Ditt svagaste område är {0}: {1} % rätt. Öva innan bossen märker det.
+tip_best|Ditt rekord är nivå {0}. Härnäst: {1}.
+tip_streak|Du har spelat {0} dagar i rad. Bryt inte sviten.
+tip_nostreak|Spela i dag och starta en svit.
+tip_ach|Du har {0} av {1} prestationer. Nästa utmaning: {2}.
+tip_pres|Trycket ligger på {0} %: varje förlust gör zombierna snabbare.
+tip_kills|Du har besegrat {0} zombier. De räknar också.
+tip_pow|Var {0}:e rätt svar i rad ger dig en regnbågskraft.
+tip_draw|Rita siffrorna stora och tydliga: äpplet förstår dig bättre.

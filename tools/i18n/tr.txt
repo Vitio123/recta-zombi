@@ -424,3 +424,53 @@ n_eEuc|ÖKLİD
 n_eCog|düşünüyorum, öyleyse varım
 n_eGcd|EBOB(48, 18) = 6
 n_eggHint|CEVABINI BURAYA ÇİZ
+a_st50|EFSANE
+ad_st50|Art arda 50 doğru
+a_k100|YÜZ KAFA
+ad_k100|100 zombi yok et
+a_lv4|ISINMA
+ad_lv4|4. seviyeye ulaş
+a_lv12|NEREDEYSE KALKÜLÜS
+ad_lv12|12. seviyeye ulaş
+a_lv16|YÜZ YÜZE
+ad_lv16|Profesörün seviyesi olan 16. seviyeye ulaş
+a_inf|SONSUZLUĞUN ÖTESİ
+ad_inf|∞ modunu oyna
+a_days3|ALIŞKANLIK
+ad_days3|3 gün üst üste oyna
+a_days30|BİR AY MATEMATİK
+ad_days30|30 gün üst üste oyna
+a_ok100|YÜZBAŞI
+ad_ok100|Toplam 100 doğru yap
+a_ok1000|BİN NÖRON
+ad_ok1000|Toplam 1000 doğru yap
+a_die10|İNATÇI
+ad_die10|10 kez öl ve oynamaya devam et
+a_die50|ÖLÜMSÜZ (NEREDEYSE)
+ad_die50|50 kez öl
+a_night|MATEMATİK BAYKUŞU
+ad_night|Gece yarısı ile sabah 5 arasında doğru cevap ver
+a_lang|ÇOK DİLLİ
+ad_lang|Oyunun dilini değiştir
+a_theme|GECE VE GÜNDÜZ
+ad_theme|Temayı değiştir
+a_apple|BAŞKA BİR ELMA
+ad_apple|Elmanın rengini değiştir
+a_tut|ÇIRAK
+ad_tut|Çözülmüş bir örneği izle
+a_poo|ONA DOKUNMA
+ad_poo|Başlıktaki kakayı dürt
+a_share|GÖSTERİŞÇİ
+ad_share|Sonucunu paylaş
+a_neg|SIFIRIN ALTINDA
+ad_neg|Negatif bir cevabı doğru bil
+tip_k|İLERLEMEN
+tip_weak|En zayıf konun {0}: %{1} doğru. Patron fark etmeden önce çalış.
+tip_best|Rekorun {0}. seviye. Sıradaki: {1}.
+tip_streak|{0} gündür üst üste oynuyorsun. Seriyi bozma.
+tip_nostreak|Bugün oyna ve günlük bir seri başlat.
+tip_ach|{1} başarımdan {0} tanesi sende. Sıradaki hedef: {2}.
+tip_pres|Baskı %{0}: her yenilgi zombileri hızlandırır.
+tip_kills|{0} zombi yok ettin. Onlar da sayıyor.
+tip_pow|Art arda her {0} doğruda bir gökkuşağı gücü kazanırsın.
+tip_draw|Rakamları büyük ve net çiz: elma seni daha iyi anlar.

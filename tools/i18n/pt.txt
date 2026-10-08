@@ -424,3 +424,53 @@ n_eEuc|EUCLIDES
 n_eCog|penso, logo existo
 n_eGcd|mdc(48, 18) = 6
 n_eggHint|DESENHE AQUI SUA RESPOSTA
+a_st50|LENDA
+ad_st50|50 acertos seguidos
+a_k100|CEM CABEÇAS
+ad_k100|Elimine 100 zumbis
+a_lv4|AQUECENDO
+ad_lv4|Chegue ao nível 4
+a_lv12|QUASE CÁLCULO
+ad_lv12|Chegue ao nível 12
+a_lv16|CARA A CARA
+ad_lv16|Chegue ao nível 16, o do professor
+a_inf|ALÉM DO INFINITO
+ad_inf|Jogue o modo ∞
+a_days3|HÁBITO
+ad_days3|Jogue 3 dias seguidos
+a_days30|UM MÊS DE MATEMÁTICA
+ad_days30|Jogue 30 dias seguidos
+a_ok100|CENTENÁRIO
+ad_ok100|Some 100 acertos no total
+a_ok1000|MIL NEURÔNIOS
+ad_ok1000|Some 1000 acertos no total
+a_die10|TEIMOSO
+ad_die10|Morra 10 vezes e continue jogando
+a_die50|IMORTAL (QUASE)
+ad_die50|Morra 50 vezes
+a_night|CORUJA MATEMÁTICA
+ad_night|Acerte entre a meia-noite e as 5 da manhã
+a_lang|POLIGLOTA
+ad_lang|Mude o idioma do jogo
+a_theme|DIA E NOITE
+ad_theme|Mude o tema
+a_apple|OUTRA MAÇÃ
+ad_apple|Mude a cor da maçã
+a_tut|APRENDIZ
+ad_tut|Veja um exemplo resolvido
+a_poo|NÃO TOQUE NISSO
+ad_poo|Cutuque o cocô do título
+a_share|EXIBIDO
+ad_share|Compartilhe seu resultado
+a_neg|ABAIXO DE ZERO
+ad_neg|Acerte uma resposta negativa
+tip_k|SEU PROGRESSO
+tip_weak|Seu tema mais fraco é {0}: {1} % de acertos. Pratique antes que o chefe perceba.
+tip_best|Seu recorde é o nível {0}. O próximo: {1}.
+tip_streak|Você joga há {0} dias seguidos. Não quebre a sequência.
+tip_nostreak|Jogue hoje e comece uma sequência de dias.
+tip_ach|Você tem {0} de {1} conquistas. Próximo desafio: {2}.
+tip_pres|A pressão está em {0} %: cada derrota deixa os zumbis mais rápidos.
+tip_kills|Você já eliminou {0} zumbis. Eles também estão contando.
+tip_pow|A cada {0} acertos seguidos você ganha um poder do arco-íris.
+tip_draw|Desenhe os números grandes e claros: a maçã te entende melhor.

@@ -424,3 +424,53 @@ n_eEuc|EUKLID
 n_eCog|ich denke, also bin ich
 n_eGcd|ggT(48, 18) = 6
 n_eggHint|ZEICHNE DEINE ANTWORT HIER
+a_st50|LEGENDE
+ad_st50|50 richtige Antworten in Folge
+a_k100|HUNDERT KÖPFE
+ad_k100|Besiege 100 Zombies
+a_lv4|AUFWÄRMEN
+ad_lv4|Erreiche Level 4
+a_lv12|FAST ANALYSIS
+ad_lv12|Erreiche Level 12
+a_lv16|AUGE IN AUGE
+ad_lv16|Erreiche Level 16, das Level des Professors
+a_inf|JENSEITS DER UNENDLICHKEIT
+ad_inf|Spiele den ∞-Modus
+a_days3|GEWOHNHEIT
+ad_days3|Spiele 3 Tage in Folge
+a_days30|EIN MONAT MATHE
+ad_days30|Spiele 30 Tage in Folge
+a_ok100|HUNDERTER
+ad_ok100|Insgesamt 100 richtige Antworten
+a_ok1000|TAUSEND NEURONEN
+ad_ok1000|Insgesamt 1000 richtige Antworten
+a_die10|STUR
+ad_die10|Stirb 10 Mal und spiel weiter
+a_die50|UNSTERBLICH (FAST)
+ad_die50|Stirb 50 Mal
+a_night|MATHE-EULE
+ad_night|Antworte zwischen Mitternacht und 5 Uhr richtig
+a_lang|POLYGLOTT
+ad_lang|Ändere die Spielsprache
+a_theme|TAG UND NACHT
+ad_theme|Ändere das Design
+a_apple|NOCH EIN APFEL
+ad_apple|Ändere die Farbe des Apfels
+a_tut|LEHRLING
+ad_tut|Sieh dir ein gelöstes Beispiel an
+a_poo|FASS DAS NICHT AN
+ad_poo|Stups den Haufen im Titel an
+a_share|ANGEBER
+ad_share|Teile dein Ergebnis
+a_neg|UNTER NULL
+ad_neg|Löse eine Aufgabe mit negativer Antwort
+tip_k|DEIN FORTSCHRITT
+tip_weak|Dein schwächstes Thema ist {0}: {1} % richtig. Übe es, bevor der Boss es merkt.
+tip_best|Dein Rekord ist Level {0}. Als Nächstes: {1}.
+tip_streak|Du spielst seit {0} Tagen in Folge. Reiß die Serie nicht ab.
+tip_nostreak|Spiel heute und starte eine Tagesserie.
+tip_ach|Du hast {0} von {1} Erfolgen. Nächste Herausforderung: {2}.
+tip_pres|Der Druck liegt bei {0} %: Jede Niederlage macht die Zombies schneller.
+tip_kills|Du hast {0} Zombies besiegt. Sie zählen auch mit.
+tip_pow|Alle {0} richtigen Antworten in Folge bekommst du eine Regenbogenkraft.
+tip_draw|Zeichne die Zahlen groß und deutlich: Der Apfel versteht dich besser.

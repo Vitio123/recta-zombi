@@ -424,3 +424,53 @@ n_eEuc|EUKLID
 n_eCog|jeg tænker, altså er jeg
 n_eGcd|sfd(48, 18) = 6
 n_eggHint|TEGN DIT SVAR HER
+a_st50|LEGENDE
+ad_st50|50 rigtige i træk
+a_k100|HUNDREDE HOVEDER
+ad_k100|Besejr 100 zombier
+a_lv4|OPVARMNING
+ad_lv4|Nå niveau 4
+a_lv12|NÆSTEN CALCULUS
+ad_lv12|Nå niveau 12
+a_lv16|ANSIGT TIL ANSIGT
+ad_lv16|Nå niveau 16, lærerens niveau
+a_inf|UD OVER UENDELIGHEDEN
+ad_inf|Spil ∞-tilstand
+a_days3|VANE
+ad_days3|Spil 3 dage i træk
+a_days30|EN MÅNED MED MATEMATIK
+ad_days30|Spil 30 dage i træk
+a_ok100|HUNDREDE
+ad_ok100|I alt 100 rigtige svar
+a_ok1000|TUSIND NEURONER
+ad_ok1000|I alt 1000 rigtige svar
+a_die10|STÆDIG
+ad_die10|Dø 10 gange og bliv ved med at spille
+a_die50|UDØDELIG (NÆSTEN)
+ad_die50|Dø 50 gange
+a_night|MATEMATIKUGLE
+ad_night|Svar rigtigt mellem midnat og kl. 5
+a_lang|POLYGLOT
+ad_lang|Skift spillets sprog
+a_theme|DAG OG NAT
+ad_theme|Skift tema
+a_apple|ET ANDET ÆBLE
+ad_apple|Skift æblets farve
+a_tut|LÆRLING
+ad_tut|Se et løst eksempel
+a_poo|RØR DET IKKE
+ad_poo|Prik til lorten i titlen
+a_share|PRALHALS
+ad_share|Del dit resultat
+a_neg|UNDER NUL
+ad_neg|Svar rigtigt på et negativt svar
+tip_k|DIN FREMGANG
+tip_weak|Dit svageste emne er {0}: {1} % rigtige. Øv det, før bossen opdager det.
+tip_best|Din rekord er niveau {0}. Næste: {1}.
+tip_streak|Du har spillet {0} dage i træk. Bryd ikke stimen.
+tip_nostreak|Spil i dag og start en stime.
+tip_ach|Du har {0} af {1} præstationer. Næste udfordring: {2}.
+tip_pres|Presset er på {0} %: hvert nederlag gør zombierne hurtigere.
+tip_kills|Du har besejret {0} zombier. De tæller også.
+tip_pow|For hver {0} rigtige svar i træk får du en regnbuekraft.
+tip_draw|Tegn tallene store og tydelige: æblet forstår dig bedre.

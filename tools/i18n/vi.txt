@@ -424,3 +424,53 @@ n_eEuc|EUCLID
 n_eCog|tôi tư duy, nên tôi tồn tại
 n_eGcd|ƯCLN(48, 18) = 6
 n_eggHint|VẼ ĐÁP ÁN VÀO ĐÂY
+a_st50|HUYỀN THOẠI
+ad_st50|50 câu đúng liên tiếp
+a_k100|TRĂM CÁI ĐẦU
+ad_k100|Hạ 100 thây ma
+a_lv4|KHỞI ĐỘNG
+ad_lv4|Đạt cấp 4
+a_lv12|SẮP TỚI GIẢI TÍCH
+ad_lv12|Đạt cấp 12
+a_lv16|ĐỐI MẶT
+ad_lv16|Đạt cấp 16, cấp của thầy giáo
+a_inf|VƯỢT QUA VÔ CỰC
+ad_inf|Chơi chế độ ∞
+a_days3|THÓI QUEN
+ad_days3|Chơi 3 ngày liên tiếp
+a_days30|MỘT THÁNG TOÁN
+ad_days30|Chơi 30 ngày liên tiếp
+a_ok100|TRĂM CÂU
+ad_ok100|Tổng cộng 100 câu đúng
+a_ok1000|NGHÌN NƠ-RON
+ad_ok1000|Tổng cộng 1000 câu đúng
+a_die10|LÌ LỢM
+ad_die10|Chết 10 lần mà vẫn chơi tiếp
+a_die50|BẤT TỬ (GẦN NHƯ)
+ad_die50|Chết 50 lần
+a_night|CÚ ĐÊM TOÁN HỌC
+ad_night|Trả lời đúng từ nửa đêm đến 5 giờ sáng
+a_lang|ĐA NGÔN NGỮ
+ad_lang|Đổi ngôn ngữ trò chơi
+a_theme|NGÀY VÀ ĐÊM
+ad_theme|Đổi giao diện
+a_apple|QUẢ TÁO KHÁC
+ad_apple|Đổi màu quả táo
+a_tut|HỌC VIỆC
+ad_tut|Xem một ví dụ đã giải
+a_poo|ĐỪNG ĐỤNG VÀO
+ad_poo|Chọc cục phân trên tiêu đề
+a_share|KHOE KHOANG
+ad_share|Chia sẻ kết quả
+a_neg|DƯỚI KHÔNG
+ad_neg|Trả lời đúng một đáp án âm
+tip_k|TIẾN ĐỘ CỦA BẠN
+tip_weak|Chủ đề yếu nhất của bạn là {0}: đúng {1} %. Hãy luyện trước khi trùm phát hiện.
+tip_best|Kỷ lục của bạn là cấp {0}. Tiếp theo: {1}.
+tip_streak|Bạn đã chơi {0} ngày liên tiếp. Đừng để đứt chuỗi.
+tip_nostreak|Chơi hôm nay để bắt đầu chuỗi ngày.
+tip_ach|Bạn có {0}/{1} thành tích. Thử thách tiếp theo: {2}.
+tip_pres|Áp lực đang ở {0} %: mỗi lần thua thây ma lại nhanh hơn.
+tip_kills|Bạn đã hạ {0} thây ma. Chúng cũng đang đếm.
+tip_pow|Cứ {0} câu đúng liên tiếp, bạn nhận một sức mạnh cầu vồng.
+tip_draw|Viết số to và rõ: quả táo hiểu bạn hơn.

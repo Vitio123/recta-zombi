@@ -424,3 +424,53 @@ n_eEuc|EUCLID
 n_eCog|I think, therefore I am
 n_eGcd|gcd(48, 18) = 6
 n_eggHint|DRAW YOUR ANSWER HERE
+a_st50|LEGEND
+ad_st50|50 correct in a row
+a_k100|HUNDRED HEADS
+ad_k100|Defeat 100 zombies
+a_lv4|WARMING UP
+ad_lv4|Reach level 4
+a_lv12|ALMOST CALCULUS
+ad_lv12|Reach level 12
+a_lv16|FACE TO FACE
+ad_lv16|Reach level 16, the professor's level
+a_inf|BEYOND INFINITY
+ad_inf|Play ∞ mode
+a_days3|HABIT
+ad_days3|Play 3 days in a row
+a_days30|A MONTH OF MATH
+ad_days30|Play 30 days in a row
+a_ok100|CENTURION
+ad_ok100|Get 100 correct answers in total
+a_ok1000|A THOUSAND NEURONS
+ad_ok1000|Get 1000 correct answers in total
+a_die10|STUBBORN
+ad_die10|Die 10 times and keep playing
+a_die50|IMMORTAL (ALMOST)
+ad_die50|Die 50 times
+a_night|NIGHT OWL
+ad_night|Answer correctly between midnight and 5 a.m.
+a_lang|POLYGLOT
+ad_lang|Change the game language
+a_theme|DAY AND NIGHT
+ad_theme|Change the theme
+a_apple|ANOTHER APPLE
+ad_apple|Change the apple's color
+a_tut|APPRENTICE
+ad_tut|Watch a solved example
+a_poo|DON'T TOUCH THAT
+ad_poo|Poke the poop in the title
+a_share|SHOW-OFF
+ad_share|Share your result
+a_neg|BELOW ZERO
+ad_neg|Get a negative answer right
+tip_k|YOUR PROGRESS
+tip_weak|Your weakest topic is {0}: {1} % correct. Practice it before the boss notices.
+tip_best|Your record is level {0}. Next up: {1}.
+tip_streak|You've played {0} days in a row. Don't break the streak.
+tip_nostreak|Play today and start a daily streak.
+tip_ach|You have {0} of {1} achievements. Next challenge: {2}.
+tip_pres|Pressure is at {0} %: every defeat makes the zombies faster.
+tip_kills|You've defeated {0} zombies. They're keeping count too.
+tip_pow|Every {0} correct answers in a row earns you a rainbow power.
+tip_draw|Draw your numbers big and clear: the apple understands you better.

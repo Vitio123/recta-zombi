@@ -424,3 +424,53 @@ n_eEuc|EUKLIDES
 n_eCog|myślę, więc jestem
 n_eGcd|NWD(48, 18) = 6
 n_eggHint|NARYSUJ TU ODPOWIEDŹ
+a_st50|LEGENDA
+ad_st50|50 dobrych odpowiedzi z rzędu
+a_k100|STO GŁÓW
+ad_k100|Pokonaj 100 zombie
+a_lv4|ROZGRZEWKA
+ad_lv4|Dojdź do poziomu 4
+a_lv12|PRAWIE ANALIZA
+ad_lv12|Dojdź do poziomu 12
+a_lv16|TWARZĄ W TWARZ
+ad_lv16|Dojdź do poziomu 16, poziomu profesora
+a_inf|POZA NIESKOŃCZONOŚĆ
+ad_inf|Zagraj w tryb ∞
+a_days3|NAWYK
+ad_days3|Graj 3 dni z rzędu
+a_days30|MIESIĄC MATMY
+ad_days30|Graj 30 dni z rzędu
+a_ok100|SETNIK
+ad_ok100|Zdobądź łącznie 100 dobrych odpowiedzi
+a_ok1000|TYSIĄC NEURONÓW
+ad_ok1000|Zdobądź łącznie 1000 dobrych odpowiedzi
+a_die10|UPARCIUCH
+ad_die10|Zgiń 10 razy i graj dalej
+a_die50|NIEŚMIERTELNY (PRAWIE)
+ad_die50|Zgiń 50 razy
+a_night|MATEMATYCZNA SOWA
+ad_night|Odpowiedz dobrze między północą a 5 rano
+a_lang|POLIGLOTA
+ad_lang|Zmień język gry
+a_theme|DZIEŃ I NOC
+ad_theme|Zmień motyw
+a_apple|INNE JABŁKO
+ad_apple|Zmień kolor jabłka
+a_tut|UCZEŃ
+ad_tut|Obejrzyj rozwiązany przykład
+a_poo|NIE DOTYKAJ TEGO
+ad_poo|Szturchnij kupę w tytule
+a_share|CHWALIPIĘTA
+ad_share|Udostępnij swój wynik
+a_neg|PONIŻEJ ZERA
+ad_neg|Rozwiąż zadanie z ujemną odpowiedzią
+tip_k|TWÓJ POSTĘP
+tip_weak|Twój najsłabszy temat to {0}: {1} % dobrych odpowiedzi. Poćwicz, zanim boss to zauważy.
+tip_best|Twój rekord to poziom {0}. Dalej: {1}.
+tip_streak|Grasz już {0} dni z rzędu. Nie przerywaj serii.
+tip_nostreak|Zagraj dziś i zacznij serię dni.
+tip_ach|Masz {0} z {1} osiągnięć. Następne wyzwanie: {2}.
+tip_pres|Presja wynosi {0} %: każda porażka przyspiesza zombie.
+tip_kills|Pokonałeś {0} zombie. One też liczą.
+tip_pow|Co {0} dobrych odpowiedzi z rzędu dostajesz tęczową moc.
+tip_draw|Rysuj cyfry duże i wyraźne: jabłko lepiej cię zrozumie.
