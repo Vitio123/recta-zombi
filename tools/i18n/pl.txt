@@ -420,3 +420,7 @@ n_eggGo|ODPOWIEDZ
 n_eggNew|NASTĘPNE
 n_eggOk|DOBRZE! Jesteś gotowy na nauczyciela.
 n_eggBad|Źle. To było {0}.
+n_eEuc|EUKLIDES
+n_eCog|myślę, więc jestem
+n_eGcd|NWD(48, 18) = 6
+n_eggHint|NARYSUJ TU ODPOWIEDŹ

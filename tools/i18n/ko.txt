@@ -420,3 +420,7 @@ n_eggGo|답하기
 n_eggNew|다른 문제
 n_eggOk|정답! 선생님과 싸울 준비가 됐어.
 n_eggBad|틀렸어. 답은 {0}.
+n_eEuc|유클리드
+n_eCog|나는 생각한다, 고로 존재한다
+n_eGcd|최대공약수(48, 18) = 6
+n_eggHint|여기에 답을 그려 봐

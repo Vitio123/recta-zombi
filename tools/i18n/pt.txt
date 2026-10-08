@@ -420,3 +420,7 @@ n_eggGo|RESPONDER
 n_eggNew|OUTRO
 n_eggOk|CORRETO! Você está pronto para o professor.
 n_eggBad|Errado. Era {0}.
+n_eEuc|EUCLIDES
+n_eCog|penso, logo existo
+n_eGcd|mdc(48, 18) = 6
+n_eggHint|DESENHE AQUI SUA RESPOSTA

@@ -420,3 +420,7 @@ n_eggGo|ANTWORTEN
 n_eggNew|NOCH EINE
 n_eggOk|RICHTIG! Du bist bereit für den Lehrer.
 n_eggBad|Falsch. Es war {0}.
+n_eEuc|EUKLID
+n_eCog|ich denke, also bin ich
+n_eGcd|ggT(48, 18) = 6
+n_eggHint|ZEICHNE DEINE ANTWORT HIER

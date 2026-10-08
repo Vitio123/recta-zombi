@@ -420,3 +420,7 @@ n_eggGo|RISPONDI
 n_eggNew|UN ALTRO
 n_eggOk|GIUSTO! Sei pronto per il prof.
 n_eggBad|Sbagliato. Era {0}.
+n_eEuc|EUCLIDE
+n_eCog|penso, dunque sono
+n_eGcd|MCD(48, 18) = 6
+n_eggHint|DISEGNA QUI LA RISPOSTA

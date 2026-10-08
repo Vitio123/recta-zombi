@@ -420,3 +420,7 @@ n_eggGo|答える
 n_eggNew|次の問題
 n_eggOk|正解！先生と戦う準備はできた。
 n_eggBad|不正解。答えは{0}。
+n_eEuc|ユークリッド
+n_eCog|我思う、ゆえに我あり
+n_eGcd|最大公約数(48, 18) = 6
+n_eggHint|ここに答えを書いてね

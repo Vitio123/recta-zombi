@@ -420,3 +420,7 @@ n_eggGo|SVARA
 n_eggNew|EN TILL
 n_eggOk|RÄTT! Du är redo för läraren.
 n_eggBad|Fel. Det var {0}.
+n_eEuc|EUKLEIDES
+n_eCog|jag tänker, alltså finns jag
+n_eGcd|sgd(48, 18) = 6
+n_eggHint|RITA DITT SVAR HÄR

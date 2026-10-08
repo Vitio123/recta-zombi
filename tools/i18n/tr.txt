@@ -420,3 +420,7 @@ n_eggGo|CEVAPLA
 n_eggNew|BİR TANE DAHA
 n_eggOk|DOĞRU! Öğretmene hazırsın.
 n_eggBad|Yanlış. Cevap {0} idi.
+n_eEuc|ÖKLİD
+n_eCog|düşünüyorum, öyleyse varım
+n_eGcd|EBOB(48, 18) = 6
+n_eggHint|CEVABINI BURAYA ÇİZ

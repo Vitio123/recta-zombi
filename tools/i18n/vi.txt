@@ -420,3 +420,7 @@ n_eggGo|TRẢ LỜI
 n_eggNew|BÀI KHÁC
 n_eggOk|ĐÚNG! Bạn đã sẵn sàng đấu thầy giáo.
 n_eggBad|Sai. Đáp án là {0}.
+n_eEuc|EUCLID
+n_eCog|tôi tư duy, nên tôi tồn tại
+n_eGcd|ƯCLN(48, 18) = 6
+n_eggHint|VẼ ĐÁP ÁN VÀO ĐÂY

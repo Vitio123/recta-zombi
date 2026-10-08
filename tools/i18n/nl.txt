@@ -420,3 +420,7 @@ n_eggGo|ANTWOORDEN
 n_eggNew|NOG EEN
 n_eggOk|GOED! Je bent klaar voor de leraar.
 n_eggBad|Fout. Het was {0}.
+n_eEuc|EUCLIDES
+n_eCog|ik denk, dus ik ben
+n_eGcd|ggd(48, 18) = 6
+n_eggHint|TEKEN HIER JE ANTWOORD

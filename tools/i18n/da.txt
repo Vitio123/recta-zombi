@@ -420,3 +420,7 @@ n_eggGo|SVAR
 n_eggNew|EN TIL
 n_eggOk|RIGTIGT! Du er klar til læreren.
 n_eggBad|Forkert. Det var {0}.
+n_eEuc|EUKLID
+n_eCog|jeg tænker, altså er jeg
+n_eGcd|sfd(48, 18) = 6
+n_eggHint|TEGN DIT SVAR HER

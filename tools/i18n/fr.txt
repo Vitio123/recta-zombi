@@ -420,3 +420,7 @@ n_eggGo|RÉPONDRE
 n_eggNew|UN AUTRE
 n_eggOk|CORRECT ! Tu es prêt pour le prof.
 n_eggBad|Faux. C'était {0}.
+n_eEuc|EUCLIDE
+n_eCog|je pense, donc je suis
+n_eGcd|PGCD(48, 18) = 6
+n_eggHint|DESSINE TA RÉPONSE ICI

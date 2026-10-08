@@ -420,3 +420,7 @@ n_eggGo|VÁLASZ
 n_eggNew|MÉG EGY
 n_eggOk|HELYES! Készen állsz a tanárra.
 n_eggBad|Hibás. {0} volt.
+n_eEuc|EUKLIDÉSZ
+n_eCog|gondolkodom, tehát vagyok
+n_eGcd|lnko(48, 18) = 6
+n_eggHint|RAJZOLD IDE A VÁLASZT

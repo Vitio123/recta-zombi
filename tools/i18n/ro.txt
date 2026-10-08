@@ -420,3 +420,7 @@ n_eggGo|RĂSPUNDE
 n_eggNew|ÎNCĂ UNA
 n_eggOk|CORECT! Ești gata pentru profesor.
 n_eggBad|Greșit. Era {0}.
+n_eEuc|EUCLID
+n_eCog|gândesc, deci exist
+n_eGcd|cmmdc(48, 18) = 6
+n_eggHint|DESENEAZĂ AICI RĂSPUNSUL

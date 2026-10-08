@@ -420,3 +420,7 @@ n_eggGo|JAWAB
 n_eggNew|SOAL LAIN
 n_eggOk|BENAR! Kamu siap melawan guru.
 n_eggBad|Salah. Jawabannya {0}.
+n_eEuc|EUCLIDES
+n_eCog|aku berpikir, maka aku ada
+n_eGcd|FPB(48, 18) = 6
+n_eggHint|GAMBAR JAWABANMU DI SINI

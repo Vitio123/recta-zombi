@@ -420,3 +420,7 @@ n_eggGo|ODPOVĚDĚT
 n_eggNew|DALŠÍ PŘÍKLAD
 n_eggOk|SPRÁVNĚ! Jsi připraven na učitele.
 n_eggBad|Špatně. Bylo to {0}.
+n_eEuc|EUKLEIDÉS
+n_eCog|myslím, tedy jsem
+n_eGcd|NSD(48, 18) = 6
+n_eggHint|NAKRESLI ODPOVĚĎ SEM

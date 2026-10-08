@@ -420,3 +420,7 @@ n_eggGo|ANSWER
 n_eggNew|ANOTHER ONE
 n_eggOk|CORRECT! You're ready for the teacher.
 n_eggBad|Wrong. It was {0}.
+n_eEuc|EUCLID
+n_eCog|I think, therefore I am
+n_eGcd|gcd(48, 18) = 6
+n_eggHint|DRAW YOUR ANSWER HERE

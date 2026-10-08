@@ -420,3 +420,7 @@ n_eggGo|回答
 n_eggNew|再来一题
 n_eggOk|答对了！你已经准备好挑战老师了。
 n_eggBad|答错了。答案是{0}。
+n_eEuc|欧几里得
+n_eCog|我思故我在
+n_eGcd|最大公约数(48, 18) = 6
+n_eggHint|在这里写下答案
