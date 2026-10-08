@@ -7784,7 +7784,13 @@ function r2d2(ch){if(muted||!ac())return;let s=7;for(const c of String(ch))s=(s*
     o.connect(g).connect(d);o.start(t);m.start(t);o.stop(t+dur+.02);m.stop(t+dur+.02);t+=dur+(rnd()<.35?.025:.004)}}
 
 /* ============ La risa grave del profesor ============ */
-function laugh(n=4){if(muted||!ac())return;const d=AC.destination,t0=AC.currentTime+.02;
+// risa grabada (risa-malvada.mp3); si no carga, queda el sintetizador de abajo
+let LAUGHB=null,LAUGHP=null,laughAt=0;
+function laugh(n=4){if(muted||!ac())return;
+  if(LAUGHB){const now=AC.currentTime;if(now-laughAt<.4)return;laughAt=now;const s=AC.createBufferSource(),g=AC.createGain();s.buffer=LAUGHB;g.gain.value=.9;s.connect(g).connect(AC.destination);s.start();return}
+  if(!LAUGHP&&LAUGHP!==0)LAUGHP=fetch('risa-malvada.mp3').then(r=>r.ok?r.arrayBuffer():Promise.reject()).then(b=>new Promise((ok,no)=>{const p=AC.decodeAudioData(b,ok,no);if(p&&p.catch)p.catch(no)})).then(buf=>{LAUGHB=buf;laughAt=0;if(S.mode==='play'||S.mode==='intro'||S.mode==='title')laugh()},()=>{LAUGHP=0});
+  if(LAUGHP===0)laughSynth(n)}
+function laughSynth(n=4){const d=AC.destination,t0=AC.currentTime+.02;
   for(let i=0;i<n;i++){const t=t0+i*.24,f=92-i*5,o=AC.createOscillator(),s=AC.createOscillator(),b1=AC.createBiquadFilter(),b2=AC.createBiquadFilter(),g=AC.createGain(),gs=AC.createGain();
     o.type='sawtooth';o.frequency.setValueAtTime(f*1.15,t);o.frequency.exponentialRampToValueAtTime(f*.8,t+.2);
     b1.type='bandpass';b1.frequency.value=650;b1.Q.value=5;b2.type='bandpass';b2.frequency.value=1080;b2.Q.value=7;
@@ -7792,7 +7798,7 @@ function laugh(n=4){if(muted||!ac())return;const d=AC.destination,t0=AC.currentT
     o.connect(b1).connect(g);o.connect(b2).connect(g);g.connect(d);
     s.type='sine';s.frequency.setValueAtTime(f/2,t);gs.gain.setValueAtTime(.0001,t);gs.gain.exponentialRampToValueAtTime(.3,t+.02);gs.gain.exponentialRampToValueAtTime(.0001,t+.22);s.connect(gs).connect(d);
     o.start(t);s.start(t);o.stop(t+.25);s.stop(t+.25);nz(t,.06,'bandpass',1600,1.2,.12,d)}
-  if(!A11Y&&window.speechSynthesis){try{const u=new SpeechSynthesisUtterance(XL('n_laugh').toLowerCase());u.pitch=0;u.rate=.7;u.volume=Math.min(1,volGain());u.lang=LANG.startsWith('es')?'es':LANG;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}}
+}
 function profSay(z){say(z,pick(XL('n_profT').split(';')),'shout');if(R()<.4){laugh(3);setTimeout(()=>{if(alive(z))say(z,XL('n_laugh'),'shout')},900)}}
 
 /* ============ Intro: explosión atómica, el profesor y la manzana desde la estación espacial ============ */
