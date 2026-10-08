@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#000000">
-<title>Recta Zombi</title>
+<title>Math Sucks</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Silkscreen:wght@400;700&display=swap">
@@ -221,6 +221,7 @@ body.kb #kp button{animation:btnIn .35s ease backwards}
 @keyframes helpIn{0%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9)}100%{opacity:1;transform:translateX(-50%)}}
 @keyframes helpOut{100%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.9)}}
 /* menú */
+ #logoA{width:1.9em;height:1.9em;margin:-.6em -.28em -.2em;vertical-align:baseline;image-rendering:pixelated;image-rendering:crisp-edges}
 .ttl .z{color:var(--red);display:inline-block;animation:zWob 3.2s ease-in-out infinite;text-shadow:3px 3px 0 color-mix(in srgb,var(--red) 30%,transparent)}
 @keyframes zWob{0%,100%{transform:none}46%{transform:none}48%{transform:translate(2px,-1px) skewX(-6deg)}50%{transform:translate(-2px,1px)}52%{transform:none}}
 #bStart{font-size:20px;padding:18px 22px 15px;animation:btnIn .45s backwards,glowR 2.2s ease-in-out .6s infinite}
@@ -288,6 +289,15 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 [dir=rtl] .fl{margin:0 0 2px 8px}
 #bLang1,#bLang2{display:flex;align-items:center;justify-content:center;white-space:nowrap}
 #sLang{z-index:45}
+/* volumen = una recta numérica 0–10: la manzana salta al número que toques */
+.vol{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:8px 12px 6px;border:2px solid var(--line);box-shadow:4px 4px 0 var(--line);touch-action:none;cursor:pointer;user-select:none}
+.vol:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.vol .vn{font-style:normal;font-size:15px}.vol .vv{min-width:2ch;text-align:right;font-size:15px}
+.vtrack{position:relative;flex:1;height:26px;background:linear-gradient(var(--fg),var(--fg)) 0 17px/100% 2px no-repeat,
+  repeating-linear-gradient(90deg,var(--fg) 0 2px,transparent 2px 10%) 0 13px/calc(100% + 2px) 6px no-repeat}
+.vfill{position:absolute;left:0;top:16px;height:4px;background:var(--red);width:0}
+.vap{position:absolute;top:0;width:16px;height:16px;margin-left:-8px;image-rendering:pixelated;background-size:100% 100%}
+.vap.hop{animation:vHop .32s cubic-bezier(.3,1.6,.5,1)}@keyframes vHop{40%{transform:translateY(-9px)}}
 #bhWarn{position:fixed;left:50%;bottom:calc(var(--sb) + 18px);transform:translateX(-50%) scale(.9);z-index:46;display:flex;align-items:center;gap:10px;max-width:min(92vw,560px);padding:10px 16px 8px;
   background:var(--bg);color:var(--red);border:3px solid var(--red);box-shadow:4px 4px 0 var(--fg);font-size:clamp(12px,3.4vw,16px);letter-spacing:.12em;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
 #bhWarn b{font-size:1.4em;animation:bhBlink .5s steps(2) infinite}
@@ -326,13 +336,13 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 
   <div class="screen show" id="sTitle"><div class="card">
     <canvas id="logo" width="64" height="64"></canvas>
-    <h1 class="ttl">RECTA <span class="z">ZOMBI</span><small>DE 1 + 1 AL CÁLCULO</small></h1>
+    <h1 class="ttl">M<canvas id="logoA" width="40" height="40" role="img" aria-label="a"></canvas>TH <span class="z">SUCKS</span><small>DE 1 + 1 AL CÁLCULO</small></h1>
     <p class="lead">Dibuja el resultado donde quieras. La manzana salta a ese número: si aciertas, cae como <em>meteorito</em>. Si fallas… los zombis se burlan. Y mucho.</p>
     <div class="heat" id="tHeat" hidden></div>
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
     <div class="mini" id="tStats"></div>
     <details class="prog"><summary>TU PROGRESO</summary></details>
-    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bLang1"></button></div>
+    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bLang1"></button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
     <div id="lKick"></div>
@@ -350,7 +360,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
   <div class="screen" id="sPause"><div class="card">
     <h2 class="ttl">PAUSA</h2>
     <div class="btns"><button class="btn" id="bResume">CONTINUAR</button></div>
-    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button><button class="chip" id="bLang2"></button></div>
+    <div class="row"><button class="chip" id="bApple2">● MANZANA</button><button class="chip" id="bTheme2">◐ TEMA</button><button class="chip" id="bMute">♪ SONIDO</button><button class="chip" id="bKb">TECLADO</button><button class="chip" id="bLang2"></button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
     <button class="btn alt" id="bQuit">SALIR AL MENÚ</button>
     <div class="mini" id="credits">♪ FluidR3 GM (CC BY 3.0) · VCSL (CC0) · TR-808 M. Fischer</div>
   </div></div>
@@ -4531,6 +4541,31 @@ function dline(x0,y0,x1,y1,c,gap=3){const n=Math.max(Math.abs(x1-x0),Math.abs(y1
 
 /* ============ Logo: agujero negro pixel con disco de acreción ============ */
 const lgc=$('#logo').getContext('2d');
+// la «a» de MATH SUCKS: caca pixel con π, líneas de olor que ondulan y dos moscas dando vueltas
+const LA=$('#logoA'),lac=LA.getContext('2d'),LN=40;
+const PI_G=['#######','.#...#.','.#...#.','.#...#.','.#...#.','##...##'];
+// capas que se funden en una sola silueta; la punta se enrosca arriba
+const LA_ELL=[[20,32,17,6.2],[20,25,12.5,6],[20.5,18.5,8.5,5.4],[21.5,12.5,4.6,4],[23.2,8.4,1.7,2.6]];
+const laD=(k,x,y)=>{const[cx,cy,a,b]=LA_ELL[k];return((x-cx)/a)**2+((y-cy)/b)**2};
+const laIn=(x,y)=>LA_ELL.some((_,k)=>laD(k,x,y)<=1);
+let LAMASK=null;
+function drawLogoA(t){
+  if(!LA)return;const c=lac,cs=getComputedStyle(document.documentElement),fg=cs.getPropertyValue('--fg').trim()||'#fff',red=cs.getPropertyValue('--red').trim()||'#e0262b';
+  c.clearRect(0,0,LN,LN);
+  if(!LAMASK){LAMASK=[];for(let y=0;y<LN;y++)for(let x=0;x<LN;x++){const X=x+.5,Y=y+.5;if(!laIn(X,Y))continue;
+      const edge=!laIn(X+1,Y)||!laIn(X-1,Y)||!laIn(X,Y+1)||!laIn(X,Y-1);
+      // pliegue: la panza de cada capa superior marcada como un arco corto dentro de la de abajo
+      let fold=false;for(let k=1;k<4;k++){const[cx,cy,a]=LA_ELL[k],d=laD(k,X,Y);if(d>.78&&d<=1.05&&Y>cy&&Math.abs(X-cx)<a*.62)fold=true}
+      if(edge||fold)LAMASK.push([x,y])}}
+  c.fillStyle=fg;for(const[x,y]of LAMASK)c.fillRect(x,y,1,1);
+  for(const[x,y]of[[9,33],[13,35],[27,35],[31,31],[12,27],[28,25],[16,20],[24,16],[7,30],[33,34],[22,36],[18,30]])c.fillRect(x,y,1,1);
+  c.fillStyle=red;PI_G.forEach((r,j)=>[...r].forEach((ch,i)=>{if(ch==='#')c.fillRect(17+i,23+j,1,1)}));
+  c.fillStyle=fg;
+  for(const[x0,y0,len,ph]of[[5,9,10,0],[12,1,8,1.7],[29,1,8,3.1],[35,9,10,4.4]]){const L=Math.round(len*(.6+.4*Math.sin(t*1.7+ph)));
+    for(let k=0;k<L;k++){const y=y0+k;c.fillRect(Math.round(x0+Math.sin(y*.8-t*5+ph)*1.3),y,1,1)}}
+  for(let i=0;i<2;i++){const a=t*2.6+i*Math.PI+Math.sin(t*7+i)*.25,x=Math.round(20+Math.cos(a)*18+Math.sin(t*13+i*2)*.7),y=Math.round(19+Math.sin(a)*13+Math.cos(t*11+i)*.7),fl=Math.floor(t*18+i)%2;
+    c.fillRect(x,y+1,1,1);c.fillRect(x-1,y-fl,1,1);c.fillRect(x+1,y-fl,1,1);if(!fl){c.fillRect(x-2,y-1,1,1);c.fillRect(x+2,y-1,1,1)}}
+}
 function drawLogo(t){
   const c=lgc;c.clearRect(0,0,64,64);
   const cx=31.5,cy=31.5,cols=[P.m2,P.m3,P.l1,P.l2,P.l3,P.w,P.w];
@@ -4555,7 +4590,7 @@ function drawLogo(t){
 
 /* ============ Audio: efectos + percusión aleatoria con los instrumentos de la lámina ============ */
 let AC=null,muted=false,NB=null;
-function ac(){try{if(AC&&AC.state==='closed'){AC=null;NB=null}AC=AC||new(window.AudioContext||window.webkitAudioContext)();acHook();if(AC.state!=='running'){const p=AC.resume();if(p&&p.catch)p.catch(()=>{})}if(!NB){NB=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}}catch(e){}return AC}
+function ac(){try{if(AC&&AC.state==='closed'){AC=null;NB=null}AC=AC||new(window.AudioContext||window.webkitAudioContext)();acHook();if(!AC._master){const real=AC.destination,m=AC.createGain();m.connect(real);AC._master=m;try{Object.defineProperty(AC,'destination',{value:m,configurable:true})}catch(e){}m.gain.value=volGain()}if(AC.state!=='running'){const p=AC.resume();if(p&&p.catch)p.catch(()=>{})}if(!NB){NB=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}}catch(e){}return AC}
 // el navegador suspende o cierra el audio (cambio de pestaña, bloqueo de pantalla, llamada…): se reanuda solo, sin recargar
 let acWas='';
 function acWake(){
@@ -4577,6 +4612,20 @@ for(const ev of['pointerdown','touchend','keydown','click'])window.addEventListe
 for(const ev of['visibilitychange','focus','pageshow'])window.addEventListener(ev,()=>{if(!document.hidden)acWake()});
 setInterval(()=>{if(AC&&!document.hidden&&AC.state!=='running')acWake()},1500);
 function tone(f,d,type='square',vol=.05,slide=0,delay=0){if(muted||!ac())return;const t=AC.currentTime+delay,o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(30,f+slide),t+d);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d+.02)}
+let VOL=8;try{const v=localStorage.getItem('rzVol');if(v!=null&&+v>=0&&+v<=10)VOL=+v}catch(e){}
+const volGain=()=>VOL<=0?0:Math.pow(VOL/8,1.4);
+function volRender(hop){document.querySelectorAll('.vol').forEach(el=>{el.querySelector('.vfill').style.width=VOL*10+'%';const ap=el.querySelector('.vap');ap.style.left=VOL*10+'%';
+  try{ap.style.backgroundImage=`url(${appleCanvas(0,1).toDataURL()})`}catch(e){}if(hop){ap.classList.remove('hop');void ap.offsetWidth;ap.classList.add('hop')}
+  el.querySelector('.vv').textContent=VOL;el.querySelector('.vn').textContent=VOL===0?'✕':'♪';el.setAttribute('aria-valuenow',VOL)})}
+function setVol(v){v=Math.max(0,Math.min(10,Math.round(v)));if(v===VOL)return;VOL=v;try{localStorage.setItem('rzVol',v)}catch(e){}
+  if(AC&&AC._master)AC._master.gain.setTargetAtTime(volGain(),AC.currentTime,.03);volRender(true);
+  if(v>0&&!muted&&ac())bell(SCALE[Math.min(9,v-1)],.06)} // la campanita suena al nuevo volumen y más aguda cuanto más alto
+document.addEventListener('pointerdown',e=>{const el=e.target.closest&&e.target.closest('.vol');if(!el)return;e.preventDefault();e.stopPropagation();
+  const tr=el.querySelector('.vtrack'),at=ev=>{const r=tr.getBoundingClientRect();setVol((ev.clientX-r.left)/r.width*10)};at(e);
+  const mv=ev=>at(ev),up=()=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up)};addEventListener('pointermove',mv);addEventListener('pointerup',up)},true);
+document.addEventListener('keydown',e=>{const el=document.activeElement;if(!el||!el.classList||!el.classList.contains('vol'))return;
+  if(e.key==='ArrowRight'||e.key==='ArrowUp'){setVol(VOL+1);e.preventDefault()}else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){setVol(VOL-1);e.preventDefault()}});
+document.addEventListener('wheel',e=>{const el=e.target.closest&&e.target.closest('.vol');if(!el)return;e.preventDefault();setVol(VOL+(e.deltaY<0?1:-1))},{passive:false});
 function bell(f,vol=.07,delay=0){if(muted||!ac())return;if(typeof SND!=='undefined'&&SND.sets.glock&&sNote('glock',AC.currentTime+delay,Math.round(69+12*Math.log2(f/440)),1.1,Math.min(1,vol*8),AC.destination))return;const t=AC.currentTime+delay;[[1,1,1.4],[2.76,.45,.7],[5.4,.22,.35],[.5,.25,1.6]].forEach(([m,v,d])=>{const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f*m;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol*v,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d+.05)})}
 const MUS={on:false,bus:null,id:0,nextT:0,step:0,bar:0,groove:null,tension:0};
 function out(){return MUS.bus||AC.destination}
@@ -5731,7 +5780,7 @@ function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){
   if(S.prob&&!exprT)renderExprCanvas(S.prob);else if(S.prob){clearTimeout(exprT);exprT=0;renderExprCanvas(S.prob);$('#exprw').classList.remove('out')}
   if(S.mode==='over'&&S.exP&&$('#oFail').open)playExplain()}
 const APPLES=['roja','verde','amarilla'];
-function syncChips(){for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
+function syncChips(){volRender();for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}syncChips()};
 for(const i of[1,2]){$('#bTheme'+i).onclick=()=>setTheme(THEME==='dark'?'light':'dark')}
 $('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
@@ -6104,7 +6153,7 @@ async function shareResult(){
   x.fillStyle=P.k;x.fillRect(0,0,W1,H1);x.imageSmoothingEnabled=false;
   const ih=Math.round(W1*cv.height/cv.width);x.drawImage(cv,0,130,W1,ih);
   x.textAlign='center';x.textBaseline='top';
-  x.fillStyle=P.w;x.font=F(68,600);x.fillText('RECTA ZOMBI',W1/2,34);
+  x.fillStyle=P.w;x.font=F(68,600);x.fillText('MATH SUCKS',W1/2,34);
   let y=130+ih+44;
   x.fillStyle=P.red;x.font=F(104,600);x.fillText(`NIVEL ${lvl}`,W1/2,y);y+=124;
   x.fillStyle=P.w;x.font=F(50);x.fillText(S.topic.name,W1/2,y);y+=78;
@@ -6117,12 +6166,12 @@ async function shareResult(){
   if(/^https?:$/.test(location.protocol))x.fillText(location.host,W1/2,y);
   const blob=await new Promise(r=>c.toBlob(r,'image/png'));if(!blob)return;
   const url=/^https?:$/.test(location.protocol)?location.origin+location.pathname+'?ref=compartir':'',
-    text=`Llegué al nivel ${lvl} (${S.topic.name}) en Recta Zombi con ${S.run.correct} aciertos. ¿Me superas?${url?' '+url:''}`;
-  const f=new File([blob],'recta-zombi.png',{type:'image/png'});
-  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Recta Zombi',text});return}}
+    text=`Llegué al nivel ${lvl} (${S.topic.name}) en Math Sucks con ${S.run.correct} aciertos. ¿Me superas?${url?' '+url:''}`;
+  const f=new File([blob],'math-sucks.png',{type:'image/png'});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Math Sucks',text});return}}
   catch(e){if(e&&e.name==='AbortError')return}
   // respaldo (PC): descarga la imagen y copia el texto con el link
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='recta-zombi.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='math-sucks.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
   let ok=false;try{await navigator.clipboard.writeText(text);ok=true}catch(e){}
   btn.textContent=ok?'IMAGEN GUARDADA · TEXTO COPIADO':'IMAGEN GUARDADA';setTimeout(()=>btn.textContent='COMPARTIR',2800);
 }
@@ -7094,7 +7143,7 @@ function loop(t){
   syncMusic();
   if(S.mode==='title'){const r=lgEl.getBoundingClientRect(),sc=Math.min(innerWidth/W,viewH()/H);S.bhX=((r.left+r.width/2)-(innerWidth-W*sc)/2)/sc;S.bhY=((r.top+r.height/2)-(viewH()-H*sc)/2)/sc}
   draw();bhSymsDraw();bhWarp();bhWarnSync();if(padDirty)padDraw();
-  if(S.mode==='title')drawLogo(S.time);
+  if(S.mode==='title'){drawLogo(S.time);drawLogoA(S.time)}
   requestAnimationFrame(loop);
 }
 window.__G={SND,sLoad,newGroove2,newScore,musicStart2,musicStop,G2,setMode,say,taunt,nearestZ,INK,S,SAVE,MUS,newGame,startStage,beginStage,gameOver,OCR,classify,padClear,commit,spawnZ,mkZ,newProblem,TOPICS,meas,get syms(){return syms},persist};

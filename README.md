@@ -1,4 +1,4 @@
-# Recta Zombi
+# Math Sucks
 
 Juego de matemáticas en la recta numérica: dibujas el resultado y la manzana salta a ese número.
 
