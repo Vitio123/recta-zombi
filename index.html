@@ -2,9 +2,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#000000">
-<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png?v=2">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=2">
-<link rel="apple-touch-icon" href="icons/icon-180.png?v=2">
+<link rel="icon" href="Pixel-Art-Pi-Poop-Icon.ico?v=3" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=3">
+<link rel="apple-touch-icon" href="icons/icon-180.png?v=3">
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-title" content="Math Sucks">
 <title>Math Sucks</title>
@@ -7045,6 +7045,11 @@ function playExplain(p=S.exP,cvx=$('#exAnim'),root=$('#oFailB')){
   };
   exRAF=requestAnimationFrame(step);
 }
+
+// campana en cada paso de la explicación: llama la atención hacia la línea que se enciende
+{const SC=[1047,1175,1319,1568,1760,1976,2349];
+  new MutationObserver(ms=>{if(S.mode!=='over')return;for(const m of ms){const l=m.target;if(l.tagName==='LI'&&l.classList.contains('on')&&!(m.oldValue||'').split(' ').includes('on')){const i=[...l.parentNode.children].indexOf(l);bell(SC[Math.min(i,SC.length-1)],.06);}}})
+  .observe($('#oFailB'),{subtree:true,attributes:true,attributeFilter:['class'],attributeOldValue:true})}
 $('#oFail').addEventListener('toggle',()=>{const o=$('#oFail').open;$('#sOver').classList.toggle('exp',o);if(o)playExplain();requestAnimationFrame(()=>requestAnimationFrame(fitCards))});
 
 function fitCards(){for(const c of document.querySelectorAll('.screen.show .card')){c.style.transform='none';const avail=c.parentElement.clientHeight-8,h=c.scrollHeight;const k=Math.min(1,avail/h);c.style.transform=k<1?`scale(${k.toFixed(3)})`:'none';c.style.maxHeight='none'}}
