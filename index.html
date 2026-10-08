@@ -144,6 +144,7 @@ summary::-webkit-details-marker{display:none}
 #kp button{font-size:28px;font-weight:300;height:56px;border-radius:14px;background:transparent;color:var(--fg);border:1px solid var(--line);cursor:pointer}
 #kp button:active{background:var(--fg);color:var(--bg)}
 body.kb #kp{display:grid}
+#kp .frk{display:none;grid-column:span 4;height:42px;font-size:18px;letter-spacing:.2em}body.frac #kp .frk{display:block}body.kb.frac #inbox{bottom:calc(var(--sb) + 254px)}body.kb.frac #bHelp{bottom:calc(var(--sb) + 312px)}
 body.kb #inbox{bottom:calc(var(--sb) + 204px)}
 body.kb #drawhint{display:none}
 @media (max-width:520px){#hTopic{max-width:30vw;font-size:12px;letter-spacing:.12em}#exprw{top:calc(var(--st) + 58px)}}
@@ -261,6 +262,7 @@ html,body,.screen,.card{overflow:hidden!important}
   <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button data-k="-">−</button>
   <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button data-k=".">.</button>
   <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="0">0</button>
+  <button data-k="/" class="frk">/ FRACCIÓN</button>
 </div>
 
 <script>
@@ -526,6 +528,26 @@ function bass(t,midi,dur,v,d){const f=440*Math.pow(2,(midi-69)/12),o=AC.createOs
   g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.13*v,t+.006);g.gain.setTargetAtTime(.0001,t+dur*.7,dur*.15);
   o.connect(lp).connect(g).connect(d||out());o.start(t);o.stop(t+dur+.2);osc(t,f,null,dur,'sine',.32*v,d)}
 // marimba: fundamental + parcial 4× que se apaga rápido (percusión y salsa)
+// lead cuadrado con vibrato (rock y 8 bits)
+function sqLead(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out(),o=AC.createOscillator(),g=AC.createGain(),lp=AC.createBiquadFilter(),v=AC.createOscillator(),vg=AC.createGain();
+  o.type='square';o.frequency.value=f;v.frequency.value=5.5;vg.gain.value=f*.006;v.connect(vg).connect(o.frequency);lp.type='lowpass';lp.frequency.value=f*6;
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.01);g.gain.setValueAtTime(vol,t+dur*.6);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(lp).connect(g).connect(p);o.start(t);v.start(t);o.stop(t+dur+.05);v.stop(t+dur+.05)}
+// acordeón (cumbia): dos cuadradas desafinadas con vibrato y fuelle suave
+function accordion(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out(),g=AC.createGain(),lp=AC.createBiquadFilter(),v=AC.createOscillator(),vg=AC.createGain();
+  lp.type='lowpass';lp.frequency.value=f*5;v.frequency.value=6;vg.gain.value=f*.008;v.connect(vg);
+  g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+.04);g.gain.setValueAtTime(vol,t+dur*.7);g.gain.linearRampToValueAtTime(.0001,t+dur);lp.connect(g).connect(p);
+  for(const dt of[-9,9]){const o=AC.createOscillator();o.type='square';o.frequency.value=f;o.detune.value=dt;vg.connect(o.frequency);o.connect(lp);o.start(t);o.stop(t+dur+.05)}v.start(t);v.stop(t+dur+.05)}
+// campana (trap)
+function bellLead(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out();osc(t,f,null,dur,'sine',vol*1.6,p);osc(t,f*2.01,null,dur*.5,'sine',vol*.6,p);osc(t,f*3.98,null,dur*.25,'sine',vol*.3,p)}
+function chipNote(t,m,dur,vol){osc(t,440*Math.pow(2,(m-69)/12),null,dur,'square',vol,MUS.bus)}
+// guitarra con distorsión: quinta + octava por un waveshaper
+let DCURVE=null;
+function guitar(t,m,dur){if(!DCURVE){DCURVE=new Float32Array(1024);for(let i=0;i<1024;i++)DCURVE[i]=Math.tanh((i/1024*2-1)*7)}
+  const ws=AC.createWaveShaper(),lp=AC.createBiquadFilter(),g=AC.createGain();ws.curve=DCURVE;lp.type='lowpass';lp.frequency.value=2400;
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.045,t+.005);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  ws.connect(lp).connect(g).connect(MUS.pans.guitar||out());
+  for(const iv of[0,7,12]){const o=AC.createOscillator(),og=AC.createGain();o.type='sawtooth';o.frequency.value=440*Math.pow(2,(m+iv-69)/12);og.gain.value=.35;o.connect(og).connect(ws);o.start(t);o.stop(t+dur+.05)}}
 function marimba(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),p=MUS.melPan||out();osc(t,f,null,Math.min(.9,dur*1.6),'sine',vol*2.2,p);osc(t,f*4,null,.07,'sine',vol*.8,p);osc(t,f*10,null,.02,'sine',vol*.3,p)}
 // melodía pluck: dos sierras desafinadas con filtro que se cierra, paneada
 function pluck(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),lp=AC.createBiquadFilter(),g=AC.createGain(),p=MUS.melPan||out();
@@ -534,18 +556,47 @@ function pluck(t,m,dur,vol){const f=440*Math.pow(2,(m-69)/12),lp=AC.createBiquad
   for(const dt of[-9,9]){const o=AC.createOscillator();o.type='sawtooth';o.frequency.value=f;o.detune.value=dt;o.connect(lp);o.start(t);o.stop(t+dur+.05)}}
 // motivo de 16 pasos sobre notas del acorde (siempre consonante)
 function newMotif(){const a=Array(16).fill(-1);let deg=ri(0,3);for(let i=0;i<16;i++){if(R()<(i%4===0?.6:i%2===0?.4:.22)){deg=clamp(deg+ri(-2,2),0,5);a[i]=deg}}if(a[0]<0)a[0]=0;return a}
-const PAN={hat:.35,ohat:.35,bongoHi:-.4,bongoLo:-.3,bongoSlap:-.35,claves:.5,cencerro:.25,congas:-.2,maracas:.55,cabasa:.45,guiro:-.45,castanuelas:.4,pandereta:.3,triangulo:-.5,cajaChina:.45,tomHi:.3,tomMid:0,tomLo:-.3,timbal:.3,cascara:.4};
+const PAN={guitar:-.25,hat:.35,ohat:.35,bongoHi:-.4,bongoLo:-.3,bongoSlap:-.35,claves:.5,cencerro:.25,congas:-.2,maracas:.55,cabasa:.45,guiro:-.45,castanuelas:.4,pandereta:.3,triangulo:-.5,cajaChina:.45,tomHi:.3,tomMid:0,tomLo:-.3,timbal:.3,cascara:.4};
 function keys(t,midis,dur,v,d){for(const m of midis){const f=440*Math.pow(2,(m-69)/12);osc(t,f,null,dur,'triangle',.05*v,d);osc(t,f*2,null,dur*.5,'sine',.025*v,d)}}
 const DRUMS=new Set(['kick','snare','clap','hat','ohat','sub']);
-const GENRES=['percusion','hiphop','regueton','salsa'];
-const GNAME={percusion:'PERCUSIÓN',hiphop:'HIP HOP',regueton:'REGUETÓN',salsa:'SALSA'};
+const GENRES=['percusion','hiphop','regueton','salsa','cumbia','rock','chip','trap'];
+const GNAME={percusion:'PERCUSIÓN',hiphop:'HIP HOP',regueton:'REGUETÓN',salsa:'SALSA',cumbia:'CUMBIA',rock:'ROCK',chip:'8 BITS',trap:'TRAP'};
 let GENRE_PREF='random';
 try{GENRE_PREF=localStorage.getItem('rzGenre')||'random'}catch(e){}
 const row=(len,on)=>{const a=Array(len).fill(0);for(const i of on)a[i]=1;return a};
 function newGroove(boss){
   const g0=GENRE_PREF==='random'?pick(GENRES):GENRE_PREF,g={genre:g0,parts:[],swing:0,len:16,div:4,keysPat:null};
   const add=(name,pat,vel)=>g.parts.push({name,pat,vel,lay:g.parts.length>=3?1:0}); // las 3 primeras = base
-  if(g0==='percusion'){ // batería completa + bongós, congas, timbales, cencerro, güiro, pandereta, maracas
+  if(g0==='cumbia'){ // güiro largo-corto-corto, congas, bajo raíz-quinta y acordeón
+    g.bpm=ri(92,100);g.major=true;g.lead='acc';
+    add('kick',row(16,[0,8]),.75);
+    add('guiro',row(16,[0,2,3,4,6,7,8,10,11,12,14,15]),.45);
+    add('clap',row(16,[4,12]),.35);
+    add('congas',row(16,[3,6,7,11,14,15]),.6);
+    add('maracas',row(16,[0,2,4,6,8,10,12,14]),.3);
+    add('cencerro',row(16,[2,10]),.3);
+    g.prog=[[43,48,50,43],[45,50,52,45],[48,53,55,48]][ri(0,2)];g.bassPat=[[0,3,0],[4,2,7],[8,3,0],[12,2,7]];
+  }else if(g0==='rock'){ // batería rock, bajo en corcheas y guitarra con distorsión
+    g.bpm=ri(118,134);g.lead='square';g.guitar=true;
+    add('kick',row(16,R()<.5?[0,8,10]:[0,3,8,11]),1);
+    add('snare',row(16,[4,12]),1);
+    add('hat',row(16,[0,2,4,6,8,10,12,14]),.6);
+    add('ohat',row(16,[14]),.4);
+    g.prog=[[40,36,43,38],[45,41,36,43],[38,46,41,45]][ri(0,2)];g.bassPat=[[0,2],[2,2],[4,2],[6,2],[8,2],[10,2],[12,2],[14,2]];
+  }else if(g0==='chip'){ // 8 bits: arpegios cuadrados, bombo en negras y bajo que salta de octava
+    g.bpm=ri(138,150);g.lead='square';g.arp=true;
+    add('kick',row(16,[0,4,8,12]),.9);
+    add('snare',row(16,[4,12]),.6);
+    add('hat',row(16,[2,6,10,14]),.5);
+    g.prog=[[45,41,43,40],[48,43,45,41],[38,45,43,41]][ri(0,2)];g.bassPat=[[0,2,0],[2,2,12],[4,2,0],[6,2,12],[8,2,0],[10,2,12],[12,2,0],[14,2,12]];
+  }else if(g0==='trap'){ // medio tiempo: hi-hats rápidos con redobles y 808 que retumba
+    g.bpm=ri(136,148);g.lead='bell';g.trap=true;
+    add('kick',row(16,R()<.5?[0,7,10]:[0,3,11]),1);
+    add('clap',row(16,[8]),.9);
+    add('snare',row(16,[8]),.5);
+    add('hat',row(16,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),.4);
+    g.prog=[[45,41,38,40],[40,36,43,42],[38,45,41,40]][ri(0,2)];g.bassPat=[];
+  }else if(g0==='percusion'){ // batería completa + bongós, congas, timbales, cencerro, güiro, pandereta, maracas
     g.bpm=ri(100,112);g.swing=.08;
     add('kick',row(16,R()<.5?[0,6,8,11]:[0,3,8,10]),1);
     add('snare',row(16,[4,12]),.95);
@@ -602,6 +653,7 @@ function newGroove(boss){
   }
   if(boss)add('gong',row(g.len,[0]),.4);
   g.accent=g0==='hiphop'||g0==='regueton'?'ohat':'platos';
+  g.lead=g.lead||(g0==='percusion'||g0==='salsa'?'marimba':'pluck');g.major=g.major||g0==='salsa';
   g.motif=newMotif();
   return g;
 }
@@ -648,16 +700,19 @@ function musicPump(){
     const chordBar=g.div===2?Math.floor(MUS.step/8)%4:MUS.bar%4,root=g.prog[chordBar],sIn=g.div===2?s%8:s;
     // melodía: llamada (compases 4-7 de cada 8) y respuesta variada; motivo nuevo cada 16 compases
     if(s===0&&MUS.bar%16===0&&MUS.bar>0)g.motif=newMotif();
-    {const mb=MUS.bar%8,mi=g.motif[(s+(mb>=6?4:0))%16];if((mb>=4||coro)&&!intro&&mi>=0&&!brk){const mn=g.genre!=='salsa',ct=[0,mn?3:4,7,12,mn?15:16,19],nt=root+36+ct[mi];if(g.genre==='percusion'||g.genre==='salsa'||bd)marimba(t,nt+(bd?12:0),sd*1.6,.04);else pluck(t,nt,sd*2.2,.045)}}
-    if(!intro)for(const[st,len]of g.bassPat)if(st===sIn)bass(t,root,sd*len*.9,1,d);
+    {const mb=MUS.bar%8,mi=g.motif[(s+(mb>=6?4:0))%16];if((mb>=4||coro)&&!intro&&mi>=0&&!brk){const mn=!g.major,ct=[0,mn?3:4,7,12,mn?15:16,19],nt=root+36+ct[mi],ld=bd?'marimba':g.lead;if(ld==='marimba')marimba(t,nt+(bd?12:0),sd*1.6,.04);else if(ld==='square')sqLead(t,nt,sd*1.8,.028);else if(ld==='acc')accordion(t,nt+12,sd*1.7,.022);else if(ld==='bell')bellLead(t,nt+12,sd*2.4,.03);else pluck(t,nt,sd*2.2,.045)}}
+    if(!intro)for(const[st,len,iv=0]of g.bassPat)if(st===sIn)bass(t,root+iv,sd*len*.9,1,d);
     // bajo que camina: nota de paso medio tono antes del siguiente acorde
     if(!intro&&g.div===4&&s===15&&!brk){const nr=g.prog[(chordBar+1)%4];if(nr!==root)bass(t,nr+(nr>root?-1:1),sd*.9,.75,d)}
     if(s===0&&MUS.bar%4===0&&(sec===1||sec===5||sec===6))INST[g.accent](t,.65,d);
     if(g.subBass&&s%8===0&&!brk)INST.sub(t,.8,d,g.prog[chordBar]-12);
     if(g.keysPat&&g.keysPat.includes(sIn)){const r_=g.prog[chordBar]+12;keys(t,[r_,r_+4,r_+7],sd*.9,1,d)}
     const dz=MUS.danger||0;MUS.lp.frequency.setTargetAtTime(900+dz*7000+ten*4000,AC.currentTime,.4);
-    const minor=g.genre!=='salsa',ch=[root+24,root+24+(minor?3:4),root+31];
+    const minor=!g.major,ch=[root+24,root+24+(minor?3:4),root+31];
     if(sIn===0){pad(t,ch,sd*(g.div===2?8:16)*.98)}
+    if(g.guitar&&!intro&&!bd&&!brk&&s%2===0)guitar(t,root+12,sd*1.7);
+    if(g.arp&&!intro){const ar=[0,minor?3:4,7,12];chipNote(t,root+36+ar[s%4],sd*.9,.02)}
+    if(g.trap&&!intro){if(!brk&&!bd&&g.parts[0].pat[s])INST.sub(t,.95,d,root-12);if((s===6||s===14)&&R()<.55)for(const k of[1,2])INST.hat(t+sd*k/3,.3,MUS.pans.hat||d)}
     if(g.genre==='regueton'&&s%2===0&&dz>.15){const n=ch[(s>>1)%3]+12;mlead(t,n,sd*1.6,'square',.035)}
     if(g.genre==='hiphop'){if(R()<.35)nz(t,.008,'highpass',2500,.5,.05,d);if(s===0)rhodes(t,ch,sd*12)}
     if(g.genre==='salsa'&&MUS.bar%2===1&&(sIn===4||sIn===6)){mlead(t,ch[2]+12,sd*1.4,'sawtooth',.05);mlead(t,ch[0]+12,sd*1.4,'sawtooth',.04)}
@@ -774,11 +829,11 @@ const FDEN=[2,4,5,10];
 const dec=(n,dn)=>fmt(n/dn);
 function gFrac(x,d){
   const r=R();
-  if(isInt(x)&&Math.abs(x)<=40&&r<.25){const b=pick(FDEN);return{k:[Fr([Sx('x')],[Sx(String(b))])],ans:x/b,vz:{t:'fdiv',n:x,b},ex:[`x = ${fmt(x)}: dividir ${fmt(x)} entre ${b}.`,`${fmt(x)} ÷ ${b} = ${fmt(x/b)}.`,`Escríbelo con punto decimal: ${fmt(x/b)}.`]}}
-  if(d<.35){const b=pick([2,3,4,5,10]),a=ri(1,b-1),n=b*ri(1,6);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(` de ${n}`)],ans:a*n/b,vz:{t:'fof',a,b,n},ex:[`"${a}/${b} de ${n}": divide ${n} en ${b} partes iguales → ${n/b} cada una.`,`Toma ${a} partes: ${a} × ${n/b} = ${a*n/b}.`]}}
-  if(d<.7){const b=pick(FDEN),a=ri(1,b),c=ri(1,b);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b))])],ans:(a+c)/b,vz:{t:'fadd',a,c,b},ex:[`Mismo denominador: suma solo arriba → ${a+c}/${b}.`,`${a+c} ÷ ${b} = ${dec(a+c,b)}.`]}}
+  if(isInt(x)&&Math.abs(x)<=40&&r<.25){const b=pick(FDEN);return{k:[Fr([Sx('x')],[Sx(String(b))])],ans:x/b,fr:[[x,b]],vz:{t:'fdiv',n:x,b},ex:[`x = ${fmt(x)}: dividir ${fmt(x)} entre ${b}.`,`${fmt(x)} ÷ ${b} = ${fmt(x/b)}.`,`Escríbelo con punto decimal: ${fmt(x/b)}.`]}}
+  if(d<.35){const b=pick([2,3,4,5,10]),a=ri(1,b-1),n=b*ri(1,6);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(` de ${n}`)],ans:a*n/b,fr:[[a*n,b]],vz:{t:'fof',a,b,n},ex:[`"${a}/${b} de ${n}": divide ${n} en ${b} partes iguales → ${n/b} cada una.`,`Toma ${a} partes: ${a} × ${n/b} = ${a*n/b}.`]}}
+  if(d<.7){const b=pick(FDEN),a=ri(1,b),c=ri(1,b);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b))])],ans:(a+c)/b,fr:[[a+c,b]],vz:{t:'fadd',a,c,b},ex:[`Mismo denominador: suma solo arriba → ${a+c}/${b}.`,`${a+c} ÷ ${b} = ${dec(a+c,b)}.`]}}
   let b1=pick(FDEN),b2=pick(FDEN.filter(v=>v!==b1));const a=ri(1,b1-1)||1,c=ri(1,b2-1)||1,l=b1*b2/gcd(b1,b2);
-  return{k:[Fr([Sx(String(a))],[Sx(String(b1))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b2))])],ans:a/b1+c/b2,vz:{t:'fadd2',a,b1,c,b2,l},ex:[`Denominador común: ${l}. ${a}/${b1} = ${a*l/b1}/${l} y ${c}/${b2} = ${c*l/b2}/${l}.`,`Suma: ${a*l/b1+c*l/b2}/${l}.`,`En decimal: ${fmt(a/b1+c/b2)}.`]};
+  return{k:[Fr([Sx(String(a))],[Sx(String(b1))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b2))])],ans:a/b1+c/b2,fr:[[a*l/b1+c*l/b2,l]],vz:{t:'fadd2',a,b1,c,b2,l},ex:[`Denominador común: ${l}. ${a}/${b1} = ${a*l/b1}/${l} y ${c}/${b2} = ${c*l/b2}/${l}.`,`Suma: ${a*l/b1+c*l/b2}/${l}.`,`En decimal: ${fmt(a/b1+c/b2)}.`]};
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 function gRaiz(x,d){
@@ -792,10 +847,11 @@ function gRaiz(x,d){
 }
 const TT=[['sin',0,0,'0'],['sin',30,.5,'1/2'],['sin',90,1,'1'],['cos',0,1,'1'],['cos',60,.5,'1/2'],['cos',90,0,'0'],['tan',45,1,'1'],['tan',0,0,'0'],['sin',150,.5,'1/2'],['cos',180,-1,'−1'],['sin',270,-1,'−1'],['cos',120,-.5,'−1/2']];
 const trigWhy={sin:'sin = cateto opuesto / hipotenusa (altura en el círculo unitario)',cos:'cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)',tan:'tan = sin / cos (pendiente)'};
+const frOf=(s,k=1)=>{const m=String(s).replace('−','-').match(/^(-?\d+)\/(\d+)$/);return m?[[k*+m[1],+m[2]]]:null};
 function gTrig(x,d){
   const r=R();
-  if(d<.35||r<.3){const[f,a,v,fr]=pick(TT.slice(0,d<.35?8:12));return{k:[Sx(`${f} ${a}°`)],ans:v,vz:{t:'unit',f,a,v,fr},ex:[trigWhy[f]+'.',`${f} ${a}° = ${fr} = ${fmt(v)}.`]}}
-  if(d<.7||r<.6){const[f,a,v,fr]=pick(TT.filter(t=>t[2]!==0)),c=pick([2,4,6,8,10,12]);return{k:[Sx(`${c}·${f} ${a}°`)],ans:c*v,vz:{t:'unit',f,a,v,fr,c},ex:[`${f} ${a}° = ${fr}.`,`${c} × ${fmt(v)} = ${fmt(c*v)}.`]}}
+  if(d<.35||r<.3){const[f,a,v,fr]=pick(TT.slice(0,d<.35?8:12));return{k:[Sx(`${f} ${a}°`)],ans:v,fr:frOf(fr),vz:{t:'unit',f,a,v,fr},ex:[trigWhy[f]+'.',`${f} ${a}° = ${fr} = ${fmt(v)}.`]}}
+  if(d<.7||r<.6){const[f,a,v,fr]=pick(TT.filter(t=>t[2]!==0)),c=pick([2,4,6,8,10,12]);return{k:[Sx(`${c}·${f} ${a}°`)],ans:c*v,fr:frOf(fr,c),vz:{t:'unit',f,a,v,fr,c},ex:[`${f} ${a}° = ${fr}.`,`${c} × ${fmt(v)} = ${fmt(c*v)}.`]}}
   const k=ri(1,4);
   if(R()<.5)return{pre:[Sx(`catetos ${3*k} y ${4*k}`)],k:[Sx('hipotenusa')],ans:5*k,vz:{t:'pyth',k},ex:[`Pitágoras: h² = ${3*k}² + ${4*k}² = ${9*k*k} + ${16*k*k} = ${25*k*k}.`,`h = √${25*k*k} = ${5*k}.`]};
   return{pre:[Sx('sin θ = '),Fr([Sx('3')],[Sx('5')]),Sx(` · hip = ${5*k}`)],k:[Sx('opuesto')],ans:3*k,vz:{t:'soh',k},ex:[`sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.`,`${5*k} × 3/5 = ${3*k}.`]};
@@ -1005,10 +1061,14 @@ function mkProb(T,x,d){
   const g=T.gen(x,d),ans=r2(g.ans);
   if(SUBST.has(T.id)){g.k=subX(g.k,x);if(g.pre)g.pre=subX(g.pre,x);g.ex=g.ex.map(l=>l.replace(/^.*?x = [^:]+: /,'').replace(/(^|[^A-Za-záéíóúñ])x(?![A-Za-záéíóúñ])/g,(m,p1)=>p1+(x<0?`(${fmt(x)})`:fmt(x))))}
   const p={x0:x,pre:g.pre||null,k:g.k,q:g.q||' = ?',ans,key:String(Object.is(ans,-0)?0:ans),ex:g.ex,vz:g.vz||null,topic:T.id,name:T.name};
-  p.str=(g.pre?nodesStr(g.pre)+'  ·  ':'')+nodesStr(g.k)+(g.q||' = ?');return p;
+  p.str=(g.pre?nodesStr(g.pre)+'  ·  ':'')+nodesStr(g.k)+(g.q||' = ?');
+  const fk=[],addF=(n,d)=>{if(d>1&&n!==0){const k=(n<0?'-':'')+Math.abs(n)+'/'+d;if(!fk.includes(k))fk.push(k)}};
+  for(const[n,d]of g.fr||[]){if(!isInt(n)||!isInt(d)||d<=1)continue;addF(n,d);const q=gcd(Math.abs(n),d);if(q>1)addF(n/q,d/q)}
+  p.keys=[p.key,...fk.filter(k=>k!==p.key&&!k.startsWith(p.key))];return p;
 }
 function newProblem(){
   const T=S.topic;S.prob=mkProb(T,S.a.x,S.d);hideHelp();
+  {const fr=S.prob.keys.some(k=>k.includes('/'));document.body.classList.toggle('frac',fr);$('#drawhint').textContent=fr?'dibuja el número o la fracción (ej. 3/4)':'dibuja el número en cualquier parte'}
   S.lay=null;S.input='';S.thinkT=0;S.run.stageProbs++;renderInput();
   if(!S.grab)S.uT=fitU(Math.abs(S.prob.ans-S.a.x)*(1.2+R()*1.2));
   if(!padLock)padClear();
@@ -1050,14 +1110,23 @@ function layProb(p){
 function renderInput(){$('#inTxt').textContent=S.input.replace(/-/g,MINUS)}
 function flashInbox(c){const b=$('#inbox');b.classList.remove('bad','good');void b.offsetWidth;b.classList.add(c);setTimeout(()=>b.classList.remove(c),350)}
 const canType=()=>S.mode==='play'&&!!S.prob&&(S.a.st==='rest'||S.a.st==='grab');
+// caracteres que pueden seguir según las respuestas aceptadas (número o fracción)
+function nextChars(){const s=S.input,o=[];for(const k of S.prob.keys||[S.prob.key])if(k.length>s.length&&k.startsWith(s)&&!o.includes(k[s.length]))o.push(k[s.length]);return o}
+const fracVal=s=>{if(!s.includes('/'))return Number(s);const[a,b]=s.split('/');return b===''?NaN:Number(a)/Number(b)};
+// "/" dibujada: un solo trazo recto que sube hacia la derecha
+function isSlash(sy){
+  if(sy.st.length!==1)return false;const st=sy.st[0],w=sy.x1-sy.x0,h=sy.y1-sy.y0;if(h<REF()*.7||w<h*.22||w>h*2.5)return false;
+  const a=st[0],b=st[st.length-1],top=a[1]<b[1]?a:b,bot=a[1]<b[1]?b:a;if(top[0]<=bot[0])return false;
+  const L=Math.hypot(b[0]-a[0],b[1]-a[1])||1;let md=0;for(const q of st)md=Math.max(md,Math.abs((b[0]-a[0])*(a[1]-q[1])-(a[0]-q[0])*(b[1]-a[1]))/L);return md<L*.14;
+}
 function acceptChar(ch){
   S.input+=ch;SFX.digit(S.input.length-1);renderInput();flashInbox('good');
-  if(S.input===S.prob.key){record(true);if(S.a.st==='grab')escape();else commit(S.prob.ans,true)}
+  if((S.prob.keys||[S.prob.key]).includes(S.input)){record(true);if(S.a.st==='grab')escape();else commit(S.prob.ans,true)}
 }
 function failChar(ch){
   SFX.err();flashInbox('bad');S.shake=3;
   if(S.a.st==='rest'&&ch!==undefined){
-    const s=S.input+ch,val=Number(s);
+    const s=S.input+ch,val=fracVal(s);
     if(/\d/.test(s)&&isFinite(val)&&Math.abs(val)<1e6){record(false,r2(val));S.input=s;renderInput();commit(r2(val),false);return}
   }
   record(false,null);
@@ -1101,8 +1170,7 @@ function wrongFeedback(val,ans,t){
 }
 function typeKey(k){
   if(!canType())return;
-  const exp=S.prob.key[S.input.length];
-  if(k===exp)acceptChar(k);else{failChar(k);if(S.a.st!=='air')padClear()}
+  if(nextChars().includes(k))acceptChar(k);else{failChar(k);if(S.a.st!=='air')padClear()}
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){if(S.mode==='play')setMode('pause');else if(S.mode==='pause')setMode('play');return}
@@ -1112,7 +1180,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Enter'&&S.mode==='pause'){setMode('play');return}
   if(S.mode!=='play'||e.repeat)return;
   let k=null;
-  if(/^[0-9]$/.test(e.key))k=e.key;else if(e.key==='.'||e.key===',')k='.';else if(e.key==='-'||e.key==='Subtract')k='-';
+  if(/^[0-9]$/.test(e.key))k=e.key;else if(e.key==='.'||e.key===',')k='.';else if(e.key==='-'||e.key==='Subtract')k='-';else if(e.key==='/'||e.key==='Divide')k='/';
   if(k){e.preventDefault();typeKey(k)}
 });
 $('#kp').addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(!b)return;e.preventDefault();typeKey(b.dataset.k)});
@@ -1212,9 +1280,11 @@ function finalize(sy){
   }
   sy.done=true;padDirty=true;
   if(!canType()){padClear();return}
-  const c=classify(sy),exp=S.prob.key[S.input.length];
-  sy.ch=c.ch;
-  if(matches(c,exp)){sy.ok=true;sy.ch=exp;acceptChar(exp)}
+  const exps=nextChars();
+  if(exps.includes('/')&&isSlash(sy)){sy.ok=true;sy.ch='/';acceptChar('/');return}
+  const c=classify(sy);sy.ch=c.ch;
+  const got=exps.find(e=>c.kind==='digit'&&c.best===+e)||exps.find(e=>e!=='/'&&matches(c,e));
+  if(got){sy.ok=true;sy.ch=got;acceptChar(got)}
   else{sy.ok=false;padFlash(S.a.st==='rest'?900:560);failChar(c.ch)}
 }
 function padDraw(){
