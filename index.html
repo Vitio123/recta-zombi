@@ -227,6 +227,49 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 .hud{transition:opacity .6s ease,filter .6s ease}.hud.hidden{filter:blur(4px)}
 #newt,#lawt{transition:opacity .6s ease,filter .6s ease}#newt:not(.on),#lawt:not(.on){filter:blur(3px)}
 #pips i{transition:background .5s ease}
+
+/* ===== derrota: tarjeta de papel viejo estilo Cuphead, hecha de píxeles ===== */
+#game:has(#sOver.show) #c{filter:sepia(.75) saturate(.7) contrast(1.15) brightness(.7);transition:filter 1.2s}
+#sOver.show{background:radial-gradient(ellipse at center,transparent 35%,rgba(20,10,4,.75) 100%)}
+#sOver::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,240,200,.05) 0 2px,transparent 2px 7px);mix-blend-mode:multiply}
+#sOver.show::after{opacity:1;animation:film .24s steps(2) infinite}
+@keyframes film{0%{transform:translate(0,0)}50%{transform:translate(-2px,1px)}100%{transform:translate(1px,-1px)}}
+#sOver .card{--fg:#2b1a10;--bg:#efe2c4;--card:#efe2c4;--mut:#6e5640;--line:rgba(43,26,16,.38);--red:#b5161c;color-scheme:light;
+  position:relative;color:var(--fg);border:4px solid var(--fg)!important;outline:2px solid var(--fg);outline-offset:-12px;padding:30px 26px;
+  background:radial-gradient(circle at 30% 20%,rgba(255,250,235,.55),transparent 60%),repeating-conic-gradient(rgba(90,60,30,.05) 0 25%,transparent 0 50%) 0 0/4px 4px,#efe2c4;
+  box-shadow:8px 8px 0 rgba(0,0,0,.55),inset 0 0 0 8px #e6d5b0,inset 0 0 60px rgba(120,80,30,.35)!important;-webkit-backdrop-filter:none;backdrop-filter:none;rotate:-1.2deg}
+#sOver.show .card{animation:cardDrop .55s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes cardDrop{0%{translate:0 -120vh;rotate:7deg}100%{translate:0 0;rotate:-1.2deg}}
+#sOver .orn{position:absolute;inset:0;pointer-events:none;animation:none!important;
+  background:linear-gradient(var(--fg),var(--fg)) 4px 4px/8px 8px no-repeat,linear-gradient(var(--fg),var(--fg)) calc(100% - 4px) 4px/8px 8px no-repeat,linear-gradient(var(--fg),var(--fg)) 4px calc(100% - 4px)/8px 8px no-repeat,linear-gradient(var(--fg),var(--fg)) calc(100% - 4px) calc(100% - 4px)/8px 8px no-repeat,
+  linear-gradient(var(--red),var(--red)) 18px 18px/4px 4px no-repeat,linear-gradient(var(--red),var(--red)) calc(100% - 18px) 18px/4px 4px no-repeat,linear-gradient(var(--red),var(--red)) 18px calc(100% - 18px)/4px 4px no-repeat,linear-gradient(var(--red),var(--red)) calc(100% - 18px) calc(100% - 18px)/4px 4px no-repeat}
+#sOver .dead{color:var(--red);letter-spacing:.05em;
+  text-shadow:3px 0 0 var(--fg),-3px 0 0 var(--fg),0 3px 0 var(--fg),0 -3px 0 var(--fg),3px 3px 0 var(--fg),-3px -3px 0 var(--fg),3px -3px 0 var(--fg),-3px 3px 0 var(--fg),7px 7px 0 rgba(43,26,16,.45)}
+#sOver.show .dead{animation:stamp .5s cubic-bezier(.2,1.6,.4,1) .35s both,wob 1.1s steps(2) .9s infinite}
+@keyframes wob{0%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(-3deg) scale(1.03,.97)}}
+#sOver .track{height:52px;margin-top:2px}
+#sOver .track .line{top:26px;height:4px;background:repeating-linear-gradient(90deg,var(--fg) 0 6px,transparent 6px 10px)}
+#sOver .track .line i{background:var(--red);box-shadow:0 2px 0 var(--fg)}
+#sOver #trDots span{top:22px;width:10px;height:10px;margin-left:-5px;border:2px solid var(--fg);background:var(--bg)}
+#sOver #trDots span.done{background:var(--fg)}
+#sOver #trDots span.boss{top:15px;width:18px;height:18px;margin-left:-9px;border:0;background:var(--fg);-webkit-mask:var(--skull) center/100% 100% no-repeat;mask:var(--skull) center/100% 100% no-repeat}
+#sOver #trDots span.boss.done{background:var(--red)}
+#sOver #trFlag{position:absolute;left:96%;top:2px;width:20px;height:24px;margin-left:-2px;image-rendering:pixelated;background:var(--flag) 0 0/100% 100% no-repeat}
+#sOver #trApple{width:28px;height:28px;margin-left:-14px;top:0;box-shadow:none;image-rendering:pixelated;image-rendering:crisp-edges;background-color:transparent!important;animation:apHop .36s steps(2) infinite}
+@keyframes apHop{50%{transform:translateY(-5px)}}
+#sOver #mapLbl{color:var(--mut);font-size:12px}
+#sOver #oQuote{margin:0;font-size:15px;line-height:1.5;padding:10px 12px;border:2px dashed var(--line);background:rgba(255,250,235,.4)}
+#sOver #oQuote::before{content:'“';color:var(--red);font-size:22px;margin-right:4px}#sOver #oQuote::after{content:'”';color:var(--red);font-size:22px;margin-left:4px}
+#sOver details{border-top:2px dashed var(--line);border-bottom:2px dashed var(--line)}
+#sOver .btns{gap:4px;max-width:320px}
+#sOver .btn,#sOver .btn.alt,#sOver .btn.red{position:relative;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--fg);opacity:.62;font-size:17px;font-weight:600;letter-spacing:.14em;padding:9px 30px 7px;transition:opacity .12s,transform .12s,color .12s}
+#sOver .btn.red{color:var(--red);opacity:1;font-size:21px}
+#sOver .btn::before{content:'';position:absolute;left:4px;top:50%;width:12px;height:12px;margin-top:-7px;background:var(--fg);opacity:0;clip-path:polygon(0 0,0 100%,100% 50%)}
+#sOver .btn.red::before,#sOver .btn:hover::before,#sOver .btn:focus-visible::before{opacity:1;animation:poke .5s steps(2) infinite}
+#sOver .btn.red::before{background:var(--red)}
+#sOver .btn:hover,#sOver .btn:focus-visible{opacity:1;transform:scale(1.06);outline:none}
+#sOver .btn:active{transform:scale(.96)}
+@keyframes poke{50%{transform:translateX(4px)}}
 </style>
 
 <div id="game">
@@ -277,13 +320,14 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
   </div></div>
   <div class="screen" id="sOver"><div class="card">
     <h2 class="dead" id="oTtl">TE COMIERON</h2>
-    <div class="track"><div class="line"><i id="trFill"></i></div><div id="trDots"></div><div id="trApple"></div></div>
+    <div class="track"><div class="line"><i id="trFill"></i></div><div id="trDots"></div><i id="trFlag"></i><div id="trApple"></div></div>
     <div class="mini" id="mapLbl"></div>
     <blockquote id="oQuote"></blockquote>
     <div id="oLawN"></div>
     <div class="heat" id="oHeat"></div>
     <details id="oFail"><summary>¿CÓMO SE RESOLVÍA?</summary><div id="oFailB"></div></details>
     <div class="btns"><button class="btn red" id="bCont">VOLVER AL NIVEL 1</button><button class="btn alt" id="bShare">COMPARTIR</button><button class="btn alt" id="bPract">PRACTICAR</button><button class="btn alt" id="bMenu">MENÚ</button></div>
+    <i class="orn" aria-hidden="true"></i>
   </div></div>
 </div>
 <canvas id="pc"></canvas>
@@ -868,7 +912,7 @@ const OCR=(()=>{
 
 /* ============ Memoria de trazo: guarda cómo escribe el jugador cada número y corrige al OCR con eso ============ */
 const INK=(()=>{
-  const KEY='rzInk1',CAP=30;
+  const KEY='rzInk1',KEYP='rzInkP1',CAP=30,N=32;
   const blur=x=>{const o=new Float32Array(784);let m=0;
     for(let y=0;y<28;y++)for(let c=0;c<28;c++){let a=0,n=0;for(let j=-1;j<=1;j++)for(let i=-1;i<=1;i++){const yy=y+j,xx=c+i;if(yy>=0&&yy<28&&xx>=0&&xx<28){a+=x[yy*28+xx];n++}}o[y*28+c]=a/n;m+=o[y*28+c]*o[y*28+c]}
     m=Math.sqrt(m)||1;for(let i=0;i<784;i++)o[i]/=m;return o};
@@ -880,31 +924,70 @@ const INK=(()=>{
     if(j&&typeof j==='object')for(let d=0;d<10;d++)for(const s of (Array.isArray(j[d])?j[d]:[]).slice(-CAP)){try{if(typeof s!=='string')continue;const v=blur(dec(s));raw[d].push(s);V[d].push(v)}catch(e){}}
   }catch(e){}
   const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(raw))}catch(e){}};
-  // x = trazo rasterizado 28×28 que el jugador confirmó como el dígito d
-  function learn(x,d){
-    d=+d;if(!x||!(d>=0&&d<=9))return;
+  // firma del recorrido: 32 puntos a lo largo del trazo, en el orden y la dirección en que el jugador dibuja.
+  // Es lo que separa SU 3 de SU 9 (o su 8 de su 0) aunque en píxeles se parezcan.
+  function sig(strokes){
+    const pts=[];for(const st of strokes)for(const p of st)pts.push(p);if(!pts.length)return null;
+    let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const p of pts){if(p[0]<x0)x0=p[0];if(p[0]>x1)x1=p[0];if(p[1]<y0)y0=p[1];if(p[1]>y1)y1=p[1]}
+    const sc=Math.max(x1-x0,y1-y0,1),mx=(x0+x1)/2,my=(y0+y1)/2,d=[0];
+    for(let i=1;i<pts.length;i++)d.push(d[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));
+    const L=d[d.length-1],o=[strokes.length];let j=0;
+    for(let k=0;k<N;k++){const t=L*k/(N-1);while(j<pts.length-2&&d[j+1]<t)j++;
+      const a=pts[j],b=pts[Math.min(j+1,pts.length-1)],u=Math.min(1,Math.max(0,(t-d[j])/((d[j+1]-d[j])||1)));
+      o.push(Math.round(((a[0]+(b[0]-a[0])*u-mx)/sc+.5)*99),Math.round(((a[1]+(b[1]-a[1])*u-my)/sc+.5)*99))}
+    return o;
+  }
+  const pdist=(a,b)=>{let s=0;for(let k=1;k<=2*N;k+=2)s+=Math.hypot(a[k]-b[k],a[k+1]-b[k+1]);return s/N/99+(a[0]!==b[0]?.06:0)};
+  const PS=[];for(let d=0;d<10;d++)PS.push([]);
+  try{const j=JSON.parse(localStorage.getItem(KEYP)||'null');
+    if(j&&typeof j==='object')for(let d=0;d<10;d++)for(const s of (Array.isArray(j[d])?j[d]:[]).slice(-CAP))if(Array.isArray(s)&&s.length===1+2*N&&s.every(Number.isFinite))PS[d].push(s);
+  }catch(e){}
+  const saveP=()=>{try{localStorage.setItem(KEYP,JSON.stringify(PS))}catch(e){}};
+  // distancia media a los 2 trazos propios más parecidos de cada dígito (-1 = sin muestras)
+  function pathScores(path){const t=new Float32Array(10).fill(-1);if(!path)return t;
+    for(let d=0;d<10;d++){if(!PS[d].length)continue;const ds=PS[d].map(w=>pdist(path,w)).sort((a,b)=>a-b),k=Math.min(2,ds.length);let a=0;for(let i=0;i<k;i++)a+=ds[i];t[d]=a/k}
+    return t}
+  // x = trazo rasterizado 28×28 que el jugador confirmó como el dígito d; path = su firma de recorrido
+  function learn(x,d,path){
+    d=+d;if(!(d>=0&&d<=9))return;
+    if(path&&path.length===1+2*N){let near=9;for(const w of PS[d])near=Math.min(near,pdist(path,w));
+      if(!(near<.02&&PS[d].length>=4)){PS[d].push(path);if(PS[d].length>CAP)PS[d].shift();saveP()}}
+    if(!x)return;
     const v=blur(x);let best=0;for(const w of V[d])best=Math.max(best,sim(v,w));
     if(best>.97&&V[d].length>=4)return;
     raw[d].push(enc(x));V[d].push(v);
     if(raw[d].length>CAP){raw[d].shift();V[d].shift()}
     save();
   }
-  // mezcla la salida de la red con el parecido a los trazos propios del jugador
-  function adjust(x,p){
-    const v=blur(x),s=new Float32Array(10).fill(-1);let mx=-1,use=0;
+  // ¿la memoria del jugador reconoce este recorrido como d sin dudas? (muy cerca de d y lejos de cualquier otro dígito aprendido)
+  function sure(path,d){const t=pathScores(path);if(t[d]<0||t[d]>.1)return false;
+    for(let e=0;e<10;e++)if(e!==d&&t[e]>=0&&t[e]<t[d]+.07)return false;
+    let n=0;for(const v of t)if(v>=0)n++;return n>=2}
+  // mezcla probabilidades con un parecido (s, mayor = mejor) a las muestras propias
+  function blend(p,s,w,k){
+    let mx=-1e9;for(let d=0;d<10;d++)if(s[d]>-1e8&&s[d]>mx)mx=s[d];
+    const q=new Float32Array(10),o=new Float32Array(10);let z=0,m=0;
+    for(let d=0;d<10;d++)if(s[d]>-1e8){q[d]=Math.exp(k*(s[d]-mx));z+=q[d];m+=p[d]}
+    const M=m+w*(1-m);
+    for(let d=0;d<10;d++)o[d]=s[d]>-1e8?(1-w)*p[d]+w*M*q[d]/z:p[d]*(1-w*.6);
+    let t=0;for(let d=0;d<10;d++)t+=o[d];for(let d=0;d<10;d++)o[d]/=t||1;
+    return o;
+  }
+  // mezcla la salida de la red con el parecido a los trazos propios del jugador: primero la forma (píxeles), luego el recorrido
+  function adjust(x,p,path){
+    const v=blur(x),s=new Float32Array(10).fill(-1e9);let mx=-1,use=0;
     for(let d=0;d<10;d++){
       if(V[d].length<2)continue;
       const t=V[d].map(w=>sim(v,w)).sort((a,b)=>b-a),k=Math.min(3,t.length);let a=0;for(let i=0;i<k;i++)a+=t[i];
       s[d]=a/k;if(s[d]>mx)mx=s[d];use++;
     }
-    if(use<2||mx<.8)return p;
-    const w=Math.min(1,(mx-.8)/.15)*.75,q=new Float32Array(10),o=new Float32Array(10);let z=0,m=0;
-    for(let d=0;d<10;d++)if(s[d]>=0){q[d]=Math.exp(20*(s[d]-mx));z+=q[d];m+=p[d]}
-    const M=m+w*(1-m);
-    for(let d=0;d<10;d++)o[d]=s[d]>=0?(1-w)*p[d]+w*M*q[d]/z:p[d]*(1-w*w);
-    return o;
+    if(use>=2&&mx>=.8)p=blend(p,s,Math.min(1,(mx-.8)/.15)*.75,20);
+    const t=pathScores(path),sp=new Float32Array(10).fill(-1e9);let mn=9,use2=0;
+    for(let d=0;d<10;d++)if(t[d]>=0){sp[d]=-t[d];if(t[d]<mn)mn=t[d];use2++}
+    if(use2>=2&&mn<.16)p=blend(p,sp,Math.min(1,(.16-mn)/.08)*.8,40);
+    return p;
   }
-  return{learn,adjust,count:()=>raw.map(a=>a.length)};
+  return{learn,adjust,sig,sure,count:()=>raw.map(a=>a.length),countP:()=>PS.map(a=>a.length)};
 })();
 
 /* ============ Currículo: de la suma al cálculo. Cada problema = un número al que salta la manzana ============ */
@@ -1116,7 +1199,9 @@ function newRun(start){return{start,correct:0,wrong:0,esc:0,kills:0,streak:0,max
 S.run=newRun(1);
 const scx=x=>X0+(x-S.cam)*S.u;
 const fitU=d=>clamp(W*.36/Math.max(d,4),.08,40);
-const grabTime=()=>Math.max(2.4,(6.4-S.stage*.18-S.d*.8)*(1-.25*hard()))*(S.grab&&S.grab.need>1?1.35:1);
+// tiempo para soltarse: base generosa que baja con el nivel, + ~0,9 s por cada carácter extra de la respuesta (escribir "-12.5" lleva más que "7")
+const ansLen=()=>{const p=S.prob;return p?String((p.keys||[p.key])[0]||'').length||1:1};
+const grabTime=()=>(Math.max(3.8,(8.2-Math.min(S.stage,16)*.16-S.d*.8)*(1-.22*hard()))+(ansLen()-1)*.9)*(S.grab&&S.grab.need>1?1.35:1);
 const maxLive=()=>Math.min(6,1+Math.ceil(S.stage/2.5))+(S.stage>16?1:0)+Math.round(2*hard());
 const spawnInt=()=>Math.max(1.4,(5.6-S.stage*.2-S.d)*(1-.35*hard()));
 const zSpd=()=>(8+Math.min(16,S.stage*1.1)+S.d*5)*(1+.45*hard());
@@ -1354,7 +1439,7 @@ function showPick(sy,cand){
 }
 function resolvePick(k){
   const sy=chPick.sy,q=pickQ;hidePick();padDirty=true;sy.ch=k;
-  if(sy.x&&/^\d$/.test(k))INK.learn(sy.x,k); // lo que el jugador confirma a mano es la mejor muestra de su letra
+  if((sy.x||sy.path)&&/^\d$/.test(k))INK.learn(sy.x,k,sy.path); // lo que el jugador confirma a mano es la mejor muestra de su letra
   if(!nextChars().includes(k)){sy.ok=false;padFlash(S.a.st==='rest'?900:560);failChar(k);return}
   sy.ok=true;acceptChar(k);
   for(let i=0;i<q.length;i++){
@@ -1403,17 +1488,16 @@ function classify(sy){
   if(sy.st.length===1&&w>=r*.5&&h<w*.42)return{kind:'minus',ch:'-'};
   if(m<r*.8)return{kind:'dot',ch:'.'};
   const LWS=[1.6,2,2.4,3],p0=new Float32Array(10);for(const lw of LWS)OCR.predict(OCR.rasterize(sy.st,lw)).forEach((v,i)=>p0[i]+=v/LWS.length);
-  const x=OCR.rasterize(sy.st,2.3),p=INK.adjust(x,p0);let b=0;for(let i=1;i<10;i++)if(p[i]>p[b])b=i;
-  return{kind:'digit',ch:String(b),p,best:b,x};
+  const x=OCR.rasterize(sy.st,2.3),path=INK.sig(sy.st),p=INK.adjust(x,p0,path);let b=0;for(let i=1;i<10;i++)if(p[i]>p[b])b=i;
+  return{kind:'digit',ch:String(b),p,best:b,x,path,sure:INK.sure(path,b)};
 }
-// confusiones frecuentes de este jugador (trazo rápido): si lo leído es la clave y lo esperado la otra, se pregunta en vez de fallar
-const XC={5:[8,2],8:[5],2:[5]};
-const CONF={0:[8,6,9],8:[0,3,9,6],2:[1,7,3,8],1:[2,7,4],7:[1,2],6:[0,5,8],9:[4,8,0],4:[9,1],5:[6,3],3:[8,5,2]};
+// parejas que el OCR confunde (3↔9, 8↔0…): si lee una y se esperaba la otra, pregunta en vez de dar por mala la respuesta
+const CONF={};for(const[a,b]of'08 06 09 38 39 89 68 58 12 27 23 28 17 14 56 49 35 25 79'.split(' ')){(CONF[a]=CONF[a]||[]).push(+b);(CONF[b]=CONF[b]||[]).push(+a)}
 function matches(c,exp){
   if(exp==='-')return c.kind==='minus';
   if(exp==='.')return c.kind==='dot';
   if(c.kind!=='digit')return false;
-  const e=+exp;return c.best===e||c.p[e]>=.18||((CONF[c.best]||[]).includes(e)&&c.p[e]>=.03);
+  const e=+exp;return c.best===e||c.p[e]>=.18||(!c.sure&&(CONF[c.best]||[]).includes(e)&&c.p[e]>=.03);
 }
 // separa en dígitos los trazos que no se solapan en horizontal (p. ej. "30" escrito rápido y pegado)
 function splitSym(sy){
@@ -1443,14 +1527,15 @@ function finalize(sy){
   if(exps.includes('/')&&isSlash(sy)){sy.ok=true;sy.ch='/';acceptChar('/');return}
   const c=classify(sy);sy.ch=c.ch;
   if(c.kind==='digit'){
-    const ord=[...c.p.keys()].sort((a,b)=>c.p[b]-c.p[a]),p1=c.p[ord[0]];sy.x=c.x;
-    const xc=exps.filter(e=>(XC[ord[0]]||[]).includes(+e));
-    if(xc.length&&!exps.includes(String(ord[0]))){showPick(sy,[ord[0],...xc.map(Number)].slice(0,4));return}
-    // seguro: coincide con lo esperado (≥80 %) o es claramente otro número (≥97 %). Si no, el jugador elige.
-    if(!(exps.includes(String(ord[0]))?p1>=.8:p1>=.97)){showPick(sy,ord.filter((d,i)=>i<2||c.p[d]>=.04).slice(0,4));return}
+    const ord=[...c.p.keys()].sort((a,b)=>c.p[b]-c.p[a]),p1=c.p[ord[0]],top=ord[0];sy.x=c.x;sy.path=c.path;
+    // pareja confusa: se ofrecen lo leído y sus parejas en orden numérico (sin delatar cuál es la buena)
+    const xc=exps.filter(e=>/^\d$/.test(e)&&(CONF[top]||[]).includes(+e)).map(Number);
+    if(xc.length&&!exps.includes(String(top))&&!c.sure){const cand=[top,...xc];for(const d of CONF[top])if(cand.length<4&&!cand.includes(d))cand.push(d);showPick(sy,cand.sort((a,b)=>a-b));return}
+    // seguro: coincide con lo esperado (≥80 %), es claramente otro número (≥97 %) o la memoria del jugador lo reconoce. Si no, el jugador elige.
+    if(!c.sure&&!(exps.includes(String(top))?p1>=.8:p1>=.97)){showPick(sy,ord.filter((d,i)=>i<2||c.p[d]>=.04).slice(0,4));return}
   }
   const got=exps.find(e=>c.kind==='digit'&&c.best===+e)||exps.find(e=>e!=='/'&&matches(c,e));
-  if(got){sy.ok=true;sy.ch=got;if(c.kind==='digit'&&/^\d$/.test(got)&&c.p[+got]>=.8)INK.learn(c.x,got);acceptChar(got)}
+  if(got){sy.ok=true;sy.ch=got;if(c.kind==='digit'&&/^\d$/.test(got)&&c.p[+got]>=.8)INK.learn(c.x,got,c.path);acceptChar(got)}
   else{sy.ok=false;padFlash(S.a.st==='rest'?900:560);failChar(c.ch)}
 }
 function padDraw(){
@@ -1489,7 +1574,10 @@ function skelAI(z,dt,ax){
   else if(dist<z.range*.55){z.x-=dir*mv*.7;z.walk+=dt*3.4}
   else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab){z.aim=1.1;z.cd=skelCD();SFX.draw();if(R()<.3)say(z,pick(['¡QUIETA, PLEBEYA!','POSA PARA MI FLECHA','UNO… DOS… QUÉ GUAPO SOY…']))}}
 }
-function shoot(z){S.arrows.push({z,x0:z.x,x1:S.a.x,h0:15,t:0,T:.6+Math.abs(scx(z.x)-scx(S.a.x))/(W*.9)});SFX.bow()}
+// probabilidad de fallar: 50 % en el nivel 1, baja con cada nivel y con la presión (mínimo 12 %)
+const skelMiss=()=>Math.max(.12,.5-(Math.min(S.stage,16)-1)*.025-.1*hard());
+function shoot(z){const miss=R()<skelMiss(),off=miss?(R()<.5?-1:1)*(12+R()*16)/S.u:0;
+  S.arrows.push({z,x0:z.x,x1:S.a.x+off,miss,h0:15,t:0,T:.6+Math.abs(scx(z.x)-scx(S.a.x))/(W*.9)});SFX.bow()}
 function arrowHit(ar){
   S.arrowHits=(S.arrowHits||0)+1;S.shake=7;S.flash=.35;SFX.arrowHit();blood(apx(),GY-6,14);
   const left=2-S.arrowHits;S.texts.push({x:S.a.x,y:GY-42,txt:left>0?'¡FLECHAZO! TE QUEDA 1':'¡FLECHADA!',c:P.r2,t:0,life:1.5,world:true});
@@ -1642,6 +1730,12 @@ function fitDead(){
   let wmax=0;for(const w of t.textContent.split(' ')){m.textContent=w;wmax=Math.max(wmax,m.offsetWidth)}m.remove();
   if(wmax>avail*.94)t.style.fontSize=Math.max(22,Math.floor(fs*avail*.94/wmax))+'px';
 }
+// sprites pixel de la tarjeta de derrota (calavera de jefe y bandera de meta), como data URL
+const pixURL=(rows,col)=>{const c=document.createElement('canvas');c.width=rows[0].length;c.height=rows.length;const x=c.getContext('2d');
+  rows.forEach((r,j)=>[...r].forEach((ch,i)=>{if(col[ch]){x.fillStyle=col[ch];x.fillRect(i,j,1,1)}}));return c.toDataURL()};
+function overSprites(){const k=$('#sOver .card');if(k.dataset.spr)return;k.dataset.spr=1;
+  k.style.setProperty('--skull',`url(${pixURL(['.#####.','#######','#..#..#','#..#..#','###.###','.#####.','.#.#.#.'],{'#':'#000'})})`);
+  k.style.setProperty('--flag',`url(${pixURL(['kwrwrw','krwrwr','kwrwrw','krwrwr','k.....','k.....','k.....','k.....'],{k:'#2b1a10',w:'#efe2c4',r:'#b5161c'})})`)}
 function gameOver(){
   SAVE.deaths=(SAVE.deaths||0)+1;persist();
   setMode('over');
@@ -1652,7 +1746,7 @@ function gameOver(){
   $('#trDots').innerHTML=TOPICS.map((t,i)=>`<span class="${i+1<Math.min(S.stage,16)?'done':''} ${t.boss?'boss':''}" style="left:${L(i/15)}" title="${t.name}"></span>`).join('');
   const fill=$('#trFill'),ap=$('#trApple');fill.style.transition='none';ap.style.transition='none';fill.style.width='0';ap.style.left='4%';void fill.offsetWidth;fill.style.transition='';ap.style.transition='';
   requestAnimationFrame(()=>requestAnimationFrame(()=>{fill.style.width=(pos*100).toFixed(1)+'%';ap.style.left=L(pos)}));
-  ap.style.background=APC[APPLEC].r;
+  ap.style.background=`url(${appleCanvas(0,1).toDataURL()}) 0 0/100% 100% no-repeat`;overSprites();
   $('#mapLbl').textContent=`NIVEL ${S.stage>16?'∞':S.stage} · ${S.topic.name} · ${S.run.correct} ACIERTOS · ${S.run.kills} ZOMBIS · RÉCORD ${SAVE.best} · PRESIÓN ${Math.round(hard()*100)}%`;S.overPos=pos;
   const p=S.run.lastProb;
   $('#oFailB').innerHTML=p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">↻ VER DE NUEVO</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:'Te atraparon antes del primer problema.';
@@ -2367,8 +2461,10 @@ function update(dt){
   S.shards=S.shards.filter(s=>!s.done);
   // flechas: si al caer la manzana sigue ahí, la hiere; si saltó, se clava en el suelo
   for(const ar of S.arrows){ar.t+=dt;if(!ar.done&&ar.t>=ar.T){ar.done=true;const sa=S.a;
-    if(['rest','grab'].includes(sa.st)&&Math.abs(scx(sa.x)-scx(ar.x1))<7)arrowHit(ar);
-    else{ar.stuck=true;hit('cajaChina',.6);if(alive(ar.z)&&R()<.5)say(ar.z,pick(['FALLÉ A PROPÓSITO, POR LÁSTIMA','¿SALTÓ? ¡ESO ES ILEGAL EN MI REINO!','EL VIENTO ME ENVIDIA']))}}}
+    // agarrada no cuenta: el zombi que la sujeta le hace de escudo
+    if(sa.st==='rest'&&!S.grab&&Math.abs(scx(sa.x)-scx(ar.x1))<7)arrowHit(ar);
+    else{ar.stuck=true;hit('cajaChina',.6);if(ar.miss&&sa.st==='rest')S.texts.push({x:ar.x1,y:GY-30,txt:'¡FALLÓ!',c:P.y,t:0,life:.9,world:true});
+      if(alive(ar.z)&&R()<.5)say(ar.z,pick(ar.miss?['FALLÉ A PROPÓSITO, POR LÁSTIMA','EL ARCO ESTÁ TORCIDO, NO YO','DISPARO DE ADVERTENCIA, PLEBEYA','EL VIENTO ME ENVIDIA']:['¿SALTÓ? ¡ESO ES ILEGAL EN MI REINO!','FALLÉ A PROPÓSITO, POR LÁSTIMA','EL VIENTO ME ENVIDIA']))}}}
   S.arrows=S.arrows.filter(ar=>!ar.done||(ar.stuck&&ar.t<ar.T+1.2));
   // aparición y persecución
   const active=['rest','air','grab'].includes(a.st);
@@ -2411,7 +2507,7 @@ function update(dt){
   }else if(a.st==='rest'){
     if(S.prob)S.thinkT+=dt;helpCheck();
   }else if(a.st==='grab'){
-    const g=S.grab;g.g+=dt/grabTime();a.y=Math.min(1,g.g)*.95;MUS.tension=clamp(g.g,.05,1);
+    const g=S.grab;g.g+=dt/grabTime()*(chPick?.4:1);a.y=Math.min(1,g.g)*.95; // si el juego te está preguntando qué escribiste, el reloj casi se detieneMUS.tension=clamp(g.g,.05,1);
     $('#grabBar').style.width=Math.min(100,g.g*100)+'%';
     if(g.g>=1)eaten();
   }else if(a.st==='eaten'){
