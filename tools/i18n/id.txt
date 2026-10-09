@@ -474,3 +474,25 @@ tip_pres|Tekanan di {0} %: setiap kekalahan membuat zombi lebih cepat.
 tip_kills|Kamu sudah mengalahkan {0} zombi. Mereka juga menghitung.
 tip_pow|Setiap {0} jawaban benar berturut-turut memberimu kekuatan pelangi.
 tip_draw|Gambar angka besar dan jelas: apel lebih memahamimu.
+n_inf|MODE ∞
+n_aClear|Hapus gambar
+n_aPause|Jeda dan pengaturan
+n_aPows|Kekuatan
+n_aKp|Papan angka
+n_again|✕ LAGI
+n_skn|TULANG KECIL;TENGKORAK;TULANG PAHA;TULANG KERING;IGA
+m_epic|EPIK
+m_heist|PERAMPOKAN
+m_war|PERANG
+m_regueton|REGGAETON
+m_perc|PERKUSI
+m_sym40|MOZART · SIMFONI NO. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SIMFONI NO. 5
+m_moon3|BEETHOVEN · SONATA CAHAYA BULAN
+m_nacht|MOZART · SERENADA MALAM KECIL
+m_elise|BEETHOVEN · UNTUK ELISE
+m_ode|BEETHOVEN · ODE UNTUK KEGEMBIRAAN
+m_canon|PACHELBEL · KANON DALAM D
+m_mountain|GRIEG · DI AULA RAJA GUNUNG
+m_toccata|BACH · TOCCATA DAN FUGUE DALAM D MINOR

@@ -474,3 +474,25 @@ tip_pres|Áp lực đang ở {0} %: mỗi lần thua thây ma lại nhanh hơn.
 tip_kills|Bạn đã hạ {0} thây ma. Chúng cũng đang đếm.
 tip_pow|Cứ {0} câu đúng liên tiếp, bạn nhận một sức mạnh cầu vồng.
 tip_draw|Viết số to và rõ: quả táo hiểu bạn hơn.
+n_inf|CHẾ ĐỘ ∞
+n_aClear|Xóa nét vẽ
+n_aPause|Tạm dừng và cài đặt
+n_aPows|Sức mạnh
+n_aKp|Bàn phím số
+n_again|✕ LẠI
+n_skn|XƯƠNG NHỎ;SỌ;XƯƠNG ĐÙI;XƯƠNG ỐNG CHÂN;XƯƠNG SƯỜN
+m_epic|HÙNG TRÁNG
+m_heist|CƯỚP
+m_war|CHIẾN TRANH
+m_regueton|REGGAETON
+m_perc|NHẠC CỤ GÕ
+m_sym40|MOZART · GIAO HƯỞNG SỐ 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · GIAO HƯỞNG SỐ 5
+m_moon3|BEETHOVEN · SONATA ÁNH TRĂNG
+m_nacht|MOZART · KHÚC NHẠC ĐÊM NHỎ
+m_elise|BEETHOVEN · GỬI ELISE
+m_ode|BEETHOVEN · KHÚC CA NIỀM VUI
+m_canon|PACHELBEL · CANON CUNG RÊ
+m_mountain|GRIEG · TRONG HANG VUA NÚI
+m_toccata|BACH · TOCCATA VÀ FUGUE CUNG RÊ THỨ

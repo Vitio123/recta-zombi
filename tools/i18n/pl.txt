@@ -474,3 +474,25 @@ tip_pres|Presja wynosi {0} %: każda porażka przyspiesza zombie.
 tip_kills|Pokonałeś {0} zombie. One też liczą.
 tip_pow|Co {0} dobrych odpowiedzi z rzędu dostajesz tęczową moc.
 tip_draw|Rysuj cyfry duże i wyraźne: jabłko lepiej cię zrozumie.
+n_inf|TRYB ∞
+n_aClear|Wymaż rysunek
+n_aPause|Pauza i ustawienia
+n_aPows|Moce
+n_aKp|Klawiatura numeryczna
+n_again|✕ JESZCZE RAZ
+n_skn|KOSTECZKA;CZASZKA;KOŚĆ UDOWA;GOLEŃ;ŻEBRO
+m_epic|EPICKI
+m_heist|NAPAD
+m_war|WOJNA
+m_regueton|REGGAETON
+m_perc|PERKUSJA
+m_sym40|MOZART · SYMFONIA NR 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMFONIA NR 5
+m_moon3|BEETHOVEN · SONATA KSIĘŻYCOWA
+m_nacht|MOZART · MAŁA SERENADA NOCNA
+m_elise|BEETHOVEN · DLA ELIZY
+m_ode|BEETHOVEN · ODA DO RADOŚCI
+m_canon|PACHELBEL · KANON D-DUR
+m_mountain|GRIEG · W GROCIE KRÓLA GÓR
+m_toccata|BACH · TOCCATA I FUGA D-MOLL

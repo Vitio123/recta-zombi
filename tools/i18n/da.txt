@@ -474,3 +474,25 @@ tip_pres|Presset er på {0} %: hvert nederlag gør zombierne hurtigere.
 tip_kills|Du har besejret {0} zombier. De tæller også.
 tip_pow|For hver {0} rigtige svar i træk får du en regnbuekraft.
 tip_draw|Tegn tallene store og tydelige: æblet forstår dig bedre.
+n_inf|∞-TILSTAND
+n_aClear|Slet tegningen
+n_aPause|Pause og indstillinger
+n_aPows|Kræfter
+n_aKp|Taltastatur
+n_again|✕ IGEN
+n_skn|BENRAD;KRANIE;LÅRBEN;SKINNEBEN;RIBBEN
+m_epic|EPISK
+m_heist|RØVERI
+m_war|KRIG
+m_regueton|REGGAETON
+m_perc|SLAGTØJ
+m_sym40|MOZART · SYMFONI NR. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMFONI NR. 5
+m_moon3|BEETHOVEN · MÅNESKINSSONATEN
+m_nacht|MOZART · EN LILLE NATMUSIK
+m_elise|BEETHOVEN · FÜR ELISE
+m_ode|BEETHOVEN · ODE TIL GLÆDEN
+m_canon|PACHELBEL · KANON I D
+m_mountain|GRIEG · I BJERGKONGENS HAL
+m_toccata|BACH · TOCCATA OG FUGE I D-MOL

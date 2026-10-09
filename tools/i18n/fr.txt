@@ -474,3 +474,25 @@ tip_pres|La pression est à {0} % : chaque défaite rend les zombies plus rapide
 tip_kills|Tu as éliminé {0} zombies. Eux aussi tiennent les comptes.
 tip_pow|Tous les {0} bonnes réponses d'affilée, tu gagnes un pouvoir arc-en-ciel.
 tip_draw|Dessine les chiffres grands et nets : la pomme te comprend mieux.
+n_inf|MODE ∞
+n_aClear|Effacer le dessin
+n_aPause|Pause et réglages
+n_aPows|Pouvoirs
+n_aKp|Pavé numérique
+n_again|✕ ENCORE
+n_skn|OSSELET;CRÂNE;FÉMUR;TIBIA;CÔTE
+m_epic|ÉPIQUE
+m_heist|BRAQUAGE
+m_war|GUERRE
+m_regueton|REGGAETON
+m_perc|PERCUSSION
+m_sym40|MOZART · SYMPHONIE N° 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMPHONIE N° 5
+m_moon3|BEETHOVEN · SONATE AU CLAIR DE LUNE
+m_nacht|MOZART · PETITE MUSIQUE DE NUIT
+m_elise|BEETHOVEN · POUR ÉLISE
+m_ode|BEETHOVEN · ODE À LA JOIE
+m_canon|PACHELBEL · CANON EN RÉ
+m_mountain|GRIEG · DANS L'ANTRE DU ROI DE LA MONTAGNE
+m_toccata|BACH · TOCCATA ET FUGUE EN RÉ MINEUR

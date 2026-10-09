@@ -474,3 +474,25 @@ tip_pres|압박은 {0} %: 질 때마다 좀비가 빨라집니다.
 tip_kills|좀비 {0}마리를 처치했어요. 좀비들도 세고 있어요.
 tip_pow|{0}문제 연속 정답마다 무지개 능력을 얻어요.
 tip_draw|숫자를 크고 또렷하게 쓰세요: 사과가 더 잘 알아들어요.
+n_inf|∞ 모드
+n_aClear|그린 것 지우기
+n_aPause|일시정지 및 설정
+n_aPows|능력
+n_aKp|숫자 키패드
+n_again|✕ 다시
+n_skn|뼈다귀;해골;대퇴골;정강이뼈;갈비뼈
+m_epic|웅장함
+m_heist|강도
+m_war|전쟁
+m_regueton|레게톤
+m_perc|타악기
+m_sym40|모차르트 · 교향곡 40번
+m_turca|모차르트 · 터키 행진곡
+m_sym5|베토벤 · 교향곡 5번
+m_moon3|베토벤 · 월광 소나타
+m_nacht|모차르트 · 아이네 클라이네 나흐트무지크
+m_elise|베토벤 · 엘리제를 위하여
+m_ode|베토벤 · 환희의 송가
+m_canon|파헬벨 · D장조 카논
+m_mountain|그리그 · 산속 마왕의 궁전에서
+m_toccata|바흐 · d단조 토카타와 푸가

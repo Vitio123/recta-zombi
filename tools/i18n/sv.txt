@@ -474,3 +474,25 @@ tip_pres|Trycket ligger på {0} %: varje förlust gör zombierna snabbare.
 tip_kills|Du har besegrat {0} zombier. De räknar också.
 tip_pow|Var {0}:e rätt svar i rad ger dig en regnbågskraft.
 tip_draw|Rita siffrorna stora och tydliga: äpplet förstår dig bättre.
+n_inf|∞-LÄGE
+n_aClear|Radera teckningen
+n_aPause|Paus och inställningar
+n_aPows|Krafter
+n_aKp|Sifferknappsats
+n_again|✕ IGEN
+n_skn|BENGUBBE;SKALLE;LÅRBEN;SKENBEN;REVBEN
+m_epic|EPISK
+m_heist|RÅN
+m_war|KRIG
+m_regueton|REGGAETON
+m_perc|SLAGVERK
+m_sym40|MOZART · SYMFONI NR 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMFONI NR 5
+m_moon3|BEETHOVEN · MÅNSKENSSONATEN
+m_nacht|MOZART · EN LITEN NATTMUSIK
+m_elise|BEETHOVEN · FÖR ELISE
+m_ode|BEETHOVEN · ODE TILL GLÄDJEN
+m_canon|PACHELBEL · KANON I D
+m_mountain|GRIEG · I BERGAKUNGENS SAL
+m_toccata|BACH · TOCCATA OCH FUGA I D-MOLL

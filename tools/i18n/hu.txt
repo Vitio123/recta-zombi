@@ -474,3 +474,25 @@ tip_pres|A nyomás {0} %: minden vereség gyorsabbá teszi a zombikat.
 tip_kills|{0} zombit győztél le. Ők is számolják.
 tip_pow|Minden {0} egymás utáni jó válaszért szivárványerőt kapsz.
 tip_draw|Rajzold a számokat nagyra és tisztán: az alma jobban megért.
+n_inf|∞ MÓD
+n_aClear|Rajz törlése
+n_aPause|Szünet és beállítások
+n_aPows|Erők
+n_aKp|Számbillentyűzet
+n_again|✕ ÚJRA
+n_skn|CSONTOCSKA;KOPONYA;COMBCSONT;SÍPCSONT;BORDA
+m_epic|EPIKUS
+m_heist|RABLÁS
+m_war|HÁBORÚ
+m_regueton|REGGAETON
+m_perc|ÜTŐHANGSZEREK
+m_sym40|MOZART · 40. SZIMFÓNIA
+m_turca|MOZART · TÖRÖK INDULÓ
+m_sym5|BEETHOVEN · 5. SZIMFÓNIA
+m_moon3|BEETHOVEN · HOLDFÉNY-SZONÁTA
+m_nacht|MOZART · KIS ÉJI ZENE
+m_elise|BEETHOVEN · FÜR ELISE
+m_ode|BEETHOVEN · ÖRÖMÓDA
+m_canon|PACHELBEL · D-DÚR KÁNON
+m_mountain|GRIEG · A HEGYI KIRÁLY CSARNOKÁBAN
+m_toccata|BACH · D-MOLL TOCCATA ÉS FÚGA

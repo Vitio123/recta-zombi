@@ -474,3 +474,25 @@ tip_pres|Der Druck liegt bei {0} %: Jede Niederlage macht die Zombies schneller.
 tip_kills|Du hast {0} Zombies besiegt. Sie zählen auch mit.
 tip_pow|Alle {0} richtigen Antworten in Folge bekommst du eine Regenbogenkraft.
 tip_draw|Zeichne die Zahlen groß und deutlich: Der Apfel versteht dich besser.
+n_inf|∞-MODUS
+n_aClear|Zeichnung löschen
+n_aPause|Pause und Einstellungen
+n_aPows|Kräfte
+n_aKp|Zahlenblock
+n_again|✕ NOCHMAL
+n_skn|KNOCHI;SCHÄDEL;OBERSCHENKEL;SCHIENBEIN;RIPPE
+m_epic|EPISCH
+m_heist|RAUBÜBERFALL
+m_war|KRIEG
+m_regueton|REGGAETON
+m_perc|PERKUSSION
+m_sym40|MOZART · SINFONIE NR. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SINFONIE NR. 5
+m_moon3|BEETHOVEN · MONDSCHEINSONATE
+m_nacht|MOZART · EINE KLEINE NACHTMUSIK
+m_elise|BEETHOVEN · FÜR ELISE
+m_ode|BEETHOVEN · ODE AN DIE FREUDE
+m_canon|PACHELBEL · KANON IN D
+m_mountain|GRIEG · IN DER HALLE DES BERGKÖNIGS
+m_toccata|BACH · TOCCATA UND FUGE D-MOLL

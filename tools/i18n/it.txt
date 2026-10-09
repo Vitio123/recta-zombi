@@ -474,3 +474,25 @@ tip_pres|La pressione è al {0} %: ogni sconfitta rende gli zombi più veloci.
 tip_kills|Hai eliminato {0} zombi. Anche loro tengono il conto.
 tip_pow|Ogni {0} risposte giuste di fila ottieni un potere arcobaleno.
 tip_draw|Disegna i numeri grandi e chiari: la mela ti capisce meglio.
+n_inf|MODALITÀ ∞
+n_aClear|Cancella il disegno
+n_aPause|Pausa e impostazioni
+n_aPows|Poteri
+n_aKp|Tastierino numerico
+n_again|✕ ANCORA
+n_skn|OSSICINO;TESCHIO;FEMORE;TIBIA;COSTOLA
+m_epic|EPICO
+m_heist|RAPINA
+m_war|GUERRA
+m_regueton|REGGAETON
+m_perc|PERCUSSIONI
+m_sym40|MOZART · SINFONIA N. 40
+m_turca|MOZART · RONDÒ ALLA TURCA
+m_sym5|BEETHOVEN · SINFONIA N. 5
+m_moon3|BEETHOVEN · SONATA AL CHIARO DI LUNA
+m_nacht|MOZART · PICCOLA SERENATA NOTTURNA
+m_elise|BEETHOVEN · PER ELISA
+m_ode|BEETHOVEN · INNO ALLA GIOIA
+m_canon|PACHELBEL · CANONE IN RE
+m_mountain|GRIEG · NELLA SALA DEL RE DELLA MONTAGNA
+m_toccata|BACH · TOCCATA E FUGA IN RE MINORE

@@ -474,3 +474,25 @@ tip_pres|De druk staat op {0} %: elke nederlaag maakt de zombies sneller.
 tip_kills|Je hebt {0} zombies verslagen. Zij houden ook de tel bij.
 tip_pow|Elke {0} goede antwoorden op rij krijg je een regenboogkracht.
 tip_draw|Teken de cijfers groot en duidelijk: de appel begrijpt je beter.
+n_inf|∞-MODUS
+n_aClear|Tekening wissen
+n_aPause|Pauze en instellingen
+n_aPows|Krachten
+n_aKp|Cijfertoetsen
+n_again|✕ OPNIEUW
+n_skn|BOTJE;SCHEDEL;DIJBEEN;SCHEENBEEN;RIB
+m_epic|EPISCH
+m_heist|OVERVAL
+m_war|OORLOG
+m_regueton|REGGAETON
+m_perc|SLAGWERK
+m_sym40|MOZART · SYMFONIE NR. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMFONIE NR. 5
+m_moon3|BEETHOVEN · MAANLICHTSONATE
+m_nacht|MOZART · EEN KLEINE NACHTMUZIEK
+m_elise|BEETHOVEN · VOOR ELISE
+m_ode|BEETHOVEN · ODE AAN DE VREUGDE
+m_canon|PACHELBEL · CANON IN D
+m_mountain|GRIEG · IN DE HAL VAN DE BERGKONING
+m_toccata|BACH · TOCCATA EN FUGA IN D KLEIN

@@ -474,3 +474,25 @@ tip_pres|Tlak je na {0} %: každá porážka zrychlí zombíky.
 tip_kills|Zničil jsi {0} zombíků. Oni to taky počítají.
 tip_pow|Za každých {0} správných odpovědí v řadě získáš duhovou sílu.
 tip_draw|Kresli čísla velká a zřetelná: jablko ti lépe rozumí.
+n_inf|REŽIM ∞
+n_aClear|Smazat kresbu
+n_aPause|Pauza a nastavení
+n_aPows|Schopnosti
+n_aKp|Číselná klávesnice
+n_again|✕ ZNOVU
+n_skn|KOSTĚNKA;LEBKA;STEHENNÍ KOST;HOLENNÍ KOST;ŽEBRO
+m_epic|EPICKÝ
+m_heist|LOUPEŽ
+m_war|VÁLKA
+m_regueton|REGGAETON
+m_perc|PERKUSE
+m_sym40|MOZART · SYMFONIE Č. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMFONIE Č. 5
+m_moon3|BEETHOVEN · MĚSÍČNÍ SVIT
+m_nacht|MOZART · MALÁ NOČNÍ HUDBA
+m_elise|BEETHOVEN · PRO ELIŠKU
+m_ode|BEETHOVEN · ÓDA NA RADOST
+m_canon|PACHELBEL · KÁNON D DUR
+m_mountain|GRIEG · V SÍNI KRÁLE HOR
+m_toccata|BACH · TOCCATA A FUGA D MOLL

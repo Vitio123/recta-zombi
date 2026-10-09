@@ -474,3 +474,25 @@ tip_pres|Presiunea e la {0} %: fiecare înfrângere face zombii mai rapizi.
 tip_kills|Ai eliminat {0} zombi. Și ei țin socoteala.
 tip_pow|La fiecare {0} răspunsuri corecte la rând primești o putere curcubeu.
 tip_draw|Desenează cifrele mari și clare: mărul te înțelege mai bine.
+n_inf|MOD ∞
+n_aClear|Șterge desenul
+n_aPause|Pauză și setări
+n_aPows|Puteri
+n_aKp|Tastatură numerică
+n_again|✕ DIN NOU
+n_skn|OSCIOR;CRANIU;FEMUR;TIBIE;COASTĂ
+m_epic|EPIC
+m_heist|JAF
+m_war|RĂZBOI
+m_regueton|REGGAETON
+m_perc|PERCUȚIE
+m_sym40|MOZART · SIMFONIA NR. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SIMFONIA NR. 5
+m_moon3|BEETHOVEN · SONATA LUNII
+m_nacht|MOZART · O MICĂ SERENADĂ DE NOAPTE
+m_elise|BEETHOVEN · PENTRU ELISE
+m_ode|BEETHOVEN · ODA BUCURIEI
+m_canon|PACHELBEL · CANON ÎN RE
+m_mountain|GRIEG · ÎN PEȘTERA REGELUI MUNTELUI
+m_toccata|BACH · TOCCATA ȘI FUGA ÎN RE MINOR

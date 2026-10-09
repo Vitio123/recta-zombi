@@ -474,3 +474,25 @@ tip_pres|压力为{0} %：每次失败僵尸都会更快。
 tip_kills|你已消灭{0}个僵尸。它们也在记账。
 tip_pow|每连续答对{0}题，你就获得一种彩虹能力。
 tip_draw|把数字写得又大又清楚：苹果更能看懂。
+n_inf|∞模式
+n_aClear|擦掉所画内容
+n_aPause|暂停和设置
+n_aPows|能力
+n_aKp|数字键盘
+n_again|✕ 再来一次
+n_skn|小骨;骷髅;股骨;胫骨;肋骨
+m_epic|史诗
+m_heist|抢劫
+m_war|战争
+m_regueton|雷鬼顿
+m_perc|打击乐
+m_sym40|莫扎特 · 第40交响曲
+m_turca|莫扎特 · 土耳其回旋曲
+m_sym5|贝多芬 · 第五交响曲
+m_moon3|贝多芬 · 月光奏鸣曲
+m_nacht|莫扎特 · 小夜曲
+m_elise|贝多芬 · 致爱丽丝
+m_ode|贝多芬 · 欢乐颂
+m_canon|帕赫贝尔 · D大调卡农
+m_mountain|格里格 · 在山魔王的大厅里
+m_toccata|巴赫 · d小调托卡塔与赋格

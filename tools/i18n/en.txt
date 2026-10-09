@@ -474,3 +474,25 @@ tip_pres|Pressure is at {0} %: every defeat makes the zombies faster.
 tip_kills|You've defeated {0} zombies. They're keeping count too.
 tip_pow|Every {0} correct answers in a row earns you a rainbow power.
 tip_draw|Draw your numbers big and clear: the apple understands you better.
+n_inf|∞ MODE
+n_aClear|Clear drawing
+n_aPause|Pause and settings
+n_aPows|Powers
+n_aKp|Number keypad
+n_again|✕ AGAIN
+n_skn|BONY;SKULL;FEMUR;TIBIA;RIB
+m_epic|EPIC
+m_heist|HEIST
+m_war|WAR
+m_regueton|REGGAETON
+m_perc|PERCUSSION
+m_sym40|MOZART · SYMPHONY NO. 40
+m_turca|MOZART · RONDO ALLA TURCA
+m_sym5|BEETHOVEN · SYMPHONY NO. 5
+m_moon3|BEETHOVEN · MOONLIGHT SONATA
+m_nacht|MOZART · A LITTLE NIGHT MUSIC
+m_elise|BEETHOVEN · FÜR ELISE
+m_ode|BEETHOVEN · ODE TO JOY
+m_canon|PACHELBEL · CANON IN D
+m_mountain|GRIEG · IN THE HALL OF THE MOUNTAIN KING
+m_toccata|BACH · TOCCATA AND FUGUE IN D MINOR

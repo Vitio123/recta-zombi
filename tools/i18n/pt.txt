@@ -474,3 +474,25 @@ tip_pres|A pressão está em {0} %: cada derrota deixa os zumbis mais rápidos.
 tip_kills|Você já eliminou {0} zumbis. Eles também estão contando.
 tip_pow|A cada {0} acertos seguidos você ganha um poder do arco-íris.
 tip_draw|Desenhe os números grandes e claros: a maçã te entende melhor.
+n_inf|MODO ∞
+n_aClear|Apagar o desenho
+n_aPause|Pausa e ajustes
+n_aPows|Poderes
+n_aKp|Teclado numérico
+n_again|✕ DE NOVO
+n_skn|OSSINHO;CAVEIRA;FÊMUR;TÍBIA;COSTELA
+m_epic|ÉPICO
+m_heist|ASSALTO
+m_war|GUERRA
+m_regueton|REGGAETON
+m_perc|PERCUSSÃO
+m_sym40|MOZART · SINFONIA N.º 40
+m_turca|MOZART · RONDÓ À TURCA
+m_sym5|BEETHOVEN · SINFONIA N.º 5
+m_moon3|BEETHOVEN · SONATA AO LUAR
+m_nacht|MOZART · PEQUENA SERENATA NOTURNA
+m_elise|BEETHOVEN · PARA ELISA
+m_ode|BEETHOVEN · HINO À ALEGRIA
+m_canon|PACHELBEL · CÂNONE EM RÉ
+m_mountain|GRIEG · NA GRUTA DO REI DA MONTANHA
+m_toccata|BACH · TOCATA E FUGA EM RÉ MENOR
