@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODA BUCURIEI
 m_canon|PACHELBEL · CANON ÎN RE
 m_mountain|GRIEG · ÎN PEȘTERA REGELUI MUNTELUI
 m_toccata|BACH · TOCCATA ȘI FUGA ÎN RE MINOR
+n_apple|MĂRUL LUI NEWTON
+in1|Treizeci de ani predau matematică… și nimeni nu e atent.
+in2|Nu vreți să învățați? Foarte bine. VĂ TRANSFORM PE TOȚI ÎN ZOMBI!
+in3|Și chiar a făcut-o. O bombă de formule. Nimeni n-a înțeles nimic, ca de obicei.
+in4|Creieeeri… cât face 7 × 8? NU-MI SPUNE, NU VREAU SĂ ȘTIU!
+in5|Dar pe o stație spațială se păstra ultima speranță: mărul care i-a căzut lui Newton în cap.
+in6|Zombi care urăsc matematica? Liniște. Eu știu să adun.
+in7|CINE A CALCULAT UNGHIUL ĂSTA DE INTRARE?!
+in8|Un fruct? HA! Scoate o foaie, mărule: extemporal.

@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE À LA JOIE
 m_canon|PACHELBEL · CANON EN RÉ
 m_mountain|GRIEG · DANS L'ANTRE DU ROI DE LA MONTAGNE
 m_toccata|BACH · TOCCATA ET FUGUE EN RÉ MINEUR
+n_apple|POMME DE NEWTON
+in1|Trente ans à enseigner les maths… et personne ne m'écoute.
+in2|Vous ne voulez pas apprendre ? Très bien. JE VAIS VOUS TRANSFORMER EN ZOMBIES !
+in3|Et il l'a fait. Une bombe à formules. Personne n'a rien compris, comme d'habitude.
+in4|Cerveaaaux… ça fait combien 7 × 8 ? NE ME DIS RIEN, JE VEUX PAS SAVOIR !
+in5|Mais une station spatiale gardait le dernier espoir : la pomme tombée sur Newton.
+in6|Des zombies qui détestent les maths ? Du calme. Je sais additionner.
+in7|QUI A CALCULÉ CET ANGLE D'ENTRÉE ?!
+in8|Un fruit ? HA ! Sors une feuille, petite pomme : interro surprise.

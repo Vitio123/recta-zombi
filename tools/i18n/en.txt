@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE TO JOY
 m_canon|PACHELBEL · CANON IN D
 m_mountain|GRIEG · IN THE HALL OF THE MOUNTAIN KING
 m_toccata|BACH · TOCCATA AND FUGUE IN D MINOR
+n_apple|NEWTON'S APPLE
+in1|Thirty years teaching math… and nobody pays attention.
+in2|You don't want to learn? Fine. I'LL TURN YOU ALL INTO ZOMBIES!
+in3|And he did. A formula bomb. Nobody understood a thing, as usual.
+in4|Braaains… what's 7 × 8? DON'T TELL ME, I DON'T WANT TO KNOW!
+in5|But a space station kept the last hope: the apple that fell on Newton.
+in6|Zombies who hate math? Relax. I can add.
+in7|WHO CALCULATED THIS ENTRY ANGLE?!
+in8|A fruit? HA! Take out a sheet of paper, little apple: pop quiz.

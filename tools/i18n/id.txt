@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE UNTUK KEGEMBIRAAN
 m_canon|PACHELBEL · KANON DALAM D
 m_mountain|GRIEG · DI AULA RAJA GUNUNG
 m_toccata|BACH · TOCCATA DAN FUGUE DALAM D MINOR
+n_apple|APEL NEWTON
+in1|Tiga puluh tahun mengajar matematika… dan tidak ada yang memperhatikan.
+in2|Tidak mau belajar? Baiklah. AKAN KUUBAH KALIAN SEMUA JADI ZOMBI!
+in3|Dan dia benar-benar melakukannya. Bom rumus. Seperti biasa, tidak ada yang paham.
+in4|Otaaak… 7 × 8 berapa? JANGAN BILANG, AKU TIDAK MAU TAHU!
+in5|Tapi di stasiun luar angkasa tersimpan harapan terakhir: apel yang jatuh ke kepala Newton.
+in6|Zombi yang benci matematika? Tenang. Aku bisa menjumlah.
+in7|SIAPA YANG MENGHITUNG SUDUT MASUK INI?!
+in8|Buah? HA! Keluarkan selembar kertas, apel kecil: kuis dadakan.

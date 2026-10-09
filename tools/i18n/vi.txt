@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · KHÚC CA NIỀM VUI
 m_canon|PACHELBEL · CANON CUNG RÊ
 m_mountain|GRIEG · TRONG HANG VUA NÚI
 m_toccata|BACH · TOCCATA VÀ FUGUE CUNG RÊ THỨ
+n_apple|QUẢ TÁO CỦA NEWTON
+in1|Ba mươi năm dạy toán… mà chẳng ai chịu nghe.
+in2|Không muốn học à? Được thôi. TA SẼ BIẾN TẤT CẢ CÁC NGƯƠI THÀNH THÂY MA!
+in3|Và hắn đã làm thật. Một quả bom công thức. Như mọi khi, chẳng ai hiểu gì.
+in4|Nãooo… 7 × 8 bằng mấy? ĐỪNG NÓI, TAO KHÔNG MUỐN BIẾT!
+in5|Nhưng trên một trạm vũ trụ vẫn còn hy vọng cuối cùng: quả táo đã rơi trúng Newton.
+in6|Thây ma ghét toán à? Bình tĩnh. Tớ biết cộng mà.
+in7|AI ĐÃ TÍNH GÓC VÀO KHÍ QUYỂN NÀY VẬY?!
+in8|Một quả táo? HA! Lấy giấy ra, táo con: kiểm tra đột xuất.

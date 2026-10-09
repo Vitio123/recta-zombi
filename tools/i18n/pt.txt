@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · HINO À ALEGRIA
 m_canon|PACHELBEL · CÂNONE EM RÉ
 m_mountain|GRIEG · NA GRUTA DO REI DA MONTANHA
 m_toccata|BACH · TOCATA E FUGA EM RÉ MENOR
+n_apple|MAÇÃ DE NEWTON
+in1|Trinta anos ensinando matemática… e ninguém presta atenção.
+in2|Não querem aprender? Muito bem. VOU TRANSFORMAR TODOS EM ZUMBIS!
+in3|E transformou. Uma bomba de fórmulas. Ninguém entendeu nada, como sempre.
+in4|Cérebrooo… quanto é 7 × 8? NÃO ME CONTA, NÃO QUERO SABER!
+in5|Mas numa estação espacial guardavam a última esperança: a maçã que caiu na cabeça de Newton.
+in6|Zumbis que odeiam matemática? Relaxa. Eu sei somar.
+in7|QUEM CALCULOU ESTE ÂNGULO DE ENTRADA?!
+in8|Uma fruta? HA! Pega uma folha, maçãzinha: prova surpresa.

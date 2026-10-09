@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE TIL GLÆDEN
 m_canon|PACHELBEL · KANON I D
 m_mountain|GRIEG · I BJERGKONGENS HAL
 m_toccata|BACH · TOCCATA OG FUGE I D-MOL
+n_apple|NEWTONS ÆBLE
+in1|Tredive år som matematiklærer… og ingen hører efter.
+in2|Vil I ikke lære? Fint. JEG FORVANDLER JER ALLE TIL ZOMBIER!
+in3|Og det gjorde han. En formelbombe. Ingen forstod noget, som sædvanlig.
+in4|Hjeeerner… hvad er 7 × 8? SIG DET IKKE, JEG VIL IKKE VIDE DET!
+in5|Men på en rumstation gemte man det sidste håb: æblet, der faldt i hovedet på Newton.
+in6|Zombier, der hader matematik? Rolig nu. Jeg kan lægge sammen.
+in7|HVEM HAR REGNET DENNE INDGANGSVINKEL UD?!
+in8|En frugt? HA! Find et stykke papir, lille æble: overraskelsesprøve.

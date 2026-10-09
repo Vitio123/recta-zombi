@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE TILL GLÄDJEN
 m_canon|PACHELBEL · KANON I D
 m_mountain|GRIEG · I BERGAKUNGENS SAL
 m_toccata|BACH · TOCCATA OCH FUGA I D-MOLL
+n_apple|NEWTONS ÄPPLE
+in1|Trettio år som mattelärare… och ingen lyssnar.
+in2|Vill ni inte lära er? Fint. JAG SKA GÖRA ER ALLA TILL ZOMBIER!
+in3|Och det gjorde han. En formelbomb. Ingen förstod något, som vanligt.
+in4|Hjäääärnor… vad är 7 × 8? SÄG INGET, JAG VILL INTE VETA!
+in5|Men på en rymdstation fanns det sista hoppet: äpplet som föll på Newton.
+in6|Zombier som hatar matte? Lugn. Jag kan addera.
+in7|VEM RÄKNADE UT DEN HÄR INTRÄDESVINKELN?!
+in8|En frukt? HA! Fram med ett papper, lilla äpple: överraskningsprov.

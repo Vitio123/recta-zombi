@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODA DO RADOŚCI
 m_canon|PACHELBEL · KANON D-DUR
 m_mountain|GRIEG · W GROCIE KRÓLA GÓR
 m_toccata|BACH · TOCCATA I FUGA D-MOLL
+n_apple|JABŁKO NEWTONA
+in1|Trzydzieści lat uczę matematyki… i nikt nie słucha.
+in2|Nie chcecie się uczyć? Dobrze. ZAMIENIĘ WAS WSZYSTKICH W ZOMBIE!
+in3|I zamienił. Bombą z wzorów. Jak zwykle nikt nic nie zrozumiał.
+in4|Mózgiii… ile to 7 × 8? NIE MÓW, NIE CHCĘ WIEDZIEĆ!
+in5|Ale na stacji kosmicznej trzymano ostatnią nadzieję: jabłko, które spadło na Newtona.
+in6|Zombie, które nienawidzą matmy? Spokojnie. Umiem dodawać.
+in7|KTO OBLICZYŁ TEN KĄT WEJŚCIA?!
+in8|Owoc? HA! Wyjmij kartkę, jabłuszko: niezapowiedziana kartkówka.

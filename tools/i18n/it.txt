@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · INNO ALLA GIOIA
 m_canon|PACHELBEL · CANONE IN RE
 m_mountain|GRIEG · NELLA SALA DEL RE DELLA MONTAGNA
 m_toccata|BACH · TOCCATA E FUGA IN RE MINORE
+n_apple|LA MELA DI NEWTON
+in1|Trent'anni a insegnare matematica… e nessuno mi ascolta.
+in2|Non volete imparare? Benissimo. VI TRASFORMERÒ TUTTI IN ZOMBI!
+in3|E lo fece. Una bomba di formule. Nessuno ci capì niente, come sempre.
+in4|Cervelliii… quanto fa 7 × 8? NON DIRMELO, NON VOGLIO SAPERLO!
+in5|Ma su una stazione spaziale custodivano l'ultima speranza: la mela caduta in testa a Newton.
+in6|Zombi che odiano la matematica? Tranquilli. Io so fare le addizioni.
+in7|CHI HA CALCOLATO QUESTO ANGOLO DI RIENTRO?!
+in8|Un frutto? HA! Tira fuori un foglio, melina: compito a sorpresa.

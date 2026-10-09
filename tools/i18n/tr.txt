@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · NEŞEYE ÖVGÜ
 m_canon|PACHELBEL · RE MAJÖR KANON
 m_mountain|GRIEG · DAĞ KRALININ SALONUNDA
 m_toccata|BACH · RE MINÖR TOKKATA VE FÜG
+n_apple|NEWTON'IN ELMASI
+in1|Otuz yıldır matematik öğretiyorum… ve kimse dinlemiyor.
+in2|Öğrenmek istemiyor musunuz? Peki. HEPİNİZİ ZOMBİYE ÇEVİRECEĞİM!
+in3|Ve çevirdi. Bir formül bombasıyla. Her zamanki gibi kimse bir şey anlamadı.
+in4|Beyiiin… 7 × 8 kaç eder? SÖYLEME, BİLMEK İSTEMİYORUM!
+in5|Ama bir uzay istasyonunda son umut saklanıyordu: Newton'ın kafasına düşen elma.
+in6|Matematikten nefret eden zombiler mi? Sakin olun. Ben toplama bilirim.
+in7|BU GİRİŞ AÇISINI KİM HESAPLADI?!
+in8|Bir meyve mi? HA! Kâğıt çıkar, küçük elma: sürpriz sınav.

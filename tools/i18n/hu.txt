@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ÖRÖMÓDA
 m_canon|PACHELBEL · D-DÚR KÁNON
 m_mountain|GRIEG · A HEGYI KIRÁLY CSARNOKÁBAN
 m_toccata|BACH · D-MOLL TOCCATA ÉS FÚGA
+n_apple|NEWTON ALMÁJA
+in1|Harminc éve tanítok matekot… és senki sem figyel.
+in2|Nem akartok tanulni? Rendben. MINDANNYIÓTOKAT ZOMBIVÁ VÁLTOZTATLAK!
+in3|És meg is tette. Egy képletbombával. Mint mindig, senki nem értett semmit.
+in4|Agyaaak… mennyi 7 × 8? NE MONDD MEG, NEM AKAROM TUDNI!
+in5|De egy űrállomáson őrizték az utolsó reményt: az almát, amely Newton fejére esett.
+in6|Matekgyűlölő zombik? Nyugi. Én tudok összeadni.
+in7|KI SZÁMOLTA KI EZT A BELÉPÉSI SZÖGET?!
+in8|Egy gyümölcs? HA! Vegyél elő egy lapot, almácska: röpdolgozat.

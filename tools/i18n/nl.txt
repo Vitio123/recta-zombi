@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE AAN DE VREUGDE
 m_canon|PACHELBEL · CANON IN D
 m_mountain|GRIEG · IN DE HAL VAN DE BERGKONING
 m_toccata|BACH · TOCCATA EN FUGA IN D KLEIN
+n_apple|NEWTONS APPEL
+in1|Dertig jaar wiskunde geven… en niemand let op.
+in2|Willen jullie niet leren? Prima. IK MAAK VAN JULLIE ALLEMAAL ZOMBIES!
+in3|En dat deed hij. Een formulebom. Niemand begreep er iets van, zoals altijd.
+in4|Hersseeens… hoeveel is 7 × 8? NIET ZEGGEN, IK WIL HET NIET WETEN!
+in5|Maar in een ruimtestation bewaarden ze de laatste hoop: de appel die op Newton viel.
+in6|Zombies die wiskunde haten? Rustig maar. Ik kan optellen.
+in7|WIE HEEFT DEZE TERUGKEERHOEK BEREKEND?!
+in8|Een stuk fruit? HA! Pak een blaadje, appeltje: overhoring.

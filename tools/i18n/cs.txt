@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ÓDA NA RADOST
 m_canon|PACHELBEL · KÁNON D DUR
 m_mountain|GRIEG · V SÍNI KRÁLE HOR
 m_toccata|BACH · TOCCATA A FUGA D MOLL
+n_apple|NEWTONOVO JABLKO
+in1|Třicet let učím matematiku… a nikdo neposlouchá.
+in2|Nechcete se učit? Dobře. VŠECHNY VÁS PROMĚNÍM V ZOMBÍKY!
+in3|A taky že jo. Bombou ze vzorců. Jako vždycky nikdo nic nepochopil.
+in4|Mozkyyy… kolik je 7 × 8? NEŘÍKEJ MI TO, NECHCI TO VĚDĚT!
+in5|Ale na vesmírné stanici uchovávali poslední naději: jablko, které spadlo Newtonovi na hlavu.
+in6|Zombíci, co nesnášejí matiku? Klid. Já umím sčítat.
+in7|KDO SPOČÍTAL TENHLE ÚHEL VSTUPU?!
+in8|Ovoce? HA! Vytáhni papír, jablíčko: písemka nanečisto.

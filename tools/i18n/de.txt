@@ -496,3 +496,12 @@ m_ode|BEETHOVEN · ODE AN DIE FREUDE
 m_canon|PACHELBEL · KANON IN D
 m_mountain|GRIEG · IN DER HALLE DES BERGKÖNIGS
 m_toccata|BACH · TOCCATA UND FUGE D-MOLL
+n_apple|NEWTONS APFEL
+in1|Dreißig Jahre Mathe unterrichten… und keiner hört zu.
+in2|Ihr wollt nicht lernen? Gut. ICH MACHE EUCH ALLE ZU ZOMBIES!
+in3|Und er tat es. Eine Formelbombe. Keiner hat was verstanden, wie immer.
+in4|Gehiiirn… was ist 7 × 8? SAG'S NICHT, ICH WILL ES NICHT WISSEN!
+in5|Doch eine Raumstation bewahrte die letzte Hoffnung: den Apfel, der Newton auf den Kopf fiel.
+in6|Zombies, die Mathe hassen? Ruhig Blut. Ich kann addieren.
+in7|WER HAT DIESEN EINTRITTSWINKEL BERECHNET?!
+in8|Ein Obst? HA! Zettel raus, Äpfelchen: Überraschungstest.
