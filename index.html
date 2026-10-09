@@ -4468,7 +4468,7 @@ function applyLang(){
   document.querySelectorAll('#game .screen,#pick,#alert,#bHelp').forEach(e=>e.dir=rtl?'rtl':'ltr');
   const set=(sel,k,v)=>{const e=$(sel);if(e)e.textContent=L10(k,v)};
   set('#bStart','play');set('#bGo','play');set('#bFresh','fresh');set('#sPause .ttl','pause');set('#bResume','resume');set('#bQuit','quit');
-  set('#sTitle .ttl small','tag');$('#sTitle .lead').innerHTML=L10('lead');TIPON=false;TIPC=0;$('#sTitle .lead').classList.remove('swap');
+  set('#sTitle .ttl small','tag');$('#sTitle .lead').innerHTML=L10('lead');TIPON=false;TIPC=0;{const l=$('#sTitle .lead');l.classList.remove('swap');l.style.height=l.style.overflow=l.style.display=l.style.flexDirection=l.style.justifyContent=''}
   try{renderTitle()}catch(e){}
   set('#sTitle details.prog summary',$('#sTitle details.prog').open?'closeprog':'prog');
   set('#bCont','again1');set('#bShare','share');set('#bMenu','menu');set('#oFail summary','how');
@@ -8126,7 +8126,7 @@ function progTips(){const o=[],h=SAVE.hist||{};
   o.push(XL('tip_pow',[POWSTREAK]),XL('tip_draw'));return o}
 setInterval(()=>{if(S.mode!=='title'||document.hidden||S.bhOn)return;const pg=$('#sTitle details.prog'),el=$('#sTitle .lead');if(!el||el.hidden||(pg&&pg.open))return;
   if(++TIPC<(TIPON?9:11))return;TIPC=0;el.classList.add('swap');
-  setTimeout(()=>{TIPON=!TIPON;el.innerHTML=TIPON?`<b class="tipk">${hx(XL('tip_k'))}</b>${hx(pick(progTips()))}`:L10('lead');el.classList.remove('swap');requestAnimationFrame(fitCards)},400)},1000);
+  setTimeout(()=>{if(!TIPON){const h=el.offsetHeight;el.style.height=h+'px';el.style.overflow='hidden';el.style.display='flex';el.style.flexDirection='column';el.style.justifyContent='center'}TIPON=!TIPON;el.innerHTML=TIPON?`<b class="tipk">${hx(XL('tip_k'))}</b>${hx(pick(progTips()))}`:L10('lead');el.classList.remove('swap');if(!TIPON){el.style.height=el.style.overflow=el.style.display=el.style.flexDirection=el.style.justifyContent=''}},400)},1000);
 
 /* ============ Fundido al tocar un botón: la pantalla se funde, cambia y vuelve a aparecer ============ */
 {const fd=$('#fader');let busy=false;
