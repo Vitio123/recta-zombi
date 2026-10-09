@@ -7678,7 +7678,7 @@ function drawProf(z,hx,hy,hs,sx,sh,f){const F=(x,y,w,h,col)=>{ctx.fillStyle=col;
   F(hx-1,hy+1,1,4,'#b5b5b5');F(hx+hs,hy+1,1,4,'#b5b5b5');
   const ey=hy+3,g1=f>0?hx+hs-7:hx+1;for(const gx of[g1,g1+4]){F(gx,ey,3,1,'#f4f1e8');F(gx,ey+2,3,1,'#f4f1e8');F(gx,ey,1,3,'#f4f1e8');F(gx+2,ey,1,3,'#f4f1e8');F(gx+1,ey+1,1,1,P.red)}F(g1+3,ey+1,1,1,'#f4f1e8');
   F(hx+2,hy+hs-4,hs-4,1,'#4a4a4a');
-  F(hx-3,hy-2,hs+6,2,'#1b1a17');F(hx-3,hy-2,hs+6,1,'#4a4a4a');F(hx+2,hy-4,hs-4,2,'#1b1a17');const tx=f>0?hx-3:hx+hs+2;F(tx,hy-1,1,4,'#e8c33a');F(tx-1,hy+3,3,1,'#e8c33a');
+  F(hx+2,hy-1,hs-4,1,'#b9c4a8');F(hx+3,hy,2,1,'#f4f1e8');
   for(let i=1;i<=7;i++)F(sx+(f>0?0:-1),sh+i,1,1,P.red);F(sx-1,sh+1,2,1,P.red);
   if(!z.dead&&!z.grab){const hxp=sx+f*14,hyp=sh+1;pline(hxp,hyp,hxp+f*9,hyp-8,'#8a5a2a');F(hxp+f*9,hyp-9,1,1,'#f4f1e8')}}
 
@@ -7935,7 +7935,7 @@ function profSay(z){say(z,pick(XL('n_profT').split(';')),'shout');if(R()<.4){lau
 /* ============ Intro: explosión atómica, el profesor y la manzana desde la estación espacial ============ */
 const freshSave=()=>!Object.keys(SAVE.hist||{}).length&&!(SAVE.best>1);
 // ===== Intro: un corto animado. Cada toma dura lo que tarda en leerse su diálogo; tocar la pantalla completa el texto o pasa a la siguiente =====
-const ISHOT=[{k:'in0',who:'prof',d:4.6},{k:'in1',who:'prof',d:4},{k:'in2',who:'prof',d:4},{k:'in3',who:'',d:4.4},{k:'in4',who:'zomb',d:4,zm:1},{k:'in5',who:'',d:4.6},
+const ISHOT=[{k:'in0',who:'prof',d:4.6},{k:'in1',who:'prof',d:4},{k:'in2',who:'prof',d:4},{k:'in3',who:'',d:4.4},{k:'in4',who:'zomb',d:6,zm:1},{k:'in5',who:'',d:4.6},
   {k:'in6',who:'apple',d:4},{k:'in7',who:'apple',d:3.4},{k:'in8',who:'prof',d:4.2},{k:'',who:'',d:3.8}];
 const IVOICE0=1;
 const IVOICE={prof:[140,'square',.02],apple:[900,'triangle',.03],zomb:[85,'sawtooth',.03],'':[420,'sine',.025]};
@@ -7965,7 +7965,7 @@ const IFX=[
   (u,once)=>{once(.9,()=>sfx(t=>{tone(700,.06,'square',.05);tone(300,.08,'square',.04,0,.05)}));
     once(1.25,()=>{S.shake=18;S.flash=1;sfx(t=>{hit('bombo',1.7);hit('gong',1.3);tone(38,2.6,'sawtooth',.17,-15);nz(t,2.4,'lowpass',500,.6,.8,AC.destination)});
       for(let i=0;i<60;i++){const a=-Math.PI*R(),sp=40+R()*150;S.parts.push({x:110,y:158,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,t:0,life:.7+R()*.9,c:pick(['#e8862a','#f5d23a','#c4161c','#7a1014']),g:1,gy:160})}})},
-  (u,once)=>{once(.4,()=>sfx(()=>tone(95,.9,'sawtooth',.05,-35)));once(1.9,()=>sfx(()=>tone(80,1.1,'sawtooth',.05,-30)));
+  (u,once)=>{once(1.6,()=>sfx(t=>{nz(t,.4,'bandpass',2500,.5,.12,AC.destination);tone(120,.5,'sine',.05,-100)}));once(.4,()=>sfx(()=>tone(95,.9,'sawtooth',.05,-35)));once(1.9,()=>sfx(()=>tone(80,1.1,'sawtooth',.05,-30)));
     for(const k of[1.2,2.6])once(k,()=>sfx(()=>tone(90+R()*20,.5,'sawtooth',.03,-20)))},
   (u,once)=>{for(const k of[.3,.8,1.3,1.8,2.3])once(k,()=>sfx(()=>{tone(880,.12,'square',.022);tone(660,.12,'square',.02,0,.13)}));
     once(2.2,()=>sfx(()=>[1047,1319,1568].forEach((f,i)=>bell(f,.05,i*.07))))},
@@ -7996,7 +7996,7 @@ function mushroom(cx,gy,k,t){const h=Math.round(80*Math.min(1,k*1.4)),cap=Math.r
   const cy=gy-h;for(let j=-cap;j<=cap*.6;j++)for(let i=-cap*1.4;i<=cap*1.4;i++){const d=(i/(cap*1.4))**2+(j/cap)**2;if(d>1)continue;const n=Math.sin(i*.7+t*4)+Math.cos(j*.9-t*3);
     ctx.fillStyle=d<.25?'#f5d23a':d<.55?'#e8862a':n>.6?'#7a1014':'#c4161c';if(((i*3+j*7)&3)||d<.8)ctx.fillRect(Math.round(cx+i),Math.round(cy+j),1,1)}}
 function drawProfFace(cx,cy,s,t){const F=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(Math.round(cx+x*s),Math.round(cy+y*s),Math.ceil(w*s),Math.ceil(h*s))},open=(Math.sin(t*14)>0);
-  F(-8,-9,16,18,P.l3);F(-10,-3,2,6,'#b5b5b5');F(8,-3,2,6,'#b5b5b5');F(-12,-12,24,3,'#1b1a17');F(-6,-15,12,3,'#1b1a17');F(9,-11,1,7,'#e8c33a');
+  F(-8,-9,16,18,P.l3);F(-10,-3,2,6,'#b5b5b5');F(8,-3,2,6,'#b5b5b5');F(-6,-11,12,2,P.l3);
   for(const gx of[-7,1]){F(gx,-4,6,1,P.w);F(gx,0,6,1,P.w);F(gx,-4,1,5,P.w);F(gx+5,-4,1,5,P.w);F(gx+2,-2,2,1,P.red)}F(-1,-3,2,1,P.w);
   F(-4,3,8,1,'#4a4a4a');F(-4,5,8,open?3:1,P.red);if(open)F(-3,5,6,1,P.w)}
 function drawStation(x,y){const F=(a,b,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(Math.round(x+a),Math.round(y+b),w,h)};
@@ -8006,7 +8006,7 @@ function FR(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),
 // cara del profesor con personalidad: cejas malvadas, lentes que brillan, bigote y boca que habla, sonríe o se carcajea
 function profFace2(cx,cy,s,t,o={}){const F=(x,y,w,h,c)=>FR(cx+x*s,cy+y*s,w*s,h*s,c),dk='#1b1a17',sk='#b9c4a8',sk2='#a3ae93',gl='#f4f1e8';
   F(-8,-9,16,18,sk);F(-8,6,16,3,sk2);F(-10,-3,2,6,sk2);F(8,-3,2,6,sk2);
-  F(-12,-12,24,3,dk);F(-12,-12,24,1,'#4a4a4a');F(-6,-15,12,3,dk);const tw=Math.round(Math.sin(t*3));F(9+tw,-11,1,7,'#e8c33a');F(8+tw,-4,3,2,'#e8c33a');
+  F(-6,-11,12,2,sk);F(-4,-12,8,1,sk);F(-5,-10,3,1,gl);F(-5,-11,1,1,gl);
   const lk=o.look||0;for(const gx of[-7,1]){F(gx,-4,6,1,gl);F(gx,0,6,1,gl);F(gx,-4,1,5,gl);F(gx+5,-4,1,5,gl);F(gx+2+lk,-2,2,2,o.eyes||'#e0262b')}F(-1,-3,2,1,gl);
   if(o.glint){const g=((t*6)%2)<1;F(-6,-3,1,1,'#fff');F(2,-3,1,1,'#fff');if(g){F(-5,-4,1,1,'#fff');F(3,-4,1,1,'#fff')}}
   if(o.brows==='evil'){F(-7,-7,3,1,dk);F(-4,-6,3,1,dk);F(1,-6,3,1,dk);F(4,-7,3,1,dk)}else if(o.brows==='sad'){F(-7,-6,3,1,dk);F(-4,-7,3,1,dk);F(1,-7,3,1,dk);F(4,-6,3,1,dk)}
@@ -8046,6 +8046,13 @@ function earthAscii(cx,cy,R,t){
   ctx.globalAlpha=1;ring(cx,cy,R,'#9fd4ff');ctx.globalAlpha=.4;ring(cx,cy,R+2,'#6fb4ff');ctx.globalAlpha=1}
 function izDraw(oy){ctx.save();ctx.translate(0,(oy+160)-GY);for(const z of S.iz)drawZ(z,true);ctx.restore()}
 const talking=()=>{const sh=S.iPlan&&S.iPlan[S.iShot];return!!(sh&&sh.txt&&S.iShown<S.introCapA.length)};
+// astronauta de frente: sc = asustado (brazos arriba y tiembla), ap = señala hacia la manzana (dir -1/1)
+function astro(cx,fy,t,sc,ap){const j=sc&&!ap?Math.round(Math.sin(t*40)):0,x=cx+j;
+  FR(x-5,fy-9,4,9,'#dedede');FR(x+1,fy-9,4,9,'#dedede');FR(x-6,fy-2,5,2,'#8a8a8a');FR(x+1,fy-2,5,2,'#8a8a8a');
+  FR(x-7,fy-24,14,16,'#ececec');FR(x-7,fy-24,2,16,'#cfcfcf');FR(x-3,fy-20,6,5,'#4a566e');FR(x-2,fy-19,1,1,'#ff3030');FR(x+1,fy-19,1,1,'#3fae35');
+  if(ap){FR(x+(ap>0?7:-12),fy-22,5,3,'#ececec')}else if(sc){FR(x-11,fy-34,4,12,'#ececec');FR(x+7,fy-34,4,12,'#ececec')}else{FR(x-10,fy-22,3,10,'#ececec');FR(x+7,fy-22,3,10,'#ececec')}
+  FR(x-7,fy-37,14,13,'#ececec');FR(x-6,fy-36,12,2,'#fff');FR(x-5,fy-34,10,8,'#1d3f7a');FR(x-4,fy-33,3,2,'#9fd4ff');
+  if(sc){FR(x-3,fy-32,2,3,'#fff');FR(x+1,fy-32,2,3,'#fff');FR(x-3,fy-31,1,1,'#111');FR(x+1,fy-31,1,1,'#111');FR(x-1,fy-28,3,2,'#111')}else{FR(x-3,fy-31,1,2,'#fff');FR(x+2,fy-31,1,2,'#fff')}}
 const IDRAW=[
   // 0: los exámenes reprobados; el profesor, furioso
   (u,d,ox,oy,t)=>{FR(0,0,W,H,'#15131d');FR(0,oy+160,W,H,'#2a2320');ctx.save();ctx.translate(ox,oy);
@@ -8090,21 +8097,31 @@ const IDRAW=[
   // 3: los zombis salen de la tierra cargando símbolos
   (u,d,ox,oy,t)=>{FR(0,0,W,H,'#1a0a0a');ctx.fillStyle='#e8e0c8';ctx.beginPath();ctx.arc(ox+170,oy+40,18,0,7);ctx.fill();FR(ox+176,oy+30,5,4,'#cfc6aa');
     cityBG(ox,oy,'rgba(0,0,0,0)');FR(0,0,W,H,rgba('#7a1014',.25));izDraw(oy)},
-  // 4: en la estación espacial suena la alarma y despierta la manzana de Newton
-  (u,d,ox,oy,t)=>{starsBG(t,3);ctx.save();ctx.translate(ox,oy);
-    FR(-4,70,40,30,'#2f6fb0');FR(184,70,40,30,'#2f6fb0');for(let i=0;i<40;i+=5){FR(-4+i,70,1,30,'#9fd4ff');FR(184+i,70,1,30,'#9fd4ff')}FR(36,83,12,4,'#9a9a9a');FR(172,83,12,4,'#9a9a9a');
-    FR(48,40,124,92,'#cfcfcf');FR(48,40,124,3,'#efefef');FR(48,129,124,3,'#9a9a9a');for(const bx of[56,160])FR(bx,48,4,4,'#9a9a9a');
-    ctx.fillStyle='#0d1a2a';ctx.beginPath();ctx.arc(110,86,34,0,7);ctx.fill();ring(110,86,34,'#6a6a6a');ring(110,86,35,'#efefef');
-    FR(96,104,28,6,'#4a4a4a');FR(100,110,20,4,'#3a3a3a');ctx.globalAlpha=.25;ctx.fillStyle='#9fd4ff';ctx.beginPath();ctx.arc(110,92,17,Math.PI,0);ctx.fill();ctx.globalAlpha=1;
-    const wake=u>1.6,mad=u>2.6;bigApple(110,95,1,mad?'mad':wake?'worry':'',{blink:!wake,lx:wake&&!mad?Math.round(Math.sin(t*5)):0});
-    if(!wake)for(let i=0;i<3;i++){const z=(u*.8+i/3)%1;ptext('z',Math.round(122+z*14),Math.round(80-z*20),1,'#9fd4ff')}
-    ptextC('NEWTON · 1687',110,118,1,'#e8c33a','#000');
-    const al=(Math.sin(t*10)>0);FR(104,32,12,8,al?'#ff3030':'#7a1014');ctx.restore();if(al)FR(0,0,W,H,rgba('#ff2020',.1))},
-  // 5: la lanzan a la Tierra en una cápsula (la Tierra entera, hecha de números y símbolos)
+  // 4: en la estación espacial los astronautas ven las noticias; se apagan, se asustan y lanzan la manzana
+  (u,d,ox,oy,t)=>{FR(0,0,W,H,'#0a0e18');ctx.save();ctx.translate(ox,oy);
+    FR(0,0,220,160,'#2a3548');FR(0,0,220,4,'#4a566e');FR(0,156,220,4,'#1a2232');for(let x=10;x<220;x+=30)FR(x,6,1,148,'#222c3d');
+    const off=u>1.6,scared=u>1.6;
+    FR(66,14,88,56,'#101010');FR(68,16,84,52,'#3a3a3a');
+    if(!off){FR(70,18,80,48,'#1d3f7a');FR(70,18,80,48,rgba('#9fd4ff',.06));
+      FR(100,26,20,16,'#b9c4a8');FR(97,24,26,5,'#3a2a1a');FR(103,32,3,3,'#111');FR(114,32,3,3,'#111');FR(105,38,10,2,Math.sin(t*14)>0?'#c4161c':'#7a1014');FR(94,44,32,14,'#e8e8e8');FR(108,44,4,14,'#c4161c');
+      FR(70,56,80,10,'#c4161c');FR(72,58,18,6,'#fff');ptext('LIVE',73,58,1,'#c4161c');const tk='1+1=3 ? ... 0/10 ... F ... ';ptext(tk+tk,Math.round(92-((t*24)%(tk.length*6))),59,1,'#fff');
+      FR(76,20,5,5,Math.sin(t*5)>0?'#ff3030':'#7a1014')}
+    else{const v=u-1.6;if(v<.45){for(let i=0;i<60;i++){ctx.fillStyle=R()<.5?'#e8e8e8':'#555';ctx.fillRect(70+Math.floor(R()*80),18+Math.floor(R()*48),2,2)}}else{FR(70,18,80,48,'#050505');const f=Math.max(0,1-(v-.45)*2);if(f>0)FR(108,40,Math.round(4*f)+1,1,rgba('#fff',f))}}
+    // consola con la manzana dormida
+    FR(88,118,44,6,'#4a566e');FR(92,124,36,32,'#222c3d');
+    const wake=u>2.4,mad=u>3.2;bigApple(110,106,1,mad?'mad':wake?'worry':'',{blink:!wake,lx:wake&&!mad?Math.round(Math.sin(t*5)):0});
+    if(!wake)for(let i=0;i<3;i++){const z=(u*.8+i/3)%1;ptext('z',Math.round(122+z*14),Math.round(94-z*20),1,'#9fd4ff')}
+    astro(44,152,t,scared?1:0,u>2.9?1:0);astro(176,152,t+1.3,scared?1:0,u>2.9?-1:0);
+    if(scared){const bl=Math.floor((u-1.6)*8)%2===0;if(u<2.9){ptextC('!',44,98,3,'#ffd23a','#7a1014');ptextC('!',176,98,3,'#ffd23a','#7a1014')}}
+    if(u>2.2){const al=(Math.sin(t*10)>0);FR(104,4,12,8,al?'#ff3030':'#7a1014');if(al)FR(-ox,-oy,W,H,rgba('#ff2020',.08))}
+    ctx.restore()},
+  // 5: la lanzan a la Tierra como un meteorito (roca envuelta en fuego, con cola de chispas)
   (u,d,ox,oy,t)=>{starsBG(t,8);ctx.save();ctx.translate(ox,oy);earthAscii(152,112,58,t);drawStation(34,30);
     const k=clamp((u-.5)/(d-1.2),0,1),ax=34+k*80,ay=30+k*k*42;
-    if(u>.5&&k<1)for(let i=0;i<3;i++)S.parts.push({x:ax-6,y:ay-4,vx:-40-R()*40,vy:-20-R()*30,t:0,life:.5,c:pick(['#e8862a','#f5d23a','#fff'])});
-    if(k<1){ctx.globalAlpha=.3;ctx.fillStyle='#9fd4ff';ctx.beginPath();ctx.arc(ax,ay,11,0,7);ctx.fill();ctx.globalAlpha=1;ring(ax,ay,11,'#cfe8ff');bigApple(ax,ay,1,'mad',{lx:1})}
+    if(u>.4&&u<.75){ctx.globalAlpha=1-(u-.4)/.35;ring(38,34,4+(u-.4)*40,'#fff');ctx.globalAlpha=1}
+    if(u>.5&&k<1)for(let i=0;i<4;i++)S.parts.push({x:ax-6,y:ay-4,vx:-40-R()*40,vy:-20-R()*30,t:0,life:.5,c:pick(['#e8862a','#f5d23a','#fff'])});
+    if(k<1){for(let i=16;i>0;i--){const kk=Math.max(0,k-i*.014),bx=34+kk*80,by=30+kk*kk*42,r=Math.max(1,Math.round(7*(1-i/18)));ctx.globalAlpha=(1-i/17)*.75;ctx.fillStyle=i>10?'#c4161c':i>5?'#e8862a':'#f5d23a';ctx.fillRect(Math.round(bx-r),Math.round(by-r),r*2,r*2)}ctx.globalAlpha=.45;ctx.fillStyle='#e8862a';ctx.beginPath();ctx.arc(ax,ay,11,0,7);ctx.fill();ctx.globalAlpha=1;
+      FR(ax-6,ay-4,12,9,'#4a3a34');FR(ax-4,ay-6,8,2,'#4a3a34');FR(ax-3,ay+5,7,2,'#3a2c27');FR(ax-7,ay-2,1,5,'#3a2c27');FR(ax-3,ay-3,3,2,'#6a5a52');FR(ax+1,ay+1,3,2,'#e8862a');FR(ax-4,ay+2,2,1,'#f5d23a');FR(ax+3,ay-3,2,2,'#c4161c')}
     else{const v=u-.5-(d-1.2);ctx.globalAlpha=Math.max(0,1-v*2);ring(116,72,5+v*40,'#fff');ctx.globalAlpha=1}
     ctx.restore()},
   // 6: reentrada en llamas, la manzana grita
