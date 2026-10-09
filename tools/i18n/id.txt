@@ -506,3 +506,6 @@ in6|Zombi yang benci matematika? Tenang. Aku bisa menjumlah.
 in7|SIAPA YANG MENGHITUNG SUDUT MASUK INI?!
 in8|Buah? HA! Keluarkan selembar kertas, apel kecil: kuis dadakan.
 in0|Nilai 2? Nilai 1? NOL? Dan ini GAMBAR KUCING!
+cm1|Satu tanda − membalik arah satu kali: lompatan menuju kiri 0.
+cm2|Setiap tanda − membalik arah: dua pembalikan saling meniadakan, sehingga lompatan berakhir di kanan 0.
+cm3|Trik: tanda sama menghasilkan +, tanda berbeda menghasilkan −.

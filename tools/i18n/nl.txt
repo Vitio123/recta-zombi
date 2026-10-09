@@ -506,3 +506,6 @@ in6|Zombies die wiskunde haten? Rustig maar. Ik kan optellen.
 in7|WIE HEEFT DEZE TERUGKEERHOEK BEREKEND?!
 in8|Een stuk fruit? HA! Pak een blaadje, appeltje: overhoring.
 in0|Een 2? Een 1? EEN NUL? En dit is de TEKENING VAN EEN KAT!
+cm1|Eén − draait de richting één keer om: de sprongen gaan naar links van 0.
+cm2|Elke − draait de richting om: twee omdraaiingen heffen elkaar op, dus de sprongen eindigen rechts van 0.
+cm3|Trucje: gelijke tekens geven +, verschillende tekens geven −.

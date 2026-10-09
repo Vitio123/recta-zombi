@@ -506,3 +506,6 @@ in6|Zombíci, co nesnášejí matiku? Klid. Já umím sčítat.
 in7|KDO SPOČÍTAL TENHLE ÚHEL VSTUPU?!
 in8|Ovoce? HA! Vytáhni papír, jablíčko: písemka nanečisto.
 in0|Dvojka? Jednička? NULA? A tohle je KRESBA KOČKY!
+cm1|Jedno − otočí směr jednou: skoky jdou doleva od 0.
+cm2|Každé − otočí směr: dvě otočení se vyruší, takže skoky skončí vpravo od 0.
+cm3|Trik: stejná znaménka dávají +, různá dávají −.

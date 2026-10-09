@@ -506,3 +506,6 @@ in6|Zombie, które nienawidzą matmy? Spokojnie. Umiem dodawać.
 in7|KTO OBLICZYŁ TEN KĄT WEJŚCIA?!
 in8|Owoc? HA! Wyjmij kartkę, jabłuszko: niezapowiedziana kartkówka.
 in0|Dwója? Jedynka? ZERO? A to jest RYSUNEK KOTA!
+cm1|Jeden − odwraca kierunek raz: skoki idą w lewo od 0.
+cm2|Każdy − odwraca kierunek: dwa odwrócenia znoszą się, więc skoki lądują na prawo od 0.
+cm3|Sztuczka: takie same znaki dają +, różne znaki dają −.

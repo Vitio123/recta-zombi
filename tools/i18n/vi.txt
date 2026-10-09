@@ -506,3 +506,6 @@ in6|Thây ma ghét toán à? Bình tĩnh. Tớ biết cộng mà.
 in7|AI ĐÃ TÍNH GÓC VÀO KHÍ QUYỂN NÀY VẬY?!
 in8|Một quả táo? HA! Lấy giấy ra, táo con: kiểm tra đột xuất.
 in0|Điểm 2? Điểm 1? ĐIỂM KHÔNG? Còn đây là BỨC TRANH VẼ CON MÈO!
+cm1|Một dấu − đổi chiều một lần: các bước nhảy đi về bên trái số 0.
+cm2|Mỗi dấu − đổi chiều: hai lần đổi chiều triệt tiêu nhau nên các bước nhảy kết thúc ở bên phải số 0.
+cm3|Mẹo: dấu giống nhau ra +, dấu khác nhau ra −.

@@ -506,3 +506,6 @@ in6|Zombier som hatar matte? Lugn. Jag kan addera.
 in7|VEM RÄKNADE UT DEN HÄR INTRÄDESVINKELN?!
 in8|En frukt? HA! Fram med ett papper, lilla äpple: överraskningsprov.
 in0|En tvåa? En etta? EN NOLLA? Och det här är en TECKNING AV EN KATT!
+cm1|Ett enda − vänder riktningen en gång: hoppen går åt vänster om 0.
+cm2|Varje − vänder riktningen: två vändningar tar ut varandra, så hoppen hamnar till höger om 0.
+cm3|Knep: lika tecken ger +, olika tecken ger −.

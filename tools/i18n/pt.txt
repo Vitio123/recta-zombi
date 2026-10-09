@@ -506,3 +506,6 @@ in6|Zumbis que odeiam matemática? Relaxa. Eu sei somar.
 in7|QUEM CALCULOU ESTE ÂNGULO DE ENTRADA?!
 in8|Uma fruta? HA! Pega uma folha, maçãzinha: prova surpresa.
 in0|Um 2? Um 1? UM ZERO? E ESTE É O DESENHO DE UM GATO!
+cm1|Um único − inverte o sentido uma vez: os saltos vão para a esquerda do 0.
+cm2|Cada − inverte o sentido: duas inversões se cancelam, e os saltos terminam à direita do 0.
+cm3|Truque: sinais iguais dão +, sinais diferentes dão −.

@@ -506,3 +506,6 @@ in6|Zombies, die Mathe hassen? Ruhig Blut. Ich kann addieren.
 in7|WER HAT DIESEN EINTRITTSWINKEL BERECHNET?!
 in8|Ein Obst? HA! Zettel raus, Äpfelchen: Überraschungstest.
 in0|Eine 2? Eine 1? EINE NULL? Und das hier ist die ZEICHNUNG EINER KATZE!
+cm1|Ein einzelnes − dreht die Richtung einmal um: die Sprünge gehen nach links von 0.
+cm2|Jedes − dreht die Richtung um: zwei Drehungen heben sich auf, die Sprünge landen rechts von 0.
+cm3|Merkregel: gleiche Vorzeichen ergeben +, verschiedene ergeben −.

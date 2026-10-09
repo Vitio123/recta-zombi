@@ -506,3 +506,6 @@ in6|Matematikten nefret eden zombiler mi? Sakin olun. Ben toplama bilirim.
 in7|BU GİRİŞ AÇISINI KİM HESAPLADI?!
 in8|Bir meyve mi? HA! Kâğıt çıkar, küçük elma: sürpriz sınav.
 in0|Bir 2 mi? Bir 1 mi? SIFIR MI? Bu da bir KEDİ RESMİ!
+cm1|Tek bir − yönü bir kez çevirir: atlamalar 0'ın soluna gider.
+cm2|Her − yönü çevirir: iki çevirme birbirini yok eder, atlamalar 0'ın sağında biter.
+cm3|İpucu: aynı işaretler + verir, farklı işaretler − verir.

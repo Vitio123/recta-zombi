@@ -506,3 +506,6 @@ in6|Matekgyűlölő zombik? Nyugi. Én tudok összeadni.
 in7|KI SZÁMOLTA KI EZT A BELÉPÉSI SZÖGET?!
 in8|Egy gyümölcs? HA! Vegyél elő egy lapot, almácska: röpdolgozat.
 in0|Egy kettes? Egy egyes? EGY NULLA? Ez meg egy MACSKA RAJZA!
+cm1|Egyetlen − egyszer megfordítja az irányt: az ugrások 0-tól balra mennek.
+cm2|Minden − megfordítja az irányt: két fordítás kiejti egymást, így az ugrások 0-tól jobbra végződnek.
+cm3|Trükk: azonos előjel +-t ad, különböző előjel −-t ad.

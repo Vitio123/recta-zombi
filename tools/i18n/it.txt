@@ -506,3 +506,6 @@ in6|Zombi che odiano la matematica? Tranquilli. Io so fare le addizioni.
 in7|CHI HA CALCOLATO QUESTO ANGOLO DI RIENTRO?!
 in8|Un frutto? HA! Tira fuori un foglio, melina: compito a sorpresa.
 in0|Un 2? Un 1? UNO ZERO? E questo è il DISEGNO DI UN GATTO!
+cm1|Un solo − inverte il verso una volta: i salti vanno a sinistra dello 0.
+cm2|Ogni − inverte il verso: due inversioni si annullano e i salti finiscono a destra dello 0.
+cm3|Trucco: segni uguali danno +, segni diversi danno −.

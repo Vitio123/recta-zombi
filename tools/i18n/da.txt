@@ -506,3 +506,6 @@ in6|Zombier, der hader matematik? Rolig nu. Jeg kan lægge sammen.
 in7|HVEM HAR REGNET DENNE INDGANGSVINKEL UD?!
 in8|En frugt? HA! Find et stykke papir, lille æble: overraskelsesprøve.
 in0|Et 2-tal? Et 1-tal? ET NUL? Og det her er en TEGNING AF EN KAT!
+cm1|Ét − vender retningen én gang: springene går til venstre for 0.
+cm2|Hvert − vender retningen: to vendinger udligner hinanden, så springene ender til højre for 0.
+cm3|Trick: ens fortegn giver +, forskellige fortegn giver −.

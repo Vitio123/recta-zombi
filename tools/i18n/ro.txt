@@ -506,3 +506,6 @@ in6|Zombi care urăsc matematica? Liniște. Eu știu să adun.
 in7|CINE A CALCULAT UNGHIUL ĂSTA DE INTRARE?!
 in8|Un fruct? HA! Scoate o foaie, mărule: extemporal.
 in0|Un 2? Un 1? UN ZERO? Iar asta e DESENUL UNEI PISICI!
+cm1|Un singur − inversează sensul o dată: săriturile merg la stânga lui 0.
+cm2|Fiecare − inversează sensul: două inversări se anulează, iar săriturile ajung la dreapta lui 0.
+cm3|Truc: semne la fel dau +, semne diferite dau −.
