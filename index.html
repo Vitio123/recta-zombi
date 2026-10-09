@@ -5954,7 +5954,7 @@ let lawT=null;
 function lawToast(L,extra){const e=$('#lawt');e.innerHTML=`<b>${L.n}</b>${L.s}${extra?' · '+extra:''}`;e.classList.add('on');clearTimeout(lawT);lawT=setTimeout(()=>e.classList.remove('on'),3600)}
 
 function setMode(m){
-  if(m!=='title')pooHide();
+  if(m!=='title')pooHide();else if(S.mode!=='title'){S.titleAt=performance.now();S.bhOn=false;S.bhG=0;S.bhK=0;lgEl.style.scale='';lgEl.style.translate=''}
   S.mode=m;if(m!=='title')S.bhOn=false;
   for(const[id,mm]of[['#sTitle','title'],['#sLesson','lesson'],['#sPause','pause'],['#sOver','over'],['#sTut','tut'],['#sEnd','end']])$(id).classList.toggle('show',m===mm);if(m!=='play')$('#bHelp').hidden=true;
   const play=m==='play',pz=m==='pause';
@@ -7496,7 +7496,7 @@ function titleZ(dt){
   }
 }
 const WK=document.createElement('canvas'),wkc=WK.getContext('2d'),lgEl=$('#logo');
-lgEl.addEventListener('pointerdown',e=>{if(S.mode!=='title')return;e.preventDefault();try{lgEl.setPointerCapture(e.pointerId)}catch(_){}
+lgEl.addEventListener('pointerdown',e=>{if(S.mode!=='title'||performance.now()-(S.titleAt||0)<800)return;e.preventDefault();try{lgEl.setPointerCapture(e.pointerId)}catch(_){}
   S.bhOn=true;S.bhMax=false;tone(70,.6,'sawtooth',.04,-25);const z=pick(S.zombies);if(z)say(z,pick(ZS('hole',['¡EL AGUJERO!','¡HUYAN!','¡ME ESTIRO!','¡MIS HUESOS!','¡AAAAH!'])),'shout')});
 for(const ev of['pointerup','pointercancel','lostpointercapture'])lgEl.addEventListener(ev,()=>{S.bhOn=false});
 window.addEventListener('pointerup',()=>{S.bhOn=false});
