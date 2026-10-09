@@ -505,3 +505,4 @@ in5|Doch eine Raumstation bewahrte die letzte Hoffnung: den Apfel, der Newton au
 in6|Zombies, die Mathe hassen? Ruhig Blut. Ich kann addieren.
 in7|WER HAT DIESEN EINTRITTSWINKEL BERECHNET?!
 in8|Ein Obst? HA! Zettel raus, Äpfelchen: Überraschungstest.
+in0|Eine 2? Eine 1? EINE NULL? Und das hier ist die ZEICHNUNG EINER KATZE!

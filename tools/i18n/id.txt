@@ -505,3 +505,4 @@ in5|Tapi di stasiun luar angkasa tersimpan harapan terakhir: apel yang jatuh ke 
 in6|Zombi yang benci matematika? Tenang. Aku bisa menjumlah.
 in7|SIAPA YANG MENGHITUNG SUDUT MASUK INI?!
 in8|Buah? HA! Keluarkan selembar kertas, apel kecil: kuis dadakan.
+in0|Nilai 2? Nilai 1? NOL? Dan ini GAMBAR KUCING!

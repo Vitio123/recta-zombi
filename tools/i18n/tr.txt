@@ -505,3 +505,4 @@ in5|Ama bir uzay istasyonunda son umut saklanıyordu: Newton'ın kafasına düş
 in6|Matematikten nefret eden zombiler mi? Sakin olun. Ben toplama bilirim.
 in7|BU GİRİŞ AÇISINI KİM HESAPLADI?!
 in8|Bir meyve mi? HA! Kâğıt çıkar, küçük elma: sürpriz sınav.
+in0|Bir 2 mi? Bir 1 mi? SIFIR MI? Bu da bir KEDİ RESMİ!

@@ -505,3 +505,4 @@ in5|Mais une station spatiale gardait le dernier espoir : la pomme tombée sur N
 in6|Des zombies qui détestent les maths ? Du calme. Je sais additionner.
 in7|QUI A CALCULÉ CET ANGLE D'ENTRÉE ?!
 in8|Un fruit ? HA ! Sors une feuille, petite pomme : interro surprise.
+in0|Un 2 ? Un 1 ? UN ZÉRO ? Et celle-ci, c'est le DESSIN D'UN CHAT !
