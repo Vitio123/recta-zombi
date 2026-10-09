@@ -4742,9 +4742,19 @@ function logoCanvas(fg,red,w=92,h=102){const k=fg+red+w+'x'+h;if(LOGOC[k])return
   const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.imageSmoothingEnabled=true;x.drawImage(LAIMG,0,0,w,h);
   x.globalCompositeOperation='source-in';x.fillStyle=fg;x.fillRect(0,0,w,h);
   x.globalCompositeOperation='source-atop';x.fillStyle=red;const sx=w/370,sy=h/408;x.fillRect(128*sx,232*sy,106*sx,98*sy);return LOGOC[k]=c}
+// logo animado: la caca respira, el olor sube oscilando en tres hilos y tres moscas le dan vueltas
+function logoFrame(c,w,h,t,im,fg,red){c.clearRect(0,0,w,h);const sq=Math.sin(t*3.2)*.03,s=.78;
+  c.save();c.translate(w/2,h);c.scale(s*(1+sq),s*(1-sq));c.drawImage(im,-w/2,-h);c.restore();
+  for(let k=0;k<3;k++){const x0=w*(.32+.18*k),ph=t*7+k*2.1;for(let j=0;j<9;j++){const y=Math.round(h*.27-j*3+((t*6+k*2)%3)),x=x0+Math.sin(ph+j*.8)*(1.5+j*.5);
+      c.globalAlpha=Math.max(0,(1-j/9)*.9);c.fillStyle=k===1?red:fg;c.fillRect(Math.round(x),y,2,2)}}
+  c.globalAlpha=1;
+  for(let i=0;i<3;i++){const a=t*(2.3+i*.9)+i*2.1,fx=w/2+Math.cos(a)*(w*.34)+Math.sin(t*5+i)*3,fy=h*.5+Math.sin(a*1.3+i)*(h*.22)-i*4,fl=((t*34+i)|0)%2;
+    c.fillStyle=fg;c.fillRect(Math.round(fx),Math.round(fy),3,2);c.globalAlpha=.7;c.fillRect(Math.round(fx)+(fl?-2:3),Math.round(fy)-1+fl,2,1);c.fillRect(Math.round(fx)+(fl?3:-2),Math.round(fy)-1+(1-fl),2,1);c.globalAlpha=1}}
+const LGA=document.createElement('canvas');LGA.width=92;LGA.height=102;
+function logoAnimC(im,t){logoFrame(LGA.getContext('2d'),92,102,t,im,'#ffffff','#e0262b');return LGA}
 function drawLogoA(t){
   if(!LA)return;const cs=getComputedStyle(document.documentElement),fg=cs.getPropertyValue('--fg').trim()||'#fff',red=cs.getPropertyValue('--red').trim()||'#e0262b',im=logoCanvas(fg,red);if(!im)return;
-  const c=lac,w=LA.width,h=LA.height,sq=Math.sin(t*3.2)*.03;c.clearRect(0,0,w,h);c.save();c.translate(w/2,h);c.scale(.95*(1+sq),.95*(1-sq));c.drawImage(im,-w/2,-h);c.restore()}
+  logoFrame(lac,LA.width,LA.height,t,im,fg,red)}
 // el título en cada idioma: «renglón 1|renglón 2»; la letra entre [ ] la reemplaza la caca (la que se le parece, o la palabra «caca»)
 const TTL={en:'M[A]TH|SUCKS','es-419':'LAS M[A]TES|APESTAN','es-ES':'LAS M[A]TES|APESTAN',pt:'M[A]TEMÁTICA|FEDE',fr:'LES M[A]THS|ÇA PUE',de:'M[A]THE|STINKT',
   ja:'数学は|ク[ソ]',zh:'数学是|坨[屎]',ko:'수학은|[똥]이야',it:'LA M[A]TE|PUZZA',ru:'М[А]ТЕША|ОТСТОЙ',ar:'الرياضيات|مقرف[ة]',hi:'गणित|[गोबर] है',tr:'M[A]TEMATİK|BERBAT',
@@ -8136,7 +8146,7 @@ const IDRAW=[
     FR(66,14,88,56,'#101010');FR(68,16,84,52,'#3a3a3a');
     if(!off){FR(70,18,80,48,'#1d3f7a');FR(70,18,80,48,rgba('#9fd4ff',.06));
       FR(100,26,20,16,'#b9c4a8');FR(97,24,26,5,'#3a2a1a');FR(103,32,3,3,'#111');FR(114,32,3,3,'#111');FR(105,38,10,2,Math.sin(t*14)>0?'#c4161c':'#7a1014');FR(94,44,32,14,'#e8e8e8');FR(108,44,4,14,'#c4161c');
-      FR(70,56,80,10,'#c4161c');FR(72,58,18,6,'#fff');ptext('LIVE',73,58,1,'#c4161c');const tk='1+1=3 ? ... 0/10 ... F ... ';ptext(tk+tk,Math.round(92-((t*24)%(tk.length*6))),59,1,'#fff');
+      FR(70,56,80,10,'#c4161c');FR(72,58,18,6,'#fff');ptext('LIVE',73,58,1,'#c4161c');
       FR(76,20,5,5,Math.sin(t*5)>0?'#ff3030':'#7a1014')}
     else{const v=u-2.4;if(v<.45){for(let i=0;i<60;i++){ctx.fillStyle=R()<.5?'#e8e8e8':'#555';ctx.fillRect(70+Math.floor(R()*80),18+Math.floor(R()*48),2,2)}}else{FR(70,18,80,48,'#050505');const f=Math.max(0,1-(v-.45)*2);if(f>0)FR(108,40,Math.round(4*f)+1,1,rgba('#fff',f))}}
     // frutas flotando: todas se asustan con el apagón; la de la derecha giraba y se estrella contra la pared
@@ -8185,10 +8195,10 @@ const IDRAW=[
   // 8: título
   (u,d,ox,oy,t)=>{cityBG(ox,oy,'#1a0c0c');const k=clamp(u/.6,0,1),e=1-Math.pow(1-k,3);FR(0,0,W,H,rgba('#000000',.65*k));
     const lg=logoCanvas('#ffffff','#e0262b');const lh=Math.round(Math.min(110,H*.3)),lw=Math.round(lh*92/102),ty=oy+20;
-    if(lg){ctx.globalAlpha=k;ctx.imageSmoothingEnabled=true;ctx.drawImage(lg,Math.round(W/2-lw/2),Math.round(ty-(1-e)*40),lw,lh);ctx.imageSmoothingEnabled=false;ctx.globalAlpha=1}
+    if(lg){ctx.globalAlpha=k;ctx.imageSmoothingEnabled=true;ctx.drawImage(logoAnimC(lg,t),Math.round(W/2-lw/2),Math.round(ty-(1-e)*40),lw,lh);ctx.imageSmoothingEnabled=false;ctx.globalAlpha=1}
     const[l1,l2]=ttlPlain();let s1=3;while(s1>1&&Math.max(pw(l1,s1),pw(l2,s1))>W-16)s1--;const y1=ty+lh+6;ctx.globalAlpha=k;
     ptextC(l1,W/2,y1,s1,'#ffffff','#000000');ptextC(l2,W/2+Math.round(Math.sin(t*9)*(u<1?1:0)),y1+9*s1,s1,'#e0262b','#000000');ptextC(L10('tag'),W/2,y1+18*s1+4,1,'#9a9a9a','#000000');ctx.globalAlpha=1;
-    bigApple(W/2,Math.min(H-14,y1+18*s1+22),1,'happy');if(u>d-.6)FR(0,0,W,H,rgba('#000000',(u-(d-.6))/.6))},
+    if(u>d-.6)FR(0,0,W,H,rgba('#000000',(u-(d-.6))/.6))},
 ];
 function drawIntro(){if(!S.iPlan)return;const t=S.introT||0,i=Math.max(0,S.iShot),sh=S.iPlan[i],u=t-sh.t0;
   ctx.save();if(S.shake>0)ctx.translate(Math.round((R()-.5)*S.shake),Math.round((R()-.5)*S.shake));
