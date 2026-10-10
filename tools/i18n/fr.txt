@@ -200,7 +200,7 @@ cc3d5fc|{0} BONNES RÉPONSES POUR LE VAINCRE
 c4bd829|{0} BONNES RÉPONSES POUR PASSER
 cb76c46| · PRESSION {0}%
 c9aa89e|<i class="h{0}" title="{1} bonnes réponses"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} BONNES RÉPONSES · {2} JOURS ACTIFS · SÉRIE DE {3} JOUR{4}</div><div class="hm2">{5}</div><div class="mini">MAÎTRISE DES 16 THÈMES</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} BONNES RÉPONSES · {2} JOURS ACTIFS · SÉRIE DE {3} JOUR{4}</div><div class="hm2">{5}</div><div class="mini">MAÎTRISE DES 17 THÈMES</div>
 c82f821|<b>SQUELETTE ARCHER</b> · tire des flèches : avec 2, tu perds le niveau. Réponds et la pomme saute : c'est comme ça que tu les esquives !
 c64e959|FLÈCHE ! IL T'EN RESTE 1
 c2ead57|TOUCHÉE !
@@ -433,7 +433,7 @@ ad_lv4|Atteins le niveau 4
 a_lv12|PRESQUE LE CALCUL
 ad_lv12|Atteins le niveau 12
 a_lv16|FACE À FACE
-ad_lv16|Atteins le niveau 16, celui du prof
+ad_lv16|Atteins le niveau 17, celui du prof
 a_inf|VERS L'INFINI ET AU-DELÀ
 ad_inf|Joue au mode ∞
 a_days3|HABITUDE
@@ -509,3 +509,60 @@ in0|Un 2 ? Un 1 ? UN ZÉRO ? Et celle-ci, c'est le DESSIN D'UN CHAT !
 cm1|Un seul − inverse le sens une fois : les sauts vont à gauche de 0.
 cm2|Chaque − inverse le sens : deux inversions s'annulent, et les sauts finissent à droite de 0.
 cm3|Astuce : signes identiques donnent +, signes différents donnent −.
+cx_name|EXPOSANTS
+cx_tip|Une puissance compte des facteurs : 2³ = 2 · 2 · 2. Les règles viennent du comptage.
+cx_kick|NIVEAU 7 · aⁿ · aᵐ
+cx_ttl|RÈGLES DES EXPOSANTS
+cx_l1|La <b>puissance</b> compte combien de fois on multiplie la base : 2³ = 2 · 2 · 2.
+cx_l2|Même base : en multipliant on <b>additionne</b> les exposants, en divisant on les <b>soustrait</b>, et une puissance de puissance les <b>multiplie</b>.
+cx_e1|{0} veut dire {1}.
+cx_e2|Astuce : multiplie par {0} étape par étape : {1}.
+cx_e3|Astuce : 10 puissance {0}, c’est un 1 suivi de {0} zéros.
+cx_p|Même base qui se multiplie : compte les facteurs, {0} plus {1} font {2}. On additionne : {0} + {1} = {2}.
+cx_q|Même base qui se divise : {1} facteurs en bas annulent {1} en haut. On soustrait : {0} − {1} = {2}.
+cx_w|Puissance de puissance : {0} groupes de {1} facteurs. On multiplie : {1} × {0} = {2}.
+cx_z|Pourquoi 1 ? {0} ÷ {0} = {1}, et tout nombre (sauf 0) divisé par lui-même donne 1.
+cx_n|Exposant négatif = inverser : {0} = 1 ÷ {1} = {2}.
+ce_m1|Pourquoi ? {0} × {1}, c’est réunir {1} dettes de {0} : {2} = {3}.
+ce_m2|Pourquoi ? Regarde la suite : {0}. À chaque pas le résultat monte de {1} ; après 0 il continue de monter, donc il devient positif.
+ce_nc|Sans calculatrice, d’abord sans les signes : {0}.
+cf_why|Une fraction est une division : {0}/{1} = {0} ÷ {1}, partager {0} en {1} parts égales.
+cf_2|÷ 2, c’est prendre la moitié : la moitié de {0} est {1}.
+cf_4|÷ 4, c’est la moitié de la moitié : {0} → {1} → {2}.
+cf_5|÷ 5, c’est × 2 puis ÷ 10 : {0} × 2 = {1}, et {1} ÷ 10 = {2}.
+cf_10|÷ 10 déplace la virgule d’un rang vers la gauche : {0} → {1}.
+cf_100|Passe aux centièmes : {0}/{1} = {2}/100 = {3}.
+mt_suma1|Additionne d’abord les dizaines, puis les unités : 47 + 38 → 70 + 15 = 85.
+mt_suma2|Si un nombre est proche d’une dizaine, arrondis et corrige : 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Compte en avançant depuis le petit : 52 − 38 → de 38 à 40 il y a 2, de 40 à 52 il y a 12 : 14.
+mt_resta2|Enlève le nombre rond et rends le surplus : 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Découpe le grand nombre : 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5, c’est × 10 puis la moitié ; × 9, c’est × 10 moins une fois : 9 × 7 = 70 − 7 = 63.
+mt_div1|Diviser, c’est la table à l’envers : 56 ÷ 8 → 8 fois combien font 56 ? 7.
+mt_div2|Découpe en morceaux faciles : 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Pense à un ascenseur : −3 + 8 → tu es au sous-sol 3 et tu montes de 8 : étage 5.
+mt_ent2|Pour multiplier, d’abord le nombre sans signes ; le signe à la fin : pareils donnent +, différents donnent −.
+mt_frac1|Fractions à connaître : 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|« 3/4 de 20 » : divise par le bas et multiplie par le haut : 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Compte les facteurs : 2³ · 2², c’est trois 2 et deux 2, cinq en tout : 2⁵.
+mt_exp2|Puissances de 2 par cœur : 2, 4, 8, 16, 32, 64, 128, 256 (chacune est le double).
+mt_raiz1|Pour √, cherche le nombre qui, multiplié par lui-même, donne celui de dedans : √81 → 9 × 9.
+mt_raiz2|Si tu ne sais pas, encadre-le entre des carrés : √60 est entre √49 = 7 et √64 = 8.
+mt_trig1|Sur le cercle, sin est la hauteur et cos la partie horizontale : sin 90° = 1 (en haut), cos 0° = 1 (à droite).
+mt_trig2|30°, 45°, 60° : sin vaut 1/2, √2/2, √3/2 ; cos va dans l’ordre inverse.
+mt_f11|f(4) est une machine : remplace chaque x par 4 et calcule dans l’ordre : d’abord ×, puis +.
+mt_f12|Pour isoler, défais à l’envers : enlève d’abord ce qui est ajouté, puis divise.
+mt_f21|Avec des négatifs, mets des parenthèses : (−3)² = 9, pas −9.
+mt_f22|x² − 5x + 6 = 0 : cherche deux nombres de somme 5 et de produit 6 : 2 et 3.
+mt_f31|Cubes par cœur : 1, 8, 27, 64, 125. Avec des négatifs le signe reste : (−2)³ = −8.
+mt_f32|Avec des facteurs (x − a)(x − b)(x − c) : remplace x, calcule chaque parenthèse et multiplie deux par deux.
+mt_mat1|det : diagonale principale moins l’autre, a·d − b·c. Calcule chaque produit à part.
+mt_mat2|Ligne fois colonne : multiplie terme à terme et additionne.
+mt_lim1|Essaie d’abord de remplacer. Si tu obtiens 0/0, factorise et simplifie.
+mt_lim2|Vers ∞, seul le plus grand compte : (5x + 3)/x ressemble à 5x/x = 5.
+mt_der1|Descends l’exposant et enlève 1 : x³ → 3x². Les constantes disparaissent.
+mt_der2|La dérivée de mx + b est m : une droite a la même pente partout.
+mt_int1|Intégrale = aire. Si la hauteur est constante, c’est un rectangle : base × hauteur.
+mt_int2|∫2x dx = x² et ∫3x² dx = x³ : évalue en haut moins en bas.
+mt_pie1|π ≈ 3.14 et e ≈ 2.72 : avec ça tu trouves 2π ≈ 6.28 et π/2 ≈ 1.57.
+mt_pie2|ln et e^x s’annulent : ln(eⁿ) = n, et tout nombre puissance 0 vaut 1.

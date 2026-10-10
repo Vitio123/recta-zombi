@@ -200,7 +200,7 @@ cc3d5fc|{0} GOED OM HEM TE VERSLAAN
 c4bd829|{0} GOED OM DOOR TE GAAN
 cb76c46| · DRUK {0}%
 c9aa89e|<i class="h{0}" title="{1} goed"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} GOED · {2} ACTIEVE DAGEN · REEKS {3}</div><div class="hm2">{5}</div><div class="mini">BEHEERSING VAN DE 16 ONDERWERPEN</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} GOED · {2} ACTIEVE DAGEN · REEKS {3}</div><div class="hm2">{5}</div><div class="mini">BEHEERSING VAN DE 17 ONDERWERPEN</div>
 c82f821|<b>SKELETBOOGSCHUTTER</b> · schiet pijlen: bij 2 treffers verlies je het level. Antwoord en de appel springt: zo ontwijk je ze!
 c64e959|PIJLTREFFER! NOG 1
 c2ead57|GERAAKT!
@@ -433,7 +433,7 @@ ad_lv4|Haal level 4
 a_lv12|BIJNA ANALYSE
 ad_lv12|Haal level 12
 a_lv16|OOG IN OOG
-ad_lv16|Haal level 16, het level van de leraar
+ad_lv16|Haal level 17, het level van de leraar
 a_inf|VOORBIJ ONEINDIG
 ad_inf|Speel de ∞-modus
 a_days3|GEWOONTE
@@ -509,3 +509,60 @@ in0|Een 2? Een 1? EEN NUL? En dit is de TEKENING VAN EEN KAT!
 cm1|Eén − draait de richting één keer om: de sprongen gaan naar links van 0.
 cm2|Elke − draait de richting om: twee omdraaiingen heffen elkaar op, dus de sprongen eindigen rechts van 0.
 cm3|Trucje: gelijke tekens geven +, verschillende tekens geven −.
+cx_name|EXPONENTEN
+cx_tip|Een macht telt factoren: 2³ = 2 · 2 · 2. De regels komen voort uit tellen.
+cx_kick|LEVEL 7 · aⁿ · aᵐ
+cx_ttl|REKENREGELS VOOR MACHTEN
+cx_l1|Een <b>macht</b> telt hoe vaak het grondtal vermenigvuldigd wordt: 2³ = 2 · 2 · 2.
+cx_l2|Zelfde grondtal: bij vermenigvuldigen <b>tel</b> je de exponenten <b>op</b>, bij delen <b>trek</b> je ze <b>af</b>, en een macht van een macht <b>vermenigvuldigt</b> ze.
+cx_e1|{0} betekent {1}.
+cx_e2|Truc: vermenigvuldig stap voor stap met {0}: {1}.
+cx_e3|Truc: 10 tot de {0} is een 1 met {0} nullen.
+cx_p|Zelfde grondtal vermenigvuldigen: tel de factoren, {0} plus {1} is {2}. Exponenten optellen: {0} + {1} = {2}.
+cx_q|Zelfde grondtal delen: {1} factoren onder vallen weg tegen {1} boven. Aftrekken: {0} − {1} = {2}.
+cx_w|Macht van een macht: {0} groepjes van {1} factoren. Vermenigvuldigen: {1} × {0} = {2}.
+cx_z|Waarom 1? {0} ÷ {0} = {1}, en elk getal (behalve 0) gedeeld door zichzelf is 1.
+cx_n|Negatieve exponent = omdraaien: {0} = 1 ÷ {1} = {2}.
+ce_m1|Waarom? {0} × {1} is {1} schulden van {0} bij elkaar optellen: {2} = {3}.
+ce_m2|Waarom? Kijk naar het patroon: {0}. Elke stap gaat de uitkomst {1} omhoog; voorbij 0 blijft hij stijgen, dus wordt hij positief.
+ce_nc|Zonder rekenmachine, eerst zonder tekens: {0}.
+cf_why|Een breuk is een deling: {0}/{1} = {0} ÷ {1}, {0} verdelen in {1} gelijke delen.
+cf_2|÷ 2 is de helft nemen: de helft van {0} is {1}.
+cf_4|÷ 4 is de helft van de helft: {0} → {1} → {2}.
+cf_5|÷ 5 is hetzelfde als × 2 en dan ÷ 10: {0} × 2 = {1}, en {1} ÷ 10 = {2}.
+cf_10|÷ 10 schuift de komma één plaats naar links: {0} → {1}.
+cf_100|Maak er honderdsten van: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Tel eerst de tientallen op, dan de eenheden: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Ligt er een dicht bij een tiental, rond af en corrigeer: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Tel op vanaf de kleinste: 52 − 38 → van 38 tot 40 is 2, van 40 tot 52 is 12: 14.
+mt_resta2|Trek het ronde getal af en geef het teveel terug: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Splits het grote getal: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 is × 10 en dan de helft; × 9 is × 10 min één keer: 9 × 7 = 70 − 7 = 63.
+mt_div1|Delen is de tafel achterstevoren: 56 ÷ 8 → 8 keer wat is 56? 7.
+mt_div2|Splits het getal in makkelijke stukken: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Denk aan een lift: −3 + 8 → je staat op verdieping −3 en gaat 8 omhoog: verdieping 5.
+mt_ent2|Bij vermenigvuldigen eerst het getal zonder tekens, het teken op het eind: gelijke geven +, verschillende geven −.
+mt_frac1|Breuken uit je hoofd: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"3/4 van 20": deel door de noemer en vermenigvuldig met de teller: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Tel factoren: 2³ · 2² is drie tweeën en twee tweeën, vijf in totaal: 2⁵.
+mt_exp2|Machten van 2 uit je hoofd: 2, 4, 8, 16, 32, 64, 128, 256 (telkens het dubbele).
+mt_raiz1|Bij √ zoek je het getal dat keer zichzelf het getal eronder geeft: √81 → 9 × 9.
+mt_raiz2|Weet je het niet, klem het tussen kwadraten: √60 ligt tussen √49 = 7 en √64 = 8.
+mt_trig1|Op de cirkel is sin de hoogte en cos het horizontale stuk: sin 90° = 1 (boven), cos 0° = 1 (rechts).
+mt_trig2|30°, 45°, 60°: sin is 1/2, √2/2, √3/2; cos in omgekeerde volgorde.
+mt_f11|f(4) is een machine: vervang elke x door 4 en reken op volgorde: eerst ×, dan +.
+mt_f12|Om x te vinden, maak je het achterstevoren ongedaan: eerst weg wat erbij komt, dan delen.
+mt_f21|Gebruik haakjes bij negatieve getallen: (−3)² = 9, niet −9.
+mt_f22|x² − 5x + 6 = 0: zoek twee getallen met som 5 en product 6: 2 en 3.
+mt_f31|Derdemachten uit je hoofd: 1, 8, 27, 64, 125. Bij negatieve blijft het teken: (−2)³ = −8.
+mt_f32|Bij factoren (x − a)(x − b)(x − c): vul x in, reken elk haakje uit en vermenigvuldig per twee.
+mt_mat1|det: hoofddiagonaal min de andere, a·d − b·c. Reken elk product apart uit.
+mt_mat2|Rij keer kolom: vermenigvuldig paar voor paar en tel op.
+mt_lim1|Probeer eerst in te vullen. Krijg je 0/0, ontbind dan in factoren en vereenvoudig.
+mt_lim2|Richting ∞ telt alleen het grootste deel: (5x + 3)/x gedraagt zich als 5x/x = 5.
+mt_der1|Haal de exponent naar voren en trek er 1 af: x³ → 3x². Constanten verdwijnen.
+mt_der2|De afgeleide van mx + b is m: een lijn heeft overal dezelfde helling.
+mt_int1|Integraal = oppervlakte. Is de hoogte constant, dan is het een rechthoek: basis × hoogte.
+mt_int2|∫2x dx = x² en ∫3x² dx = x³: boven min onder.
+mt_pie1|π ≈ 3.14 en e ≈ 2.72: daarmee krijg je 2π ≈ 6.28 en π/2 ≈ 1.57.
+mt_pie2|ln en e^x heffen elkaar op: ln(eⁿ) = n, en alles tot de macht 0 is 1.

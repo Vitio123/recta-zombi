@@ -200,7 +200,7 @@ cc3d5fc|{0} RICHTIGE, UM IHN ZU BESIEGEN
 c4bd829|{0} RICHTIGE ZUM BESTEHEN
 cb76c46| · DRUCK {0}%
 c9aa89e|<i class="h{0}" title="{1} richtig"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} RICHTIG · {2} AKTIVE TAGE · SERIE: {3}</div><div class="hm2">{5}</div><div class="mini">BEHERRSCHUNG DER 16 THEMEN</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} RICHTIG · {2} AKTIVE TAGE · SERIE: {3}</div><div class="hm2">{5}</div><div class="mini">BEHERRSCHUNG DER 17 THEMEN</div>
 c82f821|<b>SKELETTBOGENSCHÜTZE</b> · schießt Pfeile: bei 2 Treffern verlierst du das Level. Antworte und der Apfel springt: So weichst du aus!
 c64e959|PFEILTREFFER! NOCH 1
 c2ead57|GETROFFEN!
@@ -433,7 +433,7 @@ ad_lv4|Erreiche Level 4
 a_lv12|FAST ANALYSIS
 ad_lv12|Erreiche Level 12
 a_lv16|AUGE IN AUGE
-ad_lv16|Erreiche Level 16, das Level des Professors
+ad_lv16|Erreiche Level 17, das Level des Professors
 a_inf|JENSEITS DER UNENDLICHKEIT
 ad_inf|Spiele den ∞-Modus
 a_days3|GEWOHNHEIT
@@ -509,3 +509,60 @@ in0|Eine 2? Eine 1? EINE NULL? Und das hier ist die ZEICHNUNG EINER KATZE!
 cm1|Ein einzelnes − dreht die Richtung einmal um: die Sprünge gehen nach links von 0.
 cm2|Jedes − dreht die Richtung um: zwei Drehungen heben sich auf, die Sprünge landen rechts von 0.
 cm3|Merkregel: gleiche Vorzeichen ergeben +, verschiedene ergeben −.
+cx_name|EXPONENTEN
+cx_tip|Eine Potenz zählt Faktoren: 2³ = 2 · 2 · 2. Die Regeln kommen vom Zählen.
+cx_kick|LEVEL 7 · aⁿ · aᵐ
+cx_ttl|POTENZGESETZE
+cx_l1|Die <b>Potenz</b> zählt, wie oft die Basis multipliziert wird: 2³ = 2 · 2 · 2.
+cx_l2|Gleiche Basis: beim Multiplizieren werden die Exponenten <b>addiert</b>, beim Dividieren <b>subtrahiert</b>, und eine Potenz einer Potenz <b>multipliziert</b> sie.
+cx_e1|{0} bedeutet {1}.
+cx_e2|Kopftrick: multipliziere Schritt für Schritt mit {0}: {1}.
+cx_e3|Trick: 10 hoch {0} ist eine 1 mit {0} Nullen.
+cx_p|Gleiche Basis mal gleiche Basis: zähl die Faktoren, {0} plus {1} sind {2}. Exponenten addieren: {0} + {1} = {2}.
+cx_q|Gleiche Basis geteilt: {1} Faktoren unten kürzen sich mit {1} oben. Subtrahieren: {0} − {1} = {2}.
+cx_w|Potenz einer Potenz: {0} Gruppen mit je {1} Faktoren. Multiplizieren: {1} × {0} = {2}.
+cx_z|Warum 1? {0} ÷ {0} = {1}, und jede Zahl (außer 0) durch sich selbst ist 1.
+cx_n|Negativer Exponent = umdrehen: {0} = 1 ÷ {1} = {2}.
+ce_m1|Warum? {0} × {1} heißt, {1} Schulden von {0} zusammenzulegen: {2} = {3}.
+ce_m2|Warum? Schau dir das Muster an: {0}. Bei jedem Schritt steigt das Ergebnis um {1}; nach der 0 steigt es weiter, also wird es positiv.
+ce_nc|Ohne Taschenrechner, erst ohne Vorzeichen: {0}.
+cf_why|Ein Bruch ist eine Division: {0}/{1} = {0} ÷ {1}, also {0} in {1} gleiche Teile teilen.
+cf_2|÷ 2 heißt halbieren: die Hälfte von {0} ist {1}.
+cf_4|÷ 4 ist die Hälfte der Hälfte: {0} → {1} → {2}.
+cf_5|÷ 5 ist dasselbe wie × 2 und dann ÷ 10: {0} × 2 = {1}, und {1} ÷ 10 = {2}.
+cf_10|÷ 10 verschiebt das Komma um eine Stelle nach links: {0} → {1}.
+cf_100|Mach Hundertstel daraus: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Erst die Zehner addieren, dann die Einer: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Liegt eine Zahl nah an einem Zehner, runde und gleiche aus: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Zähl von der kleinen Zahl aus hoch: 52 − 38 → von 38 bis 40 sind 2, von 40 bis 52 sind 12: 14.
+mt_resta2|Zieh die runde Zahl ab und gib das Zuviel zurück: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Zerleg die große Zahl: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 ist × 10 und dann halbieren; × 9 ist × 10 minus einmal: 9 × 7 = 70 − 7 = 63.
+mt_div1|Teilen ist das Einmaleins rückwärts: 56 ÷ 8 → 8 mal wie viel ist 56? 7.
+mt_div2|Zerleg die Zahl in leichte Stücke: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Denk an einen Aufzug: −3 + 8 → du bist 3 Stockwerke unten und fährst 8 hoch: Stock 5.
+mt_ent2|Beim Multiplizieren erst die Zahl ohne Vorzeichen; das Vorzeichen zum Schluss: gleiche ergeben +, verschiedene −.
+mt_frac1|Brüche zum Merken: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|„3/4 von 20“: durch die untere Zahl teilen, mit der oberen malnehmen: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Zähl Faktoren: 2³ · 2² sind drei 2er und zwei 2er, fünf insgesamt: 2⁵.
+mt_exp2|Zweierpotenzen auswendig: 2, 4, 8, 16, 32, 64, 128, 256 (jede verdoppelt sich).
+mt_raiz1|Bei √ suchst du die Zahl, die mal sich selbst die Zahl darunter ergibt: √81 → 9 × 9.
+mt_raiz2|Wenn du es nicht weißt, schließ es zwischen Quadraten ein: √60 liegt zwischen √49 = 7 und √64 = 8.
+mt_trig1|Am Kreis ist sin die Höhe und cos die Waagrechte: sin 90° = 1 (oben), cos 0° = 1 (rechts).
+mt_trig2|30°, 45°, 60°: sin ist 1/2, √2/2, √3/2; cos in umgekehrter Reihenfolge.
+mt_f11|f(4) ist eine Maschine: ersetze jedes x durch 4 und rechne der Reihe nach: erst ×, dann +.
+mt_f12|Zum Auflösen rückwärts rückgängig machen: erst das Addierte weg, dann teilen.
+mt_f21|Bei negativen Zahlen Klammern setzen: (−3)² = 9, nicht −9.
+mt_f22|x² − 5x + 6 = 0: such zwei Zahlen mit Summe 5 und Produkt 6: 2 und 3.
+mt_f31|Kubikzahlen auswendig: 1, 8, 27, 64, 125. Bei negativen bleibt das Vorzeichen: (−2)³ = −8.
+mt_f32|Bei Faktoren (x − a)(x − b)(x − c): x einsetzen, jede Klammer ausrechnen und paarweise multiplizieren.
+mt_mat1|det: Hauptdiagonale minus die andere, a·d − b·c. Rechne jedes Produkt einzeln.
+mt_mat2|Zeile mal Spalte: paarweise multiplizieren und die Ergebnisse addieren.
+mt_lim1|Erst einsetzen. Kommt 0/0 heraus, faktorisieren und kürzen.
+mt_lim2|Richtung ∞ zählt nur der größte Teil: (5x + 3)/x verhält sich wie 5x/x = 5.
+mt_der1|Exponent nach vorne und 1 abziehen: x³ → 3x². Konstanten fallen weg.
+mt_der2|Die Ableitung von mx + b ist m: eine Gerade hat überall dieselbe Steigung.
+mt_int1|Integral = Fläche. Bei konstanter Höhe ist es ein Rechteck: Breite × Höhe.
+mt_int2|∫2x dx = x² und ∫3x² dx = x³: oben minus unten auswerten.
+mt_pie1|π ≈ 3.14 und e ≈ 2.72: damit bekommst du 2π ≈ 6.28 und π/2 ≈ 1.57.
+mt_pie2|ln und e^x heben sich auf: ln(eⁿ) = n, und alles hoch 0 ist 1.

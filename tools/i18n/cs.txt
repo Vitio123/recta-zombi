@@ -200,7 +200,7 @@ cc3d5fc|{0} SPRÁVNĚ K PORÁŽCE
 c4bd829|{0} SPRÁVNĚ K POSTUPU
 cb76c46| · TLAK {0}%
 c9aa89e|<i class="h{0}" title="správně: {1}"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">SPRÁVNĚ: {1} · AKTIVNÍ DNY: {2} · SÉRIE: {3}</div><div class="hm2">{5}</div><div class="mini">ZVLÁDNUTÍ 16 TÉMAT</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">SPRÁVNĚ: {1} · AKTIVNÍ DNY: {2} · SÉRIE: {3}</div><div class="hm2">{5}</div><div class="mini">ZVLÁDNUTÍ 17 TÉMAT</div>
 c82f821|<b>KOSTLIVEC LUČIŠTNÍK</b> · střílí šípy: po 2 zásazích prohraješ úroveň. Odpověz a jablko skočí: tak se jim vyhneš!
 c64e959|ZÁSAH ŠÍPEM! ZBÝVÁ 1
 c2ead57|ZASAŽENA!
@@ -433,7 +433,7 @@ ad_lv4|Dosáhni úrovně 4
 a_lv12|SKORO ANALÝZA
 ad_lv12|Dosáhni úrovně 12
 a_lv16|TVÁŘÍ V TVÁŘ
-ad_lv16|Dosáhni úrovně 16, úrovně profesora
+ad_lv16|Dosáhni úrovně 17, úrovně profesora
 a_inf|ZA NEKONEČNO
 ad_inf|Zahraj si režim ∞
 a_days3|ZVYK
@@ -509,3 +509,60 @@ in0|Dvojka? Jednička? NULA? A tohle je KRESBA KOČKY!
 cm1|Jedno − otočí směr jednou: skoky jdou doleva od 0.
 cm2|Každé − otočí směr: dvě otočení se vyruší, takže skoky skončí vpravo od 0.
 cm3|Trik: stejná znaménka dávají +, různá dávají −.
+cx_name|MOCNINY
+cx_tip|Mocnina počítá činitele: 2³ = 2 · 2 · 2. Pravidla vychází z počítání.
+cx_kick|ÚROVEŇ 7 · aⁿ · aᵐ
+cx_ttl|PRAVIDLA PRO MOCNINY
+cx_l1|<b>Mocnina</b> počítá, kolikrát násobíme základ: 2³ = 2 · 2 · 2.
+cx_l2|Stejný základ: při násobení se exponenty <b>sčítají</b>, při dělení <b>odčítají</b> a mocnina mocniny je <b>násobí</b>.
+cx_e1|{0} znamená {1}.
+cx_e2|Trik: násob {0} krok za krokem: {1}.
+cx_e3|Trik: 10 na {0} je jednička a {0} nul.
+cx_p|Stejný základ se násobí: spočítej činitele, {0} a ještě {1} je {2}. Exponenty sečti: {0} + {1} = {2}.
+cx_q|Stejný základ se dělí: {1} činitelů dole se zkrátí s {1} nahoře. Odečti: {0} − {1} = {2}.
+cx_w|Mocnina mocniny: {0} skupin po {1} činitelích. Vynásob: {1} × {0} = {2}.
+cx_z|Proč 1? {0} ÷ {0} = {1} a každé číslo (kromě 0) dělené samo sebou je 1.
+cx_n|Záporný exponent = převrátit: {0} = 1 ÷ {1} = {2}.
+ce_m1|Proč? {0} × {1} znamená sečíst {1} dluhů po {0}: {2} = {3}.
+ce_m2|Proč? Podívej se na vzor: {0}. Každým krokem výsledek roste o {1}; za nulou roste dál, takže vyjde kladný.
+ce_nc|Bez kalkulačky, nejdřív bez znamének: {0}.
+cf_why|Zlomek je dělení: {0}/{1} = {0} ÷ {1}, rozdělit {0} na {1} stejných dílů.
+cf_2|÷ 2 je vzít polovinu: polovina z {0} je {1}.
+cf_4|÷ 4 je polovina z poloviny: {0} → {1} → {2}.
+cf_5|÷ 5 je totéž co × 2 a pak ÷ 10: {0} × 2 = {1} a {1} ÷ 10 = {2}.
+cf_10|÷ 10 posune desetinnou čárku o jedno místo doleva: {0} → {1}.
+cf_100|Převeď na setiny: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Nejdřív sečti desítky, pak jednotky: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Když je číslo blízko celé desítky, zaokrouhli a vyrovnej: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Počítej nahoru od menšího: 52 − 38 → od 38 do 40 jsou 2, od 40 do 52 je 12: 14.
+mt_resta2|Odečti kulaté číslo a vrať, co přebývá: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Rozlož velké číslo: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 je × 10 a polovina; × 9 je × 10 minus jednou: 9 × 7 = 70 − 7 = 63.
+mt_div1|Dělení je malá násobilka pozpátku: 56 ÷ 8 → 8 krát kolik je 56? 7.
+mt_div2|Rozděl číslo na snadné kusy: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Představ si výtah: −3 + 8 → jsi ve 3. podzemním patře a jedeš 8 nahoru: patro 5.
+mt_ent2|Při násobení nejdřív číslo bez znamének, znaménko na konec: stejná dají +, různá dají −.
+mt_frac1|Zlomky zpaměti: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|„3/4 z 20“: vyděl jmenovatelem a vynásob čitatelem: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Počítej činitele: 2³ · 2² jsou tři dvojky a dvě dvojky, celkem pět: 2⁵.
+mt_exp2|Mocniny dvojky zpaměti: 2, 4, 8, 16, 32, 64, 128, 256 (každá je dvojnásobek).
+mt_raiz1|U √ hledej číslo, které vynásobené samo sebou dá číslo pod odmocninou: √81 → 9 × 9.
+mt_raiz2|Když to nevíš, sevři to mezi čtverce: √60 je mezi √49 = 7 a √64 = 8.
+mt_trig1|Na kružnici je sin výška a cos vodorovná část: sin 90° = 1 (nahoře), cos 0° = 1 (vpravo).
+mt_trig2|30°, 45°, 60°: sin je 1/2, √2/2, √3/2; cos v opačném pořadí.
+mt_f11|f(4) je stroj: každé x nahraď 4 a počítej popořadě: nejdřív ×, pak +.
+mt_f12|Při vyjadřování x postupuj pozpátku: nejdřív odeber přičtené, pak vyděl.
+mt_f21|U záporných čísel používej závorky: (−3)² = 9, ne −9.
+mt_f22|x² − 5x + 6 = 0: najdi dvě čísla se součtem 5 a součinem 6: 2 a 3.
+mt_f31|Třetí mocniny zpaměti: 1, 8, 27, 64, 125. U záporných zůstává znaménko: (−2)³ = −8.
+mt_f32|U součinu (x − a)(x − b)(x − c): dosaď x, spočítej každou závorku a násob po dvou.
+mt_mat1|det: hlavní diagonála minus ta druhá, a·d − b·c. Každý součin spočítej zvlášť.
+mt_mat2|Řádek krát sloupec: násob po dvojicích a sečti.
+mt_lim1|Nejdřív zkus dosadit. Když vyjde 0/0, rozlož na součin a zkrať.
+mt_lim2|K ∞ rozhoduje jen největší člen: (5x + 3)/x se chová jako 5x/x = 5.
+mt_der1|Exponent dej dopředu a odečti 1: x³ → 3x². Konstanty zmizí.
+mt_der2|Derivace mx + b je m: přímka má všude stejný sklon.
+mt_int1|Integrál = obsah. Při stálé výšce je to obdélník: základna × výška.
+mt_int2|∫2x dx = x² a ∫3x² dx = x³: horní mez minus dolní.
+mt_pie1|π ≈ 3.14 a e ≈ 2.72: z toho 2π ≈ 6.28 a π/2 ≈ 1.57.
+mt_pie2|ln a e^x se navzájem ruší: ln(eⁿ) = n a cokoli na nultou je 1.

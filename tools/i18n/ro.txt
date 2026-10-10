@@ -200,7 +200,7 @@ cc3d5fc|{0} CORECTE CA SĂ-L ÎNVINGI
 c4bd829|{0} CORECTE CA SĂ TRECI
 cb76c46| · PRESIUNE {0}%
 c9aa89e|<i class="h{0}" title="{1} corecte"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} CORECTE · {2} ZILE ACTIVE · SERIE {3}</div><div class="hm2">{5}</div><div class="mini">STĂPÂNIREA CELOR 16 SUBIECTE</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} CORECTE · {2} ZILE ACTIVE · SERIE {3}</div><div class="hm2">{5}</div><div class="mini">STĂPÂNIREA CELOR 17 SUBIECTE</div>
 c82f821|<b>SCHELET ARCAȘ</b> · trage cu săgeți: la 2 pierzi nivelul. Răspunde și mărul sare: așa te ferești!
 c64e959|SĂGEATĂ! ÎȚI MAI RĂMÂNE 1
 c2ead57|LOVITĂ!
@@ -433,7 +433,7 @@ ad_lv4|Ajungi la nivelul 4
 a_lv12|APROAPE ANALIZĂ
 ad_lv12|Ajungi la nivelul 12
 a_lv16|FAȚĂ ÎN FAȚĂ
-ad_lv16|Ajungi la nivelul 16, nivelul profesorului
+ad_lv16|Ajungi la nivelul 17, nivelul profesorului
 a_inf|DINCOLO DE INFINIT
 ad_inf|Joacă modul ∞
 a_days3|OBICEI
@@ -509,3 +509,60 @@ in0|Un 2? Un 1? UN ZERO? Iar asta e DESENUL UNEI PISICI!
 cm1|Un singur − inversează sensul o dată: săriturile merg la stânga lui 0.
 cm2|Fiecare − inversează sensul: două inversări se anulează, iar săriturile ajung la dreapta lui 0.
 cm3|Truc: semne la fel dau +, semne diferite dau −.
+cx_name|EXPONENȚI
+cx_tip|O putere numără factori: 2³ = 2 · 2 · 2. Regulile vin din numărat.
+cx_kick|NIVELUL 7 · aⁿ · aᵐ
+cx_ttl|REGULILE PUTERILOR
+cx_l1|<b>Puterea</b> numără de câte ori se înmulțește baza: 2³ = 2 · 2 · 2.
+cx_l2|Aceeași bază: la înmulțire exponenții se <b>adună</b>, la împărțire se <b>scad</b>, iar puterea unei puteri îi <b>înmulțește</b>.
+cx_e1|{0} înseamnă {1}.
+cx_e2|Truc: înmulțește cu {0} pas cu pas: {1}.
+cx_e3|Truc: 10 la puterea {0} e un 1 urmat de {0} zerouri.
+cx_p|Aceeași bază înmulțită: numără factorii, {0} plus încă {1} fac {2}. Adunăm exponenții: {0} + {1} = {2}.
+cx_q|Aceeași bază împărțită: {1} factori de jos se simplifică cu {1} de sus. Scădem: {0} − {1} = {2}.
+cx_w|Putere la putere: {0} grupuri de câte {1} factori. Înmulțim: {1} × {0} = {2}.
+cx_z|De ce 1? {0} ÷ {0} = {1}, și orice număr (în afară de 0) împărțit la el însuși dă 1.
+cx_n|Exponent negativ = întoarce: {0} = 1 ÷ {1} = {2}.
+ce_m1|De ce? {0} × {1} înseamnă să aduni {1} datorii de {0}: {2} = {3}.
+ce_m2|De ce? Uită-te la tipar: {0}. La fiecare pas rezultatul crește cu {1}; după 0 continuă să crească, deci iese pozitiv.
+ce_nc|Fără calculator, întâi fără semne: {0}.
+cf_why|O fracție e o împărțire: {0}/{1} = {0} ÷ {1}, adică împarți {0} în {1} părți egale.
+cf_2|÷ 2 înseamnă jumătate: jumătate din {0} este {1}.
+cf_4|÷ 4 e jumătatea jumătății: {0} → {1} → {2}.
+cf_5|÷ 5 e la fel ca × 2 și apoi ÷ 10: {0} × 2 = {1}, iar {1} ÷ 10 = {2}.
+cf_10|÷ 10 mută virgula un loc la stânga: {0} → {1}.
+cf_100|Transformă în sutimi: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Adună întâi zecile, apoi unitățile: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Dacă unul e aproape de o zece întreagă, rotunjește și compensează: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Numără în sus de la cel mic: 52 − 38 → de la 38 la 40 sunt 2, de la 40 la 52 sunt 12: 14.
+mt_resta2|Scade numărul rotund și dă înapoi surplusul: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Desparte numărul mare: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 e × 10 și jumătate; × 9 e × 10 minus o dată: 9 × 7 = 70 − 7 = 63.
+mt_div1|Împărțirea e tabla înmulțirii pe dos: 56 ÷ 8 → 8 ori cât fac 56? 7.
+mt_div2|Desparte numărul în bucăți ușoare: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Gândește-te la un lift: −3 + 8 → ești la etajul −3 și urci 8: etajul 5.
+mt_ent2|La înmulțire întâi numărul fără semne, semnul la final: la fel dau +, diferite dau −.
+mt_frac1|Fracții de reținut: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|„3/4 din 20”: împarte la numitor și înmulțește cu numărătorul: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Numără factorii: 2³ · 2² sunt trei de 2 și doi de 2, cinci în total: 2⁵.
+mt_exp2|Puterile lui 2 pe de rost: 2, 4, 8, 16, 32, 64, 128, 256 (fiecare se dublează).
+mt_raiz1|La √ caută numărul care înmulțit cu el însuși dă ce e înăuntru: √81 → 9 × 9.
+mt_raiz2|Dacă nu știi, încadrează-l între pătrate: √60 e între √49 = 7 și √64 = 8.
+mt_trig1|Pe cerc, sin e înălțimea, iar cos partea orizontală: sin 90° = 1 (sus), cos 0° = 1 (dreapta).
+mt_trig2|30°, 45°, 60°: sin e 1/2, √2/2, √3/2; cos în ordine inversă.
+mt_f11|f(4) e o mașinărie: înlocuiește fiecare x cu 4 și calculează în ordine: întâi ×, apoi +.
+mt_f12|Ca să afli x, desfă invers: întâi scoate ce se adună, apoi împarte.
+mt_f21|La negative folosește paranteze: (−3)² = 9, nu −9.
+mt_f22|x² − 5x + 6 = 0: caută două numere cu suma 5 și produsul 6: 2 și 3.
+mt_f31|Cuburi pe de rost: 1, 8, 27, 64, 125. La negative semnul rămâne: (−2)³ = −8.
+mt_f32|La factori (x − a)(x − b)(x − c): înlocuiește x, calculează fiecare paranteză și înmulțește câte două.
+mt_mat1|det: diagonala principală minus cealaltă, a·d − b·c. Calculează fiecare produs separat.
+mt_mat2|Linie ori coloană: înmulțește pe perechi și adună.
+mt_lim1|Întâi încearcă să înlocuiești. Dacă iese 0/0, descompune și simplifică.
+mt_lim2|Spre ∞ contează doar termenul cel mai mare: (5x + 3)/x se poartă ca 5x/x = 5.
+mt_der1|Coboară exponentul în față și scade 1: x³ → 3x². Constantele dispar.
+mt_der2|Derivata lui mx + b este m: o dreaptă are aceeași pantă peste tot.
+mt_int1|Integrala = arie. Dacă înălțimea e constantă, e un dreptunghi: bază × înălțime.
+mt_int2|∫2x dx = x² și ∫3x² dx = x³: valoarea de sus minus cea de jos.
+mt_pie1|π ≈ 3.14 și e ≈ 2.72: cu asta afli 2π ≈ 6.28 și π/2 ≈ 1.57.
+mt_pie2|ln și e^x se anulează: ln(eⁿ) = n, iar orice la puterea 0 dă 1.

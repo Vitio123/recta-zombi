@@ -200,7 +200,7 @@ cc3d5fc|{0} BENAR UNTUK MENGALAHKANNYA
 c4bd829|{0} BENAR UNTUK LULUS
 cb76c46| · TEKANAN {0}%
 c9aa89e|<i class="h{0}" title="{1} benar"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} BENAR · {2} HARI AKTIF · BERUNTUN {3}</div><div class="hm2">{5}</div><div class="mini">PENGUASAAN 16 TOPIK</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} BENAR · {2} HARI AKTIF · BERUNTUN {3}</div><div class="hm2">{5}</div><div class="mini">PENGUASAAN 17 TOPIK</div>
 c82f821|<b>KERANGKA PEMANAH</b> · menembakkan panah: kena 2 kali, kamu kalah di level ini. Jawab dan apel melompat: begitulah cara menghindarinya!
 c64e959|KENA PANAH! SISA 1
 c2ead57|TERTEMBAK!
@@ -433,7 +433,7 @@ ad_lv4|Capai level 4
 a_lv12|HAMPIR KALKULUS
 ad_lv12|Capai level 12
 a_lv16|TATAP MUKA
-ad_lv16|Capai level 16, level sang guru
+ad_lv16|Capai level 17, level sang guru
 a_inf|MELAMPAUI TAK HINGGA
 ad_inf|Mainkan mode ∞
 a_days3|KEBIASAAN
@@ -509,3 +509,60 @@ in0|Nilai 2? Nilai 1? NOL? Dan ini GAMBAR KUCING!
 cm1|Satu tanda − membalik arah satu kali: lompatan menuju kiri 0.
 cm2|Setiap tanda − membalik arah: dua pembalikan saling meniadakan, sehingga lompatan berakhir di kanan 0.
 cm3|Trik: tanda sama menghasilkan +, tanda berbeda menghasilkan −.
+cx_name|EKSPONEN
+cx_tip|Pangkat menghitung faktor: 2³ = 2 · 2 · 2. Aturannya muncul dari menghitung.
+cx_kick|LEVEL 7 · aⁿ · aᵐ
+cx_ttl|SIFAT-SIFAT EKSPONEN
+cx_l1|<b>Pangkat</b> menghitung berapa kali bilangan pokok dikalikan: 2³ = 2 · 2 · 2.
+cx_l2|Bilangan pokok sama: saat dikali eksponennya <b>dijumlah</b>, saat dibagi <b>dikurangi</b>, dan pangkat dari pangkat <b>dikalikan</b>.
+cx_e1|{0} artinya {1}.
+cx_e2|Trik: kalikan dengan {0} langkah demi langkah: {1}.
+cx_e3|Trik: 10 pangkat {0} adalah angka 1 diikuti {0} nol.
+cx_p|Bilangan pokok sama dikalikan: hitung faktornya, {0} ditambah {1} jadi {2}. Eksponen dijumlah: {0} + {1} = {2}.
+cx_q|Bilangan pokok sama dibagi: {1} faktor di bawah saling coret dengan {1} di atas. Dikurangi: {0} − {1} = {2}.
+cx_w|Pangkat dari pangkat: ada {0} kelompok berisi {1} faktor. Dikalikan: {1} × {0} = {2}.
+cx_z|Kenapa 1? {0} ÷ {0} = {1}, dan bilangan apa pun (kecuali 0) dibagi dirinya sendiri hasilnya 1.
+cx_n|Eksponen negatif = dibalik: {0} = 1 ÷ {1} = {2}.
+ce_m1|Kenapa? {0} × {1} artinya mengumpulkan {1} utang sebesar {0}: {2} = {3}.
+ce_m2|Kenapa? Lihat polanya: {0}. Setiap langkah hasilnya naik {1}; setelah melewati 0 terus naik, jadi hasilnya positif.
+ce_nc|Tanpa kalkulator, abaikan tanda dulu: {0}.
+cf_why|Pecahan adalah pembagian: {0}/{1} = {0} ÷ {1}, membagi {0} menjadi {1} bagian sama besar.
+cf_2|÷ 2 artinya ambil setengah: setengah dari {0} adalah {1}.
+cf_4|÷ 4 adalah setengah dari setengah: {0} → {1} → {2}.
+cf_5|÷ 5 sama dengan × 2 lalu ÷ 10: {0} × 2 = {1}, dan {1} ÷ 10 = {2}.
+cf_10|÷ 10 menggeser koma satu tempat ke kiri: {0} → {1}.
+cf_100|Ubah ke perseratus: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Jumlahkan puluhan dulu, lalu satuan: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Kalau salah satunya dekat puluhan, bulatkan lalu koreksi: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Hitung naik dari yang kecil: 52 − 38 → dari 38 ke 40 ada 2, dari 40 ke 52 ada 12: 14.
+mt_resta2|Kurangi bilangan bulat puluhan lalu kembalikan kelebihannya: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Pecah bilangan besar: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 adalah × 10 lalu setengahnya; × 9 adalah × 10 dikurangi sekali: 9 × 7 = 70 − 7 = 63.
+mt_div1|Pembagian adalah perkalian terbalik: 56 ÷ 8 → 8 kali berapa 56? 7.
+mt_div2|Pecah bilangan jadi bagian mudah: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Bayangkan lift: −3 + 8 → kamu di lantai −3 lalu naik 8: lantai 5.
+mt_ent2|Saat mengali, hitung dulu tanpa tanda; tandanya di akhir: sama jadi +, beda jadi −.
+mt_frac1|Pecahan yang perlu dihafal: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"3/4 dari 20": bagi dengan penyebut lalu kali pembilang: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Hitung faktornya: 2³ · 2² adalah tiga angka 2 dan dua angka 2, total lima: 2⁵.
+mt_exp2|Hafalkan pangkat 2: 2, 4, 8, 16, 32, 64, 128, 256 (masing-masing dua kali lipat).
+mt_raiz1|Untuk √ cari bilangan yang dikali dirinya sendiri menghasilkan bilangan di dalam: √81 → 9 × 9.
+mt_raiz2|Kalau tidak tahu, apit di antara kuadrat: √60 ada di antara √49 = 7 dan √64 = 8.
+mt_trig1|Di lingkaran, sin adalah tinggi dan cos bagian mendatar: sin 90° = 1 (atas), cos 0° = 1 (kanan).
+mt_trig2|30°, 45°, 60°: sin bernilai 1/2, √2/2, √3/2; cos urutannya terbalik.
+mt_f11|f(4) adalah mesin: ganti setiap x dengan 4 lalu hitung berurutan: × dulu, baru +.
+mt_f12|Untuk mencari x, batalkan dari belakang: hilangkan yang ditambah dulu, lalu bagi.
+mt_f21|Untuk bilangan negatif pakai kurung: (−3)² = 9, bukan −9.
+mt_f22|x² − 5x + 6 = 0: cari dua bilangan yang jumlahnya 5 dan hasil kalinya 6: 2 dan 3.
+mt_f31|Hafalkan bilangan kubik: 1, 8, 27, 64, 125. Untuk negatif tandanya tetap: (−2)³ = −8.
+mt_f32|Untuk faktor (x − a)(x − b)(x − c): ganti x, hitung tiap kurung, lalu kalikan dua-dua.
+mt_mat1|det: diagonal utama dikurangi diagonal lain, a·d − b·c. Hitung tiap perkalian terpisah.
+mt_mat2|Baris kali kolom: kalikan berpasangan lalu jumlahkan.
+mt_lim1|Coba substitusi dulu. Kalau hasilnya 0/0, faktorkan lalu sederhanakan.
+mt_lim2|Menuju ∞ hanya suku terbesar yang penting: (5x + 3)/x mirip 5x/x = 5.
+mt_der1|Turunkan pangkat ke depan lalu kurangi 1: x³ → 3x². Konstanta hilang.
+mt_der2|Turunan mx + b adalah m: garis lurus punya kemiringan yang sama di mana-mana.
+mt_int1|Integral = luas. Kalau tingginya tetap, bentuknya persegi panjang: alas × tinggi.
+mt_int2|∫2x dx = x² dan ∫3x² dx = x³: nilai atas dikurangi bawah.
+mt_pie1|π ≈ 3.14 dan e ≈ 2.72: dari situ 2π ≈ 6.28 dan π/2 ≈ 1.57.
+mt_pie2|ln dan e^x saling meniadakan: ln(eⁿ) = n, dan apa pun pangkat 0 hasilnya 1.

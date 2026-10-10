@@ -200,7 +200,7 @@ cc3d5fc|{0} CÂU ĐÚNG ĐỂ HẠ NÓ
 c4bd829|{0} CÂU ĐÚNG ĐỂ QUA
 cb76c46| · ÁP LỰC {0}%
 c9aa89e|<i class="h{0}" title="{1} câu đúng"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} ĐÚNG · {2} NGÀY HOẠT ĐỘNG · CHUỖI {3}</div><div class="hm2">{5}</div><div class="mini">MỨC THÀNH THẠO 16 CHỦ ĐỀ</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} ĐÚNG · {2} NGÀY HOẠT ĐỘNG · CHUỖI {3}</div><div class="hm2">{5}</div><div class="mini">MỨC THÀNH THẠO 17 CHỦ ĐỀ</div>
 c82f821|<b>BỘ XƯƠNG CUNG THỦ</b> · bắn tên: trúng 2 mũi là thua cấp. Trả lời để quả táo nhảy: đó là cách né!
 c64e959|TRÚNG TÊN! CÒN 1
 c2ead57|BỊ BẮN TRÚNG!
@@ -433,7 +433,7 @@ ad_lv4|Đạt cấp 4
 a_lv12|SẮP TỚI GIẢI TÍCH
 ad_lv12|Đạt cấp 12
 a_lv16|ĐỐI MẶT
-ad_lv16|Đạt cấp 16, cấp của thầy giáo
+ad_lv16|Đạt cấp 17, cấp của thầy giáo
 a_inf|VƯỢT QUA VÔ CỰC
 ad_inf|Chơi chế độ ∞
 a_days3|THÓI QUEN
@@ -509,3 +509,60 @@ in0|Điểm 2? Điểm 1? ĐIỂM KHÔNG? Còn đây là BỨC TRANH VẼ CON M�
 cm1|Một dấu − đổi chiều một lần: các bước nhảy đi về bên trái số 0.
 cm2|Mỗi dấu − đổi chiều: hai lần đổi chiều triệt tiêu nhau nên các bước nhảy kết thúc ở bên phải số 0.
 cm3|Mẹo: dấu giống nhau ra +, dấu khác nhau ra −.
+cx_name|SỐ MŨ
+cx_tip|Lũy thừa là đếm thừa số: 2³ = 2 · 2 · 2. Các quy tắc đến từ việc đếm.
+cx_kick|CẤP 7 · aⁿ · aᵐ
+cx_ttl|QUY TẮC LŨY THỪA
+cx_l1|<b>Lũy thừa</b> đếm xem cơ số được nhân bao nhiêu lần: 2³ = 2 · 2 · 2.
+cx_l2|Cùng cơ số: khi nhân thì <b>cộng</b> số mũ, khi chia thì <b>trừ</b>, còn lũy thừa của lũy thừa thì <b>nhân</b> số mũ.
+cx_e1|{0} nghĩa là {1}.
+cx_e2|Mẹo: nhân với {0} từng bước: {1}.
+cx_e3|Mẹo: 10 mũ {0} là số 1 theo sau {0} chữ số 0.
+cx_p|Cùng cơ số nhân nhau: đếm thừa số, {0} thêm {1} là {2}. Cộng số mũ: {0} + {1} = {2}.
+cx_q|Cùng cơ số chia nhau: {1} thừa số ở dưới triệt tiêu với {1} ở trên. Trừ: {0} − {1} = {2}.
+cx_w|Lũy thừa của lũy thừa: có {0} nhóm, mỗi nhóm {1} thừa số. Nhân: {1} × {0} = {2}.
+cx_z|Vì sao bằng 1? {0} ÷ {0} = {1}, và mọi số (trừ 0) chia cho chính nó đều bằng 1.
+cx_n|Số mũ âm = lật ngược: {0} = 1 ÷ {1} = {2}.
+ce_m1|Vì sao? {0} × {1} là gộp {1} khoản nợ {0}: {2} = {3}.
+ce_m2|Vì sao? Nhìn quy luật: {0}. Mỗi bước kết quả tăng {1}; qua khỏi 0 vẫn tiếp tục tăng nên thành số dương.
+ce_nc|Không cần máy tính, bỏ dấu trước: {0}.
+cf_why|Phân số là phép chia: {0}/{1} = {0} ÷ {1}, chia {0} thành {1} phần bằng nhau.
+cf_2|÷ 2 là lấy một nửa: một nửa của {0} là {1}.
+cf_4|÷ 4 là nửa của nửa: {0} → {1} → {2}.
+cf_5|÷ 5 giống như × 2 rồi ÷ 10: {0} × 2 = {1}, và {1} ÷ 10 = {2}.
+cf_10|÷ 10 dời dấu phẩy sang trái một chữ số: {0} → {1}.
+cf_100|Đổi ra phần trăm: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Cộng hàng chục trước, rồi hàng đơn vị: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Nếu một số gần số tròn chục, làm tròn rồi bù lại: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Đếm lên từ số nhỏ: 52 − 38 → từ 38 đến 40 là 2, từ 40 đến 52 là 12: 14.
+mt_resta2|Trừ số tròn rồi trả lại phần dư: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Tách số lớn: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 là × 10 rồi chia đôi; × 9 là × 10 trừ đi một lần: 9 × 7 = 70 − 7 = 63.
+mt_div1|Chia là bảng cửu chương ngược: 56 ÷ 8 → 8 nhân mấy bằng 56? 7.
+mt_div2|Tách số thành phần dễ chia: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Hãy nghĩ tới thang máy: −3 + 8 → bạn ở tầng hầm 3 và đi lên 8: tầng 5.
+mt_ent2|Khi nhân, tính số không dấu trước, dấu để cuối: cùng dấu ra +, khác dấu ra −.
+mt_frac1|Phân số cần thuộc: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"3/4 của 20": chia cho mẫu rồi nhân với tử: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Đếm thừa số: 2³ · 2² là ba số 2 và hai số 2, tổng cộng năm: 2⁵.
+mt_exp2|Thuộc lũy thừa của 2: 2, 4, 8, 16, 32, 64, 128, 256 (mỗi số gấp đôi).
+mt_raiz1|Với √, tìm số nhân với chính nó ra số bên trong: √81 → 9 × 9.
+mt_raiz2|Không biết thì kẹp giữa hai số chính phương: √60 nằm giữa √49 = 7 và √64 = 8.
+mt_trig1|Trên đường tròn, sin là chiều cao, cos là phần nằm ngang: sin 90° = 1 (trên), cos 0° = 1 (phải).
+mt_trig2|30°, 45°, 60°: sin là 1/2, √2/2, √3/2; cos theo thứ tự ngược lại.
+mt_f11|f(4) là một cỗ máy: thay mỗi x bằng 4 rồi tính theo thứ tự: × trước, + sau.
+mt_f12|Để tìm x, làm ngược lại: bỏ phần cộng thêm trước, rồi chia.
+mt_f21|Với số âm hãy dùng ngoặc: (−3)² = 9, không phải −9.
+mt_f22|x² − 5x + 6 = 0: tìm hai số có tổng 5 và tích 6: 2 và 3.
+mt_f31|Thuộc các lập phương: 1, 8, 27, 64, 125. Với số âm dấu được giữ: (−2)³ = −8.
+mt_f32|Với dạng (x − a)(x − b)(x − c): thay x, tính từng ngoặc rồi nhân hai cái một.
+mt_mat1|det: đường chéo chính trừ đường chéo kia, a·d − b·c. Tính riêng từng tích.
+mt_mat2|Hàng nhân cột: nhân từng cặp rồi cộng lại.
+mt_lim1|Thử thay số trước. Nếu ra 0/0 thì phân tích nhân tử rồi rút gọn.
+mt_lim2|Khi tiến tới ∞ chỉ số hạng lớn nhất quan trọng: (5x + 3)/x giống 5x/x = 5.
+mt_der1|Hạ số mũ xuống trước và trừ 1: x³ → 3x². Hằng số biến mất.
+mt_der2|Đạo hàm của mx + b là m: đường thẳng có độ dốc như nhau ở mọi nơi.
+mt_int1|Tích phân = diện tích. Nếu chiều cao không đổi thì là hình chữ nhật: đáy × cao.
+mt_int2|∫2x dx = x² và ∫3x² dx = x³: giá trị cận trên trừ cận dưới.
+mt_pie1|π ≈ 3.14 và e ≈ 2.72: từ đó 2π ≈ 6.28 và π/2 ≈ 1.57.
+mt_pie2|ln và e^x triệt tiêu nhau: ln(eⁿ) = n, và mọi thứ mũ 0 đều bằng 1.

@@ -200,7 +200,7 @@ cc3d5fc|{0} RÄTT FÖR ATT BESEGRA DEN
 c4bd829|{0} RÄTT FÖR ATT KLARA NIVÅN
 cb76c46| · PRESS {0}%
 c9aa89e|<i class="h{0}" title="{1} rätt"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} RÄTT · {2} AKTIVA DAGAR · SVIT {3}</div><div class="hm2">{5}</div><div class="mini">BEHÄRSKNING AV DE 16 OMRÅDENA</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} RÄTT · {2} AKTIVA DAGAR · SVIT {3}</div><div class="hm2">{5}</div><div class="mini">BEHÄRSKNING AV DE 17 OMRÅDENA</div>
 c82f821|<b>SKELETTBÅGSKYTT</b> · skjuter pilar: 2 träffar och du förlorar nivån. Svara så hoppar äpplet: så undviker du dem!
 c64e959|PILTRÄFF! 1 KVAR
 c2ead57|TRÄFFAD!
@@ -433,7 +433,7 @@ ad_lv4|Nå nivå 4
 a_lv12|NÄSTAN ANALYS
 ad_lv12|Nå nivå 12
 a_lv16|ANSIKTE MOT ANSIKTE
-ad_lv16|Nå nivå 16, lärarens nivå
+ad_lv16|Nå nivå 17, lärarens nivå
 a_inf|BORTOM OÄNDLIGHETEN
 ad_inf|Spela ∞-läget
 a_days3|VANA
@@ -509,3 +509,60 @@ in0|En tvåa? En etta? EN NOLLA? Och det här är en TECKNING AV EN KATT!
 cm1|Ett enda − vänder riktningen en gång: hoppen går åt vänster om 0.
 cm2|Varje − vänder riktningen: två vändningar tar ut varandra, så hoppen hamnar till höger om 0.
 cm3|Knep: lika tecken ger +, olika tecken ger −.
+cx_name|EXPONENTER
+cx_tip|En potens räknar faktorer: 2³ = 2 · 2 · 2. Reglerna kommer från att räkna.
+cx_kick|NIVÅ 7 · aⁿ · aᵐ
+cx_ttl|POTENSLAGARNA
+cx_l1|En <b>potens</b> räknar hur många gånger basen multipliceras: 2³ = 2 · 2 · 2.
+cx_l2|Samma bas: vid multiplikation <b>adderas</b> exponenterna, vid division <b>subtraheras</b> de, och en potens av en potens <b>multiplicerar</b> dem.
+cx_e1|{0} betyder {1}.
+cx_e2|Knep: multiplicera med {0} steg för steg: {1}.
+cx_e3|Knep: 10 upphöjt till {0} är en 1:a följd av {0} nollor.
+cx_p|Samma bas multipliceras: räkna faktorerna, {0} plus {1} till är {2}. Addera exponenterna: {0} + {1} = {2}.
+cx_q|Samma bas divideras: {1} faktorer nere tar ut {1} uppe. Subtrahera: {0} − {1} = {2}.
+cx_w|Potens av potens: {0} grupper med {1} faktorer. Multiplicera: {1} × {0} = {2}.
+cx_z|Varför 1? {0} ÷ {0} = {1}, och varje tal (utom 0) delat med sig självt blir 1.
+cx_n|Negativ exponent = vänd på det: {0} = 1 ÷ {1} = {2}.
+ce_m1|Varför? {0} × {1} är att lägga ihop {1} skulder på {0}: {2} = {3}.
+ce_m2|Varför? Titta på mönstret: {0}. Varje steg ökar resultatet med {1}; efter 0 fortsätter det uppåt, så det blir positivt.
+ce_nc|Utan miniräknare, först utan tecken: {0}.
+cf_why|Ett bråk är en division: {0}/{1} = {0} ÷ {1}, att dela {0} i {1} lika delar.
+cf_2|÷ 2 är att ta hälften: hälften av {0} är {1}.
+cf_4|÷ 4 är hälften av hälften: {0} → {1} → {2}.
+cf_5|÷ 5 är samma som × 2 och sedan ÷ 10: {0} × 2 = {1}, och {1} ÷ 10 = {2}.
+cf_10|÷ 10 flyttar decimaltecknet ett steg åt vänster: {0} → {1}.
+cf_100|Gör om till hundradelar: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Addera tiotalen först, sedan entalen: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Ligger ett tal nära ett tiotal, avrunda och kompensera: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Räkna uppåt från det lilla: 52 − 38 → från 38 till 40 är 2, från 40 till 52 är 12: 14.
+mt_resta2|Dra bort det jämna talet och ge tillbaka överskottet: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Dela upp det stora talet: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 är × 10 och sedan hälften; × 9 är × 10 minus en gång: 9 × 7 = 70 − 7 = 63.
+mt_div1|Division är multiplikationstabellen baklänges: 56 ÷ 8 → 8 gånger vad är 56? 7.
+mt_div2|Dela talet i enkla bitar: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Tänk på en hiss: −3 + 8 → du är på våning −3 och åker 8 upp: våning 5.
+mt_ent2|Vid multiplikation först talet utan tecken, tecknet sist: lika ger +, olika ger −.
+mt_frac1|Bråk att kunna: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"3/4 av 20": dela med nämnaren och multiplicera med täljaren: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Räkna faktorer: 2³ · 2² är tre 2:or och två 2:or, fem totalt: 2⁵.
+mt_exp2|Tvåpotenser utantill: 2, 4, 8, 16, 32, 64, 128, 256 (varje dubblas).
+mt_raiz1|För √ leta efter talet som gånger sig självt ger talet under: √81 → 9 × 9.
+mt_raiz2|Om du inte vet, kläm in det mellan kvadrater: √60 ligger mellan √49 = 7 och √64 = 8.
+mt_trig1|På cirkeln är sin höjden och cos den vågräta delen: sin 90° = 1 (uppe), cos 0° = 1 (höger).
+mt_trig2|30°, 45°, 60°: sin är 1/2, √2/2, √3/2; cos i omvänd ordning.
+mt_f11|f(4) är en maskin: byt varje x mot 4 och räkna i ordning: först ×, sedan +.
+mt_f12|För att lösa ut x, gör baklänges: ta först bort det som läggs till, dela sedan.
+mt_f21|Använd parentes med negativa tal: (−3)² = 9, inte −9.
+mt_f22|x² − 5x + 6 = 0: hitta två tal med summan 5 och produkten 6: 2 och 3.
+mt_f31|Kuber utantill: 1, 8, 27, 64, 125. Med negativa stannar tecknet: (−2)³ = −8.
+mt_f32|Med faktorer (x − a)(x − b)(x − c): sätt in x, räkna ut varje parentes och multiplicera två i taget.
+mt_mat1|det: huvuddiagonalen minus den andra, a·d − b·c. Räkna varje produkt för sig.
+mt_mat2|Rad gånger kolumn: multiplicera parvis och addera.
+mt_lim1|Försök först sätta in värdet. Blir det 0/0, faktorisera och förkorta.
+mt_lim2|Mot ∞ räknas bara den största termen: (5x + 3)/x beter sig som 5x/x = 5.
+mt_der1|Flytta ner exponenten och dra bort 1: x³ → 3x². Konstanter försvinner.
+mt_der2|Derivatan av mx + b är m: en linje har samma lutning överallt.
+mt_int1|Integral = area. Är höjden konstant är det en rektangel: bas × höjd.
+mt_int2|∫2x dx = x² och ∫3x² dx = x³: övre minus undre.
+mt_pie1|π ≈ 3.14 och e ≈ 2.72: då får du 2π ≈ 6.28 och π/2 ≈ 1.57.
+mt_pie2|ln och e^x tar ut varandra: ln(eⁿ) = n, och allt upphöjt till 0 är 1.

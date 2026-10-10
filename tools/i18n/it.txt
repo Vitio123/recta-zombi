@@ -200,7 +200,7 @@ cc3d5fc|{0} RISPOSTE GIUSTE PER SCONFIGGERLO
 c4bd829|{0} RISPOSTE GIUSTE PER PASSARE
 cb76c46| · PRESSIONE {0}%
 c9aa89e|<i class="h{0}" title="{1} giuste"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} GIUSTE · {2} GIORNI ATTIVI · SERIE {3}</div><div class="hm2">{5}</div><div class="mini">PADRONANZA DEI 16 ARGOMENTI</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} GIUSTE · {2} GIORNI ATTIVI · SERIE {3}</div><div class="hm2">{5}</div><div class="mini">PADRONANZA DEI 17 ARGOMENTI</div>
 c82f821|<b>SCHELETRO ARCIERE</b> · tira frecce: con 2 perdi il livello. Rispondi e la mela salta: così le schivi!
 c64e959|FRECCIATA! TE NE RESTA 1
 c2ead57|COLPITA!
@@ -433,7 +433,7 @@ ad_lv4|Arriva al livello 4
 a_lv12|QUASI ANALISI
 ad_lv12|Arriva al livello 12
 a_lv16|FACCIA A FACCIA
-ad_lv16|Arriva al livello 16, quello del prof
+ad_lv16|Arriva al livello 17, quello del prof
 a_inf|OLTRE L'INFINITO
 ad_inf|Gioca la modalità ∞
 a_days3|ABITUDINE
@@ -509,3 +509,60 @@ in0|Un 2? Un 1? UNO ZERO? E questo è il DISEGNO DI UN GATTO!
 cm1|Un solo − inverte il verso una volta: i salti vanno a sinistra dello 0.
 cm2|Ogni − inverte il verso: due inversioni si annullano e i salti finiscono a destra dello 0.
 cm3|Trucco: segni uguali danno +, segni diversi danno −.
+cx_name|ESPONENTI
+cx_tip|Una potenza conta fattori: 2³ = 2 · 2 · 2. Le regole nascono dal contare.
+cx_kick|LIVELLO 7 · aⁿ · aᵐ
+cx_ttl|PROPRIETÀ DELLE POTENZE
+cx_l1|La <b>potenza</b> conta quante volte si moltiplica la base: 2³ = 2 · 2 · 2.
+cx_l2|Stessa base: moltiplicando gli esponenti si <b>sommano</b>, dividendo si <b>sottraggono</b>, e la potenza di una potenza li <b>moltiplica</b>.
+cx_e1|{0} significa {1}.
+cx_e2|Trucco: moltiplica per {0} passo dopo passo: {1}.
+cx_e3|Trucco: 10 alla {0} è un 1 seguito da {0} zeri.
+cx_p|Stessa base che si moltiplica: conta i fattori, {0} più {1} fa {2}. Si sommano gli esponenti: {0} + {1} = {2}.
+cx_q|Stessa base che si divide: {1} fattori sotto si semplificano con {1} sopra. Si sottraggono: {0} − {1} = {2}.
+cx_w|Potenza di potenza: sono {0} gruppi di {1} fattori. Si moltiplicano: {1} × {0} = {2}.
+cx_z|Perché fa 1? {0} ÷ {0} = {1}, e ogni numero (tranne 0) diviso per sé stesso fa 1.
+cx_n|Esponente negativo = capovolgere: {0} = 1 ÷ {1} = {2}.
+ce_m1|Perché? {0} × {1} vuol dire mettere insieme {1} debiti da {0}: {2} = {3}.
+ce_m2|Perché? Guarda lo schema: {0}. A ogni passo il risultato sale di {1}; superato lo 0 continua a salire, quindi diventa positivo.
+ce_nc|Senza calcolatrice, prima senza segni: {0}.
+cf_why|Una frazione è una divisione: {0}/{1} = {0} ÷ {1}, dividere {0} in {1} parti uguali.
+cf_2|÷ 2 vuol dire fare la metà: la metà di {0} è {1}.
+cf_4|÷ 4 è la metà della metà: {0} → {1} → {2}.
+cf_5|÷ 5 è come × 2 e poi ÷ 10: {0} × 2 = {1}, e {1} ÷ 10 = {2}.
+cf_10|÷ 10 sposta la virgola di un posto a sinistra: {0} → {1}.
+cf_100|Portalo in centesimi: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Somma prima le decine e poi le unità: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Se uno è vicino a una decina, arrotonda e compensa: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Conta in avanti dal più piccolo: 52 − 38 → da 38 a 40 sono 2, da 40 a 52 sono 12: 14.
+mt_resta2|Togli il numero tondo e restituisci il di più: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Spezza il numero grande: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 è × 10 e poi la metà; × 9 è × 10 meno una volta: 9 × 7 = 70 − 7 = 63.
+mt_div1|Dividere è la tabellina al contrario: 56 ÷ 8 → 8 per quanto fa 56? 7.
+mt_div2|Spezza il numero in pezzi facili: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Pensa a un ascensore: −3 + 8 → sei al piano −3 e sali di 8: piano 5.
+mt_ent2|Moltiplicando, prima il numero senza segni; il segno alla fine: uguali danno +, diversi danno −.
+mt_frac1|Frazioni da ricordare: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|«3/4 di 20»: dividi per quello sotto e moltiplica per quello sopra: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Conta i fattori: 2³ · 2² sono tre 2 e due 2, cinque in tutto: 2⁵.
+mt_exp2|Potenze di 2 a memoria: 2, 4, 8, 16, 32, 64, 128, 256 (ognuna è il doppio).
+mt_raiz1|Per √ cerca il numero che moltiplicato per sé stesso dà quello dentro: √81 → 9 × 9.
+mt_raiz2|Se non lo sai, incastralo tra quadrati: √60 sta tra √49 = 7 e √64 = 8.
+mt_trig1|Sul cerchio sin è l’altezza e cos la parte orizzontale: sin 90° = 1 (in alto), cos 0° = 1 (a destra).
+mt_trig2|30°, 45°, 60°: sin vale 1/2, √2/2, √3/2; il cos va al contrario.
+mt_f11|f(4) è una macchina: sostituisci ogni x con 4 e calcola in ordine: prima ×, poi +.
+mt_f12|Per ricavare x, disfa al contrario: prima togli ciò che si somma, poi dividi.
+mt_f21|Con i negativi usa le parentesi: (−3)² = 9, non −9.
+mt_f22|x² − 5x + 6 = 0: cerca due numeri con somma 5 e prodotto 6: 2 e 3.
+mt_f31|Cubi a memoria: 1, 8, 27, 64, 125. Con i negativi il segno resta: (−2)³ = −8.
+mt_f32|Con i fattori (x − a)(x − b)(x − c): sostituisci x, calcola ogni parentesi e moltiplica a due a due.
+mt_mat1|det: diagonale principale meno l’altra, a·d − b·c. Calcola ogni prodotto a parte.
+mt_mat2|Riga per colonna: moltiplica a coppie e somma i risultati.
+mt_lim1|Prima prova a sostituire. Se viene 0/0, scomponi e semplifica.
+mt_lim2|Verso ∞ conta solo il termine più grande: (5x + 3)/x si comporta come 5x/x = 5.
+mt_der1|Porta giù l’esponente e togli 1: x³ → 3x². Le costanti spariscono.
+mt_der2|La derivata di mx + b è m: una retta ha la stessa pendenza ovunque.
+mt_int1|Integrale = area. Se l’altezza è costante è un rettangolo: base × altezza.
+mt_int2|∫2x dx = x² e ∫3x² dx = x³: valuta sopra meno sotto.
+mt_pie1|π ≈ 3.14 ed e ≈ 2.72: così trovi 2π ≈ 6.28 e π/2 ≈ 1.57.
+mt_pie2|ln ed e^x si annullano: ln(eⁿ) = n, e qualsiasi cosa alla 0 fa 1.

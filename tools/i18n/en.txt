@@ -200,7 +200,7 @@ cc3d5fc|{0} RIGHT ANSWERS TO BEAT IT
 c4bd829|{0} RIGHT ANSWERS TO PASS
 cb76c46| · PRESSURE {0}%
 c9aa89e|<i class="h{0}" title="{1} correct"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} CORRECT · {2} ACTIVE DAYS · STREAK {3} DAY{4}</div><div class="hm2">{5}</div><div class="mini">MASTERY OF THE 16 TOPICS</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} CORRECT · {2} ACTIVE DAYS · STREAK {3} DAY{4}</div><div class="hm2">{5}</div><div class="mini">MASTERY OF THE 17 TOPICS</div>
 c82f821|<b>SKELETON ARCHER</b> · shoots arrows: 2 hits and you lose the level. Answer and the apple jumps: that's how you dodge them!
 c64e959|ARROW HIT! 1 LEFT
 c2ead57|SHOT DOWN!
@@ -433,7 +433,7 @@ ad_lv4|Reach level 4
 a_lv12|ALMOST CALCULUS
 ad_lv12|Reach level 12
 a_lv16|FACE TO FACE
-ad_lv16|Reach level 16, the professor's level
+ad_lv16|Reach level 17, the professor's level
 a_inf|BEYOND INFINITY
 ad_inf|Play ∞ mode
 a_days3|HABIT
@@ -509,3 +509,60 @@ in0|A 2? A 1? A ZERO? And this one is a DRAWING OF A CAT!
 cm1|A single − flips the direction once: the jumps go to the left of 0.
 cm2|Each − flips the direction: two flips cancel out, so the jumps end up to the right of 0.
 cm3|Trick: same signs give +, different signs give −.
+cx_name|EXPONENTS
+cx_tip|A power counts factors: 2³ = 2 · 2 · 2. The laws come from counting.
+cx_kick|LEVEL 7 · aⁿ · aᵐ
+cx_ttl|LAWS OF EXPONENTS
+cx_l1|A <b>power</b> counts how many times the base is multiplied: 2³ = 2 · 2 · 2.
+cx_l2|Same base: when multiplying you <b>add</b> the exponents, when dividing you <b>subtract</b> them, and a power of a power <b>multiplies</b> them.
+cx_e1|{0} means {1}.
+cx_e2|Mental trick: multiply by {0} step by step: {1}.
+cx_e3|Trick: 10 to the {0} is a 1 followed by {0} zeros.
+cx_p|Same base multiplying: count the factors, {0} plus {1} more is {2}. Add the exponents: {0} + {1} = {2}.
+cx_q|Same base dividing: {1} factors on the bottom cancel {1} on top. Subtract: {0} − {1} = {2}.
+cx_w|Power of a power: that is {0} groups of {1} factors. Multiply: {1} × {0} = {2}.
+cx_z|Why is it 1? {0} ÷ {0} = {1}, and any number (except 0) divided by itself is 1.
+cx_n|Negative exponent = flip it: {0} = 1 ÷ {1} = {2}.
+ce_m1|Why? {0} × {1} means adding up {1} debts of {0}: {2} = {3}.
+ce_m2|Why? Look at the pattern: {0}. Each step the result goes up by {1}; after crossing 0 it keeps going up, so it ends positive.
+ce_nc|No calculator: first ignore the signs: {0}.
+cf_why|A fraction is a division: {0}/{1} = {0} ÷ {1}, sharing {0} into {1} equal parts.
+cf_2|÷ 2 means taking half: half of {0} is {1}.
+cf_4|÷ 4 is half of a half: {0} → {1} → {2}.
+cf_5|÷ 5 is the same as × 2 and then ÷ 10: {0} × 2 = {1}, and {1} ÷ 10 = {2}.
+cf_10|÷ 10 moves the decimal point one place left: {0} → {1}.
+cf_100|Turn it into hundredths: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Add the tens first, then the ones: 47 + 38 → 70 + 15 = 85.
+mt_suma2|If one is close to a ten, round it and fix it: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Count up from the small one: 52 − 38 → from 38 to 40 is 2, from 40 to 52 is 12: 14.
+mt_resta2|Subtract the round number and give back the extra: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Split the big number: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 is × 10 and then half; × 9 is × 10 minus one time: 9 × 7 = 70 − 7 = 63.
+mt_div1|Division is the times table backwards: 56 ÷ 8 → 8 times what is 56? 7.
+mt_div2|Split the number into easy pieces: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Think of an elevator: −3 + 8 → you are 3 floors underground and go up 8: floor 5.
+mt_ent2|When multiplying, first the number without signs, the sign at the end: same signs give +, different give −.
+mt_frac1|Fractions to memorize: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"3/4 of 20": divide by the bottom and multiply by the top: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Count factors: 2³ · 2² is three 2s and two 2s, five in total: 2⁵.
+mt_exp2|Powers of 2 by heart: 2, 4, 8, 16, 32, 64, 128, 256 (each one doubles).
+mt_raiz1|For √ find the number that times itself gives the one inside: √81 → 9 × 9.
+mt_raiz2|If you don't know it, trap it between squares: √60 is between √49 = 7 and √64 = 8.
+mt_trig1|On the circle, sin is the height and cos is the horizontal part: sin 90° = 1 (top), cos 0° = 1 (right).
+mt_trig2|30°, 45°, 60°: sin is 1/2, √2/2, √3/2; cos goes in the opposite order.
+mt_f11|f(4) is a machine: replace every x with 4 and compute in order: × first, then +.
+mt_f12|To solve for x, undo backwards: first remove what is added, then divide.
+mt_f21|With negatives use parentheses: (−3)² = 9, not −9.
+mt_f22|x² − 5x + 6 = 0: find two numbers that add to 5 and multiply to 6: 2 and 3.
+mt_f31|Cubes by heart: 1, 8, 27, 64, 125. With negatives the sign stays: (−2)³ = −8.
+mt_f32|With factors (x − a)(x − b)(x − c): plug in x, work out each bracket and multiply two at a time.
+mt_mat1|det: main diagonal minus the other one, a·d − b·c. Work out each product separately.
+mt_mat2|Row times column: multiply pair by pair and add the results.
+mt_lim1|First try plugging in. If you get 0/0, factor and simplify.
+mt_lim2|Towards ∞ only the biggest part matters: (5x + 3)/x behaves like 5x/x = 5.
+mt_der1|Bring the exponent down and subtract 1: x³ → 3x². Constants disappear.
+mt_der2|The derivative of mx + b is m: a line has the same slope everywhere.
+mt_int1|Integral = area. If the height is constant it is a rectangle: base × height.
+mt_int2|∫2x dx = x² and ∫3x² dx = x³: evaluate top minus bottom.
+mt_pie1|π ≈ 3.14 and e ≈ 2.72: with that you get 2π ≈ 6.28 and π/2 ≈ 1.57.
+mt_pie2|ln and e^x undo each other: ln(eⁿ) = n, and anything to the power 0 is 1.

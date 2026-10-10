@@ -200,7 +200,7 @@ cc3d5fc|{0} JÓ VÁLASZ A LEGYŐZÉSÉHEZ
 c4bd829|{0} JÓ VÁLASZ A TOVÁBBJUTÁSHOZ
 cb76c46| · NYOMÁS {0}%
 c9aa89e|<i class="h{0}" title="{1} jó"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} JÓ · {2} AKTÍV NAP · SOROZAT {3}</div><div class="hm2">{5}</div><div class="mini">A 16 TÉMA ELSAJÁTÍTÁSA</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} JÓ · {2} AKTÍV NAP · SOROZAT {3}</div><div class="hm2">{5}</div><div class="mini">A 17 TÉMA ELSAJÁTÍTÁSA</div>
 c82f821|<b>CSONTVÁZ ÍJÁSZ</b> · nyilakat lő: 2 találat és elveszted a szintet. Válaszolj, és az alma ugrik: így térsz ki!
 c64e959|NYÍLTALÁLAT! MÉG 1
 c2ead57|ELTALÁLTÁK!
@@ -433,7 +433,7 @@ ad_lv4|Érd el a 4. szintet
 a_lv12|MAJDNEM ANALÍZIS
 ad_lv12|Érd el a 12. szintet
 a_lv16|SZEMTŐL SZEMBE
-ad_lv16|Érd el a 16. szintet, a tanárét
+ad_lv16|Érd el a 17. szintet, a tanárét
 a_inf|A VÉGTELENEN TÚL
 ad_inf|Játssz ∞ módban
 a_days3|SZOKÁS
@@ -509,3 +509,60 @@ in0|Egy kettes? Egy egyes? EGY NULLA? Ez meg egy MACSKA RAJZA!
 cm1|Egyetlen − egyszer megfordítja az irányt: az ugrások 0-tól balra mennek.
 cm2|Minden − megfordítja az irányt: két fordítás kiejti egymást, így az ugrások 0-tól jobbra végződnek.
 cm3|Trükk: azonos előjel +-t ad, különböző előjel −-t ad.
+cx_name|HATVÁNYOK
+cx_tip|A hatvány tényezőket számol: 2³ = 2 · 2 · 2. A szabályok a számolásból jönnek.
+cx_kick|7. SZINT · aⁿ · aᵐ
+cx_ttl|HATVÁNYOZÁS AZONOSSÁGAI
+cx_l1|A <b>hatvány</b> azt számolja, hányszor szorozzuk az alapot: 2³ = 2 · 2 · 2.
+cx_l2|Azonos alap: szorzáskor a kitevők <b>összeadódnak</b>, osztáskor <b>kivonódnak</b>, hatvány hatványánál <b>összeszorzódnak</b>.
+cx_e1|{0} jelentése {1}.
+cx_e2|Trükk: szorozz {0}-vel lépésenként: {1}.
+cx_e3|Trükk: 10 a {0}. hatványon egy 1-es és utána {0} nulla.
+cx_p|Azonos alap szorzása: számold a tényezőket, {0} meg még {1} az {2}. A kitevőket összeadjuk: {0} + {1} = {2}.
+cx_q|Azonos alap osztása: lent {1} tényező kiesik fent {1}-gyel. Kivonunk: {0} − {1} = {2}.
+cx_w|Hatvány hatványa: {0} csoport, mindegyikben {1} tényező. Szorozzuk: {1} × {0} = {2}.
+cx_z|Miért 1? {0} ÷ {0} = {1}, és minden szám (a 0 kivételével) önmagával osztva 1.
+cx_n|Negatív kitevő = fordítsd meg: {0} = 1 ÷ {1} = {2}.
+ce_m1|Miért? {0} × {1} annyi, mint {1} darab {0} adósságot összeadni: {2} = {3}.
+ce_m2|Miért? Nézd a mintát: {0}. Minden lépésben {1}-gyel nő az eredmény; a 0 után is tovább nő, ezért pozitív lesz.
+ce_nc|Számológép nélkül, előbb előjelek nélkül: {0}.
+cf_why|A tört osztás: {0}/{1} = {0} ÷ {1}, vagyis {0}-t {1} egyenlő részre osztjuk.
+cf_2|÷ 2 a felét venni: {0} fele {1}.
+cf_4|÷ 4 a fele felét venni: {0} → {1} → {2}.
+cf_5|÷ 5 ugyanaz, mint × 2 és utána ÷ 10: {0} × 2 = {1}, és {1} ÷ 10 = {2}.
+cf_10|÷ 10 egy hellyel balra viszi a tizedesvesszőt: {0} → {1}.
+cf_100|Váltsd át századokra: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Előbb a tízeseket add össze, aztán az egyeseket: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Ha az egyik közel van egy kerek tízeshez, kerekíts és pótolj: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Számolj felfelé a kisebbtől: 52 − 38 → 38-tól 40-ig 2, 40-től 52-ig 12: 14.
+mt_resta2|Vond ki a kerek számot és add vissza a többletet: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Bontsd fel a nagy számot: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 az × 10, majd a fele; × 9 az × 10 mínusz egyszer: 9 × 7 = 70 − 7 = 63.
+mt_div1|Az osztás a szorzótábla visszafelé: 56 ÷ 8 → 8-szor mennyi 56? 7.
+mt_div2|Bontsd könnyű darabokra: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Gondolj egy liftre: −3 + 8 → a −3. emeleten vagy és 8-at mész fel: 5. emelet.
+mt_ent2|Szorzásnál előbb a szám előjelek nélkül, az előjel a végén: egyformák +, különbözők − adnak.
+mt_frac1|Fejben tartandó törtek: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|„20 háromnegyede”: oszd el a nevezővel, szorozd a számlálóval: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Számold a tényezőket: 2³ · 2² három 2-es és két 2-es, összesen öt: 2⁵.
+mt_exp2|A 2 hatványai fejből: 2, 4, 8, 16, 32, 64, 128, 256 (mindig duplázódik).
+mt_raiz1|√-nél keresd azt a számot, ami önmagával szorozva a belsőt adja: √81 → 9 × 9.
+mt_raiz2|Ha nem tudod, szorítsd négyzetszámok közé: √60 √49 = 7 és √64 = 8 között van.
+mt_trig1|A körön a sin a magasság, a cos a vízszintes rész: sin 90° = 1 (fent), cos 0° = 1 (jobbra).
+mt_trig2|30°, 45°, 60°: a sin 1/2, √2/2, √3/2; a cos fordított sorrendben.
+mt_f11|f(4) egy gép: minden x helyére írj 4-et, és számolj sorban: előbb ×, aztán +.
+mt_f12|x kifejezéséhez visszafelé haladj: előbb vedd el a hozzáadottat, aztán ossz.
+mt_f21|Negatív számnál használj zárójelet: (−3)² = 9, nem −9.
+mt_f22|x² − 5x + 6 = 0: keress két számot, amelyek összege 5, szorzata 6: 2 és 3.
+mt_f31|Köbszámok fejből: 1, 8, 27, 64, 125. Negatívnál az előjel marad: (−2)³ = −8.
+mt_f32|(x − a)(x − b)(x − c) alaknál helyettesítsd x-et, számold ki a zárójeleket, és szorozz kettesével.
+mt_mat1|det: főátló mínusz a másik, a·d − b·c. Minden szorzatot külön számolj.
+mt_mat2|Sor szorozva oszloppal: szorozz páronként és add össze.
+mt_lim1|Előbb próbálj behelyettesíteni. Ha 0/0 jön ki, alakíts szorzattá és egyszerűsíts.
+mt_lim2|∞ felé csak a legnagyobb tag számít: (5x + 3)/x úgy viselkedik, mint 5x/x = 5.
+mt_der1|Hozd le a kitevőt elé, és vonj ki belőle 1-et: x³ → 3x². A konstansok eltűnnek.
+mt_der2|mx + b deriváltja m: az egyenesnek mindenhol ugyanaz a meredeksége.
+mt_int1|Integrál = terület. Állandó magasságnál téglalap: alap × magasság.
+mt_int2|∫2x dx = x² és ∫3x² dx = x³: felső érték mínusz alsó.
+mt_pie1|π ≈ 3.14 és e ≈ 2.72: ebből 2π ≈ 6.28 és π/2 ≈ 1.57.
+mt_pie2|A ln és az e^x kioltja egymást: ln(eⁿ) = n, és bármi a nulladikon 1.

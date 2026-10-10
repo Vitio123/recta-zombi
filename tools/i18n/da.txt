@@ -200,7 +200,7 @@ cc3d5fc|{0} RIGTIGE FOR AT BESEJRE DEN
 c4bd829|{0} RIGTIGE FOR AT KLARE DET
 cb76c46| · PRES {0}%
 c9aa89e|<i class="h{0}" title="{1} rigtige"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} RIGTIGE · {2} AKTIVE DAGE · STIME {3}</div><div class="hm2">{5}</div><div class="mini">BEHERSKELSE AF DE 16 EMNER</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} RIGTIGE · {2} AKTIVE DAGE · STIME {3}</div><div class="hm2">{5}</div><div class="mini">BEHERSKELSE AF DE 17 EMNER</div>
 c82f821|<b>SKELETBUESKYTTE</b> · skyder pile: 2 træffere, og du taber niveauet. Svar, så hopper æblet: sådan undviger du!
 c64e959|PILETRÆFFER! 1 TILBAGE
 c2ead57|RAMT!
@@ -433,7 +433,7 @@ ad_lv4|Nå niveau 4
 a_lv12|NÆSTEN CALCULUS
 ad_lv12|Nå niveau 12
 a_lv16|ANSIGT TIL ANSIGT
-ad_lv16|Nå niveau 16, lærerens niveau
+ad_lv16|Nå niveau 17, lærerens niveau
 a_inf|UD OVER UENDELIGHEDEN
 ad_inf|Spil ∞-tilstand
 a_days3|VANE
@@ -509,3 +509,60 @@ in0|Et 2-tal? Et 1-tal? ET NUL? Og det her er en TEGNING AF EN KAT!
 cm1|Ét − vender retningen én gang: springene går til venstre for 0.
 cm2|Hvert − vender retningen: to vendinger udligner hinanden, så springene ender til højre for 0.
 cm3|Trick: ens fortegn giver +, forskellige fortegn giver −.
+cx_name|EKSPONENTER
+cx_tip|En potens tæller faktorer: 2³ = 2 · 2 · 2. Reglerne kommer af at tælle.
+cx_kick|NIVEAU 7 · aⁿ · aᵐ
+cx_ttl|POTENSREGLER
+cx_l1|En <b>potens</b> tæller, hvor mange gange grundtallet ganges: 2³ = 2 · 2 · 2.
+cx_l2|Samme grundtal: ved gange <b>lægges</b> eksponenterne <b>sammen</b>, ved division <b>trækkes</b> de <b>fra</b>, og en potens af en potens <b>ganger</b> dem.
+cx_e1|{0} betyder {1}.
+cx_e2|Trick: gang med {0} trin for trin: {1}.
+cx_e3|Trick: 10 i {0}. er et 1-tal efterfulgt af {0} nuller.
+cx_p|Samme grundtal ganges: tæl faktorerne, {0} plus {1} mere er {2}. Læg eksponenterne sammen: {0} + {1} = {2}.
+cx_q|Samme grundtal divideres: {1} faktorer nedenunder går ud med {1} foroven. Træk fra: {0} − {1} = {2}.
+cx_w|Potens af en potens: {0} grupper med {1} faktorer. Gang: {1} × {0} = {2}.
+cx_z|Hvorfor 1? {0} ÷ {0} = {1}, og ethvert tal (undtagen 0) delt med sig selv er 1.
+cx_n|Negativ eksponent = vend den om: {0} = 1 ÷ {1} = {2}.
+ce_m1|Hvorfor? {0} × {1} er at lægge {1} gældsposter på {0} sammen: {2} = {3}.
+ce_m2|Hvorfor? Se mønstret: {0}. Hvert trin stiger resultatet med {1}; efter 0 bliver det ved med at stige, så det bliver positivt.
+ce_nc|Uden lommeregner, først uden fortegn: {0}.
+cf_why|En brøk er en division: {0}/{1} = {0} ÷ {1}, at dele {0} i {1} lige store dele.
+cf_2|÷ 2 er at tage halvdelen: halvdelen af {0} er {1}.
+cf_4|÷ 4 er halvdelen af halvdelen: {0} → {1} → {2}.
+cf_5|÷ 5 er det samme som × 2 og så ÷ 10: {0} × 2 = {1}, og {1} ÷ 10 = {2}.
+cf_10|÷ 10 flytter kommaet én plads til venstre: {0} → {1}.
+cf_100|Lav det om til hundrededele: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Læg tierne sammen først, så enerne: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Hvis et tal ligger tæt på en tier, rund af og ret til: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Tæl op fra det lille: 52 − 38 → fra 38 til 40 er 2, fra 40 til 52 er 12: 14.
+mt_resta2|Træk det runde tal fra og giv det overskydende tilbage: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Del det store tal op: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 er × 10 og så halvdelen; × 9 er × 10 minus én gang: 9 × 7 = 70 − 7 = 63.
+mt_div1|Division er tabellen baglæns: 56 ÷ 8 → 8 gange hvad er 56? 7.
+mt_div2|Del tallet i nemme stykker: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Tænk på en elevator: −3 + 8 → du er på etage −3 og kører 8 op: etage 5.
+mt_ent2|Ved gange først tallet uden fortegn, fortegnet til sidst: ens giver +, forskellige giver −.
+mt_frac1|Brøker udenad: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"3/4 af 20": divider med nævneren og gang med tælleren: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Tæl faktorer: 2³ · 2² er tre 2-taller og to 2-taller, fem i alt: 2⁵.
+mt_exp2|Totalspotenser udenad: 2, 4, 8, 16, 32, 64, 128, 256 (hver fordobles).
+mt_raiz1|Ved √ skal du finde tallet, der gange sig selv giver tallet indeni: √81 → 9 × 9.
+mt_raiz2|Ved du det ikke, så klem det mellem kvadrater: √60 ligger mellem √49 = 7 og √64 = 8.
+mt_trig1|På cirklen er sin højden og cos den vandrette del: sin 90° = 1 (øverst), cos 0° = 1 (højre).
+mt_trig2|30°, 45°, 60°: sin er 1/2, √2/2, √3/2; cos i omvendt rækkefølge.
+mt_f11|f(4) er en maskine: erstat hvert x med 4 og regn i rækkefølge: først ×, så +.
+mt_f12|For at isolere x, gør det baglæns: fjern først det, der lægges til, og divider så.
+mt_f21|Brug parentes ved negative tal: (−3)² = 9, ikke −9.
+mt_f22|x² − 5x + 6 = 0: find to tal med summen 5 og produktet 6: 2 og 3.
+mt_f31|Kubiktal udenad: 1, 8, 27, 64, 125. Ved negative bliver fortegnet: (−2)³ = −8.
+mt_f32|Ved faktorer (x − a)(x − b)(x − c): sæt x ind, regn hver parentes ud og gang to ad gangen.
+mt_mat1|det: hoveddiagonalen minus den anden, a·d − b·c. Regn hvert produkt for sig.
+mt_mat2|Række gange søjle: gang parvis og læg sammen.
+mt_lim1|Prøv først at indsætte. Giver det 0/0, så faktoriser og forkort.
+mt_lim2|Mod ∞ tæller kun det største led: (5x + 3)/x opfører sig som 5x/x = 5.
+mt_der1|Flyt eksponenten ned foran og træk 1 fra: x³ → 3x². Konstanter forsvinder.
+mt_der2|Den afledte af mx + b er m: en linje har samme hældning overalt.
+mt_int1|Integral = areal. Er højden konstant, er det et rektangel: grundlinje × højde.
+mt_int2|∫2x dx = x² og ∫3x² dx = x³: øverste minus nederste.
+mt_pie1|π ≈ 3.14 og e ≈ 2.72: så får du 2π ≈ 6.28 og π/2 ≈ 1.57.
+mt_pie2|ln og e^x ophæver hinanden: ln(eⁿ) = n, og alt i 0. potens er 1.

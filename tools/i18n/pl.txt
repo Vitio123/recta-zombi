@@ -200,7 +200,7 @@ cc3d5fc|{0} DOBRYCH, ŻEBY GO POKONAĆ
 c4bd829|{0} DOBRYCH, ŻEBY PRZEJŚĆ
 cb76c46| · NACISK {0}%
 c9aa89e|<i class="h{0}" title="dobrych: {1}"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">DOBRYCH: {1} · AKTYWNE DNI: {2} · SERIA: {3}</div><div class="hm2">{5}</div><div class="mini">OPANOWANIE 16 TEMATÓW</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">DOBRYCH: {1} · AKTYWNE DNI: {2} · SERIA: {3}</div><div class="hm2">{5}</div><div class="mini">OPANOWANIE 17 TEMATÓW</div>
 c82f821|<b>SZKIELET ŁUCZNIK</b> · strzela z łuku: przy 2 trafieniach przegrywasz poziom. Odpowiadaj, a jabłko skacze: tak robisz unik!
 c64e959|TRAFIENIE! ZOSTAŁA 1
 c2ead57|TRAFIONA!
@@ -433,7 +433,7 @@ ad_lv4|Dojdź do poziomu 4
 a_lv12|PRAWIE ANALIZA
 ad_lv12|Dojdź do poziomu 12
 a_lv16|TWARZĄ W TWARZ
-ad_lv16|Dojdź do poziomu 16, poziomu profesora
+ad_lv16|Dojdź do poziomu 17, poziomu profesora
 a_inf|POZA NIESKOŃCZONOŚĆ
 ad_inf|Zagraj w tryb ∞
 a_days3|NAWYK
@@ -509,3 +509,60 @@ in0|Dwója? Jedynka? ZERO? A to jest RYSUNEK KOTA!
 cm1|Jeden − odwraca kierunek raz: skoki idą w lewo od 0.
 cm2|Każdy − odwraca kierunek: dwa odwrócenia znoszą się, więc skoki lądują na prawo od 0.
 cm3|Sztuczka: takie same znaki dają +, różne znaki dają −.
+cx_name|POTĘGI
+cx_tip|Potęga liczy czynniki: 2³ = 2 · 2 · 2. Prawa wynikają z liczenia.
+cx_kick|POZIOM 7 · aⁿ · aᵐ
+cx_ttl|PRAWA DZIAŁAŃ NA POTĘGACH
+cx_l1|<b>Potęga</b> liczy, ile razy mnożymy podstawę: 2³ = 2 · 2 · 2.
+cx_l2|Ta sama podstawa: przy mnożeniu wykładniki się <b>dodaje</b>, przy dzieleniu <b>odejmuje</b>, a potęga potęgi je <b>mnoży</b>.
+cx_e1|{0} oznacza {1}.
+cx_e2|Sposób: mnóż przez {0} krok po kroku: {1}.
+cx_e3|Sposób: 10 do potęgi {0} to 1 i {0} zer.
+cx_p|Ta sama podstawa mnożona: policz czynniki, {0} i jeszcze {1} to {2}. Wykładniki dodajemy: {0} + {1} = {2}.
+cx_q|Ta sama podstawa dzielona: {1} czynników na dole skraca się z {1} na górze. Odejmujemy: {0} − {1} = {2}.
+cx_w|Potęga potęgi: {0} grup po {1} czynników. Mnożymy: {1} × {0} = {2}.
+cx_z|Dlaczego 1? {0} ÷ {0} = {1}, a każda liczba (oprócz 0) podzielona przez siebie daje 1.
+cx_n|Ujemny wykładnik = odwróć: {0} = 1 ÷ {1} = {2}.
+ce_m1|Dlaczego? {0} × {1} to zsumowanie {1} długów po {0}: {2} = {3}.
+ce_m2|Dlaczego? Spójrz na wzór: {0}. Z każdym krokiem wynik rośnie o {1}; po przejściu przez 0 rośnie dalej, więc wychodzi dodatni.
+ce_nc|Bez kalkulatora, najpierw bez znaków: {0}.
+cf_why|Ułamek to dzielenie: {0}/{1} = {0} ÷ {1}, czyli podział {0} na {1} równe części.
+cf_2|÷ 2 to wzięcie połowy: połowa z {0} to {1}.
+cf_4|÷ 4 to połowa połowy: {0} → {1} → {2}.
+cf_5|÷ 5 to to samo co × 2 i potem ÷ 10: {0} × 2 = {1}, a {1} ÷ 10 = {2}.
+cf_10|÷ 10 przesuwa przecinek o jedno miejsce w lewo: {0} → {1}.
+cf_100|Zamień na setne: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Najpierw dodaj dziesiątki, potem jedności: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Jeśli liczba jest blisko pełnej dziesiątki, zaokrąglij i popraw: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Doliczaj od mniejszej: 52 − 38 → od 38 do 40 to 2, od 40 do 52 to 12: 14.
+mt_resta2|Odejmij okrągłą liczbę i oddaj nadwyżkę: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Rozbij dużą liczbę: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5 to × 10 i połowa; × 9 to × 10 minus jeden raz: 9 × 7 = 70 − 7 = 63.
+mt_div1|Dzielenie to tabliczka mnożenia od tyłu: 56 ÷ 8 → 8 razy ile to 56? 7.
+mt_div2|Rozbij liczbę na łatwe części: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Pomyśl o windzie: −3 + 8 → jesteś na piętrze −3 i jedziesz 8 w górę: piętro 5.
+mt_ent2|Przy mnożeniu najpierw liczba bez znaków, znak na końcu: takie same dają +, różne dają −.
+mt_frac1|Ułamki na pamięć: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|„3/4 z 20”: podziel przez mianownik i pomnóż przez licznik: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Policz czynniki: 2³ · 2² to trzy dwójki i dwie dwójki, razem pięć: 2⁵.
+mt_exp2|Potęgi dwójki na pamięć: 2, 4, 8, 16, 32, 64, 128, 256 (każda dwa razy większa).
+mt_raiz1|Przy √ szukaj liczby, która pomnożona przez siebie daje liczbę pod pierwiastkiem: √81 → 9 × 9.
+mt_raiz2|Jeśli nie wiesz, wciśnij ją między kwadraty: √60 jest między √49 = 7 a √64 = 8.
+mt_trig1|Na okręgu sin to wysokość, a cos to część pozioma: sin 90° = 1 (góra), cos 0° = 1 (prawo).
+mt_trig2|30°, 45°, 60°: sin to 1/2, √2/2, √3/2; cos w odwrotnej kolejności.
+mt_f11|f(4) to maszyna: zamień każdy x na 4 i licz po kolei: najpierw ×, potem +.
+mt_f12|Żeby wyznaczyć x, cofaj od końca: najpierw usuń to, co dodane, potem podziel.
+mt_f21|Przy liczbach ujemnych używaj nawiasów: (−3)² = 9, a nie −9.
+mt_f22|x² − 5x + 6 = 0: znajdź dwie liczby o sumie 5 i iloczynie 6: 2 i 3.
+mt_f31|Sześciany na pamięć: 1, 8, 27, 64, 125. Przy ujemnych znak zostaje: (−2)³ = −8.
+mt_f32|Przy czynnikach (x − a)(x − b)(x − c): podstaw x, policz każdy nawias i mnóż po dwa.
+mt_mat1|det: główna przekątna minus druga, a·d − b·c. Policz każdy iloczyn osobno.
+mt_mat2|Wiersz razy kolumna: mnóż parami i dodaj wyniki.
+mt_lim1|Najpierw spróbuj podstawić. Gdy wyjdzie 0/0, rozłóż na czynniki i skróć.
+mt_lim2|Przy ∞ liczy się tylko największy wyraz: (5x + 3)/x zachowuje się jak 5x/x = 5.
+mt_der1|Sprowadź wykładnik na przód i odejmij 1: x³ → 3x². Stałe znikają.
+mt_der2|Pochodna mx + b to m: prosta ma wszędzie to samo nachylenie.
+mt_int1|Całka = pole. Gdy wysokość jest stała, to prostokąt: podstawa × wysokość.
+mt_int2|∫2x dx = x² i ∫3x² dx = x³: wartość u góry minus u dołu.
+mt_pie1|π ≈ 3.14 i e ≈ 2.72: z tego masz 2π ≈ 6.28 i π/2 ≈ 1.57.
+mt_pie2|ln i e^x się znoszą: ln(eⁿ) = n, a wszystko do potęgi 0 to 1.

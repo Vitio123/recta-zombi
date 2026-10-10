@@ -143,6 +143,33 @@ details{width:100%;text-align:left;border-top:1px solid var(--line);border-botto
 summary{cursor:pointer;font-size:13px;letter-spacing:.2em;list-style:none;text-align:center}
 summary::-webkit-details-marker{display:none}
 #oFailB{font-size:16px;line-height:1.5;margin-top:10px}
+/* primera vez: elegir cómo responder y practicar */
+.inpOpts{display:flex;flex-direction:column;gap:12px;width:100%}
+.inpO{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 14px 14px;border-radius:18px;border:2px solid var(--line);background:transparent;color:var(--fg);cursor:pointer;font-family:inherit}
+.inpO:active,.inpO:focus-visible{border-color:var(--red)}
+.inpO .ic{font-size:34px;line-height:1}.inpO b{font-size:18px;letter-spacing:.14em;font-weight:600}.inpO small{font-size:14px;line-height:1.4;color:var(--mut);letter-spacing:.02em}
+#inpB{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}#inpB[hidden]{display:none}
+#itTxt{margin:0;font-size:16px;line-height:1.5;text-align:center}
+#itPadW{position:relative;width:100%}
+#itPad{display:block;width:100%;height:150px;border:2px dashed var(--line);border-radius:14px;touch-action:none;background:transparent}
+#itRead{min-height:34px;font-size:26px;letter-spacing:.3em;text-align:center;margin-top:6px}
+#itRead.ok{color:var(--fg)}#itRead.bad{color:var(--red)}
+#itClr{position:absolute;right:6px;top:6px}
+#itShow{font-size:40px;min-height:52px;text-align:center;border-bottom:2px solid var(--line);margin-bottom:10px}
+#itShow.bad{animation:shake .3s;color:var(--red)}
+#itKp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%}
+#itKp button{font-size:24px;height:50px;border-radius:12px;background:transparent;color:var(--fg);border:1px solid var(--line);cursor:pointer}
+#itKp button.hl{border-color:var(--red);box-shadow:0 0 0 2px var(--red)}
+/* el «¿por qué fallé?» es lo primero que se ve al morir: grande, en rojo y latiendo hasta que lo abres */
+#oFail{border:2px solid var(--red);border-radius:16px;padding:0;overflow:hidden}
+#oFail>summary{font-size:16px;font-weight:600;letter-spacing:.1em;padding:15px 12px 12px;background:rgba(224,38,43,.16);animation:whyP 1.4s ease-in-out infinite}
+#oFail>summary::after{content:" ▾";color:var(--red)}
+#oFail[open]>summary{animation:none}#oFail[open]>summary::after{content:" ▴"}
+#oFail #oFailB{padding:0 14px 14px}
+@keyframes whyP{0%,100%{box-shadow:inset 0 0 0 0 rgba(224,38,43,0)}50%{box-shadow:inset 0 0 0 3px rgba(224,38,43,.55)}}
+.mt{border-left:3px solid var(--red);padding:6px 0 4px 12px;margin:4px 0 12px}
+.mt b{display:block;font-size:12px;letter-spacing:.2em;color:var(--red);margin-bottom:4px}
+.mt p{margin:0 0 6px;font-size:16px;line-height:1.45}
 #oFailB .q{font-size:22px;font-weight:400}
 #oFailB ol{margin:6px 0 0;padding-left:22px}
 #kp{position:fixed;left:0;right:0;bottom:0;z-index:35;display:none;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px var(--sr) calc(var(--sb) + 6px) var(--sl);background:var(--card);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-radius:22px 22px 0 0}
@@ -543,15 +570,30 @@ body:not(.play) #pdock{display:none}
   <div id="pooB" role="status" aria-live="polite"></div>
   <div class="screen" id="sEgg" role="dialog" aria-modal="true" aria-labelledby="eggTtl"><div class="card"><div class="mini" id="eggK"></div><h2 class="ttl" id="eggTtl"></h2><div id="eggPre" class="mini"></div><div id="eggX"></div><input id="eggIn" inputmode="none" autocomplete="off" spellcheck="false" aria-label=""><div class="eTabs" id="eggTabs"><button class="chip eTab on" data-m="d" id="eTabD"></button><button class="chip eTab" data-m="k" id="eTabK"></button></div><div id="eggDraw"><canvas id="eggPad"></canvas><span id="eggHint"></span></div><div id="eggKp" hidden><button class="chip" data-k="7">7</button><button class="chip" data-k="8">8</button><button class="chip" data-k="9">9</button><button class="chip" data-k="b">⌫</button><button class="chip" data-k="4">4</button><button class="chip" data-k="5">5</button><button class="chip" data-k="6">6</button><button class="chip" data-k="-">−</button><button class="chip" data-k="1">1</button><button class="chip" data-k="2">2</button><button class="chip" data-k="3">3</button><button class="chip" data-k=".">,</button><button class="chip" data-k="0">0</button><button class="chip" data-k="/">/</button><button class="chip" data-k="c">C</button></div><div class="mini" id="eggMsg" aria-live="polite"></div><div class="btns"><button class="btn red" id="bEggGo"></button><button class="btn alt" id="bEggBack">← OK</button></div></div></div>
   <div class="screen" id="sLang"><div class="card"><h2 class="ttl" id="langTtl">🌐</h2><div id="langGrid"></div><button class="btn alt" id="bLangBack">← OK</button></div></div>
+  <div class="screen" id="sInp"><div class="card">
+    <div id="inpA">
+      <h2 class="ttl" id="inpTtl"></h2>
+      <div class="inpOpts"><button class="inpO" id="inpDraw"><span class="ic">✎</span><b></b><small></small></button><button class="inpO" id="inpKb"><span class="ic">⌨</span><b></b><small></small></button></div>
+      <div class="mini" id="inpNote"></div>
+    </div>
+    <div id="inpB" hidden>
+      <div class="mini" id="itStep"></div>
+      <h2 class="ttl" id="itTtl"></h2>
+      <p id="itTxt"></p>
+      <div id="itPadW"><canvas id="itPad"></canvas><div id="itRead"></div><button class="chip" id="itClr">⌫</button></div>
+      <div id="itKbW"><div id="itShow"></div><div id="itKp"></div></div>
+      <div class="btns"><button class="btn" id="itGo" hidden></button><button class="btn alt" id="itSkip"></button></div>
+    </div>
+  </div></div>
   <div class="screen" id="sOver"><div class="card">
     <h2 class="dead" id="oTtl">TE COMIERON</h2>
     <div class="track"><div class="line"><i id="trFill"></i></div><div id="trDots"></div><i id="trFlag"></i><div id="trApple"></div></div>
     <div class="mini" id="mapLbl"></div>
+    <details id="oFail"><summary>¿CÓMO SE RESOLVÍA?</summary><div id="oFailB"></div></details>
     <blockquote id="oQuote"></blockquote>
     <div id="oLawN"></div>
     <div class="heat" id="oHeat"></div>
-    <details id="oFail"><summary>¿CÓMO SE RESOLVÍA?</summary><div id="oFailB"></div></details>
-    <div class="btns"><button class="btn red" id="bCont">VOLVER AL NIVEL 1</button><button class="btn alt" id="bShare">COMPARTIR</button><button class="btn alt" id="bPract">PRACTICAR</button><button class="btn alt" id="bMenu">MENÚ</button></div>
+    <div class="btns"><button class="btn red" id="bCont">REINTENTAR</button><button class="btn alt" id="bShare">COMPARTIR</button><button class="btn alt" id="bPract">PRACTICAR</button><button class="btn alt" id="bMenu">MENÚ</button></div>
     <i class="orn" aria-hidden="true"></i>
   </div></div>
 </div>
@@ -579,7 +621,7 @@ const LANGS=[
 {c:'sv',cc:'se',n:'Svenska'},{c:'uk',cc:'ua',n:'Українська'},{c:'cs',cc:'cz',n:'Čeština'},{c:'el',cc:'gr',n:'Ελληνικά'},{c:'he',cc:'il',n:'עברית',rtl:1},
 {c:'ro',cc:'ro',n:'Română'},{c:'hu',cc:'hu',n:'Magyar'},{c:'da',cc:'dk',n:'Dansk'}];
 // orden de las líneas de cada idioma
-const LK=['play','fresh','prog','closeprog','roja','verde','amarilla','night','day','sound','nosound','kb','draw','pause','resume','quit','tag','lead','rec','hint1','hint2','caught','caughtSub','boss','again1','share','practice','menu','how','which','digitN','help','frac','example','gotit','replay','lang','eaten','arrow','map','grab2','left1'];
+const LK=['play','fresh','prog','closeprog','roja','verde','amarilla','night','day','sound','nosound','kb','draw','pause','resume','quit','tag','lead','rec','hint1','hint2','caught','caughtSub','boss','again1','share','practice','menu','how','which','digitN','help','frac','example','gotit','replay','lang','eaten','arrow','map','grab2','left1','mental','retry','inpTtl','inpDraw','inpDrawSub','inpKb','inpKbSub','inpNote','itSkip','itGo','itDoneT','itKbDone','itDrawDone','itStep','itWrite','itKb1','itKb2','itDraw1','itDraw2','itGood','itRead','itSep','itLearn'];
 const LRAW={
 'es-419':`JUGAR
 EMPEZAR DE CERO
@@ -609,7 +651,7 @@ VOLVER AL NIVEL 1
 COMPARTIR
 PRACTICAR {t}
 MENÚ
-¿CÓMO SE RESOLVÍA?
+¿POR QUÉ FALLÉ? MIRA CÓMO SE RESOLVÍA
 ¿QUÉ NÚMERO ES ESTE?
 CIFRA {n} DE {m}
 ¿NO SABES? VER UN EJEMPLO
@@ -622,7 +664,30 @@ TE COMIERON;¡ÑAM!;CRUNCH;SE ACABÓ;FIN
 ¡FLECHADA!;DOS FLECHAS;EN EL BLANCO
 NIVEL {l} · {t} · {c} ACIERTOS · {k} ZOMBIS · RÉCORD {r} · PRESIÓN {p}%
 2 RESPUESTAS SEGUIDAS PARA SOLTARTE
-QUEDA 1 RESPUESTA`,
+QUEDA 1 RESPUESTA
+TRUCO DE CÁLCULO MENTAL
+REINTENTAR NIVEL {n}
+¿CÓMO QUIERES RESPONDER?
+ESCRIBIR A MANO
+Como en el examen. Más lento, pero entrenas de verdad.
+TECLADO NUMÉRICO
+Más rápido. Ideal si te cuesta dibujar en la pantalla.
+Puedes cambiarlo cuando quieras desde la pausa.
+SALTAR
+¡A JUGAR!
+¡LISTO!
+Los zombis no esperan: responde rápido. Si tocas una cifra equivocada, cuenta como error.
+Ya conozco tu letra. Si alguna vez dudo, te mostraré 2 o 3 opciones para que elijas.
+PASO {i} DE {n}
+ESCRIBE {n}
+Toca los números en orden, de izquierda a derecha. El botón marcado en rojo es el que sigue.
+Para negativos, el − va primero. También tienes . para decimales y / para fracciones.
+Escribe pequeño, entre las dos líneas, un número al lado del otro, como en tu cuaderno.
+Mientras escribes verás lo que leo y qué tan seguro estoy. Al 99 % lo acepto solo.
+¡BIEN!
+LEO: {r}
+SEPARA UN POCO LOS NÚMEROS
+APRENDÍ TU LETRA`,
 'es-ES':`JUGAR
 EMPEZAR DE CERO
 TU PROGRESO
@@ -651,7 +716,7 @@ VOLVER AL NIVEL 1
 COMPARTIR
 PRACTICAR {t}
 MENÚ
-¿CÓMO SE RESOLVÍA?
+¿POR QUÉ FALLÉ? MIRA CÓMO SE RESOLVÍA
 ¿QUÉ NÚMERO ES ESTE?
 DÍGITO {n} DE {m}
 ¿NO SABES? MIRA UN EJEMPLO
@@ -664,7 +729,30 @@ TE HAN COMIDO;¡ÑAM!;CRUNCH;SE ACABÓ;FIN
 ¡FLECHADA!;DOS FLECHAS;EN EL BLANCO
 NIVEL {l} · {t} · {c} ACIERTOS · {k} ZOMBIS · RÉCORD {r} · PRESIÓN {p}%
 2 RESPUESTAS SEGUIDAS PARA SOLTARTE
-QUEDA 1 RESPUESTA`,
+QUEDA 1 RESPUESTA
+TRUCO DE CÁLCULO MENTAL
+REINTENTAR NIVEL {n}
+¿CÓMO QUIERES RESPONDER?
+ESCRIBIR A MANO
+Como en el examen. Más lento, pero entrenas de verdad.
+TECLADO NUMÉRICO
+Más rápido. Ideal si te cuesta dibujar en la pantalla.
+Puedes cambiarlo cuando quieras desde la pausa.
+SALTAR
+¡A JUGAR!
+¡LISTO!
+Los zombis no esperan: responde rápido. Si tocas una cifra equivocada, cuenta como error.
+Ya conozco tu letra. Si alguna vez dudo, te mostraré 2 o 3 opciones para que elijas.
+PASO {i} DE {n}
+ESCRIBE {n}
+Toca los números en orden, de izquierda a derecha. El botón marcado en rojo es el que sigue.
+Para negativos, el − va primero. También tienes . para decimales y / para fracciones.
+Escribe pequeño, entre las dos líneas, un número al lado del otro, como en tu cuaderno.
+Mientras escribes verás lo que leo y qué tan seguro estoy. Al 99 % lo acepto solo.
+¡BIEN!
+LEO: {r}
+SEPARA UN POCO LOS NÚMEROS
+APRENDÍ TU LETRA`,
 en:`PLAY
 START OVER
 YOUR PROGRESS
@@ -693,7 +781,7 @@ BACK TO LEVEL 1
 SHARE
 PRACTICE {t}
 MENU
-HOW WAS IT SOLVED?
+WHY DID I FAIL? SEE HOW TO SOLVE IT
 WHICH NUMBER IS THIS?
 DIGIT {n} OF {m}
 STUCK? SEE AN EXAMPLE
@@ -706,7 +794,30 @@ YOU WERE EATEN;NOM!;CRUNCH;THE END;GAME OVER
 SHOT!;TWO ARROWS;BULLSEYE
 LEVEL {l} · {t} · {c} CORRECT · {k} ZOMBIES · RECORD {r} · PRESSURE {p}%
 2 ANSWERS IN A ROW TO BREAK FREE
-1 ANSWER LEFT`,
+1 ANSWER LEFT
+MENTAL MATH TRICK
+RETRY LEVEL {n}
+HOW DO YOU WANT TO ANSWER?
+HANDWRITING
+Like in an exam. Slower, but real practice.
+NUMBER PAD
+Faster. Great if drawing on the screen is hard for you.
+You can change it anytime from the pause menu.
+SKIP
+LET'S PLAY!
+READY!
+Zombies don't wait: answer fast. Tapping a wrong digit counts as a mistake.
+I know your handwriting now. If I ever hesitate, I will show you 2 or 3 options to pick from.
+STEP {i} OF {n}
+WRITE {n}
+Tap the digits in order, left to right. The button outlined in red is the next one.
+For negatives, the − goes first. There is also . for decimals and / for fractions.
+Write small, between the two lines, one digit next to the other, like in your notebook.
+While you write you will see what I read and how sure I am. At 99 % I accept it on my own.
+NICE!
+I READ: {r}
+SPACE THE DIGITS A LITTLE
+I LEARNED YOUR HANDWRITING`,
 pt:`JOGAR
 RECOMEÇAR DO ZERO
 SEU PROGRESSO
@@ -735,7 +846,7 @@ VOLTAR AO NÍVEL 1
 COMPARTILHAR
 PRATICAR {t}
 MENU
-COMO SE RESOLVIA?
+POR QUE ERREI? VEJA COMO SE RESOLVIA
 QUAL NÚMERO É ESTE?
 DÍGITO {n} DE {m}
 NÃO SABE? VEJA UM EXEMPLO
@@ -748,7 +859,30 @@ TE COMERAM;NHAC!;CRUNCH;ACABOU;FIM
 FLECHADA!;DUAS FLECHAS;NO ALVO
 NÍVEL {l} · {t} · {c} ACERTOS · {k} ZUMBIS · RECORDE {r} · PRESSÃO {p}%
 2 RESPOSTAS SEGUIDAS PARA SE SOLTAR
-FALTA 1 RESPOSTA`,
+FALTA 1 RESPOSTA
+TRUQUE DE CÁLCULO MENTAL
+TENTAR DE NOVO O NÍVEL {n}
+COMO VOCÊ QUER RESPONDER?
+ESCREVER À MÃO
+Como na prova. Mais lento, mas você treina de verdade.
+TECLADO NUMÉRICO
+Mais rápido. Ideal se é difícil desenhar na tela.
+Você pode mudar quando quiser no menu de pausa.
+PULAR
+BORA JOGAR!
+PRONTO!
+Os zumbis não esperam: responda rápido. Se tocar um dígito errado, conta como erro.
+Já conheço sua letra. Se eu ficar em dúvida, vou mostrar 2 ou 3 opções para você escolher.
+PASSO {i} DE {n}
+ESCREVA {n}
+Toque os números em ordem, da esquerda para a direita. O botão marcado em vermelho é o próximo.
+Para negativos, o − vem primeiro. Também há . para decimais e / para frações.
+Escreva pequeno, entre as duas linhas, um número ao lado do outro, como no caderno.
+Enquanto escreve você vê o que eu leio e quanta certeza tenho. Com 99 % eu aceito sozinho.
+ISSO!
+LEIO: {r}
+SEPARE UM POUCO OS NÚMEROS
+APRENDI SUA LETRA`,
 fr:`JOUER
 RECOMMENCER À ZÉRO
 TA PROGRESSION
@@ -777,7 +911,7 @@ RETOUR AU NIVEAU 1
 PARTAGER
 S'ENTRAÎNER : {t}
 MENU
-COMMENT LE RÉSOUDRE ?
+POURQUOI J'AI RATÉ ? VOIR LA SOLUTION
 QUEL NOMBRE EST-CE ?
 CHIFFRE {n} SUR {m}
 BLOQUÉ ? VOIR UN EXEMPLE
@@ -790,7 +924,30 @@ TU AS ÉTÉ MANGÉ;MIAM !;CRUNCH;C'EST FINI;FIN
 FLÈCHE !;DEUX FLÈCHES;EN PLEIN DANS LE MILLE
 NIVEAU {l} · {t} · {c} BONNES RÉPONSES · {k} ZOMBIES · RECORD {r} · PRESSION {p}%
 2 RÉPONSES D'AFFILÉE POUR TE LIBÉRER
-IL RESTE 1 RÉPONSE`,
+IL RESTE 1 RÉPONSE
+ASTUCE DE CALCUL MENTAL
+REJOUER LE NIVEAU {n}
+COMMENT VEUX-TU RÉPONDRE ?
+ÉCRIRE À LA MAIN
+Comme en contrôle. Plus lent, mais tu t'entraînes pour de vrai.
+PAVÉ NUMÉRIQUE
+Plus rapide. Idéal si dessiner sur l'écran est difficile.
+Tu peux changer à tout moment depuis la pause.
+PASSER
+ON JOUE !
+PRÊT !
+Les zombies n'attendent pas : réponds vite. Un mauvais chiffre compte comme une erreur.
+Je connais ton écriture. Si j'hésite, je te montrerai 2 ou 3 choix.
+ÉTAPE {i} SUR {n}
+ÉCRIS {n}
+Touche les chiffres dans l’ordre, de gauche à droite. Le bouton entouré de rouge est le suivant.
+Pour les négatifs, le − vient en premier. Il y a aussi . pour les décimaux et / pour les fractions.
+Écris petit, entre les deux lignes, un chiffre à côté de l’autre, comme dans ton cahier.
+Pendant que tu écris, tu vois ce que je lis et à quel point j’en suis sûr. À 99 %, j’accepte tout seul.
+BIEN !
+JE LIS : {r}
+ESPACE UN PEU LES CHIFFRES
+J'AI APPRIS TON ÉCRITURE`,
 de:`SPIELEN
 NEU BEGINNEN
 DEIN FORTSCHRITT
@@ -819,7 +976,7 @@ ZURÜCK ZU LEVEL 1
 TEILEN
 ÜBEN: {t}
 MENÜ
-WIE WAR DIE LÖSUNG?
+WARUM FALSCH? SO WÄRE ES GEGANGEN
 WELCHE ZAHL IST DAS?
 ZIFFER {n} VON {m}
 NICHT WEITER? BEISPIEL ANSEHEN
@@ -832,7 +989,30 @@ DU WURDEST GEFRESSEN;MAMPF!;KNACK;VORBEI;ENDE
 GETROFFEN!;ZWEI PFEILE;INS SCHWARZE
 LEVEL {l} · {t} · {c} RICHTIG · {k} ZOMBIES · REKORD {r} · DRUCK {p}%
 2 ANTWORTEN IN FOLGE ZUM BEFREIEN
-NOCH 1 ANTWORT`,
+NOCH 1 ANTWORT
+KOPFRECHEN-TRICK
+LEVEL {n} NOCHMAL
+WIE MÖCHTEST DU ANTWORTEN?
+MIT DER HAND SCHREIBEN
+Wie in der Prüfung. Langsamer, aber echtes Training.
+ZAHLENTASTATUR
+Schneller. Ideal, wenn dir das Zeichnen auf dem Bildschirm schwerfällt.
+Du kannst es jederzeit im Pausenmenü ändern.
+ÜBERSPRINGEN
+LOS GEHT'S!
+FERTIG!
+Zombies warten nicht: antworte schnell. Eine falsche Ziffer zählt als Fehler.
+Ich kenne jetzt deine Schrift. Wenn ich unsicher bin, zeige ich dir 2 oder 3 Optionen zur Auswahl.
+SCHRITT {i} VON {n}
+SCHREIB {n}
+Tippe die Ziffern der Reihe nach, von links nach rechts. Der rot markierte Knopf ist der nächste.
+Bei negativen Zahlen kommt das − zuerst. Es gibt auch . für Dezimalzahlen und / für Brüche.
+Schreib klein, zwischen die zwei Linien, eine Ziffer neben die andere, wie im Heft.
+Beim Schreiben siehst du, was ich lese und wie sicher ich bin. Bei 99 % nehme ich es von selbst an.
+GUT!
+ICH LESE: {r}
+LASS ETWAS PLATZ ZWISCHEN DEN ZIFFERN
+ICH HABE DEINE SCHRIFT GELERNT`,
 ja:`プレイ
 最初から
 きみの記録
@@ -861,7 +1041,7 @@ ja:`プレイ
 シェア
 {t}を練習
 メニュー
-どう解くの?
+なぜ間違えた？ 解き方を見る
 この数字は?
 {m}けた中{n}けた目
 わからない? 例を見る
@@ -874,7 +1054,30 @@ ja:`プレイ
 矢が命中!;矢が2本;ど真ん中
 レベル{l} · {t} · 正解{c} · ゾンビ{k} · ハイスコア{r} · プレッシャー {p}%
 連続で2問正解すると脱出
-あと1問`,
+あと1問
+暗算のコツ
+レベル {n} をもう一度
+どうやって答える？
+手書き
+テストと同じ。時間はかかるけど本当の練習になる。
+テンキー
+速い。画面に書くのが苦手な人におすすめ。
+ポーズ画面からいつでも変更できます。
+スキップ
+プレイ開始！
+準備OK！
+ゾンビは待ってくれない。すばやく答えよう。違う数字を押すとミスになる。
+君の字を覚えたよ。迷ったときは2〜3個の候補を出すから選んでね。
+ステップ {i} / {n}
+{n} を書こう
+数字を左から右へ順番に押そう。赤い枠のボタンが次に押すボタン。
+負の数は − を最初に。小数は . 、分数は / を使う。
+2本の線の間に小さく、ノートのように数字を横に並べて書こう。
+書いている間、読み取った数字と自信度が見える。99 %なら自動で決定。
+いいね！
+読み取り: {r}
+数字の間を少しあけて
+君の字を覚えた`,
 zh:`开始游戏
 重新开始
 我的进度
@@ -903,7 +1106,7 @@ zh:`开始游戏
 分享
 练习 {t}
 菜单
-怎么解?
+为什么错了？看看怎么解
 这是哪个数字?
 第 {n} 位,共 {m} 位
 不会?看个例子
@@ -916,7 +1119,30 @@ zh:`开始游戏
 中箭了!;两支箭;正中靶心
 第{l}关 · {t} · 答对{c} · 僵尸{k} · 纪录{r} · 压力 {p}%
 连续答对2题才能挣脱
-还差1题`,
+还差1题
+心算技巧
+重试第 {n} 关
+你想怎么作答？
+手写
+就像考试一样。慢一点，但是真正的练习。
+数字键盘
+更快。如果在屏幕上写字很难，就选它。
+随时可以在暂停菜单里更改。
+跳过
+开始游戏！
+准备好了！
+僵尸可不会等你：快点作答。按错一个数字就算错误。
+我已经认识你的字了。如果拿不准，我会给你 2 到 3 个选项。
+第 {i} 步，共 {n} 步
+写出 {n}
+按从左到右的顺序点数字。红框的按钮就是下一个。
+负数先按 −。小数用 .，分数用 /。
+写小一点，写在两条线之间，数字一个挨一个，就像在作业本上。
+写的时候你会看到我读出的数字和把握有多大。到 99 % 我会自动确认。
+很好！
+识别：{r}
+数字之间留点空隙
+我学会你的字了`,
 ko:`플레이
 처음부터
 내 진행도
@@ -945,7 +1171,7 @@ ko:`플레이
 공유
 {t} 연습
 메뉴
-어떻게 풀었을까?
+왜 틀렸을까? 푸는 법 보기
 이 숫자는 무엇인가요?
 {m}자리 중 {n}번째
 모르겠어요? 예시 보기
@@ -958,7 +1184,30 @@ ko:`플레이
 화살 명중!;화살 두 발;정중앙
 레벨 {l} · {t} · 정답 {c} · 좀비 {k} · 최고 {r} · 압박 {p}%
 연속 2문제를 맞히면 탈출
-1문제 남았어요`,
+1문제 남았어요
+암산 요령
+레벨 {n} 다시 하기
+어떻게 답할래?
+손글씨
+시험처럼. 느리지만 진짜 연습이 돼.
+숫자 키패드
+더 빨라. 화면에 쓰기 어렵다면 추천.
+일시정지 메뉴에서 언제든 바꿀 수 있어.
+건너뛰기
+시작!
+준비 완료!
+좀비는 기다리지 않아: 빨리 답해. 틀린 숫자를 누르면 오답이야.
+이제 네 글씨를 알아. 헷갈리면 2~3개 보기를 보여 줄게.
+{n}단계 중 {i}단계
+{n} 쓰기
+숫자를 왼쪽부터 순서대로 눌러. 빨간 테두리 버튼이 다음 차례야.
+음수는 − 를 먼저. 소수는 . , 분수는 / 를 써.
+두 줄 사이에 작게, 공책처럼 숫자를 옆으로 나란히 써.
+쓰는 동안 내가 읽은 숫자와 확신도가 보여. 99 %면 자동으로 받아들여.
+좋아!
+인식: {r}
+숫자 사이를 조금 띄워
+네 글씨를 배웠어`,
 it:`GIOCA
 RICOMINCIA DA ZERO
 I TUOI PROGRESSI
@@ -987,7 +1236,7 @@ TORNA AL LIVELLO 1
 CONDIVIDI
 ALLENATI: {t}
 MENU
-COME SI RISOLVEVA?
+PERCHÉ HO SBAGLIATO? GUARDA COME SI RISOLVEVA
 CHE NUMERO È?
 CIFRA {n} DI {m}
 BLOCCATO? VEDI UN ESEMPIO
@@ -1000,7 +1249,30 @@ TI HANNO MANGIATO;GNAM!;CRUNCH;È FINITA;FINE
 FRECCIATA!;DUE FRECCE;NEL SEGNO
 LIVELLO {l} · {t} · {c} GIUSTE · {k} ZOMBIE · RECORD {r} · PRESSIONE {p}%
 2 RISPOSTE DI FILA PER LIBERARTI
-MANCA 1 RISPOSTA`,
+MANCA 1 RISPOSTA
+TRUCCO DI CALCOLO MENTALE
+RIPROVA IL LIVELLO {n}
+COME VUOI RISPONDERE?
+SCRIVERE A MANO
+Come alla verifica. Più lento, ma ti alleni davvero.
+TASTIERINO NUMERICO
+Più veloce. Ideale se disegnare sullo schermo è difficile.
+Puoi cambiarlo quando vuoi dalla pausa.
+SALTA
+SI GIOCA!
+PRONTO!
+Gli zombi non aspettano: rispondi in fretta. Una cifra sbagliata conta come errore.
+Ora conosco la tua scrittura. Se avrò dubbi, ti mostrerò 2 o 3 opzioni tra cui scegliere.
+PASSO {i} DI {n}
+SCRIVI {n}
+Tocca le cifre in ordine, da sinistra a destra. Il tasto bordato di rosso è il prossimo.
+Per i negativi il − va per primo. Ci sono anche . per i decimali e / per le frazioni.
+Scrivi piccolo, tra le due righe, una cifra accanto all’altra, come sul quaderno.
+Mentre scrivi vedi cosa leggo e quanto sono sicuro. Al 99 % lo accetto da solo.
+BRAVO!
+LEGGO: {r}
+DISTANZIA UN PO’ LE CIFRE
+HO IMPARATO LA TUA SCRITTURA`,
 ru:`ИГРАТЬ
 НАЧАТЬ ЗАНОВО
 ТВОЙ ПРОГРЕСС
@@ -1029,7 +1301,7 @@ ru:`ИГРАТЬ
 ПОДЕЛИТЬСЯ
 ТРЕНИРОВАТЬ: {t}
 МЕНЮ
-КАК ЭТО РЕШАЛОСЬ?
+ПОЧЕМУ ОШИБСЯ? СМОТРИ РЕШЕНИЕ
 КАКОЕ ЭТО ЧИСЛО?
 ЦИФРА {n} ИЗ {m}
 НЕ ЗНАЕШЬ? ПОСМОТРИ ПРИМЕР
@@ -1042,7 +1314,30 @@ ru:`ИГРАТЬ
 СТРЕЛА!;ДВЕ СТРЕЛЫ;В ЯБЛОЧКО
 УРОВЕНЬ {l} · {t} · ВЕРНО {c} · ЗОМБИ {k} · РЕКОРД {r} · ДАВЛЕНИЕ {p}%
 2 ОТВЕТА ПОДРЯД, ЧТОБЫ ВЫРВАТЬСЯ
-ОСТАЛСЯ 1 ОТВЕТ`,
+ОСТАЛСЯ 1 ОТВЕТ
+ПРИЁМ УСТНОГО СЧЁТА
+ЕЩЁ РАЗ УРОВЕНЬ {n}
+КАК ТЫ ХОЧЕШЬ ОТВЕЧАТЬ?
+ПИСАТЬ ОТ РУКИ
+Как на контрольной. Медленнее, но это настоящая тренировка.
+ЦИФРОВАЯ КЛАВИАТУРА
+Быстрее. Удобно, если трудно рисовать на экране.
+Можно поменять в любой момент в меню паузы.
+ПРОПУСТИТЬ
+ИГРАЕМ!
+ГОТОВО!
+Зомби не ждут: отвечай быстро. Неверная цифра считается ошибкой.
+Я запомнил твой почерк. Если засомневаюсь, покажу 2 или 3 варианта на выбор.
+ШАГ {i} ИЗ {n}
+НАПИШИ {n}
+Нажимай цифры по порядку, слева направо. Кнопка в красной рамке — следующая.
+Для отрицательных − ставится первым. Ещё есть . для десятичных и / для дробей.
+Пиши мелко, между двумя линиями, цифру рядом с цифрой, как в тетради.
+Пока пишешь, видно, что я читаю и насколько уверен. При 99 % принимаю сам.
+ОТЛИЧНО!
+ЧИТАЮ: {r}
+ОСТАВЬ ПРОМЕЖУТКИ МЕЖДУ ЦИФРАМИ
+Я ВЫУЧИЛ ТВОЙ ПОЧЕРК`,
 ar:`العب
 ابدأ من جديد
 تقدّمك
@@ -1071,7 +1366,7 @@ ar:`العب
 مشاركة
 تدرّب على {t}
 القائمة
-كيف كان الحل؟
+لماذا أخطأت؟ شاهد طريقة الحل
 أي رقم هذا؟
 الرقم {n} من {m}
 لا تعرف؟ شاهد مثالًا
@@ -1084,7 +1379,30 @@ ar:`العب
 سهم!;سهمان;في الهدف
 المستوى {l} · {t} · {c} صحيحة · {k} زومبي · الرقم القياسي {r} · الضغط {p}%
 إجابتان متتاليتان للتحرر
-بقيت إجابة واحدة`,
+بقيت إجابة واحدة
+حيلة الحساب الذهني
+أعد المستوى {n}
+كيف تريد أن تجيب؟
+الكتابة باليد
+كما في الامتحان. أبطأ، لكنه تدريب حقيقي.
+لوحة الأرقام
+أسرع. مناسبة إذا كان الرسم على الشاشة صعبًا عليك.
+يمكنك تغييرها في أي وقت من قائمة الإيقاف المؤقت.
+تخطَّ
+هيا نلعب!
+جاهز!
+الزومبي لا ينتظرون: أجب بسرعة. الضغط على رقم خاطئ يُحسب خطأً.
+صرت أعرف خطك. إذا ترددت سأعرض عليك خيارين أو ثلاثة لتختار.
+الخطوة {i} من {n}
+اكتب {n}
+اضغط الأرقام بالترتيب من اليسار إلى اليمين. الزر المحاط بالأحمر هو التالي.
+للأعداد السالبة يأتي − أولًا. وهناك . للكسور العشرية و / للكسور.
+اكتب بخط صغير بين الخطين، رقمًا بجانب الآخر، كما في دفترك.
+أثناء الكتابة سترى ما أقرؤه ومدى ثقتي. عند 99 % أقبله وحدي.
+أحسنت!
+أقرأ: {r}
+باعد بين الأرقام قليلًا
+تعلّمت خطك`,
 hi:`खेलो
 नए सिरे से शुरू करो
 तुम्हारी प्रगति
@@ -1113,7 +1431,7 @@ hi:`खेलो
 शेयर करो
 {t} का अभ्यास
 मेन्यू
-इसे कैसे हल करते थे?
+मैं क्यों हारा? हल करने का तरीका देखो
 यह कौन सी संख्या है?
 अंक {n} / {m}
 अटक गए? उदाहरण देखो
@@ -1126,7 +1444,30 @@ hi:`खेलो
 तीर लगा!;दो तीर;सटीक निशाना
 स्तर {l} · {t} · {c} सही · {k} ज़ॉम्बी · रिकॉर्ड {r} · दबाव {p}%
 छूटने के लिए लगातार 2 जवाब
-1 जवाब बाकी`,
+1 जवाब बाकी
+मन से गणना की तरकीब
+लेवल {n} फिर से
+तुम कैसे जवाब देना चाहते हो?
+हाथ से लिखो
+परीक्षा की तरह। धीमा, पर असली अभ्यास।
+नंबर पैड
+तेज़। अगर स्क्रीन पर लिखना मुश्किल है तो बढ़िया।
+इसे कभी भी पॉज़ मेनू से बदल सकते हो।
+छोड़ो
+चलो खेलें!
+तैयार!
+ज़ॉम्बी इंतज़ार नहीं करते: जल्दी जवाब दो। गलत अंक दबाना गलती गिना जाएगा।
+अब मैं तुम्हारी लिखावट पहचानता हूँ। अगर शक हुआ तो 2 या 3 विकल्प दिखाऊँगा।
+चरण {i} / {n}
+{n} लिखो
+अंक बाएँ से दाएँ क्रम में दबाओ। लाल घेरे वाला बटन अगला है।
+ऋणात्मक संख्या में − पहले आता है। दशमलव के लिए . और भिन्न के लिए / भी है।
+दो रेखाओं के बीच छोटा लिखो, एक अंक दूसरे के बगल में, जैसे कॉपी में।
+लिखते समय दिखेगा कि मैं क्या पढ़ रहा हूँ और कितना पक्का हूँ। 99 % पर अपने आप मान लूँगा।
+बढ़िया!
+मैंने पढ़ा: {r}
+अंकों के बीच थोड़ी जगह छोड़ो
+मैंने तुम्हारी लिखावट सीख ली`,
 tr:`OYNA
 BAŞTAN BAŞLA
 İLERLEMEN
@@ -1155,7 +1496,7 @@ SEVİYE 1'E DÖN
 PAYLAŞ
 ÇALIŞ: {t}
 MENÜ
-NASIL ÇÖZÜLÜRDÜ?
+NEDEN YANLIŞ? ÇÖZÜMÜ GÖR
 BU HANGİ SAYI?
 {n}. RAKAM / {m}
 TAKILDIN MI? ÖRNEĞE BAK
@@ -1168,7 +1509,30 @@ SENİ YEDİLER;NAM!;GICIR;BİTTİ;OYUN BİTTİ
 OK İSABET!;İKİ OK;TAM ORTASI
 SEVİYE {l} · {t} · {c} DOĞRU · {k} ZOMBİ · REKOR {r} · BASKI {p}%
 KURTULMAK İÇİN ÜST ÜSTE 2 CEVAP
-1 CEVAP KALDI`,
+1 CEVAP KALDI
+ZİHİNDEN İŞLEM HİLESİ
+SEVİYE {n} TEKRAR
+NASIL CEVAP VERMEK İSTERSİN?
+ELLE YAZ
+Sınavdaki gibi. Daha yavaş ama gerçek antrenman.
+SAYI TUŞLARI
+Daha hızlı. Ekrana çizmek zor geliyorsa ideal.
+Duraklatma menüsünden istediğin zaman değiştirebilirsin.
+ATLA
+HADİ OYNA!
+HAZIR!
+Zombiler beklemez: hızlı cevap ver. Yanlış rakama basmak hata sayılır.
+Artık el yazını tanıyorum. Emin olamazsam seçmen için 2 ya da 3 seçenek gösteririm.
+ADIM {i} / {n}
+{n} YAZ
+Rakamlara soldan sağa sırayla bas. Kırmızı çerçeveli tuş sıradaki.
+Negatiflerde − önce gelir. Ondalık için . ve kesir için / da var.
+İki çizginin arasına küçük yaz, rakamları defterdeki gibi yan yana.
+Yazarken ne okuduğumu ve ne kadar emin olduğumu görürsün. %99 olunca kendim kabul ederim.
+GÜZEL!
+OKUDUĞUM: {r}
+RAKAMLARI BİRAZ AYIR
+EL YAZINI ÖĞRENDİM`,
 nl:`SPELEN
 OPNIEUW BEGINNEN
 JE VOORTGANG
@@ -1197,7 +1561,7 @@ TERUG NAAR LEVEL 1
 DELEN
 OEFEN: {t}
 MENU
-HOE WERD DIT OPGELOST?
+WAAROM FOUT? ZIE HOE HET MOEST
 WELK GETAL IS DIT?
 CIJFER {n} VAN {m}
 VAST? BEKIJK EEN VOORBEELD
@@ -1210,7 +1574,30 @@ JE BENT OPGEGETEN;HAP!;KNAP;KLAAR;EINDE
 PIJL!;TWEE PIJLEN;RAAK
 LEVEL {l} · {t} · {c} GOED · {k} ZOMBIES · RECORD {r} · DRUK {p}%
 2 ANTWOORDEN ACHTER ELKAAR OM LOS TE KOMEN
-NOG 1 ANTWOORD`,
+NOG 1 ANTWOORD
+HOOFDREKENTRUC
+LEVEL {n} OPNIEUW
+HOE WIL JE ANTWOORDEN?
+MET DE HAND SCHRIJVEN
+Zoals bij een toets. Trager, maar echte oefening.
+CIJFERTOETSEN
+Sneller. Ideaal als tekenen op het scherm lastig is.
+Je kunt het altijd wijzigen in het pauzemenu.
+OVERSLAAN
+SPELEN!
+KLAAR!
+Zombies wachten niet: antwoord snel. Een verkeerd cijfer telt als fout.
+Ik ken je handschrift nu. Twijfel ik, dan laat ik je 2 of 3 opties zien om te kiezen.
+STAP {i} VAN {n}
+SCHRIJF {n}
+Tik de cijfers op volgorde, van links naar rechts. De knop met de rode rand is de volgende.
+Bij negatieve getallen komt de − eerst. Er is ook . voor decimalen en / voor breuken.
+Schrijf klein, tussen de twee lijnen, het ene cijfer naast het andere, zoals in je schrift.
+Tijdens het schrijven zie je wat ik lees en hoe zeker ik ben. Bij 99 % accepteer ik het zelf.
+GOED ZO!
+IK LEES: {r}
+ZET DE CIJFERS IETS UIT ELKAAR
+IK HEB JE HANDSCHRIFT GELEERD`,
 pl:`GRAJ
 ZACZNIJ OD NOWA
 TWÓJ POSTĘP
@@ -1239,7 +1626,7 @@ WRÓĆ NA POZIOM 1
 UDOSTĘPNIJ
 ĆWICZ: {t}
 MENU
-JAK TO ROZWIĄZAĆ?
+DLACZEGO ŹLE? ZOBACZ ROZWIĄZANIE
 JAKA TO LICZBA?
 CYFRA {n} Z {m}
 UTKNĄŁEŚ? ZOBACZ PRZYKŁAD
@@ -1252,7 +1639,30 @@ ZJEDLI CIĘ;ŁAP!;CHRUP;KONIEC;KONIEC GRY
 STRZAŁA!;DWIE STRZAŁY;W DZIESIĄTKĘ
 POZIOM {l} · {t} · {c} DOBRYCH · {k} ZOMBIE · REKORD {r} · NACISK {p}%
 2 ODPOWIEDZI Z RZĘDU, BY SIĘ WYRWAĆ
-ZOSTAŁA 1 ODPOWIEDŹ`,
+ZOSTAŁA 1 ODPOWIEDŹ
+SPOSÓB NA LICZENIE W PAMIĘCI
+POWTÓRZ POZIOM {n}
+JAK CHCESZ ODPOWIADAĆ?
+PISANIE RĘCZNE
+Jak na sprawdzianie. Wolniej, ale to prawdziwy trening.
+KLAWIATURA NUMERYCZNA
+Szybciej. Dobre, jeśli trudno ci rysować na ekranie.
+Możesz to zmienić w każdej chwili w menu pauzy.
+POMIŃ
+GRAMY!
+GOTOWE!
+Zombie nie czekają: odpowiadaj szybko. Zła cyfra liczy się jako błąd.
+Znam już twoje pismo. Gdy nie będę pewien, pokażę ci 2 lub 3 opcje do wyboru.
+KROK {i} Z {n}
+NAPISZ {n}
+Stukaj cyfry po kolei, od lewej do prawej. Przycisk w czerwonej ramce jest następny.
+Przy liczbach ujemnych − jest pierwszy. Jest też . dla ułamków dziesiętnych i / dla ułamków.
+Pisz małe, między dwiema liniami, cyfra obok cyfry, jak w zeszycie.
+Podczas pisania widzisz, co czytam i jak bardzo jestem pewny. Przy 99 % przyjmuję sam.
+ŚWIETNIE!
+CZYTAM: {r}
+ROZSUŃ TROCHĘ CYFRY
+NAUCZYŁEM SIĘ TWOJEGO PISMA`,
 id:`MAIN
 MULAI ULANG
 KEMAJUANMU
@@ -1281,7 +1691,7 @@ KEMBALI KE LEVEL 1
 BAGIKAN
 LATIHAN {t}
 MENU
-BAGAIMANA CARA MENYELESAIKANNYA?
+KENAPA SALAH? LIHAT CARA MENYELESAIKANNYA
 ANGKA APA INI?
 ANGKA {n} DARI {m}
 BINGUNG? LIHAT CONTOH
@@ -1294,7 +1704,30 @@ KAMU DIMAKAN;NYAM!;KRESEK;TAMAT;GAME OVER
 PANAH!;DUA PANAH;TEPAT SASARAN
 LEVEL {l} · {t} · {c} BENAR · {k} ZOMBI · REKOR {r} · TEKANAN {p}%
 2 JAWABAN BERTURUT-TURUT UNTUK LEPAS
-SISA 1 JAWABAN`,
+SISA 1 JAWABAN
+TRIK HITUNG CEPAT
+ULANGI LEVEL {n}
+MAU MENJAWAB DENGAN CARA APA?
+TULIS TANGAN
+Seperti saat ujian. Lebih lambat, tapi latihan sungguhan.
+PAPAN ANGKA
+Lebih cepat. Cocok kalau kamu sulit menggambar di layar.
+Bisa diganti kapan saja dari menu jeda.
+LEWATI
+AYO MAIN!
+SIAP!
+Zombi tidak menunggu: jawab dengan cepat. Menekan angka yang salah dihitung sebagai kesalahan.
+Aku sudah kenal tulisanmu. Kalau ragu, aku akan menampilkan 2 atau 3 pilihan.
+LANGKAH {i} DARI {n}
+TULIS {n}
+Ketuk angka berurutan, dari kiri ke kanan. Tombol berbingkai merah adalah yang berikutnya.
+Untuk bilangan negatif, − ditulis dulu. Ada juga . untuk desimal dan / untuk pecahan.
+Tulis kecil, di antara dua garis, angka berdampingan seperti di buku tulis.
+Saat menulis kamu akan melihat apa yang kubaca dan seberapa yakin aku. Pada 99 % kuterima sendiri.
+BAGUS!
+KUBACA: {r}
+BERI SEDIKIT JARAK ANTARANGKA
+AKU SUDAH MEMPELAJARI TULISANMU`,
 vi:`CHƠI
 BẮT ĐẦU LẠI
 TIẾN TRÌNH CỦA BẠN
@@ -1323,7 +1756,7 @@ VỀ CẤP 1
 CHIA SẺ
 LUYỆN TẬP {t}
 MENU
-GIẢI NHƯ THẾ NÀO?
+VÌ SAO SAI? XEM CÁCH GIẢI
 ĐÂY LÀ SỐ GÌ?
 CHỮ SỐ {n} / {m}
 BÍ RỒI? XEM VÍ DỤ
@@ -1336,7 +1769,30 @@ BẠN BỊ ĂN RỒI;NHAM!;RỤP;HẾT RỒI;KẾT THÚC
 TRÚNG TÊN!;HAI MŨI TÊN;TRÚNG ĐÍCH
 CẤP {l} · {t} · {c} ĐÚNG · {k} ZOMBIE · KỶ LỤC {r} · ÁP LỰC {p}%
 2 CÂU ĐÚNG LIÊN TIẾP ĐỂ THOÁT
-CÒN 1 CÂU`,
+CÒN 1 CÂU
+MẸO TÍNH NHẨM
+CHƠI LẠI CẤP {n}
+BẠN MUỐN TRẢ LỜI THẾ NÀO?
+VIẾT TAY
+Giống lúc làm bài kiểm tra. Chậm hơn, nhưng luyện thật sự.
+BÀN PHÍM SỐ
+Nhanh hơn. Hợp nếu bạn khó vẽ trên màn hình.
+Bạn có thể đổi bất cứ lúc nào trong menu tạm dừng.
+BỎ QUA
+CHƠI THÔI!
+SẴN SÀNG!
+Zombie không chờ đâu: trả lời nhanh. Bấm sai một chữ số sẽ tính là lỗi.
+Mình đã quen nét chữ của bạn. Nếu còn phân vân, mình sẽ đưa 2 hoặc 3 lựa chọn.
+BƯỚC {i}/{n}
+VIẾT {n}
+Bấm các chữ số theo thứ tự, từ trái sang phải. Nút có viền đỏ là nút tiếp theo.
+Với số âm, dấu − đứng trước. Còn có . cho số thập phân và / cho phân số.
+Viết nhỏ, giữa hai đường kẻ, các chữ số cạnh nhau như trong vở.
+Khi viết, bạn sẽ thấy mình đọc được gì và chắc đến đâu. Đạt 99 % là mình tự nhận.
+TỐT LẮM!
+MÌNH ĐỌC: {r}
+CÁCH CÁC CHỮ SỐ RA MỘT CHÚT
+MÌNH ĐÃ HỌC NÉT CHỮ CỦA BẠN`,
 th:`เล่น
 เริ่มใหม่
 ความคืบหน้าของคุณ
@@ -1365,7 +1821,7 @@ th:`เล่น
 แชร์
 ฝึก {t}
 เมนู
-แก้อย่างไร?
+ทำไมผิด? ดูวิธีแก้
 เลขอะไรนี่?
 หลักที่ {n} จาก {m}
 ติดอยู่? ดูตัวอย่าง
@@ -1378,7 +1834,30 @@ th:`เล่น
 โดนลูกธนู!;สองลูกธนู;ตรงเป้า
 ด่าน {l} · {t} · ถูก {c} · ซอมบี้ {k} · สถิติ {r} · แรงกดดัน {p}%
 ตอบถูกติดกัน 2 ข้อเพื่อหลุด
-เหลืออีก 1 ข้อ`,
+เหลืออีก 1 ข้อ
+เคล็ดลับคิดเลขในใจ
+เล่นด่าน {n} อีกครั้ง
+อยากตอบแบบไหน?
+เขียนด้วยมือ
+เหมือนตอนสอบ ช้ากว่า แต่ได้ฝึกจริง
+แป้นตัวเลข
+เร็วกว่า เหมาะถ้าเขียนบนจอยาก
+เปลี่ยนได้ทุกเมื่อจากเมนูหยุดเกม
+ข้าม
+ไปเล่นกัน!
+พร้อมแล้ว!
+ซอมบี้ไม่รอใคร: ตอบให้ไว กดตัวเลขผิดนับเป็นข้อผิดพลาด
+ฉันจำลายมือเธอได้แล้ว ถ้าไม่แน่ใจ จะให้เลือกจาก 2 หรือ 3 ตัวเลือก
+ขั้นที่ {i} จาก {n}
+เขียน {n}
+แตะตัวเลขตามลำดับจากซ้ายไปขวา ปุ่มที่มีกรอบแดงคือปุ่มถัดไป
+จำนวนลบให้กด − ก่อน มี . สำหรับทศนิยม และ / สำหรับเศษส่วนด้วย
+เขียนตัวเล็ก ๆ ระหว่างเส้นสองเส้น วางตัวเลขเรียงกันเหมือนในสมุด
+ระหว่างเขียนจะเห็นว่าฉันอ่านได้อะไรและมั่นใจแค่ไหน ถ้าถึง 99 % ฉันรับเอง
+เยี่ยม!
+ฉันอ่านได้: {r}
+เว้นระยะตัวเลขอีกนิด
+ฉันเรียนรู้ลายมือเธอแล้ว`,
 sv:`SPELA
 BÖRJA OM
 DINA FRAMSTEG
@@ -1407,7 +1886,7 @@ TILLBAKA TILL NIVÅ 1
 DELA
 ÖVA: {t}
 MENY
-HUR LÖSTES DET?
+VARFÖR FEL? SE HUR MAN LÖSTE DET
 VILKET TAL ÄR DET?
 SIFFRA {n} AV {m}
 FASTNAT? SE ETT EXEMPEL
@@ -1420,7 +1899,30 @@ DU BLEV UPPÄTEN;NAM!;KNAS;SLUT;GAME OVER
 PIL!;TVÅ PILAR;I MITTEN
 NIVÅ {l} · {t} · {c} RÄTT · {k} ZOMBIER · REKORD {r} · PRESS {p}%
 2 SVAR I RAD FÖR ATT SLITA DIG LOS
-1 SVAR KVAR`,
+1 SVAR KVAR
+HUVUDRÄKNINGSKNEP
+FÖRSÖK NIVÅ {n} IGEN
+HUR VILL DU SVARA?
+SKRIVA FÖR HAND
+Som på ett prov. Långsammare, men riktig träning.
+SIFFERTANGENTER
+Snabbare. Bra om det är svårt att rita på skärmen.
+Du kan ändra det när som helst i pausmenyn.
+HOPPA ÖVER
+NU KÖR VI!
+KLART!
+Zombier väntar inte: svara snabbt. En fel siffra räknas som ett fel.
+Nu känner jag din handstil. Om jag tvekar visar jag 2 eller 3 alternativ att välja mellan.
+STEG {i} AV {n}
+SKRIV {n}
+Tryck på siffrorna i ordning, från vänster till höger. Knappen med röd ram är nästa.
+För negativa tal kommer − först. Det finns också . för decimaler och / för bråk.
+Skriv smått, mellan de två linjerna, siffra bredvid siffra, som i ditt räknehäfte.
+Medan du skriver ser du vad jag läser och hur säker jag är. Vid 99 % godkänner jag själv.
+BRA!
+JAG LÄSER: {r}
+SÄRA LITE PÅ SIFFRORNA
+JAG HAR LÄRT MIG DIN HANDSTIL`,
 uk:`ГРАТИ
 ПОЧАТИ СПОЧАТКУ
 ТВІЙ ПРОГРЕС
@@ -1449,7 +1951,7 @@ uk:`ГРАТИ
 ПОДІЛИТИСЯ
 ТРЕНУВАТИ: {t}
 МЕНЮ
-ЯК ЦЕ РОЗВ'ЯЗУВАЛОСЯ?
+ЧОМУ ПОМИЛИВСЯ? ДИВИСЬ РОЗВ’ЯЗОК
 ЯКЕ ЦЕ ЧИСЛО?
 ЦИФРА {n} З {m}
 НЕ ЗНАЄШ? ПОДИВИСЬ ПРИКЛАД
@@ -1462,7 +1964,30 @@ uk:`ГРАТИ
 СТРІЛА!;ДВІ СТРІЛИ;У ЯБЛУЧКО
 РІВЕНЬ {l} · {t} · ВІРНО {c} · ЗОМБІ {k} · РЕКОРД {r} · ТИСК {p}%
 2 ВІДПОВІДІ ПОСПІЛЬ, ЩОБ ВИРВАТИСЯ
-ЗАЛИШИЛАСЬ 1 ВІДПОВІДЬ`,
+ЗАЛИШИЛАСЬ 1 ВІДПОВІДЬ
+ПРИЙОМ УСНОГО ЛІЧЕННЯ
+ЩЕ РАЗ РІВЕНЬ {n}
+ЯК ТИ ХОЧЕШ ВІДПОВІДАТИ?
+ПИСАТИ ВІД РУКИ
+Як на контрольній. Повільніше, але це справжнє тренування.
+ЦИФРОВА КЛАВІАТУРА
+Швидше. Зручно, якщо важко малювати на екрані.
+Можна змінити будь-коли в меню паузи.
+ПРОПУСТИТИ
+ГРАЄМО!
+ГОТОВО!
+Зомбі не чекають: відповідай швидко. Неправильна цифра рахується як помилка.
+Я запам’ятав твій почерк. Якщо засумніваюся, покажу 2 або 3 варіанти на вибір.
+КРОК {i} З {n}
+НАПИШИ {n}
+Натискай цифри по черзі, зліва направо. Кнопка в червоній рамці — наступна.
+Для від’ємних − ставиться першим. Ще є . для десяткових і / для дробів.
+Пиши дрібно, між двома лініями, цифру поруч із цифрою, як у зошиті.
+Поки пишеш, видно, що я читаю і наскільки впевнений. При 99 % приймаю сам.
+ЧУДОВО!
+ЧИТАЮ: {r}
+ЗАЛИШ ПРОМІЖКИ МІЖ ЦИФРАМИ
+Я ВИВЧИВ ТВІЙ ПОЧЕРК`,
 cs:`HRÁT
 ZAČÍT ZNOVU
 TVŮJ POSTUP
@@ -1491,7 +2016,7 @@ ZPĚT NA LEVEL 1
 SDÍLET
 PROCVIČIT: {t}
 MENU
-JAK SE TO ŘEŠILO?
+PROČ ŠPATNĚ? PODÍVEJ SE NA ŘEŠENÍ
 JAKÉ JE TO ČÍSLO?
 ČÍSLICE {n} Z {m}
 NEVÍŠ? PODÍVEJ SE NA PŘÍKLAD
@@ -1504,7 +2029,30 @@ SNĚDLI TĚ;HAM!;KŘUP;KONEC;KONEC HRY
 ŠÍP!;DVA ŠÍPY;DO ČERNÉHO
 LEVEL {l} · {t} · {c} SPRÁVNĚ · {k} ZOMBÍ · REKORD {r} · TLAK {p}%
 2 ODPOVĚDI PO SOBĚ, ABYS SE UVOLNIL
-ZBÝVÁ 1 ODPOVĚĎ`,
+ZBÝVÁ 1 ODPOVĚĎ
+TRIK NA POČÍTÁNÍ Z HLAVY
+ZKUSIT ÚROVEŇ {n} ZNOVU
+JAK CHCEŠ ODPOVÍDAT?
+PSÁT RUKOU
+Jako v písemce. Pomalejší, ale opravdový trénink.
+ČÍSELNÁ KLÁVESNICE
+Rychlejší. Hodí se, když je kreslení na displeji těžké.
+Kdykoli to můžeš změnit v menu pauzy.
+PŘESKOČIT
+HRAJEME!
+HOTOVO!
+Zombíci nečekají: odpovídej rychle. Špatná číslice se počítá jako chyba.
+Už znám tvé písmo. Když budu váhat, ukážu ti 2 nebo 3 možnosti na výběr.
+KROK {i} Z {n}
+NAPIŠ {n}
+Ťukej číslice popořadě, zleva doprava. Tlačítko s červeným rámečkem je další.
+U záporných čísel jde − první. Je tu i . pro desetinná čísla a / pro zlomky.
+Piš malé, mezi dvě čáry, číslici vedle číslice, jako v sešitě.
+Při psaní uvidíš, co čtu a jak moc si jsem jistý. Při 99 % to přijmu sám.
+SKVĚLE!
+ČTU: {r}
+ODDĚL TROCHU ČÍSLICE
+NAUČIL JSEM SE TVÉ PÍSMO`,
 el:`ΠΑΙΞΕ
 ΞΕΚΙΝΑ ΞΑΝΑ
 Η ΠΡΟΟΔΟΣ ΣΟΥ
@@ -1533,7 +2081,7 @@ el:`ΠΑΙΞΕ
 ΚΟΙΝΟΠΟΙΗΣΗ
 ΕΞΑΣΚΗΣΗ {t}
 ΜΕΝΟΥ
-ΠΩΣ ΛΥΝΟΤΑΝ;
+ΓΙΑΤΙ ΕΧΑΣΑ; ΔΕΣ ΤΗ ΛΥΣΗ
 ΠΟΙΟΣ ΑΡΙΘΜΟΣ ΕΙΝΑΙ ΑΥΤΟΣ;
 ΨΗΦΙΟ {n} ΑΠΟ {m}
 ΔΕΝ ΞΕΡΕΙΣ; ΔΕΣ ΕΝΑ ΠΑΡΑΔΕΙΓΜΑ
@@ -1546,7 +2094,30 @@ el:`ΠΑΙΞΕ
 ΒΕΛΟΣ!;ΔΥΟ ΒΕΛΗ;ΣΤΟΧΟΣ
 ΕΠΙΠΕΔΟ {l} · {t} · {c} ΣΩΣΤΑ · {k} ΖΟΜΠΙ · ΡΕΚΟΡ {r} · ΠΙΕΣΗ {p}%
 2 ΣΥΝΕΧΟΜΕΝΕΣ ΑΠΑΝΤΗΣΕΙΣ ΓΙΑ ΝΑ ΞΕΦΥΓΕΙΣ
-ΑΠΕΜΕΙΝΕ 1 ΑΠΑΝΤΗΣΗ`,
+ΑΠΕΜΕΙΝΕ 1 ΑΠΑΝΤΗΣΗ
+ΚΟΛΠΟ ΝΟΕΡΩΝ ΠΡΑΞΕΩΝ
+ΞΑΝΑ ΤΟ ΕΠΙΠΕΔΟ {n}
+ΠΩΣ ΘΕΛΕΙΣ ΝΑ ΑΠΑΝΤΑΣ;
+ΓΡΑΦΗ ΜΕ ΤΟ ΧΕΡΙ
+Όπως στο διαγώνισμα. Πιο αργό, αλλά αληθινή εξάσκηση.
+ΑΡΙΘΜΗΤΙΚΟ ΠΛΗΚΤΡΟΛΟΓΙΟ
+Πιο γρήγορο. Ιδανικό αν δυσκολεύεσαι να ζωγραφίζεις στην οθόνη.
+Μπορείς να το αλλάξεις όποτε θέλεις από την παύση.
+ΠΑΡΑΛΕΙΨΗ
+ΠΑΜΕ!
+ΕΤΟΙΜΟ!
+Τα ζόμπι δεν περιμένουν: απάντα γρήγορα. Λάθος ψηφίο μετράει ως λάθος.
+Τώρα ξέρω τον γραφικό σου χαρακτήρα. Αν διστάσω, θα σου δείξω 2 ή 3 επιλογές.
+ΒΗΜΑ {i} ΑΠΟ {n}
+ΓΡΑΨΕ {n}
+Πάτα τα ψηφία με τη σειρά, από αριστερά προς τα δεξιά. Το κουμπί με κόκκινο περίγραμμα είναι το επόμενο.
+Στους αρνητικούς το − μπαίνει πρώτο. Υπάρχει και . για δεκαδικούς και / για κλάσματα.
+Γράψε μικρά, ανάμεσα στις δύο γραμμές, το ένα ψηφίο δίπλα στο άλλο, όπως στο τετράδιο.
+Καθώς γράφεις βλέπεις τι διαβάζω και πόσο σίγουρος είμαι. Στο 99 % το δέχομαι μόνος μου.
+ΜΠΡΑΒΟ!
+ΔΙΑΒΑΖΩ: {r}
+ΑΦΗΣΕ ΛΙΓΟ ΚΕΝΟ ΑΝΑΜΕΣΑ
+ΕΜΑΘΑ ΤΟΝ ΓΡΑΦΙΚΟ ΣΟΥ ΧΑΡΑΚΤΗΡΑ`,
 he:`שחק
 התחל מחדש
 ההתקדמות שלך
@@ -1575,7 +2146,7 @@ he:`שחק
 שתף
 תרגל {t}
 תפריט
-איך פותרים את זה?
+למה טעיתי? ראה איך פותרים
 איזה מספר זה?
 ספרה {n} מתוך {m}
 תקוע? ראה דוגמה
@@ -1588,7 +2159,30 @@ he:`שחק
 חץ!;שני חיצים;בול
 שלב {l} · {t} · {c} נכונות · {k} זומבים · שיא {r} · לחץ {p}%
 2 תשובות ברצף כדי להשתחרר
-נשארה תשובה אחת`,
+נשארה תשובה אחת
+טריק לחשבון בראש
+נסה שוב את שלב {n}
+איך תרצה לענות?
+כתב יד
+כמו במבחן. איטי יותר, אבל אימון אמיתי.
+מקלדת מספרים
+מהיר יותר. מתאים אם קשה לך לצייר על המסך.
+אפשר לשנות בכל רגע מתפריט ההשהיה.
+דלג
+בוא נשחק!
+מוכן!
+הזומבים לא מחכים: ענה מהר. ספרה שגויה נחשבת טעות.
+עכשיו אני מכיר את כתב היד שלך. אם אתלבט, אראה לך 2 או 3 אפשרויות לבחירה.
+שלב {i} מתוך {n}
+כתוב {n}
+הקש את הספרות לפי הסדר, משמאל לימין. הכפתור עם המסגרת האדומה הוא הבא.
+במספרים שליליים ה־ − בא ראשון. יש גם . לעשרוניים ו־ / לשברים.
+כתוב קטן, בין שני הקווים, ספרה ליד ספרה, כמו במחברת.
+בזמן הכתיבה תראה מה אני קורא וכמה אני בטוח. ב־99 % אני מקבל לבד.
+יפה!
+אני קורא: {r}
+הרחק קצת את הספרות
+למדתי את כתב היד שלך`,
 ro:`JOACĂ
 ÎNCEPE DE LA ZERO
 PROGRESUL TĂU
@@ -1617,7 +2211,7 @@ REZOLVĂ ÎNAINTE SĂ-L MÂNÂNCE
 DISTRIBUIE
 EXERSEAZĂ {t}
 MENIU
-CUM SE REZOLVA?
+DE CE AM GREȘIT? VEZI CUM SE REZOLVA
 CE NUMĂR ESTE?
 CIFRA {n} DIN {m}
 BLOCAT? VEZI UN EXEMPLU
@@ -1630,7 +2224,30 @@ AI FOST MÂNCAT;NAM!;CRONC;GATA;JOC TERMINAT
 SĂGEATĂ!;DOUĂ SĂGEȚI;ÎN ȚINTĂ
 NIVEL {l} · {t} · {c} CORECTE · {k} ZOMBI · RECORD {r} · PRESIUNE {p}%
 2 RĂSPUNSURI LA RÂND CA SĂ SCAPI
-A MAI RĂMAS 1 RĂSPUNS`,
+A MAI RĂMAS 1 RĂSPUNS
+TRUC DE CALCUL MINTAL
+REIA NIVELUL {n}
+CUM VREI SĂ RĂSPUNZI?
+SCRIS DE MÂNĂ
+Ca la test. Mai încet, dar e antrenament adevărat.
+TASTATURĂ NUMERICĂ
+Mai rapid. Ideal dacă îți e greu să desenezi pe ecran.
+Poți schimba oricând din meniul de pauză.
+SARI PESTE
+HAI SĂ JUCĂM!
+GATA!
+Zombii nu așteaptă: răspunde repede. O cifră greșită contează ca greșeală.
+Acum îți cunosc scrisul. Dacă ezit, îți arăt 2 sau 3 variante din care să alegi.
+PASUL {i} DIN {n}
+SCRIE {n}
+Atinge cifrele în ordine, de la stânga la dreapta. Butonul cu chenar roșu e următorul.
+La numerele negative − vine primul. Mai ai . pentru zecimale și / pentru fracții.
+Scrie mic, între cele două linii, cifră lângă cifră, ca în caiet.
+În timp ce scrii vezi ce citesc și cât de sigur sunt. La 99 % accept singur.
+BRAVO!
+CITESC: {r}
+DEPĂRTEAZĂ PUȚIN CIFRELE
+ȚI-AM ÎNVĂȚAT SCRISUL`,
 hu:`JÁTÉK
 ÚJRAKEZDÉS
 HALADÁSOD
@@ -1659,7 +2276,7 @@ VISSZA AZ 1. SZINTRE
 MEGOSZTÁS
 GYAKORLÁS: {t}
 MENÜ
-HOGYAN LEHETETT MEGOLDANI?
+MIÉRT RONTOTTAM EL? NÉZD MEG A MEGOLDÁST
 MELYIK SZÁM EZ?
 {n}. SZÁMJEGY / {m}
 ELAKADTÁL? NÉZZ EGY PÉLDÁT
@@ -1672,7 +2289,30 @@ MEGETTEK;HAMM!;ROPP;VÉGE;JÁTÉK VÉGE
 NYÍL!;KÉT NYÍL;TÍZES
 {l}. SZINT · {t} · {c} HELYES · {k} ZOMBI · REKORD {r} · NYOMÁS {p}%
 2 EGYMÁS UTÁNI VÁLASZ A SZABADULÁSHOZ
-MÉG 1 VÁLASZ`,
+MÉG 1 VÁLASZ
+FEJSZÁMOLÁSI TRÜKK
+{n}. SZINT ÚJRA
+HOGYAN SZERETNÉL VÁLASZOLNI?
+KÉZÍRÁS
+Mint a dolgozatban. Lassabb, de igazi gyakorlás.
+SZÁMBILLENTYŰZET
+Gyorsabb. Jó, ha nehéz a képernyőre rajzolni.
+Bármikor átállíthatod a szünet menüben.
+KIHAGYÁS
+JÁTSSZUNK!
+KÉSZ!
+A zombik nem várnak: válaszolj gyorsan. A rossz számjegy hibának számít.
+Már ismerem a kézírásod. Ha bizonytalan leszek, 2 vagy 3 lehetőséget mutatok.
+{i}. LÉPÉS / {n}
+ÍRD LE: {n}
+Nyomd meg a számjegyeket sorban, balról jobbra. A pirossal keretezett gomb a következő.
+Negatív számnál a − jön először. Van . a tizedesekhez és / a törtekhez is.
+Írj kicsit, a két vonal közé, számjegyet számjegy mellé, mint a füzetben.
+Írás közben látod, mit olvasok és mennyire vagyok biztos. 99 %-nál magamtól elfogadom.
+SZUPER!
+ENNEK OLVASOM: {r}
+HAGYJ KIS HELYET A SZÁMJEGYEK KÖZÖTT
+MEGTANULTAM A KÉZÍRÁSOD`,
 da:`SPIL
 START FORFRA
 DIN FREMGANG
@@ -1701,7 +2341,7 @@ TILBAGE TIL NIVEAU 1
 DEL
 ØV: {t}
 MENU
-HVORDAN BLEV DET LØST?
+HVORFOR FORKERT? SE LØSNINGEN
 HVILKET TAL ER DET?
 CIFFER {n} AF {m}
 FAST? SE ET EKSEMPEL
@@ -1714,10 +2354,33 @@ DU BLEV SPIST;NAM!;KNAS;SLUT;GAME OVER
 PIL!;TO PILE;PLUDSELIG MIDT I
 NIVEAU {l} · {t} · {c} RIGTIGE · {k} ZOMBIER · REKORD {r} · PRES {p}%
 2 SVAR I TRÆK FOR AT KOMME LØS
-1 SVAR TILBAGE`
+1 SVAR TILBAGE
+HOVEDREGNINGSTRICK
+PRØV NIVEAU {n} IGEN
+HVORDAN VIL DU SVARE?
+SKRIV I HÅNDEN
+Som til en prøve. Langsommere, men ægte træning.
+TALTASTATUR
+Hurtigere. Godt, hvis det er svært at tegne på skærmen.
+Du kan altid skifte i pausemenuen.
+SPRING OVER
+LAD OS SPILLE!
+KLAR!
+Zombier venter ikke: svar hurtigt. Et forkert ciffer tæller som en fejl.
+Nu kender jeg din håndskrift. Hvis jeg tøver, viser jeg dig 2 eller 3 muligheder.
+TRIN {i} AF {n}
+SKRIV {n}
+Tryk på cifrene i rækkefølge, fra venstre mod højre. Knappen med rød ramme er den næste.
+Ved negative tal kommer − først. Der er også . til decimaltal og / til brøker.
+Skriv småt, mellem de to linjer, ciffer ved siden af ciffer, som i dit hæfte.
+Mens du skriver, ser du hvad jeg læser, og hvor sikker jeg er. Ved 99 % godkender jeg selv.
+GODT!
+JEG LÆSER: {r}
+GIV CIFRENE LIDT MERE PLADS
+JEG HAR LÆRT DIN HÅNDSKRIFT`
 };
 const LTXT={};for(const k of Object.keys(LRAW))LTXT[k]=LRAW[k].split('\n');
-const LNOUP=new Set(['lead','hint1','hint2']);
+const LNOUP=new Set(['lead','hint1','hint2','inpDrawSub','inpKbSub','inpNote','itKb1','itKb2','itDraw1','itDraw2','itKbDone','itDrawDone']);
 let LANG='es-419';
 try{const sv=localStorage.getItem('rzLang');if(sv&&LTXT[sv])LANG=sv;else{const n=(navigator.language||'es').toLowerCase();
   LANG=n.startsWith('es')?(/^es-(es)$/.test(n)?'es-ES':'es-419'):(n.startsWith('zh')?'zh':(LTXT[n.slice(0,2)]?n.slice(0,2):'en'))}}catch(e){}
@@ -1730,7 +2393,7 @@ function L10(k,v){
 const L10list=k=>L10(k).split(';').map(x=>x.trim()).filter(Boolean);
 
 // textos de contenido (lecciones, explicaciones, leyes, animaciones): CES = español; CT[idioma] = traducción
-const CES={"cm1":"Un solo − da vuelta el sentido una vez: los saltos van hacia la izquierda del 0.","cm2":"Cada − da vuelta el sentido: dos vueltas se cancelan, y los saltos terminan hacia la derecha del 0.","cm3":"Truco: signos iguales dan +, signos distintos dan −.","c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 16 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS","cnoprob":"Te atraparon antes del primer problema.","cera":"era {0}","cxera":"✕ ERA {0}","cescribo":"ESCRIBO {0}","a_first":"PRIMER PASO","ad_first":"Acierta tu primer problema","a_st5":"EN RACHA","ad_st5":"5 aciertos seguidos","a_st10":"IMPARABLE","ad_st10":"10 aciertos seguidos","a_st25":"MENTE DE ACERO","ad_st25":"25 aciertos seguidos","a_k50":"CAZAZOMBIS","ad_k50":"Elimina 50 zombis","a_k500":"APOCALIPSIS AL REVÉS","ad_k500":"Elimina 500 zombis","a_boss":"CAZAJEFES","ad_boss":"Vence a un jefe","a_prof":"MATEMÁTICO","ad_prof":"Vence al profesor de matemáticas","a_esc":"ESCAPISTA","ad_esc":"Suéltate de un zombi que te atrapó","a_web":"SIN TELARAÑAS","ad_web":"Escapa de la telaraña de una araña","a_creep":"DESACTIVADOR","ad_creep":"Elimina un creeper antes de que explote","a_ender":"NO ME MIRES","ad_ender":"Elimina a un enderman","a_pow":"ARCOÍRIS","ad_pow":"Usa un poder","a_pow7":"LOS SIETE COLORES","ad_pow7":"Usa los 7 poderes","a_fast":"RELÁMPAGO","ad_fast":"Acierta en menos de 2 segundos","a_perf":"SIN UN RASGUÑO","ad_perf":"Pasa un nivel sin fallar","a_lv8":"MEDIO CAMINO","ad_lv8":"Llega al nivel 8","a_days7":"CONSTANCIA","ad_days7":"Juega 7 días seguidos","a_hole":"HORIZONTE DE SUCESOS","ad_hole":"Agranda el agujero negro del menú al máximo","a_egg":"MIRA LAS ESTRELLAS","ad_egg":"Descubre la constelación de un científico","n_ach":"LOGROS","n_achGot":"¡LOGRO DESBLOQUEADO!","n_achN":"{0} DE {1}","n_mat":"MATRIZ","n_cal":"CALENDARIO","n_a11y":"ACCESIBLE","n_a11yOn":"Modo accesible activado. El juego se narra con tu lector de pantalla y va más lento. Responde con el teclado numérico de abajo.","n_a11yOff":"Modo accesible desactivado.","n_a11yBtn":"Activar modo para lector de pantalla","n_sayProb":"{0}. Responde.","n_ok":"¡Correcto!","n_bad":"Fallaste. Era {0}.","n_grab":"¡Te atrapó {0}! Responde rápido para soltarte.","n_level":"Nivel {0}: {1}.","n_near":"{0} cerca, a tu {1}.","n_left":"izquierda","n_right":"derecha","n_kinds":"zombi;esqueleto;araña;creeper;enderman;jefe;profesor de matemáticas","n_minus":"menos","n_dot":"punto","n_hearts":"Te queda {0} corazón.","n_skip":"SALTAR ▸","n_intro":"VER INTRO","n_powGot":"¡PODER {0}!","n_powUse":"Toca el botón de color o la barra espaciadora para usarlo.","n_powBtn":"Usar poder: {0}","n_shield":"¡ESCUDO!","n_dodge":"¡SE TELETRANSPORTÓ!","n_frozen":"¡CONGELADO!","p_r":"ROJO · FURIA","pa_r":"Meteorito gigante por 12 s","pd_r":"Los zombis corren más rápido","p_o":"NARANJA · ESCUDO","pa_o":"Bloquea el próximo golpe","pd_o":"Problemas más difíciles hasta que se rompa","p_y":"AMARILLO · RAYO","pa_y":"Fulmina a todos los zombis","pd_y":"Llegan el doble durante 10 s","p_g":"VERDE · PISTA","pa_g":"Ves la primera cifra por 20 s","pd_g":"Te cuesta más soltarte","p_b":"AZUL · HIELO","pa_b":"Congela a los enemigos 8 s","pd_b":"Congelados, el meteorito no los rompe","p_i":"AÑIL · CÁMARA LENTA","pa_i":"Los enemigos van a media velocidad 12 s","pd_i":"Necesitas un acierto más en el nivel","p_v":"VIOLETA · AGUJERO NEGRO","pa_v":"Se traga a los enemigos cercanos","pd_v":"El espacio-tiempo se deforma 10 s","n_spider":"<b>ARAÑA</b> · lanza telaraña: te atrapa y tienes que resolver un problema para salir.","n_creeper":"<b>CREEPER</b> · se acerca y explota: ¡aléjate saltando o elimínalo antes!","n_ender":"<b>ENDERMAN</b> · no te persigue: aparece de repente donde menos debe.","n_webbed":"¡ATRAPADA EN LA TELARAÑA!","n_webSub":"RESUELVE PARA SALIR","n_fuse":"¡Un creeper va a explotar a tu {0}!","n_boom":"¡BUM!","n_boomT":"¡BUM! TE EXPLOTÓ UN CREEPER","n_prof":"EL PROFESOR DE MATEMÁTICAS","n_laugh":"¡JA, JA, JA!","n_profT":"¡SAQUEN UNA HOJA: EXAMEN SORPRESA!;ESO NO ENTRA… ¡EN EL EXAMEN SÍ!;CERO. OTRA VEZ CERO;¿Y EL PROCEDIMIENTO?;LA TAREA ERA PARA AYER;NADIE SALE HASTA QUE RESUELVA;REPROBADA, MANZANITA","i1":"Un día, el mundo sufrió una explosión atómica.","i2":"Detrás de todo estaba el villano: el profesor de matemáticas… y su ejército de zombis.","i3":"Desde la estación espacial enviaron a la Tierra la última esperanza…","i4":"…una manzana. La misma que le cayó a Newton. Vence al profesor.","e1":"GRACIAS POR JUGAR","e2":"AHORA ERES MATEMÁTICO","e3":"{0} aciertos · {1} zombis · {2} logros","n_to":"elevado a","n_eggK":"EL PROFESOR TE RETA","n_eggPh":"Tu respuesta","n_eggGo":"RESPONDER","n_eggNew":"OTRO PROBLEMA","n_eggOk":"¡CORRECTO! Ya estás listo para el profesor.","n_eggBad":"Incorrecto. Era {0}.","n_eEuc":"EUCLIDES","n_eCog":"pienso, luego existo","n_eGcd":"mcd(48, 18) = 6","n_eggHint":"DIBUJA AQUÍ TU RESPUESTA","a_st50":"LEYENDA","ad_st50":"50 aciertos seguidos","a_k100":"CIEN CABEZAS","ad_k100":"Elimina 100 zombis","a_lv4":"CALENTANDO","ad_lv4":"Llega al nivel 4","a_lv12":"CASI CÁLCULO","ad_lv12":"Llega al nivel 12","a_lv16":"CARA A CARA","ad_lv16":"Llega al nivel 16, el del profesor","a_inf":"MÁS ALLÁ DEL INFINITO","ad_inf":"Juega el modo ∞","a_days3":"HÁBITO","ad_days3":"Juega 3 días seguidos","a_days30":"UN MES DE MATES","ad_days30":"Juega 30 días seguidos","a_ok100":"CENTENARIO","ad_ok100":"Suma 100 aciertos en total","a_ok1000":"MIL NEURONAS","ad_ok1000":"Suma 1000 aciertos en total","a_die10":"TERCO","ad_die10":"Muere 10 veces y sigue jugando","a_die50":"INMORTAL (CASI)","ad_die50":"Muere 50 veces","a_night":"BÚHO MATEMÁTICO","ad_night":"Acierta entre la medianoche y las 5 a. m.","a_lang":"POLÍGLOTA","ad_lang":"Cambia el idioma del juego","a_theme":"DÍA Y NOCHE","ad_theme":"Cambia el tema","a_apple":"OTRA MANZANA","ad_apple":"Cambia el color de la manzana","a_tut":"APRENDIZ","ad_tut":"Mira un ejemplo resuelto","a_poo":"NO TOQUES ESO","ad_poo":"Pícale a la caca del título","a_share":"PRESUMIDO","ad_share":"Comparte tu resultado","a_neg":"BAJO CERO","ad_neg":"Acierta una respuesta negativa","tip_k":"TU AVANCE","tip_weak":"Tu tema más flojo es {0}: {1} % de aciertos. Practícalo antes de que el jefe lo note.","tip_best":"Tu récord es el nivel {0}. Lo que sigue: {1}.","tip_streak":"Llevas {0} días seguidos jugando. No rompas la racha.","tip_nostreak":"Juega hoy y empieza una racha de días.","tip_ach":"Tienes {0} de {1} logros. Siguiente reto: {2}.","tip_pres":"La presión va en {0} %: cada derrota pone a los zombis más rápidos.","tip_kills":"Llevas {0} zombis eliminados. Ellos sí llevan la cuenta.","tip_pow":"Cada {0} aciertos seguidos ganas un poder del arcoíris.","tip_draw":"Dibuja los números grandes y claros: la manzana te entiende mejor.","n_inf":"MODO ∞","n_aClear":"Borrar lo dibujado","n_aPause":"Pausa y ajustes","n_aPows":"Poderes","n_aKp":"Teclado numérico","n_again":"✕ OTRA VEZ","n_skn":"HUESITOS;CALAVERA;FÉMUR;TIBIA;COSTILLA","m_epic":"ÉPICO","m_heist":"ATRACO","m_war":"BÉLICO","m_regueton":"REGUETÓN","m_perc":"PERCUSIÓN","m_sym40":"MOZART · SINFONÍA N.º 40","m_turca":"MOZART · RONDO ALLA TURCA","m_sym5":"BEETHOVEN · SINFONÍA N.º 5","m_moon3":"BEETHOVEN · CLARO DE LUNA","m_nacht":"MOZART · PEQUEÑA SERENATA NOCTURNA","m_elise":"BEETHOVEN · PARA ELISA","m_ode":"BEETHOVEN · HIMNO DE LA ALEGRÍA","m_canon":"PACHELBEL · CANON EN RE","m_mountain":"GRIEG · EN LA GRUTA DEL REY DE LA MONTAÑA","m_toccata":"BACH · TOCATA Y FUGA EN RE MENOR","n_apple":"MANZANA DE NEWTON","in1":"Treinta años enseñando matemáticas… y nadie me pone atención.","in2":"¿No quieren aprender? Muy bien. ¡LOS CONVERTIRÉ EN ZOMBIS!","in3":"Y lo hizo. Una bomba de fórmulas. Nadie entendió nada, como siempre.","in4":"Cerebrooo… ¿cuánto es 7 × 8? ¡NO ME DIGAS, NO QUIERO SABER!","in5":"Pero en una estación espacial guardaban la última esperanza: la manzana que le cayó a Newton.","in6":"¿Zombis que odian las matemáticas? Tranquilos. Yo sé sumar.","in7":"¡¿QUIÉN CALCULÓ ESTE ÁNGULO DE ENTRADA?!","in8":"¿Una fruta? ¡JA! Saca una hoja, manzanita: examen sorpresa.","in0":"¿Un 2? ¿Un 1? ¿UN CERO? ¡Y ESTE ES EL DIBUJO DE UN GATO!"};
+const CES={"cm1":"Un solo − da vuelta el sentido una vez: los saltos van hacia la izquierda del 0.","cm2":"Cada − da vuelta el sentido: dos vueltas se cancelan, y los saltos terminan hacia la derecha del 0.","cm3":"Truco: signos iguales dan +, signos distintos dan −.","c9058f1":"empieza en {0} y avanza {1} lugares a la derecha","c5252f6":"{0} es casi {1}: {2} + {3} = {4}; me pasé {5}, así que resto {6}: {7}","cae18a5":"de izquierda a derecha: {0} + {1} = {2} y {3} + {4} = {5}; junta {6} + {7}","c433450":"empieza en {0} y retrocede {1} lugares","c29894f":"{0} es casi {1}: {2} − {3} = {4}; quité {5} de más, lo devuelvo: {6} + {7}","ca45d2e":"baja a la decena: {0} − {1} = {2}; faltan {3} por quitar: {4} − {5}","c270ee2":"quita {0} de las unidades: {1} − {2} = {3}, y quedan {4} adelante","c949734":"; luego las unidades: {0} − {1}","c2c0266":"quita primero las decenas: {0} − {1} = {2}{3}","caa225e":"{0} × {1} es sumar {2} {3} veces: {4}","c50240f":"piensa en monedas de 25: {0} monedas valen {1}","ce0c89b":"{0} es casi {1}: {2} × {3} = {4}; me pasé {5} × {6} = {7}; resto: {8} − {9}","c29e85e":"descompón de izquierda a derecha: {0} × {1} = {2} y {3} × {4} = {5}; junta: {6} + {7}","ca10c1a":"{0} es casi 10: {1} × 10 = {2}, menos {3} × {4} = {5}: {6} − {7}","caa0dce":"parte {0} en 5 + {1}: {2} × 5 = {3} y {4} × {5} = {6}; junta {7} + {8}","c9fa5ce":"parte {0} en {1} + {2}, los dos se dividen fácil entre {3}: {4} + {5} = {6}","cef6598":"La manzana está en x = {0}: x + {1} = {2} + {3}.","c7cb4af":"Resultado: {0}.","c7a6673":"¿Cuántas veces cabe {0} en {1}? {2} × {3} = {4}.","cafd293":"Dividir es repartir: ¿cuántas veces cabe {0} en {1}?","c424b15":"Busca la multiplicación que lo deshace: {0} × {1} = {2}.","cfe1c21":"Bajas {0} hasta el 0 y te quedan {1} lugares más hacia la izquierda.","caab7b0":"Menos por menos da más: (−) × (−) = (+).","c4d0c03":"Negativo por positivo da negativo.","c4ec704":"{0} × {1} = {2}, con signo −.","cfb25af":"Restar un negativo es sumar: {0} − (−{1}) = {2} + {3}.","c8dbf75":"Empiezas en −{0} y avanzas {1} a la derecha.","c52368d":"Cruzas el 0 y sigues {0} más.","cc4aeb":"Te quedas antes del 0.","cb71c4c":"Desde −{0}, restar {1} te lleva aún más a la izquierda.","c4b3f20":"Escríbelo con punto decimal: {0}.","cbeed22":"\"{0}/{1} de {2}\": divide {3} en {4} partes iguales → {5} cada una.","cccc53f":"Toma {0} partes: {1} × {2} = {3}.","c497003":"Mismo denominador: suma solo arriba → {0}/{1}.","cffa3c4":"Denominador común: {0}. {1}/{2} = {3}/{4} y {5}/{6} = {7}/{8}.","c29c04a":"Suma: {0}/{1}.","c831255":"En decimal: {0}.","c2455df":"Raíz cúbica: ¿qué número multiplicado 3 veces da {0}?","c9be434":"2^{0} es multiplicar 2 por sí mismo {1} veces.","cc0b0ef":"¿Qué número por sí mismo da {0}?","c518452":"sin = cateto opuesto / hipotenusa (altura en el círculo unitario)","c95b38f":"cos = cateto adyacente / hipotenusa (ancho en el círculo unitario)","c21bad2":"tan = sin / cos (pendiente)","c647749":"catetos {0} y {1}","cc162ed":"Pitágoras: h² = {0}² + {1}² = {2} + {3} = {4}.","c98b682":"sin θ = opuesto / hipotenusa → opuesto = hip × sin θ.","c72a345":"Sustituye x por {0}: f({1}) = {2}·({3}){4}.","c426d0f":"Despeja: pasa el {0} restando → {1}x = {2}{3} = {4}.","cb1f9bc":"Divide entre {0}: x = {1} ÷ {2} = {3}.","c7f73a0":"Sustituye x = {0}: ({1})² {2}.","c604d22":"  ⇒ raíz mayor = ?","cb408e":"Busca dos números que sumen {0} y multipliquen {1}: {2} y {3}.","cc8b664":"La mayor: {0}.","c2649e0":"vértice x","c3d8766":"El vértice de ax² + bx + c está en x = −b / 2a.","cf7b747":"Busca el número que multiplicado 3 veces da {0}.","c69c26d":"Sustituye: ({0})·({1})·({2}).","cbc52ca":"Primera fila de A por v: {0}·{1} + {2}·{3}.","c3752b6":"Fila 1 de A por columna 1 de B: {0}·{1} + {2}·{3}.","c66c05f":"Una recta no tiene huecos: el límite es sustituir x = {0}.","c1d1a39":"Si sustituyes da 0/0: factoriza x² − {0} = (x − {1})(x + {2}).","c8d7c6a":"Se cancela (x − {0}) y queda x + {1}.","ca067fb":"Con x = {0}: {1}.","c8ace65":"Cerca de 0, sin x ≈ x.","ca47acc":"Así que sin x / x → 1.","cda538e":"Divide todo entre x: {0} + {1}/x.","cf961f7":"Cuando x → ∞, {0}/x → 0. Queda {1}.","cf5e3cd":"La derivada mide la pendiente. En una recta mx + b la pendiente es m en todos lados.","ccae856":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹. Entonces f'(x) = {0}x{1}.","ccaef4c":"Integrar una constante es el área de un rectángulo.","c807ec4":"base {0} × altura {1} = {2}.","ce3ed23":"Una primitiva de 2x es x².","ca3a155":"Una primitiva de 2x es x² (porque (x²)' = 2x).","ca7c65a":"Evalúa: {0}² − 0² = {1}.","c601afe":"Una primitiva de 3x² es x³.","cceb7ca":"π es la razón entre la circunferencia y el diámetro.","c760edd":"e es la base del crecimiento continuo: (1 + 1/n)ⁿ cuando n → ∞.","c563224":"Todo número (no cero) elevado a 0 vale 1.","c20c27e":"ln pregunta: ¿a qué potencia elevo e para obtener 1?","cdf933a":"ln y e^x SE DESHACEN","c8aa579":"ln y e se deshacen: ln(eⁿ) = n.","cb75d07":"círculo de radio {0}","cdff86e":"Área = πr².","ced2548":"Identidad de Euler: e^(iπ) + 1 = 0.","ce5c37f":"Así que e^(iπ) = −1.","c4096cc":"redondea a 2 decimales","c87d345":"SUMA","c5ef076":"Suma primero las unidades; si pasan de 9, escribe la última cifra y lleva 1 a las decenas.","ccdba06":"RESTA","c7902a9":"Si la cifra de arriba es menor, pide prestada 1 decena a la de al lado.","ce870e6":"MULTIPLICACIÓN","cf5b727":"Repasa las tablas del 6 al 9 y descompón: 14 × 3 = 10×3 + 4×3.","cb927b1":"DIVISIÓN","cf9ad7f":"Toda división es una multiplicación al revés: 56 ÷ 7 → ¿7 × qué = 56?","c98ec2a":"NÚMEROS ENTEROS","cc16f91":"Ubícate en la recta: sumar va a la derecha, restar a la izquierda; − × − = +.","c447254":"RAÍCES Y POTENCIAS","c6cd6a2":"Memoriza los cuadrados del 1 al 15 y las potencias de 2 hasta 256.","ceef4d2":"TRIGONOMETRÍA","cd3063e":"Aprende la tabla de 0°, 30°, 45°, 60°, 90° y el triángulo 3-4-5.","ca003ec":"Para evaluar, sustituye x con paréntesis; para despejar, haz lo mismo a ambos lados.","c25a7bb":"Factoriza buscando dos números que sumen b y multipliquen c; el vértice está en −b/2a.","c9211fd":"Cuida los signos: (−2)³ = −8. Los cubos del 1 al 5: 1, 8, 27, 64, 125.","c3d797":"det = a·d − b·c; multiplicar es fila por columna, término a término.","c6d3cf6":"LÍMITES","c67226e":"Primero sustituye; si sale 0/0, factoriza y simplifica; en ∞ divide entre la mayor potencia.","c8d4952":"Regla de la potencia: (xⁿ)' = n·xⁿ⁻¹; la derivada de una constante es 0.","c7b544b":"Busca la primitiva (la función cuya derivada es la de adentro) y resta F(b) − F(a).","c2dd3c0":"NIVEL 1 · a + b","c5540d3":"La recta <b>son los números</b> y la manzana siempre está parada sobre uno.","cdfac2e":"Si está en el 2 y sale <b>2 + 3</b>, dibujas <b>5</b> y la manzana salta al 5. Sumar es avanzar a la derecha.","cefca91":"Dibuja el resultado <b>en cualquier parte de la pantalla</b>. Aciertas: cae como meteorito y revienta zombis. Fallas: aterriza en el número equivocado.","c275f67":"estás en 1\n1 + 1 = 2   → saltas al 2\n2 + 3 = 5   → saltas al 5","c413344":"NIVEL 2 · a − b","cc7f548":"Restar es <b>retroceder</b> hacia la izquierda.","c82079":"Si la cifra de arriba no alcanza, <b>pide 1 decena prestada</b>.","c434a26":"52 − 17\n2 no alcanza 7 → 12 − 7 = 5\n4 − 1 = 3   → 35","c68159e":"NIVEL 3 · a × b","c769105":"Multiplicar es <b>sumar el mismo número</b> varias veces: los saltos se hacen enormes.","cd90dc4":"Para números grandes, <b>descompón</b> en decenas y unidades.","c955095":"NIVEL 4 · JEFE · a ÷ b","c2a4cca":"Dividir es <b>repartir</b>: ¿cuántas veces cabe un número en otro?","ce3c3a1":"El <b>jefe</b> pierde vida con cada acierto. Si te atrapa necesitas <b>2 respuestas</b> para soltarte.","cf8f149":"NIVEL 5 · ℤ","c1cd8bb":"A la izquierda del 0 viven los <b>negativos</b>. Dibuja el <b>−</b> primero, como una raya horizontal.","c2b1f79":"Restar un negativo es sumar; <b>− × − = +</b>.","cf86065":"NIVEL 6 · a / b","c8084c2":"Una fracción es una <b>división pendiente</b>: 3/4 = 3 ÷ 4 = 0.75.","c6242ad":"Responde en decimal: dibuja el <b>punto</b> como un toque pequeño.","c6d84d0":"NIVEL 7 · √x · xⁿ","c148a53":"RAÍCES","c9a1796":"La <b>potencia</b> repite una multiplicación; la <b>raíz</b> la deshace.","cb1feb5":"√49 pregunta: ¿qué número por sí mismo da 49?","c5fc797":"NIVEL 8 · sin θ","c1586c1":"En un triángulo rectángulo: <b>sin</b> = opuesto / hipotenusa, <b>cos</b> = adyacente / hipotenusa.","cddc067":"Valores clave: sin 30° = 0.5, cos 60° = 0.5, sin 90° = 1, tan 45° = 1.","c919dde":"8 · sin 30° = 8 × 0.5 = 4\ncatetos 3 y 4 → hipotenusa 5","c1271a1":"NIVEL 9 · f(x) = mx + b","c93744f":"Una función es una <b>máquina</b>: entra x, sale f(x).","cc33931":"Para despejar, haz lo mismo a <b>ambos lados</b> del =.","c5f0b57":"NIVEL 10 · ax² + bx + c","c2d1bb4":"Una <b>parábola</b>. Sus raíces son donde cruza el 0.","c94a3a9":"Factoriza: dos números que <b>sumen</b> b y <b>multipliquen</b> c.","c768406":"x² − 5x + 6 = 0\n(x − 2)(x − 3) = 0 → raíz mayor 3","c37dc93":"NIVEL 11 · x³","cc3756c":"El cubo <b>conserva el signo</b>: (−2)³ = −8.","c655380":"Si es un producto de factores, evalúa cada uno y multiplica.","c2855ef":"NIVEL 12 · JEFE · det A","c7e1644":"Una matriz es una <b>tabla de números</b>.","c472ba2":"det [a b; c d] = <b>a·d − b·c</b>. Multiplicar es <b>fila por columna</b>.","c7141f7":"NIVEL 13 · lím x→a","cf2088e":"El límite es <b>a dónde se acerca</b> f(x) cuando x se acerca a a.","ceec11f":"Si sustituir da 0/0, <b>factoriza</b> y cancela.","cf1f24a":"lím x→3 (x² − 9)/(x − 3)\n= lím (x + 3) = 6","c7ef189":"La derivada es la <b>pendiente</b>: qué tan rápido cambia f.","c94da58":"Regla de la potencia: <b>(xⁿ)' = n·xⁿ⁻¹</b>.","c445546":"NIVEL 15 · ∫ f dx","c27d218":"La integral es el <b>área</b> bajo la curva.","c6b09ee":"Busca la <b>primitiva</b> F y calcula F(b) − F(a).","cc96ef1":"NIVEL 16 · JEFE FINAL · e^iπ + 1 = 0","c1e6b54":"Los dos números más famosos: <b>π ≈ 3.14</b> y <b>e ≈ 2.72</b>.","c166d2f":"Responde con <b>2 decimales</b>. El jefe final aguanta 5 golpes.","cb31149":"NAVAJA DE OCCAM","c7a0720":"La explicación más simple suele ser la correcta. Era {0} y escribiste {1}: lo complicaste de más.","c2ba1ca":"lo simple suele ser lo correcto","cdca23f":"LEY DE HOFSTADTER","c33a471":"Todo toma más tiempo del que esperas, incluso contando con esta ley: tardaste {0} s de media por respuesta.","c81b8d7":"siempre tardas más de lo que crees","cb283eb":"NAVAJA DE HANLON","cfeaa15":"No culpes a la maldad del zombi de lo que explica un simple signo: escribiste {0} y era {1}.","c17579":"fue el signo, no el zombi","c78d5fd":"LEY DE PARKINSON","c3bc088":"El trabajo se expande hasta llenar el tiempo disponible: tenías {0} s para soltarte y los usaste todos.","c5cb71d":"usaste todo el tiempo","c220719":"PRINCIPIO DE PETER","ce6d76b":"Subiste hasta tu nivel de incompetencia: {0}. Justo ahí es donde más se aprende.","c1efd06":"llegaste a tu nivel de incompetencia","c60c4a9":"LEY DE HICK","c365daf":"Más opciones, más tiempo para decidir: {0} zombis a la vez te paralizaron.","c60ecdf":"demasiadas opciones a la vez","cf3fe3":"LEY DE GOODHART","cd3cb0d":"Cuando una medida se vuelve objetivo, deja de medir: respondiste rápido para saltar, no para acertar ({0} errores en menos de 2 s).","ca62aed":"velocidad no es puntería","c271748":"Racha de {0} aciertos… y la confianza llegó antes que el dominio.","c39a0b2":"la confianza llegó antes que el dominio","c3267d1":"PRINCIPIO DE PARETO","cd506c":"El 80 % de tus fallos sale del 20 % de los temas: {0} concentra el {1} % de tus errores.","c45419b":"LA CERCA DE CHESTERTON","cc0b9f2":"No quites una cerca sin saber por qué está ahí: el orden de las cifras importaba ({0} no es {1}).","cfa42ad":"el orden de las cifras importa","c8eca87":"LEY DE BROOKS","cfb2686":"un jefe","c67fa50":"una horda","cea66d2":"Añadir más gente a un proyecto atrasado lo atrasa más: más intentos apurados no le ganan a {0}.","c9c90a1":"apurarse más no ayuda","cd944be":"JEFE FINAL","c2975f2":"JEFE","ce6cf13":"NIVEL ","cc3d5fc":"{0} ACIERTOS PARA VENCERLO","c4bd829":"{0} ACIERTOS PARA PASAR","cb76c46":" · PRESIÓN {0}%","c9aa89e":"<i class=\"h{0}\" title=\"{1} aciertos\"></i>","cb49f85":"<div class=\"hm\">{0}</div><div class=\"mini\">{1} ACIERTOS · {2} DÍAS ACTIVOS · RACHA {3} DÍA{4}</div><div class=\"hm2\">{5}</div><div class=\"mini\">DOMINIO DE LOS 17 TEMAS</div>","c82f821":"<b>ESQUELETO ARQUERO</b> · dispara flechas: con 2 pierdes el nivel. Responde y la manzana salta: ¡así las esquivas!","c64e959":"¡FLECHAZO! TE QUEDA 1","c2ead57":"¡FLECHADA!","c69ca5d":"EL JEFE","cf7b4e2":"<b>② F = m·a</b> · un salto de {0} pide {1} N. Más lejos, más fuerza.","c98a435":"<b>③ Acción y reacción</b> · la manzana golpea el suelo con fuerza F y el suelo la frena con −F.","c699c7a":"−1 · QUEDAN {0}","cc07d5f":"¡JEFE VENCIDO!","c2755ad":"¡TE SALVÓ EL METEORITO!","c4958c1":"¡UNA MÁS!","cec1bcc":"¡ESCAPASTE!","c4676a0":"¡LIBRE!","cd39c5d":"¡A TIEMPO!","c76d2f8":"¡FUERA!","caae3ef":"<b>③ Acción y reacción</b> · empujas al zombi y él te empuja a ti: sales disparada.","c9002a7":"¡GANASTE!","cea725f":"AHORA EMPIEZA EL MODO ∞: TODO MEZCLADO","c623f5e":"¡COMPLETADO!","c7cf41a":"NIVEL {0}","ca79424":"{0} ACIERTOS · {1} ZOMBIS","c7e75c0":"¿ME SUPERAS?","c84c93c":"Llegué al nivel {0} ({1}) en Math Sucks con {2} aciertos. ¿Me superas?{3}","c3f2a45":"SE VAN {0} {1}","c3d2e20":"QUEDAN {0} {1}","c7be6f9":"{0} GRUPOS DE {1} {2}","ccf4f9d":"{0} FILAS DE {1}","c6c5610":"ESCRIBO {0} Y LLEVO 1","cecfadf":"{0} NO ALCANZA PARA {1}","c826d09":"SUMA EN COLUMNAS","c55fb0b":"RESTA EN COLUMNAS","cbdf6df":"{0} FRESAS EN {1} PEDAZOS","cdaee68":"{0} ÷ {1} = {2} EN CADA PEDAZO","c232b6e":"CALLE","c7070d9":"QUITAR UNA DEUDA = SUBIR","c741f42":"¡CRUZA LA CALLE!","c7b4aaf":"{0} SALTOS DE −{1}","c48645b":"EL OTRO − DA MEDIA VUELTA","c26a691":"{0} GRUPOS DE {1}","c4d3fe":"= {0}/{1} PEDAZOS","c2e904c":"CORTO TODO EN {0} PEDAZOS","cf5e52e":"{0} ÷ {1}: CINTA EN {2} PARTES","c890b07":"CADA PARTE: {0}","c89e656":"{0} × {1}: UN CUADRADO","ceaf0f3":"¿QUÉ CUADRADO TIENE {0}?","cb2461e":"√{0}: ¿QUÉ CUADRADO?","cba11a6":"RAÍZ 3 DE {0} = {1}","cf59368":"2^{0}: DUPLICA {1} VECES","c8bf75c":"ALTURA","c3a8a95":"sin θ = OPUESTO ÷ HIP","cde27dc":"{0} {1} A LOS DOS LADOS","caef0c":"{0}x = {1} → REPARTO EN {2}","c6292de":"¿DÓNDE CORTA EL EJE X?","c450c63":"LA PARÁBOLA ES UN ESPEJO","c6745ca":"VÉRTICE EN x = {0}","c49059":"FILA × COLUMNA","cd8131d":"EL LÍMITE ES {0}","cfc4842":"x → {0}: SOLO SUSTITUYE","ca72dc1":"0/0 → SE CANCELA → x + {0}","c78c45":"sin x / x CERCA DE 0","c873ff4":"x → ∞: {0}/x SE VUELVE 0","c8f26fe":"PENDIENTE DE LA TANGENTE","c23cb3e":"RECTÁNGULO DE ALTURA {0}","cc6f4f1":"ÁREA BAJO LA CURVA","cd728ea":"ÁREA = {0}","c2ace07":"MEDIA VUELTA DE LA RUEDA","cee21d4":"RADIO {0}: UNA VUELTA","cc61127":"EL CÍRCULO EN GAJOS","c46acd3":"PITÁGORAS","cc2a1d4":"ARQUÍMEDES","c61cdca":"AL-JWARIZMI","ccace31":"RENÉ DESCARTES","c2df2ab":"¡FALLÓ!","cbe57fd":"<b>① Inercia</b> · cayó y ahora se queda quieta… hasta que algo la empuje.","c6ecaa3":"FRACCIONES","c3aef46":"Convierte a decimal: 1/2 = 0.5, 1/4 = 0.25, 1/5 = 0.2, 1/10 = 0.1.","c3bda70":"FUNCIONES 1° GRADO","cb6e6b5":"FUNCIONES 2° GRADO","ccdf2f6":"FUNCIONES 3° GRADO","ca63ff2":"MATRICES","c7f7733":"DERIVADAS","ce06de6":"INTEGRALES","c99b624":"π Y e","ca7524b":"π ≈ 3.1416, e ≈ 2.7183, ln(eⁿ) = n, e^(iπ) = −1.","c7ed99":"SUMAR","c9db7da":"RESTAR","c754280":"MULTIPLICAR","c7d19e4":"DIVIDIR","cef86e2":"ENTEROS","cfd5a34":"3/4 de 8 = 6\\n1/2 + 1/4 = 2/4 + 1/4 = 3/4 = 0.75","cdfc886":"FUNCIONES 1°","c9976df":"FUNCIONES 2°","c5b1ce8":"FUNCIONES 3°","ceace85":"EFECTO DUNNING-KRUGER","c565bda":"pocos temas, muchos errores","cniv14":"NIVEL 14 · f'(x)","cquito":"QUITO","csumo":"SUMO","cmanz":"MANZANAS","cpoll":"POLLITOS","cvaca":"VACAS","cnoprob":"Te atraparon antes del primer problema.","cera":"era {0}","cxera":"✕ ERA {0}","cescribo":"ESCRIBO {0}","a_first":"PRIMER PASO","ad_first":"Acierta tu primer problema","a_st5":"EN RACHA","ad_st5":"5 aciertos seguidos","a_st10":"IMPARABLE","ad_st10":"10 aciertos seguidos","a_st25":"MENTE DE ACERO","ad_st25":"25 aciertos seguidos","a_k50":"CAZAZOMBIS","ad_k50":"Elimina 50 zombis","a_k500":"APOCALIPSIS AL REVÉS","ad_k500":"Elimina 500 zombis","a_boss":"CAZAJEFES","ad_boss":"Vence a un jefe","a_prof":"MATEMÁTICO","ad_prof":"Vence al profesor de matemáticas","a_esc":"ESCAPISTA","ad_esc":"Suéltate de un zombi que te atrapó","a_web":"SIN TELARAÑAS","ad_web":"Escapa de la telaraña de una araña","a_creep":"DESACTIVADOR","ad_creep":"Elimina un creeper antes de que explote","a_ender":"NO ME MIRES","ad_ender":"Elimina a un enderman","a_pow":"ARCOÍRIS","ad_pow":"Usa un poder","a_pow7":"LOS SIETE COLORES","ad_pow7":"Usa los 7 poderes","a_fast":"RELÁMPAGO","ad_fast":"Acierta en menos de 2 segundos","a_perf":"SIN UN RASGUÑO","ad_perf":"Pasa un nivel sin fallar","a_lv8":"MEDIO CAMINO","ad_lv8":"Llega al nivel 8","a_days7":"CONSTANCIA","ad_days7":"Juega 7 días seguidos","a_hole":"HORIZONTE DE SUCESOS","ad_hole":"Agranda el agujero negro del menú al máximo","a_egg":"MIRA LAS ESTRELLAS","ad_egg":"Descubre la constelación de un científico","n_ach":"LOGROS","n_achGot":"¡LOGRO DESBLOQUEADO!","n_achN":"{0} DE {1}","n_mat":"MATRIZ","n_cal":"CALENDARIO","n_a11y":"ACCESIBLE","n_a11yOn":"Modo accesible activado. El juego se narra con tu lector de pantalla y va más lento. Responde con el teclado numérico de abajo.","n_a11yOff":"Modo accesible desactivado.","n_a11yBtn":"Activar modo para lector de pantalla","n_sayProb":"{0}. Responde.","n_ok":"¡Correcto!","n_bad":"Fallaste. Era {0}.","n_grab":"¡Te atrapó {0}! Responde rápido para soltarte.","n_level":"Nivel {0}: {1}.","n_near":"{0} cerca, a tu {1}.","n_left":"izquierda","n_right":"derecha","n_kinds":"zombi;esqueleto;araña;creeper;enderman;jefe;profesor de matemáticas","n_minus":"menos","n_dot":"punto","n_hearts":"Te queda {0} corazón.","n_skip":"SALTAR ▸","n_intro":"VER INTRO","n_powGot":"¡PODER {0}!","n_powUse":"Toca el botón de color o la barra espaciadora para usarlo.","n_powBtn":"Usar poder: {0}","n_shield":"¡ESCUDO!","n_dodge":"¡SE TELETRANSPORTÓ!","n_frozen":"¡CONGELADO!","p_r":"ROJO · FURIA","pa_r":"Meteorito gigante por 12 s","pd_r":"Los zombis corren más rápido","p_o":"NARANJA · ESCUDO","pa_o":"Bloquea el próximo golpe","pd_o":"Problemas más difíciles hasta que se rompa","p_y":"AMARILLO · RAYO","pa_y":"Fulmina a todos los zombis","pd_y":"Llegan el doble durante 10 s","p_g":"VERDE · PISTA","pa_g":"Ves la primera cifra por 20 s","pd_g":"Te cuesta más soltarte","p_b":"AZUL · HIELO","pa_b":"Congela a los enemigos 8 s","pd_b":"Congelados, el meteorito no los rompe","p_i":"AÑIL · CÁMARA LENTA","pa_i":"Los enemigos van a media velocidad 12 s","pd_i":"Necesitas un acierto más en el nivel","p_v":"VIOLETA · AGUJERO NEGRO","pa_v":"Se traga a los enemigos cercanos","pd_v":"El espacio-tiempo se deforma 10 s","n_spider":"<b>ARAÑA</b> · lanza telaraña: te atrapa y tienes que resolver un problema para salir.","n_creeper":"<b>CREEPER</b> · se acerca y explota: ¡aléjate saltando o elimínalo antes!","n_ender":"<b>ENDERMAN</b> · no te persigue: aparece de repente donde menos debe.","n_webbed":"¡ATRAPADA EN LA TELARAÑA!","n_webSub":"RESUELVE PARA SALIR","n_fuse":"¡Un creeper va a explotar a tu {0}!","n_boom":"¡BUM!","n_boomT":"¡BUM! TE EXPLOTÓ UN CREEPER","n_prof":"EL PROFESOR DE MATEMÁTICAS","n_laugh":"¡JA, JA, JA!","n_profT":"¡SAQUEN UNA HOJA: EXAMEN SORPRESA!;ESO NO ENTRA… ¡EN EL EXAMEN SÍ!;CERO. OTRA VEZ CERO;¿Y EL PROCEDIMIENTO?;LA TAREA ERA PARA AYER;NADIE SALE HASTA QUE RESUELVA;REPROBADA, MANZANITA","i1":"Un día, el mundo sufrió una explosión atómica.","i2":"Detrás de todo estaba el villano: el profesor de matemáticas… y su ejército de zombis.","i3":"Desde la estación espacial enviaron a la Tierra la última esperanza…","i4":"…una manzana. La misma que le cayó a Newton. Vence al profesor.","e1":"GRACIAS POR JUGAR","e2":"AHORA ERES MATEMÁTICO","e3":"{0} aciertos · {1} zombis · {2} logros","n_to":"elevado a","n_eggK":"EL PROFESOR TE RETA","n_eggPh":"Tu respuesta","n_eggGo":"RESPONDER","n_eggNew":"OTRO PROBLEMA","n_eggOk":"¡CORRECTO! Ya estás listo para el profesor.","n_eggBad":"Incorrecto. Era {0}.","n_eEuc":"EUCLIDES","n_eCog":"pienso, luego existo","n_eGcd":"mcd(48, 18) = 6","n_eggHint":"DIBUJA AQUÍ TU RESPUESTA","a_st50":"LEYENDA","ad_st50":"50 aciertos seguidos","a_k100":"CIEN CABEZAS","ad_k100":"Elimina 100 zombis","a_lv4":"CALENTANDO","ad_lv4":"Llega al nivel 4","a_lv12":"CASI CÁLCULO","ad_lv12":"Llega al nivel 12","a_lv16":"CARA A CARA","ad_lv16":"Llega al nivel 17, el del profesor","a_inf":"MÁS ALLÁ DEL INFINITO","ad_inf":"Juega el modo ∞","a_days3":"HÁBITO","ad_days3":"Juega 3 días seguidos","a_days30":"UN MES DE MATES","ad_days30":"Juega 30 días seguidos","a_ok100":"CENTENARIO","ad_ok100":"Suma 100 aciertos en total","a_ok1000":"MIL NEURONAS","ad_ok1000":"Suma 1000 aciertos en total","a_die10":"TERCO","ad_die10":"Muere 10 veces y sigue jugando","a_die50":"INMORTAL (CASI)","ad_die50":"Muere 50 veces","a_night":"BÚHO MATEMÁTICO","ad_night":"Acierta entre la medianoche y las 5 a. m.","a_lang":"POLÍGLOTA","ad_lang":"Cambia el idioma del juego","a_theme":"DÍA Y NOCHE","ad_theme":"Cambia el tema","a_apple":"OTRA MANZANA","ad_apple":"Cambia el color de la manzana","a_tut":"APRENDIZ","ad_tut":"Mira un ejemplo resuelto","a_poo":"NO TOQUES ESO","ad_poo":"Pícale a la caca del título","a_share":"PRESUMIDO","ad_share":"Comparte tu resultado","a_neg":"BAJO CERO","ad_neg":"Acierta una respuesta negativa","tip_k":"TU AVANCE","tip_weak":"Tu tema más flojo es {0}: {1} % de aciertos. Practícalo antes de que el jefe lo note.","tip_best":"Tu récord es el nivel {0}. Lo que sigue: {1}.","tip_streak":"Llevas {0} días seguidos jugando. No rompas la racha.","tip_nostreak":"Juega hoy y empieza una racha de días.","tip_ach":"Tienes {0} de {1} logros. Siguiente reto: {2}.","tip_pres":"La presión va en {0} %: cada derrota pone a los zombis más rápidos.","tip_kills":"Llevas {0} zombis eliminados. Ellos sí llevan la cuenta.","tip_pow":"Cada {0} aciertos seguidos ganas un poder del arcoíris.","tip_draw":"Dibuja los números grandes y claros: la manzana te entiende mejor.","n_inf":"MODO ∞","n_aClear":"Borrar lo dibujado","n_aPause":"Pausa y ajustes","n_aPows":"Poderes","n_aKp":"Teclado numérico","n_again":"✕ OTRA VEZ","n_skn":"HUESITOS;CALAVERA;FÉMUR;TIBIA;COSTILLA","m_epic":"ÉPICO","m_heist":"ATRACO","m_war":"BÉLICO","m_regueton":"REGUETÓN","m_perc":"PERCUSIÓN","m_sym40":"MOZART · SINFONÍA N.º 40","m_turca":"MOZART · RONDO ALLA TURCA","m_sym5":"BEETHOVEN · SINFONÍA N.º 5","m_moon3":"BEETHOVEN · CLARO DE LUNA","m_nacht":"MOZART · PEQUEÑA SERENATA NOCTURNA","m_elise":"BEETHOVEN · PARA ELISA","m_ode":"BEETHOVEN · HIMNO DE LA ALEGRÍA","m_canon":"PACHELBEL · CANON EN RE","m_mountain":"GRIEG · EN LA GRUTA DEL REY DE LA MONTAÑA","m_toccata":"BACH · TOCATA Y FUGA EN RE MENOR","n_apple":"MANZANA DE NEWTON","in1":"Treinta años enseñando matemáticas… y nadie me pone atención.","in2":"¿No quieren aprender? Muy bien. ¡LOS CONVERTIRÉ EN ZOMBIS!","in3":"Y lo hizo. Una bomba de fórmulas. Nadie entendió nada, como siempre.","in4":"Cerebrooo… ¿cuánto es 7 × 8? ¡NO ME DIGAS, NO QUIERO SABER!","in5":"Pero en una estación espacial guardaban la última esperanza: la manzana que le cayó a Newton.","in6":"¿Zombis que odian las matemáticas? Tranquilos. Yo sé sumar.","in7":"¡¿QUIÉN CALCULÓ ESTE ÁNGULO DE ENTRADA?!","in8":"¿Una fruta? ¡JA! Saca una hoja, manzanita: examen sorpresa.","in0":"¿Un 2? ¿Un 1? ¿UN CERO? ¡Y ESTE ES EL DIBUJO DE UN GATO!","cx_name":"EXPONENTES","cx_tip":"Una potencia cuenta factores: 2³ = 2 · 2 · 2. Las leyes salen de contar.","cx_kick":"NIVEL 7 · aⁿ · aᵐ","cx_ttl":"LEYES DE LOS EXPONENTES","cx_l1":"La <b>potencia</b> cuenta cuántas veces se multiplica la base: 2³ = 2 · 2 · 2.","cx_l2":"Misma base: al multiplicar se <b>suman</b> los exponentes, al dividir se <b>restan</b>, y una potencia de potencia los <b>multiplica</b>.","cx_e1":"{0} significa {1}.","cx_e2":"Truco mental: ve multiplicando por {0} paso a paso: {1}.","cx_e3":"Truco: 10 elevado a {0} es un 1 seguido de {0} ceros.","cx_p":"Misma base multiplicándose: cuenta los factores, {0} y {1} más son {2}. Se suman los exponentes: {0} + {1} = {2}.","cx_q":"Misma base dividiéndose: {1} factores de abajo se cancelan con {1} de arriba. Se restan: {0} − {1} = {2}.","cx_w":"Potencia de potencia: son {0} grupos de {1} factores. Se multiplican: {1} × {0} = {2}.","cx_z":"¿Por qué da 1? {0} ÷ {0} = {1}, y todo número (menos el 0) dividido entre sí mismo da 1.","cx_n":"Exponente negativo = dar vuelta: {0} = 1 ÷ {1} = {2}.","ce_m1":"¿Por qué? {0} × {1} es juntar {1} veces una deuda de {0}: {2} = {3}.","ce_m2":"¿Por qué? Mira el patrón: {0}. Cada paso el resultado sube {1}; al cruzar el 0 sigue subiendo, así que queda positivo.","ce_nc":"Sin calculadora, primero sin signos: {0}.","cf_why":"Una fracción es una división: {0}/{1} = {0} ÷ {1}, repartir {0} en {1} partes iguales.","cf_2":"÷ 2 es sacar la mitad: la mitad de {0} es {1}.","cf_4":"÷ 4 es la mitad de la mitad: {0} → {1} → {2}.","cf_5":"÷ 5 es lo mismo que × 2 y luego ÷ 10: {0} × 2 = {1}, y {1} ÷ 10 = {2}.","cf_10":"÷ 10 corre la coma un lugar a la izquierda: {0} → {1}.","cf_100":"Llévalo a centésimos: {0}/{1} = {2}/100 = {3}.","mt_suma1":"Suma primero las decenas y después las unidades: 47 + 38 → 70 + 15 = 85.","mt_suma2":"Si uno está cerca de una decena, redondea y compensa: 49 + 26 → 50 + 26 − 1 = 75.","mt_resta1":"Cuenta hacia arriba desde el chico: 52 − 38 → de 38 a 40 son 2, de 40 a 52 son 12: 14.","mt_resta2":"Resta lo redondo y devuelve lo que sobró: 63 − 29 → 63 − 30 + 1 = 34.","mt_mult1":"Parte el número grande: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.","mt_mult2":"× 5 es × 10 y la mitad; × 9 es × 10 menos una vez: 9 × 7 = 70 − 7 = 63.","mt_div1":"Dividir es la tabla al revés: 56 ÷ 8 → ¿8 por cuánto da 56? 7.","mt_div2":"Parte el número en trozos fáciles: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.","mt_ent1":"Piensa en un ascensor: −3 + 8 → bajas al sótano 3 y subes 8: piso 5.","mt_ent2":"Al multiplicar, primero el número sin signos; el signo al final: iguales dan +, distintos dan −.","mt_frac1":"Fracciones de memoria: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.","mt_frac2":"«3/4 de 20»: divide entre el de abajo y multiplica por el de arriba: 20 ÷ 4 = 5, 5 × 3 = 15.","mt_exp1":"Cuenta factores: 2³ · 2² son tres 2 y dos 2, cinco en total: 2⁵.","mt_exp2":"Potencias de 2 de memoria: 2, 4, 8, 16, 32, 64, 128, 256 (cada una es el doble).","mt_raiz1":"Para √ busca el número que multiplicado por sí mismo da el de adentro: √81 → 9 × 9.","mt_raiz2":"Si no lo sabes, encájalo entre cuadrados: √60 está entre √49 = 7 y √64 = 8.","mt_trig1":"En el círculo, sin es la altura y cos lo horizontal: sin 90° = 1 (arriba), cos 0° = 1 (derecha).","mt_trig2":"30°, 45°, 60°: sin vale 1/2, √2/2, √3/2; el cos va en orden contrario.","mt_f11":"f(4) es una máquina: cambia cada x por 4 y calcula en orden: primero ×, después +.","mt_f12":"Para despejar, deshaz al revés: primero quita lo que suma, después divide.","mt_f21":"Con negativos usa paréntesis: (−3)² = 9, no −9.","mt_f22":"x² − 5x + 6 = 0: busca dos números que sumen 5 y multipliquen 6: 2 y 3.","mt_f31":"Cubos de memoria: 1, 8, 27, 64, 125. Con negativos, el signo se queda: (−2)³ = −8.","mt_f32":"Con factores (x − a)(x − b)(x − c): reemplaza x, calcula cada paréntesis y multiplica de a dos.","mt_mat1":"det: diagonal principal menos la otra, a·d − b·c. Calcula cada producto por separado.","mt_mat2":"Fila por columna: multiplica par a par y suma los resultados.","mt_lim1":"Primero intenta reemplazar. Si da 0/0, factoriza y simplifica.","mt_lim2":"Hacia ∞ solo manda lo más grande: (5x + 3)/x se parece a 5x/x = 5.","mt_der1":"Baja el exponente y réstale 1: x³ → 3x². Las constantes desaparecen.","mt_der2":"La derivada de mx + b es m: una recta tiene la misma pendiente en todos lados.","mt_int1":"Integral = área. Si la altura es constante es un rectángulo: base × altura.","mt_int2":"∫2x dx = x² y ∫3x² dx = x³: evalúa arriba menos abajo.","mt_pie1":"π ≈ 3.14 y e ≈ 2.72: con eso sacas 2π ≈ 6.28 y π/2 ≈ 1.57.","mt_pie2":"ln y e^x se deshacen: ln(eⁿ) = n, y cualquier cosa elevada a 0 da 1."};
 const CT={};
 // las traducciones del contenido se descargan solo para el idioma elegido (i18n/xx.json)
 async function loadCT(l){if(l.startsWith('es')||CT[l])return false;for(const b of['i18n/','web/i18n/']){try{const r=await fetch(b+l+'.json');if(r.ok){CT[l]=await r.json();return true}}catch(e){}}return false}
@@ -4485,7 +5148,7 @@ function applyLang(){
   set('#sTitle .ttl small','tag');$('#sTitle .lead').innerHTML=L10('lead');TIPON=false;TIPC=0;{const l=$('#sTitle .lead');l.classList.remove('swap');l.style.height=l.style.overflow=l.style.display=l.style.flexDirection=l.style.justifyContent=''}
   try{renderTitle()}catch(e){}
   set('#sTitle details.prog summary',$('#sTitle details.prog').open?'closeprog':'prog');
-  set('#bCont','again1');set('#bShare','share');set('#bMenu','menu');set('#oFail summary','how');
+  {const b=$('#bCont');if(b&&typeof S!=='undefined')b.textContent=L10('retry',{n:S.stage>NT?'∞':S.stage})}set('#bShare','share');set('#bMenu','menu');set('#oFail summary','how');
   set('#sTut .mini','example');set('#bTutOk','gotit');set('#bTutAgain','replay');set('#bHelp','help');set('.frk','frac');
   set('#alBig','caught');set('#alSub','caughtSub');$('#drawhint').textContent=L10(document.body.classList.contains('frac')?'hint2':'hint1');
   for(const i of[1,2]){const b=$('#bLang'+i);if(b){const l=langOf(LANG);b.innerHTML=flagImg(l)+l.n}}
@@ -5760,21 +6423,29 @@ function gEnt(x,d){
   const r=R();
   if(isInt(x)&&x>=0&&x<=10&&r<.35){const b=x+ri(1,5+Math.round(10*d));return{k:[Sx(`x − ${b}`)],ans:x-b,vz:{t:'elev',a:x,d:-b},ex:[`x = ${x}: ${x} − ${b}.`,XL('cfe1c21',[x,b-x]),XL('c7cb4af',[fmt(x-b)])]}}
   const a=ri(2,5+Math.round(15*d)),b=ri(2,5+Math.round(15*d));
-  if(d>.6&&r<.55)return{k:[Sx(`(−${a}) × (−${b})`)],ans:a*b,vz:{t:'signs',a,b,neg2:true},ex:[XL('caab7b0'),XL('cm2'),`${a} × ${b} = ${a*b}.`,XL('cm3'),XL('c7cb4af',[a*b])]};
-  if(d>.4&&r<.7)return{k:[Sx(`(−${a}) × ${b}`)],ans:-a*b,vz:{t:'signs',a,b,neg2:false},ex:[XL('c4d0c03'),XL('cm1'),XL('c4ec704',[a,b,a*b]),XL('cm3'),XL('c7cb4af',[fmt(-a*b)])]};
+  if(d>.6&&r<.55)return{k:[Sx(`(−${a}) × (−${b})`)],ans:a*b,vz:{t:'signs',a,b,neg2:true},ex:[XL('caab7b0'),XL('ce_m2',[[2,1,0,-1].map(k=>`(−${a}) × ${k<0?'(−1)':k} = ${fmt(-a*k)}`).join(' · '),a]),XL('cm2'),XL('ce_nc',[a>=10||b<10?mulHint(a,b):mulHint(b,a)]),XL('cm3'),XL('c7cb4af',[a*b])]};
+  if(d>.4&&r<.7)return{k:[Sx(`(−${a}) × ${b}`)],ans:-a*b,vz:{t:'signs',a,b,neg2:false},ex:[XL('c4d0c03'),XL('ce_m1',[`(−${a})`,b,b<=5?Array(b).fill(`(−${a})`).join(' + '):`(−${a}) + (−${a}) + …`,fmt(-a*b)]),XL('cm1'),XL('ce_nc',[a>=10||b<10?mulHint(a,b):mulHint(b,a)]),XL('c4ec704',[a,b,a*b]),XL('c7cb4af',[fmt(-a*b)])]};
   if(d>.7&&r<.85)return{k:[Sx(`${a} − (−${b})`)],ans:a+b,vz:{t:'elev',a,d:b,flip:true},ex:[XL('cfb25af',[a,b,a,b]),XL('c7cb4af',[a+b])]};
   if(r<.85)return{k:[Sx(`−${a} + ${b}`)],ans:b-a,vz:{t:'elev',a:-a,d:b},ex:[XL('c8dbf75',[a,b]),b>a?XL('c52368d',[b-a]):XL('cc4aeb'),XL('c7cb4af',[fmt(b-a)])]};
   return{k:[Sx(`−${a} − ${b}`)],ans:-a-b,vz:{t:'elev',a:-a,d:-b},ex:[XL('cb71c4c',[a,b]),XL('c7cb4af',[fmt(-a-b)])]};
 }
 const FDEN=[2,4,5,10];
 const dec=(n,dn)=>fmt(n/dn);
+function fracHow(n,b){const v=n/b;
+  if(isInt(v))return XL('c424b15',[b,fmt(v),fmt(n)]);
+  if(b===2)return XL('cf_2',[fmt(n),fmt(v)]);
+  if(b===4)return XL('cf_4',[fmt(n),fmt(n/2),fmt(v)]);
+  if(b===5)return XL('cf_5',[fmt(n),fmt(n*2),fmt(v)]);
+  if(b===10)return XL('cf_10',[fmt(n),fmt(v)]);
+  if(100%b===0)return XL('cf_100',[fmt(n),b,fmt(n*100/b),fmt(v)]);
+  return`${fmt(n)} ÷ ${b} = ${fmt(v)}.`}
 function gFrac(x,d){
   const r=R();
-  if(isInt(x)&&Math.abs(x)<=40&&r<.25){const b=pick(FDEN);return{k:[Fr([Sx('x')],[Sx(String(b))])],ans:x/b,fr:[[x,b]],vz:{t:'fdiv',n:x,b},ex:[`x = ${fmt(x)}: dividir ${fmt(x)} entre ${b}.`,`${fmt(x)} ÷ ${b} = ${fmt(x/b)}.`,XL('c4b3f20',[fmt(x/b)])]}}
+  if(isInt(x)&&Math.abs(x)<=40&&r<.25){const b=pick(FDEN);return{k:[Fr([Sx('x')],[Sx(String(b))])],ans:x/b,fr:[[x,b]],vz:{t:'fdiv',n:x,b},ex:[XL('cf_why',[fmt(x),b]),fracHow(x,b),XL('c4b3f20',[fmt(x/b)])]}}
   if(d<.35){const b=pick([2,3,4,5,10]),a=ri(1,b-1),n=b*ri(1,6);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(` de ${n}`)],ans:a*n/b,fr:[[a*n,b]],vz:{t:'fof',a,b,n},ex:[XL('cbeed22',[a,b,n,n,b,n/b]),XL('cccc53f',[a,a,n/b,a*n/b])]}}
-  if(d<.7){const b=pick(FDEN),a=ri(1,b),c=ri(1,b);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b))])],ans:(a+c)/b,fr:[[a+c,b]],vz:{t:'fadd',a,c,b},ex:[XL('c497003',[a+c,b]),`${a+c} ÷ ${b} = ${dec(a+c,b)}.`]}}
+  if(d<.7){const b=pick(FDEN),a=ri(1,b),c=ri(1,b);return{k:[Fr([Sx(String(a))],[Sx(String(b))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b))])],ans:(a+c)/b,fr:[[a+c,b]],vz:{t:'fadd',a,c,b},ex:[XL('c497003',[a+c,b]),XL('cf_why',[a+c,b]),fracHow(a+c,b),XL('c7cb4af',[dec(a+c,b)])]}}
   let b1=pick(FDEN),b2=pick(FDEN.filter(v=>v!==b1));const a=ri(1,b1-1)||1,c=ri(1,b2-1)||1,l=b1*b2/gcd(b1,b2);
-  return{k:[Fr([Sx(String(a))],[Sx(String(b1))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b2))])],ans:a/b1+c/b2,fr:[[a*l/b1+c*l/b2,l]],vz:{t:'fadd2',a,b1,c,b2,l},ex:[XL('cffa3c4',[l,a,b1,a*l/b1,l,c,b2,c*l/b2,l]),XL('c29c04a',[a*l/b1+c*l/b2,l]),XL('c831255',[fmt(a/b1+c/b2)])]};
+  return{k:[Fr([Sx(String(a))],[Sx(String(b1))]),Sx(' + '),Fr([Sx(String(c))],[Sx(String(b2))])],ans:a/b1+c/b2,fr:[[a*l/b1+c*l/b2,l]],vz:{t:'fadd2',a,b1,c,b2,l},ex:[XL('cffa3c4',[l,a,b1,a*l/b1,l,c,b2,c*l/b2,l]),XL('c29c04a',[a*l/b1+c*l/b2,l]),fracHow(a*l/b1+c*l/b2,l),XL('c831255',[fmt(a/b1+c/b2)])]};
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
 function gRaiz(x,d){
@@ -5785,6 +6456,25 @@ function gRaiz(x,d){
   if(d>.3&&r<.7){const n=ri(3,8);return{k:[Pw([Sx('2')],[Sx(String(n))])],ans:2**n,vz:{t:'pow2',n},ex:[XL('c9be434',[n,n]),`2 → 4 → 8 → … → ${2**n}.`]}}
   if(d>.7){const a=ri(2,9),b=ri(2,9);return{k:[Rt([Sx(String(a*a))]),Sx(' + '),Rt([Sx(String(b*b))])],ans:a+b,vz:{t:'sqrt2',a,b},ex:[`√${a*a} = ${a} y √${b*b} = ${b}.`,`${a} + ${b} = ${a+b}.`]}}
   const k=ri(2,6+Math.round(9*d));return{k:[Rt([Sx(String(k*k))])],ans:k,vz:{t:'sqrt',k},ex:[XL('cc0b0ef',[k*k]),`${k} × ${k} = ${k*k} → √${k*k} = ${k}.`]};
+}
+// exponentes: la potencia cuenta factores repetidos; cada ley sale de contarlos, no de memorizar
+const SUP=v=>String(v).replace(/[-−0-9]/g,c=>'⁻⁻⁰¹²³⁴⁵⁶⁷⁸⁹'['-−0123456789'.indexOf(c)]);
+const pwr=(B,E)=>Pw([Sx(String(B))],[Sx(String(E).replace('-','−'))]);
+const chainOf=(B,E)=>{const o=[];let v=1;for(let i=0;i<E;i++){v*=B;o.push(v)}return o.join(' → ')};
+function gExp(x,d){
+  const r=R(),b=pick([2,3,5,10]),bx=Pw([Sx(String(b))],[Sx('x')]),q='  ⇒  x = ?';
+  if(d<.3||r<.2){const B=pick([2,2,3,4,5,10]),E=B===10?ri(2,4):B===2?ri(2,6):ri(2,3),f=Array(E).fill(B).join(' × ');
+    return{k:[pwr(B,E)],ans:B**E,vz:B===2?{t:'pow2',n:E}:null,ex:[XL('cx_e1',[B+SUP(E),f]),B===10?XL('cx_e3',[E]):XL('cx_e2',[B,chainOf(B,E)]),XL('c7cb4af',[B**E])]}}
+  if(d<.55||r<.45){const m=ri(1,5),n=ri(1,5);
+    return{k:[pwr(b,m),Sx(' · '),pwr(b,n),Sx(' = '),bx],q,ans:m+n,ex:[XL('cx_p',[m,n,m+n]),`${b}${SUP(m)} · ${b}${SUP(n)} = ${b}${SUP(m+n)}.`]}}
+  if(r<.62){const n=ri(1,4),m=n+ri(1,5);
+    return{k:[pwr(b,m),Sx(' ÷ '),pwr(b,n),Sx(' = '),bx],q,ans:m-n,ex:[XL('cx_q',[m,n,m-n]),`${b}${SUP(m)} ÷ ${b}${SUP(n)} = ${b}${SUP(m-n)}.`]}}
+  if(r<.76){const m=ri(2,4),n=ri(2,3);
+    return{k:[Pw([Sx('('),pwr(b,m),Sx(')')],[Sx(String(n))]),Sx(' = '),bx],q,ans:m*n,ex:[XL('cx_w',[n,m,m*n]),`(${b}${SUP(m)})${SUP(n)} = ${b}${SUP(m*n)}.`]}}
+  if(r<.86||d<.6){const B=ri(2,99);
+    return{k:[pwr(B,0)],ans:1,ex:[XL('cx_z',[B+'³',B+'⁰']),XL('c7cb4af',[1])]}}
+  const[B,E]=pick([[2,1],[2,2],[4,1],[5,1],[10,1],[10,2]]),v=1/B**E;
+  return{k:[pwr(B,-E)],ans:v,fr:[[1,B**E]],ex:[XL('cx_n',[B+SUP(-E),B**E===B?B:B+SUP(E),fmt(v)]),XL('c7cb4af',[fmt(v)])]};
 }
 const TT=[['sin',0,0,'0'],['sin',30,.5,'1/2'],['sin',90,1,'1'],['cos',0,1,'1'],['cos',60,.5,'1/2'],['cos',90,0,'0'],['tan',45,1,'1'],['tan',0,0,'0'],['sin',150,.5,'1/2'],['cos',180,-1,'−1'],['sin',270,-1,'−1'],['cos',120,-.5,'−1/2']];
 const trigWhy={get sin(){return XL('c518452')},get cos(){return XL('c95b38f')},get tan(){return XL('c21bad2')}};
@@ -5868,6 +6558,7 @@ const TOPICS=[
   {id:'div',get name(){return XL('cb927b1')},x0:24,boss:3,gen:gDiv,get tip(){return XL('cf9ad7f')}},
   {id:'ent',get name(){return XL('c98ec2a')},x0:3,gen:gEnt,get tip(){return XL('cc16f91')}},
   {id:'frac',get name(){return XL('c6ecaa3')},x0:2,gen:gFrac,get tip(){return XL('c3aef46')}},
+  {id:'exp',get name(){return XL('cx_name')},x0:2,gen:gExp,get tip(){return XL('cx_tip')}},
   {id:'raiz',get name(){return XL('c447254')},x0:4,gen:gRaiz,get tip(){return XL('c6cd6a2')}},
   {id:'trig',get name(){return XL('ceef4d2')},x0:0,gen:gTrig,get tip(){return XL('cd3063e')}},
   {id:'f1',get name(){return XL('c3bda70')},x0:2,gen:gF1,get tip(){return XL('ca003ec')}},
@@ -5879,6 +6570,8 @@ const TOPICS=[
   {id:'int',get name(){return XL('ce06de6')},x0:0,gen:gInt,get tip(){return XL('c7b544b')}},
   {id:'pie',get name(){return XL('c99b624')},x0:1,boss:5,final:true,gen:gPie,get tip(){return XL('ca7524b')}},
 ];
+// número de niveles de la campaña (después viene el modo ∞)
+const NT=TOPICS.length;
 const LESSONS={
 suma:{get kick(){return XL('c2dd3c0')},get ttl(){return XL('c7ed99')},get lines(){return[XL('c5540d3'),XL('cdfac2e'),XL('cefca91')]},get ex(){return XL('c275f67')}},
 resta:{get kick(){return XL('c413344')},get ttl(){return XL('c9db7da')},get lines(){return[XL('cc7f548'),XL('c82079')]},get ex(){return XL('c434a26')}},
@@ -5886,6 +6579,7 @@ mult:{get kick(){return XL('c68159e')},get ttl(){return XL('c754280')},get lines
 div:{get kick(){return XL('c955095')},get ttl(){return XL('c7d19e4')},boss:true,get lines(){return[XL('c2a4cca'),XL('ce3c3a1')]},ex:'36 ÷ 4 = ?\n4 × 9 = 36  → 9'},
 ent:{get kick(){return XL('cf8f149')},get ttl(){return XL('cef86e2')},get lines(){return[XL('c1cd8bb'),XL('c2b1f79')]},ex:'3 − 8 = −5\n(−4) × (−2) = 8'},
 frac:{get kick(){return XL('cf86065')},get ttl(){return XL('c6ecaa3')},get lines(){return[XL('c8084c2'),XL('c6242ad')]},get ex(){return XL('cfd5a34')}},
+exp:{get kick(){return XL('cx_kick')},get ttl(){return XL('cx_ttl')},get lines(){return[XL('cx_l1'),XL('cx_l2')]},ex:'2³ · 2² = 2⁵ = 32\n(2³)² = 2⁶ = 64\n7⁰ = 1   2⁻¹ = 1/2'},
 raiz:{get kick(){return XL('c6d84d0')},get ttl(){return XL('c148a53')},get lines(){return[XL('c9a1796'),XL('cb1feb5')]},ex:'5² = 25\n√16 = 4\n∛27 = 3'},
 trig:{get kick(){return XL('c5fc797')},get ttl(){return XL('ceef4d2')},get lines(){return[XL('c1586c1'),XL('cddc067')]},get ex(){return XL('c919dde')}},
 f1:{get kick(){return XL('c1271a1')},get ttl(){return XL('cdfc886')},get lines(){return[XL('c93744f'),XL('cc33931')]},ex:'f(x) = 2x + 3\nf(4) = 2·4 + 3 = 11\n2x + 3 = 11 ⇒ x = 4'},
@@ -5897,6 +6591,8 @@ der:{get kick(){return XL('cniv14')},get ttl(){return XL('c7f7733')},get lines()
 int:{get kick(){return XL('c445546')},get ttl(){return XL('ce06de6')},get lines(){return[XL('c27d218'),XL('c6b09ee')]},ex:'∫₀³ 2x dx = [x²]₀³ = 9'},
 pie:{get kick(){return XL('cc96ef1')},get ttl(){return XL('c99b624')},boss:true,get lines(){return[XL('c1e6b54'),XL('c166d2f')]},ex:'2π ≈ 6.28\nln(e⁴) = 4\ne^(iπ) = −1'},
 };
+// estrategias de cálculo mental por tema: lo que se aprende al morir, antes de ver la solución paso a paso
+const MENTAL={};for(const t of['suma','resta','mult','div','ent','frac','exp','raiz','trig','f1','f2','f3','mat','lim','der','int','pie'])MENTAL[t]=['mt_'+t+'1','mt_'+t+'2'];
 const TAUNTS=["ARRODÍLLATE ANTE TU EMPERADOR ZOMBI", "SOY GUAPÍSIMO. TÚ, EN CAMBIO, CALCULAS", "MI CEREBRO PODRIDO PIENSA MEJOR QUE EL TUYO", "DECRETO REAL: TODA RESPUESTA TUYA ES FALSA", "QUÉ TIERNO, CREES QUE SABES SUMAR", "TE APLAUDO. CON UNA MANO. LA OTRA SE ME CAYÓ", "NO ES QUE SEA PERFECTO… BUENO, SÍ LO SOY", "MI ESPEJO DICE QUE SOY EL MÁS BELLO DEL APOCALIPSIS", "HE DECIDIDO QUE 2 + 2 = 5. OBEDECE", "SILENCIO, SÚBDITA. HABLA EL REY", "TU IGNORANCIA ME ALIMENTA. Y ME VEO DIVINO", "¿PENSANDO? QUÉ ESFUERZO TAN ADORABLE", "SOY EL ÚNICO NÚMERO PRIMO QUE IMPORTA", "MIS GUSANOS RESUELVEN ECUACIONES. ¿Y TÚ?", "PROHÍBO LOS DECIMALES EN MI REINO", "FIRMA AQUÍ: ME RINDO ANTE SU MAJESTAD", "TU PROFE ME PIDIÓ UN AUTÓGRAFO", "QUÉ VALIENTE: RESPONDER SIN SABER", "IMPUESTO ZOMBI: UN CEREBRO POR ERROR", "NI PITÁGORAS ME TOSE, Y TÚ MENOS", "NEWTON CAYÓ ANTE MÍ. COMO TU MANZANA", "SOY INFINITO. TÚ ERES UN REDONDEO", "TANTA LENTITUD MERECE UNA ESTATUA. DE MÍ, CLARO", "MI SONRISA PODRIDA VALE MÁS QUE TU NOTA", "TU RESPUESTA ES TAN MALA QUE ME INSPIRA", "TE NOMBRO MI BUFÓN MATEMÁTICO", "SOY LA DERIVADA DE LA PERFECCIÓN", "CALCULA RÁPIDO, MI BELLEZA NO ESPERA", "EL TRONO ES MÍO. LA MANZANA TAMBIÉN", "SI FALLAS, PROMETO NO REÍRME… JAJAJA", "FELICIDADES: PIENSAS COMO UN LADRILLO", "¿SABES CONTAR? YO CUENTO TUS ERRORES", "TU CALCULADORA PIDIÓ ASILO EN MI REINO", "MATEMÁTICAMENTE YA ERES MÍA", "HASTA EL 0 VALE MÁS QUE TU ESFUERZO", "EN MI DICTADURA, EL 7 ES ILEGAL. POR FEO", "MÍRAME BIEN: ASÍ SE VE LA GRANDEZA", "TE DIVIDO ENTRE CERO Y SIGO SIENDO GUAPO"];
 const TAUNT_TOPIC={suma:['SUMA MI GRANDEZA: NO TE ALCANZAN LOS DEDOS'],resta:['TÚ RESTAS PUNTOS, YO SUMO SÚBDITOS'],mult:['MULTIPLICO MI BELLEZA POR ∞'],div:['DIVIDE Y VENCERÉ… YO'],ent:['−1 × −1 = −1 PORQUE YO LO DIGO'],frac:['PARTO TU NOTA EN PEDAZOS. TODOS MÍOS','1/2 + 1/2 = 2/4. LO DECRETO'],raiz:['√TU NOTA = 0. EXACTO'],trig:['sin(TI) = 0, cos(YO) = 1'],mat:['TU DETERMINANTE ES CERO, COMO TU FUTURO'],lim:['TU LÍMITE ES 0. EL MÍO, ∞'],der:["TU f'(x) = 0. NO AVANZAS, PLEBEYA"],int:['∫ TU MIEDO dx = MI GLORIA'],pie:['e^(iπ) + TÚ = 0']};
 const OVER=[['TE COMIERON','lím vida → 0'],['ÑAM… Y NADA MÁS','Δ manzana = −1'],['LA MANZANA YA NO ESTÁ','f(manzana) = ∅'],['EL ZOMBI SE LLEVÓ TU MANZANA','∫ manzana dx = 0'],['CRUNCH','dy/dx = ∞'],['SE LA COMIÓ ENTERA','manzana ≡ 0 (mod zombi)'],['DEMASIADO LENTO','t → ∞'],['FIN DEL PASEO','Q.E.D.'],['SOLO QUEDÓ EL RABITO','lím x→0⁺'],['UNA MENOS EN EL ÁRBOL','Σ manzanas = n − 1']];
@@ -5919,11 +6615,15 @@ const LAWS={
 const SAVEK='rectaZombi5';
 let SAVE={best:1,sk:{},seen:{},hist:{}};
 try{const j=JSON.parse(localStorage.getItem(SAVEK)||'null');if(j&&typeof j==='object')SAVE=Object.assign(SAVE,j)}catch(e){}
+// v2: entró «exponentes» como nivel 7, así que los récords desde raíces en adelante avanzan uno
+if(!SAVE.v2){if(SAVE.best>=7)SAVE.best=Math.min(NT,SAVE.best+1);SAVE.v2=1}
 function persist(){try{localStorage.setItem(SAVEK,JSON.stringify(SAVE))}catch(e){}}
 const skill=id=>SAVE.sk[id]==null?.15:SAVE.sk[id];
 // presión: sube con cada muerte y con el tiempo jugado (0 → 1)
 const hard=()=>clamp((SAVE.deaths||0)*.04+(SAVE.playT||0)/60*.01,0,1);
-const dOf=id=>Math.min(1,(S.stage>16?Math.max(.7,skill(id)):skill(id))+.35*hard()+(S.dBoost||0));
+// dificultad adaptativa, sin avisos: morir seguido en el mismo nivel baja números, velocidad y presión; cada acierto la devuelve de a poco
+const ease=()=>clamp(S.ease||0,0,.6);
+const dOf=id=>clamp(Math.min(1,(S.stage>NT?Math.max(.7,skill(id)):skill(id))+.35*hard()+(S.dBoost||0))-.5*ease(),0,1);
 const S={mode:'title',stage:1,topic:TOPICS[0],d:.15,ok:0,quota:5,boss:null,
   a:{x:0,y:0,vy:0,st:'rest',from:0,to:0,t:0,T:1,peak:0,v0:0,sg:1,ok:true,f:0},
   cam:0,u:21,uT:21,uPrev:21,zombies:[],spawnT:4,prob:null,lay:null,input:'',thinkT:0,
@@ -5935,10 +6635,10 @@ const scx=x=>X0+(x-S.cam)*S.u;
 const fitU=d=>clamp(W*.36/Math.max(d,4),.08,40);
 // tiempo para soltarse: base generosa que baja con el nivel, + ~0,9 s por cada carácter extra de la respuesta (escribir "-12.5" lleva más que "7")
 const ansLen=()=>{const p=S.prob;return p?String((p.keys||[p.key])[0]||'').length||1:1};
-const grabTime=()=>(Math.max(3.8,(8.2-Math.min(S.stage,16)*.16-S.d*.8)*(1-.22*hard()))+(ansLen()-1)*.9)*(S.grab&&S.grab.need>1?1.35:1)*(A11Y?1.8:1)*(powOn('g')?.7:1);
-const maxLive=()=>Math.min(7,1+Math.ceil(S.stage/2.3))+(S.stage>16?1:0)+Math.round(2*hard())+(powOn('y')?2:0);
-const spawnInt=()=>Math.max(1.2,(5.4-S.stage*.22-S.d)*(1-.35*hard()))*(A11Y?1.4:1)*(powOn('y')?.5:1);
-const zSpd=()=>(8+Math.min(16,S.stage*1.1)+S.d*5)*(1+.45*hard())*(A11Y?.6:1)*(powOn('r')?1.35:1);
+const grabTime=()=>(1+ease())*(Math.max(3.8,(8.2-Math.min(S.stage,NT)*.16-S.d*.8)*(1-.22*hard()))+(ansLen()-1)*.9)*(S.grab&&S.grab.need>1?1.35:1)*(A11Y?1.8:1)*(powOn('g')?.7:1);
+const maxLive=()=>Math.max(1,-Math.round(3*ease())+Math.min(7,1+Math.ceil(S.stage/2.3))+(S.stage>NT?1:0)+Math.round(2*hard())+(powOn('y')?2:0));
+const spawnInt=()=>(1+ease())*Math.max(1.2,(5.4-S.stage*.22-S.d)*(1-.35*hard()))*(A11Y?1.4:1)*(powOn('y')?.5:1);
+const zSpd=()=>(1-.5*ease())*(8+Math.min(16,S.stage*1.1)+S.d*5)*(1+.45*hard())*(A11Y?.6:1)*(powOn('r')?1.35:1);
 const ERx=()=>ER*(powOn('r')?2.5:1);
 const alive=z=>!z.dead;
 const ER=46;
@@ -5950,27 +6650,28 @@ function nodesStr(ns){return(ns||[]).map(n=>typeof n==='string'?n:n.t==='s'?n.v:
 /* ============ Flujo ============ */
 function newGame(n){
   if(n===1&&!SAVE.introSeen&&freshSave()&&S.mode!=='intro'){ac();startIntro();return}
+  if(!SAVE.inp){openInp(n);return}
   S.pow=null;S.powA=null;S.shield=false;S.dBoost=0;S.web=null;updPowBtn();
   if(window.rzTrack)rzTrack('play');ac();crackHide();S.stains=[];S.stage=n;S.run=newRun(n);
   Object.assign(S,{parts:[],texts:[],fx:[],shake:0,flash:0,fade:1,input:'',eatT:0,lastChomp:0});
   startStage();
 }
 function startStage(){
-  const T=topicFor(S.stage);S.topic=T;S.d=dOf(T.id);
+  const T=topicFor(S.stage);S.topic=T;{const dl=SAVE.dl;S.ease=dl&&dl.s===S.stage?clamp((dl.c-1)*.2,0,.6):0}S.d=dOf(T.id);
   S.ok=0;S.quota=T.boss?0:clamp(Math.round(6-3*S.d),3,6);
-  SAVE.best=Math.max(SAVE.best,Math.min(S.stage,16));persist();
+  SAVE.best=Math.max(SAVE.best,Math.min(S.stage,NT));persist();
   S.zombies=[];S.stains=[];S.boss=null;S.trail=[];S.grab=null;S.bubbles=[];S.prob=null;S.lay=null;S.input='';S.rings=[];S.shards=[];renderInput();padClear();
   Object.assign(S.a,{x:T.x0,y:0,vy:0,st:'hidden',from:T.x0,to:T.x0});S.cam=T.x0;S.u=S.uT=S.uPrev=21;
-  S.web=null;S.powA=null;S.vhole=null;S.stageBad=0;$('#alert').classList.remove('web');if(S.stage>=8)unlock('lv8');if(S.stage>=4)unlock('lv4');if(S.stage>=12)unlock('lv12');if(S.stage>=16)unlock('lv16');if(S.stage>16)unlock('inf');
+  S.web=null;S.powA=null;S.vhole=null;S.stageBad=0;$('#alert').classList.remove('web');if(S.stage>=8)unlock('lv8');if(S.stage>=4)unlock('lv4');if(S.stage>=12)unlock('lv12');if(S.stage>=NT)unlock('lv16');if(S.stage>NT)unlock('inf');
   S.run.stageProbs=0;MUS.groove=newGroove2(!!T.boss);if(MUS.on)musicStop();MUS.pend=null;MUSREQ++;MUS.tension=0;S.arrows=[];S.arrowHits=0;S.deathBy=null;S.helpUsed=false;hideHelp();if(S.stage>1&&R()<.2)setTimeout(eggStart,5000);
   updHUD();
   const L=LESSONS[T.id];
-  beginStage();if(S.stage<=16&&L&&!SAVE.seen[T.id]){SAVE.seen[T.id]=1;persist();setTimeout(()=>tipToast(L),2600)}
+  beginStage();if(S.stage<=NT&&L&&!SAVE.seen[T.id]){SAVE.seen[T.id]=1;persist();setTimeout(()=>tipToast(L),2600)}
 }
 let tipT=null;
 function tipToast(L){const e=$('#lawt');e.innerHTML=`<b>${L.ttl}</b>${(L.ex||'').split('\n').slice(-2).join(' · ')}`;e.classList.add('on','tip');clearTimeout(lawT);clearTimeout(tipT);tipT=setTimeout(()=>e.classList.remove('on','tip'),4000)}
 function showLesson(L){
-  $('#lKick').textContent=L.kick;$('#lTtl').textContent=L.ttl;
+  {const n=TOPICS.findIndex(t=>LESSONS[t.id]===L)+1;$('#lKick').textContent=n?L.kick.replace(/\d+/,n):L.kick}$('#lTtl').textContent=L.ttl;
   $('#sLesson').classList.toggle('boss',!!L.boss);
   $('#lBody').innerHTML=L.lines.map(t=>`<p>${t}</p>`).join('')+(L.ex?`<pre>${L.ex}</pre>`:'');
   setMode('lesson');
@@ -5982,8 +6683,8 @@ function beginStage(){
   S.spawnT=S.stage<=2?6:3.5;S.tauntT=6;
   if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z);
     if(T.final){z.prof=true;z.pers=null;z.name=XL('n_prof');setTimeout(()=>{if(S.mode==='play'&&alive(z)){laugh(5);say(z,XL('n_laugh'),'shout')}},1800)}}
-  speak(XL('n_level',[S.stage>16?'∞':S.stage,T.name])+(boss?' '+(T.final?XL('n_prof'):XL('c2975f2')):''),true);
-  banner(boss?(T.final?XL('cd944be'):XL('c2975f2')):S.stage>16?XL('n_inf'):XL('ce6cf13')+S.stage,T.name,(boss?XL('cc3d5fc',[T.boss]):XL('c4bd829',[S.quota]))+' · ♪ '+grooveName(MUS.groove)+(hard()>.01?XL('cb76c46',[Math.round(hard()*100)]):''),boss);
+  speak(XL('n_level',[S.stage>NT?'∞':S.stage,T.name])+(boss?' '+(T.final?XL('n_prof'):XL('c2975f2')):''),true);
+  banner(boss?(T.final?XL('cd944be'):XL('c2975f2')):S.stage>NT?XL('n_inf'):XL('ce6cf13')+S.stage,T.name,(boss?XL('cc3d5fc',[T.boss]):XL('c4bd829',[S.quota]))+' · ♪ '+grooveName(MUS.groove)+(hard()>.01?XL('cb76c46',[Math.round(hard()*100)]):''),boss);
   updHUD();
 }
 function banner(k,big,sub,boss){$('#bnK').textContent=k;$('#bnBig').textContent=big;$('#bnSub').textContent=sub;const b=$('#banner');b.classList.toggle('boss',!!boss);b.classList.remove('go');void b.offsetWidth;b.classList.add('go')}
@@ -5995,7 +6696,7 @@ function lawToast(L,extra){const e=$('#lawt');e.innerHTML=`<b>${L.n}</b>${L.s}${
 function setMode(m){
   if(m!=='title')pooHide();else if(S.mode!=='title'){S.titleAt=performance.now();S.bhOn=false;S.bhG=0;S.bhK=0;lgEl.style.scale='';lgEl.style.translate=''}
   S.mode=m;if(m!=='title')S.bhOn=false;
-  for(const[id,mm]of[['#sTitle','title'],['#sLesson','lesson'],['#sPause','pause'],['#sOver','over'],['#sTut','tut'],['#sEnd','end']])$(id).classList.toggle('show',m===mm);if(m!=='play')$('#bHelp').hidden=true;
+  for(const[id,mm]of[['#sInp','inp'],['#sTitle','title'],['#sLesson','lesson'],['#sPause','pause'],['#sOver','over'],['#sTut','tut'],['#sEnd','end']])$(id).classList.toggle('show',m===mm);if(m!=='play')$('#bHelp').hidden=true;
   const play=m==='play',pz=m==='pause';
   document.body.classList.toggle('play',play);
   $('#top').classList.toggle('hidden',!(play||pz));
@@ -6003,7 +6704,7 @@ function setMode(m){
   if(!play){$('#alert').classList.remove('on');$('#newt').classList.remove('on');$('#lawt').classList.remove('on');padClear()}else if(S.grab)$('#alert').classList.add('on');
   for(const sc of document.querySelectorAll('#game .screen'))if(sc.id!=='sLang'&&sc.id!=='sAch')sc.inert=!sc.classList.contains('show');
   if(m==='play'&&S.web&&!S.grab){$('#alBig').textContent=XL('n_webbed');$('#alSub').textContent=XL('n_webSub');$('#alert').classList.add('on','web')}
-  if(A11Y&&['title','over','pause','lesson','end','tut'].includes(m))setTimeout(()=>{const b=document.querySelector('#game .screen.show .btn');if(b)b.focus()},120);
+  if(A11Y&&['title','over','pause','lesson','end','tut','inp'].includes(m))setTimeout(()=>{const b=document.querySelector('#game .screen.show .btn');if(b)b.focus()},120);
   if(m==='title'){requestAnimationFrame(()=>{try{fitTitle()}catch(e){}});heatmap($('#tHeat'));$('#bStart').textContent=L10('play');$('#bFresh').hidden=true;const okT=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);$('#tStats').textContent=L10('rec',{b:SAVE.best,n:okT,p:Math.round(hard()*100)})}
   syncChips();
 }
@@ -6049,7 +6750,7 @@ function renderExprCanvas(p){
   CTXOVR=c2;
   if(mp){drawN(p.pre,Math.round((w-mp.w)/2),2+mp.a,1,P.l1)}
   drawN(mk,Math.round((w-m.w)/2),2+(mp?mp.a+mp.d+gap:0)+m.a,1,P.w);
-  CTXOVR=null;
+  CTXOVR=null;S.excP=p;
   const maxW=innerWidth*.92,maxH=viewH()*(PORT?.2:.24),k=Math.max(2,Math.floor(Math.min(maxW/w,maxH/h,PORT?9:14)));
   cvE.style.width=w*k+'px';cvE.style.height=h*k+'px';
 }
@@ -6094,7 +6795,7 @@ function failChar(ch){
 function record(ok,val){
   const Rn=S.run,id=S.topic.id,t=S.thinkT,h=SAVE.hist[id]||(SAVE.hist[id]={ok:0,bad:0});
   if(ok){const dk=dayKey();SAVE.days=SAVE.days||{};SAVE.days[dk]=(SAVE.days[dk]||0)+1;Rn.correct++;Rn.streak++;Rn.maxStreak=Math.max(Rn.maxStreak,Rn.streak);Rn.okT[id]=(Rn.okT[id]||0)+1;h.ok++;SAVE.sk[id]=clamp(skill(id)+(t<6?.09:.05),0,1);
-    unlock('first');if(Rn.streak>=50)unlock('st50');{const tok=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);if(tok>=100)unlock('ok100');if(tok>=1000)unlock('ok1000')}{const ds=dayStreak();if(ds>=3)unlock('days3');if(ds>=30)unlock('days30')}if(new Date().getHours()<5)unlock('night');if(S.prob&&S.prob.ans<0)unlock('neg');if(Rn.streak>=5)unlock('st5');if(Rn.streak>=10)unlock('st10');if(Rn.streak>=25)unlock('st25');if(t<2)unlock('fast');if(dayStreak()>=7)unlock('days7');if(Rn.streak%POWSTREAK===0)grantPow();else updPowBtn();S.sayPre=XL('n_ok')+' '}
+    if(S.ease>0)S.ease=Math.max(0,S.ease-.06);unlock('first');if(Rn.streak>=50)unlock('st50');{const tok=Object.values(SAVE.hist).reduce((a,h)=>a+(h.ok||0),0);if(tok>=100)unlock('ok100');if(tok>=1000)unlock('ok1000')}{const ds=dayStreak();if(ds>=3)unlock('days3');if(ds>=30)unlock('days30')}if(new Date().getHours()<5)unlock('night');if(S.prob&&S.prob.ans<0)unlock('neg');if(Rn.streak>=5)unlock('st5');if(Rn.streak>=10)unlock('st10');if(Rn.streak>=25)unlock('st25');if(t<2)unlock('fast');if(dayStreak()>=7)unlock('days7');if(Rn.streak%POWSTREAK===0)grantPow();else updPowBtn();S.sayPre=XL('n_ok')+' '}
   else{Rn.wrong++;S.stageBad=(S.stageBad||0)+1;setTimeout(updPowBtn,0);Rn.streakBefore=Rn.streak;Rn.streak=0;Rn.errT[id]=(Rn.errT[id]||0)+1;h.bad++;SAVE.sk[id]=clamp(skill(id)-.12,0,1);if(t<2)Rn.fastWrong++;
     if(val!=null&&S.prob){Rn.lastWrong={val,ans:S.prob.ans,topic:id};wrongFeedback(val,S.prob.ans,t)}}
   Rn.thinkSum+=t;Rn.thinkN++;
@@ -6181,7 +6882,8 @@ const APPLES=['roja','verde','amarilla'];
 function syncChips(){volRender();if(typeof achN==='function')for(const i of[1,2]){$('#bAch'+i).textContent='★ '+XL('n_ach')+' '+achN()+'/'+ACH.length;document.body.classList.toggle('a11y',A11Y);const b=$('#bA11y'+i);b.hidden=!A11Y;b.textContent='♿ '+XL('n_a11y')+(A11Y?' ✓':'');b.setAttribute('aria-pressed',A11Y?'true':'false')}for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}unlock('apple');syncChips()};
 for(const i of[1,2]){$('#bTheme'+i).onclick=()=>{setTheme(THEME==='dark'?'light':'dark');unlock('theme')}}
-$('#bKb').onclick=()=>{document.body.classList.toggle('kb');padClear();syncChips()};
+$('#bKb').onclick=()=>{document.body.classList.toggle('kb');SAVE.inp=document.body.classList.contains('kb')?'kb':'draw';persist();padClear();syncChips()};
+if(SAVE.inp==='kb')document.body.classList.add('kb');
 {const pg=$('#sTitle details.prog'),sm=pg.querySelector('summary');
   pg.addEventListener('toggle',()=>{const o=pg.open;$('#sTitle .lead').hidden=o;$('#tHeat').hidden=!o;$('#tStats').hidden=o;sm.textContent=o?L10('closeprog'):L10('prog')})}
 applyLang();loadCT(LANG).then(v=>{if(v)refreshContent()});
@@ -6239,7 +6941,8 @@ document.addEventListener('pointerdown',e=>{
   if(S.a.st==='grab')graceBonus(.035);
   e.preventDefault();ac();drawPid=e.pointerId;clearTimeout(padTimer);
   const p=pt(e),last=syms[syms.length-1];
-  if(last&&!last.done&&inside(last,p))curSym=last;
+  if(last&&last.done&&last.auto&&performance.now()-last.doneAt<900&&inside(last,p))curSym=last;
+  else if(last&&!last.done&&inside(last,p))curSym=last;
   else{
     if(last&&!last.done)finalize(last);
     if(!canType()||padLock){drawPid=null;return}
@@ -6251,11 +6954,20 @@ document.addEventListener('pointermove',e=>{
   if(!curStroke||e.pointerId!==drawPid)return;e.preventDefault();
   const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];
   for(const ev of (evs.length?evs:[e])){const p=pt(ev);const l=curStroke[curStroke.length-1];if(Math.hypot(p[0]-l[0],p[1]-l[1])>=2){curStroke.push(p);symAdd(curSym,p)}}
+  if(!curSym.done&&curStroke.length>6&&performance.now()-(curSym.liveAt||0)>180)liveRead(curSym);
   padDirty=true;
 },{passive:false});
+// lectura en vivo: qué número ve el OCR y con cuánta seguridad
+function liveRead(sy){sy.liveAt=performance.now();if(!sy.st.length)return;try{const c=classify(sy);sy.live=c.kind==='digit'?{ch:c.ch,p:c.p[c.best],sure:c.sure}:{ch:c.ch==='-'?'−':c.ch,p:1}}catch(e){sy.live=null}padDirty=true}
 const penUp=e=>{
   if(!curStroke||(e&&e.pointerId!==drawPid))return;curStroke=null;drawPid=null;
-  clearTimeout(padTimer);padTimer=setTimeout(()=>{const last=syms[syms.length-1];if(last&&!last.done)finalize(last)},520);
+  const last=syms[syms.length-1];clearTimeout(padTimer);
+  if(!last||last.done){padDirty=true;return}
+  liveRead(last);
+  // ≥99 % y es lo que se esperaba: se acepta al instante, sin esperar ni preguntar
+  const lv=last.live,ex=canType()?nextChars():[];
+  if(lv&&/^\d$/.test(lv.ch)&&(lv.p>=.99||lv.sure&&lv.p>=.9)&&ex.includes(lv.ch)&&splitSym(last).length===1){last.auto=true;finalize(last);last.doneAt=performance.now();return}
+  padTimer=setTimeout(()=>{const l=syms[syms.length-1];if(l&&!l.done)finalize(l)},520);
 };
 document.addEventListener('pointerup',penUp);document.addEventListener('pointercancel',penUp);
 $('#bClear').onclick=()=>{if(S.mode==='play'){S.input='';renderInput();padClear()}};
@@ -6306,9 +7018,9 @@ function finalize(sy){
     const ord=[...c.p.keys()].sort((a,b)=>c.p[b]-c.p[a]),p1=c.p[ord[0]],top=ord[0];sy.x=c.x;sy.path=c.path;
     // pareja confusa: se ofrecen lo leído y sus parejas en orden numérico (sin delatar cuál es la buena)
     const xc=exps.filter(e=>/^\d$/.test(e)&&(CONF[top]||[]).includes(+e)).map(Number);
-    if(xc.length&&!exps.includes(String(top))&&!c.sure){const cand=[top,...xc];for(const d of CONF[top])if(cand.length<4&&!cand.includes(d))cand.push(d);showPick(sy,cand.sort((a,b)=>a-b));return}
+    if(xc.length&&!exps.includes(String(top))&&!c.sure){const cand=[top,...xc];for(const d of CONF[top])if(cand.length<3&&!cand.includes(d)&&c.p[d]>=.02)cand.push(d);showPick(sy,cand.sort((a,b)=>a-b));return}
     // seguro: coincide con lo esperado (≥80 %), es claramente otro número (≥97 %) o la memoria del jugador lo reconoce. Si no, el jugador elige.
-    if(!c.sure&&!(exps.includes(String(top))?p1>=.8:p1>=.97)){showPick(sy,ord.filter((d,i)=>i<2||c.p[d]>=.04).slice(0,4));return}
+    if(!c.sure&&!(exps.includes(String(top))?p1>=.6:p1>=.97)){showPick(sy,ord.filter((d,i)=>i<2||c.p[d]>=.08).slice(0,3).sort((a,b)=>a-b));return}
   }
   const got=exps.find(e=>c.kind==='digit'&&c.best===+e)||exps.find(e=>e!=='/'&&matches(c,e));
   if(got){sy.ok=true;sy.ch=got;if(c.kind==='digit'&&/^\d$/.test(got)&&(c.best===+got||c.p[+got]>=.3))INK.learn(c.x,got,c.path);acceptChar(got)}
@@ -6331,6 +7043,12 @@ function padDraw(){
     c.shadowBlur=0;
   }
   c.font='20px "Pixelify Sans", monospace';c.textBaseline='bottom';c.textAlign='left';
+  for(const sy of syms){if(sy.done||!sy.live||!sy.st.length)continue;
+    const lv=sy.live,pc=Math.round(Math.min(.99,lv.p)*100),x=sy.x0,y=sy.y0-10<34?sy.y1+34:sy.y0-10,ok=lv.p>=.9;
+    c.globalAlpha=ok?.95:.6;c.fillStyle=ok?P.w:P.l1;c.shadowColor=P.k;c.shadowBlur=4;c.font='26px "Pixelify Sans", monospace';c.fillText(lv.ch,x,y);
+    c.font='13px "Pixelify Sans", monospace';c.fillText(pc+'%',x+22,y-4);
+    c.fillStyle=P.m1;c.fillRect(x,y+3,44,3);c.fillStyle=ok?P.w:P.l2;c.fillRect(x,y+3,Math.round(44*Math.min(1,lv.p)),3);c.shadowBlur=0;c.globalAlpha=1}
+  c.font='20px "Pixelify Sans", monospace';
   for(const sy of syms){
     if(!sy.done||sy.ok===null)continue;
     const col=sy.ok?P.w:P.l1,m=8;
@@ -6367,7 +7085,7 @@ function skelAI(z,dt,ax){
   else{z.cd-=dt;if(z.cd<=0&&S.a.st==='rest'&&!S.grab){z.aim=1.1;z.cd=skelCD();SFX.draw();if(R()<.3)say(z,pick(ZS('aim',['¡QUIETA, PLEBEYA!','POSA PARA MI FLECHA','UNO… DOS… QUÉ GUAPO SOY…'])))}}
 }
 // probabilidad de fallar: 50 % en el nivel 1, baja con cada nivel y con la presión (mínimo 12 %)
-const skelMiss=()=>Math.max(.12,.5-(Math.min(S.stage,16)-1)*.025-.1*hard());
+const skelMiss=()=>Math.min(.85,Math.max(.12,.5-(Math.min(S.stage,NT)-1)*.025-.1*hard())+.5*ease());
 function shoot(z){const miss=R()<skelMiss(),off=miss?(R()<.5?-1:1)*(12+R()*16)/S.u:0;
   S.arrows.push({z,x0:z.x,x1:S.a.x+off,miss,h0:15,t:0,T:.6+Math.abs(scx(z.x)-scx(S.a.x))/(W*.9)});SFX.bow()}
 function arrowHit(ar){
@@ -6477,7 +7195,7 @@ function eaten(){
 function stageClear(){
   const a=S.a,T=S.topic;a.st='clear';S.prob=null;S.lay=null;showExpr(null);S.clearT=0;padClear();SFX.clear();
   for(const z of S.zombies)if(alive(z)&&!(T.final&&z===S.boss))killZ(z,false);
-  SAVE.best=Math.max(SAVE.best,Math.min(16,S.stage+1));persist();
+  SAVE.best=Math.max(SAVE.best,Math.min(NT,S.stage+1));if(SAVE.dl&&SAVE.dl.s===S.stage)SAVE.dl=null;persist();
   if(!S.stageBad)unlock('perf');
   if(T.final){startEnding(S.boss);return}
   else banner(XL('ce6cf13')+S.stage+' ✓',T.name,XL('c623f5e'));
@@ -6488,7 +7206,7 @@ const prettyQ=s=>s.replace(' = ?','').replace(/\(([^()]+)\)\/\(([^()]+)\)/g,'$1/
 const knows=id=>{const h=SAVE.hist[id];return!!h&&h.ok>=4&&h.ok/(h.ok+h.bad)>=.7};
 function hideHelp(){const b=$('#bHelp');if(!b||b.hidden||b.classList.contains('fading'))return;b.classList.add('fading');setTimeout(()=>{b.hidden=true;b.classList.remove('fading')},260)}
 function helpCheck(){
-  if(S.helpUsed||!S.prob||S.grab||S.stage>16||S.run.stageProbs>2||S.thinkT<6||knows(S.topic.id))return;
+  if(S.helpUsed||!S.prob||S.grab||S.stage>NT||S.run.stageProbs>2||S.thinkT<6||knows(S.topic.id))return;
   const b=$('#bHelp');if(b.hidden){b.hidden=false;const z=nearestZ();if(z)say(z,ZS('help',['¿PERDIDA? HAY UN BOTÓN DE AYUDA. ÚSALO, TE HACE FALTA'])[0],'think')}
 }
 function openTut(){
@@ -6505,7 +7223,7 @@ $('#bTutAgain').onclick=()=>playExplain(S.tutP,$('#tutAnim'),$('#tutB'));
 $('#bTutOk').onclick=()=>{cancelAnimationFrame(exRAF);S.thinkT=0;setMode('play')};
 
 /* ============ Fin de partida: progreso explicado ============ */
-const MAPSYM=['+','−','×','÷','ℤ','a/b','√','sin','f₁','f₂','f₃','[ ]','lím',"f'",'∫','π'];
+const MAPSYM=['+','−','×','÷','ℤ','a/b','aⁿ','√','sin','f₁','f₂','f₃','[ ]','lím',"f'",'∫','π'];
 function pickLaw(){
   const Rn=S.run,lw=Rn.lastWrong,zn=S.zombies.filter(alive).length,think=Rn.thinkN?Rn.thinkSum/Rn.thinkN:0;
   let worst=null;for(const k in Rn.errT)if(!worst||Rn.errT[k]>worst[1])worst=[k,Rn.errT[k]];
@@ -6538,25 +7256,27 @@ function overSprites(){const k=$('#sOver .card');if(k.dataset.spr)return;k.datas
   k.style.setProperty('--skull',`url(${pixURL(['.#####.','#######','#..#..#','#..#..#','###.###','.#####.','.#.#.#.'],{'#':'#000'})})`);
   k.style.setProperty('--flag',`url(${pixURL(['k#.#.#','k.#.#.','k#.#.#','k.#.#.','k.....','k.....','k.....','k.....'],{k:'#000','#':'#000'})})`)}
 function gameOver(){
-  SAVE.deaths=(SAVE.deaths||0)+1;persist();if(SAVE.deaths>=10)unlock('die10');if(SAVE.deaths>=50)unlock('die50');
+  SAVE.deaths=(SAVE.deaths||0)+1;SAVE.dl=SAVE.dl&&SAVE.dl.s===S.stage?{s:S.stage,c:SAVE.dl.c+1}:{s:S.stage,c:1};persist();if(SAVE.deaths>=10)unlock('die10');if(SAVE.deaths>=50)unlock('die50');
   setMode('over');
   $('#oTtl').textContent=S.deathBy==='boom'?XL('n_boomT'):pick(L10list(S.deathBy==='arrow'?'arrow':'eaten'));speak($('#oTtl').textContent,true);
   const law=pickLaw();$('#oQuote').textContent=law.txt;$('#oLawN').textContent='— '+law.L.n;
   const frac=S.topic.boss?(S.boss?(S.boss.max-Math.max(0,S.boss.hp))/S.boss.max:0):S.ok/Math.max(1,S.quota);
-  const pos=clamp((Math.min(S.stage,16)-1+frac*.95)/15,0,1),L=v=>(4+92*v).toFixed(2)+'%';
-  $('#trDots').innerHTML=TOPICS.map((t,i)=>`<span class="${i+1<Math.min(S.stage,16)?'done':''} ${t.boss?'boss':''}" style="left:${L(i/15)}" title="${t.name}"></span>`).join('');
+  const pos=clamp((Math.min(S.stage,NT)-1+frac*.95)/(NT-1),0,1),L=v=>(4+92*v).toFixed(2)+'%';
+  $('#trDots').innerHTML=TOPICS.map((t,i)=>`<span class="${i+1<Math.min(S.stage,NT)?'done':''} ${t.boss?'boss':''}" style="left:${L(i/(NT-1))}" title="${t.name}"></span>`).join('');
   const fill=$('#trFill'),ap=$('#trApple');fill.style.transition='none';ap.style.transition='none';fill.style.width='0';ap.style.left='4%';void fill.offsetWidth;fill.style.transition='';ap.style.transition='';
   requestAnimationFrame(()=>requestAnimationFrame(()=>{fill.style.width=(pos*100).toFixed(1)+'%';ap.style.left=L(pos)}));
   ap.style.background=`url(${appleCanvas(0,1).toDataURL()}) 0 0/100% 100% no-repeat`;overSprites();
-  $('#mapLbl').textContent=L10('map',{l:S.stage>16?'∞':S.stage,t:S.topic.name,c:S.run.correct,k:S.run.kills,r:SAVE.best,p:Math.round(hard()*100)});S.overPos=pos;
+  $('#mapLbl').textContent=L10('map',{l:S.stage>NT?'∞':S.stage,t:S.topic.name,c:S.run.correct,k:S.run.kills,r:SAVE.best,p:Math.round(hard()*100)});S.overPos=pos;
   const p=S.run.lastProb;
-  $('#oFailB').innerHTML=p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">${L10('replay')}</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:XL('cnoprob');
+  const mt=MENTAL[p?p.topic:S.topic.id]||[],mtH=mt.length?`<div class="mt"><b>${L10('mental')}</b>${mt.map(k=>`<p>${XL(k)}</p>`).join('')}</div>`:'';
+  $('#oFailB').innerHTML=mtH+(p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">${L10('replay')}</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:XL('cnoprob'));
   $('#sOver').classList.remove('exp');$('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};heatmap($('#oHeat'));
   const rows=[];const ids=new Set([...Object.keys(S.run.okT),...Object.keys(S.run.errT),S.topic.id]);
   for(const id of ids){const t=TOPICS.find(q=>q.id===id);const h=SAVE.hist[id]||{ok:0,bad:0},n=h.ok+h.bad,acc=n?h.ok/n:0;rows.push({t,acc,n})}
   rows.sort((a,b)=>a.acc-b.acc);
   const weak=rows.find(r=>r.n>=2&&r.acc<.75)||rows[0];
-  $('#bCont').onclick=()=>newGame(1);
+  // como en Dark Souls: mueres, entiendes por qué y vuelves al mismo nivel con problemas nuevos
+  const st=S.stage;$('#bCont').textContent=L10('retry',{n:st>NT?'∞':st});$('#bCont').onclick=()=>newGame(st);
   const wi=TOPICS.indexOf(weak.t)+1;$('#bPract').hidden=wi===S.stage;$('#bPract').textContent=L10('practice',{t:weak.t.name});$('#bPract').onclick=()=>newGame(wi);
   $('#sOver .card').scrollTop=0;requestAnimationFrame(()=>{fitDead();fitCards()});
 }
@@ -6564,7 +7284,7 @@ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[
 // tarjeta 1080×1350 con la escena final y el resultado; se comparte con el menú del sistema o se descarga
 async function shareResult(){
   const btn=$('#bShare'),W1=1080,H1=1350,c=document.createElement('canvas');c.width=W1;c.height=H1;const x=c.getContext('2d');
-  const F=(px,w)=>`${w||400} ${px}px "Pixelify Sans", monospace`,lvl=S.stage>16?'∞':S.stage;
+  const F=(px,w)=>`${w||400} ${px}px "Pixelify Sans", monospace`,lvl=S.stage>NT?'∞':S.stage;
   x.fillStyle=P.k;x.fillRect(0,0,W1,H1);x.imageSmoothingEnabled=false;
   const ih=Math.round(W1*cv.height/cv.width);x.drawImage(cv,0,130,W1,ih);
   x.textAlign='center';x.textBaseline='top';
@@ -6592,7 +7312,7 @@ async function shareResult(){
 }
 $('#bShare').onclick=()=>{unlock('share');return shareResult()};
 function updHUD(){
-  const T=S.topic,n=$('#hN');n.textContent=S.stage>16?'∞':String(S.stage);n.classList.toggle('boss',!!T.boss);$('#pips').classList.toggle('boss',!!T.boss);
+  const T=S.topic,n=$('#hN');n.textContent=S.stage>NT?'∞':String(S.stage);n.classList.toggle('boss',!!T.boss);$('#pips').classList.toggle('boss',!!T.boss);
   $('#hTopic').textContent=T.name;
   const tot=T.boss?(S.boss?S.boss.max:T.boss):S.quota,on=T.boss?(S.boss?S.boss.max-Math.max(0,S.boss.hp):0):S.ok;
   $('#pips').innerHTML=Array.from({length:tot},(_,i)=>`<i class="${i<on?'on':''}"></i>`).join('');
@@ -7334,6 +8054,10 @@ function update(dt){
 }
 
 /* ============ Dibujo ============ */
+// colores por tipo: [cuerpo, pierna/brazo de atrás]. Se reconocen de reojo, sin dejar de mirar la pregunta
+const ZCOL={walker:['#78bfd0','#4a8797'],runner:['#f0904a','#b05c22'],boss:['#b97ae8','#7a46a6'],spider:['#e0b43c'],creeper:['#4fae35'],ender:['#c86bff'],skel:['#e8e2cf']};
+const zColor=z=>z.prof?P.red:(ZCOL[z.type]||ZCOL.walker)[0];
+const zHead=z=>(z.type==='boss'?(z.prof?68:50):z.type==='skel'?32:z.type==='ender'?42:z.type==='spider'?20:z.type==='creeper'?30:36)+(z.hat&&z.hat!=='none'?6:0);
 function drawZ(z,refl){
   if(z.type==='skel'){drawSkel(z);return}
   if(z.type==='spider'){drawSpider(z);return}
@@ -7341,7 +8065,7 @@ function drawZ(z,refl){
   if(z.type==='ender'){drawEnder(z);return}
   const big=z.type==='boss',run=z.type==='runner',x=Math.round(scx(z.x));if(x<-30||x>W+30)return;
   const a=S.a,f=z.grab&&S.grab?-S.grab.side:S.mode==='title'&&z.dir?z.dir:(Math.sign(scx(a.x)-x)||1);
-  const blink=z.hitT>0&&((S.time*20|0)%2),col=blink?P.red:P.l3,col2=blink?P.red:P.l2,red=P.red,dk=P.r;
+  const zc=!z.prof&&ZCOL[z.type],blink=z.hitT>0&&((S.time*20|0)%2),col=blink?P.red:zc?zc[0]:P.l3,col2=blink?P.red:zc?zc[1]:P.l2,red=P.red,dk=P.r;
   const grabbed=!!(z.grab&&S.grab),still=grabbed||z.dead;
   // ciclo de paso: p avanza al caminar; el cuerpo baja cuando las piernas se abren y sube cuando se cruzan
   const p=z.walk,s1=Math.sin(p),K=z.prof?2:big?1.6:1;
@@ -7438,12 +8162,29 @@ function bubble(b){
   const nm=zname(z),lines=wrapP(b.txt,Math.min(150,W*.55));
   const head=(z.type==='boss'?(z.prof?68:50):z.type==='skel'?32:z.type==='ender'?42:z.type==='spider'?20:z.type==='creeper'?30:36)+(z.hat&&z.hat!=='none'?6:0);
   const w=Math.max(pw(nm),...lines.map(l=>pw(l))),h=lines.length*9,jit=kind==='shout'&&b.t<1.2?Math.round((R()-.5)*2):0;
-  let top=Math.round(GY-head-h+Math.sin(b.t*4+z.id))+jit;const cx=Math.round(clamp(zx,w/2+3,W-w/2-3))+jit,qb=questionBottom();if(qb!=null)top=Math.max(top,Math.round(qb+14));
+  let top=Math.round(GY-head-h+Math.sin(b.t*4+z.id))+jit;const cx=Math.round(clamp(zx,w/2+3,W-w/2-3))+jit,qb=questionBottom();if(qb!=null)top=Math.max(top,Math.round(qb+14));if(S.plcZ===z&&S.plcTop!=null)top=Math.min(top,S.plcTop-h-6);
   ctx.globalAlpha=Math.max(0,al);
   ptextO(nm,cx,top-10,z.type==='skel'?P.l2:P.red);
   const col=kind==='shout'?P.w:kind==='think'?P.l1:P.l3;let left=Math.floor((b.t-.1)*34);
   lines.forEach((l,i)=>{if(left<=0)return;ptextO(l.slice(0,left),cx,top+i*9,col,l);left-=l.length+1});
   ctx.globalAlpha=1;
+}
+// cartel: el enemigo más cercano (o el que te agarra) carga la pregunta, con el borde de su color.
+// Así la pregunta y el peligro están en el mismo lugar, como subtítulos pegados a quien habla.
+function placardZ(){if(S.grab)return S.grab.z;const ax=scx(S.a.x);let b=null,bd=1e9;
+  for(const z of S.zombies){if(!alive(z)||z.suck)continue;const x=scx(z.x);if(x<10||x>W-10)continue;const d=Math.abs(x-ax);if(d<bd){bd=d;b=z}}return b}
+function drawPlacard(){
+  S.plcZ=null;const p=S.prob,e=$('#exc');
+  if(S.mode!=='play'||!p||S.excP!==p||!e||e.width<4||!['rest','grab'].includes(S.a.st)){S.plc=null;return}
+  const z=placardZ(),k=e.width*2<=W*.62&&e.height*2<=GY*.3?2:1,w=e.width*k,h=e.height*k;
+  const tx=z?scx(z.x):apx(),ty=GY-(z?zHead(z):26)-h-10;
+  if(!S.plc)S.plc={x:tx,y:ty};
+  S.plc.x+=(tx-S.plc.x)*.25;S.plc.y+=(ty-S.plc.y)*.25;
+  const x=Math.round(clamp(S.plc.x-w/2,3,W-w-3)),y=Math.round(Math.max(TOPPAD+2,S.plc.y)),col=z?zColor(z):P.w;S.plcZ=z;S.plcTop=y;
+  ctx.fillStyle=P.k;ctx.fillRect(x-3,y-3,w+6,h+6);ctx.fillStyle=col;ctx.fillRect(x-4,y-4,w+8,1);ctx.fillRect(x-4,y+h+3,w+8,1);ctx.fillRect(x-4,y-4,1,h+8);ctx.fillRect(x+w+3,y-4,1,h+8);
+  // palito del cartel hacia quien lo carga
+  const sx=Math.round(clamp(S.plc.x,x+2,x+w-2));for(let i=0;i<4;i++)ctx.fillRect(sx-(3-i),y+h+4+i,2*(3-i)+1,1);
+  ctx.imageSmoothingEnabled=false;ctx.drawImage(e,x,y,w,h);
 }
 function ring(x,y,r,col){ctx.fillStyle=col;const n=Math.max(12,Math.round(r*1.6));for(let i=0;i<n;i++){const a=i/n*Math.PI*2;ctx.fillRect(Math.round(x+Math.cos(a)*r),Math.round(y+Math.sin(a)*r*.45),2,1)}}
 function drawProblem(){
@@ -7488,6 +8229,7 @@ function draw(){
   if(S.mode!=='title'&&!['eaten','hidden'].includes(a.st)){const cx=Math.round(apx()),cy=Math.round(GY-5-a.y*YPX);dline(cx+2,cy-1,cx+8,cy-9,P.y,2);ptext('c.m.',cx+9,cy-14,1,P.y)}
   for(const f of S.fx){ctx.globalAlpha=Math.max(0,1-f.t/1.2);const x=Math.round(scx(f.x)),y=GY-5,L=10+Math.min(14,f.f*.4);pline(x,y,x+f.dir*L*.7,y-L*.7,P.y);ptext('F',x+f.dir*L*.7+(f.dir>0?2:-7),y-L*.7-8,1,P.y);ctx.globalAlpha=1}
   for(const sh of S.shards){const k=Math.min(1,sh.t/sh.T),x0=scx(sh.x0),x1=scx(sh.z.x),x=x0+(x1-x0)*k,y=GY-6-Math.sin(k*Math.PI)*40-k*14;ctx.fillStyle=P.y;ctx.fillRect(Math.round(x)-1,Math.round(y)-1,3,3);ctx.fillStyle=P.o;ctx.fillRect(Math.round(x-(x1-x0)*.04),Math.round(y+2),2,2)}
+  drawPlacard();
   for(const b of S.bubbles)bubble(b);
   for(const q of S.parts){ctx.globalAlpha=Math.max(0,1-q.t/q.life);ctx.fillStyle=q.c;const s=q.blood&&q.t<.3?2:1;ctx.fillRect(Math.round(q.x),Math.round(q.y),s,s)}
   ctx.globalAlpha=1;
@@ -7734,7 +8476,7 @@ function enderAI(z,dt,ax){z.walk+=dt*1.4;z.tpFlash=Math.max(0,(z.tpFlash||0)-dt)
     else nx=S.cam+(R()-.5)*W*.8/S.u;
     enderTP(z,nx)}
   if(S.a.st==='rest'&&!S.grab&&Math.abs(scx(z.x)-ax)<8)startGrab(z)}
-function drawSpider(z){const x=Math.round(scx(z.x));if(x<-30||x>W+30)return;const f=Math.sign(scx(S.a.x)-x)||1,col=z.hitT>0?P.red:P.l3;ctx.save();
+function drawSpider(z){const x=Math.round(scx(z.x));if(x<-30||x>W+30)return;const f=Math.sign(scx(S.a.x)-x)||1,col=z.hitT>0?P.red:ZCOL.spider[0];ctx.save();
   if(z.dead){ctx.globalAlpha*=Math.max(0,1-z.deadT/1.1);ctx.fillStyle=col;ctx.fillRect(x-4,GY-2,9,2);for(const s of[-1,1])for(let i=0;i<4;i++)ctx.fillRect(x+s*(5+i*2),GY-1,2,1);ctx.restore();return}
   const by=GY-6,w=z.walk;
   for(const s of[-1,1])for(let i=0;i<4;i++){const ph=Math.round(Math.sin(w+i*1.7+(s>0?1:0))*1.4),kx=x+s*(3+i*1.4),ky=by-3-(i%2),fx=x+s*(5+i*1.8)+ph;pline(x+s,by,kx,ky,col);pline(kx,ky,fx,GY-1,col)}
@@ -7953,6 +8695,68 @@ function enojo(){if(muted||!ac())return;loadEnojo();
 
 /* ============ Intro: explosión atómica, el profesor y la manzana desde la estación espacial ============ */
 const freshSave=()=>!Object.keys(SAVE.hist||{}).length&&!(SAVE.best>1);
+// quien ya jugaba antes de la pantalla de «¿cómo quieres responder?» no la ve: se queda dibujando, como antes
+if(!SAVE.inp&&!freshSave()){SAVE.inp='draw';persist()}
+
+/* ============ Primera vez: elegir cómo responder y practicarlo (escribir, además, enseña tu letra al OCR) ============ */
+let INP=null;
+const IT={draw:['12','345','6789','0'],kb:['15','-3']};
+function openInp(n){
+  INP={n,mode:null,i:0,busy:false};
+  $('#inpTtl').textContent=L10('inpTtl');
+  $('#inpDraw b').textContent=L10('inpDraw');$('#inpDraw small').textContent=L10('inpDrawSub');
+  $('#inpKb b').textContent=L10('inpKb');$('#inpKb small').textContent=L10('inpKbSub');
+  $('#inpNote').textContent=L10('inpNote');$('#itSkip').textContent=L10('itSkip');$('#itGo').textContent=L10('itGo');
+  $('#inpA').hidden=false;$('#inpB').hidden=true;setMode('inp');
+}
+function inpPick(m){INP.mode=m;INP.i=0;document.body.classList.toggle('kb',m==='kb');$('#inpA').hidden=true;$('#inpB').hidden=false;
+  $('#itPadW').hidden=m!=='draw';$('#itKbW').hidden=m!=='kb';$('#itSkip').hidden=false;$('#itGo').hidden=true;itStep()}
+function itStep(){
+  const L=IT[INP.mode],i=INP.i;INP.busy=false;
+  if(i>=L.length){$('#itStep').textContent='';$('#itTtl').textContent=L10('itDoneT');$('#itTxt').textContent=L10(INP.mode==='kb'?'itKbDone':'itDrawDone');
+    $('#itPadW').hidden=true;$('#itKbW').hidden=true;$('#itSkip').hidden=true;$('#itGo').hidden=false;SFX.clear();return}
+  $('#itStep').textContent=L10('itStep',{i:i+1,n:L.length});$('#itTtl').textContent=L10('itWrite',{n:L[i].replace('-',MINUS)});
+  $('#itTxt').textContent=L10(INP.mode==='kb'?(i?'itKb2':'itKb1'):(i?'itDraw2':'itDraw1'));
+  if(INP.mode==='draw'){itClear();requestAnimationFrame(itSize)}else{INP.typed='';itKbShow()}
+}
+function inpDone(){if(!INP)return;const n=INP.n;SAVE.inp=INP.mode||(document.body.classList.contains('kb')?'kb':'draw');persist();INP=null;syncChips();newGame(n)}
+$('#inpDraw').onclick=()=>{ac();inpPick('draw')};$('#inpKb').onclick=()=>{ac();inpPick('kb')};
+$('#itSkip').onclick=()=>inpDone();$('#itGo').onclick=()=>inpDone();
+// teclado de práctica: el botón que sigue queda marcado
+{const kp=$('#itKp');for(const k of['7','8','9','-','4','5','6','.','1','2','3','0']){const b=document.createElement('button');b.dataset.k=k;b.textContent=k==='-'?MINUS:k;kp.appendChild(b)}
+  kp.addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(!b)return;e.preventDefault();itKey(b.dataset.k)})}
+function itKbShow(){const t=IT.kb[INP.i]||'',nx=t[INP.typed.length];$('#itShow').textContent=(INP.typed||' ').replace(/-/g,MINUS);
+  for(const b of document.querySelectorAll('#itKp button'))b.classList.toggle('hl',b.dataset.k===nx)}
+function itKey(k){if(!INP||INP.mode!=='kb'||INP.busy)return;const t=IT.kb[INP.i];
+  if(t[INP.typed.length]===k){INP.typed+=k;r2d2(k);itKbShow();if(INP.typed===t){INP.busy=true;$('#itTxt').textContent=L10('itGood');setTimeout(()=>{INP.i++;itStep()},800)}}
+  else{SFX.err();const e=$('#itShow');e.classList.remove('bad');void e.offsetWidth;e.classList.add('bad')}}
+document.addEventListener('keydown',e=>{if(S.mode!=='inp'||!INP||INP.mode!=='kb')return;let k=null;if(/^[0-9]$/.test(e.key))k=e.key;else if(e.key==='-'||e.key==='Subtract')k='-';else if(e.key==='.'||e.key===',')k='.';if(k){e.preventDefault();itKey(k)}});
+// cuaderno de práctica: escribir pequeño, un número al lado del otro; cada número que escribes le enseña tu letra al OCR
+const itPad=$('#itPad'),itc=itPad.getContext('2d');let itSt=[],itCur=null,itT=null,itId=null;
+function itSize(){const r=itPad.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);itPad.width=Math.max(10,Math.round(r.width*d));itPad.height=Math.max(10,Math.round(r.height*d));itDraw()}
+function itClear(){itSt=[];itCur=null;clearTimeout(itT);const e=$('#itRead');e.textContent='';e.className='';itDraw()}
+const itSym=st=>{const q={st,x0:1e9,x1:-1e9,y0:1e9,y1:-1e9,done:false,ok:null,ch:''};for(const s_ of st)for(const p of s_)symAdd(q,p);return q};
+function itGroups(){return itSt.length?splitSym(itSym(itSt.slice())):[]}
+function itDraw(){const r=itPad.getBoundingClientRect(),k=itPad.width/(r.width||1),c=itc;c.setTransform(k,0,0,k,0,0);c.clearRect(0,0,r.width,r.height);
+  // renglón guía: escribir entre las dos líneas
+  c.strokeStyle=P.m2;c.setLineDash([6,6]);c.lineWidth=1;for(const y of[.28,.78]){c.beginPath();c.moveTo(10,r.height*y);c.lineTo(r.width-10,r.height*y);c.stroke()}c.setLineDash([]);
+  c.lineCap='round';c.lineJoin='round';c.lineWidth=5;c.strokeStyle=P.w;
+  for(const st of itSt){c.beginPath();st.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));if(st.length===1)c.lineTo(st[0][0]+.1,st[0][1]);c.stroke()}}
+function itLive(){const g=itGroups();if(!g.length)return'';return g.map(q=>{try{const c=classify(q);return c.kind==='digit'?c.ch:c.ch==='-'?MINUS:'·'}catch(e){return'?'}}).join('')}
+function itCheck(){if(!INP||INP.mode!=='draw'||INP.busy)return;const t=IT.draw[INP.i],g=itGroups(),e=$('#itRead'),live=itLive();
+  e.className='';e.textContent=live?L10('itRead',{r:live}):'';
+  if(g.length<t.length)return;
+  if(g.length>t.length){e.className='bad';e.textContent=L10('itSep');INP.busy=true;setTimeout(()=>{INP.busy=false;itClear()},1500);return}
+  // la etiqueta es segura (sabemos qué número pedimos): cada trazo entrena al OCR aunque lo haya leído mal
+  g.forEach((q,i)=>{try{INK.learn(OCR.rasterize(q.st,2.3),t[i],INK.sig(q.st))}catch(err){}});
+  INP.busy=true;const ok=live===t;e.className='ok';e.textContent=(ok?'✓ ':'')+L10('itRead',{r:live})+(ok?'':' → '+t+' · '+L10('itLearn'));SFX.digit(Math.min(9,INP.i+3));
+  setTimeout(()=>{INP.i++;itStep()},ok?900:1700)}
+itPad.addEventListener('pointerdown',e=>{if(!INP||INP.busy)return;e.preventDefault();itPad.setPointerCapture(e.pointerId);itId=e.pointerId;clearTimeout(itT);const r=itPad.getBoundingClientRect();itCur=[[e.clientX-r.left,e.clientY-r.top]];itSt.push(itCur);itDraw()});
+itPad.addEventListener('pointermove',e=>{if(!itCur||e.pointerId!==itId)return;e.preventDefault();const r=itPad.getBoundingClientRect(),p=[e.clientX-r.left,e.clientY-r.top],l=itCur[itCur.length-1];if(Math.hypot(p[0]-l[0],p[1]-l[1])>=2){itCur.push(p);itDraw()}});
+const itUp=e=>{if(!itCur||e.pointerId!==itId)return;itCur=null;const live=itLive();$('#itRead').className='';$('#itRead').textContent=live?L10('itRead',{r:live}):'';clearTimeout(itT);itT=setTimeout(itCheck,750)};
+itPad.addEventListener('pointerup',itUp);itPad.addEventListener('pointercancel',itUp);
+$('#itClr').onclick=()=>{if(INP&&!INP.busy)itClear()};
+addEventListener('resize',()=>{if(S.mode==='inp'&&INP&&INP.mode==='draw')itSize()});
 // ===== Intro: un corto animado. Cada toma dura lo que tarda en leerse su diálogo; tocar la pantalla completa el texto o pasa a la siguiente =====
 const ISHOT=[{k:'in0',who:'prof',d:4.6},{k:'in1',who:'prof',d:4},{k:'in2',who:'prof',d:4},{k:'in3',who:'',d:6.2},{k:'in4',who:'zomb',d:4,zm:1},{k:'in5',who:'',d:7.2},
   {k:'in6',who:'apple',d:4},{k:'in7',who:'apple',d:3.4},{k:'in8',who:'prof',d:4.2},{k:'',who:'',d:3.8}];
@@ -8360,7 +9164,7 @@ var TIPC=0,TIPON=false;
 function progTips(){const o=[],h=SAVE.hist||{};
   const rows=TOPICS.map(t=>{const x=h[t.id],n=x?(x.ok||0)+(x.bad||0):0;return{t,n,acc:n?x.ok/n:1}}).filter(r=>r.n>=3&&r.acc<.8).sort((a,b)=>a.acc-b.acc);
   if(rows[0]){const m=XL('tip_weak',[rows[0].t.name,Math.round(rows[0].acc*100)]);o.push(m,m)}
-  if(SAVE.best>1&&SAVE.best<16&&TOPICS[SAVE.best])o.push(XL('tip_best',[SAVE.best,TOPICS[SAVE.best].name]));
+  if(SAVE.best>1&&SAVE.best<NT&&TOPICS[SAVE.best])o.push(XL('tip_best',[SAVE.best,TOPICS[SAVE.best].name]));
   const ds=dayStreak();o.push(ds>=2?XL('tip_streak',[ds]):XL('tip_nostreak'));
   const lk=ACH.filter(a=>!(SAVE.ach&&SAVE.ach[a[0]]));if(lk.length)o.push(XL('tip_ach',[achN(),ACH.length,XL('ad_'+pick(lk)[0])]));
   if(hard()>.04)o.push(XL('tip_pres',[Math.round(hard()*100)]));

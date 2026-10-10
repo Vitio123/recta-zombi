@@ -200,7 +200,7 @@ cc3d5fc|YENMEK İÇİN {0} DOĞRU
 c4bd829|GEÇMEK İÇİN {0} DOĞRU
 cb76c46| · BASKI %{0}
 c9aa89e|<i class="h{0}" title="{1} doğru"></i>
-cb49f85|<div class="hm">{0}</div><div class="mini">{1} DOĞRU · {2} AKTİF GÜN · SERİ {3}</div><div class="hm2">{5}</div><div class="mini">16 KONUNUN USTALIĞI</div>
+cb49f85|<div class="hm">{0}</div><div class="mini">{1} DOĞRU · {2} AKTİF GÜN · SERİ {3}</div><div class="hm2">{5}</div><div class="mini">17 KONUNUN USTALIĞI</div>
 c82f821|<b>OKÇU İSKELET</b> · ok atar: 2 isabette seviyeyi kaybedersin. Cevap ver, elma zıplasın: böyle kaçarsın!
 c64e959|OK İSABET! 1 HAKKIN KALDI
 c2ead57|VURULDU!
@@ -433,7 +433,7 @@ ad_lv4|4. seviyeye ulaş
 a_lv12|NEREDEYSE KALKÜLÜS
 ad_lv12|12. seviyeye ulaş
 a_lv16|YÜZ YÜZE
-ad_lv16|Profesörün seviyesi olan 16. seviyeye ulaş
+ad_lv16|Profesörün seviyesi olan 17. seviyeye ulaş
 a_inf|SONSUZLUĞUN ÖTESİ
 ad_inf|∞ modunu oyna
 a_days3|ALIŞKANLIK
@@ -509,3 +509,60 @@ in0|Bir 2 mi? Bir 1 mi? SIFIR MI? Bu da bir KEDİ RESMİ!
 cm1|Tek bir − yönü bir kez çevirir: atlamalar 0'ın soluna gider.
 cm2|Her − yönü çevirir: iki çevirme birbirini yok eder, atlamalar 0'ın sağında biter.
 cm3|İpucu: aynı işaretler + verir, farklı işaretler − verir.
+cx_name|ÜSLER
+cx_tip|Üs çarpanları sayar: 2³ = 2 · 2 · 2. Kurallar saymaktan çıkar.
+cx_kick|SEVİYE 7 · aⁿ · aᵐ
+cx_ttl|ÜSLÜ SAYILARIN KURALLARI
+cx_l1|<b>Üs</b>, tabanın kaç kez çarpıldığını sayar: 2³ = 2 · 2 · 2.
+cx_l2|Aynı taban: çarparken üsler <b>toplanır</b>, bölerken <b>çıkarılır</b>, üssün üssünde <b>çarpılır</b>.
+cx_e1|{0} demek {1} demek.
+cx_e2|Zihin hilesi: adım adım {0} ile çarp: {1}.
+cx_e3|Hile: 10 üzeri {0}, 1 ve ardından {0} sıfırdır.
+cx_p|Aynı taban çarpılıyor: çarpanları say, {0} artı {1} daha {2} eder. Üsler toplanır: {0} + {1} = {2}.
+cx_q|Aynı taban bölünüyor: alttaki {1} çarpan üsttekilerden {1} tanesiyle sadeleşir. Çıkar: {0} − {1} = {2}.
+cx_w|Üssün üssü: {1} çarpanlık {0} grup. Çarp: {1} × {0} = {2}.
+cx_z|Neden 1? {0} ÷ {0} = {1}, ve her sayı (0 hariç) kendine bölününce 1 olur.
+cx_n|Negatif üs = ters çevir: {0} = 1 ÷ {1} = {2}.
+ce_m1|Neden? {0} × {1}, {0} kadar borcu {1} kez toplamaktır: {2} = {3}.
+ce_m2|Neden? Örüntüye bak: {0}. Her adımda sonuç {1} artıyor; 0’ı geçince artmaya devam ediyor, yani pozitif oluyor.
+ce_nc|Hesap makinesiz: önce işaretsiz: {0}.
+cf_why|Kesir bir bölmedir: {0}/{1} = {0} ÷ {1}, yani {0}’ı {1} eşit parçaya paylaştırmak.
+cf_2|÷ 2 yarısını almaktır: {0}’ın yarısı {1}.
+cf_4|÷ 4 yarının yarısıdır: {0} → {1} → {2}.
+cf_5|÷ 5, × 2 sonra ÷ 10 ile aynıdır: {0} × 2 = {1}, ve {1} ÷ 10 = {2}.
+cf_10|÷ 10 virgülü bir basamak sola kaydırır: {0} → {1}.
+cf_100|Yüzdelik yap: {0}/{1} = {2}/100 = {3}.
+mt_suma1|Önce onlukları, sonra birlikleri topla: 47 + 38 → 70 + 15 = 85.
+mt_suma2|Biri bir onluğa yakınsa yuvarla ve düzelt: 49 + 26 → 50 + 26 − 1 = 75.
+mt_resta1|Küçükten yukarı say: 52 − 38 → 38’den 40’a 2, 40’tan 52’ye 12: 14.
+mt_resta2|Yuvarlak sayıyı çıkar, fazlasını geri ver: 63 − 29 → 63 − 30 + 1 = 34.
+mt_mult1|Büyük sayıyı parçala: 14 × 6 → 10 × 6 + 4 × 6 = 60 + 24 = 84.
+mt_mult2|× 5, × 10 ve yarısı; × 9, × 10 eksi bir kez: 9 × 7 = 70 − 7 = 63.
+mt_div1|Bölme, çarpım tablosunun tersidir: 56 ÷ 8 → 8 kaç kere 56 eder? 7.
+mt_div2|Sayıyı kolay parçalara ayır: 84 ÷ 4 → 80 ÷ 4 + 4 ÷ 4 = 20 + 1 = 21.
+mt_ent1|Asansör düşün: −3 + 8 → eksi 3. kattasın ve 8 kat çıkarsın: 5. kat.
+mt_ent2|Çarparken önce işaretsiz sayı, işaret en sonda: aynılar +, farklılar − verir.
+mt_frac1|Ezber kesirler: 1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/10 = 0.1.
+mt_frac2|"20’nin 3/4’ü": paydaya böl, payla çarp: 20 ÷ 4 = 5, 5 × 3 = 15.
+mt_exp1|Çarpanları say: 2³ · 2² üç tane 2 ve iki tane 2, toplam beş: 2⁵.
+mt_exp2|2’nin kuvvetleri ezbere: 2, 4, 8, 16, 32, 64, 128, 256 (her biri iki katı).
+mt_raiz1|√ için kendisiyle çarpınca içtekini veren sayıyı ara: √81 → 9 × 9.
+mt_raiz2|Bilmiyorsan karelerin arasına sıkıştır: √60, √49 = 7 ile √64 = 8 arasında.
+mt_trig1|Çemberde sin yükseklik, cos yatay kısımdır: sin 90° = 1 (yukarı), cos 0° = 1 (sağ).
+mt_trig2|30°, 45°, 60°: sin 1/2, √2/2, √3/2; cos ters sırada.
+mt_f11|f(4) bir makinedir: her x yerine 4 koy ve sırayla hesapla: önce ×, sonra +.
+mt_f12|x’i bulmak için tersten geri al: önce ekleneni çıkar, sonra böl.
+mt_f21|Negatiflerde parantez kullan: (−3)² = 9, −9 değil.
+mt_f22|x² − 5x + 6 = 0: toplamı 5, çarpımı 6 olan iki sayı bul: 2 ve 3.
+mt_f31|Küpler ezbere: 1, 8, 27, 64, 125. Negatiflerde işaret kalır: (−2)³ = −8.
+mt_f32|(x − a)(x − b)(x − c) çarpanlarında x’i yerine koy, her parantezi hesapla ve ikişer ikişer çarp.
+mt_mat1|det: ana köşegen eksi diğeri, a·d − b·c. Her çarpımı ayrı hesapla.
+mt_mat2|Satır çarpı sütun: çift çift çarp ve sonuçları topla.
+mt_lim1|Önce yerine koymayı dene. 0/0 çıkarsa çarpanlara ayır ve sadeleştir.
+mt_lim2|∞’a giderken sadece en büyük terim önemlidir: (5x + 3)/x, 5x/x = 5 gibi davranır.
+mt_der1|Üssü öne indir ve 1 çıkar: x³ → 3x². Sabitler kaybolur.
+mt_der2|mx + b’nin türevi m’dir: doğrunun eğimi her yerde aynıdır.
+mt_int1|İntegral = alan. Yükseklik sabitse dikdörtgendir: taban × yükseklik.
+mt_int2|∫2x dx = x² ve ∫3x² dx = x³: üst değer eksi alt değer.
+mt_pie1|π ≈ 3.14 ve e ≈ 2.72: bununla 2π ≈ 6.28 ve π/2 ≈ 1.57 bulursun.
+mt_pie2|ln ve e^x birbirini götürür: ln(eⁿ) = n, ve her şeyin 0. kuvveti 1’dir.
