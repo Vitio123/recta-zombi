@@ -566,3 +566,9 @@ mt_int1|Intégrale = aire. Si la hauteur est constante, c’est un rectangle : b
 mt_int2|∫2x dx = x² et ∫3x² dx = x³ : évalue en haut moins en bas.
 mt_pie1|π ≈ 3.14 et e ≈ 2.72 : avec ça tu trouves 2π ≈ 6.28 et π/2 ≈ 1.57.
 mt_pie2|ln et e^x s’annulent : ln(eⁿ) = n, et tout nombre puissance 0 vaut 1.
+ci_use|{0} est irrationnel : ses décimales ne s’arrêtent jamais et ne se répètent pas, donc pas de fraction exacte. Utilise {1} et arrondis seulement à la fin.
+ci_mul|De tête, par morceaux : {0} × 3 = {1} et {0} × 0.1416 = {2} → {3}.
+ci_half|De tête, par morceaux : 3 ÷ 2 = 1.5 et 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Arrondis à 2 décimales en regardant la troisième : si elle vaut 5 ou plus, la deuxième monte ; sinon elle reste : {0} → {1}.
+ci_exact|Avec le clavier scientifique, la réponse exacte compte aussi : {0}.
+ci_sqrt|Cherche un décimal dont le carré fait presque {0} : {1} × {1} = {2} → √{0} ≈ {1}.

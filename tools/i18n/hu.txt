@@ -566,3 +566,9 @@ mt_int1|Integrál = terület. Állandó magasságnál téglalap: alap × magass�
 mt_int2|∫2x dx = x² és ∫3x² dx = x³: felső érték mínusz alsó.
 mt_pie1|π ≈ 3.14 és e ≈ 2.72: ebből 2π ≈ 6.28 és π/2 ≈ 1.57.
 mt_pie2|A ln és az e^x kioltja egymást: ln(eⁿ) = n, és bármi a nulladikon 1.
+ci_use|A(z) {0} irracionális: a tizedesjegyei soha nem érnek véget és nem ismétlődnek, így nincs pontos tört. Használd a(z) {1} értéket, és csak a végén kerekíts.
+ci_mul|Fejben, részenként: {0} × 3 = {1} és {0} × 0.1416 = {2} → {3}.
+ci_half|Fejben, részenként: 3 ÷ 2 = 1.5 és 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Kerekíts 2 tizedesre a harmadikat nézve: ha 5 vagy több, a második nő; ha nem, marad: {0} → {1}.
+ci_exact|A tudományos billentyűzettel a pontos válasz is jó: {0}.
+ci_sqrt|Keress egy tizedes számot, aminek a négyzete majdnem {0}: {1} × {1} = {2} → √{0} ≈ {1}.

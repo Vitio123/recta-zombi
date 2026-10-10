@@ -566,3 +566,9 @@ mt_int1|İntegral = alan. Yükseklik sabitse dikdörtgendir: taban × yükseklik
 mt_int2|∫2x dx = x² ve ∫3x² dx = x³: üst değer eksi alt değer.
 mt_pie1|π ≈ 3.14 ve e ≈ 2.72: bununla 2π ≈ 6.28 ve π/2 ≈ 1.57 bulursun.
 mt_pie2|ln ve e^x birbirini götürür: ln(eⁿ) = n, ve her şeyin 0. kuvveti 1’dir.
+ci_use|{0} irrasyoneldir: ondalıkları hiç bitmez ve tekrar etmez, yani tam bir kesri yoktur. {1} kullan ve sadece en sonda yuvarla.
+ci_mul|Zihinden, parça parça: {0} × 3 = {1} ve {0} × 0.1416 = {2} → {3}.
+ci_half|Zihinden, parça parça: 3 ÷ 2 = 1.5 ve 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Üçüncü basamağa bakıp 2 basamağa yuvarla: 5 veya fazlaysa ikinci artar, değilse aynı kalır: {0} → {1}.
+ci_exact|Bilimsel tuş takımıyla tam cevap da geçerli: {0}.
+ci_sqrt|Karesi neredeyse {0} olan bir ondalık bul: {1} × {1} = {2} → √{0} ≈ {1}.

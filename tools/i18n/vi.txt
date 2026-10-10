@@ -566,3 +566,9 @@ mt_int1|Tích phân = diện tích. Nếu chiều cao không đổi thì là hì
 mt_int2|∫2x dx = x² và ∫3x² dx = x³: giá trị cận trên trừ cận dưới.
 mt_pie1|π ≈ 3.14 và e ≈ 2.72: từ đó 2π ≈ 6.28 và π/2 ≈ 1.57.
 mt_pie2|ln và e^x triệt tiêu nhau: ln(eⁿ) = n, và mọi thứ mũ 0 đều bằng 1.
+ci_use|{0} là số vô tỉ: phần thập phân không bao giờ kết thúc và không lặp lại, nên không có phân số chính xác. Dùng {1} và chỉ làm tròn ở cuối.
+ci_mul|Tính nhẩm từng phần: {0} × 3 = {1} và {0} × 0.1416 = {2} → {3}.
+ci_half|Tính nhẩm từng phần: 3 ÷ 2 = 1.5 và 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Làm tròn 2 chữ số thập phân bằng cách nhìn chữ số thứ ba: từ 5 trở lên thì chữ số thứ hai tăng, không thì giữ nguyên: {0} → {1}.
+ci_exact|Với bàn phím khoa học, đáp án chính xác cũng được tính: {0}.
+ci_sqrt|Tìm số thập phân có bình phương gần bằng {0}: {1} × {1} = {2} → √{0} ≈ {1}.

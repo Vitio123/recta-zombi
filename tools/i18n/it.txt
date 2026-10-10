@@ -566,3 +566,9 @@ mt_int1|Integrale = area. Se l’altezza è costante è un rettangolo: base × a
 mt_int2|∫2x dx = x² e ∫3x² dx = x³: valuta sopra meno sotto.
 mt_pie1|π ≈ 3.14 ed e ≈ 2.72: così trovi 2π ≈ 6.28 e π/2 ≈ 1.57.
 mt_pie2|ln ed e^x si annullano: ln(eⁿ) = n, e qualsiasi cosa alla 0 fa 1.
+ci_use|{0} è irrazionale: i suoi decimali non finiscono mai e non si ripetono, quindi non c’è una frazione esatta. Usa {1} e arrotonda solo alla fine.
+ci_mul|A mente, a pezzi: {0} × 3 = {1} e {0} × 0.1416 = {2} → {3}.
+ci_half|A mente, a pezzi: 3 ÷ 2 = 1.5 e 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Arrotonda a 2 decimali guardando il terzo: se è 5 o più, il secondo sale; altrimenti resta: {0} → {1}.
+ci_exact|Con la tastiera scientifica vale anche la risposta esatta: {0}.
+ci_sqrt|Cerca un decimale il cui quadrato faccia quasi {0}: {1} × {1} = {2} → √{0} ≈ {1}.

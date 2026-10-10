@@ -566,3 +566,9 @@ mt_int1|Integral = areal. Er højden konstant, er det et rektangel: grundlinje �
 mt_int2|∫2x dx = x² og ∫3x² dx = x³: øverste minus nederste.
 mt_pie1|π ≈ 3.14 og e ≈ 2.72: så får du 2π ≈ 6.28 og π/2 ≈ 1.57.
 mt_pie2|ln og e^x ophæver hinanden: ln(eⁿ) = n, og alt i 0. potens er 1.
+ci_use|{0} er irrationalt: decimalerne slutter aldrig og gentager sig ikke, så der findes ingen præcis brøk. Brug {1} og rund først af til sidst.
+ci_mul|I hovedet, i dele: {0} × 3 = {1} og {0} × 0.1416 = {2} → {3}.
+ci_half|I hovedet, i dele: 3 ÷ 2 = 1.5 og 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Rund af til 2 decimaler ud fra den tredje: er den 5 eller mere, stiger den anden; ellers bliver den: {0} → {1}.
+ci_exact|Med det videnskabelige tastatur tæller det præcise svar også: {0}.
+ci_sqrt|Find et decimaltal, hvis kvadrat er næsten {0}: {1} × {1} = {2} → √{0} ≈ {1}.

@@ -566,3 +566,9 @@ mt_int1|Integrál = obsah. Při stálé výšce je to obdélník: základna × v
 mt_int2|∫2x dx = x² a ∫3x² dx = x³: horní mez minus dolní.
 mt_pie1|π ≈ 3.14 a e ≈ 2.72: z toho 2π ≈ 6.28 a π/2 ≈ 1.57.
 mt_pie2|ln a e^x se navzájem ruší: ln(eⁿ) = n a cokoli na nultou je 1.
+ci_use|{0} je iracionální: desetinná místa nikdy nekončí ani se neopakují, takže přesný zlomek neexistuje. Použij {1} a zaokrouhli až na konci.
+ci_mul|Z hlavy, po částech: {0} × 3 = {1} a {0} × 0.1416 = {2} → {3}.
+ci_half|Z hlavy, po částech: 3 ÷ 2 = 1.5 a 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Zaokrouhli na 2 místa podle třetího: je-li 5 nebo víc, druhé stoupne; jinak zůstane: {0} → {1}.
+ci_exact|S vědeckou klávesnicí platí i přesná odpověď: {0}.
+ci_sqrt|Najdi desetinné číslo, jehož druhá mocnina je skoro {0}: {1} × {1} = {2} → √{0} ≈ {1}.

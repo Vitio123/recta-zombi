@@ -566,3 +566,9 @@ mt_int1|Integral = luas. Kalau tingginya tetap, bentuknya persegi panjang: alas 
 mt_int2|∫2x dx = x² dan ∫3x² dx = x³: nilai atas dikurangi bawah.
 mt_pie1|π ≈ 3.14 dan e ≈ 2.72: dari situ 2π ≈ 6.28 dan π/2 ≈ 1.57.
 mt_pie2|ln dan e^x saling meniadakan: ln(eⁿ) = n, dan apa pun pangkat 0 hasilnya 1.
+ci_use|{0} adalah bilangan irasional: desimalnya tidak pernah berakhir dan tidak berulang, jadi tidak ada pecahan tepat. Pakai {1} dan bulatkan di akhir saja.
+ci_mul|Di kepala, per bagian: {0} × 3 = {1} dan {0} × 0.1416 = {2} → {3}.
+ci_half|Di kepala, per bagian: 3 ÷ 2 = 1.5 dan 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Bulatkan ke 2 desimal dengan melihat desimal ketiga: kalau 5 atau lebih, desimal kedua naik; kalau tidak, tetap: {0} → {1}.
+ci_exact|Dengan papan tombol ilmiah, jawaban tepat juga dihitung: {0}.
+ci_sqrt|Cari desimal yang kuadratnya hampir {0}: {1} × {1} = {2} → √{0} ≈ {1}.

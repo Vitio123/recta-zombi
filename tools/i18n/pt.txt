@@ -566,3 +566,9 @@ mt_int1|Integral = área. Se a altura é constante é um retângulo: base × alt
 mt_int2|∫2x dx = x² e ∫3x² dx = x³: avalie em cima menos embaixo.
 mt_pie1|π ≈ 3.14 e e ≈ 2.72: com isso você tira 2π ≈ 6.28 e π/2 ≈ 1.57.
 mt_pie2|ln e e^x se desfazem: ln(eⁿ) = n, e qualquer coisa elevada a 0 dá 1.
+ci_use|{0} é irracional: suas casas decimais nunca terminam nem se repetem, então não há fração exata. Use {1} e arredonde só no final.
+ci_mul|De cabeça, por partes: {0} × 3 = {1} e {0} × 0.1416 = {2} → {3}.
+ci_half|De cabeça, por partes: 3 ÷ 2 = 1.5 e 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Arredonde para 2 casas olhando a terceira: se for 5 ou mais, a segunda sobe; se não, fica igual: {0} → {1}.
+ci_exact|Com o teclado científico a resposta exata também vale: {0}.
+ci_sqrt|Procure um decimal cujo quadrado dê quase {0}: {1} × {1} = {2} → √{0} ≈ {1}.

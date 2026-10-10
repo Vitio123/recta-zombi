@@ -566,3 +566,9 @@ mt_int1|Integral = Fläche. Bei konstanter Höhe ist es ein Rechteck: Breite × 
 mt_int2|∫2x dx = x² und ∫3x² dx = x³: oben minus unten auswerten.
 mt_pie1|π ≈ 3.14 und e ≈ 2.72: damit bekommst du 2π ≈ 6.28 und π/2 ≈ 1.57.
 mt_pie2|ln und e^x heben sich auf: ln(eⁿ) = n, und alles hoch 0 ist 1.
+ci_use|{0} ist irrational: die Nachkommastellen enden nie und wiederholen sich nicht, also gibt es keinen exakten Bruch. Nimm {1} und runde erst am Ende.
+ci_mul|Im Kopf, in Teilen: {0} × 3 = {1} und {0} × 0.1416 = {2} → {3}.
+ci_half|Im Kopf, in Teilen: 3 ÷ 2 = 1.5 und 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Auf 2 Stellen runden, schau auf die dritte: ab 5 geht die zweite hoch, sonst bleibt sie: {0} → {1}.
+ci_exact|Mit der wissenschaftlichen Tastatur zählt auch die exakte Antwort: {0}.
+ci_sqrt|Such eine Dezimalzahl, deren Quadrat fast {0} ist: {1} × {1} = {2} → √{0} ≈ {1}.

@@ -566,3 +566,9 @@ mt_int1|Integrala = arie. Dacă înălțimea e constantă, e un dreptunghi: baz�
 mt_int2|∫2x dx = x² și ∫3x² dx = x³: valoarea de sus minus cea de jos.
 mt_pie1|π ≈ 3.14 și e ≈ 2.72: cu asta afli 2π ≈ 6.28 și π/2 ≈ 1.57.
 mt_pie2|ln și e^x se anulează: ln(eⁿ) = n, iar orice la puterea 0 dă 1.
+ci_use|{0} este irațional: zecimalele nu se termină și nu se repetă, deci nu există o fracție exactă. Folosește {1} și rotunjește doar la final.
+ci_mul|În minte, pe bucăți: {0} × 3 = {1} și {0} × 0.1416 = {2} → {3}.
+ci_half|În minte, pe bucăți: 3 ÷ 2 = 1.5 și 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Rotunjește la 2 zecimale uitându-te la a treia: dacă e 5 sau mai mult, a doua crește; altfel rămâne: {0} → {1}.
+ci_exact|Cu tastatura științifică se acceptă și răspunsul exact: {0}.
+ci_sqrt|Caută un zecimal al cărui pătrat e aproape {0}: {1} × {1} = {2} → √{0} ≈ {1}.

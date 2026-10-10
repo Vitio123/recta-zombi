@@ -566,3 +566,9 @@ mt_int1|Integraal = oppervlakte. Is de hoogte constant, dan is het een rechthoek
 mt_int2|∫2x dx = x² en ∫3x² dx = x³: boven min onder.
 mt_pie1|π ≈ 3.14 en e ≈ 2.72: daarmee krijg je 2π ≈ 6.28 en π/2 ≈ 1.57.
 mt_pie2|ln en e^x heffen elkaar op: ln(eⁿ) = n, en alles tot de macht 0 is 1.
+ci_use|{0} is irrationaal: de decimalen houden nooit op en herhalen zich niet, dus er is geen exacte breuk. Gebruik {1} en rond pas op het eind af.
+ci_mul|Uit je hoofd, in delen: {0} × 3 = {1} en {0} × 0.1416 = {2} → {3}.
+ci_half|Uit je hoofd, in delen: 3 ÷ 2 = 1.5 en 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Rond af op 2 decimalen via de derde: is die 5 of meer, dan gaat de tweede omhoog; anders blijft hij: {0} → {1}.
+ci_exact|Met het wetenschappelijke toetsenbord telt het exacte antwoord ook: {0}.
+ci_sqrt|Zoek een decimaal getal waarvan het kwadraat bijna {0} is: {1} × {1} = {2} → √{0} ≈ {1}.

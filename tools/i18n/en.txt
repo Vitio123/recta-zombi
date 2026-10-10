@@ -566,3 +566,9 @@ mt_int1|Integral = area. If the height is constant it is a rectangle: base × he
 mt_int2|∫2x dx = x² and ∫3x² dx = x³: evaluate top minus bottom.
 mt_pie1|π ≈ 3.14 and e ≈ 2.72: with that you get 2π ≈ 6.28 and π/2 ≈ 1.57.
 mt_pie2|ln and e^x undo each other: ln(eⁿ) = n, and anything to the power 0 is 1.
+ci_use|{0} is irrational: its decimals never end or repeat, so there is no exact fraction. Use {1} and round only at the end.
+ci_mul|In your head, in parts: {0} × 3 = {1} and {0} × 0.1416 = {2} → {3}.
+ci_half|In your head, in parts: 3 ÷ 2 = 1.5 and 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Round to 2 decimals by looking at the third: if it is 5 or more, the second goes up; if not, it stays: {0} → {1}.
+ci_exact|With the scientific keypad the exact answer also counts: {0}.
+ci_sqrt|Find a decimal whose square is almost {0}: {1} × {1} = {2} → √{0} ≈ {1}.

@@ -566,3 +566,9 @@ mt_int1|Całka = pole. Gdy wysokość jest stała, to prostokąt: podstawa × wy
 mt_int2|∫2x dx = x² i ∫3x² dx = x³: wartość u góry minus u dołu.
 mt_pie1|π ≈ 3.14 i e ≈ 2.72: z tego masz 2π ≈ 6.28 i π/2 ≈ 1.57.
 mt_pie2|ln i e^x się znoszą: ln(eⁿ) = n, a wszystko do potęgi 0 to 1.
+ci_use|{0} jest niewymierne: cyfry po przecinku nigdy się nie kończą ani nie powtarzają, więc nie ma dokładnego ułamka. Użyj {1} i zaokrąglaj dopiero na końcu.
+ci_mul|W pamięci, po kawałku: {0} × 3 = {1} i {0} × 0.1416 = {2} → {3}.
+ci_half|W pamięci, po kawałku: 3 ÷ 2 = 1.5 i 0.1416 ÷ 2 = 0.0708 → 1.5708.
+ci_round|Zaokrąglij do 2 miejsc, patrząc na trzecie: 5 lub więcej podnosi drugie, inaczej zostaje: {0} → {1}.
+ci_exact|Na klawiaturze naukowej dokładna odpowiedź też się liczy: {0}.
+ci_sqrt|Znajdź liczbę dziesiętną, której kwadrat to prawie {0}: {1} × {1} = {2} → √{0} ≈ {1}.
