@@ -572,3 +572,8 @@ ci_half|Z hlavy, po částech: 3 ÷ 2 = 1.5 a 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Zaokrouhli na 2 místa podle třetího: je-li 5 nebo víc, druhé stoupne; jinak zůstane: {0} → {1}.
 ci_exact|S vědeckou klávesnicí platí i přesná odpověď: {0}.
 ci_sqrt|Najdi desetinné číslo, jehož druhá mocnina je skoro {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Najdi uvnitř druhou mocninu: {0} = {1} × {2} a √{1} = {3}, takže √{0} = {4}.
+cr_dec|Jako desetinné číslo: {0} × {1} = {2} → zaokrouhleno {3}.
+ct_rad|Půl otáčky (180°) je π radiánů. {0}° = {1} × 180°, takže {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; polovina: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} je číslo jako každé jiné: {1}krát {0} se píše {2}.

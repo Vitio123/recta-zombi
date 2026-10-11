@@ -572,3 +572,8 @@ ci_half|Im Kopf, in Teilen: 3 ÷ 2 = 1.5 und 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Auf 2 Stellen runden, schau auf die dritte: ab 5 geht die zweite hoch, sonst bleibt sie: {0} → {1}.
 ci_exact|Mit der wissenschaftlichen Tastatur zählt auch die exakte Antwort: {0}.
 ci_sqrt|Such eine Dezimalzahl, deren Quadrat fast {0} ist: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Such ein Quadrat darin: {0} = {1} × {2} und √{1} = {3}, also √{0} = {4}.
+cr_dec|Für die Dezimalzahl: {0} × {1} = {2} → gerundet {3}.
+ct_rad|Eine halbe Drehung (180°) sind π Radiant. {0}° = {1} × 180°, also {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; die Hälfte: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} ist eine Zahl wie jede andere: {1}-mal {0} schreibt man {2}.

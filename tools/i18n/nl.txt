@@ -572,3 +572,8 @@ ci_half|Uit je hoofd, in delen: 3 ÷ 2 = 1.5 en 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Rond af op 2 decimalen via de derde: is die 5 of meer, dan gaat de tweede omhoog; anders blijft hij: {0} → {1}.
 ci_exact|Met het wetenschappelijke toetsenbord telt het exacte antwoord ook: {0}.
 ci_sqrt|Zoek een decimaal getal waarvan het kwadraat bijna {0} is: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Zoek een kwadraat erin: {0} = {1} × {2} en √{1} = {3}, dus √{0} = {4}.
+cr_dec|Als decimaal: {0} × {1} = {2} → afgerond {3}.
+ct_rad|Een halve draai (180°) is π radialen. {0}° = {1} × 180°, dus {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; de helft: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} is een getal zoals elk ander: {1} keer {0} schrijf je als {2}.

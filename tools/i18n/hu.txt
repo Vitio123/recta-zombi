@@ -572,3 +572,8 @@ ci_half|Fejben, részenként: 3 ÷ 2 = 1.5 és 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Kerekíts 2 tizedesre a harmadikat nézve: ha 5 vagy több, a második nő; ha nem, marad: {0} → {1}.
 ci_exact|A tudományos billentyűzettel a pontos válasz is jó: {0}.
 ci_sqrt|Keress egy tizedes számot, aminek a négyzete majdnem {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Keress benne négyzetszámot: {0} = {1} × {2} és √{1} = {3}, tehát √{0} = {4}.
+cr_dec|Tizedes törtként: {0} × {1} = {2} → kerekítve {3}.
+ct_rad|Fél fordulat (180°) π radián. {0}° = {1} × 180°, tehát {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; a fele: {1} ÷ 2 = {2} → {3}.
+cl_like|A(z) {0} is szám, mint a többi: {1}-szer {0} írva {2}.

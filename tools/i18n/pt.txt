@@ -572,3 +572,8 @@ ci_half|De cabeça, por partes: 3 ÷ 2 = 1.5 e 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Arredonde para 2 casas olhando a terceira: se for 5 ou mais, a segunda sobe; se não, fica igual: {0} → {1}.
 ci_exact|Com o teclado científico a resposta exata também vale: {0}.
 ci_sqrt|Procure um decimal cujo quadrado dê quase {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Procure um quadrado perfeito dentro: {0} = {1} × {2} e √{1} = {3}, então √{0} = {4}.
+cr_dec|Para o decimal: {0} × {1} = {2} → arredondado, {3}.
+ct_rad|Meia volta (180°) são π radianos. {0}° = {1} × 180°, então {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; a metade: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} é um número como outro qualquer: {1} vezes {0} se escreve {2}.

@@ -572,3 +572,8 @@ ci_half|I hovedet, i dele: 3 ÷ 2 = 1.5 og 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Rund af til 2 decimaler ud fra den tredje: er den 5 eller mere, stiger den anden; ellers bliver den: {0} → {1}.
 ci_exact|Med det videnskabelige tastatur tæller det præcise svar også: {0}.
 ci_sqrt|Find et decimaltal, hvis kvadrat er næsten {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Find et kvadrattal indeni: {0} = {1} × {2} og √{1} = {3}, så √{0} = {4}.
+cr_dec|Som decimaltal: {0} × {1} = {2} → afrundet {3}.
+ct_rad|En halv omgang (180°) er π radianer. {0}° = {1} × 180°, så {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; halvdelen: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} er et tal som alle andre: {1} gange {0} skrives {2}.

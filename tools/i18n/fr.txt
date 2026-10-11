@@ -572,3 +572,8 @@ ci_half|De tête, par morceaux : 3 ÷ 2 = 1.5 et 0.1416 ÷ 2 = 0.0708 → 1.5708
 ci_round|Arrondis à 2 décimales en regardant la troisième : si elle vaut 5 ou plus, la deuxième monte ; sinon elle reste : {0} → {1}.
 ci_exact|Avec le clavier scientifique, la réponse exacte compte aussi : {0}.
 ci_sqrt|Cherche un décimal dont le carré fait presque {0} : {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Cherche un carré parfait à l’intérieur : {0} = {1} × {2} et √{1} = {3}, donc √{0} = {4}.
+cr_dec|Pour le décimal : {0} × {1} = {2} → arrondi, {3}.
+ct_rad|Un demi-tour (180°), c’est π radians. {0}° = {1} × 180°, donc {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1} ; la moitié : {1} ÷ 2 = {2} → {3}.
+cl_like|{0} est un nombre comme un autre : {1} fois {0} s’écrit {2}.

@@ -572,3 +572,8 @@ ci_half|Di kepala, per bagian: 3 ÷ 2 = 1.5 dan 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Bulatkan ke 2 desimal dengan melihat desimal ketiga: kalau 5 atau lebih, desimal kedua naik; kalau tidak, tetap: {0} → {1}.
 ci_exact|Dengan papan tombol ilmiah, jawaban tepat juga dihitung: {0}.
 ci_sqrt|Cari desimal yang kuadratnya hampir {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Cari kuadrat sempurna di dalamnya: {0} = {1} × {2} dan √{1} = {3}, jadi √{0} = {4}.
+cr_dec|Untuk desimalnya: {0} × {1} = {2} → dibulatkan {3}.
+ct_rad|Setengah putaran (180°) adalah π radian. {0}° = {1} × 180°, jadi {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; setengahnya: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} adalah bilangan seperti yang lain: {1} kali {0} ditulis {2}.

@@ -572,3 +572,8 @@ ci_half|W pamięci, po kawałku: 3 ÷ 2 = 1.5 i 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Zaokrąglij do 2 miejsc, patrząc na trzecie: 5 lub więcej podnosi drugie, inaczej zostaje: {0} → {1}.
 ci_exact|Na klawiaturze naukowej dokładna odpowiedź też się liczy: {0}.
 ci_sqrt|Znajdź liczbę dziesiętną, której kwadrat to prawie {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Znajdź w środku kwadrat liczby: {0} = {1} × {2} i √{1} = {3}, więc √{0} = {4}.
+cr_dec|Jako ułamek dziesiętny: {0} × {1} = {2} → po zaokrągleniu {3}.
+ct_rad|Pół obrotu (180°) to π radianów. {0}° = {1} × 180°, więc {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; połowa: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} to liczba jak każda inna: {1} razy {0} zapisujemy {2}.

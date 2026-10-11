@@ -572,3 +572,8 @@ ci_half|A mente, a pezzi: 3 ÷ 2 = 1.5 e 0.1416 ÷ 2 = 0.0708 → 1.5708.
 ci_round|Arrotonda a 2 decimali guardando il terzo: se è 5 o più, il secondo sale; altrimenti resta: {0} → {1}.
 ci_exact|Con la tastiera scientifica vale anche la risposta esatta: {0}.
 ci_sqrt|Cerca un decimale il cui quadrato faccia quasi {0}: {1} × {1} = {2} → √{0} ≈ {1}.
+cr_simp|Cerca un quadrato perfetto dentro: {0} = {1} × {2} e √{1} = {3}, quindi √{0} = {4}.
+cr_dec|Per il decimale: {0} × {1} = {2} → arrotondato, {3}.
+ct_rad|Mezzo giro (180°) sono π radianti. {0}° = {1} × 180°, quindi {0}° = {2} rad ≈ {3}.
+ct_half|{0} ≈ {1}; la metà: {1} ÷ 2 = {2} → {3}.
+cl_like|{0} è un numero come gli altri: {1} volte {0} si scrive {2}.
