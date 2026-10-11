@@ -577,3 +577,9 @@ cr_dec|Para o decimal: {0} × {1} = {2} → arredondado, {3}.
 ct_rad|Meia volta (180°) são π radianos. {0}° = {1} × 180°, então {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; a metade: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} é um número como outro qualquer: {1} vezes {0} se escreve {2}.
+cpi_wheel|roda de diâmetro {0}: quanto avança em 1 volta?
+cpi_why|Role uma roda uma volta e meça: ela avança um pouco mais de 3 diâmetros. Esse "um pouco mais de 3" é π ≈ 3.1416, igual em qualquer círculo: C = π × d.
+cpi_hexq|hexágono de lado 0.5 dentro de um círculo de diâmetro 1: seu perímetro
+cpi_hex|O hexágono fica dentro do círculo, então a volta do círculo (π) é um pouco mais que o perímetro dele. Com mais lados o polígono gruda no círculo e se aproxima de 3.14…
+cie_comp|Você tem 1 real a 100 % de juros em um ano, pagos em {0} partes: cada parte multiplica por (1 + 1/{0}). {1}. Com mais partes cresce cada vez menos e se aproxima de e ≈ 2.718: é daí que vem o e.
+cie_ser|e também é 1 + 1 + 1/2 + 1/6 + 1/24 + … (cada termo é o anterior dividido por 1, 2, 3, 4…). Com 4 termos: 1 + 1 + 0.5 + 0.1667 = 2.6667, já perto de e ≈ 2.718.

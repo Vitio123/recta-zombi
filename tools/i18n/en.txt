@@ -577,3 +577,9 @@ cr_dec|For the decimal: {0} × {1} = {2} → rounded, {3}.
 ct_rad|Half a turn (180°) is π radians. {0}° = {1} × 180°, so {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; half of it: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} is a number like any other: {1} times {0} is written {2}.
+cpi_wheel|wheel with diameter {0}: how far does it go in 1 turn?
+cpi_why|Roll a wheel one turn and measure: it goes a bit more than 3 diameters. That "bit more than 3" is π ≈ 3.1416, the same for every circle: C = π × d.
+cpi_hexq|hexagon with side 0.5 inside a circle of diameter 1: its perimeter
+cpi_hex|The hexagon sits inside the circle, so the way around the circle (π) is a bit more than its perimeter. With more sides the polygon hugs the circle and gets close to 3.14…
+cie_comp|You have 1 dollar at 100 % interest for a year, paid in {0} parts: each part multiplies by (1 + 1/{0}). {1}. With more parts it grows less and less and gets close to e ≈ 2.718: that is where e comes from.
+cie_ser|e is also 1 + 1 + 1/2 + 1/6 + 1/24 + … (each term is the previous one divided by 1, 2, 3, 4…). With 4 terms: 1 + 1 + 0.5 + 0.1667 = 2.6667, already close to e ≈ 2.718.

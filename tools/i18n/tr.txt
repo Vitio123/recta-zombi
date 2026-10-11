@@ -577,3 +577,9 @@ cr_dec|Ondalık için: {0} × {1} = {2} → yuvarlanınca {3}.
 ct_rad|Yarım tur (180°) π radyandır. {0}° = {1} × 180°, yani {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; yarısı: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} de her sayı gibi bir sayı: {1} tane {0}, {2} diye yazılır.
+cpi_wheel|çapı {0} olan tekerlek: 1 turda ne kadar ilerler?
+cpi_why|Bir tekerleği bir tur yuvarla ve ölç: 3 çaptan biraz fazla ilerler. Bu "3’ten biraz fazla" π ≈ 3.1416’dır, her çemberde aynıdır: C = π × d.
+cpi_hexq|çapı 1 olan çemberin içindeki kenarı 0.5 olan altıgen: çevresi
+cpi_hex|Altıgen çemberin içinde, yani çemberin çevresi (π) altıgenin çevresinden biraz fazla. Kenar sayısı arttıkça çokgen çembere yapışır ve 3.14…’e yaklaşır.
+cie_comp|Bir yıl boyunca %100 faizle 1 liran var, faiz {0} kez ödeniyor: her seferinde (1 + 1/{0}) ile çarpılır. {1}. Bölme arttıkça artış azalır ve e ≈ 2.718’e yaklaşır: e buradan gelir.
+cie_ser|e aynı zamanda 1 + 1 + 1/2 + 1/6 + 1/24 + … (her terim öncekinin 1, 2, 3, 4… ile bölümü). 4 terimle: 1 + 1 + 0.5 + 0.1667 = 2.6667, şimdiden e ≈ 2.718’e yakın.

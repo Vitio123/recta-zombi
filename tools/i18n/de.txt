@@ -577,3 +577,9 @@ cr_dec|Für die Dezimalzahl: {0} × {1} = {2} → gerundet {3}.
 ct_rad|Eine halbe Drehung (180°) sind π Radiant. {0}° = {1} × 180°, also {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; die Hälfte: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} ist eine Zahl wie jede andere: {1}-mal {0} schreibt man {2}.
+cpi_wheel|Rad mit Durchmesser {0}: wie weit rollt es in 1 Umdrehung?
+cpi_why|Roll ein Rad eine Umdrehung und miss: es kommt etwas mehr als 3 Durchmesser weit. Dieses „etwas mehr als 3“ ist π ≈ 3.1416, bei jedem Kreis gleich: U = π × d.
+cpi_hexq|Sechseck mit Seite 0.5 in einem Kreis mit Durchmesser 1: sein Umfang
+cpi_hex|Das Sechseck liegt im Kreis, also ist der Kreisumfang (π) etwas mehr als sein Umfang. Mit mehr Ecken schmiegt sich das Vieleck an den Kreis und nähert sich 3.14…
+cie_comp|Du hast 1 Euro zu 100 % Zinsen für ein Jahr, ausgezahlt in {0} Teilen: jeder Teil multipliziert mit (1 + 1/{0}). {1}. Mit mehr Teilen wächst es immer weniger und nähert sich e ≈ 2.718: daher kommt e.
+cie_ser|e ist auch 1 + 1 + 1/2 + 1/6 + 1/24 + … (jeder Term ist der vorige geteilt durch 1, 2, 3, 4…). Mit 4 Termen: 1 + 1 + 0.5 + 0.1667 = 2.6667, schon nah an e ≈ 2.718.

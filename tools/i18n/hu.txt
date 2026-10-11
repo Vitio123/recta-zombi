@@ -577,3 +577,9 @@ cr_dec|Tizedes törtként: {0} × {1} = {2} → kerekítve {3}.
 ct_rad|Fél fordulat (180°) π radián. {0}° = {1} × 180°, tehát {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; a fele: {1} ÷ 2 = {2} → {3}.
 cl_like|A(z) {0} is szám, mint a többi: {1}-szer {0} írva {2}.
+cpi_wheel|{0} átmérőjű kerék: mennyit gurul 1 fordulattal?
+cpi_why|Gurítsd egy fordulatot a kereket, és mérd meg: kicsit több mint 3 átmérőnyit halad. Ez a „kicsit több mint 3” a π ≈ 3.1416, minden körnél ugyanaz: K = π × d.
+cpi_hexq|1 átmérőjű körbe írt 0.5 oldalú hatszög: a kerülete
+cpi_hex|A hatszög a körön belül van, ezért a kör kerülete (π) kicsit több a hatszögénél. Több oldallal a sokszög a körhöz simul, és közelít a 3.14…-hez.
+cie_comp|Van 1 forintod 100 % kamatra egy évre, {0} részletben jóváírva: minden részlet (1 + 1/{0})-del szoroz. {1}. Több részlettel egyre kevésbé nő, és közelít az e ≈ 2.718-hoz: innen jön az e.
+cie_ser|Az e egyben 1 + 1 + 1/2 + 1/6 + 1/24 + … (minden tag az előző osztva 1, 2, 3, 4…-gyel). 4 taggal: 1 + 1 + 0.5 + 0.1667 = 2.6667, már közel az e ≈ 2.718-hoz.

@@ -577,3 +577,9 @@ cr_dec|Pour le décimal : {0} × {1} = {2} → arrondi, {3}.
 ct_rad|Un demi-tour (180°), c’est π radians. {0}° = {1} × 180°, donc {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1} ; la moitié : {1} ÷ 2 = {2} → {3}.
 cl_like|{0} est un nombre comme un autre : {1} fois {0} s’écrit {2}.
+cpi_wheel|roue de diamètre {0} : combien avance-t-elle en 1 tour ?
+cpi_why|Fais rouler une roue d’un tour et mesure : elle avance un peu plus de 3 diamètres. Ce « un peu plus de 3 », c’est π ≈ 3.1416, le même pour tout cercle : C = π × d.
+cpi_hexq|hexagone de côté 0.5 dans un cercle de diamètre 1 : son périmètre
+cpi_hex|L’hexagone est à l’intérieur du cercle, donc le tour du cercle (π) est un peu plus que son périmètre. Avec plus de côtés, le polygone colle au cercle et s’approche de 3.14…
+cie_comp|Tu as 1 euro à 100 % d’intérêt pendant un an, versé en {0} fois : chaque fois multiplie par (1 + 1/{0}). {1}. Avec plus de fois, ça grandit de moins en moins et s’approche de e ≈ 2.718 : c’est de là que vient e.
+cie_ser|e vaut aussi 1 + 1 + 1/2 + 1/6 + 1/24 + … (chaque terme est le précédent divisé par 1, 2, 3, 4…). Avec 4 termes : 1 + 1 + 0.5 + 0.1667 = 2.6667, déjà proche de e ≈ 2.718.

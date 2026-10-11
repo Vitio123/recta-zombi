@@ -577,3 +577,9 @@ cr_dec|Jako desetinné číslo: {0} × {1} = {2} → zaokrouhleno {3}.
 ct_rad|Půl otáčky (180°) je π radiánů. {0}° = {1} × 180°, takže {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; polovina: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} je číslo jako každé jiné: {1}krát {0} se píše {2}.
+cpi_wheel|kolo o průměru {0}: kolik ujede za 1 otáčku?
+cpi_why|Otoč kolem jednou a změř: ujede o trochu víc než 3 průměry. To „o trochu víc než 3“ je π ≈ 3.1416, stejné pro každý kruh: o = π × d.
+cpi_hexq|šestiúhelník se stranou 0.5 v kruhu o průměru 1: jeho obvod
+cpi_hex|Šestiúhelník je uvnitř kruhu, takže obvod kruhu (π) je o trochu větší než jeho obvod. S více stranami se mnohoúhelník přimkne ke kruhu a blíží se 3.14…
+cie_comp|Máš 1 korunu na 100 % úrok za rok, vyplácený v {0} dílech: každý díl násobí (1 + 1/{0}). {1}. S více díly roste čím dál méně a blíží se e ≈ 2.718: odtud pochází e.
+cie_ser|e je také 1 + 1 + 1/2 + 1/6 + 1/24 + … (každý člen je předchozí dělený 1, 2, 3, 4…). Se 4 členy: 1 + 1 + 0.5 + 0.1667 = 2.6667, už blízko e ≈ 2.718.

@@ -577,3 +577,9 @@ cr_dec|Per il decimale: {0} × {1} = {2} → arrotondato, {3}.
 ct_rad|Mezzo giro (180°) sono π radianti. {0}° = {1} × 180°, quindi {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; la metà: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} è un numero come gli altri: {1} volte {0} si scrive {2}.
+cpi_wheel|ruota di diametro {0}: quanto avanza in 1 giro?
+cpi_why|Fai rotolare una ruota per un giro e misura: avanza poco più di 3 diametri. Quel «poco più di 3» è π ≈ 3.1416, uguale in ogni cerchio: C = π × d.
+cpi_hexq|esagono di lato 0.5 dentro un cerchio di diametro 1: il suo perimetro
+cpi_hex|L’esagono sta dentro il cerchio, quindi il giro del cerchio (π) è poco più del suo perimetro. Con più lati il poligono aderisce al cerchio e si avvicina a 3.14…
+cie_comp|Hai 1 euro al 100 % di interesse per un anno, pagato in {0} parti: ogni parte moltiplica per (1 + 1/{0}). {1}. Con più parti cresce sempre meno e si avvicina a e ≈ 2.718: ecco da dove viene e.
+cie_ser|e è anche 1 + 1 + 1/2 + 1/6 + 1/24 + … (ogni termine è il precedente diviso per 1, 2, 3, 4…). Con 4 termini: 1 + 1 + 0.5 + 0.1667 = 2.6667, già vicino a e ≈ 2.718.

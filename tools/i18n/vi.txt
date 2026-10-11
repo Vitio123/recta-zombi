@@ -577,3 +577,9 @@ cr_dec|Ra số thập phân: {0} × {1} = {2} → làm tròn {3}.
 ct_rad|Nửa vòng (180°) là π radian. {0}° = {1} × 180°, nên {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; một nửa: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} cũng là một số như mọi số khác: {1} lần {0} viết là {2}.
+cpi_wheel|bánh xe đường kính {0}: lăn 1 vòng đi được bao xa?
+cpi_why|Lăn bánh xe một vòng rồi đo: nó đi được hơn 3 lần đường kính một chút. "Hơn 3 một chút" đó chính là π ≈ 3.1416, giống nhau ở mọi hình tròn: C = π × d.
+cpi_hexq|lục giác cạnh 0.5 nằm trong đường tròn đường kính 1: chu vi của nó
+cpi_hex|Lục giác nằm trong đường tròn, nên chu vi đường tròn (π) dài hơn chu vi lục giác một chút. Càng nhiều cạnh, đa giác càng sát đường tròn và tiến tới 3.14…
+cie_comp|Bạn có 1 đồng với lãi 100 % một năm, trả làm {0} lần: mỗi lần nhân với (1 + 1/{0}). {1}. Chia càng nhiều lần thì tăng càng ít và tiến tới e ≈ 2.718: e sinh ra từ đây.
+cie_ser|e cũng bằng 1 + 1 + 1/2 + 1/6 + 1/24 + … (mỗi số hạng là số trước chia cho 1, 2, 3, 4…). Với 4 số hạng: 1 + 1 + 0.5 + 0.1667 = 2.6667, đã gần e ≈ 2.718.

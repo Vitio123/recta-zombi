@@ -577,3 +577,9 @@ cr_dec|Als decimaal: {0} × {1} = {2} → afgerond {3}.
 ct_rad|Een halve draai (180°) is π radialen. {0}° = {1} × 180°, dus {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; de helft: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} is een getal zoals elk ander: {1} keer {0} schrijf je als {2}.
+cpi_wheel|wiel met diameter {0}: hoe ver komt het in 1 omwenteling?
+cpi_why|Rol een wiel één keer rond en meet: het komt iets meer dan 3 diameters ver. Dat "iets meer dan 3" is π ≈ 3.1416, voor elke cirkel gelijk: O = π × d.
+cpi_hexq|zeshoek met zijde 0.5 in een cirkel met diameter 1: de omtrek
+cpi_hex|De zeshoek ligt binnen de cirkel, dus de omtrek van de cirkel (π) is iets meer dan die van de zeshoek. Met meer zijden sluit de veelhoek tegen de cirkel aan en nadert 3.14…
+cie_comp|Je hebt 1 euro tegen 100 % rente voor een jaar, uitbetaald in {0} delen: elk deel vermenigvuldigt met (1 + 1/{0}). {1}. Met meer delen groeit het steeds minder en nadert het e ≈ 2.718: daar komt e vandaan.
+cie_ser|e is ook 1 + 1 + 1/2 + 1/6 + 1/24 + … (elke term is de vorige gedeeld door 1, 2, 3, 4…). Met 4 termen: 1 + 1 + 0.5 + 0.1667 = 2.6667, al dicht bij e ≈ 2.718.

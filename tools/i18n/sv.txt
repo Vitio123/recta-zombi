@@ -577,3 +577,9 @@ cr_dec|Som decimaltal: {0} × {1} = {2} → avrundat {3}.
 ct_rad|Ett halvt varv (180°) är π radianer. {0}° = {1} × 180°, så {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; hälften: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} är ett tal som alla andra: {1} gånger {0} skrivs {2}.
+cpi_wheel|hjul med diametern {0}: hur långt rullar det på 1 varv?
+cpi_why|Rulla ett hjul ett varv och mät: det kommer lite mer än 3 diametrar. Det där "lite mer än 3" är π ≈ 3.1416, samma för alla cirklar: O = π × d.
+cpi_hexq|sexhörning med sidan 0.5 i en cirkel med diametern 1: dess omkrets
+cpi_hex|Sexhörningen ligger i cirkeln, så cirkelns omkrets (π) är lite mer än sexhörningens. Med fler sidor sluter månghörningen tätt mot cirkeln och närmar sig 3.14…
+cie_comp|Du har 1 krona till 100 % ränta i ett år, utbetald i {0} delar: varje del multiplicerar med (1 + 1/{0}). {1}. Med fler delar växer det allt mindre och närmar sig e ≈ 2.718: det är därifrån e kommer.
+cie_ser|e är också 1 + 1 + 1/2 + 1/6 + 1/24 + … (varje term är den förra delad med 1, 2, 3, 4…). Med 4 termer: 1 + 1 + 0.5 + 0.1667 = 2.6667, redan nära e ≈ 2.718.

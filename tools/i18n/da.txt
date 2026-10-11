@@ -577,3 +577,9 @@ cr_dec|Som decimaltal: {0} × {1} = {2} → afrundet {3}.
 ct_rad|En halv omgang (180°) er π radianer. {0}° = {1} × 180°, så {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; halvdelen: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} er et tal som alle andre: {1} gange {0} skrives {2}.
+cpi_wheel|hjul med diameter {0}: hvor langt kører det på 1 omgang?
+cpi_why|Rul et hjul én omgang og mål: det kommer lidt mere end 3 diametre frem. Det "lidt mere end 3" er π ≈ 3.1416, ens for alle cirkler: O = π × d.
+cpi_hexq|sekskant med side 0.5 inde i en cirkel med diameter 1: dens omkreds
+cpi_hex|Sekskanten ligger inde i cirklen, så cirklens omkreds (π) er lidt mere end sekskantens. Med flere sider slutter polygonen tæt om cirklen og nærmer sig 3.14…
+cie_comp|Du har 1 krone til 100 % rente i et år, udbetalt i {0} dele: hver del ganger med (1 + 1/{0}). {1}. Med flere dele vokser det mindre og mindre og nærmer sig e ≈ 2.718: det er derfra e kommer.
+cie_ser|e er også 1 + 1 + 1/2 + 1/6 + 1/24 + … (hvert led er det forrige divideret med 1, 2, 3, 4…). Med 4 led: 1 + 1 + 0.5 + 0.1667 = 2.6667, allerede tæt på e ≈ 2.718.

@@ -577,3 +577,9 @@ cr_dec|Untuk desimalnya: {0} × {1} = {2} → dibulatkan {3}.
 ct_rad|Setengah putaran (180°) adalah π radian. {0}° = {1} × 180°, jadi {0}° = {2} rad ≈ {3}.
 ct_half|{0} ≈ {1}; setengahnya: {1} ÷ 2 = {2} → {3}.
 cl_like|{0} adalah bilangan seperti yang lain: {1} kali {0} ditulis {2}.
+cpi_wheel|roda berdiameter {0}: seberapa jauh maju dalam 1 putaran?
+cpi_why|Gelindingkan roda satu putaran lalu ukur: ia maju sedikit lebih dari 3 diameter. "Sedikit lebih dari 3" itu adalah π ≈ 3.1416, sama untuk semua lingkaran: K = π × d.
+cpi_hexq|segi enam bersisi 0.5 di dalam lingkaran berdiameter 1: kelilingnya
+cpi_hex|Segi enam ada di dalam lingkaran, jadi keliling lingkaran (π) sedikit lebih dari kelilingnya. Makin banyak sisi, poligon makin menempel ke lingkaran dan mendekati 3.14…
+cie_comp|Kamu punya 1 rupiah dengan bunga 100 % setahun, dibayar dalam {0} bagian: tiap bagian mengali dengan (1 + 1/{0}). {1}. Makin banyak bagian, tambahannya makin kecil dan mendekati e ≈ 2.718: dari sinilah e berasal.
+cie_ser|e juga sama dengan 1 + 1 + 1/2 + 1/6 + 1/24 + … (tiap suku adalah suku sebelumnya dibagi 1, 2, 3, 4…). Dengan 4 suku: 1 + 1 + 0.5 + 0.1667 = 2.6667, sudah dekat e ≈ 2.718.
