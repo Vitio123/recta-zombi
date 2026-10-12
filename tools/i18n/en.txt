@@ -17,7 +17,7 @@ c9fa5ce|split {0} into {1} + {2}, both divide easily by {3}: {4} + {5} = {6}
 cef6598|The apple is at x = {0}: x + {1} = {2} + {3}.
 c7cb4af|Result: {0}.
 c7a6673|How many times does {0} fit in {1}? {2} × {3} = {4}.
-cafd293|Dividing is sharing: how many times does {0} fit in {1}?
+cafd293|Dividing asks: how many times does {0} fit in {1}?
 c424b15|Find the multiplication that undoes it: {0} × {1} = {2}.
 cfe1c21|You go down {0} to 0 and still have {1} more places to the left.
 caab7b0|Minus times minus is plus: (−) × (−) = (+).
@@ -583,3 +583,7 @@ cpi_hexq|hexagon with side 0.5 inside a circle of diameter 1: its perimeter
 cpi_hex|The hexagon sits inside the circle, so the way around the circle (π) is a bit more than its perimeter. With more sides the polygon hugs the circle and gets close to 3.14…
 cie_comp|You have 1 dollar at 100 % interest for a year, paid in {0} parts: each part multiplies by (1 + 1/{0}). {1}. With more parts it grows less and less and gets close to e ≈ 2.718: that is where e comes from.
 cie_ser|e is also 1 + 1 + 1/2 + 1/6 + 1/24 + … (each term is the previous one divided by 1, 2, 3, 4…). With 4 terms: 1 + 1 + 0.5 + 0.1667 = 2.6667, already close to e ≈ 2.718.
+cj_t|jump the tens: {0} + {1} = {2}
+cj_u2|; then the ones: {0} + {1} = {2}
+cj_up|fill up the ten: {0} + {1} = {2}; {3} left: {2} + {3} = {4}
+cj_u|add the ones: {0} + {1} = {2}

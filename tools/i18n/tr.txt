@@ -583,3 +583,7 @@ cpi_hexq|çapı 1 olan çemberin içindeki kenarı 0.5 olan altıgen: çevresi
 cpi_hex|Altıgen çemberin içinde, yani çemberin çevresi (π) altıgenin çevresinden biraz fazla. Kenar sayısı arttıkça çokgen çembere yapışır ve 3.14…’e yaklaşır.
 cie_comp|Bir yıl boyunca %100 faizle 1 liran var, faiz {0} kez ödeniyor: her seferinde (1 + 1/{0}) ile çarpılır. {1}. Bölme arttıkça artış azalır ve e ≈ 2.718’e yaklaşır: e buradan gelir.
 cie_ser|e aynı zamanda 1 + 1 + 1/2 + 1/6 + 1/24 + … (her terim öncekinin 1, 2, 3, 4… ile bölümü). 4 terimle: 1 + 1 + 0.5 + 0.1667 = 2.6667, şimdiden e ≈ 2.718’e yakın.
+cj_t|onlukları atla: {0} + {1} = {2}
+cj_u2|; sonra birlikler: {0} + {1} = {2}
+cj_up|onluğu tamamla: {0} + {1} = {2}; {3} kaldı: {2} + {3} = {4}
+cj_u|birlikleri ekle: {0} + {1} = {2}

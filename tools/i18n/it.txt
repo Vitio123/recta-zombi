@@ -583,3 +583,7 @@ cpi_hexq|esagono di lato 0.5 dentro un cerchio di diametro 1: il suo perimetro
 cpi_hex|L’esagono sta dentro il cerchio, quindi il giro del cerchio (π) è poco più del suo perimetro. Con più lati il poligono aderisce al cerchio e si avvicina a 3.14…
 cie_comp|Hai 1 euro al 100 % di interesse per un anno, pagato in {0} parti: ogni parte moltiplica per (1 + 1/{0}). {1}. Con più parti cresce sempre meno e si avvicina a e ≈ 2.718: ecco da dove viene e.
 cie_ser|e è anche 1 + 1 + 1/2 + 1/6 + 1/24 + … (ogni termine è il precedente diviso per 1, 2, 3, 4…). Con 4 termini: 1 + 1 + 0.5 + 0.1667 = 2.6667, già vicino a e ≈ 2.718.
+cj_t|salta le decine: {0} + {1} = {2}
+cj_u2|; poi le unità: {0} + {1} = {2}
+cj_up|completa la decina: {0} + {1} = {2}; ne mancano {3}: {2} + {3} = {4}
+cj_u|aggiungi le unità: {0} + {1} = {2}

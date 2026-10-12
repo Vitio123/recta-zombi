@@ -583,3 +583,7 @@ cpi_hexq|lục giác cạnh 0.5 nằm trong đường tròn đường kính 1: c
 cpi_hex|Lục giác nằm trong đường tròn, nên chu vi đường tròn (π) dài hơn chu vi lục giác một chút. Càng nhiều cạnh, đa giác càng sát đường tròn và tiến tới 3.14…
 cie_comp|Bạn có 1 đồng với lãi 100 % một năm, trả làm {0} lần: mỗi lần nhân với (1 + 1/{0}). {1}. Chia càng nhiều lần thì tăng càng ít và tiến tới e ≈ 2.718: e sinh ra từ đây.
 cie_ser|e cũng bằng 1 + 1 + 1/2 + 1/6 + 1/24 + … (mỗi số hạng là số trước chia cho 1, 2, 3, 4…). Với 4 số hạng: 1 + 1 + 0.5 + 0.1667 = 2.6667, đã gần e ≈ 2.718.
+cj_t|nhảy hàng chục: {0} + {1} = {2}
+cj_u2|; rồi hàng đơn vị: {0} + {1} = {2}
+cj_up|làm tròn chục: {0} + {1} = {2}; còn {3}: {2} + {3} = {4}
+cj_u|cộng hàng đơn vị: {0} + {1} = {2}

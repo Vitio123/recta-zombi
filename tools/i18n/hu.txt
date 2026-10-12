@@ -583,3 +583,7 @@ cpi_hexq|1 átmérőjű körbe írt 0.5 oldalú hatszög: a kerülete
 cpi_hex|A hatszög a körön belül van, ezért a kör kerülete (π) kicsit több a hatszögénél. Több oldallal a sokszög a körhöz simul, és közelít a 3.14…-hez.
 cie_comp|Van 1 forintod 100 % kamatra egy évre, {0} részletben jóváírva: minden részlet (1 + 1/{0})-del szoroz. {1}. Több részlettel egyre kevésbé nő, és közelít az e ≈ 2.718-hoz: innen jön az e.
 cie_ser|Az e egyben 1 + 1 + 1/2 + 1/6 + 1/24 + … (minden tag az előző osztva 1, 2, 3, 4…-gyel). 4 taggal: 1 + 1 + 0.5 + 0.1667 = 2.6667, már közel az e ≈ 2.718-hoz.
+cj_t|ugord át a tízeseket: {0} + {1} = {2}
+cj_u2|; aztán az egyeseket: {0} + {1} = {2}
+cj_up|egészítsd ki tízre: {0} + {1} = {2}; maradt {3}: {2} + {3} = {4}
+cj_u|add hozzá az egyeseket: {0} + {1} = {2}

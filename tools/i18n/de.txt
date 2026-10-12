@@ -583,3 +583,7 @@ cpi_hexq|Sechseck mit Seite 0.5 in einem Kreis mit Durchmesser 1: sein Umfang
 cpi_hex|Das Sechseck liegt im Kreis, also ist der Kreisumfang (π) etwas mehr als sein Umfang. Mit mehr Ecken schmiegt sich das Vieleck an den Kreis und nähert sich 3.14…
 cie_comp|Du hast 1 Euro zu 100 % Zinsen für ein Jahr, ausgezahlt in {0} Teilen: jeder Teil multipliziert mit (1 + 1/{0}). {1}. Mit mehr Teilen wächst es immer weniger und nähert sich e ≈ 2.718: daher kommt e.
 cie_ser|e ist auch 1 + 1 + 1/2 + 1/6 + 1/24 + … (jeder Term ist der vorige geteilt durch 1, 2, 3, 4…). Mit 4 Termen: 1 + 1 + 0.5 + 0.1667 = 2.6667, schon nah an e ≈ 2.718.
+cj_t|spring die Zehner: {0} + {1} = {2}
+cj_u2|; dann die Einer: {0} + {1} = {2}
+cj_up|fülle den Zehner auf: {0} + {1} = {2}; fehlen {3}: {2} + {3} = {4}
+cj_u|addiere die Einer: {0} + {1} = {2}

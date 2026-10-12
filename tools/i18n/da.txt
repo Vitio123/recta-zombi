@@ -583,3 +583,7 @@ cpi_hexq|sekskant med side 0.5 inde i en cirkel med diameter 1: dens omkreds
 cpi_hex|Sekskanten ligger inde i cirklen, så cirklens omkreds (π) er lidt mere end sekskantens. Med flere sider slutter polygonen tæt om cirklen og nærmer sig 3.14…
 cie_comp|Du har 1 krone til 100 % rente i et år, udbetalt i {0} dele: hver del ganger med (1 + 1/{0}). {1}. Med flere dele vokser det mindre og mindre og nærmer sig e ≈ 2.718: det er derfra e kommer.
 cie_ser|e er også 1 + 1 + 1/2 + 1/6 + 1/24 + … (hvert led er det forrige divideret med 1, 2, 3, 4…). Med 4 led: 1 + 1 + 0.5 + 0.1667 = 2.6667, allerede tæt på e ≈ 2.718.
+cj_t|hop tierne: {0} + {1} = {2}
+cj_u2|; så enerne: {0} + {1} = {2}
+cj_up|fyld tieren op: {0} + {1} = {2}; {3} tilbage: {2} + {3} = {4}
+cj_u|læg enerne til: {0} + {1} = {2}

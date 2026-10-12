@@ -583,3 +583,7 @@ cpi_hexq|hexagon cu latura 0.5 într-un cerc cu diametrul 1: perimetrul lui
 cpi_hex|Hexagonul e în interiorul cercului, deci lungimea cercului (π) e puțin mai mare decât perimetrul lui. Cu mai multe laturi poligonul se lipește de cerc și se apropie de 3.14…
 cie_comp|Ai 1 leu cu 100 % dobândă pe un an, plătită în {0} tranșe: fiecare tranșă înmulțește cu (1 + 1/{0}). {1}. Cu mai multe tranșe crește tot mai puțin și se apropie de e ≈ 2.718: de aici vine e.
 cie_ser|e mai este și 1 + 1 + 1/2 + 1/6 + 1/24 + … (fiecare termen e cel dinainte împărțit la 1, 2, 3, 4…). Cu 4 termeni: 1 + 1 + 0.5 + 0.1667 = 2.6667, deja aproape de e ≈ 2.718.
+cj_t|sari zecile: {0} + {1} = {2}
+cj_u2|; apoi unitățile: {0} + {1} = {2}
+cj_up|completează zecea: {0} + {1} = {2}; mai rămân {3}: {2} + {3} = {4}
+cj_u|adună unitățile: {0} + {1} = {2}

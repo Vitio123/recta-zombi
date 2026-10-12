@@ -583,3 +583,7 @@ cpi_hexq|sexhörning med sidan 0.5 i en cirkel med diametern 1: dess omkrets
 cpi_hex|Sexhörningen ligger i cirkeln, så cirkelns omkrets (π) är lite mer än sexhörningens. Med fler sidor sluter månghörningen tätt mot cirkeln och närmar sig 3.14…
 cie_comp|Du har 1 krona till 100 % ränta i ett år, utbetald i {0} delar: varje del multiplicerar med (1 + 1/{0}). {1}. Med fler delar växer det allt mindre och närmar sig e ≈ 2.718: det är därifrån e kommer.
 cie_ser|e är också 1 + 1 + 1/2 + 1/6 + 1/24 + … (varje term är den förra delad med 1, 2, 3, 4…). Med 4 termer: 1 + 1 + 0.5 + 0.1667 = 2.6667, redan nära e ≈ 2.718.
+cj_t|hoppa tiotalen: {0} + {1} = {2}
+cj_u2|; sedan entalen: {0} + {1} = {2}
+cj_up|fyll upp tiotalet: {0} + {1} = {2}; {3} kvar: {2} + {3} = {4}
+cj_u|lägg till entalen: {0} + {1} = {2}

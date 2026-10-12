@@ -583,3 +583,7 @@ cpi_hexq|šestiúhelník se stranou 0.5 v kruhu o průměru 1: jeho obvod
 cpi_hex|Šestiúhelník je uvnitř kruhu, takže obvod kruhu (π) je o trochu větší než jeho obvod. S více stranami se mnohoúhelník přimkne ke kruhu a blíží se 3.14…
 cie_comp|Máš 1 korunu na 100 % úrok za rok, vyplácený v {0} dílech: každý díl násobí (1 + 1/{0}). {1}. S více díly roste čím dál méně a blíží se e ≈ 2.718: odtud pochází e.
 cie_ser|e je také 1 + 1 + 1/2 + 1/6 + 1/24 + … (každý člen je předchozí dělený 1, 2, 3, 4…). Se 4 členy: 1 + 1 + 0.5 + 0.1667 = 2.6667, už blízko e ≈ 2.718.
+cj_t|skoč o desítky: {0} + {1} = {2}
+cj_u2|; pak jednotky: {0} + {1} = {2}
+cj_up|doplň do desítky: {0} + {1} = {2}; zbývá {3}: {2} + {3} = {4}
+cj_u|přičti jednotky: {0} + {1} = {2}

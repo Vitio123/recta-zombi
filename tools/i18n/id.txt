@@ -583,3 +583,7 @@ cpi_hexq|segi enam bersisi 0.5 di dalam lingkaran berdiameter 1: kelilingnya
 cpi_hex|Segi enam ada di dalam lingkaran, jadi keliling lingkaran (π) sedikit lebih dari kelilingnya. Makin banyak sisi, poligon makin menempel ke lingkaran dan mendekati 3.14…
 cie_comp|Kamu punya 1 rupiah dengan bunga 100 % setahun, dibayar dalam {0} bagian: tiap bagian mengali dengan (1 + 1/{0}). {1}. Makin banyak bagian, tambahannya makin kecil dan mendekati e ≈ 2.718: dari sinilah e berasal.
 cie_ser|e juga sama dengan 1 + 1 + 1/2 + 1/6 + 1/24 + … (tiap suku adalah suku sebelumnya dibagi 1, 2, 3, 4…). Dengan 4 suku: 1 + 1 + 0.5 + 0.1667 = 2.6667, sudah dekat e ≈ 2.718.
+cj_t|lompati puluhan: {0} + {1} = {2}
+cj_u2|; lalu satuan: {0} + {1} = {2}
+cj_up|genapkan puluhan: {0} + {1} = {2}; sisa {3}: {2} + {3} = {4}
+cj_u|tambahkan satuan: {0} + {1} = {2}

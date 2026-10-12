@@ -583,3 +583,7 @@ cpi_hexq|sześciokąt o boku 0.5 w okręgu o średnicy 1: jego obwód
 cpi_hex|Sześciokąt jest w środku okręgu, więc obwód okręgu (π) jest trochę większy niż jego obwód. Im więcej boków, tym wielokąt bardziej przylega do okręgu i zbliża się do 3.14…
 cie_comp|Masz 1 zł na 100 % rocznie, odsetki naliczane {0} razy: za każdym razem mnożysz przez (1 + 1/{0}). {1}. Im więcej razy, tym mniejszy przyrost i tym bliżej e ≈ 2.718: stąd bierze się e.
 cie_ser|e to też 1 + 1 + 1/2 + 1/6 + 1/24 + … (każdy wyraz to poprzedni podzielony przez 1, 2, 3, 4…). Przy 4 wyrazach: 1 + 1 + 0.5 + 0.1667 = 2.6667, już blisko e ≈ 2.718.
+cj_t|skocz o dziesiątki: {0} + {1} = {2}
+cj_u2|; potem jedności: {0} + {1} = {2}
+cj_up|dopełnij do dziesiątki: {0} + {1} = {2}; zostało {3}: {2} + {3} = {4}
+cj_u|dodaj jedności: {0} + {1} = {2}
