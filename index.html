@@ -545,6 +545,35 @@ body.gb #sEnd .card .mini,body.gb #sEnd .card #eTtl{color:#383838!important}
 #eTtl{font-size:13px;letter-spacing:.2em;color:var(--red);margin-top:-6px}
 #sEnd.show .card{animation:cardDrop .6s cubic-bezier(.2,1.4,.4,1) .15s backwards}
 #sEnd .card{border:3px solid var(--fg)!important;box-shadow:6px 6px 0 var(--red)!important}
+/* móvil como app: botones de tamaño de dedo (≥44px), textos legibles y todo cabe; si una hoja no cabe, se desplaza en vez de cortarse */
+@media (max-width:759px){
+.screen>.card{overscroll-behavior:contain}
+.lead{font-size:15px;line-height:1.5;letter-spacing:.02em}
+.chip{min-height:46px;font-size:14px;letter-spacing:.08em}
+.vol{min-height:46px;box-sizing:border-box}
+.rb{width:46px;height:46px}
+#hTopic{max-width:calc(100vw - 230px)}
+:root{--kbh:clamp(46px,min(7.4vh,15vw),60px)}
+#newt,#lawt,#lawt.tip{font-size:13px}
+#pick button{min-width:60px;height:60px}
+body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + var(--kpH) + 58px)}
+}
+@media (max-width:759px) and (max-height:600px){body.kb #lawt.tip{display:none}}
+@media (max-width:759px) and (max-height:940px){
+.screen>.card{gap:10px;padding-top:10px;padding-bottom:10px}
+.ttl{font-size:clamp(30px,9.5vw,48px)}
+.ttl small{margin-top:6px}
+.btns{gap:10px}
+.btn{min-height:52px;font-size:17px;padding:14px 18px 11px}
+.btn.alt{min-height:48px;font-size:15px}
+#bStart{font-size:19px;padding:15px 18px 12px}
+.row{gap:10px}
+.lead{font-size:13px;line-height:1.45}
+.chip,.vol{min-height:44px}
+details.prog summary{padding:2px 0}
+#logo{width:min(64px,18vw)}
+#tStats{font-size:11px;letter-spacing:.04em}
+}
 </style>
 
 <button id="srOn" class="sr">Activar modo para lector de pantalla</button><div id="live" class="sr" role="alert" aria-live="assertive"></div><div id="live2" class="sr" role="status" aria-live="polite"></div>
@@ -7973,8 +8002,8 @@ function playExplain(p=S.exP,cvx=$('#exAnim'),root=$('#oFailB')){
   .observe($('#oFailB'),{subtree:true,attributes:true,attributeFilter:['class'],attributeOldValue:true})}
 $('#oFail').addEventListener('toggle',()=>{const o=$('#oFail').open;$('#sOver').classList.toggle('exp',o);if(o)playExplain();requestAnimationFrame(()=>requestAnimationFrame(fitCards))});
 
-function fitCards(){const mob=innerWidth<760;for(const c of document.querySelectorAll('.screen.show .card')){c.style.transform='none';c.style.maxHeight='none';const avail=c.parentElement.clientHeight-8,h=c.scrollHeight;const k=Math.min(1,avail/h);
-  if(mob&&k<.88){c.style.maxHeight='100%';continue}c.style.transform=k<1?`scale(${k.toFixed(3)})`:'none'}}
+function fitCards(){const mob=innerWidth<760;for(const c of document.querySelectorAll('.screen.show .card')){c.style.transform='none';c.style.maxHeight='none';c.style.removeProperty('overflow-y');c.style.removeProperty('justify-content');const avail=c.parentElement.clientHeight-8,h=c.scrollHeight;const k=Math.min(1,avail/h);
+  if(mob&&k<.88){c.style.maxHeight='100%';c.style.setProperty('overflow-y','auto','important');c.style.setProperty('justify-content','flex-start','important');continue}c.style.transform=k<1?`scale(${k.toFixed(3)})`:'none'}}
 new MutationObserver(()=>requestAnimationFrame(fitCards)).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class','open']});
 window.addEventListener('resize',()=>{fitCards();if(S.mode==='over')fitDead()});document.addEventListener('toggle',fitCards,true);
 
