@@ -559,6 +559,20 @@ body.gb #sEnd .card .mini,body.gb #sEnd .card #eTtl{color:#383838!important}
 body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + var(--kpH) + 58px)}
 }
 @media (max-width:759px) and (max-height:600px){body.kb #lawt.tip{display:none}}
+/* menú principal en móvil como pantalla de inicio de app: título, consejo corto, botón grande y ajustes en una cuadrícula de 3 */
+@media (max-width:759px){
+#sTitle .card{gap:14px}
+#sTitle .lead{font-size:12px;line-height:1.5;letter-spacing:.03em;color:var(--mut);max-width:34em}
+#sTitle .lead em{color:var(--red)}
+#sTitle .btn{letter-spacing:.1em}
+#sTitle #bStart{font-size:clamp(13px,4.1vw,17px);letter-spacing:.06em;white-space:nowrap;min-height:62px;padding-left:10px;padding-right:10px}
+#sTitle #bAch1{grid-column:span 2}
+#sTitle .row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#sTitle .row .chip{grid-column:auto;font-size:11px;letter-spacing:.04em;padding:8px 4px 6px;min-height:48px}
+#sTitle .row .chip .fl{width:20px;height:14px;margin-right:5px}
+#sTitle .row .vol{display:none}
+#sTitle #tStats{font-size:10px}
+}
 @media (max-width:759px) and (max-height:940px){
 .screen>.card{gap:10px;padding-top:10px;padding-bottom:10px}
 .ttl{font-size:clamp(30px,9.5vw,48px)}
@@ -5240,7 +5254,7 @@ function applyLang(){
   set('#sTitle .ttl small','tag');$('#sTitle .lead').innerHTML=L10('lead');TIPON=false;TIPC=0;{const l=$('#sTitle .lead');l.classList.remove('swap');l.style.height=l.style.overflow=l.style.display=l.style.flexDirection=l.style.justifyContent=''}
   try{renderTitle()}catch(e){}
   set('#sTitle details.prog summary',$('#sTitle details.prog').open?'closeprog':'prog');
-  {const b=$('#bCont');if(b&&typeof S!=='undefined')b.textContent=L10('retry',{n:S.stage>NT?'∞':S.stage})}set('#bShare','share');set('#bMenu','menu');set('#oFail summary','how');
+  {const b=$('#bCont');if(b&&typeof S!=='undefined')b.textContent=L10('again1')}set('#bShare','share');set('#bMenu','menu');set('#oFail summary','how');
   set('#sTut .mini','example');set('#bTutOk','gotit');set('#bTutAgain','replay');set('#bHelp','help');set('.frk','frac');
   set('#alBig','caught');set('#alSub','caughtSub');$('#drawhint').textContent=L10(document.body.classList.contains('frac')?'hint2':'hint1');
   for(const i of[1,2]){const b=$('#bLang'+i);if(b){const l=langOf(LANG);b.innerHTML=flagImg(l)+l.n}}
@@ -7415,7 +7429,8 @@ function gameOver(){
   rows.sort((a,b)=>a.acc-b.acc);
   const weak=rows.find(r=>r.n>=2&&r.acc<.75)||rows[0];
   // como en Dark Souls: mueres, entiendes por qué y vuelves al mismo nivel con problemas nuevos
-  const st=S.stage;$('#bCont').textContent=L10('retry',{n:st>NT?'∞':st});$('#bCont').onclick=()=>newGame(st);
+  // como en Dead Cells: al morir se pierde la partida y se vuelve a empezar desde la suma; «continuar» solo existe si saliste a medias
+  SAVE.cont=0;persist();$('#bCont').textContent=L10('again1');$('#bCont').onclick=()=>newGame(1);
   const wi=TOPICS.indexOf(weak.t)+1;$('#bPract').hidden=wi===S.stage;$('#bPract').textContent=L10('practice',{t:weak.t.name});$('#bPract').onclick=()=>newGame(wi);
   $('#sOver .card').scrollTop=0;requestAnimationFrame(()=>{fitDead();fitCards()});
 }

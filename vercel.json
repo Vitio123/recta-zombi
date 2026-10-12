@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/", "headers": [{ "key": "Cache-Control", "value": "no-cache, must-revalidate" }] },
+    { "source": "/index", "headers": [{ "key": "Cache-Control", "value": "no-cache, must-revalidate" }] }
+  ]
 }
