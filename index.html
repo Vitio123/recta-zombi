@@ -246,7 +246,8 @@ body{font-weight:400;-webkit-font-smoothing:none;font-smooth:never}
 body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + var(--kpH) + 74px)}
 }
 #exAnim{width:100%;height:110px;image-rendering:pixelated;display:block;margin-top:8px;border:2px solid var(--line)}
-#oFailB li{opacity:0;transition:opacity .4s}#oFailB li.on{opacity:1}
+#oFailB li{opacity:0;transition:opacity .4s}#oFailB li.on,#oFailB .mtL li{opacity:1}
+#mtBtn{width:100%;margin:10px 0 4px;color:var(--red);border-color:var(--red)}#mtBox .mtL li{margin:6px 0}#mtBox{animation:fadeUp .4s both}
 #exAgain{margin:8px 0}
 #tutAnim{width:100%;height:110px;image-rendering:pixelated;display:block;border:2px solid var(--line)}
 #tutB{font-size:15px;line-height:1.45;text-align:left;width:100%}#tutB ol{margin:4px 0 0;padding-left:22px}#tutB li{opacity:0;transition:opacity .4s}#tutB li.on{opacity:1}
@@ -378,7 +379,7 @@ details.prog{width:100%}details.prog summary{cursor:pointer;font-size:12px;lette
 .sr{position:fixed;left:0;top:0;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;padding:0;margin:-1px}
 #srOn:focus{clip-path:none;width:auto;height:auto;margin:0;z-index:60;left:8px;top:8px;padding:10px 14px;background:var(--fg);color:var(--bg);font:14px var(--f-ui)}
 body.a11y :focus-visible{outline:3px solid var(--red)!important;outline-offset:2px}
-#bAch1,#bAch2,#bA11y1,#bA11y2,#bLang2{grid-column:1/-1}
+#bAch1,#bAch2,#bA11y1,#bA11y2,#bLang1,#bLang2{grid-column:1/-1}
 /* poder del arcoíris */
 /* panel de poderes: los 7 colores del arcoíris en columna a la izquierda */
 #pdock{position:fixed;left:var(--sl);top:30%;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:3px;pointer-events:none}
@@ -6510,20 +6511,22 @@ const addPlan=(a,b)=>{if(a<b)[a,b]=[b,a];if(a<10)return{h:XL('c9058f1',[a,b]),a0
   if(tb)return{h:XL('cj_t',[a,tb,a+tb])+(ub?XL('cj_u2',[a+tb,ub,a+b]):''),a0:a,j:ub?[tb,ub]:[tb]};
   if(ua+ub>10){const f=10-ua;return{h:XL('cj_up',[a,f,a+f,ub-f,a+b]),a0:a,j:[f,ub-f]}}
   return{h:XL('cj_u',[a,ub,a+b]),a0:a,j:[ub]}};
-const addHint=(a,b)=>addPlan(a,b).h;
+// cada pista de cálculo mental se marca para poder mostrarla sola en la pantalla de derrota
+const MTS=new Set(),MT=s=>{if(s)MTS.add(String(s).replace(/\.$/,''));return s};
+const addHint=(a,b)=>MT(addPlan(a,b).h);
 const subPlan=(a,b)=>{const ua=a%10,ub=b%10,tb=b-ub,J=(h,...j)=>({h,a0:a,j:j.filter(v=>v)});
   if(a<10&&b<10||b<10&&ua===0)return{h:XL('c433450',[a,b]),a0:a,j:Array(b).fill(-1)};
   if(b>=9&&ub>=9){const r=up10(b);return J(XL('c29894f',[b,r,a,r,a-r,r-b,a-r,r-b]),-r,r-b)}
   if(b<10)return ua<b?J(XL('ca45d2e',[a,ua,a-ua,b-ua,a-ua,b-ua]),-ua,ua-b):J(XL('c270ee2',[b,ua,b,ua-b,a-ua]),-b);
   return J(XL('c2c0266',[a,tb,a-tb,ub?XL('c949734',[a-tb,ub]):'']),-tb,-ub)};
-const subHint=(a,b)=>subPlan(a,b).h;
+const subHint=(a,b)=>MT(subPlan(a,b).h);
 const addVZ=(a,b,q)=>{const p=addPlan(a,b);return{t:'jumps',a:p.a0,j:p.j,q:q||`${a} + ${b}`,fin:`${a} + ${b} = ${a+b}`}};
 const subVZ=(a,b)=>{const p=subPlan(a,b);return{t:'jumps',a:p.a0,j:p.j,q:`${a} − ${b}`,fin:`${a} − ${b} = ${a-b}`}};
 // dividir = ¿cuántas veces cabe b en n?: saltos de b desde 0 (o dos saltos grandes si la pista parte n en dos trozos fáciles)
 const divVZ=(n,b,q)=>{const sp=divSplit(q,b);return sp?{t:'jumps',a:0,j:[b*sp[0],b*sp[1]],jl:[`${sp[0]} × ${b}`,`${sp[1]} × ${b}`],q:`${n} ÷ ${b}`,fin:`${q} × ${b} = ${n}`}:q<=20?{t:'jumps',a:0,j:Array(q).fill(b),q:`${n} ÷ ${b}`,fin:`${q} × ${b} = ${n}`}:null};
-const mulHint=(a,b)=>{if(a<10&&b<=5)return XL('caa225e',[a,b,a,b,Array(b).fill(a).join(' + ')]);if(a===25)return XL('c50240f',[b,25*b]);if(a>=10){const u=a%10;if(u>=9){const r=up10(a);return XL('ce0c89b',[a,r,r,b,r*b,r-a,b,(r-a)*b,r*b,(r-a)*b])}const t=a-u;return XL('c29e85e',[t,b,t*b,u,b,u*b,t*b,u*b])}if(b>=8)return XL('ca10c1a',[b,a,a*10,a,10-b,a*(10-b),a*10,a*(10-b)]);return XL('caa0dce',[b,b-5,a,a*5,a,b-5,a*(b-5),a*5,a*(b-5)])};
+const mulHint=(a,b)=>MT(mulHint0(a,b)),mulHint0=(a,b)=>{if(a<10&&b<=5)return XL('caa225e',[a,b,a,b,Array(b).fill(a).join(' + ')]);if(a===25)return XL('c50240f',[b,25*b]);if(a>=10){const u=a%10;if(u>=9){const r=up10(a);return XL('ce0c89b',[a,r,r,b,r*b,r-a,b,(r-a)*b,r*b,(r-a)*b])}const t=a-u;return XL('c29e85e',[t,b,t*b,u,b,u*b,t*b,u*b])}if(b>=8)return XL('ca10c1a',[b,a,a*10,a,10-b,a*(10-b),a*10,a*(10-b)]);return XL('caa0dce',[b,b-5,a,a*5,a,b-5,a*(b-5),a*5,a*(b-5)])};
 const divSplit=(q,b)=>{if(q<4)return null;let q1=Math.floor(q/2);for(let k=q-1;k>=1;k--)if(b*k%10===0){q1=k;break}return[q1,q-q1]};
-const divHint=(n,b,q)=>{const sp=divSplit(q,b);if(!sp)return null;const[q1,q2]=sp;return XL('c9fa5ce',[n,b*q1,b*q2,b,q1,q2,q])};
+const divHint=(n,b,q)=>{const sp=divSplit(q,b);if(!sp)return null;const[q1,q2]=sp;return MT(XL('c9fa5ce',[n,b*q1,b*q2,b,q1,q2,q]))};
 const sg=v=>v<0?' − '+fmt(-v):' + '+fmt(v);
 const lin=(m,b)=>`${m===1?'':m===-1?MINUS:fmt(m)}x${b?sg(b):''}`;
 const tailBC=(b,c)=>(b?(b>0?' + ':' − ')+(Math.abs(b)===1?'':Math.abs(b))+'x':'')+(c?sg(c):'');
@@ -6546,9 +6549,9 @@ function gMult(x,d){
   return{k:[Sx(`${a} × ${b}`)],ans:a*b,ex:[mulHint(a,b)+'.',`${a} × ${b} = ${a*b}.`]};
 }
 function gDiv(x,d){
-  if(isInt(x)&&x>=4&&R()<.55){const ds=[];for(let b=2;b<=9;b++)if(x%b===0&&x/b>=2)ds.push(b);if(ds.length){const b=pick(ds);return{k:[Sx(`x ÷ ${b}`)],ans:x/b,vz:divVZ(x,b,x/b),ex:[`x = ${x}: x ÷ ${b} = ${x} ÷ ${b}.`,XL('c7a6673',[b,x,b,x/b,x]),XL('c7cb4af',[x/b])]}}}
+  if(isInt(x)&&x>=4&&R()<.55){const ds=[];for(let b=2;b<=9;b++)if(x%b===0&&x/b>=2)ds.push(b);if(ds.length){const b=pick(ds);return{k:[Sx(`x ÷ ${b}`)],ans:x/b,vz:divVZ(x,b,x/b),ex:[`x = ${x}: x ÷ ${b} = ${x} ÷ ${b}.`,MT(XL('c7a6673',[b,x,b,x/b,x])),XL('c7cb4af',[x/b])]}}}
   let q=ri(2,4+Math.round(6*d)),b=ri(2,4+Math.round(5*d));if(d>.8&&R()<.4){b=ri(11,15);q=ri(2,9)}
-  return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,vz:divVZ(q*b,b,q),ex:[XL('cafd293',[b,q*b]),divHint(q*b,b,q)||XL('c424b15',[b,q,q*b]),XL('c7cb4af',[q])]};
+  return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,vz:divVZ(q*b,b,q),ex:[XL('cafd293',[b,q*b]),divHint(q*b,b,q)||MT(XL('c424b15',[b,q,q*b])),XL('c7cb4af',[q])]};
 }
 function gEnt(x,d){
   const r=R();
@@ -6562,7 +6565,8 @@ function gEnt(x,d){
 }
 const FDEN=[2,4,5,10];
 const dec=(n,dn)=>fmt(n/dn);
-function fracHow(n,b){const v=n/b;
+const fracHow=(n,b)=>MT(fracHow0(n,b));
+function fracHow0(n,b){const v=n/b;
   if(isInt(v))return XL('c424b15',[b,fmt(v),fmt(n)]);
   if(b===2)return XL('cf_2',[fmt(n),fmt(v)]);
   if(b===4)return XL('cf_4',[fmt(n),fmt(n/2),fmt(v)]);
@@ -6887,7 +6891,7 @@ function reviewProb(force){const ids=force?[force]:['suma','resta','mult','div']
   const gen=()=>{if(id==='suma'){const a=ri(lo,hi),b=ri(lo,hi);return{k:[Sx(`${a} + ${b}`)],ans:a+b,vz:addVZ(a,b),ex:[addHint(a,b)+'.',`${a} + ${b} = ${a+b}.`]}}
     if(id==='resta'){const a=ri(lo*2,hi),b=ri(lo,a-1);return{k:[Sx(`${a} − ${b}`)],ans:a-b,vz:subVZ(a,b),ex:[subHint(a,b)+'.',`${a} − ${b} = ${a-b}.`]}}
     if(id==='mult'){const a=ri(Math.max(12,lo/10|0),Math.max(99,hi/10|0)),b=ri(3,9);return{k:[Sx(`${a} × ${b}`)],ans:a*b,ex:[mulHint(a,b)+'.',`${a} × ${b} = ${a*b}.`]}}
-    const b=ri(3,9),q=ri(Math.max(12,lo/10|0),Math.max(99,hi/10|0));return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,vz:divVZ(q*b,b,q),ex:[XL('cafd293',[b,q*b]),divHint(q*b,b,q)||XL('c424b15',[b,q,q*b]),XL('c7cb4af',[q])]}};
+    const b=ri(3,9),q=ri(Math.max(12,lo/10|0),Math.max(99,hi/10|0));return{k:[Sx(`${q*b} ÷ ${b}`)],ans:q,vz:divVZ(q*b,b,q),ex:[XL('cafd293',[b,q*b]),divHint(q*b,b,q)||MT(XL('c424b15',[b,q,q*b])),XL('c7cb4af',[q])]}};
   const p=mkProb({id,name:T0.name,gen},S.a.x,S.d);p.pre=[Sx('↺ '+T0.name)];p.str='↺ '+p.str;p.review=true;return p}
 function newProblem(){
   const T=S.topic;S.prob=(S.stage>=3&&!S.grab&&!T.boss&&R()<.25&&reviewProb())||mkProb(T,S.a.x,S.d);hideHelp();
@@ -7466,8 +7470,9 @@ function gameOver(){
   $('#mapLbl').textContent=L10('map',{l:S.stage>NT?'∞':S.stage,t:S.topic.name,c:S.run.correct,k:S.run.kills,r:SAVE.best,p:Math.round(hard()*100)});S.overPos=pos;
   const p=S.run.lastProb;
   const mt=MENTAL[p?p.topic:S.topic.id]||[],mtH=mt.length?`<div class="mt"><b>${L10('mental')}</b>${mt.map(k=>`<p>${XL(k)}</p>`).join('')}</div>`:'';
-  $('#oFailB').innerHTML=(p?`<canvas id="exAnim"></canvas><button class="chip" id="exAgain">${L10('replay')}</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div>${['suma','resta','mult','div'].includes(p.topic)?`<div class="mt"><b>${L10('mental')}</b></div>`:''}<ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`:mtH+XL('cnoprob'));
-  $('#sOver').classList.remove('exp');$('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};heatmap($('#oHeat'));
+  const mtl=p&&p.ex.find(l=>MTS.has(String(l).replace(/\.$/,''))),mts=mtl?String(mtl).replace(/\.$/,'').split(/;\s*|。|；|؛\s*/).filter(x=>x.trim()).map(x=>x.trim().replace(/^./,c=>c.toUpperCase())):[];
+  $('#oFailB').innerHTML=p?(mts.length?`<button class="chip" id="mtBtn">▾ ${L10('mental')}</button><div id="mtBox" hidden><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol class="mtL">${mts.map(l=>`<li>${esc(l)}</li>`).join('')}<li style="color:var(--red)">= ${fmt(p.ans)}</li></ol></div>`:'')+`<div id="exBox"><canvas id="exAnim"></canvas><button class="chip" id="exAgain">${L10('replay')}</button><div class="q">${esc(prettyQ(p.str))} = ${fmt(p.ans)}</div><ol>${p.ex.map(l=>`<li>${esc(l)}</li>`).join('')}</ol></div>`:mtH+XL('cnoprob');
+  $('#sOver').classList.remove('exp');$('#oFail').open=false;S.exP=p;const ea=$('#exAgain');if(ea)ea.onclick=e=>{e.preventDefault();playExplain()};const mb=$('#mtBtn');if(mb)mb.onclick=e=>{e.preventDefault();const o=$('#mtBox').hidden;$('#mtBox').hidden=!o;$('#exBox').hidden=o;mb.textContent=(o?'▴ ':'▾ ')+L10('mental');if(o)cancelAnimationFrame(exRAF);else playExplain();requestAnimationFrame(fitCards)};heatmap($('#oHeat'));
   const rows=[];const ids=new Set([...Object.keys(S.run.okT),...Object.keys(S.run.errT),S.topic.id]);
   for(const id of ids){const t=TOPICS.find(q=>q.id===id);const h=SAVE.hist[id]||{ok:0,bad:0},n=h.ok+h.bad,acc=n?h.ok/n:0;rows.push({t,acc,n})}
   rows.sort((a,b)=>a.acc-b.acc);
@@ -8034,7 +8039,7 @@ VZ.euler=(o,Wc)=>{
 let exRAF=0;
 function playExplain(p=S.exP,cvx=$('#exAnim'),root=$('#oFailB')){
   if(!p||!cvx)return;cancelAnimationFrame(exRAF);
-  const lis=[...root.querySelectorAll('li')];lis.forEach(l=>l.classList.remove('on'));
+  const lis=[...root.querySelectorAll('ol:not(.mtL) li')];lis.forEach(l=>l.classList.remove('on'));
   if(playScene(p,cvx,lis))return;cvx.style.height='';
   const m=p.str.replace(/^↺\s*/,'').match(/^(−?[\d.]+) ([+−]) \(?(−?[\d.]+)\)?/),num=s=>Number(String(s).replace('−','-'));
   let a=p.x0,b=p.ans,hops=1;
