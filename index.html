@@ -556,6 +556,10 @@ body.gb #sEnd .card .mini,body.gb #sEnd .card #eTtl{color:#383838!important}
 :root{--kbh:clamp(46px,min(7.4vh,15vw),60px)}
 #newt,#lawt,#lawt.tip{font-size:13px}
 #pick button{min-width:60px;height:60px}
+.screen{background:transparent}
+.screen>.card{background:color-mix(in srgb,var(--bg) 30%,transparent)!important;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
+#sOver .card{background:color-mix(in srgb,var(--bg) 62%,transparent)!important}
+.screen>.card :is(.lead,.mini,.ttl,#lBody,#tutB,#oQuote,summary){text-shadow:0 0 4px var(--bg),0 0 2px var(--bg)}
 body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + var(--kpH) + 58px)}
 }
 @media (max-width:759px) and (max-height:600px){body.kb #lawt.tip{display:none}}
@@ -8357,39 +8361,19 @@ function ptextO(str,cx,y,col,full){const x=Math.round(cx-pw(full||str)/2);for(co
 // globos de cómic: papel con borde y colita hacia quien habla, la etiqueta del nombre y baba del color del zombi chorreando.
 // Grito = estallido amarillo con picos que tiembla; pensamiento = nube con burbujitas que suben desde la cabeza.
 const BUBP='#f4f1e8',BUBY='#ffe14a',BUBI='#1b1a17';
+// diálogo sin globo, como en las primeras versiones: el nombre en el color del zombi y el texto en blanco con contorno.
+// Aparece, se queda quieto a la altura en que nació (solo sigue al zombi despacio en x) y se desvanece. Nada salta ni se teletransporta.
 function bubble(b){
-  const z=b.z,zx=scx(z.x);if(zx<-20||zx>W+20)return;
-  const kind=b.kind||'say',inked=syms.length>0||!!curStroke,al=Math.max(0,(b.t>b.life-.3?(b.life-b.t)/.3:1)*(inked?.35:1)*Math.min(1,b.t/.12));
-  const nm=zname(z),lines=wrapP(b.txt,Math.min(130,W*.5)),col=zColor(z),shout=kind==='shout',think=kind==='think';
-  const bw=Math.max(pw(nm)+12,...lines.map(l=>pw(l)))+10,bh=lines.length*9+7,jit=shout&&b.t<1.2?Math.round((R()-.5)*2):0;
-  let top=Math.round(GY-zHead(z)-bh-10+Math.sin(b.t*4+z.id))+jit;const qb=questionBottom();if(qb!=null)top=Math.max(top,Math.round(qb+18));if(S.plcZ===z&&S.plcTop!=null)top=Math.min(top,S.plcTop-bh-14);
-  const cx=Math.round(clamp(zx,bw/2+5,W-bw/2-5))+jit,x0=cx-(bw>>1),y0=top,hx=Math.round(clamp(zx,x0+6,x0+bw-7)),fill=shout?BUBY:BUBP;
-  const F=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),w,h)};
-  const box=(x,y,w,h,c)=>{F(x+1,y,w-2,h,c);F(x,y+1,w,h-2,c)};
+  const z=b.z,zx=scx(z.x);
+  const kind=b.kind||'say',inked=syms.length>0||!!curStroke,al=Math.max(0,Math.min(1,b.t/.25,(b.life-b.t)/.6))*(inked?.35:1);
+  const nm=zname(z),col=zColor(z),lines=b.lines||(b.lines=wrapP(b.txt,Math.min(150,W*.56))),bw=Math.max(pw(nm),...lines.map(l=>pw(l)));
+  if(b.y==null){let y=Math.round(GY-zHead(z)-12-lines.length*9);const qb=questionBottom();if(qb!=null)y=Math.max(y,Math.round(qb+14));b.y=y}
+  b.x=b.x==null?zx:b.x+(zx-b.x)*.06;
+  const cx=Math.round(clamp(b.x,bw/2+4,W-bw/2-4)),ink=kind==='shout'?P.red:kind==='think'?P.l2:P.w;
+  const O=(s,x,y,c)=>{const xx=Math.round(x-pw(s)/2);for(const[dx,dy]of[[-1,0],[1,0],[0,-1],[0,1]])ptext(s,xx+dx,y+dy,1,P.k);ptext(s,xx,y,1,c)};
   ctx.save();ctx.globalAlpha=al;
-  if(think){
-    // nube: bultos redondos en el borde y tres burbujitas hacia la cabeza
-    const bumps=[];for(let i=4;i<bw-2;i+=7)bumps.push([x0+i,y0+1],[x0+i+3,y0+bh-1]);bumps.push([x0+1,y0+bh/2],[x0+bw-1,y0+bh/2]);
-    for(const[r,c]of[[5,BUBI],[4,fill]]){ctx.fillStyle=c;for(const[x,y]of bumps){ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill()}}
-    box(x0-1,y0-1,bw+2,bh+2,BUBI);box(x0,y0,bw,bh,fill);ctx.fillStyle=fill;for(const[x,y]of bumps){ctx.beginPath();ctx.arc(x,y,4,0,7);ctx.fill()}
-    const hy=GY-zHead(z)+2;[[3,.3],[2,.62],[1,.88]].forEach(([r,k],i)=>{const x=hx+(zx-hx)*k,y=y0+bh+3+(hy-y0-bh-3)*k+Math.sin(S.time*3+i)*1;ctx.fillStyle=BUBI;ctx.beginPath();ctx.arc(x,y,r+1,0,7);ctx.fill();ctx.fillStyle=fill;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill()});
-  }else{
-    // colita: un triángulo de píxeles que apunta a la cabeza
-    const dir=Math.sign(zx-hx);for(let k=0;k<6;k++){const w=Math.max(1,7-k),x=hx-(w>>1)+Math.round(dir*k*.6);F(x-1,y0+bh-1+k,w+2,1,BUBI);if(k<5)F(x,y0+bh-1+k,w,1,fill)}
-    box(x0-1,y0-1,bw+2,bh+2,BUBI);box(x0,y0,bw,bh,fill);
-    if(shout){// picos de estallido alrededor
-      ctx.fillStyle=BUBI;for(let i=3;i<bw-2;i+=6){const sp=2+((i+z.id*3)%3)+((S.time*12|0)%2);F(x0+i,y0-1-sp,1,sp,BUBI);F(x0+i-1,y0-2,3,1,BUBI);F(x0+i+2,y0+bh+1,1,sp,BUBI)}
-      for(let j=3;j<bh-2;j+=5){F(x0-1-3,y0+j,3,1,BUBI);F(x0+bw+1,y0+j,3,1,BUBI)}}
-    // baba del color del zombi colgando del borde de abajo
-    for(let i=0;i<3;i++){const dx=x0+4+((z.id*13+i*29)%Math.max(4,bw-8));if(Math.abs(dx-hx)<5)continue;const L=1+Math.round((Math.sin(S.time*2+i*2+z.id)+1)*1.6);
-      F(dx,y0+bh,2,L,col);F(dx,y0+bh+L,1,1,col);const q=(S.time*.8+i*.37+z.id*.11)%1;if(q<.5)F(dx,y0+bh+L+2+Math.round(q*16),1,1,col)}
-    F(x0+1,y0+1,bw-2,1,col);
-  }
-  // etiqueta con el nombre, pegada arriba a la izquierda, del color del zombi
-  const nw=pw(nm)+6;box(x0+3,y0-6,nw+2,10,BUBI);box(x0+4,y0-5,nw,8,col);ptext(nm,x0+7,y0-4,1,BUBI);
-  // texto que se va escribiendo, en tinta oscura
-  let left=Math.floor((b.t-.1)*34);const ink=think?'#4a4a52':BUBI;
-  lines.forEach((l,i)=>{if(left<=0)return;ptext(l.slice(0,left),Math.round(cx-pw(l)/2),y0+5+i*9,1,ink);left-=l.length+1});
+  O(nm,cx,b.y-10,col);
+  lines.forEach((l,i)=>O(l,cx,b.y+i*9,ink));
   ctx.restore();
 }
 // cartel: el enemigo más cercano (o el que te agarra) carga la pregunta, con el borde de su color.
@@ -8397,7 +8381,9 @@ function bubble(b){
 function placardZ(){if(S.grab)return S.grab.z;const ax=scx(S.a.x);let b=null,bd=1e9;
   for(const z of S.zombies){if(!alive(z)||z.suck)continue;const x=scx(z.x);if(x<10||x>W-10)continue;const d=Math.abs(x-ax);if(d<bd){bd=d;b=z}}return b}
 function drawPlacard(){
-  S.plcZ=null;const p=S.prob,e=$('#exc');
+  // la pregunta vive solo arriba: ya no hay un segundo cartel que viaja de zombi en zombi
+  S.plcZ=null;S.plcTop=null;S.plc=null;return;
+  const p=S.prob,e=$('#exc');
   if(S.mode!=='play'||!p||S.excP!==p||!e||e.width<4||!['rest','grab'].includes(S.a.st)){S.plc=null;return}
   // nunca encima de la pregunta de arriba: si no cabe grande, se achica
   const z=placardZ(),qb=questionBottom(),minY=Math.max(TOPPAD+2,qb!=null?Math.round(qb)+6:0),base=GY-(z?zHead(z):26)-10;
