@@ -556,6 +556,10 @@ body.gb #sEnd .card .mini,body.gb #sEnd .card #eTtl{color:#383838!important}
 :root{--kbh:clamp(46px,min(7.4vh,15vw),60px)}
 #newt,#lawt,#lawt.tip{font-size:13px}
 #pick button{min-width:60px;height:60px}
+.screen>.card>*{flex-shrink:0}
+#sOver .btn{letter-spacing:.08em;font-size:15px}#sOver .btn.red{font-size:17px}
+#sTitle .row .chip{white-space:normal;line-height:1.25}
+#itHow{margin:0;padding-left:22px;text-align:left;font-size:14px;line-height:1.5;display:flex;flex-direction:column;gap:6px}
 .screen{background:transparent}
 .screen>.card{background:color-mix(in srgb,var(--bg) 30%,transparent)!important;-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px)}
 #sOver .card{background:color-mix(in srgb,var(--bg) 62%,transparent)!important}
@@ -570,7 +574,7 @@ body.kb #newt,body.kb #lawt,body.kb #lawt.tip{bottom:calc(var(--sb) + var(--kpH)
 #sTitle .lead em{color:var(--red)}
 #sTitle .btn{letter-spacing:.1em}
 #sTitle #bStart{font-size:clamp(13px,4.1vw,17px);letter-spacing:.06em;white-space:nowrap;min-height:62px;padding-left:10px;padding-right:10px}
-#sTitle #bAch1{grid-column:span 2}
+
 #sTitle .row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 #sTitle .row .chip{grid-column:auto;font-size:11px;letter-spacing:.04em;padding:8px 4px 6px;min-height:48px}
 #sTitle .row .chip .fl{width:20px;height:14px;margin-right:5px}
@@ -622,7 +626,7 @@ details.prog summary{padding:2px 0}
     <div class="btns"><button class="btn" id="bStart">JUGAR</button><button class="btn alt" id="bFresh" hidden>EMPEZAR DE CERO</button></div>
     <div class="mini" id="tStats"></div>
     <details class="prog"><summary>TU PROGRESO</summary></details>
-    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bLang1"></button><button class="chip" id="bAch1">★</button><button class="chip" id="bA11y1">♿</button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
+    <div class="row"><button class="chip" id="bApple1">● MANZANA</button><button class="chip" id="bTheme1">◐ TEMA</button><button class="chip" id="bMute1">♪ SONIDO</button><button class="chip" id="bKb1">TECLADO</button><button class="chip" id="bLang1"></button><button class="chip" id="bAch1">★</button><button class="chip" id="bA11y1">♿</button><div class="vol" role="slider" aria-label="Volumen" aria-valuemin="0" aria-valuemax="10" tabindex="0"><i class="vn">♪</i><div class="vtrack"><i class="vfill"></i><i class="vap"></i></div><b class="vv"></b></div></div>
   </div></div>
   <div class="screen" id="sLesson"><div class="card">
     <div id="lKick"></div>
@@ -660,7 +664,7 @@ details.prog summary{padding:2px 0}
     <div id="inpB" hidden>
       <div class="mini" id="itStep"></div>
       <h2 class="ttl" id="itTtl"></h2>
-      <p id="itTxt"></p>
+      <p id="itTxt"></p><ol id="itHow" hidden></ol>
       <div id="itPadW"><canvas id="itPad"></canvas><div id="itRead"></div><button class="chip" id="itClr">⌫</button></div>
       <div id="itKbW"><div id="itShow"></div><div id="itKp"></div></div>
       <div class="btns"><button class="btn" id="itGo" hidden></button><button class="btn alt" id="itSkip"></button></div>
@@ -6821,6 +6825,7 @@ function beginStage(){
   a.st='fall';a.y=(GY-TOPPAD+30)/YPX;a.vy=-9;a.bounced=false;a.sq=0;a.sqv=0;
   S.spawnT=S.stage<=2?6:3.5;S.tauntT=6;
   if(boss){const z=mkZ(S.cam+(R()<.5?-1:1)*(W/2+14)/S.u,'boss');z.hp=z.max=T.boss;S.boss=z;S.zombies.push(z);
+    if(!T.final&&BOSSP[T.id]){z.bp=T.id;z.pers=null;z.name=bossP(z).n;setTimeout(()=>{if(S.mode==='play'&&alive(z))bossSay(z,'hi',null,'shout')},1800)}
     if(T.final){z.prof=true;z.pers=null;z.name=XL('n_prof');setTimeout(()=>{if(S.mode==='play'&&alive(z)){laugh(5);say(z,XL('n_laugh'),'shout')}},1800)}}
   speak(XL('n_level',[S.stage>NT?'∞':S.stage,T.name])+(boss?' '+(T.final?XL('n_prof'):XL('c2975f2')):''),true);
   banner(boss?(T.final?XL('cd944be'):XL('c2975f2')):S.stage>NT?XL('n_inf'):XL('ce6cf13')+S.stage,T.name,(boss?XL('cc3d5fc',[T.boss]):XL('c4bd829',[S.quota]))+' · ♪ '+grooveName(MUS.groove)+(hard()>.01?XL('cb76c46',[Math.round(hard()*100)]):''),boss);
@@ -6990,6 +6995,7 @@ function wrongFeedback(val,ans,t){
   const k=wrongKind(val,ans,t);
   const z=nearestZ();
   const pool=ZES()?[`¡ERA ${fmt(ans)}!`,`¿${fmt(val)}? JAJA`,...(TAUNT_TOPIC[S.topic.id]||[]),...TAUNTS]:[ZS('era',[],{a:fmt(ans)})[0],ZS('jaja',[],{v:fmt(val)})[0],...ZS('taunts',TAUNTS)];
+  if(z&&z.bp&&bossSay(z,'w',{a:fmt(ans)}))return;
   if(z&&!(z.pers&&z.pers!=='narc'&&R()<.7&&persSay(z,'w',{a:fmt(ans)})))say(z,R()<.5?pool[0]:pick(pool));
 }
 function typeKey(k){
@@ -7026,10 +7032,10 @@ function setTheme(t){applyPal(t);try{localStorage.setItem('rzTheme',t)}catch(e){
   if(S.prob&&!exprT)renderExprCanvas(S.prob);else if(S.prob){clearTimeout(exprT);exprT=0;renderExprCanvas(S.prob);$('#exprw').classList.remove('out')}
   if(S.mode==='over'&&S.exP&&$('#oFail').open)playExplain()}
 const APPLES=['roja','verde','amarilla'];
-function syncChips(){volRender();if(typeof achN==='function')for(const i of[1,2]){$('#bAch'+i).textContent='★ '+XL('n_ach')+' '+achN()+'/'+ACH.length;document.body.classList.toggle('a11y',A11Y);const b=$('#bA11y'+i);b.hidden=!A11Y;b.textContent='♿ '+XL('n_a11y')+(A11Y?' ✓':'');b.setAttribute('aria-pressed',A11Y?'true':'false')}for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');$('#bKb').textContent=document.body.classList.contains('kb')?L10('draw'):L10('kb')}
+function syncChips(){volRender();if(typeof achN==='function')for(const i of[1,2]){$('#bAch'+i).textContent='★ '+XL('n_ach')+' '+achN()+'/'+ACH.length;document.body.classList.toggle('a11y',A11Y);const b=$('#bA11y'+i);b.hidden=!A11Y;b.textContent='♿ '+XL('n_a11y')+(A11Y?' ✓':'');b.setAttribute('aria-pressed',A11Y?'true':'false')}for(const i of[1,2]){const b=$('#bApple'+i);b.textContent='● '+L10(APPLEC==='roja'?'roja':APPLEC==='verde'?'verde':'amarilla');b.style.color=APC[APPLEC].r}const tl=THEME==='dark'?'☾ '+L10('night'):'☀ '+L10('day');for(const i of[1,2])$('#bTheme'+i).textContent=tl;for(const id of['#bMute','#bMute1'])$(id).textContent=muted?'♪ '+L10('nosound'):'♪ '+L10('sound');{const kb=document.body.classList.contains('kb');$('#bKb').textContent=kb?L10('draw'):L10('kb');$('#bKb1').textContent=kb?'✎ '+L10('draw'):'⌨ '+L10('kb')}}
 for(const i of[1,2])$('#bApple'+i).onclick=()=>{APPLEC=APPLES[(APPLES.indexOf(APPLEC)+1)%3];try{localStorage.setItem('rzApple',APPLEC)}catch(e){}unlock('apple');syncChips()};
 for(const i of[1,2]){$('#bTheme'+i).onclick=()=>{setTheme(THEME==='dark'?'light':'dark');unlock('theme')}}
-$('#bKb').onclick=()=>{document.body.classList.toggle('kb');SAVE.inp=document.body.classList.contains('kb')?'kb':'draw';persist();padClear();syncChips()};
+$('#bKb1').onclick=$('#bKb').onclick=()=>{document.body.classList.toggle('kb');SAVE.inp=document.body.classList.contains('kb')?'kb':'draw';persist();padClear();syncChips()};
 if(SAVE.inp==='kb')document.body.classList.add('kb');
 {const pg=$('#sTitle details.prog'),sm=pg.querySelector('summary');
   pg.addEventListener('toggle',()=>{const o=pg.open;$('#sTitle .lead').hidden=o;$('#tHeat').hidden=!o;$('#tStats').hidden=o;sm.textContent=o?L10('closeprog'):L10('prog')})}
@@ -7253,7 +7259,23 @@ function say(z,txt,kind){zname(z);kind=kind||'say';
   if(cur&&!cur.z.dead&&cur.t<readT(cur)){S.sayQ=S.sayQ.filter(q=>q.z!==z).slice(-1);S.sayQ.push({z,txt,kind,at:S.time});if(kind==='shout')cur.life=Math.min(cur.life,readT(cur));return}
   S.bubbles=[{z,txt,t:0,life,kind}];if(S.mode==='play')tone(kind==='shout'?200:480+R()*240,.05,'square',.02)}
 function sayNext(){if(S.bubbles.length||!S.sayQ)return;while(S.sayQ.length){const q=S.sayQ.shift();if(!q.z.dead&&S.time-q.at<5){say(q.z,q.txt,q.kind);return}}}
-function taunt(z){if(z.prof){profSay(z);return}if(['spider','creeper','ender'].includes(z.type))return;const r=R();{const th=R()<.3;if(z.pers&&(z.pers!=='narc'||R()<.4)&&persSay(z,th?'th':'t',null,th?'think':'say'))return}if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
+// jefes con nombre y personalidad (el jefe final es el profesor)
+const BOSSP={
+ div:{es:{n:'DON RESTO',hi:['SOY DON RESTO. TODO SE REPARTE… Y LO QUE SOBRA ES MÍO'],
+   t:['REPARTO JUSTO: TODO PARA MÍ','CADA SOBRANTE ES UNA MONEDA EN MI BOLSILLO','DIVIDE RÁPIDO, EL TIEMPO TAMBIÉN COBRA INTERESES','¿CUÁNTAS VECES CABE? NINGUNA: ME LO QUEDO'],
+   w:['ERA {a}. TU ERROR ME LO QUEDO DE PROPINA','{a}. ESE FALLO TE LO COBRO DOBLE'],g:['¡A PAGAR!','TE EMBARGO LA MANZANA'],h:['¡AY! ¡MI CAMBIO!','¡NO TOQUES MIS AHORROS!','¡ESO ME SALIÓ CARO!']},
+  en:{n:'LORD REMAINDER',hi:['I AM LORD REMAINDER. EVERYTHING GETS SPLIT… AND THE LEFTOVERS ARE MINE'],
+   t:['FAIR SHARE: ALL FOR ME','EVERY LEFTOVER IS A COIN IN MY POCKET','DIVIDE FAST, TIME CHARGES INTEREST TOO','HOW MANY TIMES DOES IT FIT? ZERO: I KEEP IT'],
+   w:['IT WAS {a}. I KEEP YOUR MISTAKE AS A TIP','{a}. I CHARGE DOUBLE FOR THAT ONE'],g:['PAY UP!','I SEIZE YOUR APPLE'],h:['OUCH! MY CHANGE!','HANDS OFF MY SAVINGS!','THAT COST ME!']}},
+ mat:{es:{n:'LA DETERMINANTE',hi:['FILA UNO, COLUMNA UNO: TÚ. RESULTADO: CERO'],
+   t:['TODO EN ORDEN. MENOS TÚ','FILAS POR COLUMNAS. YO NO CONMUTO CON NADIE','SI MI DETERMINANTE ES CERO, NO HAY INVERSA… NI SALIDA','CADA NÚMERO EN SU CASILLA. Y TÚ, EN MI ESTÓMAGO'],
+   w:['ERA {a}. ERROR ARCHIVADO EN TU EXPEDIENTE','{a}. SOLICITUD DENEGADA'],g:['QUEDAS TRANSPUESTA','TE ASIGNO A MI DIAGONAL'],h:['¡ESO ALTERA MIS FILAS!','¡DESORDEN! ¡DESORDEN!','¡NO ESTÁ PERMITIDO!']},
+  en:{n:'THE DETERMINANT',hi:['ROW ONE, COLUMN ONE: YOU. RESULT: ZERO'],
+   t:['EVERYTHING IN ORDER. EXCEPT YOU','ROWS TIMES COLUMNS. I COMMUTE WITH NO ONE','IF MY DETERMINANT IS ZERO, THERE IS NO INVERSE… NO WAY OUT','EVERY NUMBER IN ITS CELL. AND YOU, IN MY STOMACH'],
+   w:['IT WAS {a}. ERROR FILED IN YOUR RECORD','{a}. REQUEST DENIED'],g:['YOU ARE TRANSPOSED','ASSIGNED TO MY DIAGONAL'],h:['THAT MESSES UP MY ROWS!','DISORDER! DISORDER!','NOT ALLOWED!']}}};
+const bossP=z=>z&&z.bp&&BOSSP[z.bp]&&BOSSP[z.bp][LANG.startsWith('es')?'es':'en'];
+function bossSay(z,cat,v,kind){const B=bossP(z);if(!B||!B[cat])return false;say(z,pick(B[cat]).replace(/\{(\w+)\}/g,(m,k)=>v&&v[k]!=null?v[k]:m),kind);return true}
+function taunt(z){if(z.prof){profSay(z);return}if(z.bp&&bossSay(z,'t'))return;if(['spider','creeper','ender'].includes(z.type))return;const r=R();{const th=R()<.3;if(z.pers&&(z.pers!=='narc'||R()<.4)&&persSay(z,th?'th':'t',null,th?'think':'say'))return}if(r<.3)say(z,pick(ZS('think',THINK)),'think');else if(r<.45&&S.prob){const q=S.prob.str.replace(' = ?','').slice(0,20);say(z,ZES()?`¿${q}? TIC TAC, SÚBDITA`:pick(ZS('tictac',[],{q})))}else say(z,pick([...ZS('taunts',TAUNTS),...(ZES()?(TAUNT_TOPIC[S.topic.id]||[]):[])]))}
 function blood(sx,sy,n,spd=1){for(let i=0;i<n;i++){const ang=-Math.PI*R()*1.1+.05,s=(30+R()*110)*spd;S.parts.push({x:sx,y:sy,vx:Math.cos(ang)*s,vy:Math.sin(ang)*s,t:0,life:.6+R()*.8,c:pick([P.r2,P.r2,P.r,'#e8735f']),blood:true})}}
 function killZ(z,gore){if(z.dead)return;S.lastKilled=zname(z);
   if(S.mode==='play'){SAVE.kills=(SAVE.kills||0)+1;if(SAVE.kills>=50)unlock('k50');if(SAVE.kills>=100)unlock('k100');if(SAVE.kills>=500)unlock('k500');if(z.type==='boss')unlock('boss');if(z.type==='creeper'&&!z.boomed)unlock('creep');if(z.type==='ender')unlock('ender');if(z.type==='creeper'&&!z.boomed){gore=false;for(let i=0;i<20;i++)S.parts.push({x:scx(z.x),y:GY-10,vx:(R()-.5)*90,vy:-R()*80,t:0,life:.7,c:pick(['#4fae35','#2a6a1b'])})}}
@@ -7290,7 +7312,7 @@ function meteor(x){
 function shardHit(sh){
   const z=sh.z;if(!alive(z))return;
   if(z.type==='boss'){
-    z.hp--;z.hitT=.4;SFX.hitBoss();blood(scx(z.x),GY-26,26);S.shake=7;
+    z.hp--;z.hitT=.4;SFX.hitBoss();if(z.bp&&z.hp>0)bossSay(z,'h',null,'shout');blood(scx(z.x),GY-26,26);S.shake=7;
     S.texts.push({x:z.x,y:GY-60,txt:z.hp>0?XL('c699c7a',[z.hp]):XL('cc07d5f'),c:P.o,t:0,life:1.4,world:true});
     z.x+=(Math.sign(z.x-S.a.x)||1)*70/S.u;
     if(z.hp<=0){killZ(z,true);blood(scx(z.x),GY-26,80,1.4);checkClear()}
@@ -7322,7 +7344,7 @@ function startGrab(z){
   $('#alSub').textContent=S.grab.need>1?L10('grab2'):L10('caughtSub');
   $('#alert').classList.add('on');
   if(!S.prob)newProblem();
-  if(z.prof)say(z,pick(XL('n_profT').split(';')),'shout');else if(!(z.pers&&z.pers!=='narc'&&persSay(z,'g',null,'shout')))say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
+  if(z.bp&&bossSay(z,'g',null,'shout')){}else if(z.prof)say(z,pick(XL('n_profT').split(';')),'shout');else if(!(z.pers&&z.pers!=='narc'&&persSay(z,'g',null,'shout')))say(z,pick(ZES()?['¡DE RODILLAS!','TE TENGO, SÚBDITA','¿Y AHORA QUIÉN MANDA?','EL RELOJ CORRE, PLEBEYA','ÑAM… DIGO, ¡ORDEN REAL!',...TAUNTS]:[...ZS('grab',[]),...ZS('taunts',[])]),'shout');
 }
 function escape(){
   const a=S.a,g=S.grab,z=g.z,pr=S.prob;
@@ -8019,7 +8041,7 @@ function playExplain(p=S.exP,cvx=$('#exAnim'),root=$('#oFailB')){
 {const SC=[1047,1175,1319,1568,1760,1976,2349];
   new MutationObserver(ms=>{if(S.mode!=='over')return;for(const m of ms){const l=m.target;if(l.tagName==='LI'&&l.classList.contains('on')&&!(m.oldValue||'').split(' ').includes('on')){const i=[...l.parentNode.children].indexOf(l);bell(SC[Math.min(i,SC.length-1)],.06);}}})
   .observe($('#oFailB'),{subtree:true,attributes:true,attributeFilter:['class'],attributeOldValue:true})}
-$('#oFail').addEventListener('toggle',()=>{const o=$('#oFail').open;$('#sOver').classList.toggle('exp',o);if(o)playExplain();requestAnimationFrame(()=>requestAnimationFrame(fitCards))});
+$('#oFail').addEventListener('toggle',()=>{const o=$('#oFail').open;$('#sOver').classList.toggle('exp',o);if(o)playExplain();requestAnimationFrame(()=>requestAnimationFrame(()=>{fitCards();if(o&&innerWidth<760)$('#oFail').scrollIntoView({block:'start',behavior:'smooth'})}))});
 
 function fitCards(){const mob=innerWidth<760;for(const c of document.querySelectorAll('.screen.show .card')){c.style.transform='none';c.style.maxHeight='none';c.style.removeProperty('overflow-y');c.style.removeProperty('justify-content');const avail=c.parentElement.clientHeight-8,h=c.scrollHeight;const k=Math.min(1,avail/h);
   if(mob&&k<.88){c.style.maxHeight='100%';c.style.setProperty('overflow-y','auto','important');c.style.setProperty('justify-content','flex-start','important');continue}c.style.transform=k<1?`scale(${k.toFixed(3)})`:'none'}}
@@ -8923,11 +8945,24 @@ function inpPick(m){INP.mode=m;INP.i=0;document.body.classList.toggle('kb',m==='
 function itStep(){
   const L=IT[INP.mode],i=INP.i;INP.busy=false;
   if(i>=L.length){$('#itStep').textContent='';$('#itTtl').textContent=L10('itDoneT');$('#itTxt').textContent=L10(INP.mode==='kb'?'itKbDone':'itDrawDone');
-    $('#itPadW').hidden=true;$('#itKbW').hidden=true;$('#itSkip').hidden=true;$('#itGo').hidden=false;SFX.clear();return}
+    $('#itPadW').hidden=true;$('#itKbW').hidden=true;$('#itSkip').hidden=true;$('#itGo').hidden=false;const h=$('#itHow');h.innerHTML=howTo(INP.mode).map(s=>`<li>${s}</li>`).join('');h.hidden=false;SFX.clear();requestAnimationFrame(fitCards);return}
+  $('#itHow').hidden=true;
   $('#itStep').textContent=L10('itStep',{i:i+1,n:L.length});$('#itTtl').textContent=L10('itWrite',{n:L[i].replace('-',MINUS)});
   $('#itTxt').textContent=L10(INP.mode==='kb'?(i?'itKb2':'itKb1'):(i?'itDraw2':'itDraw1'));
   if(INP.mode==='draw'){itClear();requestAnimationFrame(itSize)}else{INP.typed='';itKbShow()}
 }
+// cómo se juega, en 5 frases: se muestra al usuario nuevo después de elegir teclado o dibujo
+function howTo(m){const es=LANG.startsWith('es');return es?[
+  'La operación sale <b>arriba</b>. Resuélvela antes de que lleguen los zombis.',
+  m==='kb'?'Escribe el resultado con el <b>teclado de abajo</b>, cifra por cifra. Una cifra equivocada cuenta como fallo.':'<b>Dibuja</b> el resultado con el dedo en cualquier parte de la pantalla.',
+  'La manzana salta a tu número en la recta: si aciertas, cae como <b>meteorito</b> sobre el zombi.',
+  'Si un zombi te atrapa, responde rápido para soltarte. Si mueres, vuelves al <b>nivel 1</b>.',
+  'Puedes cambiar entre teclado y dibujo cuando quieras en el <b>menú</b> o en <b>pausa</b>.']:[
+  'The problem shows up <b>at the top</b>. Solve it before the zombies reach you.',
+  m==='kb'?'Type the answer on the <b>keypad below</b>, digit by digit. A wrong digit counts as a miss.':'<b>Draw</b> the answer with your finger anywhere on the screen.',
+  'The apple jumps to your number on the line: get it right and it falls like a <b>meteor</b> on the zombie.',
+  'If a zombie grabs you, answer fast to break free. If you die, you go back to <b>level 1</b>.',
+  'Switch between keypad and drawing any time from the <b>menu</b> or <b>pause</b>.']}
 function inpDone(){if(!INP)return;const n=INP.n;SAVE.inp=INP.mode||(document.body.classList.contains('kb')?'kb':'draw');persist();INP=null;syncChips();newGame(n)}
 $('#inpDraw').onclick=()=>{ac();inpPick('draw')};$('#inpKb').onclick=()=>{ac();inpPick('kb')};
 $('#itSkip').onclick=()=>inpDone();$('#itGo').onclick=()=>inpDone();
